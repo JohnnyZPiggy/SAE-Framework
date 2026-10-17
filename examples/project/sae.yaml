@@ -1,0 +1,33 @@
+# Copy as sae.yaml and replace all angle-bracket placeholders before activation.
+sae_version: "3.2"
+project:
+  repository: "<OWNER>/<PROJECT>"
+  name: "<PROJECT>"
+  package: "<PACKAGE_NAME>"
+  scientific_goal: "<ALGORITHM_AND_PROBLEM>"
+framework:
+  repository: "JohnnyZPiggy/SAE-Framework"
+  commit_sha: "<ACTUAL_40_CHARACTER_SHA>"
+  local_snapshot: ".sae"
+roles:
+  scientist: "human"
+  architect: "gpt"
+  mentor: "gpt"
+  engineer: "codex"
+objectives:
+  engineering_productivity: true
+  scientific_learning: true
+collaboration:
+  task_hub: "github_issues"
+  review_hub: "github_pull_requests"
+  actions_enabled: false
+  hosted_ci_required: false
+  merge_requires_authorization: true
+experiments:
+  device_runner: "scientist_colab"
+  notebook_style: "thin_orchestrator"
+  publisher: "manual_until_implemented"
+  reports_in_github: true
+  google_drive_role: "temporary_notebook_workspace_only"
+  drive_sync: false
+  publish_branch_prefix: "experiment/"
