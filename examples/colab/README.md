@@ -1,5 +1,8 @@
 # Thin Colab Notebook — illustrative cell plan
 
+> Language: **English** | [简体中文](../../i18n/zh-CN/examples/colab/README.md)
+
+
 **This directory is documentation, not a working notebook or Publisher.** GPT designs orchestration; Codex implements tested Python modules/CLI. The Scientist runs Colab and reviews results.
 
 1. **Cell 1 — Setup:** connect runtime, choose CPU/GPU, install **exact source commit SHA** (including PR head if testing before merge), inspect PyTorch/CUDA/GPU.

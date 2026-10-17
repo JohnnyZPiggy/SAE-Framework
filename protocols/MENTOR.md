@@ -1,5 +1,8 @@
 # Scientific Mentor Protocol — GPT
 
+> Language: **English** | [简体中文](../i18n/zh-CN/protocols/MENTOR.md)
+
+
 **Trigger:** `推进导师工作`
 
 ## Goal

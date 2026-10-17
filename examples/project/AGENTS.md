@@ -1,5 +1,8 @@
 # Project Agent Entry Point (copy to your project root)
 
+> Language: **English** | [简体中文](../../i18n/zh-CN/examples/project/AGENTS.zh-CN.md)
+
+
 Project: `<OWNER>/<PROJECT>`
 SAE Framework: `JohnnyZPiggy/SAE-Framework`, version V3.2
 Pinned framework snapshot: `.sae/` at commit `<REPLACE_WITH_ACTUAL_FRAMEWORK_SHA>`

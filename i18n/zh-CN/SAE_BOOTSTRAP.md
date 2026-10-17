@@ -1,0 +1,53 @@
+# SAE V3.2：新项目初始化协议（中文）
+
+> 语言：[English](../../SAE_BOOTSTRAP.md) | **简体中文** · 英文是机器执行规范。
+
+**入口指令：** `按照 SAE Framework V3.2 初始化这个项目`
+
+## 必须确认的输入
+- 目标仓库：准确的 `owner/repo` 与默认分支。
+- 科学目标：论文/算法、预期 PyTorch 产物（可暂定）。
+- 框架来源：`JohnnyZPiggy/SAE-Framework`，必须固定到**实际 release tag 或 commit SHA**，不使用漂移的 `main`。
+- 权限：对目标仓库的明确读写授权；Colab 凭证仍由科学家保管。
+- 现有文件：除非用户针对具体修改批准，否则全部保留。
+
+## 阶段 0：启动前检查
+1. 检查仓库、已有 README/AGENTS、默认分支、Issues/PR、打包与测试结构，以及工具权限。
+2. 读取固定版本的框架 `AGENTS.md`、相关角色/流程文档和本初始化文件。**仅提供 URL 不等于已读取。**
+3. 明确缺失的先决条件、计划改动与外部副作用；不可凭空假设 GitHub 写入可用。
+
+## 阶段 1：安装固定版本协议
+1. 使用 [项目 AGENTS 示例](../../examples/project/AGENTS.md) 创建/更新项目根 `AGENTS.md`。
+2. 使用 [配置示例](../../examples/project/sae.yaml) 写入 `sae.yaml`，填上**真实 SHA**、角色及禁用 Actions 规则。
+3. 从固定版本的母仓库将共同规则、`protocols/`、`workflows/` 和必要模板复制到项目 `.sae/`。不要只留外部链接。
+4. 确认 Codex 实际读取项目内的 AGENTS，GPT 通过 GitHub 工具显式读取相应文件。
+5. 保留已有内容，在**新分支 + PR** 中提出变更。
+
+## 阶段 2：工程骨架（交给 Codex）
+可按需建立 `src/`、`tests/`、`benchmarks/`、`tools/`、`notebooks/`、`reports/`、`docs/`（空目录不受 Git 追踪）。
+- 与算法相匹配的 Python 打包/导入结构；
+- 实际 CPU 数值正确性、边界和回归测试；
+- 支持设备选择、随机种子、结构化输出的实验 CLI；
+- **薄 Colab Notebook**：安装指定源码 SHA、设参、调用已测试 CLI、发布报告；Notebook 由 GPT 设计，Python 实现由 Codex 负责；
+- 按 [GPU 实验协议](workflows/GPU_EXPERIMENT.md) 设计上传工具；未实现并测试前不得宣称可用；
+- 不配置 GitHub Actions、托管 CI 或付费自动化。
+
+## 阶段 3：GitHub 协作配置
+- 在权限允许时配置 Issue/PR 模板；不能操作的明确汇报。
+- 按 [任务管理协议](workflows/TASK_MANAGEMENT.md) 定义状态、优先级、交接和审核。
+- 建立初始 Issues：数学规格、参考基线、CPU 正确性、PyTorch 优化、Colab 实验、结果发布与学习目标。
+
+## 阶段 4：验收和交接
+- 校验相对路径、链接、`sae.yaml` 能解析且指向真实不可变版本。
+- Codex 跑 CPU 检查并记录真实输出；GPU 留给科学家后续在 Colab 执行。
+- 通过 PR 提供审查，合并权限由科学家决定。
+- 报告 **已完成 / 未运行 / 被阻塞**、对应 SHA、Issue/PR 链接、尚需的认证步骤。
+- 下一阶段使用三条推进指令。
+
+## 幂等与失败
+重新初始化必须先检查差异，不能静默覆盖已有文件。删除、force-push、暴露秘密、合并、对外发布均不能凭“默认权限”执行。缺少写权限时，应提供待应用的补丁和清单，并标记尚未提交。
+
+## 初始化成功标准
+项目具有项目根 AGENTS、合法 `sae.yaml`、可读取且**固定版本**的协议副本、清晰责任与验收标准、初始 Issue 队列、可审查的工程骨架 PR、Colab/GitHub 报告计划，而且没有 GitHub Actions。
+
+**注意：** 这是一份操作协议，不是自动运行服务。

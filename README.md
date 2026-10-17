@@ -1,5 +1,8 @@
 # SAE Framework V3.2
 
+> Language: **English** | [简体中文](README.zh-CN.md)
+
+
 **Scientist–Architect–Engineer (SAE)** — a GitHub-first, plug-and-play collaboration framework for mathematical algorithms, PyTorch scientific computing, and ML engineering.
 
 > **One Project, Two Outcomes: Better Software, Better Scientist.**
@@ -9,10 +12,10 @@
 The two equally important objectives—**Engineering Productivity** and **Scientific Learning**—guide every SAE project. The diagram shows how the human Scientist, GPT (Chief Architect + Scientific Mentor), Codex, GitHub, Colab and the optional lightweight Drive workspace fit together.
 
 <p align="center">
-  <img src="docs/figures/SAE_Framework_V3.2.svg" alt="SAE Framework V3.2 visual architecture: two parallel goals, Scientist, GPT Architect and Mentor, Codex Engineer, GitHub coordination hub, Colab GPU experiments and minimal Google Drive workspace" width="760" />
+  <img src="docs/figures/SAE_Framework_V3.2.en.svg" alt="SAE Framework V3.2 visual architecture: two parallel goals, Scientist, GPT Architect and Mentor, Codex Engineer, GitHub coordination hub, Colab GPU experiments and minimal Google Drive workspace" width="760" />
 </p>
 
-[Open/download the SVG](docs/figures/SAE_Framework_V3.2.svg) · [View the editable Mermaid architecture](docs/ARCHITECTURE.md)
+[English SVG](docs/figures/SAE_Framework_V3.2.en.svg) · [中文架构图](docs/figures/SAE_Framework_V3.2.zh-CN.svg) · [View the editable Mermaid architecture](docs/ARCHITECTURE.md)
 
 ## Two parallel objectives
 
@@ -60,6 +63,12 @@ Commands are **conventions defined by the role protocols**, not autonomous backg
 - **Separate review from execution:** no silent force-pushes, secret commits, unreviewed merges, or destructive changes.
 - **No Drive sync:** only a small local-to-Colab workspace folder if useful; not a cross-agent transport.
 - **Learning is a first-class output:** a learning note is linked to meaningful milestones without turning education into bureaucratic busywork.
+
+## Documentation languages
+
+- **English:** this README and the original protocol documents are canonical for agents.
+- **简体中文:** [中文首页](README.zh-CN.md) and [Chinese documentation index](i18n/zh-CN/README.md).
+- [Language policy / 翻译规范](docs/LANGUAGE_POLICY.md) explains how both versions stay aligned.
 
 ## File map
 

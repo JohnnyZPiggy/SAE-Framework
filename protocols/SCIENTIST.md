@@ -1,5 +1,8 @@
 # Scientist Protocol — Human Project Owner
 
+> Language: **English** | [简体中文](../i18n/zh-CN/protocols/SCIENTIST.md)
+
+
 The human Scientist is the **principal investigator**, final scientific decision-maker and actual Colab operator.
 
 ## Responsibilities

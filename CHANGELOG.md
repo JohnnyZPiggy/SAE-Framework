@@ -1,5 +1,8 @@
 # Changelog
 
+> Language: **English** | [简体中文](i18n/zh-CN/CHANGELOG.md)
+
+
 ## Framework V3.2 — Initial public protocol package
 - Two equal objectives: **Engineering Productivity** and **Scientific Learning**.
 - GPT serves as **Chief Architect** and **Scientific Mentor**.

@@ -1,0 +1,28 @@
+# SAE 新项目 AGENTS 入口模板（中文说明）
+
+> 语言：[English](../../../../examples/project/AGENTS.md) | **简体中文**
+
+**注意：** 这个文件仅供中文阅读。实际初始化项目时，应把英文 [AGENTS.md 模板](../../../../examples/project/AGENTS.md) 复制到**项目根目录**，并填写真实信息，以供 Codex 自动读取。
+
+项目：`<OWNER>/<PROJECT>`  
+SAE Framework：`JohnnyZPiggy/SAE-Framework`，架构版本 V3.2  
+框架快照：`.sae/`，固定在真实 commit `<REPLACE_WITH_ACTUAL_FRAMEWORK_SHA>`
+
+## 工作前读取
+1. 当前项目 `AGENTS.md` 和 `sae.yaml`。
+2. `.sae/AGENTS.md` 共同规则。
+3. 当前角色 `.sae/protocols/ARCHITECT.md`、`ENGINEER.md` 或 `MENTOR.md`。
+4. 相关工作流程、Issue/PR 规格。
+
+**链接不等于自动加载。** 必须确认固定版本本地快照存在；缺失时先执行 Bootstrap，不要猜测规则。
+
+## 本项目的额外说明
+- 科学目标：`<PAPER_OR_ALGORITHM>`
+- Python 包名：`<PACKAGE_NAME>`
+- 人类科学家运行 Colab GPU；Codex 运行 CPU；GPT 做审查和导师指导。
+- GitHub Issues/PR 是共享任务与证据中心。不配置 GitHub Actions，不使用 Drive 同步。
+- 计算和报告发布使用经测试的 Python 模块，Notebook 只负责调度。
+- 不擅自覆盖文件、发布秘密或自行合并。
+
+## 三条指令
+`推进架构师工作` / `推进工程师工作` / `推进导师工作`。

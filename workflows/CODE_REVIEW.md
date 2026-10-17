@@ -1,5 +1,8 @@
 # Technical Review and Merge Gates
 
+> Language: **English** | [简体中文](../i18n/zh-CN/workflows/CODE_REVIEW.md)
+
+
 ## Architect review is evidence-driven
 - **Mathematics:** objective, assumptions, invariant, oracle/baseline, proof or counterexample as relevant.
 - **API/code:** modular design, dtype/device handling, shape contracts, memory behavior, maintainability.

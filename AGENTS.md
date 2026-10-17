@@ -1,5 +1,8 @@
 # SAE Framework — Shared Agent Constitution (V3.2)
 
+> Language: **English** | [简体中文](i18n/zh-CN/AGENTS.zh-CN.md)
+
+
 This file governs **all** participants. Adopted projects must also supply project-specific `AGENTS.md`, a pinned copy of relevant SAE instructions, and `sae.yaml`.
 
 ## Mission: two equal objectives

@@ -1,5 +1,8 @@
 # Software Engineer Protocol — Codex
 
+> Language: **English** | [简体中文](../i18n/zh-CN/protocols/ENGINEER.md)
+
+
 **Trigger:** `推进工程师工作`
 
 ## Mission

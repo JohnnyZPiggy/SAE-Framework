@@ -1,5 +1,8 @@
 # SAE Pull Request: <title>
 
+> Language: **English** | [简体中文](../i18n/zh-CN/templates/PR_TEMPLATE.md)
+
+
 Closes/Refs: #<issue>
 Candidate source commit: `<SHA>`
 
