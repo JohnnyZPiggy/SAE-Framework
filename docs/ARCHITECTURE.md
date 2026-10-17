@@ -2,6 +2,8 @@
 
 > **One Project, Two Outcomes: Better Software, Better Scientist.**
 
+See the [high-resolution visual architecture](figures/SAE_Framework_V3.2.svg) embedded at the top of the [project README](../README.md). The Mermaid chart below is the text-editable equivalent.
+
 ## Parallel success criteria
 **Engineering Productivity:** working, documented, maintainable Python packages; accurate CPU and GPU numerics; reproducible performance; low labor/token/compute cost.
 

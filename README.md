@@ -4,6 +4,16 @@
 
 > **One Project, Two Outcomes: Better Software, Better Scientist.**
 
+## Visual Overview
+
+The two equally important objectives—**Engineering Productivity** and **Scientific Learning**—guide every SAE project. The diagram shows how the human Scientist, GPT (Chief Architect + Scientific Mentor), Codex, GitHub, Colab and the optional lightweight Drive workspace fit together.
+
+<p align="center">
+  <img src="docs/figures/SAE_Framework_V3.2.svg" alt="SAE Framework V3.2 visual architecture: two parallel goals, Scientist, GPT Architect and Mentor, Codex Engineer, GitHub coordination hub, Colab GPU experiments and minimal Google Drive workspace" width="760" />
+</p>
+
+[Open/download the SVG](docs/figures/SAE_Framework_V3.2.svg) · [View the editable Mermaid architecture](docs/ARCHITECTURE.md)
+
 ## Two parallel objectives
 
 | Engineering Productivity | Scientific Learning |
