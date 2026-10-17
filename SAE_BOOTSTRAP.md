@@ -1,5 +1,8 @@
 # SAE Bootstrap — AI-Executable Initialization Protocol (V3.2)
 
+> Language: **English** | [简体中文](i18n/zh-CN/SAE_BOOTSTRAP.md)
+
+
 **Command:** `按照 SAE Framework V3.2 初始化这个项目`
 
 ## Inputs (collect or infer only from inspected environment)

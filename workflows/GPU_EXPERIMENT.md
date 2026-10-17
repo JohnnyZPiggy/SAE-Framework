@@ -1,5 +1,8 @@
 # Colab Experiment and GitHub Publication Protocol
 
+> Language: **English** | [简体中文](../i18n/zh-CN/workflows/GPU_EXPERIMENT.md)
+
+
 ## Responsibility split
 - **Architect (GPT):** defines scientific questions, experiment matrix, acceptance and thin Notebook orchestration.
 - **Engineer (Codex):** implements/tests Python algorithms, correctness/benchmark CLI and **Publisher** (once approved).

@@ -1,5 +1,8 @@
 # [SAE Engineering Task] <short title>
 
+> Language: **English** | [简体中文](../i18n/zh-CN/templates/ISSUE_TEMPLATE.md)
+
+
 **Owner:** Codex / Architect / Scientist
 **Priority:** P0 / P1 / P2
 **Status:** ready / in-progress / review / experiment / blocked / accepted

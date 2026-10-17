@@ -1,5 +1,8 @@
 # GitHub Task Management and Handoff
 
+> Language: **English** | [简体中文](../i18n/zh-CN/workflows/TASK_MANAGEMENT.md)
+
+
 **Canonical task source:** GitHub Issues, not private chat histories.
 
 ## Minimal label vocabulary

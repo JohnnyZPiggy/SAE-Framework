@@ -1,5 +1,8 @@
 # SAE Framework Roadmap
 
+> Language: **English** | [简体中文](../i18n/zh-CN/docs/ROADMAP.md)
+
+
 This repository currently provides **architecture, role instructions, onboarding steps, and templates**. The following automation components are proposed, **not yet implemented/tested**:
 
 ## P0 — Bootstrap helper (Codex)

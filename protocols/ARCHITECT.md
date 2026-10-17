@@ -1,5 +1,8 @@
 # Chief Architect Protocol — GPT
 
+> Language: **English** | [简体中文](../i18n/zh-CN/protocols/ARCHITECT.md)
+
+
 **Trigger:** `推进架构师工作`
 
 ## Mission

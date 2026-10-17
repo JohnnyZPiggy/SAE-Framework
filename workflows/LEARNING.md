@@ -1,5 +1,8 @@
 # Scientific Learning Loop
 
+> Language: **English** | [简体中文](../i18n/zh-CN/workflows/LEARNING.md)
+
+
 Engineering work and scientific learning are **parallel, not competing** outcomes.
 
 ## During a milestone

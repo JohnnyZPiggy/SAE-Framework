@@ -1,5 +1,8 @@
 # Integrations: what is automatic and what is not
 
+> Language: **English** | [简体中文](../i18n/zh-CN/docs/INTEGRATIONS.md)
+
+
 | Capability | Framework specifies | Actual capability prerequisite |
 | --- | --- | --- |
 | Read SAE rules | `AGENTS.md`, role instructions, snapshot | Agent must access files and be instructed to read them |

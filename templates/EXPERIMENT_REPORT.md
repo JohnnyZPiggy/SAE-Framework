@@ -1,5 +1,8 @@
 # SAE Colab Experiment Report — <run-id>
 
+> Language: **English** | [简体中文](../i18n/zh-CN/templates/EXPERIMENT_REPORT.md)
+
+
 **Issue:** #<number>  
 **Code PR:** #<number>  
 **Tested source commit:** `<40-char-sha>`  
