@@ -1,0 +1,28 @@
+# [SAE Engineering Task] <short title>
+
+**Owner:** Codex / Architect / Scientist
+**Priority:** P0 / P1 / P2
+**Status:** ready / in-progress / review / experiment / blocked / accepted
+**Kind:** math / engineering / experiment / learning
+**Depends on:** #<issue-number> (or none)
+
+## Scientific purpose
+What problem does this solve, and why does it matter?
+
+## Mathematical / numerical contract
+Definitions, assumptions, reference baseline, invariants, input/output shapes, dtype/device constraints, tolerance policy.
+
+## Deliverables
+- [ ] Scoped Python modules, CLI or design artifact
+- [ ] Tests/benchmark source
+- [ ] Documentation and reproduction commands
+
+## Acceptance criteria
+- [ ] Spec and reference baseline agree
+- [ ] Correctness/edge-case checks specified
+- [ ] Actual CPU validation recorded
+- [ ] If GPU-relevant, exact candidate SHA tested in Colab
+- [ ] No GitHub Actions and no secret leakage
+
+## Handoff
+Target branch, linked PR/report, open questions, known blockers.
