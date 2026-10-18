@@ -17,6 +17,10 @@ If labels cannot be created, write the exact intended state into an Issue commen
 
 For a new algorithm or significant tensorization rewrite, the first scientific Issue/record is a **Mentor-owned mathematical structure study**; it is **not** yet an `agent:codex` implementation task. Link the Scientist-reviewed `docs/research/<algorithm>-tensorization.md` and its `RESEARCH_READY` decision before marking any algorithm implementation Issue `status:ready`. Architect then prepares interfaces/tests and formal Colab experiment questions. A missing or blocked study must be routed to Mentor/Scientist, not silently handed to Codex. Basic repository bootstrap work is exempt; see [the research gate](MATHEMATICAL_RESEARCH.md).
 
+## Linked artifacts in Issue/PR handoffs
+
+The Scientist-reviewed mathematical study, the Architect/Codex engineering record, and the Scientist-operated Colab run report form one traceable evidence chain; see [Three-Artifact Handoff](THREE_ARTIFACT_HANDOFF.md). A Codex implementation Issue/PR links the mathematical study and engineering record; the actual experiment PR points to the tested implementation SHA and both earlier documents. Do not create a fourth competing status document or pretend a template proves work was done.
+
 ## Lifecycle
 1. **Architect creates Issue** with mathematics/interfaces, inputs/outputs, acceptance criteria, CPU/GPU test requirements, references, target milestone; label ready for Codex if applicable.
 2. **Engineer claims Issue** by explicit comment and status update to in-progress; one owner at a time.

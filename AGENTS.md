@@ -1,3 +1,7 @@
+## Integrated SAE execution contract
+
+Default sequence: Scientist-approved mathematical study → Codex CPU correctness, CPU `torch.compile`, clean pip install and packaged CLI → Architect-reviewed GPU Readiness → Scientist-run Colab GPU experiment. Maintain the linked [three-artifact handoff](workflows/THREE_ARTIFACT_HANDOFF.md) and [two-command Colab contract](workflows/COLAB_TWO_COMMAND.md). No unverified GPU claims, direct main publication or unattended local execution. Role commands resume only after reading project Issues, PRs, artifacts and pinned SAE version.
+
 ## Default phase gate
 
 Follow [Research Pipeline](workflows/RESEARCH_PIPELINE.md): mathematical research and Scientist review, Codex local CPU engineering (including actual CPU `torch.compile` evidence), Architect-reviewed [GPU Readiness](templates/GPU_READINESS.md), then Scientist-run Colab GPU experiment. Agents resume from GitHub Issues/PRs and artifacts when the project and tool access are known; never claim unattended or local execution without access.

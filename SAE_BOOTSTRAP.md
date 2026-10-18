@@ -1,3 +1,7 @@
+## Integrated project acceptance
+
+The pinned SAE snapshot must include [research pipeline](workflows/RESEARCH_PIPELINE.md), [GPU readiness](templates/GPU_READINESS.md), [three-artifact handoff](workflows/THREE_ARTIFACT_HANDOFF.md), [engineering template](templates/ENGINEERING_REPORT.md) and [two-command Colab contract](workflows/COLAB_TWO_COMMAND.md), including bilingual mirrors and working relative links. Project-specific templates copied outside the snapshot must have relative links rewritten. Codex must prove clean CPU install, correctness and CPU compile before GPU_READY. Scientist's target Notebook runs pinned-SHA pip install and one packaged benchmark CLI; optional publication remains manual until the Publisher passes real Colab integration. Preserve the self-contained snapshot requirements of PR #7.
+
 # SAE Bootstrap — AI-Executable Initialization Protocol (V3.2)
 
 > Language: **English** | [简体中文](i18n/zh-CN/SAE_BOOTSTRAP.md)

@@ -5,9 +5,15 @@
 
 **This directory is documentation, not a working notebook or Publisher.** GPT designs orchestration; Codex implements tested Python modules/CLI. The Scientist runs Colab and reviews results.
 
-1. **Cell 1 — Setup:** connect runtime, choose CPU/GPU, install **exact source commit SHA** (including PR head if testing before merge), inspect PyTorch/CUDA/GPU.
-2. **Cell 2 — Parameters:** dtype, seed, size, baseline, tolerance, run ID and output directory.
-3. **Cell 3 — Experiment:** invoke tested project-specific Python CLI with `--device cpu|cuda`; inspect correctness first; then benchmark.
-4. **Cell 4 — Publish:** retrieve GitHub credential securely from Colab Secrets and invoke tested Publisher CLI to create a report branch/PR; capture verified link.
+**After one-time GPU runtime selection and optional Colab Secrets authorization, the core notebook has only two executable cells:**
 
-The notebook should **not** contain numerical kernels, benchmark loops, direct git credential logic or invented results. Keep the Google Drive folder small and unsynchronized.
+```python
+!pip install "git+https://github.com/OWNER/REPO.git@<COMMIT_SHA>"
+!python -m <package>.benchmarks.run --device cuda --publish
+```
+
+The first cell installs a pinned source SHA via pip. The second uses a **packaged benchmark Python module** to perform device checks, numerical correctness, synchronized benchmark, report generation and optional GitHub PR publication. Real repository, SHA, import path, presets and CLI contract are supplied by GPT Architect **after Codex implements and tests them**.
+
+No third executable Notebook cell is required by the **target design**. `--publish` is an explicit per-run request to create a validated report PR (not auto-merge). Until Publisher exists and has passed integration tests, that portion remains **manual**; don't claim publication from running illustrative commands. Details and acceptance: [two-command contract](../../workflows/COLAB_TWO_COMMAND.md).
+
+The notebook should **not** contain numerical kernels, benchmark loops, direct git credential logic, token literals, temporary Drive sync, or invented results. The CLI may securely access pre-authorized Colab Secrets only after this path has been tested from a Python subprocess. Keep the Google Drive folder small and unsynchronized.

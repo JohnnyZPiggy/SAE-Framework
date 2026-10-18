@@ -1,3 +1,7 @@
+## Integrated algorithm-project operating contract
+
+Use the pinned `.sae/` snapshot. Follow research → CPU engineering/`torch.compile` → Architect-reviewed GPU_READY → Scientist-run Colab. Maintain linked mathematical, engineering and experimental artifacts. A clean pinned-SHA pip install and one packaged benchmark CLI are the target Colab interface. Do not ask Scientist for repeated GPU runs before CPU-local fixes; do not claim Publisher implemented without real tests. See `.sae/workflows/RESEARCH_PIPELINE.md`, `.sae/workflows/THREE_ARTIFACT_HANDOFF.md`, `.sae/workflows/COLAB_TWO_COMMAND.md`.
+
 # Project Agent Entry Point (copy to your project root)
 
 > Language: **English** (canonical). After installation, the Chinese reference is available at `.sae/i18n/zh-CN/examples/project/AGENTS.zh-CN.md`. This is a **copyable project-root template**; source-repository relative links must not be carried into a different root unchanged.

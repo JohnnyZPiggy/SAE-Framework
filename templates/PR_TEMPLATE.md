@@ -18,6 +18,12 @@ Describe changes, problem, assumptions and any changes to public API.
 | Colab GPU correctness | NOT RUN | |
 | Colab GPU performance | NOT RUN | |
 
+## Three-artifact links
+- Approved math: `docs/research/<algorithm>-tensorization.md` / N/A for infrastructure
+- Engineering and actual CPU evidence: `docs/engineering/<algorithm>-engineering.md`
+- Actual Colab experiment: `reports/gpu/<run-id>/summary.md` / NOT RUN
+- Tested source commit SHA: `<SHA>` (distinct from report publication SHA)
+
 ## Reproduction
 Python/PyTorch version, device, seed, exact commands, data source.
 

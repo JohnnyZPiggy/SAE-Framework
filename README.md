@@ -1,3 +1,7 @@
+## Integrated operating model
+
+**One role command, two Colab commands, three scientific artifacts.** Follow [research → CPU validation → GPU readiness → GPU experiment](workflows/RESEARCH_PIPELINE.md). The [three-artifact handoff](workflows/THREE_ARTIFACT_HANDOFF.md) links mathematics, engineering and experimental evidence; the [two-command Colab contract](workflows/COLAB_TWO_COMMAND.md) defines a pinned GitHub pip install and a packaged benchmark CLI with optional safe PR publication. These are target interfaces; Bootstrap and Publisher CLIs are not yet implemented.
+
 ## Default research pipeline
 
 **Research-First → CPU-Validated → GPU-Finalized.** Day-to-day mathematical and CPU engineering work runs without Colab. Only a reviewed [GPU Readiness Gate](templates/GPU_READINESS.md) permits a Scientist-run GPU experiment. Read the [three-stage protocol](workflows/RESEARCH_PIPELINE.md). CPU `torch.compile` testing is required when supported, but does **not** establish GPU compatibility or speedup.

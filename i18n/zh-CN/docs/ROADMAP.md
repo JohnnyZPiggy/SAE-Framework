@@ -16,10 +16,12 @@
 - 只有 GitHub API 确认才宣称成功，支持安全幂等重试；
 - 先做离线/mocked CPU 测试，再在明确授权下集成验证。
 
-## P1：薄 Colab Notebook（GPT）
-- 四个逻辑 cell：环境与 SHA → 参数 → 调用真实 CLI → 调用 Publisher；
-- 核心算法、Git API、计时逻辑不放进 Notebook；
-- 对 GPU、环境及输出作明确检查。
+## P1：双命令 Colab Notebook（GPT 设计 + Codex 封装）
+
+- 首次 GPU/凭证设置后，仅需**两条可执行命令**：从指定 GitHub SHA 运行 pip 安装，再执行 `python -m <package>.benchmarks.run --device cuda --publish`。
+- GPT 设计默认参数、参考数值算法、CLI、验证及报告要求；Codex 实现并在本地测试打包、正确性、Benchmark、报告和安全上传，所有逻辑在 `.py` 内部。
+- 同一 CLI 内完成设备检查、精度先验验证、同步计时、源码 SHA 溯源及可选 PR 上传，正式版本无需第三条上传命令。
+- Codex 提供干净 CPU pip/CLI 测试，科学家提供真实 Colab GPU 与授权上传验证。**目前尚未实现完整功能**。详见 [双命令规范](../workflows/COLAB_TWO_COMMAND.md)。
 
 ## P1：机器可验证配置（Codex）
 - `sae.yaml`、JSON 实验报告的 Python schema 验证；

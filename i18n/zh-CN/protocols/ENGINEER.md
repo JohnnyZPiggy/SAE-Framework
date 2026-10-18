@@ -1,3 +1,7 @@
+## CPU-first 与 Colab 双命令交付要求
+
+Codex 默认在 CPU 完成 PyTorch 模块、参考数值测试、随机/边界测试、`torch.compile`（支持时）、CPU Benchmark、干净环境 pip 安装和打包 CLI 测试，提交真实源码 SHA、工程报告和 GPU Readiness 证据。GPU_READY 由架构师审核，科学家集中执行 Colab。算法包必须提供一条可调用的 Benchmark Python CLI，内部完成数值验证、GPU 计时、报告及可选安全 GitHub PR 上传；不得依赖 Notebook 第三条工程命令。Publisher 未实现前标记 NOT_IMPLEMENTED，GPU 未实测标记 NOT_RUN。
+
 # Codex 软件工程师协议
 
 > 语言：[English](../../../protocols/ENGINEER.md) | **简体中文** · 中文译本。

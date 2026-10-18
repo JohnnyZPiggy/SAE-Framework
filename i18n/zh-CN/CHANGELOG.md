@@ -2,7 +2,14 @@
 
 > 语言：[English](../../CHANGELOG.md) | **简体中文**
 
-## 研究先于工程的流程增强（2026-10-18）
+## Colab 双命令执行契约（2026-10-18）
+
+- 规定科学家 Colab 核心实验 **只有两条可执行命令**：pip 安装固定 Git SHA 的算法包；运行一条包含精度检查、GPU 计时、实验报告和按授权上传 GitHub PR 的打包 Python Benchmark 命令。
+- 将原来四个逻辑实验阶段封装到 Codex 实现和测试的 Python 模块内；GPT 架构师负责 CLI 设计、派发与验收，科学家做真实 Colab 集成实验。
+- 新增中英文 `COLAB_TWO_COMMAND.md`，同步实验协议、Notebook 示例、角色、项目配置和路线图。
+- **自动 Publisher 仍未实现**；未真实运行不得声称两行程序/上传已经成功。
+
+## 研究先于工程的流程增强（2026-10-18)
 
 - GPT 科学导师新增**工程前数学结构探索与张量化研究**，重点寻找矩阵向量积、matrix-free、批处理/张量缩并等数学性质，分析顺序依赖。
 - 科学家审核 `RESEARCH_READY` / `RESEARCH_BLOCKED` / `NOT_TENSORIZABLE` 研究成果后，总架构师再设计工程与正式实验任务。

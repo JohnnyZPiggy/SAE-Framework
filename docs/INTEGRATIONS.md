@@ -1,3 +1,7 @@
+## Integrated Colab and research handoff
+
+Read [three-stage research pipeline](../workflows/RESEARCH_PIPELINE.md), [three-artifact handoff](../workflows/THREE_ARTIFACT_HANDOFF.md), [GPU Readiness](../templates/GPU_READINESS.md) and [two-command Colab interface](../workflows/COLAB_TWO_COMMAND.md). GPU execution is gated on real CPU validation. A pip-installed package must contain the benchmark module; the second CLI orchestrates accuracy, GPU timing, report generation and optional authorized PR creation, not Notebook-embedded Git API logic. Automatic Publisher is not yet implemented.
+
 # Integrations: what is automatic and what is not
 
 > Language: **English** | [简体中文](../i18n/zh-CN/docs/INTEGRATIONS.md)

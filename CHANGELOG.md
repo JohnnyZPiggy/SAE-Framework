@@ -3,6 +3,13 @@
 > Language: **English** | [简体中文](i18n/zh-CN/CHANGELOG.md)
 
 
+## Colab two-command execution interface (2026-10-18)
+
+- Defined a strict end-user target of **two executable Colab command cells**: pip-install an immutable GitHub source SHA; run one packaged Python benchmark that handles correctness, GPU timing, reports, and **optional authorized** GitHub PR publication.
+- Moved four logical stages inside Codex-tested Python modules; GPT Architect owns CLI spec and acceptance tests, Scientist runs the actual Colab GPU integration.
+- Added bilingual `COLAB_TWO_COMMAND.md`, updated GPU workflows, Colab examples, roles, bootstrap, configuration examples and roadmap.
+- Publisher automation remains **not implemented**; no CLI/GPU performance or upload functionality is claimed until real tests pass.
+
 ## Research-first scientific workflow amendment (2026-10-18)
 
 - GPT Scientific Mentor now leads **pre-engineering mathematical structure discovery and tensorization research** (matvec, matrix-free operators, batched tensor contractions and non-parallelizable barriers).

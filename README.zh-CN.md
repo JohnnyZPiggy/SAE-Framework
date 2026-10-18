@@ -1,3 +1,7 @@
+## 整合后的默认运行模式
+
+**一句话推进角色、两行 Colab 命令、三份科研成果。** 依照 [三阶段 CPU-first 流程](i18n/zh-CN/workflows/RESEARCH_PIPELINE.md)，先数学研究，再 CPU 工程与 `torch.compile` 验证，通过 GPU Readiness 后才集中 Colab 实验。[三文档交接](i18n/zh-CN/workflows/THREE_ARTIFACT_HANDOFF.md) 连接数学、工程、实验记录；[双命令 Colab 契约](i18n/zh-CN/workflows/COLAB_TWO_COMMAND.md) 定义固定 SHA 的 pip 安装与打包 Benchmark CLI。Bootstrap/Publisher 尚未实现，不得宣称已经自动执行。
+
 ## 默认三阶段研发流程
 
 **数学研究 → CPU 工程与编译验证 → 最终 GPU 实验。** 日常工作由 GPT/Codex 在 CPU 环境推进，科学家只有在 [GPU Readiness](i18n/zh-CN/templates/GPU_READINESS.md) 审核通过后才集中使用 Colab。见 [三阶段协议](i18n/zh-CN/workflows/RESEARCH_PIPELINE.md)。CPU `torch.compile` 成功不保证 GPU 兼容或加速。

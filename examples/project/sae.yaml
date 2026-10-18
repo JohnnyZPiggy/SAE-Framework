@@ -32,7 +32,12 @@ collaboration:
   merge_requires_authorization: true
 experiments:
   device_runner: "scientist_colab"
-  notebook_style: "thin_orchestrator"
+  notebook_style: "two_command_orchestrator" 
+  notebook_command_count: 2
+  install_source: "pinned_github_commit_via_pip"
+  benchmark_cli: "python -m <PACKAGE_NAME>.benchmarks.run --device cuda --publish" 
+  benchmark_in_pip_package: true
+  publisher_invoked_inside_benchmark_cli: true
   publisher: "manual_until_implemented"
   reports_in_github: true
   google_drive_role: "temporary_notebook_workspace_only"

@@ -56,6 +56,10 @@ flowchart TD
 ## 这是协议，不是魔法
 角色协议是版本化的**执行说明**，并非后台常驻服务。智能体必须被触发、拥有对应权限，并真正读取文件内容。母仓库保存组织规则；子项目应安装**固定版本的本地协议副本**及项目 AGENTS/config。Codex 不会因为看到另一个仓库 URL 就自动载入；GPT 也需明确读取。
 
+## 数学、工程、实验三类证据
+
+每个算法以 GPT 导师与科学家认可的**数学研究报告**、架构师与 Codex 的**工程设计/实现报告**、科学家真正运行的**实验验证报告**构成证据闭环。GitHub Issues/PR 保存工作状态，三个文档分别保存数学推导、真实实现验证和实测结果，依据源码 SHA 互相引用，不增加角色日报。参见 [三文档交接协议](../workflows/THREE_ARTIFACT_HANDOFF.md)，以及 [数学](../templates/TENSORIZATION_STUDY.md)、[工程](../templates/ENGINEERING_REPORT.md)、[实验](../templates/EXPERIMENT_REPORT.md) 模板。
+
 ## 信息归属
 | 信息 | 权威位置 |
 | --- | --- |
