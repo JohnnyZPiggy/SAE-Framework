@@ -24,6 +24,15 @@
 4. Ensure agent sessions actually open the root `AGENTS.md` and their assigned `.sae/protocols/*.md`. Codex discovers in-repo AGENTS rules; GPT must be explicitly directed to read them through its available GitHub tools.
 5. Preserve all pre-existing content. Stage additions/changes on a **new branch and PR**.
 
+## Phase 1.5 — Mentor-led mathematical research before algorithm engineering (mandatory gate)
+
+For a **new scientific algorithm or major tensorization rewrite**, after repository/protocol scaffolding and before issuing substantive implementation or benchmark tasks:
+1. Scientist supplies or confirms the reference algorithm, mathematics and research goal.
+2. GPT switches to **Scientific Mentor** and follows [workflows/MATHEMATICAL_RESEARCH.md](workflows/MATHEMATICAL_RESEARCH.md): inspect matrix–vector/matrix-free and other tensor-friendly operators; derive and critique mathematically equivalent batched/tensor formulations.
+3. Write a reviewable project `docs/research/<algorithm>-tensorization.md` following [templates/TENSORIZATION_STUDY.md](templates/TENSORIZATION_STUDY.md), including evidence gaps, oracle and hardware hypotheses.
+4. Scientist reviews and chooses `RESEARCH_READY` / `RESEARCH_BLOCKED` / `NOT_TENSORIZABLE`, or explicitly authorizes a narrow exception.
+5. Architect may then design the engineering Issue, reference oracle and experiment plan. **Do not dispatch algorithm rewrites or formal GPU benchmarks before the gate.** Basic infrastructure setup can proceed independently; feedback may reopen this phase.
+
 ## Phase 2 — Project engineering skeleton (delegate to Codex)
 Expected folders as appropriate: `src/`, `tests/`, `benchmarks/`, `tools/`, `notebooks/`, `reports/`, `docs/`. Directories only exist in Git after at least one tracked file.
 - Python packaging and import layout tailored to the algorithm.
