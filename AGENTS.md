@@ -1,3 +1,7 @@
+## Default phase gate
+
+Follow [Research Pipeline](workflows/RESEARCH_PIPELINE.md): mathematical research and Scientist review, Codex local CPU engineering (including actual CPU `torch.compile` evidence), Architect-reviewed [GPU Readiness](templates/GPU_READINESS.md), then Scientist-run Colab GPU experiment. Agents resume from GitHub Issues/PRs and artifacts when the project and tool access are known; never claim unattended or local execution without access.
+
 # SAE Framework — Shared Agent Constitution (V3.2)
 
 > Language: **English** | [简体中文](i18n/zh-CN/AGENTS.zh-CN.md)
