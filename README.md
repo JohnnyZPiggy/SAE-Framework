@@ -112,3 +112,7 @@ No license is selected yet. Public visibility **does not** imply permission to r
 ## Mobile-first next-step commands
 
 After each substantive GPT Mentor / Architect / Codex cycle, the agent must recommend **one specific next command**, with at most two alternatives, verified GitHub evidence and any Scientist approval required. See [Next-Action Protocol](workflows/NEXT_ACTION.md). The text command works across clients; optional interactive actions only where supported.
+
+## Role recovery and integrity
+
+Before each substantive work cycle, apply [Role Recovery & Integrity](workflows/ROLE_RECOVERY.md): restore the explicitly assigned role, read pinned project rules and live GitHub evidence, verify phase and actual tool permissions, and stop on role mismatch rather than silently changing identity. Keep the existing Next-Action handoff at the end.

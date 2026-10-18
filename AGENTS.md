@@ -57,3 +57,7 @@ Include: current project/ref, Issue/PR links, action taken, actual validation pe
 ## Required next-action handoff
 
 At the end of each substantive work cycle, follow the [Next-Action Protocol](workflows/NEXT_ACTION.md): recommend one specific, copyable role command or Scientist action, at most two useful alternatives, verified GitHub evidence, and any approval needed. Do not request repeated Colab runs before GPU_READY or pretend a command has executed. Offer one-tap actions only where the client actually supports them.
+
+## Mandatory role recovery
+
+Before each substantive role cycle, follow [Role Recovery & Integrity](workflows/ROLE_RECOVERY.md): restore the role from the user's explicit command, identify the algorithm repository, read pinned project protocols and current GitHub Issues/PRs, verify phase gates and actual permissions, and then perform one role-appropriate task. Do not silently switch roles or upgrade a pinned project. End with the [Next-Action](workflows/NEXT_ACTION.md) footer.

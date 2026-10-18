@@ -64,3 +64,6 @@
 项目具有项目根 AGENTS、合法 `sae.yaml`、可读取且**固定版本**的协议副本、清晰责任与验收标准、初始 Issue 队列、可审查的工程骨架 PR、Colab/GitHub 报告计划，而且没有 GitHub Actions。
 
 **注意：** 这是一份操作协议，不是自动运行服务。
+## Bootstrap 快照中的角色恢复
+
+固定版本的 `.sae/workflows/` 快照必须包含 [角色恢复协议](workflows/ROLE_RECOVERY.md) 与中英文镜像。算法项目 `AGENTS.md` 必须指向 `.sae/workflows/ROLE_RECOVERY.md`。Bootstrap 实现需要检查新对话能恢复角色与任务，不得悄悄升级既有项目。

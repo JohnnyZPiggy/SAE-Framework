@@ -36,3 +36,7 @@ Before algorithm implementation/benchmarks, read `.sae/workflows/MATHEMATICAL_RE
 ## Mandatory next-action handoff
 
 After each substantive role cycle, recommend one next command and up to two alternatives with evidence and required Scientist approval. Follow the pinned [Next-Action Protocol](.sae/workflows/NEXT_ACTION.md). Do not imply local execution or GPU readiness without actual evidence.
+
+## Recover role and state first
+
+Before each substantive role cycle, follow the pinned [Role Recovery & Integrity Protocol](.sae/workflows/ROLE_RECOVERY.md). Verify the user's role command, current project Issues/PRs, phase gate and actual tools; do not silently switch roles, assume laptop access or upgrade the pinned `.sae/` snapshot. End with the pinned [Next-Action](.sae/workflows/NEXT_ACTION.md) footer.

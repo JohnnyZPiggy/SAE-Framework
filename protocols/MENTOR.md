@@ -48,3 +48,7 @@ Mentor may challenge the Architect's design, but learning exercises are not proo
 ## Required next-action handoff
 
 At the end of each substantive work cycle, follow the [Next-Action Protocol](../workflows/NEXT_ACTION.md): recommend one specific, copyable role command or Scientist action, at most two useful alternatives, verified GitHub evidence, and any approval needed. Do not request repeated Colab runs before GPU_READY or pretend a command has executed. Offer one-tap actions only where the client actually supports them.
+
+## Role recovery and integrity
+
+Before each substantive work cycle, apply [Role Recovery & Integrity](ROLE_RECOVERY.md): restore the explicitly assigned role, read pinned project rules and live GitHub evidence, verify phase and actual tool permissions, and stop on role mismatch rather than silently changing identity. Keep the existing Next-Action handoff at the end.

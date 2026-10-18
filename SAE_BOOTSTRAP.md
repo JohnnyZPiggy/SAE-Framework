@@ -64,3 +64,7 @@ Re-running bootstrap must inspect and *update deliberately*, not overwrite user 
 
 ## Acceptance criteria
 A newly initialized project has an accessible, version-pinned SAE snapshot; root `AGENTS.md`; validated `sae.yaml`; owner/acceptance definitions; an initial issue queue; reviewable engineering scaffolding PR; explicit Colab and GitHub report plan; and no GitHub Actions. These files are the protocol, **not an execution engine**.
+
+## Role recovery in the pinned Bootstrap snapshot
+
+Include [ROLE_RECOVERY.md](workflows/ROLE_RECOVERY.md) and its [Chinese mirror](i18n/zh-CN/workflows/ROLE_RECOVERY.md) in the self-contained `.sae/workflows/` snapshot. Project `AGENTS.md` must link `.sae/workflows/ROLE_RECOVERY.md`. The Bootstrap implementation must preserve pinned-version behavior and check that role restoration works in a fresh chat, without silently upgrading existing projects.
