@@ -13,6 +13,6 @@
 
 第一行通过 pip 安装固定源码 SHA 的算法包，第二行调用**已经打包的 Benchmark Python 模块**，在内部完成设备检查、数学正确性、GPU 同步计时、报告生成及获得明确授权后的 GitHub PR 上传。真实仓库、源码 SHA、包名和 CLI 由 GPT 设计、Codex 实现与测试。无需额外参数或发布 Cell。
 
-这是**最终目标接口**，不是已经实现的命令；Publisher 完成前上传仍为手动。详见 [双命令执行契约](../../../workflows/COLAB_TWO_COMMAND.md)。
+这是**最终目标接口**，不是已经实现的命令；Publisher 完成前上传仍为手动。详见 [双命令执行契约](../../../../workflows/COLAB_TWO_COMMAND.md)。
 
 不要在 Notebook 中放数值 kernel、完整计时循环、Git API 凭证处理、明文 token 或虚构结果。Colab Secrets 的读取必须由 Codex 在真实子进程环境中验证，不能仅因为 Notebook Cell 能读取就假设 CLI 也能读取。Google Drive 只使用一个无需同步的轻量工作目录。
