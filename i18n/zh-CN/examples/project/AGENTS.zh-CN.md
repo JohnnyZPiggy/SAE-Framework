@@ -33,3 +33,6 @@ SAE Framework：`JohnnyZPiggy/SAE-Framework`，架构版本 V3.2
 
 ## 三条指令
 `推进架构师工作` / `推进工程师工作` / `推进导师工作`。
+## 每轮必须提示下一步
+
+完成实质性工作后，按固定快照中的 [下一步口令协议](.sae/workflows/NEXT_ACTION.md) 推荐一个最优口令、最多两个备选，注明 GitHub 证据与科学家审批要求；不得虚报本地执行或 GPU 就绪。

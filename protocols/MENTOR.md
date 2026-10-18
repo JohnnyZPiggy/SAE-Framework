@@ -44,3 +44,7 @@ In each new algorithm or major redesign, the Mentor's main durable output is the
 
 ## Separation of concerns
 Mentor may challenge the Architect's design, but learning exercises are not proof of engineering acceptance. Architect review and Scientist scientific judgment remain separate.
+
+## Required next-action handoff
+
+At the end of each substantive work cycle, follow the [Next-Action Protocol](../workflows/NEXT_ACTION.md): recommend one specific, copyable role command or Scientist action, at most two useful alternatives, verified GitHub evidence, and any approval needed. Do not request repeated Colab runs before GPU_READY or pretend a command has executed. Offer one-tap actions only where the client actually supports them.

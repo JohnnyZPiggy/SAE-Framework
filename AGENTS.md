@@ -53,3 +53,7 @@ Higher priority: user instructions and permissions → project-specific `AGENTS.
 
 ## Completion report contract
 Include: current project/ref, Issue/PR links, action taken, actual validation performed, evidence locations, risks/blockers, decisions requiring Scientist, and recommended next command. Never imply work happened if a tool failed.
+
+## Required next-action handoff
+
+At the end of each substantive work cycle, follow the [Next-Action Protocol](workflows/NEXT_ACTION.md): recommend one specific, copyable role command or Scientist action, at most two useful alternatives, verified GitHub evidence, and any approval needed. Do not request repeated Colab runs before GPU_READY or pretend a command has executed. Offer one-tap actions only where the client actually supports them.

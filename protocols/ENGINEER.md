@@ -36,3 +36,7 @@ Deliver reproducible, maintainable Python software against the Architect's speci
 
 ## Handoff
 Issue/PR links, changed files, tested SHA, test summary, experiment command, known limitations, blocker/request for Architect, suggested next task. One invocation completes **one bounded engineering cycle**.
+
+## Required next-action handoff
+
+At the end of each substantive work cycle, follow the [Next-Action Protocol](../workflows/NEXT_ACTION.md): recommend one specific, copyable role command or Scientist action, at most two useful alternatives, verified GitHub evidence, and any approval needed. Do not request repeated Colab runs before GPU_READY or pretend a command has executed. Offer one-tap actions only where the client actually supports them.

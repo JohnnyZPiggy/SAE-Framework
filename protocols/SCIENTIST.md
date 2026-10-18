@@ -32,3 +32,7 @@ After the mathematical research decision and Codex's documented engineering vali
 6. Ask Mentor to explain surprising results; decide next scientific direction.
 
 The Scientist need not write the heavy Python code. The AI team should minimize required manual steps without overstating autonomous capabilities.
+
+## Required next-action handoff
+
+At the end of each substantive work cycle, follow the [Next-Action Protocol](../workflows/NEXT_ACTION.md): recommend one specific, copyable role command or Scientist action, at most two useful alternatives, verified GitHub evidence, and any approval needed. Do not request repeated Colab runs before GPU_READY or pretend a command has executed. Offer one-tap actions only where the client actually supports them.
