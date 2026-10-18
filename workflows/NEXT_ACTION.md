@@ -36,3 +36,7 @@ Use this structure, adapted to the actual situation:
 ## Integration
 
 The task-management workflow remains the canonical GitHub Issue/PR handoff; this protocol only standardizes **what the agent tells the Scientist after each cycle**. Root/project AGENTS and role protocols should point here. Never duplicate the entire protocol into every role file.
+
+## Role recovery and integrity
+
+On each role invocation, new chat or material context uncertainty, follow [Role Recovery](ROLE_RECOVERY.md): verify role, target repository, pinned SAE rules, current GitHub Issues/PRs, mathematical/CPU/GPU phase gates and actual tool permissions before taking one bounded action. Surface mismatches or inaccessible evidence; never fabricate local execution. Finish with the Next-Action handoff.

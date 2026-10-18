@@ -36,3 +36,7 @@ SAE Framework：`JohnnyZPiggy/SAE-Framework`，架构版本 V3.2
 ## 每轮必须提示下一步
 
 完成实质性工作后，按固定快照中的 [下一步口令协议](.sae/workflows/NEXT_ACTION.md) 推荐一个最优口令、最多两个备选，注明 GitHub 证据与科学家审批要求；不得虚报本地执行或 GPU 就绪。
+
+## 角色恢复与防漂移
+
+每次收到角色口令、新会话或任务状态不确定时，按 [角色恢复协议](.sae/workflows/ROLE_RECOVERY.md) 核实当前角色、目标仓库、固定 SAE 版本、GitHub Issues/PR、数学/CPU/GPU 阶段关口和实际工具权限，再执行一个有界任务。职责冲突或 GitHub 不可用时必须如实阻塞，不得假装已执行。每轮结束仍按下一步口令协议交接。

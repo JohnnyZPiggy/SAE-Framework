@@ -36,3 +36,7 @@ Before algorithm implementation/benchmarks, read `.sae/workflows/MATHEMATICAL_RE
 ## Mandatory next-action handoff
 
 After each substantive role cycle, recommend one next command and up to two alternatives with evidence and required Scientist approval. Follow the pinned [Next-Action Protocol](.sae/workflows/NEXT_ACTION.md). Do not imply local execution or GPU readiness without actual evidence.
+
+## Role recovery and integrity
+
+On each role invocation, new chat or material context uncertainty, follow [Role Recovery](.sae/workflows/ROLE_RECOVERY.md): verify role, target repository, pinned SAE rules, current GitHub Issues/PRs, mathematical/CPU/GPU phase gates and actual tool permissions before taking one bounded action. Surface mismatches or inaccessible evidence; never fabricate local execution. Finish with the Next-Action handoff.

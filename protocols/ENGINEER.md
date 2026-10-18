@@ -40,3 +40,7 @@ Issue/PR links, changed files, tested SHA, test summary, experiment command, kno
 ## Required next-action handoff
 
 At the end of each substantive work cycle, follow the [Next-Action Protocol](../workflows/NEXT_ACTION.md): recommend one specific, copyable role command or Scientist action, at most two useful alternatives, verified GitHub evidence, and any approval needed. Do not request repeated Colab runs before GPU_READY or pretend a command has executed. Offer one-tap actions only where the client actually supports them.
+
+## Role recovery and integrity
+
+On each role invocation, new chat or material context uncertainty, follow [Role Recovery](../workflows/ROLE_RECOVERY.md): verify role, target repository, pinned SAE rules, current GitHub Issues/PRs, mathematical/CPU/GPU phase gates and actual tool permissions before taking one bounded action. Surface mismatches or inaccessible evidence; never fabricate local execution. Finish with the Next-Action handoff.
