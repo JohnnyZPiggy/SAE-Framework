@@ -18,6 +18,9 @@ Pinned framework snapshot: `.sae/` at commit `<REPLACE_WITH_ACTUAL_FRAMEWORK_SHA
 ## Pre-engineering math discovery
 Before algorithm implementation/benchmarks, read `.sae/workflows/MATHEMATICAL_RESEARCH.md` and have GPT Mentor + Scientist produce and review `docs/research/<algorithm>-tensorization.md`. Architect dispatches Codex work only with `RESEARCH_READY` or a documented Scientist-authorized exception. Tensorization is a mathematical research outcome, not guaranteed speedup.
 
+## Linked math, engineering and experimental records
+Use `.sae/workflows/THREE_ARTIFACT_HANDOFF.md` to keep a mathematical study in `docs/research/<algorithm>-tensorization.md`, a milestone implementation/CPU validation record in `docs/engineering/<algorithm>-engineering.md`, and actual Scientist-run experiment summaries in `reports/gpu/<run-id>/summary.md`. Reference Issues/PRs and tested SHA; no duplicate performance claims or invented tests.
+
 ## Project-specific notes
 - Scientific objective: `<PAPER_OR_ALGORITHM>`
 - Python package: `<PACKAGE_NAME>`

@@ -38,6 +38,10 @@
 
 **RESEARCH_READY 只表示数学方案足以进入设计，并不意味着数值正确性已通过实验或已经实现 GPU 加速。** 若结果为 RESEARCH_BLOCKED / NOT_TENSORIZABLE，不得擅自将性能优化 Issue 交给 Codex。Scientist 可以改选方案、允许有限参考实现，或明确记录例外。
 
+## 从数学报告到工程、实验报告
+
+数学研究是 [三文档交接协议](THREE_ARTIFACT_HANDOFF.md) 的第一份成果。由科学家批准的推导、数值约束进入 [工程报告](../templates/ENGINEERING_REPORT.md)，真实 Colab 输出则进入不同 run-id 的 [实验报告](../templates/EXPERIMENT_REPORT.md)。数学加速假设不能写成已测的性能结论。
+
 ## 进入架构师与工程阶段
 1. 科学家审核研究报告并选定数学表达。
 2. GPT 切换 **Chief Architect**：依据报告设计模块接口、正确性验收、实验矩阵与 Codex 任务。

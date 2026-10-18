@@ -10,6 +10,15 @@
 **UTC 时间：** <时间>  
 **状态：** PASS / FAIL / NOT RUN / BLOCKED
 
+## 三文档溯源关联
+**数学研究报告：** `docs/research/<algorithm>-tensorization.md` / 链接  
+**工程实现报告：** `docs/engineering/<algorithm>-engineering.md` / 链接  
+**实验运行路径：** `reports/gpu/<run-id>/summary.md`  
+**实际被测源码 SHA：** `<sha>`  
+**实验报告发布 commit（如存在）：** `<另一个 SHA 或 NOT YET PUBLISHED>`
+
+这是 [三文档交接协议](../workflows/THREE_ARTIFACT_HANDOFF.md) 中的**实验验证文档**，必须基于科学家真实操作 Colab 的输出生成，不能预先声称成功。
+
 ## 环境
 CPU/GPU 型号、驱动/CUDA/PyTorch 版本、Colab runtime、dtype、种子、具体安装源。
 

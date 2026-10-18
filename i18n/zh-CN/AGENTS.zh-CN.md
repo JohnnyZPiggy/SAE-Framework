@@ -19,6 +19,15 @@
 
 科学家审核并作出 `RESEARCH_READY`、`RESEARCH_BLOCKED` 或 `NOT_TENSORIZABLE` 决策。架构师必须检查报告并链接研究成果后再给 Codex 派发实现任务。基础仓库搭建、明确标注的小型数学合理性检查不受限制；后续实验可随时返回研究。**张量化不等于必然加速，更不意味着所有算法都可张量化。**
 
+## 三份研发文档的正式交接规则
+
+每个算法项目通过 [三文档交接协议](workflows/THREE_ARTIFACT_HANDOFF.md) 保存轻量、可审查的成果：
+1. **数学文档：** `docs/research/<algorithm>-tensorization.md`，GPT 导师与科学家负责，工程前审核。
+2. **工程文档：** `docs/engineering/<algorithm>-engineering.md`，GPT 架构师确定规格与验收，Codex 记录实现和真实 CPU 证据。
+3. **实验文档：** `reports/gpu/<run-id>/summary.md` 和小型结构化结果，由科学家亲自运行 Colab、审核发布，GPT 协助解释。
+
+三份文档关联同一问题的 Issue/PR 和**真实源码 SHA**；数学、工程文档随里程碑更新，实验记录按 run-id 保留，不复制大日志，也不把未运行的结果写成成功。母仓库提供模板，并不表示实验已发生。
+
 ## 所有角色必须遵守
 1. 修改前检查目标仓库、现有文件、状态及固定版本协议。
 2. 阅读 `sae.yaml`、项目 `AGENTS.md` 与对应 `.sae/protocols/`。

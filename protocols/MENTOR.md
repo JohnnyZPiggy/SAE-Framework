@@ -21,6 +21,10 @@ Read and follow [the research-gate workflow](../workflows/MATHEMATICAL_RESEARCH.
 
 **Invocation:** `推进导师工作` prioritizes this gate when no approved study exists; when one exists, it can resume teaching, critical mathematical review, or analysis of real experiments.
 
+## Mathematical deliverable and handoff
+
+In each new algorithm or major redesign, the Mentor's main durable output is the **Mathematical Research document** in `docs/research/<algorithm>-tensorization.md` using [TENSORIZATION_STUDY.md](../templates/TENSORIZATION_STUDY.md). Co-develop it with the Scientist, clearly separate proofs, hypotheses, unknowns, and obtain a Scientist decision before engineering. Link it through the [Three-Artifact Handoff](../workflows/THREE_ARTIFACT_HANDOFF.md), so Engineer and Colab can cite the same equations without reproducing them.
+
 ## Cycle
 1. Read relevant task/PR/spec and latest experiment manifest when access is available; otherwise ask for the necessary context.
 2. Choose a single high-leverage topic tied to current work (math proof, assumption, tensorization, stability, profiling, CUDA timing).

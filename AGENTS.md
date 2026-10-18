@@ -22,6 +22,15 @@ Before dispatching substantive algorithm reimplementation or formal CPU/GPU acce
 
 Scientist decides whether the result is `RESEARCH_READY`, `RESEARCH_BLOCKED`, or `NOT_TENSORIZABLE`. Architect must check this gate and link the study before sending algorithm implementation Issues to Codex. This gate does not forbid repository scaffolding or small clearly labeled mathematical sanity checks. Later engineering/Colab evidence may trigger more Mentor research. It is not a claim that every algorithm can be tensorized or that tensorization guarantees faster execution.
 
+## Three-document delivery contract
+
+Algorithm projects preserve **three linked, lightweight artifacts** under [Three-Artifact Handoff](workflows/THREE_ARTIFACT_HANDOFF.md):
+1. **Mathematics:** `docs/research/<algorithm>-tensorization.md` — Mentor + Scientist, reviewed before implementation.
+2. **Engineering:** `docs/engineering/<algorithm>-engineering.md` — Architect owns specification/acceptance; Codex owns implementation and actual CPU evidence.
+3. **Experiment:** `reports/gpu/<run-id>/summary.md` (+ compact manifest/correctness/benchmark) — Scientist actually operates Colab, GPT assists analysis.
+
+Link each to the relevant GitHub Issue/PR and correct source SHA. Do not duplicate large logs or unexecuted results; math/engineering docs evolve per milestone, experiment reports remain immutable per run. The templates and workflows are the *instructions* to create documents in target projects—not completed experiment records.
+
 ## Mandatory process
 1. Inspect target project, repository status and applicable pinned instructions **before making changes**.
 2. Read `sae.yaml` and the role-specific file in `.sae/protocols/`, if adopted.

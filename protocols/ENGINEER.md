@@ -12,6 +12,10 @@ Before beginning a **new algorithm implementation or major tensorization redesig
 ## Mission
 Deliver reproducible, maintainable Python software against the Architect's specified mathematical contract. Work through GitHub, not undocumented chat handoffs.
 
+## Engineering deliverable
+
+Maintain `docs/engineering/<algorithm>-engineering.md` using [ENGINEERING_REPORT.md](../templates/ENGINEERING_REPORT.md) for the implementation milestone. Start from the Architect's specification and the approved math study; record changed module paths, exact candidate SHA, **real** commands, test results, numerical deviations, CPU evidence and handoff to the Scientist. Include/update the document in a reviewable PR; link experiments when they exist, not before. Avoid duplicating raw log dumps or full PR diffs. See [Three-Artifact Handoff](../workflows/THREE_ARTIFACT_HANDOFF.md). This requirement is not a blocker for framework-only scaffolding tasks where no mathematical algorithm exists.
+
 ## One bounded cycle
 1. Read project `AGENTS.md`, `sae.yaml`, pinned `.sae/protocols/ENGINEER.md` and referenced workflow; inspect repo/current state.
 2. Find GitHub Issues labeled `agent:codex` and `status:ready`, or equivalent explicitly documented state. Choose highest priority unblocked task, unless instructed otherwise.

@@ -24,6 +24,11 @@ research_gate:
   scientist_review_required: true
   outcome_values: ["RESEARCH_READY", "RESEARCH_BLOCKED", "NOT_TENSORIZABLE"]
   speedup_claims_require_real_measurement: true
+artifacts:
+  math_study_path: "docs/research/<algorithm>-tensorization.md"
+  engineering_report_path: "docs/engineering/<algorithm>-engineering.md"
+  experiment_run_path: "reports/gpu/<run-id>/summary.md"
+  require_real_evidence: true
 collaboration:
   task_hub: "github_issues"
   review_hub: "github_pull_requests"

@@ -14,6 +14,10 @@ For each new algorithm or major tensorization redesign, first check the **Mentor
 
 If the study is missing, `RESEARCH_BLOCKED`, or `NOT_TENSORIZABLE`, route the project into `推进导师工作` and resolve the mathematical question with Scientist; do not create an ordinary performance-implementation Issue unless Scientist explicitly authorizes an exception. `RESEARCH_READY` is a *design gate*, not a claim of empirical speedup.
 
+## Engineering document ownership
+
+The Architect converts the Scientist-approved mathematical study into the **design, interfaces, numerical acceptance criteria and experiment specification sections** of `docs/engineering/<algorithm>-engineering.md`, using [ENGINEERING_REPORT.md](../templates/ENGINEERING_REPORT.md). Codex then records implementation, actual CPU tests and tested SHA **in that same living document**, normally within its implementation PR. Scientist's measured Colab results belong in separate per-run experiment summaries, linked rather than copied. See [Three-Artifact Handoff](../workflows/THREE_ARTIFACT_HANDOFF.md).
+
 ## One bounded cycle
 1. **Inspect:** read project-root `AGENTS.md`, `sae.yaml`, relevant pinned workflows, latest Issues/PRs/reports, and commit history necessary for the chosen task. Identify source of truth and stale claims.
 2. **Triage:** prioritize blocked experiments, correctness regressions, review-ready PRs and ready engineering tasks; avoid duplicated Issues.

@@ -3,6 +3,13 @@
 > Language: **English** | [简体中文](i18n/zh-CN/CHANGELOG.md)
 
 
+## Three-document research evidence contract (2026-10-18)
+
+- Connected **Mathematical Research → Engineering Report → Experimental Report** with GitHub Issues/PRs and tested source SHAs; no redundant agent status documents.
+- Added bilingual Three-Artifact Handoff protocol and Engineering Report template; updated existing math/experiment templates.
+- Updated agent role instructions, bootstrap, project configuration examples, PR templates and architecture documentation.
+- The Scientist runs and approves Colab results; GPU publication remains manual until a tested Publisher exists.
+
 ## Research-first scientific workflow amendment (2026-10-18)
 
 - GPT Scientific Mentor now leads **pre-engineering mathematical structure discovery and tensorization research** (matvec, matrix-free operators, batched tensor contractions and non-parallelizable barriers).

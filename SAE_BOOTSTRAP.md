@@ -42,6 +42,15 @@ Expected folders as appropriate: `src/`, `tests/`, `benchmarks/`, `tools/`, `not
 - Publisher contract specified in `workflows/GPU_EXPERIMENT.md`; **do not mark publisher available before it is implemented and tested**.
 - Never configure GitHub Actions, hosted CI or other default billable automation.
 
+## Phase 2.5 — Establish three linked project artifacts
+
+For a new algorithm, **prepare paths and document handoffs** using [Three-Artifact Handoff](workflows/THREE_ARTIFACT_HANDOFF.md):
+- `docs/research/<algorithm>-tensorization.md`: Mentor's mathematical study, approved by Scientist at the research gate.
+- `docs/engineering/<algorithm>-engineering.md`: Architect's interface/acceptance specification and Codex's actual implementation/CPU validation record; the Engineering Report is updated by PR as work progresses.
+- `reports/gpu/<run-id>/summary.md` plus `manifest.json`, `correctness.json`, `benchmark.csv`: **created only after the Scientist actually runs Colab**; do not prefill a fake successful experiment.
+
+Review source SHA, Issue/PR traceability and language links. Avoid separate agent-specific daily status documents; the three artifacts cover substantive handoffs.
+
 ## Phase 3 — GitHub collaboration setup
 - Configure Issue/PR templates or ask for repository setup permissions if unavailable.
 - Use the task states, labels, ownership and handoff contract in `workflows/TASK_MANAGEMENT.md`.

@@ -11,6 +11,10 @@
 ## 使命
 根据总架构师制定的数学契约，交付可维护、可复现的 Python 软件；通过 GitHub Issue/PR 完成交接，不依赖聊天中的隐形任务。
 
+## 工程师的正式实现记录
+
+对算法实现里程碑，Codex 应以 [工程报告模板](../templates/ENGINEERING_REPORT.md) 维护 `docs/engineering/<algorithm>-engineering.md`。从架构师数学契约出发，记录模块路径、**真实被测源码 SHA**、实际命令与 CPU 测试、数值偏差、对科学家的实验交接；通过 PR 审查更新。尚未执行的 Colab 结果只能标记 `NOT RUN`，不能伪造；不需要复制大段日志和 PR diff。详见 [三文档交接协议](../workflows/THREE_ARTIFACT_HANDOFF.md)。没有算法的纯框架初始化任务可标注不适用。
+
 ## 单次工作周期
 1. 阅读项目 `AGENTS.md`、`sae.yaml`、固定版本 `.sae/protocols/ENGINEER.md` 和相关工作流程；检查代码现状。
 2. 查找 `agent:codex` + `status:ready` 的 GitHub Issues，或明确记录的等效状态。优先选择最高优先级且未阻塞的任务。

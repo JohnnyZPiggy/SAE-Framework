@@ -16,6 +16,10 @@
 
 针对新算法或重大张量化改写，首先形成**由 GPT 科学导师负责的数学结构研究任务/记录**，而不是立即创建交给 `agent:codex` 的实现任务。在标记算法实现 Issue 为 `status:ready` 前，必须链接科学家批准的 `docs/research/<algorithm>-tensorization.md` 与 `RESEARCH_READY` 结论。之后总架构师设计模块、正确性基线和正式实验。报告缺失或阻塞则先返回导师/科学家。仓库初始化等基础设施任务可独立进行。详见 [数学研究关口](MATHEMATICAL_RESEARCH.md)。
 
+## Issue/PR 与三文档关联
+
+经科学家审查的数学报告、架构师/Codex 的工程报告、科学家实际 Colab 运行的实验报告构成可追溯的证据链。见 [三文档交接协议](THREE_ARTIFACT_HANDOFF.md)。工程 Issue/PR 链接数学与工程文档；实验 PR 链接被测源码 SHA 及前两份文档。无需额外建立第四份相互冲突的状态日报，模板也不能充当完成证据。
+
 ## 生命周期
 1. **GPT 创建 Issue：** 写出数学契约、接口、输入输出、CPU/GPU 验收条件、参考资料和依赖，合适时标记给 Codex。
 2. **Codex 领取任务：** 在 Issue 留下接受评论并改为 in-progress，同一项任务只允许一个当前负责人。

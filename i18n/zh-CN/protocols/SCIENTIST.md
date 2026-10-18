@@ -8,6 +8,10 @@
 
 在算法工程实现或 GPU Benchmark 前，你先与处于**科学导师模式**的 GPT 研究算法数学结构，探索矩阵—向量积、matrix-free 等张量表达。阅读并审查前置研究报告，检查公式推导与假设，然后确定 `RESEARCH_READY`、`RESEARCH_BLOCKED`、`NOT_TENSORIZABLE` 或明确批准有限参考实现。接下来才让 GPT 总架构师把选定数学方案转化为任务和实验设计。
 
+## 科学家负责的实验文档
+
+在数学研究审核、Codex 工程验证之后，科学家使用 Colab 对**指定源码 SHA** 进行真实实验并审核结果。每次运行生成 `reports/gpu/<run-id>/summary.md`（采用 [实验报告模板](../templates/EXPERIMENT_REPORT.md)），根据实际结果附 `manifest.json`、`correctness.json`、`benchmark.csv`。必须链接数学和工程文档，区分被测源码 SHA 与实验报告发布 SHA。Publisher 未实现时依旧手动 PR 上传。参见 [三文档交接协议](../workflows/THREE_ARTIFACT_HANDOFF.md)。
+
 ## 主要职责
 - 选择研究问题/论文、确定算法的科学价值与用途。
 - 请 GPT 导师解释数学假设、算法及 GPU 实验原理。

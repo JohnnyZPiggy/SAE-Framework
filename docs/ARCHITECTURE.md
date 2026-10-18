@@ -59,6 +59,10 @@ A role protocol is an explicit, versioned **instruction**. It is **not** an alwa
 
 The Framework repository is a library of organization rules. Each implementation repository holds an **immutable/pinned local snapshot** plus project-specific AGENTS and config. Codex's in-repo rules do not automatically fetch another repository; GPT likewise needs explicit reads.
 
+## Three linked scientific artifacts
+
+For each algorithm, the Mentor/Scientist **Mathematical Research**, Architect/Codex **Engineering Report**, and Scientist-run **Experimental Report** form a traceable evidence chain. GitHub Issues/PRs record workflow status; artifacts carry equations, implementation evidence and measured results, linked by the correct source SHA. Do not introduce agent-specific daily reports. Read [Three-Artifact Handoff](../workflows/THREE_ARTIFACT_HANDOFF.md) and the [math](../templates/TENSORIZATION_STUDY.md), [engineering](../templates/ENGINEERING_REPORT.md), and [experiment](../templates/EXPERIMENT_REPORT.md) templates.
+
 ## Shared state
 | State | Canonical location |
 | --- | --- |

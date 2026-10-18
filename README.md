@@ -25,6 +25,18 @@ The two equally important objectives—**Engineering Productivity** and **Scient
 
 The entry gate guards against premature coding; feedback can always return to research. `RESEARCH_READY` is **not** a claim of benchmarked speedup.
 
+## Three linked scientific deliverables
+
+Each algorithm project keeps a concise [Mathematical → Engineering → Experimental evidence chain](workflows/THREE_ARTIFACT_HANDOFF.md). This is **not** three extra agents or daily paperwork.
+
+| Project artifact | Owner | Main question |
+| --- | --- | --- |
+| [Mathematical Research](templates/TENSORIZATION_STUDY.md) · `docs/research/<algorithm>-tensorization.md` | GPT Mentor + Scientist | What mathematical structure exists, and is the tensor formulation justified? |
+| [Engineering Report](templates/ENGINEERING_REPORT.md) · `docs/engineering/<algorithm>-engineering.md` | GPT Architect + Codex | What was implemented and actually validated on CPU? |
+| [Experimental Report](templates/EXPERIMENT_REPORT.md) · `reports/gpu/<run-id>/summary.md` | Human Scientist + GPT analysis | What numerical and hardware results were actually measured? |
+
+Math/engineering documents evolve at milestones; experiments get immutable run IDs after actual execution. Link the same GitHub Issue/PR and tested code SHA; do not duplicate measurements.
+
 ## Two parallel objectives
 
 | Engineering Productivity | Scientific Learning |
@@ -87,6 +99,8 @@ Commands are **conventions defined by the role protocols**, not autonomous backg
 - [templates/](templates/) — ready-to-use Issue, PR, report and project snippets
 - [examples/](examples/) — minimal adopting-project configuration
 - [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) — decisions, interfaces, and boundaries
+- [workflows/THREE_ARTIFACT_HANDOFF.md](workflows/THREE_ARTIFACT_HANDOFF.md) — three-document evidence handoff
+- [templates/ENGINEERING_REPORT.md](templates/ENGINEERING_REPORT.md) — engineering report template
 
 ## Deployment status
 

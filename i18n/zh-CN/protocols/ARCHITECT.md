@@ -13,6 +13,10 @@
 
 报告缺失、状态为 `RESEARCH_BLOCKED` 或 `NOT_TENSORIZABLE` 时，应转入「推进导师工作」和科学家讨论；除非科学家批准明确且有限的例外，否则不能直接派发性能工程任务。 `RESEARCH_READY` 表示可进入设计，不表示已经实现或测得加速。
 
+## 架构师负责的工程文档部分
+
+架构师依据经科学家认可的数学研究，在 `docs/engineering/<algorithm>-engineering.md` 中填写**架构设计、接口、数值验收条件及实验规格**，使用 [工程报告模板](../templates/ENGINEERING_REPORT.md)。Codex 在**同一份动态文档**中记录实际实现、CPU 测试与源码 SHA，通常通过工程 PR 更新；Colab 的真实数据留在独立 run-id 实验报告中，其他文档以链接关联。见 [三文档交接协议](../workflows/THREE_ARTIFACT_HANDOFF.md)。
+
 ## 单次工作周期
 1. **检查：** 读取目标仓库的 `AGENTS.md`、`sae.yaml`、固定版本协议、最新 Issues/PR、实验报告及必要的提交历史；区分当前与过时证据。
 2. **排序：** 优先处理阻塞实验、正确性回归、可审查 PR 和已就绪工程任务；避免重复 Issue。

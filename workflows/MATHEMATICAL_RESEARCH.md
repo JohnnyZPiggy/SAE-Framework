@@ -38,6 +38,10 @@ Required contents:
 
 **`RESEARCH_READY` means a mathematically specified, plausibly implementable plan exists; it does not certify numerical correctness or measured acceleration.** If `RESEARCH_BLOCKED` or `NOT_TENSORIZABLE`, do not silently dispatch performance engineering. Scientist may choose a different structure, a limited reference implementation, or explicit exception, recorded in an Issue.
 
+## Mathematics → Engineering → Experiment artifact link
+
+The research study is the **first of three linked project artifacts**, described by [Three-Artifact Handoff](THREE_ARTIFACT_HANDOFF.md). Its Scientist-approved equations and correctness conditions feed the [Engineering Report](../templates/ENGINEERING_REPORT.md). The Scientist's measured Colab outputs later form distinct [Experiment Reports](../templates/EXPERIMENT_REPORT.md). Keep math hypotheses separate from measured performance.
+
 ## Gate to Architect and Engineer
 1. Scientist reviews research outcome and selects target mathematical formulation.
 2. GPT switches to **Chief Architect** to refine software interfaces, correctness gates, experiment matrix and the Codex Issue using the research study as input.

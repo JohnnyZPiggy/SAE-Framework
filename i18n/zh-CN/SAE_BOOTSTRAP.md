@@ -41,6 +41,15 @@
 - 按 [GPU 实验协议](workflows/GPU_EXPERIMENT.md) 设计上传工具；未实现并测试前不得宣称可用；
 - 不配置 GitHub Actions、托管 CI 或付费自动化。
 
+## 阶段 2.5：建立数学、工程、实验三文档交接
+
+为每个算法遵守 [三文档协议](workflows/THREE_ARTIFACT_HANDOFF.md)，按里程碑形成：
+- `docs/research/<algorithm>-tensorization.md`：GPT 导师数学推导，经科学家批准；
+- `docs/engineering/<algorithm>-engineering.md`：总架构师填写接口/验收，Codex 在实现 PR 中更新实际代码、CPU 测试和复现信息；
+- `reports/gpu/<run-id>/summary.md` 及 `manifest.json`、`correctness.json`、`benchmark.csv`：**只有科学家实际运行 Colab 后才生成实验结果**，不能虚构。
+
+检查 SHA、Issue/PR 链接和目录引用，无需额外的角色日报和繁杂流程。
+
 ## 阶段 3：GitHub 协作配置
 - 在权限允许时配置 Issue/PR 模板；不能操作的明确汇报。
 - 按 [任务管理协议](workflows/TASK_MANAGEMENT.md) 定义状态、优先级、交接和审核。

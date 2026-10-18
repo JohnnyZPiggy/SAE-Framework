@@ -21,5 +21,9 @@
 - `research_gate.required_before_algorithm_engineering: true`：新算法必须先研究数学结构与张量化方案。
 - `research_gate.study_path_template`：研究报告应在项目中保存的位置。
 - `research_gate.scientist_review_required: true`：科学家审查研究结论后才可派发工程。
+- `artifacts.math_study_path`：数学结构研究报告所在路径。
+- `artifacts.engineering_report_path`：架构师/Codex 共用的工程实现报告路径。
+- `artifacts.experiment_run_path`：科学家每次真实 Colab 实验的报告路径。
+- `artifacts.require_real_evidence: true`：验收必须有实际执行证据。
 
 **重要：** 中文仅用于解释，正式校验工具只读取标准 YAML 配置。

@@ -20,6 +20,18 @@
 
 完成 [张量化研究报告与前置关口](i18n/zh-CN/workflows/MATHEMATICAL_RESEARCH.md) 并经科学家审核后，GPT 再切换总架构师角色进行任务设计。这一顺序避免盲目重写代码；实验反馈可以随时回到数学研究。
 
+## 三份正式研发文档
+
+每个算法项目遵循 [数学 → 工程 → 实验三文档交接协议](i18n/zh-CN/workflows/THREE_ARTIFACT_HANDOFF.md)，不是再增加三个 Agent 或繁琐日报。
+
+| 目标项目文档 | 主要负责人 | 核心问题 |
+| --- | --- | --- |
+| [数学文档](i18n/zh-CN/templates/TENSORIZATION_STUDY.md) · `docs/research/<algorithm>-tensorization.md` | GPT 导师 + 科学家 | 什么数学结构存在，张量等价变换是否成立？ |
+| [工程文档](i18n/zh-CN/templates/ENGINEERING_REPORT.md) · `docs/engineering/<algorithm>-engineering.md` | GPT 架构师 + Codex | 具体实现了什么，CPU 正确性如何真实验证？ |
+| [实验文档](i18n/zh-CN/templates/EXPERIMENT_REPORT.md) · `reports/gpu/<run-id>/summary.md` | 科学家 + GPT 解读 | 在真实设备上到底测得了什么结果？ |
+
+数学和工程文档随重要里程碑更新；实验报告只有在实际运行后按独立 run-id 归档。通过 GitHub Issue/PR 与被测源码 SHA 关联，不重复复制实验数据。
+
 ## 两项同等重要的目标
 
 | 工程生产力 Engineering Productivity | 科学学习 Scientific Learning |

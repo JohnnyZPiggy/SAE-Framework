@@ -21,6 +21,10 @@ For a new algorithm/major tensorization redesign, first link a Scientist-reviewe
 3. Execute: call already-tested Python CLI(s), e.g. `python -m <package>.benchmarks.run --device cuda --out reports/gpu/<run-id>`; never invent an actual import path before Engineer implements it.
 4. Publish: validate and call implemented CLI, e.g. `python -m <package>.tools.publish_results --run-dir reports/gpu/<run-id> --issue <N>`. **Illustrative contract only until created and tested.**
 
+## Experimental report in the three-artifact chain
+
+The Scientist's per-run `reports/gpu/<run-id>/summary.md` uses [EXPERIMENT_REPORT.md](../templates/EXPERIMENT_REPORT.md) and links its mathematical research study and Engineering Report. This file records **measured** correctness/performance, not planned GPU results. The tested **source SHA** and the GitHub report-publication commit may differ: record both explicitly. See [Three-Artifact Handoff](THREE_ARTIFACT_HANDOFF.md).
+
 ## Required experiment evidence (small, text-only wherever possible)
 - `manifest.json`: run ID, UTC timestamp, **source commit SHA**, Issue/PR reference, package/runtime/device version, seed, dtype, command, measurement methodology, status.
 - `correctness.json`: baseline, error metrics/tolerances, mismatches, pass/fail, explicit NOT RUN when not executed.

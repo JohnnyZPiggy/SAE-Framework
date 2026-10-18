@@ -17,6 +17,12 @@
 | Colab GPU 正确性 | NOT RUN | |
 | Colab GPU 性能 | NOT RUN | |
 
+## 三份文档的关联
+- 科学家已批准的数学报告：`docs/research/<algorithm>-tensorization.md` / 纯基础设施任务 N/A
+- 工程实现与 CPU 证据：`docs/engineering/<algorithm>-engineering.md`
+- 真实 Colab 实验报告：`reports/gpu/<run-id>/summary.md` / NOT RUN
+- 被测源码 SHA：`<SHA>`（与报告发布 SHA 区分）
+
 ## 复现
 Python/PyTorch 版本、设备、随机种子、命令、数据来源。
 

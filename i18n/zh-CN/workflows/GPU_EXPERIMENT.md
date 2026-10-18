@@ -20,6 +20,10 @@
 3. **执行：** 调用经 Codex 测试的 Python CLI，例如 `python -m <package>.benchmarks.run --device cuda --out reports/gpu/<run-id>`；先看正确性，再分析速度。示例命令的包名**不是已实现接口**。
 4. **发布：** 验证后调用 Publisher，例如 `python -m <package>.tools.publish_results --run-dir reports/gpu/<run-id> --issue <N>`。**未开发与测试之前这只是接口契约。**
 
+## 三文档闭环中的实验报告
+
+科学家每次真实运行生成 `reports/gpu/<run-id>/summary.md`，采用 [实验报告模板](../templates/EXPERIMENT_REPORT.md)，并链接数学研究文档和工程实现文档。记录的是**真实测得**的精度/性能，不能写待测结果为已通过。**被测试的源码 SHA** 与实验报告在 GitHub 的发布 commit 是不同概念，应分别记录。参见 [三文档交接协议](THREE_ARTIFACT_HANDOFF.md)。
+
 ## 必须保存的轻量证据
 - `manifest.json`：run ID、UTC 时间、**被测源码 SHA**、关联 Issue/PR、设备与软件版本、随机种子、精度、完整命令、计时方法和执行状态。
 - `correctness.json`：参考基线、误差、容差、失败数、通过/失败/未运行状态。
