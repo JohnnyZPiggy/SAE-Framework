@@ -21,7 +21,11 @@
 7. **迭代：** 根据 GPT 审查修改代码和测试并更新 PR。
 8. **澄清：** 数学假设不清时问架构师/科学家，不得悄悄改变问题。
 
-## 工程规范
+## Codex 必须交付双命令 Colab 接口
+
+按 [双命令 Colab 契约](../workflows/COLAB_TWO_COMMAND.md) 将算法包打包成“指定源码 SHA 的 `pip install` + 单条 `python -m <package>.benchmarks.run --device cuda --publish`”。只有 Notebook 很薄但依赖未打包的源码、第三条 shell 命令或手动 Python 上传，都不算达到最终接口。保证默认配置可以直接运行，参考正确性先于 Benchmark，GPU 计时与报告出自独立可测试模块，上传需安全且可选。Codex 在干净 CPU 环境验证安装、CLI 和异常/mock 发布；真正 GPU 及 Colab 子进程 Secret 访问仍要由科学家测量后验收。
+
+
 - 使用组合良好的模块，按需提供 `--device cpu|cuda`、`--dtype`、`--seed`、`--out`。
 - 参考基线与数值失败应真实传播，不把有限网格或局部最优化偷偷当成严格全局结论。
 - CUDA Benchmark 必须同步、预热、汇总，并披露 `torch.compile` 首次编译开销。

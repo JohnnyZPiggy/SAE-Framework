@@ -18,6 +18,10 @@ Pinned framework snapshot: `.sae/` at commit `<REPLACE_WITH_ACTUAL_FRAMEWORK_SHA
 ## Pre-engineering math discovery
 Before algorithm implementation/benchmarks, read `.sae/workflows/MATHEMATICAL_RESEARCH.md` and have GPT Mentor + Scientist produce and review `docs/research/<algorithm>-tensorization.md`. Architect dispatches Codex work only with `RESEARCH_READY` or a documented Scientist-authorized exception. Tensorization is a mathematical research outcome, not guaranteed speedup.
 
+## Minimal Colab execution contract
+
+Read `.sae/workflows/COLAB_TWO_COMMAND.md`: one pinned GitHub `pip install` and one packaged `python -m <package>.benchmarks.run --device cuda --publish` command must suffice for the **intended** GPU user flow after one-time setup. Engineer implements/tests packaging and every internal phase; Architect specifies and reviews; Scientist runs the Colab GPU experiment. Until Publisher is genuinely implemented, record `PUBLISH_BLOCKED` and handle publication manually.
+
 ## Project-specific notes
 - Scientific objective: `<PAPER_OR_ALGORITHM>`
 - Python package: `<PACKAGE_NAME>`

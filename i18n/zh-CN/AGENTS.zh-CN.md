@@ -19,6 +19,10 @@
 
 科学家审核并作出 `RESEARCH_READY`、`RESEARCH_BLOCKED` 或 `NOT_TENSORIZABLE` 决策。架构师必须检查报告并链接研究成果后再给 Codex 派发实现任务。基础仓库搭建、明确标注的小型数学合理性检查不受限制；后续实验可随时返回研究。**张量化不等于必然加速，更不意味着所有算法都可张量化。**
 
+## Colab 双命令操作契约（目标）
+
+GPT 总架构师与 Codex 必须设计、打包和测试算法，让科学家在 Colab 用**两条命令**运行核心 GPU 实验：指定 GitHub 不可变源码 SHA 的 `pip install`，以及一条打包好的 `python -m <package>.benchmarks.run --device cuda --publish`。数值基线、设备与同步计时、报告生成、授权后向 GitHub 建立 PR 的上传器都由可测试 Python 模块串联，Notebook 不准承担核心算法、参数处理脚本或 GitHub API。详见 [双命令契约](workflows/COLAB_TWO_COMMAND.md)。在 Publisher 未实现/验收前，必须如实报告 `PUBLISH_BLOCKED`、保留本地结果；科学家拥有 Colab 实测与报告审查权。
+
 ## 所有角色必须遵守
 1. 修改前检查目标仓库、现有文件、状态及固定版本协议。
 2. 阅读 `sae.yaml`、项目 `AGENTS.md` 与对应 `.sae/protocols/`。

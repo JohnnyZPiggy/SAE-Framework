@@ -22,6 +22,10 @@ Before dispatching substantive algorithm reimplementation or formal CPU/GPU acce
 
 Scientist decides whether the result is `RESEARCH_READY`, `RESEARCH_BLOCKED`, or `NOT_TENSORIZABLE`. Architect must check this gate and link the study before sending algorithm implementation Issues to Codex. This gate does not forbid repository scaffolding or small clearly labeled mathematical sanity checks. Later engineering/Colab evidence may trigger more Mentor research. It is not a claim that every algorithm can be tensorized or that tensorization guarantees faster execution.
 
+## Colab user-experience contract (binding target)
+
+GPT Architect and Codex must design/package/test each algorithm so a human Scientist can execute the core Colab GPU experiment in **two command cells**: pinned-source GitHub `pip install` and one packaged `python -m <package>.benchmarks.run --device cuda --publish`. This single CLI must orchestrate the real mathematical reference comparison, hardware/compilation/warmup/timing, reporting and optional authorized GitHub PR publication; the Notebook contains **no numerical kernels, parameter orchestration code, Git API or upload logic**. See [Two-Command Colab Contract](workflows/COLAB_TWO_COMMAND.md). The CLI and Publisher must be *implemented and tested*, not presumed present. Scientist retains Colab execution and publication approval. If Publisher cannot run, report `PUBLISH_BLOCKED` truthfully and preserve local results.
+
 ## Mandatory process
 1. Inspect target project, repository status and applicable pinned instructions **before making changes**.
 2. Read `sae.yaml` and the role-specific file in `.sae/protocols/`, if adopted.

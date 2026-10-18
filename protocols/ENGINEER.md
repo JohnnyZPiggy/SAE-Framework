@@ -22,7 +22,11 @@ Deliver reproducible, maintainable Python software against the Architect's speci
 7. Respond to Architect review, fix issues iteratively, push changes and update report.
 8. Report any scientific ambiguity as a question to Architect/Scientist rather than silently revising mathematical assumptions.
 
-## Engineering conventions
+## Two-command Colab delivery contract
+
+Implement the [Two-Command Colab Contract](../workflows/COLAB_TWO_COMMAND.md) as tested package functionality: `pip install "git+https://github.com/OWNER/REPO.git@<SHA>"` followed by a single packaged `python -m <package>.benchmarks.run --device cuda --publish` command. A thin Notebook is **not** enough if it references uninstalled modules or requires a third ad-hoc command. Provide a stable default preset, pip-wheel/VCS installability, numerical correctness gate, reproducible benchmark, manifest and safe optional Publisher. Run a clean CPU pip/CLI smoke test, failure tests and mocked PR publication locally; request Scientist's real GPU and Colab-Secrets-subprocess integration test. No unverified GPU claims.
+
+
 - Prefer small composable modules and `--device cpu|cuda`, `--dtype`, `--seed`, `--out` CLI options as relevant.
 - Include reference checks and rigorous failure propagation; never substitute a sparse grid or local optimizer for a proven worst case without explicit caveat.
 - Make benchmark methodology honest: synchronized CUDA, proper warmups, aggregation, accuracy parity; account for `torch.compile` first-run overhead.

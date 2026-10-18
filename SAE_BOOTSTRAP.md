@@ -38,8 +38,8 @@ Expected folders as appropriate: `src/`, `tests/`, `benchmarks/`, `tools/`, `not
 - Python packaging and import layout tailored to the algorithm.
 - Tested CPU numerical correctness and regression tests.
 - A device-selectable CLI for experiments (`--device cpu|cuda`), deterministic seeds and structured outputs.
-- A **thin** Colab notebook composed of environment setup, pinned repo/commit install, CLI run and report publish steps. Architect owns notebook orchestration; Codex owns Python implementations.
-- Publisher contract specified in `workflows/GPU_EXPERIMENT.md`; **do not mark publisher available before it is implemented and tested**.
+- **Two-command Colab notebook contract:** one pinned-SHA `pip install` and one packaged `python -m <package>.benchmarks.run --device cuda --publish`. **Four logical phases must be inside tested Python modules**, not four executable Notebook cells. Architect owns the contract and dispatch; Codex implements packaging, numerical checks, timing, reporting and optional safe publication; see [COLAB_TWO_COMMAND.md](workflows/COLAB_TWO_COMMAND.md).
+- Publisher contract specified in [workflows/GPU_EXPERIMENT.md](workflows/GPU_EXPERIMENT.md); **do not mark publisher available before it is implemented, mock-tested by Codex, and verified in a real Scientist-run Colab integration test**. Until then, results require manual GitHub publication.
 - Never configure GitHub Actions, hosted CI or other default billable automation.
 
 ## Phase 3 — GitHub collaboration setup

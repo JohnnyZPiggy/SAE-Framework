@@ -37,8 +37,8 @@
 - 与算法相匹配的 Python 打包/导入结构；
 - 实际 CPU 数值正确性、边界和回归测试；
 - 支持设备选择、随机种子、结构化输出的实验 CLI；
-- **薄 Colab Notebook**：安装指定源码 SHA、设参、调用已测试 CLI、发布报告；Notebook 由 GPT 设计，Python 实现由 Codex 负责；
-- 按 [GPU 实验协议](workflows/GPU_EXPERIMENT.md) 设计上传工具；未实现并测试前不得宣称可用；
+- **双命令 Colab Notebook**：一行从 GitHub 指定源码 SHA 执行 pip 安装，另一行调用打包好的 `python -m <package>.benchmarks.run --device cuda --publish`。设备检测、预设参数、数值验证、GPU 计时、报告与安全上传必须封装在 Python 模块中，不能拆成四个 Notebook 命令 Cell。GPT 负责设计接口、派发和审查，Codex 负责实现及本地测试；见 [双命令契约](workflows/COLAB_TWO_COMMAND.md)。
+- 按 [GPU 实验协议](workflows/GPU_EXPERIMENT.md) 设计上传工具；Codex 通过 mock/本地测试、科学家在真实 Colab 上验证 PR 上传前，不得宣称自动发布已可用；
 - 不配置 GitHub Actions、托管 CI 或付费自动化。
 
 ## 阶段 3：GitHub 协作配置

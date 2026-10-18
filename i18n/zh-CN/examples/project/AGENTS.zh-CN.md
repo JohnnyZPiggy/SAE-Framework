@@ -19,6 +19,10 @@ SAE Framework：`JohnnyZPiggy/SAE-Framework`，架构版本 V3.2
 ## 数学研究前置关口
 在新算法实现和正式 Benchmark 前，读取 `.sae/workflows/MATHEMATICAL_RESEARCH.md`，由 GPT 导师与科学家完成 `docs/research/<algorithm>-tensorization.md` 数学结构与张量化研究，经过 `RESEARCH_READY` 审核或科学家明确例外授权后，总架构师才派发 Codex 工程。张量化研究不保证实际加速。
 
+## Colab 双命令接口约束
+
+按 `.sae/workflows/COLAB_TWO_COMMAND.md`，科学家的 Notebook 最终应只有一条安装指定 SHA 的 `pip install` 和一条打包后的 `python -m <package>.benchmarks.run --device cuda --publish`。GPT 架构师负责设计、派单和审查；Codex 负责本地打包、CPU 测试及上传 mock 验证；科学家执行真实 GPU/授权上传验收。Publisher 未开发和验证时，标记 `PUBLISH_BLOCKED` 并保留手动上传方式。
+
 ## 本项目的额外说明
 - 科学目标：`<PAPER_OR_ALGORITHM>`
 - Python 包名：`<PACKAGE_NAME>`

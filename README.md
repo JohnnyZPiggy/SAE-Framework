@@ -25,6 +25,17 @@ The two equally important objectives—**Engineering Productivity** and **Scient
 
 The entry gate guards against premature coding; feedback can always return to research. `RESEARCH_READY` is **not** a claim of benchmarked speedup.
 
+## Two-command Colab execution target
+
+After one-time GPU and optional GitHub Secrets setup, the Scientist's Notebook should need only **a pinned GitHub pip install and one packaged benchmark command**:
+
+```python
+!pip install "git+https://github.com/OWNER/REPO.git@<COMMIT_SHA>"
+!python -m <package>.benchmarks.run --device cuda --publish
+```
+
+**Target interface, not yet implemented.** GPT Architect specifies it; Codex prepackages/tests math, CPU correctness, GPU timing/reporting and optional GitHub PR publication in standalone Python modules. The Scientist runs those two lines and reviews the real results. See the [Two-Command Colab Contract](workflows/COLAB_TWO_COMMAND.md). Automatic publishing remains **manual until the Publisher is implemented and integrated**.
+
 ## Two parallel objectives
 
 | Engineering Productivity | Scientific Learning |

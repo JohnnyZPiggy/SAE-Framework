@@ -7,6 +7,7 @@
 ## 快速导航
 - **[数学结构探索与张量化研究关口](workflows/MATHEMATICAL_RESEARCH.md)**
 - [张量化研究模板](templates/TENSORIZATION_STUDY.md)
+- **[Colab 双命令接口规范](workflows/COLAB_TWO_COMMAND.md)**
 - [初始化协议](SAE_BOOTSTRAP.md)
 - [智能体共同规则](AGENTS.zh-CN.md)
 - [角色协议：GPT 架构师 / Codex 工程师 / GPT 导师 / 科学家](protocols/)

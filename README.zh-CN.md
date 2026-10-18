@@ -20,6 +20,17 @@
 
 完成 [张量化研究报告与前置关口](i18n/zh-CN/workflows/MATHEMATICAL_RESEARCH.md) 并经科学家审核后，GPT 再切换总架构师角色进行任务设计。这一顺序避免盲目重写代码；实验反馈可以随时回到数学研究。
 
+## Colab 两行命令完成核心 GPU 实验（目标）
+
+首次配置 GPU runtime 和按需设置好 GitHub Secrets 后，Notebook 的核心执行只有：
+
+```python
+!pip install "git+https://github.com/OWNER/REPO.git@<COMMIT_SHA>"
+!python -m <package>.benchmarks.run --device cuda --publish
+```
+
+**目前是统一接口设计目标，不是已经实现的功能。** GPT 总架构师必须提前设计并派发接口、正确性和实验需求，Codex 在本地完成 PyTorch 算法、CLI、Benchmark、报告及安全上传的 Python 模块化实现与测试。你在 Colab 只负责执行两行与检查真实数据；自动上传需等 Publisher 实现并通过真实集成验收。见 [Colab 双命令契约](i18n/zh-CN/workflows/COLAB_TWO_COMMAND.md)。
+
 ## 两项同等重要的目标
 
 | 工程生产力 Engineering Productivity | 科学学习 Scientific Learning |

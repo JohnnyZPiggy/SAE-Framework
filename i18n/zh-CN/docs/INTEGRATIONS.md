@@ -16,6 +16,10 @@
 
 对于新算法，在安装固定版 SAE 协议后、派发算法实现 Issue 前，先调用 GPT 导师完成 [数学结构与张量化探索](../workflows/MATHEMATICAL_RESEARCH.md)，由科学家审核研究报告，再让 GPT 架构师设计接口、正确性验证和硬件实验。Codex/Colab 以此为依据继续开发；特殊情况需要有范围的明确授权。
 
+## Colab 双命令部署约束
+
+每个算法项目应让科学家的 Colab 核心 Notebook 只有**两条可执行命令**：pip 安装固定 Git SHA 的算法包，以及调用打包好的 Benchmark Python CLI 完成数值验证、GPU 计时、报告和可选授权上传 PR。GPT 架构师设计与审查契约，Codex 负责可测试的打包、模块与 CPU 验证，科学家在 Colab 验收 GPU 和真实上传。详见 [双命令契约](../workflows/COLAB_TWO_COMMAND.md)。这**不是 SAE Framework 目前已经实现的执行功能**。
+
 ## 部署顺序
 1. 新建算法仓库，并确认允许使用 Issues 和 PR。
 2. 固定母仓库 commit，将角色协议快照放入项目，写根 `AGENTS.md` 和 `sae.yaml`。

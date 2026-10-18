@@ -17,6 +17,10 @@
 
 For a new algorithm, after installing the pinned SAE protocol and before dispatching algorithm engineering tasks, invoke GPT Mentor to complete [mathematical structure discovery](../workflows/MATHEMATICAL_RESEARCH.md), obtain the Scientist's research-gate decision, then ask Architect for detailed interfaces, correctness gates, and hardware experiment design. Codex/Colab proceed only with this study or a documented narrow exception.
 
+## Two-command Colab integration requirement
+
+Each algorithm project must **aim for exactly two user-executed Colab command cells**: pip-install a pinned algorithm commit, then call one packaged benchmark Python CLI for correctness, GPU timing, report creation and optional authorized GitHub report PR publication. GPT Architect owns contract/acceptance; Codex owns packaging and local tests; Scientist executes a real Colab GPU/Publisher integration. See [Two-Command Colab Contract](../workflows/COLAB_TWO_COMMAND.md). This is a **target architecture**, not currently implemented by the SAE Framework alone.
+
 ## Deployment recipe
 1. Create target repository, enable Issues/PRs.
 2. Pin and copy Framework protocol snapshot; initialize target `AGENTS.md` and `sae.yaml`.
