@@ -30,6 +30,10 @@ SAE coordinates work through **three linked scientific artifacts**, rather than 
 4. **Scientist:** runs pinned candidate in Colab, reviews the actual outputs, publishes small per-run evidence to GitHub when authorized (manual PR until Publisher is implemented); GPT interprets it.
 5. **Architect + Scientist:** inspect cross-document links, accept/request revisions; return to Mentor mathematics whenever the evidence challenges assumptions.
 
+## Template instantiation
+
+When creating a new project document from a Framework template, replace placeholders and **remove or rewrite the template's source-repository language-switch link** to reference the project's pinned `.sae/` snapshot. A link valid in `templates/` may not work when the finished document lives in `docs/research/`, `docs/engineering/` or `reports/gpu/`. Do not blindly copy relative links.
+
 ## Lightweight rules
 - A document is a **living milestone record**; don't create new copies for every minor edit or chat. GPU runs are inherently immutable run-by-run records.
 - Not every project needs elaborate prose. Short exact equations, code paths, links, commands and statuses beat lengthy claims.
