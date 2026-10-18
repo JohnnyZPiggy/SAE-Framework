@@ -35,6 +35,12 @@ flowchart TD
     H[("GitHub 协作中枢<br/>Issues / PR / 代码 / GPU 报告")]
     L["Google Colab<br/>薄 Notebook / GPU 实验 / 报告发布器"]
     D[("Google Drive<br/>仅 Notebook 临时文件")]
+    R["数学研究前置关口<br/>导师：矩阵向量 / Matrix-Free / 张量化推导<br/>科学家审核研究报告"]
+    M --> R
+    S --> R
+    R --> A
+    R -.->|"数学研究报告 / 张量化契约"| H
+    C -.->|"数值反馈返回研究"| R
     G1 --> S
     G2 --> S
     S <--> A

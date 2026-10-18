@@ -36,6 +36,12 @@ flowchart TD
     H[("GitHub Coordination Hub<br/>Issues / PRs / Code / GPU Reports")]
     L["Google Colab<br/>Thin Notebook / CPU-GPU execution / Report Publisher"]
     D[("Google Drive<br/>Minimal Notebook Workspace Only")]
+    R["Research Gate<br/>Mentor: Matvec / Matrix-Free Discovery &amp; Tensorization<br/>Scientist Reviews Study"]
+    M --> R
+    S --> R
+    R --> A
+    R -.->|"Math Study / Tensorization Contract"| H
+    C -.->|"Numerical Findings: Return to Research"| R
     G1 --> S
     G2 --> S
     S <--> A

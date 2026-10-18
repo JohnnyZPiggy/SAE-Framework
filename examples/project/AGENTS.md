@@ -15,6 +15,9 @@ Pinned framework snapshot: `.sae/` at commit `<REPLACE_WITH_ACTUAL_FRAMEWORK_SHA
 
 **Do not assume a URL automatically loads instructions.** Check that the snapshot exists. If not, stop and request bootstrap.
 
+## Pre-engineering math discovery
+Before algorithm implementation/benchmarks, read `.sae/workflows/MATHEMATICAL_RESEARCH.md` and have GPT Mentor + Scientist produce and review `docs/research/<algorithm>-tensorization.md`. Architect dispatches Codex work only with `RESEARCH_READY` or a documented Scientist-authorized exception. Tensorization is a mathematical research outcome, not guaranteed speedup.
+
 ## Project-specific notes
 - Scientific objective: `<PAPER_OR_ALGORITHM>`
 - Python package: `<PACKAGE_NAME>`

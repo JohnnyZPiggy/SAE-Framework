@@ -58,7 +58,7 @@ Neither objective is optional: a successful iteration records both **engineering
 | --- | --- | --- |
 | **推进架构师工作** | GPT / Architect | Inspect project state → specify/dispatch → review code and Colab evidence → accept/merge when authorized → report next actions |
 | **推进工程师工作** | Codex / Engineer | Claim ready Issue → implement → test → document → open/update PR → report blockers |
-| **推进导师工作** | GPT / Mentor | Select a relevant learning target → explain and derive → guide experiment → discuss observations and next learning question |
+| **推进导师工作** | GPT / Mentor | **Before engineering:** discover matrix-vector/tensor structure → derive tensorization → deliver mathematical research study; **afterward:** teach and interpret experiments |
 
 Commands are **conventions defined by the role protocols**, not autonomous background agents or guaranteed built-in software features. Each command runs only with actual tool access and the user's invocation.
 

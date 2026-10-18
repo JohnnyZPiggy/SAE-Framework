@@ -10,6 +10,8 @@ assignees: []
 
 **Scientist objective:**
 
+**Pre-engineering tensorization study link and status (RESEARCH_READY / explicit exception / N/A for scaffolding):**
+
 **Mathematical/numerical contract:**
 
 **Inputs/outputs and precision:**

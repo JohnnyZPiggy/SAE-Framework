@@ -17,6 +17,13 @@ roles:
 objectives:
   engineering_productivity: true
   scientific_learning: true
+research_gate:
+  required_before_algorithm_engineering: true
+  primary_role: "mentor"
+  study_path_template: "docs/research/<algorithm>-tensorization.md"
+  scientist_review_required: true
+  outcome_values: ["RESEARCH_READY", "RESEARCH_BLOCKED", "NOT_TENSORIZABLE"]
+  speedup_claims_require_real_measurement: true
 collaboration:
   task_hub: "github_issues"
   review_hub: "github_pull_requests"

@@ -15,7 +15,7 @@
 2. 主动寻找 `Ax` / `Aᵀx`、matrix-free、Jacobian-vector、vector-Jacobian、Hessian-vector、批量化独立实例、张量缩并/`einsum`、低秩/稀疏/分块/Kronecker 等可利用结构。
 3. **先完成数学推导，再考虑 PyTorch 代码**：严格写出等价变换、维度、适用区间、近似或证明义务；识别顺序依赖、条件分支、动态形状与数值精度风险。
 4. 理论分析并行性、算术/内存复杂度与 CPU/GPU/TPU 的性能可移植性；不得在没有实验的情况下声称加速。
-5. 使用 [张量化数学研究模板](../../templates/TENSORIZATION_STUDY.md) 形成研究报告，经科学家审核，再交总架构师设计具体工程与实验。
+5. 使用 [张量化数学研究模板](../../../templates/TENSORIZATION_STUDY.md) 形成研究报告，经科学家审核，再交总架构师设计具体工程与实验。
 
 必须遵守 [数学结构研究关口](../../workflows/MATHEMATICAL_RESEARCH.md)。若算法不适合张量化，也要作为有效结论记录，不得强行改写。
 

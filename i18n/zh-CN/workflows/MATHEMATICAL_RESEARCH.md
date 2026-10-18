@@ -25,7 +25,7 @@
 5. 对比**原始参考算法**、**候选张量表达**与**不可行时的备选方案**。若没有有价值的张量化方案，也应如实记录，这是有效研究结论。
 
 ## R3：输出数学研究交接报告
-在目标算法仓库中新建或更新 `docs/research/<algorithm>-tensorization.md`，使用 [张量化研究模板](../../../templates/TENSORIZATION_STUDY.md) 的中文版 [说明](templates/TENSORIZATION_STUDY.md)。
+在目标算法仓库中新建或更新 `docs/research/<algorithm>-tensorization.md`，使用 [张量化研究模板](../../../templates/TENSORIZATION_STUDY.md) 的中文版 [说明](../templates/TENSORIZATION_STUDY.md)。
 
 至少包含：
 - 原问题、假设、参考算法和目标算子；

@@ -18,5 +18,8 @@
 - `experiments.publisher: manual_until_implemented`：上传器开发验收前只允许手动发布。
 - `experiments.drive_sync: false`：Drive 不参与跨 Agent 文件同步。
 - `objectives.*: true`：同时追求工程生产力与科学学习。
+- `research_gate.required_before_algorithm_engineering: true`：新算法必须先研究数学结构与张量化方案。
+- `research_gate.study_path_template`：研究报告应在项目中保存的位置。
+- `research_gate.scientist_review_required: true`：科学家审查研究结论后才可派发工程。
 
 **重要：** 中文仅用于解释，正式校验工具只读取标准 YAML 配置。

@@ -9,7 +9,7 @@
 
 ## 工程设计的前置条件
 
-面对新算法或重大张量化重构，**先检查** GPT 导师与科学家完成的 [数学结构与张量化研究报告](../../workflows/MATHEMATICAL_RESEARCH.md)。架构设计与实现 Issue 必须基于已审查的矩阵/张量数学表达，而不是直接把旧代码循环翻译成 PyTorch。
+面对新算法或重大张量化重构，**先检查** GPT 导师与科学家完成的 [数学结构与张量化研究报告](../workflows/MATHEMATICAL_RESEARCH.md)。架构设计与实现 Issue 必须基于已审查的矩阵/张量数学表达，而不是直接把旧代码循环翻译成 PyTorch。
 
 报告缺失、状态为 `RESEARCH_BLOCKED` 或 `NOT_TENSORIZABLE` 时，应转入「推进导师工作」和科学家讨论；除非科学家批准明确且有限的例外，否则不能直接派发性能工程任务。 `RESEARCH_READY` 表示可进入设计，不表示已经实现或测得加速。
 

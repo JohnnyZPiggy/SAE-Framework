@@ -3,6 +3,10 @@
 > Language: **English** | [简体中文](../i18n/zh-CN/workflows/GPU_EXPERIMENT.md)
 
 
+## Before formal acceleration experiments
+
+For a new algorithm/major tensorization redesign, first link a Scientist-reviewed **Mathematical Structure & Tensorization Study** and the Architect-designed experiment matrix. The study predicts what operator might accelerate; **only measured Colab evidence** can establish actual speedup. A small exploratory mathematical check may precede engineering but must not be passed off as a completed formal GPU benchmark. Hardware evidence can send the project back to [mathematical discovery](MATHEMATICAL_RESEARCH.md).
+
 ## Responsibility split
 - **Architect (GPT):** defines scientific questions, experiment matrix, acceptance and thin Notebook orchestration.
 - **Engineer (Codex):** implements/tests Python algorithms, correctness/benchmark CLI and **Publisher** (once approved).
