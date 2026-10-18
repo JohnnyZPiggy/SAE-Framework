@@ -1,3 +1,7 @@
+## Default research pipeline
+
+**Research-First → CPU-Validated → GPU-Finalized.** Day-to-day mathematical and CPU engineering work runs without Colab. Only a reviewed [GPU Readiness Gate](templates/GPU_READINESS.md) permits a Scientist-run GPU experiment. Read the [three-stage protocol](workflows/RESEARCH_PIPELINE.md). CPU `torch.compile` testing is required when supported, but does **not** establish GPU compatibility or speedup.
+
 # SAE Framework V3.2
 
 > Language: **English** | [简体中文](README.zh-CN.md)

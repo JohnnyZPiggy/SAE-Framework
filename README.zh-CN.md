@@ -1,3 +1,7 @@
+## 默认三阶段研发流程
+
+**数学研究 → CPU 工程与编译验证 → 最终 GPU 实验。** 日常工作由 GPT/Codex 在 CPU 环境推进，科学家只有在 [GPU Readiness](i18n/zh-CN/templates/GPU_READINESS.md) 审核通过后才集中使用 Colab。见 [三阶段协议](i18n/zh-CN/workflows/RESEARCH_PIPELINE.md)。CPU `torch.compile` 成功不保证 GPU 兼容或加速。
+
 # SAE Framework V3.2
 
 > 语言： [English](README.md) | **简体中文**
