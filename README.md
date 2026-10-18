@@ -108,3 +108,7 @@ Framework architecture: **V3.2**. Pin an actual immutable **Git commit SHA or re
 ## License
 
 No license is selected yet. Public visibility **does not** imply permission to reuse or redistribute. The repository owner should choose a license before publishing this as a reusable software template.
+
+## Mobile-first next-step commands
+
+After each substantive GPT Mentor / Architect / Codex cycle, the agent must recommend **one specific next command**, with at most two alternatives, verified GitHub evidence and any Scientist approval required. See [Next-Action Protocol](workflows/NEXT_ACTION.md). The text command works across clients; optional interactive actions only where supported.

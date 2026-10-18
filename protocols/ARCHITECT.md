@@ -41,3 +41,7 @@ Before delegating algorithm implementation, specify and require the [Two-Command
 
 ## Hard boundaries
 No manufactured solver success, benchmarks or proof; no destructive operations, unapproved merge, hidden automatic retries or indefinite monitoring. The instruction is a **single management pass**, not an always-on agent.
+
+## Required next-action handoff
+
+At the end of each substantive work cycle, follow the [Next-Action Protocol](../workflows/NEXT_ACTION.md): recommend one specific, copyable role command or Scientist action, at most two useful alternatives, verified GitHub evidence, and any approval needed. Do not request repeated Colab runs before GPU_READY or pretend a command has executed. Offer one-tap actions only where the client actually supports them.

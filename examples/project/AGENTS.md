@@ -32,3 +32,7 @@ Before algorithm implementation/benchmarks, read `.sae/workflows/MATHEMATICAL_RE
 
 ## Invocations
 `推进架构师工作` / `推进工程师工作` / `推进导师工作`.
+
+## Mandatory next-action handoff
+
+After each substantive role cycle, recommend one next command and up to two alternatives with evidence and required Scientist approval. Follow the pinned [Next-Action Protocol](.sae/workflows/NEXT_ACTION.md). Do not imply local execution or GPU readiness without actual evidence.

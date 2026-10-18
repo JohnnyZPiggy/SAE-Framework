@@ -35,3 +35,7 @@ The Scientist-reviewed mathematical study, the Architect/Codex engineering recor
 - Do not auto-claim overlapping Issues; link dependencies; stay inside a bounded cycle.
 - Use linked Issues/PRs, run IDs and commit SHAs for all handoffs.
 - Never mix numeric performance claims from different code versions without disclosure.
+
+## Required next-action handoff
+
+At the end of each substantive work cycle, follow the [Next-Action Protocol](NEXT_ACTION.md): recommend one specific, copyable role command or Scientist action, at most two useful alternatives, verified GitHub evidence, and any approval needed. Do not request repeated Colab runs before GPU_READY or pretend a command has executed. Offer one-tap actions only where the client actually supports them.
