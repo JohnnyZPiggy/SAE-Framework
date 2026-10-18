@@ -18,7 +18,7 @@
 
 ## 部署顺序
 1. 新建算法仓库，并确认允许使用 Issues 和 PR。
-2. 固定母仓库 commit，将角色协议快照放入项目，写根 `AGENTS.md` 和 `sae.yaml`。
+2. 固定母仓库 commit，将 `AGENTS.md`、`SAE_BOOTSTRAP.md`、`README*`、`CHANGELOG.md`、`protocols/`、`workflows/`、`templates/`、`docs/`、`examples/`、`i18n/zh-CN/` 作为来自同一固定 commit 的**自包含文档快照**复制到目标项目 `.sae/`，填写根目录 `AGENTS.md` 与 `sae.yaml`，并在目标目录中检查链接。参见 [初始化验收清单](ADOPTION_SMOKE_TEST.md)。
 3. 分别为 GPT、Codex 配置最小必要的 GitHub 访问；读权限不等于写权限。
 4. 明确合并、对外发布与破坏性操作的人工审批边界。
 5. 科学家创建 Colab/Drive 临时目录，认证并固定测试源代码 SHA。

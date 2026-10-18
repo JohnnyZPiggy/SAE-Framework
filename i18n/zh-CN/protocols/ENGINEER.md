@@ -13,7 +13,7 @@
 
 ## 单次工作周期
 1. 阅读项目 `AGENTS.md`、`sae.yaml`、固定版本 `.sae/protocols/ENGINEER.md` 和相关工作流程；检查代码现状。
-2. 查找 `agent:codex` + `status:ready` 的 GitHub Issues，或明确记录的等效状态。优先选择最高优先级且未阻塞的任务。
+2. 优先查找含 `agent:codex` 和 `status:ready` 标签的 GitHub Issues。**如果标签尚未创建或没有标签匹配项**，继续查找开放 Issue 正文中的 `Owner: Codex`、`Status: ready` 或标题 `[P0][Codex]` 等明确文本，核实未被他人领取。不能把“没有标签”误判成“没有任务”。选择优先级最高且未被阻塞的任务。
 3. **领取：** 在 Issue 留言说明范围、分支、验收要求与风险；支持时把状态改为 `status:in-progress`，避免重复领取。
 4. **实现：** 编写最小、模块化的 `.py`/CLI；维护已有接口，不在 Notebook 中实现核心数值算法。
 5. **测试：** 添加形状、设备、dtype、边界、参考算法与回归测试；在可用执行环境真实运行 CPU 测试和 Benchmark，记录命令和环境。

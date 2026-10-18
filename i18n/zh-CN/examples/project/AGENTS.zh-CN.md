@@ -2,7 +2,7 @@
 
 > 语言：[English](../../../../examples/project/AGENTS.md) | **简体中文**
 
-**注意：** 这个文件仅供中文阅读。实际初始化项目时，应把英文 [AGENTS.md 模板](../../../../examples/project/AGENTS.md) 复制到**项目根目录**，并填写真实信息，以供 Codex 自动读取。
+**注意：** 这份文件仅用于中文阅读。实际初始化时应把英文 [AGENTS.md 模板](../../../../examples/project/AGENTS.md) 复制到**目标项目根目录**，填写真实值。不要原样复制母仓库独有的相对语言切换链接；目标项目的中文说明应指向 `.sae/i18n/zh-CN/examples/project/AGENTS.zh-CN.md`。
 
 项目：`<OWNER>/<PROJECT>`  
 SAE Framework：`JohnnyZPiggy/SAE-Framework`，架构版本 V3.2  

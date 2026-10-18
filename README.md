@@ -81,6 +81,7 @@ Commands are **conventions defined by the role protocols**, not autonomous backg
 ## File map
 
 - [SAE_BOOTSTRAP.md](SAE_BOOTSTRAP.md) — safe initialization procedure
+- [docs/ADOPTION_SMOKE_TEST.md](docs/ADOPTION_SMOKE_TEST.md) — verify imported links, pinned snapshots and role handoffs in a real target project
 - [AGENTS.md](AGENTS.md) — common constitution
 - [protocols/](protocols/) — role-specific instructions
 - [workflows/](workflows/) — tasks, review, experiments, learning, safety

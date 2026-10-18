@@ -19,7 +19,7 @@ For a new algorithm, after installing the pinned SAE protocol and before dispatc
 
 ## Deployment recipe
 1. Create target repository, enable Issues/PRs.
-2. Pin and copy Framework protocol snapshot; initialize target `AGENTS.md` and `sae.yaml`.
+2. Pin and copy a **self-contained** Framework protocol snapshot, including the documentation files `AGENTS.md`, `SAE_BOOTSTRAP.md`, `README*`, `CHANGELOG.md`, plus `protocols/`, `workflows/`, `templates/`, `docs/`, `examples/` and `i18n/zh-CN/` from the same commit. Initialize the target-root `AGENTS.md` and `sae.yaml`; validate links in the **target** layout. See [adoption smoke test](ADOPTION_SMOKE_TEST.md).
 3. Give GPT and Codex permitted access to target GitHub data. Verify read and write independently; don't infer write permission from reading.
 4. Choose explicit human approval boundaries for merges, publishing and destructive operations.
 5. Scientist creates Colab/Drive workspace; authenticate privately; pin target source SHA.
