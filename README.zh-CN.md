@@ -69,7 +69,7 @@
 
 ## 文档导航
 
-- [初始化协议](i18n/zh-CN/SAE_BOOTSTRAP.md) · [共同规则](i18n/zh-CN/AGENTS.zh-CN.md)
+- [初始化协议](i18n/zh-CN/SAE_BOOTSTRAP.md) · [初始化验收清单](i18n/zh-CN/docs/ADOPTION_SMOKE_TEST.md) · [共同规则](i18n/zh-CN/AGENTS.zh-CN.md)
 - [角色协议](i18n/zh-CN/protocols/) · [工作流程](i18n/zh-CN/workflows/)
 - [架构说明](i18n/zh-CN/docs/ARCHITECTURE.md) · [工具集成](i18n/zh-CN/docs/INTEGRATIONS.md) · [路线图](i18n/zh-CN/docs/ROADMAP.md)
 - [任务和报告模板](i18n/zh-CN/templates/) · [新项目示例](examples/project/sae.yaml)

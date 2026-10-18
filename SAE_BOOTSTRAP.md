@@ -20,7 +20,7 @@
 ## Phase 1 — Install a pinned policy snapshot
 1. Write project-root `AGENTS.md` (use `examples/project/AGENTS.md` as a starting point).
 2. Write project-root `sae.yaml` (use `examples/project/sae.yaml`) with target, roles, no-Actions policy and a **real SHA**.
-3. Copy the pinned `AGENTS.md`, `protocols/`, `workflows/` and necessary templates from SAE Framework to project `.sae/` (or another explicit accessible immutable snapshot). Do not simply leave external links.
+3. Copy a self-contained **documentation snapshot** from **one immutable framework revision** into `.sae/`: `AGENTS.md`, `SAE_BOOTSTRAP.md`, `README.md`, `README.zh-CN.md`, `CHANGELOG.md`, `protocols/`, `workflows/`, `templates/`, `docs/` (including figures), `examples/` and `i18n/zh-CN/`. Keep relative links working; do **not** install `.github/workflows/` or treat the snapshot as a runtime. Avoid copying an unversioned mix of folders. Do not simply leave external links.
 4. Ensure agent sessions actually open the root `AGENTS.md` and their assigned `.sae/protocols/*.md`. Codex discovers in-repo AGENTS rules; GPT must be explicitly directed to read them through its available GitHub tools.
 5. Preserve all pre-existing content. Stage additions/changes on a **new branch and PR**.
 
@@ -49,7 +49,7 @@ Expected folders as appropriate: `src/`, `tests/`, `benchmarks/`, `tools/`, `not
 - Distinguish unavailable label creation/UI configuration from completed actions.
 
 ## Phase 4 — Verify, present, hand off
-- Validate links and local relative paths; confirm `sae.yaml` parses and pins a real revision.
+- Validate links and local relative paths **after copying to the target project's layout**, not only inside this Framework repository. Check `.sae/AGENTS.md`, `.sae/protocols/`, `.sae/workflows/`, `.sae/templates/`, `.sae/i18n/zh-CN/` and root `AGENTS.md`; confirm `sae.yaml` parses and pins a real revision. Use the [manual adoption smoke test](docs/ADOPTION_SMOKE_TEST.md) until the bootstrap CLI is implemented.
 - Codex runs available CPU tests and logs actual results; Scientist runs Colab tests later.
 - Review proposed PR and agree merge permissions with Scientist. No automatic self-approval.
 - Report **completed / not run / blocked**, links, exact commit and outstanding credential/environment steps.

@@ -19,7 +19,7 @@
 ## 阶段 1：安装固定版本协议
 1. 使用 [项目 AGENTS 示例](../../examples/project/AGENTS.md) 创建/更新项目根 `AGENTS.md`。
 2. 使用 [配置示例](../../examples/project/sae.yaml) 写入 `sae.yaml`，填上**真实 SHA**、角色及禁用 Actions 规则。
-3. 从固定版本的母仓库将共同规则、`protocols/`、`workflows/` 和必要模板复制到项目 `.sae/`。不要只留外部链接。
+3. 从**同一个固定的母仓库 commit**，把 `AGENTS.md`、`SAE_BOOTSTRAP.md`、`README.md`、`README.zh-CN.md`、`CHANGELOG.md`、`protocols/`、`workflows/`、`templates/`、`docs/`（含架构图）、`examples/`、`i18n/zh-CN/` 作为**完整的轻量文档快照**复制到项目 `.sae/`。不复制并执行 `.github/workflows/`，也不混用不同 commit；不要只留外部链接。
 4. 确认 Codex 实际读取项目内的 AGENTS，GPT 通过 GitHub 工具显式读取相应文件。
 5. 保留已有内容，在**新分支 + PR** 中提出变更。
 
@@ -47,7 +47,7 @@
 - 建立初始 Issues：数学规格、参考基线、CPU 正确性、PyTorch 优化、Colab 实验、结果发布与学习目标。
 
 ## 阶段 4：验收和交接
-- 校验相对路径、链接、`sae.yaml` 能解析且指向真实不可变版本。
+- 在**目标项目的实际目录结构中**检查链接，确认 `.sae/AGENTS.md`、角色、流程、模板、中文镜像及根目录 AGENTS 的路径都可访问；验证 `sae.yaml` 能解析且指向真实不可变版本。可按 [手工初始化验收清单](../../docs/ADOPTION_SMOKE_TEST.md) 检查。
 - Codex 跑 CPU 检查并记录真实输出；GPU 留给科学家后续在 Colab 执行。
 - 通过 PR 提供审查，合并权限由科学家决定。
 - 报告 **已完成 / 未运行 / 被阻塞**、对应 SHA、Issue/PR 链接、尚需的认证步骤。

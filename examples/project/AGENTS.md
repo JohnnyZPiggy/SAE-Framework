@@ -1,6 +1,6 @@
 # Project Agent Entry Point (copy to your project root)
 
-> Language: **English** | [简体中文](../../i18n/zh-CN/examples/project/AGENTS.zh-CN.md)
+> Language: **English** (canonical). After installation, the Chinese reference is available at `.sae/i18n/zh-CN/examples/project/AGENTS.zh-CN.md`. This is a **copyable project-root template**; source-repository relative links must not be carried into a different root unchanged.
 
 
 Project: `<OWNER>/<PROJECT>`

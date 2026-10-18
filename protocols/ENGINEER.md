@@ -14,7 +14,7 @@ Deliver reproducible, maintainable Python software against the Architect's speci
 
 ## One bounded cycle
 1. Read project `AGENTS.md`, `sae.yaml`, pinned `.sae/protocols/ENGINEER.md` and referenced workflow; inspect repo/current state.
-2. Find GitHub Issues labeled `agent:codex` and `status:ready`, or equivalent explicitly documented state. Choose highest priority unblocked task, unless instructed otherwise.
+2. Find GitHub Issues labeled `agent:codex` and `status:ready`. **If those labels do not exist or no labeled tasks are found**, also inspect open Issues for explicit textual `Owner: Codex` / `Status: ready` or titles such as `[P0][Codex]`; confirm an Issue has not already been claimed before choosing it. Never interpret absent labels as proof there is no work. Choose the highest-priority unblocked task unless instructed otherwise.
 3. **Claim:** leave an Issue comment stating selected scope, branch, acceptance criteria, known blockers; update status to `status:in-progress` if permissions support it. Do not double-claim a task.
 4. Implement minimal, modular `.py` functions/CLI; preserve public interfaces; centralize numerical methods away from notebooks.
 5. Add tests for shapes, devices, dtypes, edge cases, numerical oracle/reference and regressions. CPU tests and benchmarks must actually run in your environment; report exact commands and environment.
