@@ -31,6 +31,15 @@ Expected arithmetic work, memory, data movement, parallel depth, communication, 
 ## 6. Proposed architecture and experiments (not yet run)
 Candidate operations and PyTorch API; baseline vs tensorized comparison; correctness-first experiment matrix with device, sizes, dtypes, seeds and measurements. Specify what remains untested.
 
+## Handoff into the three-artifact chain
+This file is the **Mathematical Research** record in the [Three-Artifact Handoff](../workflows/THREE_ARTIFACT_HANDOFF.md).
+
+- **Source of truth:** `docs/research/<algorithm>-tensorization.md` in the algorithm project.
+- **Next record, after Scientist approval:** `docs/engineering/<algorithm>-engineering.md` based on [Engineering Report template](ENGINEERING_REPORT.md).
+- **Later real measurements:** `reports/gpu/<run-id>/summary.md`; link the actual run only when executed.
+
+Do not copy downstream performance numbers into this study; refer to them by links and distinguish conjectures from measurements.
+
 ## 7. Alternatives, risks and scientist decision
 - **Outcome:** RESEARCH_READY / RESEARCH_BLOCKED / NOT_TENSORIZABLE
 - **Proved:** …

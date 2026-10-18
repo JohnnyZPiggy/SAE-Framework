@@ -9,6 +9,10 @@ The human Scientist is the **principal investigator**, final scientific decision
 
 Before substantive engineering or GPU benchmarking, work with GPT in **Scientific Mentor** mode to discover mathematical structure and evaluate matrix–vector / matrix-free and other tensor formulations. Read the mathematical study, challenge the derivation and assumptions, and select **RESEARCH_READY / RESEARCH_BLOCKED / NOT_TENSORIZABLE** (or approve a narrowly scoped reference-only exception). Then ask GPT Architect to turn the chosen mathematics into implementable tasks and an experiment plan.
 
+## Scientist-owned experimental deliverable
+
+After the mathematical research decision and Codex's documented engineering validation, the Scientist operates a **pinned source commit** in Colab and reviews the measured results. One actual run produces `reports/gpu/<run-id>/summary.md` (using [EXPERIMENT_REPORT.md](../templates/EXPERIMENT_REPORT.md)) with `manifest.json`, `correctness.json` and `benchmark.csv` where measured. Link back to the mathematical and engineering documents; keep the source SHA distinct from the report-publication SHA. Until Publisher exists, GitHub publication is **manual**, not automatic. See [Three-Artifact Handoff](../workflows/THREE_ARTIFACT_HANDOFF.md).
+
 ## Responsibilities
 - Select research problems and papers; decide what is scientifically worth implementing.
 - Ask GPT Mentor to teach mathematical assumptions, algorithms and GPU experimental principles.

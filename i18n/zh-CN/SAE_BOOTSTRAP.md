@@ -1,3 +1,7 @@
+## 项目初始化后的统一验收
+
+固定 SAE 快照必须包含 [三阶段协议](workflows/RESEARCH_PIPELINE.md)、[GPU Readiness](templates/GPU_READINESS.md)、[三文档交接](workflows/THREE_ARTIFACT_HANDOFF.md)、[工程报告模板](templates/ENGINEERING_REPORT.md) 和 [双命令 Colab 契约](workflows/COLAB_TWO_COMMAND.md) 及中英文镜像。复制到项目外部的模板须重写相对链接。Codex 在本地 CPU 真实完成安装、正确性、`torch.compile`、CLI 验收后才允许 GPU_READY。Colab 目标两行命令；Publisher 未实现前上传仍需人工处理。保留自包含 Bootstrap 快照要求。
+
 # SAE V3.2：新项目初始化协议（中文）
 
 > 语言：[English](../../SAE_BOOTSTRAP.md) | **简体中文** · 英文是机器执行规范。

@@ -1,3 +1,7 @@
+## 三阶段科研交接与双命令 Colab 集成
+
+参见 [三阶段协议](../../../workflows/RESEARCH_PIPELINE.md)、[三文档交接](../../../workflows/THREE_ARTIFACT_HANDOFF.md)、[GPU Readiness](../../../templates/GPU_READINESS.md) 和 [Colab 双命令](../../../workflows/COLAB_TWO_COMMAND.md)。CPU 正确性、编译、打包和 CLI 验收通过后才进入 GPU。Benchmark 模块必须随 pip 安装，第二条 CLI 在 Python 包内串联数值验证、GPU 计时、报告及可选授权 PR 上传。Publisher 目前未实现。
+
 # 工具集成：哪些能力已有，哪些尚需开发？
 
 > 语言：[English](../../../docs/INTEGRATIONS.md) | **简体中文**

@@ -1,3 +1,7 @@
+## 算法项目统一执行要求
+
+读取固定版本 `.sae/`。按数学研究 → CPU 工程与 `torch.compile` → 架构师 GPU_READY → 科学家 Colab GPU 的顺序工作；链接数学、工程、实验三份报告。Notebook 最终只有固定 SHA 的 pip 安装和打包 Benchmark CLI 两条命令。CPU 可复现的问题必须先由 Codex 修复，不要反复打断科学家。Publisher 未真实实现和验证不得宣称上传成功。
+
 # SAE 新项目 AGENTS 入口模板（中文说明）
 
 > 语言：[English](../../../../examples/project/AGENTS.md) | **简体中文**

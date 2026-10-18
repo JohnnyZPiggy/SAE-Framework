@@ -1,3 +1,7 @@
+## CPU-first engineering and two-command Colab delivery
+
+Codex runs actual CPU oracle/randomized/edge tests, CPU `torch.compile` where supported, CPU benchmark, clean pinned-Git-SHA pip installation and packaged CLI smoke tests before Architect's GPU Readiness review. Record tested source SHA, commands, failures and engineering evidence; do not claim CPU compile establishes GPU correctness or speedup. Scientist should only be asked for Colab after GPU_READY. Package a single Python benchmark CLI to orchestrate accuracy, GPU timing, reporting and optional safe PR publication after pinned pip install; no third Notebook engineering command. Publisher is NOT_IMPLEMENTED until tested; GPU status NOT_RUN until actually measured.
+
 # Software Engineer Protocol — Codex
 
 > Language: **English** | [简体中文](../i18n/zh-CN/protocols/ENGINEER.md)

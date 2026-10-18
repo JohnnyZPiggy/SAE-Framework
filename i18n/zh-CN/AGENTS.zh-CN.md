@@ -1,3 +1,7 @@
+## 三阶段、三文档、双命令的统一执行要求
+
+默认数学研究 → Codex CPU 数值测试与 `torch.compile` → 架构师审核 GPU_READY → 科学家集中 Colab GPU 实验。数学、工程、实验报告相互链接；Notebook 目标仅为固定源码 SHA 的 pip 安装和打包 Benchmark CLI。详见 [三阶段协议](workflows/RESEARCH_PIPELINE.md)、[三文档交接](workflows/THREE_ARTIFACT_HANDOFF.md)、[双命令契约](workflows/COLAB_TWO_COMMAND.md)。无真实执行不得声称测试、上传或本地远程操作成功。
+
 ## 默认三阶段关口
 
 执行 [三阶段研发协议](workflows/RESEARCH_PIPELINE.md)：数学研究与科学家审核 → Codex 本地 CPU 工程（包括真实 CPU `torch.compile` 证据）→ 架构师审核 [GPU Readiness](templates/GPU_READINESS.md) → 科学家集中 Colab GPU 实验。角色根据已指定项目的 GitHub Issue/PR 与报告恢复工作；无本地工具权限时不得宣称已执行。

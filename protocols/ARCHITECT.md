@@ -14,7 +14,11 @@ For each new algorithm or major tensorization redesign, first check the **Mentor
 
 If the study is missing, `RESEARCH_BLOCKED`, or `NOT_TENSORIZABLE`, route the project into `推进导师工作` and resolve the mathematical question with Scientist; do not create an ordinary performance-implementation Issue unless Scientist explicitly authorizes an exception. `RESEARCH_READY` is a *design gate*, not a claim of empirical speedup.
 
-## One bounded cycle
+## Two-command experiment design responsibility
+
+Before delegating algorithm implementation, specify and require the [Two-Command Colab Contract](../workflows/COLAB_TWO_COMMAND.md): a pinned `pip install` of the exact GitHub source SHA, followed by one `python -m <package>.benchmarks.run --device cuda --publish` invocation. All default experiment settings, correctness gates, Python packaging, preflight, reporting, and publisher orchestration belong in tested modules, not Colab notebook cells. The Architect must write concrete Codex acceptance tests and review a clean-environment pip/CLI smoke test; Scientist later verifies the **real two-command Colab GPU integration**.
+
+
 1. **Inspect:** read project-root `AGENTS.md`, `sae.yaml`, relevant pinned workflows, latest Issues/PRs/reports, and commit history necessary for the chosen task. Identify source of truth and stale claims.
 2. **Triage:** prioritize blocked experiments, correctness regressions, review-ready PRs and ready engineering tasks; avoid duplicated Issues.
 3. **Design:** formalize assumptions, objectives, invariants, numerical baselines, precision risks, complexity, corner cases, target interfaces, experiment metrics.
