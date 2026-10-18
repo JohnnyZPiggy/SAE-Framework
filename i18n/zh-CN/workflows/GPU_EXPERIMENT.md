@@ -2,6 +2,10 @@
 
 > 语言：[English](../../../workflows/GPU_EXPERIMENT.md) | **简体中文**
 
+## 正式加速实验之前
+
+对于新算法或重大张量化重构，先关联**科学家审核的数学结构与张量化研究报告**和架构师确定的实验矩阵。数学研究只是提出哪些算子可能加速，**只有 Colab 的真实测量**才能得出加速结论。少量前置数学合理性检查不能冒充 GPU Benchmark；硬件证据可以让团队重新回到 [数学结构研究](MATHEMATICAL_RESEARCH.md)。
+
 ## 职责分工
 - **GPT / Architect：** 明确实验问题、参数矩阵、验收条件，设计薄 Notebook 调度。
 - **Codex / Engineer：** 实现并验证算法、测试 CLI、Benchmark CLI 和未来的 Publisher。

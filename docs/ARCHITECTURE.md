@@ -12,6 +12,17 @@ See the [high-resolution visual architecture](figures/SAE_Framework_V3.2.en.svg)
 
 **Scientific Learning:** Scientist can explain the underlying mathematical assumptions, algorithm, trade-offs, PyTorch strategy and observed GPU behavior; meaningful notes/exercises from each milestone.
 
+## Research-first operating principle
+
+1. **Mentor mathematical discovery:** reconstruct algorithm mathematics and find matvec, matrix-free, contractions, separable/batched/low-rank operators and true parallelism; identify sequential barriers.
+2. **Mentor tensorization research:** derive equivalent tensor/matrix expressions and shape contracts; assess numerical correctness, memory/complexity and CPU/GPU/TPU feasibility.
+3. **Scientist research gate:** review `RESEARCH_READY`, `RESEARCH_BLOCKED` or `NOT_TENSORIZABLE`, with mathematical study and alternatives.
+4. **Architect design:** convert approved derivation into algorithms, modules, acceptance tests and Colab experiment plan.
+5. **Codex engineer:** implement/test CPU reference and tensor formulation via Issue/PR.
+6. **Scientist Colab experiments:** evaluate pinned code, report accuracy and real hardware measurements to GitHub; Mentor/Architect can revisit step 1 or 2.
+
+The research gate precedes formal engineering and acceleration experiments, but the R&D loop remains **iterative**, not a one-way waterfall. See [mathematical research workflow](../workflows/MATHEMATICAL_RESEARCH.md).
+
 ## System diagram (GitHub-rendered Mermaid)
 
 ```mermaid
@@ -25,6 +36,12 @@ flowchart TD
     H[("GitHub Coordination Hub<br/>Issues / PRs / Code / GPU Reports")]
     L["Google Colab<br/>Thin Notebook / CPU-GPU execution / Report Publisher"]
     D[("Google Drive<br/>Minimal Notebook Workspace Only")]
+    R["Research Gate<br/>Mentor: Matvec / Matrix-Free Discovery &amp; Tensorization<br/>Scientist Reviews Study"]
+    M --> R
+    S --> R
+    R --> A
+    R -.->|"Math Study / Tensorization Contract"| H
+    C -.->|"Numerical Findings: Return to Research"| R
     G1 --> S
     G2 --> S
     S <--> A

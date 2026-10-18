@@ -11,6 +11,17 @@
 
 **科学学习：** 科学家能够解释原始数学问题、算法假设、复杂度、数值方法、PyTorch 重构和所观察到的 GPU 行为，积累重点心得。
 
+## 研究先于工程的组织原则
+
+1. **GPT 导师探索数学结构：** 研究原算法，寻找矩阵向量、matrix-free、缩并、低秩、批量化等算子，识别不能并行的环节。
+2. **GPT 导师推导张量数学重构：** 在代码之前证明/阐明等价表达、维度和约束，分析精度、复杂度及 CPU/GPU/TPU 可行性。
+3. **科学家审查研究结论：** `RESEARCH_READY` / `RESEARCH_BLOCKED` / `NOT_TENSORIZABLE`。
+4. **GPT 架构师设计：** 基于获认可的数学推导完成算法模块、验收标准和实验方案。
+5. **Codex 工程实现：** 开发 CPU 参考/张量版本，进行真实 CPU 测试，提交 PR。
+6. **科学家 Colab 实验：** 在固定源码 SHA 上验证精度与硬件性能，发现问题可回到第一或第二步。
+
+这是**正式工程及加速实验之前**的研究关口，而非不可回退的瀑布模型。见 [数学研究协议](../workflows/MATHEMATICAL_RESEARCH.md)。
+
 ## Mermaid 组织架构（GitHub 可直接渲染）
 
 ```mermaid
@@ -24,6 +35,12 @@ flowchart TD
     H[("GitHub 协作中枢<br/>Issues / PR / 代码 / GPU 报告")]
     L["Google Colab<br/>薄 Notebook / GPU 实验 / 报告发布器"]
     D[("Google Drive<br/>仅 Notebook 临时文件")]
+    R["数学研究前置关口<br/>导师：矩阵向量 / Matrix-Free / 张量化推导<br/>科学家审核研究报告"]
+    M --> R
+    S --> R
+    R --> A
+    R -.->|"数学研究报告 / 张量化契约"| H
+    C -.->|"数值反馈返回研究"| R
     G1 --> S
     G2 --> S
     S <--> A

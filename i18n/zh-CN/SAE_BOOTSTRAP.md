@@ -23,6 +23,15 @@
 4. 确认 Codex 实际读取项目内的 AGENTS，GPT 通过 GitHub 工具显式读取相应文件。
 5. 保留已有内容，在**新分支 + PR** 中提出变更。
 
+## 阶段 1.5：数学结构探索与张量化研究（必需）
+
+对于新算法或实质性张量化重构，在初步搭建仓库/协议之后、给 Codex 派发**算法实现和性能测试任务之前**：
+1. 科学家提供或确认论文、参考算法与数学研究目标。
+2. GPT 切换**科学导师**模式，按 [数学结构研究流程](workflows/MATHEMATICAL_RESEARCH.md) 找到矩阵向量等算子并推导数学等价、可检验的张量重构。
+3. 在目标项目形成 `docs/research/<algorithm>-tensorization.md`（使用 [研究模板](../../templates/TENSORIZATION_STUDY.md) 或 [中文版](templates/TENSORIZATION_STUDY.md)），记录数值判据、算法复杂度、硬件假设、替代方案及不确定性。
+4. 科学家审查并决定 `RESEARCH_READY` / `RESEARCH_BLOCKED` / `NOT_TENSORIZABLE`，必要时明确批准有限的参考实现例外。
+5. GPT 再以总架构师身份设计实现接口、验收测试与 Colab 实验矩阵。**未完成研究关口时不能默认派发重构任务或启动正式性能测试。** 基础设施搭建不受限，后续结果可以返回研究。
+
 ## 阶段 2：工程骨架（交给 Codex）
 可按需建立 `src/`、`tests/`、`benchmarks/`、`tools/`、`notebooks/`、`reports/`、`docs/`（空目录不受 Git 追踪）。
 - 与算法相匹配的 Python 打包/导入结构；

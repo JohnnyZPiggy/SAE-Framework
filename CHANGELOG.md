@@ -3,6 +3,14 @@
 > Language: **English** | [简体中文](i18n/zh-CN/CHANGELOG.md)
 
 
+## Research-first scientific workflow amendment (2026-10-18)
+
+- GPT Scientific Mentor now leads **pre-engineering mathematical structure discovery and tensorization research** (matvec, matrix-free operators, batched tensor contractions and non-parallelizable barriers).
+- Scientist reviews a `RESEARCH_READY` / `RESEARCH_BLOCKED` / `NOT_TENSORIZABLE` mathematical study before Architect specifies algorithm implementation tasks or formal GPU benchmarks.
+- New bilingual research workflow, template and GitHub Issue forms; architecture diagrams and bootstrap/role/task protocols updated.
+- Downstream CPU/GPU findings can iterate back to structure discovery; no automatic speedup claims.
+- Project config example adds a `research_gate` section. Existing deployments should explicitly update their **pinned framework snapshot**.
+
 ## Framework V3.2 — Initial public protocol package
 - Two equal objectives: **Engineering Productivity** and **Scientific Learning**.
 - GPT serves as **Chief Architect** and **Scientific Mentor**.

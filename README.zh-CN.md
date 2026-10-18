@@ -12,6 +12,14 @@
 
 [下载中文 SVG](docs/figures/SAE_Framework_V3.2.zh-CN.svg) · [英文 SVG](docs/figures/SAE_Framework_V3.2.en.svg) · [中文 Mermaid 架构](i18n/zh-CN/docs/ARCHITECTURE.md)
 
+## 研究先于工程：算法张量化探索
+
+对于每个新算法或重大的张量化重构，GPT 首先以 **Scientific Mentor（科学导师）** 身份展开**数学结构探索**：寻找矩阵—向量积、matrix-free 线性算子、批处理、张量缩并、稀疏/低秩等性质，推导数学等价的张量表达，并研究数值稳定性和跨 CPU/GPU/TPU 可移植性的潜力。
+
+**数学结构探索 → 张量化数学重构 → 架构与实验设计 → Codex 工程与 CPU 验证 → 科学家 Colab 硬件实验 → 反馈迭代**
+
+完成 [张量化研究报告与前置关口](i18n/zh-CN/workflows/MATHEMATICAL_RESEARCH.md) 并经科学家审核后，GPT 再切换总架构师角色进行任务设计。这一顺序避免盲目重写代码；实验反馈可以随时回到数学研究。
+
 ## 两项同等重要的目标
 
 | 工程生产力 Engineering Productivity | 科学学习 Scientific Learning |
@@ -45,7 +53,7 @@
 | --- | --- | --- |
 | **推进架构师工作** | GPT | 检查 GitHub → 数学/技术设计 → 创建/派发 Issue → 审查代码和 Colab 结果 → 授权验收/合并 → 汇报。 |
 | **推进工程师工作** | Codex | 领取 Issue → 实现模块 → CPU 测试与 Benchmark → 提交/更新 PR → 反馈。 |
-| **推进导师工作** | GPT | 根据当前项目选择学习重点 → 推导讲解 → 设计实验 → 分析真实结果 → 总结新的理解。 |
+| **推进导师工作** | GPT | **工程之前**探索矩阵向量等数学结构、推导张量化方案并提交研究报告；**工程之后**讲解算法、实验与性能结果。 |
 
 这三条是**协议定义的指令**，不是内置后台常驻 Agent；需要用户触发、实际访问工具以及权限。
 

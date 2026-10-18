@@ -5,6 +5,8 @@
 主入口：[**README 中文首页**](../../README.zh-CN.md)。本目录中的文件是与根目录英文规范对应的**中文阅读版本**，用于方便使用者选择阅读语言。
 
 ## 快速导航
+- **[数学结构探索与张量化研究关口](workflows/MATHEMATICAL_RESEARCH.md)**
+- [张量化研究模板](templates/TENSORIZATION_STUDY.md)
 - [初始化协议](SAE_BOOTSTRAP.md)
 - [智能体共同规则](AGENTS.zh-CN.md)
 - [角色协议：GPT 架构师 / Codex 工程师 / GPT 导师 / 科学家](protocols/)

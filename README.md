@@ -17,6 +17,14 @@ The two equally important objectives—**Engineering Productivity** and **Scient
 
 [English SVG](docs/figures/SAE_Framework_V3.2.en.svg) · [中文架构图](docs/figures/SAE_Framework_V3.2.zh-CN.svg) · [View the editable Mermaid architecture](docs/ARCHITECTURE.md)
 
+## Research-first algorithm workflow
+
+**Mathematical structure before implementation:** on every new algorithm or major tensorization redesign, GPT's **Scientific Mentor** first investigates exploitable mathematical operators (especially matrix–vector products, matrix-free linear maps, batching and tensor contractions) and derives a justified PyTorch-friendly tensor formulation. Only after the human Scientist reviews the resulting **[Mathematical Structure & Tensorization Study](workflows/MATHEMATICAL_RESEARCH.md)** does the Chief Architect design engineering tasks and experiments for Codex and Colab.
+
+`Mentor structure discovery → mathematical tensorization → Architect design & experiment plan → Codex CPU engineering → Scientist Colab validation → iterate`
+
+The entry gate guards against premature coding; feedback can always return to research. `RESEARCH_READY` is **not** a claim of benchmarked speedup.
+
 ## Two parallel objectives
 
 | Engineering Productivity | Scientific Learning |
@@ -50,7 +58,7 @@ Neither objective is optional: a successful iteration records both **engineering
 | --- | --- | --- |
 | **推进架构师工作** | GPT / Architect | Inspect project state → specify/dispatch → review code and Colab evidence → accept/merge when authorized → report next actions |
 | **推进工程师工作** | Codex / Engineer | Claim ready Issue → implement → test → document → open/update PR → report blockers |
-| **推进导师工作** | GPT / Mentor | Select a relevant learning target → explain and derive → guide experiment → discuss observations and next learning question |
+| **推进导师工作** | GPT / Mentor | **Before engineering:** discover matrix-vector/tensor structure → derive tensorization → deliver mathematical research study; **afterward:** teach and interpret experiments |
 
 Commands are **conventions defined by the role protocols**, not autonomous background agents or guaranteed built-in software features. Each command runs only with actual tool access and the user's invocation.
 

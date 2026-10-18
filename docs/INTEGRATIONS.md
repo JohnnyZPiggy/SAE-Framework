@@ -13,6 +13,10 @@
 | Automatic background operation | **Not included** | Separate scheduler/runner explicitly approved by Scientist |
 | GitHub Actions | **Intentionally excluded** | Not applicable |
 
+## Research-first deployment
+
+For a new algorithm, after installing the pinned SAE protocol and before dispatching algorithm engineering tasks, invoke GPT Mentor to complete [mathematical structure discovery](../workflows/MATHEMATICAL_RESEARCH.md), obtain the Scientist's research-gate decision, then ask Architect for detailed interfaces, correctness gates, and hardware experiment design. Codex/Colab proceed only with this study or a documented narrow exception.
+
 ## Deployment recipe
 1. Create target repository, enable Issues/PRs.
 2. Pin and copy Framework protocol snapshot; initialize target `AGENTS.md` and `sae.yaml`.

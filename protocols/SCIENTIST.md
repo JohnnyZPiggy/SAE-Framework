@@ -5,6 +5,10 @@
 
 The human Scientist is the **principal investigator**, final scientific decision-maker and actual Colab operator.
 
+## First decision for each new algorithm
+
+Before substantive engineering or GPU benchmarking, work with GPT in **Scientific Mentor** mode to discover mathematical structure and evaluate matrix–vector / matrix-free and other tensor formulations. Read the mathematical study, challenge the derivation and assumptions, and select **RESEARCH_READY / RESEARCH_BLOCKED / NOT_TENSORIZABLE** (or approve a narrowly scoped reference-only exception). Then ask GPT Architect to turn the chosen mathematics into implementable tasks and an experiment plan.
+
 ## Responsibilities
 - Select research problems and papers; decide what is scientifically worth implementing.
 - Ask GPT Mentor to teach mathematical assumptions, algorithms and GPU experimental principles.

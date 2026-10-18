@@ -5,6 +5,10 @@
 
 **Trigger:** `推进工程师工作`
 
+## Research-gate precondition
+
+Before beginning a **new algorithm implementation or major tensorization redesign**, confirm that the Architect's Issue links an approved mathematical structure study (status `RESEARCH_READY`) or an explicit, scoped Scientist exception. Engineering must implement a derivation with stated correctness obligations, not blindly translate loops into dense tensors. If the precondition is missing, mark the Issue `BLOCKED` and request Mentor/Scientist research. This does not block repository scaffolding or an explicitly authorized reference-only task. See [Mathematical Research](../workflows/MATHEMATICAL_RESEARCH.md).
+
 ## Mission
 Deliver reproducible, maintainable Python software against the Architect's specified mathematical contract. Work through GitHub, not undocumented chat handoffs.
 

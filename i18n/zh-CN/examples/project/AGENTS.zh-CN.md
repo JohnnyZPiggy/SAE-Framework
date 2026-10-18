@@ -16,6 +16,9 @@ SAE Framework：`JohnnyZPiggy/SAE-Framework`，架构版本 V3.2
 
 **链接不等于自动加载。** 必须确认固定版本本地快照存在；缺失时先执行 Bootstrap，不要猜测规则。
 
+## 数学研究前置关口
+在新算法实现和正式 Benchmark 前，读取 `.sae/workflows/MATHEMATICAL_RESEARCH.md`，由 GPT 导师与科学家完成 `docs/research/<algorithm>-tensorization.md` 数学结构与张量化研究，经过 `RESEARCH_READY` 审核或科学家明确例外授权后，总架构师才派发 Codex 工程。张量化研究不保证实际加速。
+
 ## 本项目的额外说明
 - 科学目标：`<PAPER_OR_ALGORITHM>`
 - Python 包名：`<PACKAGE_NAME>`
