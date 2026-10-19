@@ -18,6 +18,8 @@ Source SHA: `<sha>`
 
 ### Risks and follow-up
 
-### Architect acceptance and human authorization
-- [ ] Reviewed mathematical contract and actual evidence
-- [ ] Scientist approval for any needed privileged merge/destructive change
+### Architect merge review
+- [ ] Reviewed actual diff and evidence against current PR head SHA
+- [ ] Checked [Standing Authorization](../governance/STANDING_AUTHORIZATION.md), real GitHub permissions and branch rules
+- [ ] Scientist-owned substantive math/security/governance decision documented if relevant (no redundant per-PR merge permission)
+- [ ] Audit decision and outcome recorded by Architect, not Codex self-approval

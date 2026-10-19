@@ -26,12 +26,12 @@ Definitions, assumptions, reference baseline, invariants, input/output shapes, d
 - [ ] Tests/benchmark source
 - [ ] Documentation and reproduction commands
 
-## Colab delivery gate (algorithm implementation tasks)
-- [ ] Clean environment can `pip install` package from a pinned exact GitHub commit SHA
-- [ ] Packaged `python -m <package>.benchmarks.run --device cuda --publish` CLI exists with tested defaults and no notebook-side engineering
-- [ ] Codex actually ran CPU packaging, CLI and numerical smoke tests
-- [ ] Scientist Colab GPU run and PR publication: **NOT RUN** until actual verification (Publisher may be manual until implemented)
-- [ ] Include real CLI output / test SHA and explicit failures, not assumed success
+## Colab delivery gate (algorithm tasks)
+- [ ] Exact pinned-SHA pip install and independent packaged benchmark CLI
+- [ ] Independent optional Publisher CLI accepts existing run directory, never reruns GPU
+- [ ] Codex ran actual CPU numerical, package/CLI and Publisher mock tests
+- [ ] Scientist GPU experiment and optional upload: **NOT_RUN** until actually observed
+- [ ] Source SHA, failure modes and secret `GITHUB_TOKEN` access validated (no plain tokens)
 
 ## Acceptance criteria
 - [ ] Spec and reference baseline agree

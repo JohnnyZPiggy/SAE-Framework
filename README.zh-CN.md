@@ -1,115 +1,60 @@
-## 整合后的默认运行模式
-
-**一句话推进角色、两行 Colab 命令、三份科研成果。** 依照 [三阶段 CPU-first 流程](i18n/zh-CN/workflows/RESEARCH_PIPELINE.md)，先数学研究，再 CPU 工程与 `torch.compile` 验证，通过 GPU Readiness 后才集中 Colab 实验。[三文档交接](i18n/zh-CN/workflows/THREE_ARTIFACT_HANDOFF.md) 连接数学、工程、实验记录；[双命令 Colab 契约](i18n/zh-CN/workflows/COLAB_TWO_COMMAND.md) 定义固定 SHA 的 pip 安装与打包 Benchmark CLI。Bootstrap/Publisher 尚未实现，不得宣称已经自动执行。
-
-## 默认三阶段研发流程
-
-**数学研究 → CPU 工程与编译验证 → 最终 GPU 实验。** 日常工作由 GPT/Codex 在 CPU 环境推进，科学家只有在 [GPU Readiness](i18n/zh-CN/templates/GPU_READINESS.md) 审核通过后才集中使用 Colab。见 [三阶段协议](i18n/zh-CN/workflows/RESEARCH_PIPELINE.md)。CPU `torch.compile` 成功不保证 GPU 兼容或加速。
-
 # SAE Framework V3.2
 
-> 语言： [English](README.md) | **简体中文**
+> [English](README.md) | 简体中文
 
-**Scientist–Architect–Engineer（SAE）框架**：面向数学算法、PyTorch 科学计算与机器学习工程的 GitHub-first、可复用人机协作组织协议。
+**Scientist–Architect–Engineer（SAE）**：服务于数学算法研究、PyTorch 工程化和科学学习的 GitHub-first 多 Agent 协作规范。
 
-> **一个项目，两项成果：更好的软件，更强的科学家。**
-
-## 可视化架构
+**一个项目，两项成果：更好的软件，更强的科学家。**
 
 ![SAE Framework V3.2 中文架构图](docs/figures/SAE_Framework_V3.2.zh-CN.svg)
 
-[下载中文 SVG](docs/figures/SAE_Framework_V3.2.zh-CN.svg) · [英文 SVG](docs/figures/SAE_Framework_V3.2.en.svg) · [中文 Mermaid 架构](i18n/zh-CN/docs/ARCHITECTURE.md)
+[英文架构图](docs/figures/SAE_Framework_V3.2.en.svg) · [中文架构说明](i18n/zh-CN/docs/ARCHITECTURE.md)
 
-## 研究先于工程：算法张量化探索
+## 默认研发流程
 
-对于每个新算法或重大的张量化重构，GPT 首先以 **Scientific Mentor（科学导师）** 身份展开**数学结构探索**：寻找矩阵—向量积、matrix-free 线性算子、批处理、张量缩并、稀疏/低秩等性质，推导数学等价的张量表达，并研究数值稳定性和跨 CPU/GPU/TPU 可移植性的潜力。
+**先研究数学 → Codex 真实 CPU 测试 → 架构师审核 GPU_READY → 科学家 Colab GPU 实验。** 导师发现矩阵/张量结构，架构师设计工程并审核，Codex 实现与 CPU 验证，科学家完成数学和 GPU 科研决定。每个项目关联 [数学研究、工程报告和实验报告](i18n/zh-CN/workflows/THREE_ARTIFACT_HANDOFF.md) 三份成果。完整要求见 [研发流程](i18n/zh-CN/workflows/RESEARCH_PIPELINE.md)。
 
-**数学结构探索 → 张量化数学重构 → 架构与实验设计 → Codex 工程与 CPU 验证 → 科学家 Colab 硬件实验 → 反馈迭代**
-
-完成 [张量化研究报告与前置关口](i18n/zh-CN/workflows/MATHEMATICAL_RESEARCH.md) 并经科学家审核后，GPT 再切换总架构师角色进行任务设计。这一顺序避免盲目重写代码；实验反馈可以随时回到数学研究。
-
-## 两项同等重要的目标
-
-| 工程生产力 Engineering Productivity | 科学学习 Scientific Learning |
-| --- | --- |
-| 用尽可能少的协调和计算成本，构建**可靠、模块化、可复现**的 PyTorch/科学计算算法包。 | 在真实项目中深入理解数学算法、数值计算、PyTorch、GPU 实验与 ML 工程。 |
-
-一次成功的迭代，既要有**可核查的工程证据**，也要有**值得积累的知识与理解**。
-
-## 角色分工
-
-| 角色 | 责任 |
-| --- | --- |
-| **你：Scientist（科学家）** | 选择研究问题；做最终科学决策；配置并运行 Colab 实验；判断实验结果。 |
-| **GPT：Chief Architect（总架构师）** | 数学形式化、算法规格、任务拆解/派发、PR 审查、技术验收，以及得到授权后的合并。 |
-| **GPT：Scientific Mentor（科学导师）** | 教授数学原理、算法推导、数值稳定性、PyTorch 与 GPU 测量，并引导独立思考。 |
-| **Codex：Software Engineer（工程师）** | 通过 GitHub 领取任务，实现 Python/CLI、运行真实 CPU 测试与 Benchmark、维护代码、提交 PR。 |
-| **GitHub：协作中枢** | 统一记录规范、Issues、PR、代码版本、决策和轻量 GPU 实验报告。 |
-| **Colab + 最小 Drive 文件夹** | 由科学家操作 CPU/GPU；Drive 只提供 Notebook/临时工作空间，不参与同步或实验结果交换。 |
-
-## 快速开始
-
-1. 阅读 [中文版初始化协议](i18n/zh-CN/SAE_BOOTSTRAP.md)；实际执行时以仓库根目录的 [SAE_BOOTSTRAP.md](SAE_BOOTSTRAP.md) 为规范原文。
-2. 阅读 [中文版共同规则](i18n/zh-CN/AGENTS.zh-CN.md) 与根目录规范版 [AGENTS.md](AGENTS.md)。
-3. 按角色阅读 [中文协议](i18n/zh-CN/protocols/) 和 [中文流程](i18n/zh-CN/workflows/)。
-4. 在新算法项目中复制 [项目 AGENTS 模板](examples/project/AGENTS.md) 与 [sae.yaml 配置示例](examples/project/sae.yaml)，将**固定 Git commit 版本**的框架规则放在项目 `.sae/`。
-5. 确认 GPT 和 Codex 真正拥有 GitHub 读取/写入工具权限。**写在文件中的链接不会自动触发跨仓库读取。**
-
-## 三条操作指令
-
-| 指令 | 执行角色 | 一个工作周期 |
+| 一句话口令 | 角色 | 有边界的一轮工作 |
 | --- | --- | --- |
-| **推进架构师工作** | GPT | 检查 GitHub → 数学/技术设计 → 创建/派发 Issue → 审查代码和 Colab 结果 → 授权验收/合并 → 汇报。 |
-| **推进工程师工作** | Codex | 领取 Issue → 实现模块 → CPU 测试与 Benchmark → 提交/更新 PR → 反馈。 |
-| **推进导师工作** | GPT | **工程之前**探索矩阵向量等数学结构、推导张量化方案并提交研究报告；**工程之后**讲解算法、实验与性能结果。 |
+| `推进导师工作` | GPT Mentor | 推导张量化数学、讲解、交接 |
+| `推进架构师工作` | GPT Architect | 恢复 GitHub 状态、设计/审查、证据符合后自主决定合并 |
+| `推进工程师工作` | Codex Engineer | 实现、真实 CPU 测试、提交 PR，不能自我合并 |
 
-这三条是**协议定义的指令**，不是内置后台常驻 Agent；需要用户触发、实际访问工具以及权限。
+口令不是后台常驻进程，实际操作需工具权限。
 
-## 关键约束
+## Colab 改为三个独立步骤
 
-- **GitHub-first：** Issues 是任务队列；PR 是交付和审查通道；Colab 的轻量实验结果也通过 GitHub PR 共享。
-- **不使用 GitHub Actions/付费 CI：** Codex 在执行环境中做 CPU 测试，科学家在 Colab 中做 GPU 测试，不伪造 CI 结果。
-- **薄 Notebook：** GPT 设计 Notebook 调度；Codex 开发并验证计算模块、CLI、测试和上传器。
-- **证据优先：** 保存被测源码 SHA、环境、命令、随机种子、精度、计时方法与报告链接；未执行的测试必须写 NOT RUN。
-- **权限和审查分离：** 不擅自 force-push、泄漏密钥、跳过审查或进行破坏性操作。
-- **Google Drive 不同步：** 只保留一个简单的 Colab Notebook/临时文件目录。
-- **学习也是成果：** 重要里程碑可以留下简短学习笔记，但不强迫每次对话都写报告。
+1. 用不可变 Git commit SHA 安装算法包；
+2. 独立运行 Benchmark，检查数值正确性与性能；
+3. **可选：** 确认结果后，使用名为 `GITHUB_TOKEN` 的 Colab Secret 单独上传报告至 GitHub PR。
 
-## 文档导航
+细节只以 [三步 Colab 协议](i18n/zh-CN/workflows/COLAB_TWO_COMMAND.md) 为准。历史文件名暂不更换，以免破坏引用。默认 Benchmark **不自动上传**；Bootstrap、Publisher CLI 尚不能仅凭协议存在就视为已实现。不使用 GitHub Actions 或 Drive 报告同步。
 
-- [初始化协议](i18n/zh-CN/SAE_BOOTSTRAP.md) · [初始化验收清单](i18n/zh-CN/docs/ADOPTION_SMOKE_TEST.md) · [共同规则](i18n/zh-CN/AGENTS.zh-CN.md)
-- [角色协议](i18n/zh-CN/protocols/) · [工作流程](i18n/zh-CN/workflows/)
-- [架构说明](i18n/zh-CN/docs/ARCHITECTURE.md) · [工具集成](i18n/zh-CN/docs/INTEGRATIONS.md) · [路线图](i18n/zh-CN/docs/ROADMAP.md)
-- [任务和报告模板](i18n/zh-CN/templates/) · [新项目示例](examples/project/sae.yaml)
-- [英文原版文档](README.md)
+## 使用入口
 
-## 当前实现状态
+1. [共同 AGENTS](AGENTS.md) 与 [中文说明](i18n/zh-CN/AGENTS.zh-CN.md)；
+2. [初始化协议](SAE_BOOTSTRAP.md) 与 [中文说明](i18n/zh-CN/SAE_BOOTSTRAP.md)；
+3. [项目入口模板](examples/project/AGENTS.md)、[`sae.yaml`](examples/project/sae.yaml) 和 [初始化验收](docs/ADOPTION_SMOKE_TEST.md)；
+4. 确保实际连接 GitHub 并读取目标仓库。新项目复制**同一固定 SHA 的完整 `.sae/` 快照**，既有项目不得悄悄升级。
 
-本仓库提供**组织规则、角色协议、项目初始化说明与模板**，不是已部署的自主运行系统。GitHub 写入需要授权工具；Colab Publisher 和自动初始化 CLI 需要 Codex 实现、测试、验收。尚未实现时应手动上传报告，不得宣称自动发布成功。
+## 各规范的唯一权威来源
 
-## 版本与许可
+| 内容 | 正式文档 |
+| --- | --- |
+| 角色职责与边界 | [AGENTS](AGENTS.md) · [角色协议](i18n/zh-CN/protocols/) |
+| 数学 → CPU → GPU 关口 | [研发流程](i18n/zh-CN/workflows/RESEARCH_PIPELINE.md) |
+| 角色恢复与下一步口令 | [角色恢复](i18n/zh-CN/workflows/ROLE_RECOVERY.md) · [下一步](i18n/zh-CN/workflows/NEXT_ACTION.md) |
+| PyTorch 生态复用 | [生态调查](i18n/zh-CN/workflows/ECOSYSTEM_REVIEW.md) |
+| Colab 和 Secret | [三步协议](i18n/zh-CN/workflows/COLAB_TWO_COMMAND.md) |
+| GitHub Issue/PR | [任务管理](i18n/zh-CN/workflows/TASK_MANAGEMENT.md) |
+| 合并最终决定权 | [常设授权](i18n/zh-CN/governance/STANDING_AUTHORIZATION.md) |
 
-当前架构版本 **V3.2**。项目应使用真实 tag 或 **不可变 commit SHA** 固定协议版本；升级需要审查。参见 [中文变更记录](i18n/zh-CN/CHANGELOG.md)。
+**常设授权：** 对 `JohnnyZPiggy` **现有和未来全部本人拥有的公开 GitHub 仓库**，GPT Architect 经真实审核后拥有**无限期、可撤销**的最终合并裁量权，不需逐仓库登记或逐 PR 再请示；实际平台权限、严格审查和科学家保留的实质决定仍有效。Codex 不得自我合并。
 
-仓库尚未选择许可协议。**公开可见不代表允许任意复制或重新发布**；要对外作为模板授权，应由所有者另行决定 License。
+## 当前状态
 
-**翻译说明：** 根目录英文协议、键名、CLI 和原始任务指令是机器可执行规范；中文是同步维护的阅读版本。如内容出现差异，以英文规范及用户明确授权为准，并创建 Issue 修正翻译。
-## 手机端下一步口令
+本仓库主要是**组织和协作规范**，不是已部署的自动化执行器。没有真实 CPU/GPU 证据不能宣称成功。无后台自动扫仓库、强推、密钥公开或绕过 GitHub 保护。英文文件为机器执行的正式规范，中英文参照 [语言策略](docs/LANGUAGE_POLICY.md)。
 
-每次 GPT 导师、架构师或 Codex 完成实质性工作，必须推荐**一个具体可复制的下一步口令**，最多两项备选，注明真实 GitHub 证据及科学家是否需要批准。参见 [下一步口令协议](i18n/zh-CN/workflows/NEXT_ACTION.md)。按钮仅在客户端真实支持时提供，文字口令始终可用。
+[路线图](i18n/zh-CN/docs/ROADMAP.md) · [工具集成](i18n/zh-CN/docs/INTEGRATIONS.md) · [模板](i18n/zh-CN/templates/) · [中文文档索引](i18n/zh-CN/README.md)
 
-## 角色恢复与防止出戏
-
-每轮实质性工作开始前执行 [角色恢复与完整性协议](i18n/zh-CN/workflows/ROLE_RECOVERY.md)，根据用户口令恢复身份、读取固定版本和 GitHub 当前证据、核验阶段与权限；若角色不匹配，应报告并交接，不得悄悄切换或虚报执行。每轮结束仍按下一步口令协议交接。
-
-## 优先复用成熟生态
-
-架构师在向 Codex 派单前，依照 [生态感知型架构评估](i18n/zh-CN/workflows/ECOSYSTEM_REVIEW.md) 快速调查 PyTorch 原生功能、相关工具库和已有参考实现，在既有工程报告中记录简短 Build-vs-Reuse 决策。坚持 CPU-first、跨设备和低依赖，不增加单独报告。
-
-## Colab 三步操作（现行规范）
-
-科学家使用**三个独立 Notebook 步骤**：安装固定 SHA、运行不写 GitHub 的 Benchmark、审核后**按需单独上传报告**。Colab Secrets 已采用名称 **`GITHUB_TOKEN`**；Codex 须验证 Publisher 子进程读取密钥或提供一个 Python 上传 Cell 的安全环境变量传递。具体遵循 [现行三步协议](i18n/zh-CN/workflows/COLAB_TWO_COMMAND.md)（历史文件名保留以免破坏链接），Benchmark 默认不再含 `--publish`。旧版“两行”描述不再适用；未实现/验收前不得称其可运行。
-
-## GPT 架构师对全部本人公开仓库拥有永久最终合并决定权
-
-Scientist 已将 `JohnnyZPiggy` **当前及未来全部本人拥有的公开 GitHub 仓库**中合格 PR 的最终 **MERGE / DO_NOT_MERGE** 决定权永久、可撤销地委托 GPT 总架构师；**不设到期日、无需逐仓库登记或逐 PR 合并许可**。T1/T2/T3 仅区分证据要求和科学家保留的**变更内容实质决策**，条件满足后 GPT 自主审核、留下 PR 审计、精确 head Squash Merge 并核验。科学家保留科研、Colab、重要治理安全内容决定及随时撤销权；Codex 不得自行合并。详见 [最新常设授权](i18n/zh-CN/governance/STANDING_AUTHORIZATION.md)。不自动赋予 GitHub 工具权限或后台工作。
+**许可：** 仓库当前未指定 LICENSE；公开可见不代表其他人可以任意复制/再分发。

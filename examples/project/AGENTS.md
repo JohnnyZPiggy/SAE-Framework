@@ -1,50 +1,32 @@
-## Integrated algorithm-project operating contract
+# Algorithm Project AGENTS — Copy to Target Repository Root
 
-Use the pinned `.sae/` snapshot. Follow research → CPU engineering/`torch.compile` → Architect-reviewed GPU_READY → Scientist-run Colab. Maintain linked mathematical, engineering and experimental artifacts. A clean pinned-SHA pip install and one packaged benchmark CLI are the target Colab interface. Do not ask Scientist for repeated GPU runs before CPU-local fixes; do not claim Publisher implemented without real tests. See `.sae/workflows/RESEARCH_PIPELINE.md`, `.sae/workflows/THREE_ARTIFACT_HANDOFF.md`, `.sae/workflows/COLAB_TWO_COMMAND.md`.
+> English (normative). [Chinese reference in Framework](../../i18n/zh-CN/examples/project/AGENTS.zh-CN.md). This is a **copyable template**; paths prefixed `.sae/` are intended to resolve **after** copying to the *target repository*, not within this source example folder.
 
-# Project Agent Entry Point (copy to your project root)
+**Project:** `<OWNER>/<PROJECT>`  
+**Scientific objective:** `<PAPER_OR_ALGORITHM>`  
+**Python package:** `<PACKAGE_NAME>`  
+**SAE Framework:** `JohnnyZPiggy/SAE-Framework` V3.2; pinned immutable source SHA: `<ACTUAL_FRAMEWORK_SHA>`  
+**Local frozen protocol:** `.sae/`
 
-> Language: **English** (canonical). After installation, the Chinese reference is available at `.sae/i18n/zh-CN/examples/project/AGENTS.zh-CN.md`. This is a **copyable project-root template**; source-repository relative links must not be carried into a different root unchanged.
+## Read in this order, before substantive work
 
+1. This project `AGENTS.md` and `sae.yaml`.
+2. The real pinned `.sae/AGENTS.md` and role file (`.sae/protocols/MENTOR.md` / `ARCHITECT.md` / `ENGINEER.md`).
+3. Required `.sae/workflows/` documents, the current GitHub Issue/PR, exact code SHA and actual evidence.
 
-Project: `<OWNER>/<PROJECT>`
-SAE Framework: `JohnnyZPiggy/SAE-Framework`, version V3.2
-Pinned framework snapshot: `.sae/` at commit `<REPLACE_WITH_ACTUAL_FRAMEWORK_SHA>`
+**Do not silently upgrade `.sae/` or assume a repository URL automatically loads rules.** If snapshot or tool access is missing, report UNVERIFIED and request Bootstrap/permissions.
 
-## Read before work
-1. This file and `sae.yaml`.
-2. `.sae/AGENTS.md` (shared rules).
-3. Your role: `.sae/protocols/ARCHITECT.md`, `ENGINEER.md` or `MENTOR.md`.
-4. Applicable `.sae/workflows/*.md` and Issue/PR specifications.
+## Project lifecycle
 
-**Do not assume a URL automatically loads instructions.** Check that the snapshot exists. If not, stop and request bootstrap.
+- New algorithms/major rewrites require `docs/research/<algorithm>-tensorization.md` and Scientist's `RESEARCH_READY` or a documented narrow exception **before** Codex implementation.
+- Architect performs a brief PyTorch ecosystem REUSE/ADAPT/BUILD check; Codex runs actual CPU oracle/edge/regression/`torch.compile` (where supported), clean pinned install and CLI tests; Architect alone approves GPU_READY.
+- Scientist runs **three separate Colab cells**: pinned source install → packaged benchmark → **optional separate GitHub report upload** after inspecting results. Secret name `GITHUB_TOKEN`. Follow the pinned `.sae/workflows/COLAB_TWO_COMMAND.md` (historical filename). No fabricated tests, GPU claims from CPU or notebook kernels.
+- Link research, engineering and experiment reports through GitHub Issue/PR; no GitHub Actions or Drive results sync.
 
-## Pre-engineering math discovery
-Before algorithm implementation/benchmarks, read `.sae/workflows/MATHEMATICAL_RESEARCH.md` and have GPT Mentor + Scientist produce and review `docs/research/<algorithm>-tensorization.md`. Architect dispatches Codex work only with `RESEARCH_READY` or a documented Scientist-authorized exception. Tensorization is a mathematical research outcome, not guaranteed speedup.
+## Commands and merge policy
 
-## Project-specific notes
-- Scientific objective: `<PAPER_OR_ALGORITHM>`
-- Python package: `<PACKAGE_NAME>`
-- Scientist runs Colab GPU experiments; Codex runs CPU tests; GPT reviews and mentors.
-- GitHub Issues/PRs are the only shared task/evidence channel. No GitHub Actions, no Drive syncing.
-- Core calculations and publishing live in tested Python modules; Notebooks orchestrate only.
-- Never overwrite files or publish secrets; no self-merges.
+`推进导师工作` / `推进架构师工作` / `推进工程师工作` trigger **one bounded cycle**, following `.sae/workflows/ROLE_RECOVERY.md` and `NEXT_ACTION.md`.
 
-## Invocations
-`推进架构师工作` / `推进工程师工作` / `推进导师工作`.
+For **public repositories actually owned by `JohnnyZPiggy`**, Scientist's [current central Standing Authorization](https://github.com/JohnnyZPiggy/SAE-Framework/blob/main/governance/STANDING_AUTHORIZATION.md) gives GPT Architect **indefinite final MERGE/DO_NOT_MERGE discretion after review**, no per-repository enrollment or repeated merge consent. Verify live owner/public visibility, actual tool rights, PR evidence and Scientist-owned substantive decisions. This reference does not create credentials or override stronger project rules; Codex never self-merges. No force-push or background merge sweeps.
 
-## Mandatory next-action handoff
-
-After each substantive role cycle, recommend one next command and up to two alternatives with evidence and required Scientist approval. Follow the pinned [Next-Action Protocol](.sae/workflows/NEXT_ACTION.md). Do not imply local execution or GPU readiness without actual evidence.
-
-## Recover role and state first
-
-Before each substantive role cycle, follow the pinned [Role Recovery & Integrity Protocol](.sae/workflows/ROLE_RECOVERY.md). Verify the user's role command, current project Issues/PRs, phase gate and actual tools; do not silently switch roles, assume laptop access or upgrade the pinned `.sae/` snapshot. End with the pinned [Next-Action](.sae/workflows/NEXT_ACTION.md) footer.
-
-## Ecosystem review at architecture time
-
-Before Codex implementation dispatch, Architect follows the pinned [Ecosystem Review](.sae/workflows/ECOSYSTEM_REVIEW.md): review native PyTorch, third-party and reference implementations; document a concise Build-vs-Reuse decision in the engineering report, favoring CPU-first portability and limited dependencies. No automatic upgrades to pinned SAE snapshots.
-
-## Permanent Architect merge decision for owner's public repositories
-
-The project adopts its pinned [governance reference](.sae/governance/STANDING_AUTHORIZATION.md) and consults the [current owner-level Standing Authorization](https://github.com/JohnnyZPiggy/SAE-Framework/blob/main/governance/STANDING_AUTHORIZATION.md). **The Scientist has already granted GPT Architect indefinite final MERGE / DO_NOT_MERGE discretion for all current and future public repositories actually owned by `JohnnyZPiggy`; no separate algorithm-repo registration is required.** Verify via GitHub's live owner.login/public visibility and actual merge tools: copying `.sae/` does not itself grant credentials, and another owner's repo is excluded. Observe project-specific stricter review gates and Scientist-owned substantive decisions. Architect audits and merges qualifying PRs; Codex never self-merges or auto-upgrades pinned rules.
+**Before adopting this file**, fill placeholders and test all relative paths in the **actual target project**. Do not overwrite an existing project `AGENTS.md` without review.

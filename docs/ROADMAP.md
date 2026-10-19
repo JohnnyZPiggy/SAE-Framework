@@ -1,35 +1,28 @@
-# SAE Framework Roadmap
+# SAE Framework V3.2 — Implementation Roadmap
 
-> Language: **English** | [简体中文](../i18n/zh-CN/docs/ROADMAP.md)
+> English | [简体中文](../i18n/zh-CN/docs/ROADMAP.md)
 
+**Current:** SAE has policies, role protocols and templates. **Do not confuse an interface contract with an implemented CLI.** GitHub Issues and actual tests determine completion.
 
-This repository currently provides **architecture, role instructions, onboarding steps, and templates**. The following automation components are proposed, **not yet implemented/tested**:
+## P0 — Bootstrap CLI (Codex; [Issue #2](https://github.com/JohnnyZPiggy/SAE-Framework/issues/2))
 
-## P0 — Bootstrap helper (Codex)
-- Safe, idempotent project scaffolder from a pinned SAE commit.
-- Dry-run and clear diff; no overwrite by default.
-- Generates project AGENTS/config, frozen policy snapshot, Issue/PR templates.
-- Unit tests for existing/empty repos, missing permissions and malformed config.
+- Read the target repository first; dry-run and review a patch without overwriting files.
+- Install a **self-contained snapshot from one immutable Framework commit SHA**, including bilingual role/workflow/governance documents and project-root `AGENTS.md` / `sae.yaml`.
+- Verify copied relative links, config schema, missing permissions and repeated initialization. Do not use GitHub Actions or silently upgrade existing algorithm projects.
 
-## P0 — Experiment Publisher CLI (Codex)
-- Validate report manifest/schema, redact potential secrets, enforce size limits.
-- Commit reports to `experiment/<run-id>` branch, propose PR and link originating Issue/implementation PR.
-- Report success only after GitHub API confirms commit and PR; retry safely with idempotency key.
-- Test publisher offline/mock first; execute integration test only with explicitly granted scope.
+## P0 — Independent Benchmark and Publisher CLI (Codex; [Issue #3](https://github.com/JohnnyZPiggy/SAE-Framework/issues/3))
 
-## P1 — Two-command Colab interface (GPT design + Codex implementation)
+- Package installable `PACKAGE_NAME.benchmarks.run` and **separate** `PACKAGE_NAME.benchmarks.publish`; benchmark never publishes.
+- Publisher validates allowlisted experiment files, exact tested SHA, report size/privacy, idempotency and a verified GitHub PR. Mock-test failures and authenticate via Colab Secret `GITHUB_TOKEN` or a tested secure process-environment bridge.
+- Actual CPU CLI and clean-install tests by Codex; actual GPU/Secret/PR integration by Scientist. Publication is **NOT IMPLEMENTED / NOT RUN** until verified.
 
-- **Exactly two executable Notebook command cells** after one-time GPU/credential setup: pinned GitHub pip install → single packaged `python -m <package>.benchmarks.run --device cuda --publish`.
-- GPT specifies defaults, mathematical oracle, CLI, device checks, experiment evidence and acceptance; Codex implements/test-packages all algorithms, correctness, benchmarking, reporting and Publisher integration **outside Notebook**.
-- Device/env checks, correctness before timing and source-SHA provenance are performed inside the single CLI; no manual third publish command in the **final design**.
-- CPU clean pip/CLI smoke tests by Codex; real GPU + optional PR upload Colab acceptance by Scientist. Current state is **not implemented**. See [Two-Command Contract](../workflows/COLAB_TWO_COMMAND.md).
+## P1 — Three-cell Colab usability
 
-## P1 — Optional machine validation (Codex)
-- Local Python schema validation for `sae.yaml` and experiment JSON.
-- Run via Codex terminal/Colab; no GitHub Actions.
+**Pinned source install → GPU benchmark → optional separate GitHub upload after inspecting results.** The normative interface, secure fallback and status mapping live **only** in the [Colab Contract](../workflows/COLAB_TWO_COMMAND.md), historical path preserved. Avoid introducing old benchmark `--publish` integrations or a mandatory GPU rerun.
 
-## P2 — Quality of life
-- Issue/PR status report CLI; simple learning note templates.
-- Version migration guide with reviewed updates and backwards compatibility.
+## P1/P2 — Optional quality improvements
 
-All roadmap items require an Issue, an owner, acceptance criteria and real test evidence before marking complete.
+- Local schema/link checking by Codex; do **not** require GitHub Actions.
+- Compact Issue/PR status summaries and reviewed protocol migration guides; no new agent/database.
+
+Advance a task only with assigned Issue, scoped PR, real evidence and Architect review.
