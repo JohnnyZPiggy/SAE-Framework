@@ -67,3 +67,7 @@
 ## Bootstrap 快照中的角色恢复
 
 固定版本的 `.sae/workflows/` 快照必须包含 [角色恢复协议](workflows/ROLE_RECOVERY.md) 与中英文镜像。算法项目 `AGENTS.md` 必须指向 `.sae/workflows/ROLE_RECOVERY.md`。Bootstrap 实现需要检查新对话能恢复角色与任务，不得悄悄升级既有项目。
+
+## 项目固定快照中的生态调查
+
+新算法项目的 `.sae/workflows/` 快照必须包含 [ECOSYSTEM_REVIEW.md](workflows/ECOSYSTEM_REVIEW.md) 和 [中文镜像](i18n/zh-CN/workflows/ECOSYSTEM_REVIEW.md)，固定版本架构师协议和工程报告需包含简短 Build-vs-Reuse 关口；复制后检查相对链接。既有项目不得悄悄自动升级。

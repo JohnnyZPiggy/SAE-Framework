@@ -116,3 +116,7 @@ After each substantive GPT Mentor / Architect / Codex cycle, the agent must reco
 ## Role recovery and integrity
 
 Before each substantive work cycle, apply [Role Recovery & Integrity](workflows/ROLE_RECOVERY.md): restore the explicitly assigned role, read pinned project rules and live GitHub evidence, verify phase and actual tool permissions, and stop on role mismatch rather than silently changing identity. Keep the existing Next-Action handoff at the end.
+
+## Reuse before reinventing
+
+Before Codex implementation dispatch, Architect performs a bounded [Ecosystem Review](workflows/ECOSYSTEM_REVIEW.md) covering native PyTorch, relevant maintained libraries and upstream reference implementations, and records a concise Build-vs-Reuse decision in the engineering report. CPU first, portable, low-dependency, with license and compatibility evidence; no new standalone report.
