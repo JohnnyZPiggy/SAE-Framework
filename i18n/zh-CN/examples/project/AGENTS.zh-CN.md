@@ -1,50 +1,20 @@
-## 算法项目统一执行要求
+# SAE V3.3 — 新项目 AGENTS 中文参考
 
-读取固定版本 `.sae/`。按数学研究 → CPU 工程与 `torch.compile` → 架构师 GPU_READY → 科学家 Colab GPU 的顺序工作；链接数学、工程、实验三份报告。Notebook 最终只有固定 SHA 的 pip 安装和打包 Benchmark CLI 两条命令。CPU 可复现的问题必须先由 Codex 修复，不要反复打断科学家。Publisher 未真实实现和验证不得宣称上传成功。
+> [English project template](../../../../examples/project/AGENTS.md) 为规范版本；本文件供中文阅读。目标项目根目录应复制英文模板并填写实际值。
 
-# SAE 新项目 AGENTS 入口模板（中文说明）
+**项目：** `<OWNER>/<PROJECT>`  
+**科研目标：** `<ALGORITHM_OR_PAPER>`  
+**SAE 固定快照：** `.sae/`，commit `<ACTUAL_40_CHARACTER_FRAMEWORK_SHA>`
 
-> 语言：[English](../../../../examples/project/AGENTS.md) | **简体中文**
+## 工作前
+读取项目根 `AGENTS.md`、`sae.yaml`、`.sae/AGENTS.md`、当前角色协议、相关流程与 GitHub Issue/PR。链接不等于已读取；不得悄悄升级固定快照。
 
-**注意：** 这份文件仅用于中文阅读。实际初始化时应把英文 [AGENTS.md 模板](../../../../examples/project/AGENTS.md) 复制到**目标项目根目录**，填写真实值。不要原样复制母仓库独有的相对语言切换链接；目标项目的中文说明应指向 `.sae/i18n/zh-CN/examples/project/AGENTS.zh-CN.md`。
+## 分工
+- **Scientist：** 决定研究方向、数学/科学结论及 GPU/TPU 硬件、会话/时长/额度授权。
+- **GPT Architect/Mentor：** 数学指导、规格、Issue 派发、证据审核；按[固定治理协议](../../../../governance/STANDING_AUTHORIZATION.md)及当前所有者授权决定合格 PR 最终合并。
+- **Codex：** 实现、本地 CPU 和获授权的 Colab CLI CPU/GPU/TPU 实验，校验报告、释放会话、经 GitHub 分支/PR 提交证据；不自合并或直接写受保护主分支。
 
-项目：`<OWNER>/<PROJECT>`  
-SAE Framework：`JohnnyZPiggy/SAE-Framework`，架构版本 V3.2  
-框架快照：`.sae/`，固定在真实 commit `<REPLACE_WITH_ACTUAL_FRAMEWORK_SHA>`
+## 流程
+新算法/重大改造先完成 Scientist 审核的[数学研究](../../../../workflows/MATHEMATICAL_RESEARCH.md)，Architect 进行[生态复用评估](../../../../workflows/ECOSYSTEM_REVIEW.md)并派单，Codex 实现、测试和实验，Architect 审核 GitHub 证据。实验遵循[计算实验协议](../../../../workflows/GPU_EXPERIMENT.md)的固定 SHA 安装、无 GitHub 写入 Benchmark、可选发布三个独立阶段。设备兼容、Publisher 和加速效果都必须有实测证据。不默认使用 GitHub Actions、Drive 同步或未批准计算资源。
 
-## 工作前读取
-1. 当前项目 `AGENTS.md` 和 `sae.yaml`。
-2. `.sae/AGENTS.md` 共同规则。
-3. 当前角色 `.sae/protocols/ARCHITECT.md`、`ENGINEER.md` 或 `MENTOR.md`。
-4. 相关工作流程、Issue/PR 规格。
-
-**链接不等于自动加载。** 必须确认固定版本本地快照存在；缺失时先执行 Bootstrap，不要猜测规则。
-
-## 数学研究前置关口
-在新算法实现和正式 Benchmark 前，读取 `.sae/workflows/MATHEMATICAL_RESEARCH.md`，由 GPT 导师与科学家完成 `docs/research/<algorithm>-tensorization.md` 数学结构与张量化研究，经过 `RESEARCH_READY` 审核或科学家明确例外授权后，总架构师才派发 Codex 工程。张量化研究不保证实际加速。
-
-## 本项目的额外说明
-- 科学目标：`<PAPER_OR_ALGORITHM>`
-- Python 包名：`<PACKAGE_NAME>`
-- 人类科学家运行 Colab GPU；Codex 运行 CPU；GPT 做审查和导师指导。
-- GitHub Issues/PR 是共享任务与证据中心。不配置 GitHub Actions，不使用 Drive 同步。
-- 计算和报告发布使用经测试的 Python 模块，Notebook 只负责调度。
-- 不擅自覆盖文件、发布秘密或自行合并。
-
-## 三条指令
-`推进架构师工作` / `推进工程师工作` / `推进导师工作`。
-## 每轮必须提示下一步
-
-完成实质性工作后，按固定快照中的 [下一步口令协议](.sae/workflows/NEXT_ACTION.md) 推荐一个最优口令、最多两个备选，注明 GitHub 证据与科学家审批要求；不得虚报本地执行或 GPU 就绪。
-
-## 先恢复角色与项目状态
-
-每次实质性工作前读取固定的 [角色恢复协议](.sae/workflows/ROLE_RECOVERY.md)，核对用户口令、项目 Issue/PR、阶段关口和实际工具权限；不得悄悄换角色、假装已连接笔记本或升级固定快照。结束后使用 [下一步口令](.sae/workflows/NEXT_ACTION.md)。
-
-## 架构设计前的生态调查
-
-架构师向 Codex 派单前，按固定版本 [生态评估协议](.sae/workflows/ECOSYSTEM_REVIEW.md) 检查 PyTorch 原生功能、第三方包与论文参考实现，在工程报告中说明 Build-vs-Reuse 方案；坚持 CPU-first、跨硬件和少依赖，不自动升级固定 SAE 快照。
-
-## 本人公开算法项目自动在长期授权范围内
-
-参照固定快照 [治理文件](.sae/governance/STANDING_AUTHORIZATION.md)，并核实 [Framework 当前正式授权](https://github.com/JohnnyZPiggy/SAE-Framework/blob/main/governance/STANDING_AUTHORIZATION.md)。科学家已将 `JohnnyZPiggy` **当前及未来本人全部公开仓库**纳入 GPT 架构师的永久最终 MERGE / DO_NOT_MERGE 权限，**不需本算法项目单独登记或续期**。复制快照不生成平台合并能力；仍需实时核实 owner、公开状态、连接权限、项目更严格要求、真实 Diff 与数学/CPU/必要 GPU 证据。科研/安全治理等实质决定仍须科学家，Codex 不得自我合并。
+**口令：** `推进架构师工作` / `推进导师工作` / `推进工程师工作`。每轮开始执行[角色恢复](../../../../workflows/ROLE_RECOVERY.md)，结束给出[下一步](../../../../workflows/NEXT_ACTION.md)；如实标记 PASS / FAIL / NOT RUN / BLOCKED 和源码 SHA。
