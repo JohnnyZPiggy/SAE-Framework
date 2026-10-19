@@ -25,12 +25,11 @@
 - [ ] 数值测试与 Benchmark 代码
 - [ ] 文档和可复现运行命令
 
-## Colab 双命令交付关口（算法实现任务）
-- [ ] 能在干净环境从指定 GitHub commit SHA 通过 pip 安装算法包
-- [ ] 打包好的 `python -m <package>.benchmarks.run --device cuda --publish` CLI 具有可测试默认参数，无需 Notebook 编写算法/上传代码
-- [ ] Codex 真实运行 CPU 安装、CLI 与数值正确性测试
-- [ ] 科学家真实 Colab GPU / PR 上传：运行之前必须标注 **NOT RUN**（Publisher 尚未实现时上传依旧手动）
-- [ ] 提供真实源码 SHA、输出和失败记录
+## 计算实验交付关口（算法实现任务）
+- [ ] 固定准确源码 SHA 干净安装；Codex 完成真实 CPU 打包、CLI 与数值测试
+- [ ] 打包的 Benchmark CLI **不写入 GitHub**；可选 Publisher 是独立、单独授权的阶段，未验收不得视为已实现
+- [ ] 经授权的 Colab CPU/GPU/TPU 结果、报告发布及会话清理分别标注 PASS / FAIL / NOT RUN / BLOCKED；GPU/TPU 分配前由 Scientist 批准设备、会话、时长、额度
+- [ ] 记录被测源码 SHA、真实命令、输出和失败
 
 ## 验收条件
 - [ ] 数学契约与参考基线一致
