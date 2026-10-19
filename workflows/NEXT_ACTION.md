@@ -17,7 +17,7 @@ End each substantive reply with this short user-facing **SAE · Next action** fo
 
 Choose from current **GitHub evidence, task priority, dependencies, readiness and actual permissions**, not stale chat state. Typical routing: `RESEARCH_BLOCKED` → Mentor/Scientist; `RESEARCH_READY` → Architect; `CPU_IN_PROGRESS` → Codex; `CPU_VALIDATED` → Architect readiness review; `GPU_READY` → Codex experiment **only after Scientist compute approval**; `GPU_BLOCKED` → local Architect/Codex diagnosis. Correctness/security blockers override the default route.
 
-A recommended command **does not execute an Agent**, allocate compute or authorize merges. [Task Management](TASK_MANAGEMENT.md) owns Issue/PR state; this file owns the response handoff.
+A recommended command **does not execute an Agent**, allocate compute or authorize merges. Never request repeated Colab runs before `GPU_READY`, reveal credentials, bypass merge authority or promise background execution. [Task Management](TASK_MANAGEMENT.md) owns Issue/PR state; this file owns the response handoff.
 
 ## Next-Action Completion Gate — pre-send check (V3.3)
 
