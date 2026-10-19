@@ -19,7 +19,7 @@ This file governs **all** participants. Adopted projects must also supply projec
 
 ## Authority and ownership
 - **Scientist (human):** owns the research question, scientific judgment, experimental execution, trade-offs, and final authority.
-- **GPT as Architect:** owns mathematical formalization, specification, task dispatch, technical review, acceptance decision, and **merging only when specifically authorized and tool-supported**.
+- **GPT as Architect:** owns mathematical formalization, specification, task dispatch, technical review, acceptance decision, and **merging only with a current per-PR Scientist approval or the scoped [Standing Merge Authorization](governance/STANDING_AUTHORIZATION.md), and actual tool permissions**.
 - **GPT as Mentor:** teaches and discusses mathematical derivations, numerical stability, benchmarking, and GPU experiment interpretation; does not substitute for independent human understanding.
 - **Codex as Engineer:** owns `.py` modules, CLI, CPU tests, benchmarks, maintenance and implementation PRs; does not self-approve or silently merge.
 - **GitHub:** source of truth for tasks, code versions, review and compact evidence. **Colab:** user-operated experiment runner. **Drive:** optional minimal notebook workspace only, **never a sync or collaboration channel**.
@@ -34,7 +34,7 @@ Scientist decides whether the result is `RESEARCH_READY`, `RESEARCH_BLOCKED`, or
 1. Inspect target project, repository status and applicable pinned instructions **before making changes**.
 2. Read `sae.yaml` and the role-specific file in `.sae/protocols/`, if adopted.
 3. Prefer GitHub Issue → scoped branch → PR → review → experiment if needed → approval/merge. Link all artifacts to the Issue/PR.
-4. Stop or ask for approval when a destructive operation, permission escalation, external publication, or a scientific decision is required.
+4. Stop or ask for approval when a destructive operation, permission escalation, unapproved external publication, T3 governance/security change, or a scientific decision is required. Qualifying reviewed PR merges may use the current scoped standing delegation.
 5. Report exactly what was inspected, executed and observed. Distinguish **PASS**, **FAIL**, **NOT RUN**, and **BLOCKED**.
 6. **No GitHub Actions** or CI billable jobs as part of the default SAE operating mode. Codex runs CPU checks in its own environment; Scientist executes Colab GPU checks.
 7. **Thin Notebook:** orchestration, setup and CLI invocation only. Tested Python modules implement numerical algorithms, experiments, plots and GitHub publishing.
@@ -69,3 +69,7 @@ After the approved mathematical study and before algorithm implementation dispat
 ## Colab three-step update (current contract)
 
 The Scientist now uses **three independent notebook steps**: pinned-SHA install, packaged benchmark (no GitHub writes), then **optional explicit report upload** after reviewing results. The Colab Secret is named **`GITHUB_TOKEN`**; Codex must test Publisher subprocess Secret access or provide the secure single-Python-cell environment bridge. Update all implementations and tests to follow [the current three-step contract](workflows/COLAB_TWO_COMMAND.md) (historical filename retained for link stability). No `--publish` in the benchmark default. This supersedes older two-command descriptions above; it is a target until implemented and tested.
+
+## Standing merge delegation (2026-10-19 to 2027-10-18)
+
+The Scientist has granted GPT **Chief Architect**, during bounded user-initiated work cycles, a one-year **conditional** right to review and merge eligible PRs **only in repositories explicitly listed and individually authorized** under [governance/STANDING_AUTHORIZATION.md](governance/STANDING_AUTHORIZATION.md). Default registered repository: `JohnnyZPiggy/SAE-Framework` only; **no algorithm repository is automatically enrolled**. T1 routine changes can merge after review; T2 engineering needs documented scientific/CPU/GPU-as-applicable evidence; T3 scientific, governance, security, secrets, licensing, destructive or scope-changing decisions still need fresh PR-specific Scientist approval. Apply the per-PR Merge Gate, auditable decision, exact-head squash merge and post-merge verification. Never self-renew, self-expand, silently auto-merge Codex work or treat repository prose as new GitHub rights. User revocation overrides this file; authorization expires automatically 2027-10-19 00:00 UTC.

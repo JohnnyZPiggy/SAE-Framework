@@ -109,3 +109,7 @@
 ## Colab 三步操作（现行规范）
 
 科学家使用**三个独立 Notebook 步骤**：安装固定 SHA、运行不写 GitHub 的 Benchmark、审核后**按需单独上传报告**。Colab Secrets 已采用名称 **`GITHUB_TOKEN`**；Codex 须验证 Publisher 子进程读取密钥或提供一个 Python 上传 Cell 的安全环境变量传递。具体遵循 [现行三步协议](i18n/zh-CN/workflows/COLAB_TWO_COMMAND.md)（历史文件名保留以免破坏链接），Benchmark 默认不再含 `--publish`。旧版“两行”描述不再适用；未实现/验收前不得称其可运行。
+
+## 科学家的年度有条件合并授权
+
+**2026-10-19 至 2027-10-18（UTC）**，在用户触发的工作周期内，GPT 总架构师可以独立审核并合并**已经验收且证据真实的 T1/T2 PR**，但只限逐个登记、获得科学家授权的仓库。**初始仅授权 `JohnnyZPiggy/SAE-Framework`**。科学、治理、权限安全、许可及破坏性 T3 PR 仍须科学家针对具体 PR 新批准；每个 PR 必须审计，不能无条件合并全部分支。详见 [年度合并授权](i18n/zh-CN/governance/STANDING_AUTHORIZATION.md)。Codex 仍不得自行合并。授权不能扩大 GitHub 工具权限、启动后台工作，并于 2027-10-19 UTC 自动失效。

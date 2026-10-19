@@ -48,3 +48,7 @@ Before each substantive work cycle, apply [Role Recovery & Integrity](ROLE_RECOV
 ## Colab three-step update (current contract)
 
 The Scientist now uses **three independent notebook steps**: pinned-SHA install, packaged benchmark (no GitHub writes), then **optional explicit report upload** after reviewing results. The Colab Secret is named **`GITHUB_TOKEN`**; Codex must test Publisher subprocess Secret access or provide the secure single-Python-cell environment bridge. Update all implementations and tests to follow [the current three-step contract](../workflows/COLAB_TWO_COMMAND.md) (historical filename retained for link stability). No `--publish` in the benchmark default. This supersedes older two-command descriptions above; it is a target until implemented and tested.
+
+## Engineer boundary under standing merge delegation
+
+The Scientist's conditional standing authorization applies to **GPT Architect**, not to Codex. Engineer still opens scoped, evidence-backed PRs and leaves them unmerged. See [Standing Merge Authorization](../governance/STANDING_AUTHORIZATION.md). Codex must never self-approve, change repository registration/expiry, or interpret this grant as permission to modify GitHub security settings. Provide actual CPU evidence and any required Scientist GPU evidence for the Architect's independent per-PR Merge Gate.

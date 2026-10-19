@@ -23,7 +23,7 @@
 ## 阶段 1：安装固定版本协议
 1. 使用 [项目 AGENTS 示例](../../examples/project/AGENTS.md) 创建/更新项目根 `AGENTS.md`。
 2. 使用 [配置示例](../../examples/project/sae.yaml) 写入 `sae.yaml`，填上**真实 SHA**、角色及禁用 Actions 规则。
-3. 从**同一个固定的母仓库 commit**，把 `AGENTS.md`、`SAE_BOOTSTRAP.md`、`README.md`、`README.zh-CN.md`、`CHANGELOG.md`、`protocols/`、`workflows/`、`templates/`、`docs/`（含架构图）、`examples/`、`i18n/zh-CN/` 作为**完整的轻量文档快照**复制到项目 `.sae/`。不复制并执行 `.github/workflows/`，也不混用不同 commit；不要只留外部链接。
+3. 从**同一个固定的母仓库 commit**，把 `AGENTS.md`、`SAE_BOOTSTRAP.md`、`README.md`、`README.zh-CN.md`、`CHANGELOG.md`、`protocols/`、`workflows/`、`templates/`、`docs/`（含架构图）、`examples/`、`i18n/zh-CN/`、`governance/`（含中文镜像）作为**完整的轻量文档快照**复制到项目 `.sae/`。不复制并执行 `.github/workflows/`，也不混用不同 commit；不要只留外部链接。
 4. 确认 Codex 实际读取项目内的 AGENTS，GPT 通过 GitHub 工具显式读取相应文件。
 5. 保留已有内容，在**新分支 + PR** 中提出变更。
 
@@ -75,3 +75,7 @@
 ## Colab 三步操作（现行规范）
 
 科学家使用**三个独立 Notebook 步骤**：安装固定 SHA、运行不写 GitHub 的 Benchmark、审核后**按需单独上传报告**。Colab Secrets 已采用名称 **`GITHUB_TOKEN`**；Codex 须验证 Publisher 子进程读取密钥或提供一个 Python 上传 Cell 的安全环境变量传递。具体遵循 [现行三步协议](workflows/COLAB_TWO_COMMAND.md)（历史文件名保留以免破坏链接），Benchmark 默认不再含 `--publish`。旧版“两行”描述不再适用；未实现/验收前不得称其可运行。
+
+## 治理快照与仓库逐项授权
+
+固定版本 `.sae/` 文档快照还必须包含 `governance/` 及其 `i18n/zh-CN/governance/` 中文镜像。算法项目根 `AGENTS.md` 应指向 `.sae/governance/STANDING_AUTHORIZATION.md`，并明确**复制治理协议不代表算法仓库已获得年度合并权限**。新算法仓库需科学家明确指定仓库并授权、再通过科学家审查的 PR 加入 Framework **当前**[登记表](../../governance/STANDING_AUTHORIZATION.md)，Bootstrap 不得自行创建授权、扩张范围或期限。复制后检查相对路径，不启用 GitHub Actions。

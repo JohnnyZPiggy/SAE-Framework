@@ -16,7 +16,7 @@
 
 ## 职责与权限
 - **Scientist（人类科学家）：** 拥有研究问题、科学判断、Colab 实验执行和最终决策权。
-- **GPT / Architect：** 负责数学形式化、算法规格、派发任务、技术审查和验收；合并需要具体授权及可用工具。
+- **GPT / Architect：** 负责数学形式化、算法规格、派发任务、技术审查和验收；合并需要有效的单次批准或现行年度常设授权，并核实真实工具权限。
 - **GPT / Mentor：** 引导数学推导、数值稳定性、性能分析及实验解释；不代替科学家的独立判断。
 - **Codex / Engineer：** 负责 `.py` 模块、CLI、CPU 测试、Benchmark、维护和 PR；不得自我批准或擅自合并。
 - **GitHub：** 保存任务、版本、PR 和简洁实验报告；**Colab：** 由科学家运行；**Drive：** 仅 Notebook 临时目录，**不承担同步**。
@@ -65,3 +65,7 @@
 ## Colab 三步操作（现行规范）
 
 科学家使用**三个独立 Notebook 步骤**：安装固定 SHA、运行不写 GitHub 的 Benchmark、审核后**按需单独上传报告**。Colab Secrets 已采用名称 **`GITHUB_TOKEN`**；Codex 须验证 Publisher 子进程读取密钥或提供一个 Python 上传 Cell 的安全环境变量传递。具体遵循 [现行三步协议](workflows/COLAB_TWO_COMMAND.md)（历史文件名保留以免破坏链接），Benchmark 默认不再含 `--publish`。旧版“两行”描述不再适用；未实现/验收前不得称其可运行。
+
+## 年度有条件常设合并授权（2026-10-19—2027-10-18）
+
+科学家已授权 GPT 总架构师在**用户明确触发、有边界**的工作周期中，按 [年度合并授权](governance/STANDING_AUTHORIZATION.md) 审核、合并符合要求的 PR。初始仅登记 `JohnnyZPiggy/SAE-Framework`；其他算法仓库必须由科学家**逐个明确授权并登记**，复制固定协议不等于授权。T1 日常文档等经审核可合并；T2 算法工程须真实数学、CPU 与按需 GPU 验收证据；T3 科学目标、权限、安全、许可、破坏性行为和授权修改仍需针对 PR 的新批准。每次 Merge Gate 留审计、校验精确 head SHA、Squash Merge 并核对成功状态。2027-10-19 00:00 UTC 自动失效；可随时撤销，不赋予后台运行或新工具权限。

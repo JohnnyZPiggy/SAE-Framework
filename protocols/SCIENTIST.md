@@ -40,3 +40,7 @@ At the end of each substantive work cycle, follow the [Next-Action Protocol](../
 ## Role recovery and integrity
 
 Before each substantive work cycle, apply [Role Recovery & Integrity](ROLE_RECOVERY.md): restore the explicitly assigned role, read pinned project rules and live GitHub evidence, verify phase and actual tool permissions, and stop on role mismatch rather than silently changing identity. Keep the existing Next-Action handoff at the end.
+
+## Scientist-reserved authority and revocation
+
+The Scientist has conditionally delegated routine and evidence-backed engineering **PR merges** to GPT Architect for 2026-10-19 through 2027-10-18 UTC, exclusively in registered and explicitly authorized repositories. See [Standing Merge Authorization](../governance/STANDING_AUTHORIZATION.md). The Scientist keeps **T3** authority: scientific assumptions and research acceptance, governance/scope/expiry changes, security/permissions, destructive actions, licensing/release and intentional publication of experimental data. A T3 PR needs new, explicit, PR-specific approval; this delegation is revocable immediately by the Scientist, and no new repo is enrolled automatically. Colab execution and GPU scientific signoff remain Scientist-owned.
