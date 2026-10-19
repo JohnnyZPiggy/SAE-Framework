@@ -124,3 +124,7 @@ Before Codex implementation dispatch, Architect performs a bounded [Ecosystem Re
 ## Colab three-step update (current contract)
 
 The Scientist now uses **three independent notebook steps**: pinned-SHA install, packaged benchmark (no GitHub writes), then **optional explicit report upload** after reviewing results. The Colab Secret is named **`GITHUB_TOKEN`**; Codex must test Publisher subprocess Secret access or provide the secure single-Python-cell environment bridge. Update all implementations and tests to follow [the current three-step contract](workflows/COLAB_TWO_COMMAND.md) (historical filename retained for link stability). No `--publish` in the benchmark default. This supersedes older two-command descriptions above; it is a target until implemented and tested.
+
+## Scientist's annual, scoped Architect merge delegation
+
+From **2026-10-19 through 2027-10-18 (UTC)**, GPT Chief Architect can independently review and merge **qualified, evidence-backed T1/T2 PRs** in explicitly registered, Scientist-authorized repositories during user-triggered work cycles. The **initial allowlist contains only `JohnnyZPiggy/SAE-Framework`**. T3 scientific/governance/security/licensing/destructive changes always need PR-specific Scientist approval; the Architect must audit every PR and cannot auto-merge all branches indiscriminately. See the [Standing Merge Authorization](governance/STANDING_AUTHORIZATION.md); Codex still never self-merges. This policy cannot override GitHub permissions or start background work, and automatically expires on 2027-10-19 UTC.

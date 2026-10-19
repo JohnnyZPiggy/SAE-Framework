@@ -27,7 +27,7 @@ The Scientist-reviewed mathematical study, the Architect/Codex engineering recor
 3. **Engineer implements** on `feat/<issue-number>-<slug>` and opens PR with `Closes #N` only if issue is truly satisfied. For GPU-gated work prefer `Refs #N` until GPU validation.
 4. **Architect reviews** diff + real CPU evidence. If accepted provisionally, move to experiment and provide exact candidate SHA.
 5. **Scientist runs Colab** with pinned candidate SHA; post experiment report PR/comment. If failed, return to Engineer with a specific reproducible failure case.
-6. **Architect accepts/merges** with explicit authorization and evidence; update Issue and next task.
+6. **Architect accepts/merges** with applicable single-PR authorization or a valid standing delegation, plus evidence; update Issue and next task.
 7. **Mentor may summarize** a learning insight, but learning never replaces engineering checks.
 
 ## State consistency
@@ -43,3 +43,7 @@ At the end of each substantive work cycle, follow the [Next-Action Protocol](NEX
 ## Role recovery and integrity
 
 Before each substantive work cycle, apply [Role Recovery & Integrity](ROLE_RECOVERY.md): restore the explicitly assigned role, read pinned project rules and live GitHub evidence, verify phase and actual tool permissions, and stop on role mismatch rather than silently changing identity. Keep the existing Next-Action handoff at the end.
+
+## Standing authorization at the Architect merge step
+
+The Architect may use the time-bound [Standing Merge Authorization](../governance/STANDING_AUTHORIZATION.md) **instead of asking for one-off approval** for eligible T1/T2 PRs, but **only** in the exact registered and Scientist-authorized repositories. Each PR independently requires the full Merge Gate, evidence, a **pre-merge PR audit**, and verified squash merge (exact reviewed head SHA). T3 science/governance/security/licensing/destructive PRs still require fresh, PR-specific Scientist approval. Algorithm project adoption does not automatically grant permission. Code PRs that have only CPU evidence can merge if that PR makes no unverified GPU claims and GPU is not an acceptance gate; record `GPU_NOT_RUN`. Codex always leaves implementation PRs unmerged. No background auto-merging or branch sweeping.

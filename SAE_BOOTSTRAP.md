@@ -24,7 +24,7 @@ The pinned SAE snapshot must include [research pipeline](workflows/RESEARCH_PIPE
 ## Phase 1 — Install a pinned policy snapshot
 1. Write project-root `AGENTS.md` (use `examples/project/AGENTS.md` as a starting point).
 2. Write project-root `sae.yaml` (use `examples/project/sae.yaml`) with target, roles, no-Actions policy and a **real SHA**.
-3. Copy a self-contained **documentation snapshot** from **one immutable framework revision** into `.sae/`: `AGENTS.md`, `SAE_BOOTSTRAP.md`, `README.md`, `README.zh-CN.md`, `CHANGELOG.md`, `protocols/`, `workflows/`, `templates/`, `docs/` (including figures), `examples/` and `i18n/zh-CN/`. Keep relative links working; do **not** install `.github/workflows/` or treat the snapshot as a runtime. Avoid copying an unversioned mix of folders. Do not simply leave external links.
+3. Copy a self-contained **documentation snapshot** from **one immutable framework revision** into `.sae/`: `AGENTS.md`, `SAE_BOOTSTRAP.md`, `README.md`, `README.zh-CN.md`, `CHANGELOG.md`, `protocols/`, `workflows/`, `templates/`, `docs/` (including figures), `examples/` and `i18n/zh-CN/`, including `governance/` and its Chinese mirror. Keep relative links working; do **not** install `.github/workflows/` or treat the snapshot as a runtime. Avoid copying an unversioned mix of folders. Do not simply leave external links.
 4. Ensure agent sessions actually open the root `AGENTS.md` and their assigned `.sae/protocols/*.md`. Codex discovers in-repo AGENTS rules; GPT must be explicitly directed to read them through its available GitHub tools.
 5. Preserve all pre-existing content. Stage additions/changes on a **new branch and PR**.
 
@@ -76,3 +76,7 @@ New project `.sae/workflows/` snapshots must also pin [ECOSYSTEM_REVIEW.md](work
 ## Colab three-step update (current contract)
 
 The Scientist now uses **three independent notebook steps**: pinned-SHA install, packaged benchmark (no GitHub writes), then **optional explicit report upload** after reviewing results. The Colab Secret is named **`GITHUB_TOKEN`**; Codex must test Publisher subprocess Secret access or provide the secure single-Python-cell environment bridge. Update all implementations and tests to follow [the current three-step contract](workflows/COLAB_TWO_COMMAND.md) (historical filename retained for link stability). No `--publish` in the benchmark default. This supersedes older two-command descriptions above; it is a target until implemented and tested.
+
+## Governance snapshot and repo-specific merge permission
+
+Include `governance/` and its `i18n/zh-CN/governance/` mirror in the **pinned, self-contained** `.sae/` policy snapshot. Project `AGENTS.md` should point to `.sae/governance/STANDING_AUTHORIZATION.md` and explicitly say **copying a governance policy does not enroll the algorithm repository**. Authorization of any new project to accept autonomous GPT merges requires the Scientist's separate, exact-repository grant and a Scientist-approved registration in the **current Framework** [allowlist](governance/STANDING_AUTHORIZATION.md). Bootstrap must not create that consent, change dates/scope, or grant permissions automatically. Verify relative links after copying. No GitHub Actions.

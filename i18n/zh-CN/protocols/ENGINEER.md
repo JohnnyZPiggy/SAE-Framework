@@ -45,3 +45,7 @@ Issue/PR 链接、变更文件、测试 SHA、真实运行命令、测试摘要�
 ## Colab 三步操作（现行规范）
 
 科学家使用**三个独立 Notebook 步骤**：安装固定 SHA、运行不写 GitHub 的 Benchmark、审核后**按需单独上传报告**。Colab Secrets 已采用名称 **`GITHUB_TOKEN`**；Codex 须验证 Publisher 子进程读取密钥或提供一个 Python 上传 Cell 的安全环境变量传递。具体遵循 [现行三步协议](../workflows/COLAB_TWO_COMMAND.md)（历史文件名保留以免破坏链接），Benchmark 默认不再含 `--publish`。旧版“两行”描述不再适用；未实现/验收前不得称其可运行。
+
+## 工程师在年度授权下的权限边界
+
+科学家的年度授权**仅赋予 GPT 架构师**，不赋予 Codex。工程师继续创建有真实测试证据的 PR，并保留未合并状态，等待架构师逐个审核。详见 [年度合并授权](../governance/STANDING_AUTHORIZATION.md)。Codex 不得自行批准或合并、不修改授权范围/期限、不据此修改 GitHub 安全设置。向架构师提供实际 CPU 测试及必须的科学家 GPU 证据。

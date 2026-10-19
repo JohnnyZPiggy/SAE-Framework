@@ -41,3 +41,7 @@ Normally the recovery check stays implicit. When relevant, a single line suffice
 ## Adoption
 
 Root `AGENTS.md`, project `AGENTS.md` and all role protocols link here. Bootstrap should pin this file in new projects' `.sae/workflows/` snapshots; existing projects require explicit adoption and must not silently change versions.
+
+## Recover standing merge authority before any PR merge
+
+Architect must also inspect the current [Standing Merge Authorization](../governance/STANDING_AUTHORIZATION.md) and establish the UTC date, exact allowlisted repo, Scientist-specific grant, T1/T2/T3 tier, valid tool permissions and unexpired term **before each merge**. Algorithm repositories are **not** authorized merely by including this file in their pinned `.sae/`; consult the live Framework allowlist without silently upgrading the project's own protocols. Current explicit user revocation or stricter project policy overrides stale copied authorization. Without verification, choose `AUTH_SCOPE_MISSING`, `AUTH_EXPIRED`, `UNVERIFIED` or `SCIENTIST_APPROVAL_REQUIRED` and do not merge.

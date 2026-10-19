@@ -44,3 +44,7 @@ Before each substantive role cycle, follow the pinned [Role Recovery & Integrity
 ## Ecosystem review at architecture time
 
 Before Codex implementation dispatch, Architect follows the pinned [Ecosystem Review](.sae/workflows/ECOSYSTEM_REVIEW.md): review native PyTorch, third-party and reference implementations; document a concise Build-vs-Reuse decision in the engineering report, favoring CPU-first portability and limited dependencies. No automatic upgrades to pinned SAE snapshots.
+
+## Standing merge authorization: no automatic enrollment
+
+Read the pinned [governance policy](.sae/governance/STANDING_AUTHORIZATION.md) for T1/T2/T3 review responsibilities, **but this project is NOT thereby merge-authorized**. Before GPT Architect merges any PR in this project, verify that the Human Scientist explicitly authorized **this exact `<OWNER>/<PROJECT>`**, and that it is on the **live Framework** [Standing Authorization register](https://github.com/JohnnyZPiggy/SAE-Framework/blob/main/governance/STANDING_AUTHORIZATION.md), within the active UTC term, with real GitHub tool access. Respect stricter project controls. When not verified, stop for Scientist approval. Codex never self-merges.
