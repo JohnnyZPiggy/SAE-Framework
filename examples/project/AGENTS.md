@@ -20,4 +20,4 @@ New algorithm/major redesign: Scientist-reviewed [mathematical study](.sae/workf
 ## Role commands
 `推进架构师工作` / `推进导师工作` / `推进工程师工作`.
 
-Apply [Role Recovery](.sae/workflows/ROLE_RECOVERY.md) before work and [Next Action](.sae/workflows/NEXT_ACTION.md) afterward. Record exact source SHA, actual PASS/FAIL/NOT RUN/BLOCKED and one next action.
+Apply [Role Recovery](.sae/workflows/ROLE_RECOVERY.md) before work. Before the final reply, apply the pinned [Next-Action Completion Gate](.sae/workflows/NEXT_ACTION.md): record actual source SHA and PASS/FAIL/NOT RUN/BLOCKED evidence, end with one complete copyable handoff command when feasible, and give at most two meaningful alternatives. Use genuine interactive controls only where supported; otherwise use a separate plain-text code block for each command. Report DONE/BLOCKED/WAITING_FOR_SCIENTIST honestly when no action exists. Never silently replace this project's pinned `.sae/` snapshot.

@@ -38,4 +38,4 @@ User instructions/authorization → project-specific `AGENTS.md` → pinned SAE 
 - [Role Recovery](workflows/ROLE_RECOVERY.md) and [Next Action](workflows/NEXT_ACTION.md) — cycle handoff
 - [Bootstrap](SAE_BOOTSTRAP.md) — pinned, idempotent project adoption
 
-Adopted projects keep project-specific `AGENTS.md`, `sae.yaml` and an immutable pinned SAE snapshot. Each substantive cycle ends with verified actions, evidence, blockers and one recommended next action.
+Adopted projects keep project-specific `AGENTS.md`, `sae.yaml` and an immutable pinned SAE snapshot. Before the final reply of every substantive cycle, apply the [Next-Action Completion Gate](workflows/NEXT_ACTION.md): verify status/evidence/blockers and end with one exact, copyable next-step command when feasible (up to two meaningful alternatives). Provide real interactive controls only when supported and retain a plain-text fallback. Never silently upgrade pinned project snapshots.
