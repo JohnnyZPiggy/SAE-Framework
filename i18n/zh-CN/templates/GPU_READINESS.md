@@ -17,7 +17,7 @@
 | CPU Benchmark 与误差容差 | | |
 | 干净环境、固定 SHA 的 pip 安装和打包 CLI | | |
 | GPU 默认 workload、设备失败和报告设计 | | |
-| 两条 Colab 命令及被测源码 SHA | | |
+| Codex 操作 Colab CLI 的计划、三个独立阶段及被测源码 SHA | | |
 
 **豁免（理由 + 架构师批准）：** <无或详情>  
 **尚未解决：** <无或 Issue 链接>  
