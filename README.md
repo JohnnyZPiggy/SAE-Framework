@@ -4,9 +4,9 @@
 
 **Scientist–Architect–Engineer** is a GitHub-first collaboration framework for mathematical algorithms, PyTorch scientific computing and ML engineering. It pursues **two equal goals**: reliable low-cost engineering and the Scientist's deeper mathematical/numerical/ML-systems learning.
 
-![SAE V3.2 architecture illustration (historical; role labels may be outdated)](docs/figures/SAE_Framework_V3.2.en.svg)
+![SAE V3.3 architecture: Scientist, GPT Architect/Mentor, Codex, GitHub and Colab CLI](docs/figures/SAE_Framework_V3.3.en.svg)
 
-*The illustration is a historical V3.2 reference and does not yet depict V3.3's Codex-operated Colab workflow. See the role protocols for current responsibilities.*
+*The [editable SVG](docs/figures/SAE_Framework_V3.3.en.svg) depicts V3.3 responsibilities; CPU/TPU/Publisher verification status is documented below.*
 
 ## Who does what?
 - **Scientist (human):** selects research problems, approves mathematical/scientific conclusions and compute hardware/session/time/quota limits; no routine notebook operation.
@@ -38,4 +38,4 @@ The Scientist reported one successful Codex → WSL2 → Colab CLI T4 GPU smoke 
 ## Documentation
 [Architect](protocols/ARCHITECT.md) · [Engineer](protocols/ENGINEER.md) · [Mentor](protocols/MENTOR.md) · [Scientist](protocols/SCIENTIST.md) · [Role Recovery](workflows/ROLE_RECOVERY.md) · [Changelog](CHANGELOG.md) · [Chinese index](i18n/zh-CN/README.md)
 
-**Version:** V3.3 documentation migration in progress; existing pinned V3.2 project snapshots remain unchanged until explicitly upgraded. **License:** no repository license selected; public visibility alone is not a reuse grant.
+**Version:** V3.3 architecture and protocol; existing pinned V3.2 project snapshots remain unchanged until explicitly upgraded. **License:** no repository license selected; public visibility alone is not a reuse grant.

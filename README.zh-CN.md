@@ -4,9 +4,9 @@
 
 **Scientist–Architect–Engineer** 是面向数学算法、PyTorch 科学计算和 ML 工程的 GitHub-first 多 Agent 协作框架。两个**同等重要**的目标：**工程生产力**（可靠、可复现、低成本）与**科学学习**（数学、数值计算、PyTorch 和异构计算能力）。
 
-![V3.2 历史架构图（角色描述尚未更新为 V3.3）](docs/figures/SAE_Framework_V3.2.zh-CN.svg)
+![SAE V3.3 架构：Scientist、GPT、Codex、GitHub 与 Colab CLI](docs/figures/SAE_Framework_V3.3.en.svg)
 
-*图仍为 V3.2 历史版本；Colab 职责以 V3.3 角色协议为准。*
+*新版 [V3.3 SVG 架构图](docs/figures/SAE_Framework_V3.3.en.svg) 体现 Codex 执行获授权的 Colab CPU/GPU/TPU 实验；实际硬件能力仍须单独验证。*
 
 ## 角色
 - **Scientist（人类）：** 决定研究方向、数学/科学结论，预先批准计算设备、会话、时长与额度；不再日常手动操作 Notebook。
