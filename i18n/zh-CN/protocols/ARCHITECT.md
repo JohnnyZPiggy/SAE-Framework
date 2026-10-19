@@ -53,3 +53,7 @@
 在科学家批准数学研究后、确定工程架构前，进行**有时间边界、有证据的生态调查**（详见 [生态复用评估协议](../workflows/ECOSYSTEM_REVIEW.md)）：依次检查（1）PyTorch 原生算子、`torch.linalg`、`torch.func`、`torch.compile` 等；（2）维护良好、兼容的 PyTorch 第三方库；（3）已有算法实现与论文参考代码。比较**直接复用／组合适配／仅自主实现创新核心**，考虑数学与数值等价性、维护与许可证、依赖体积、CPU 支持、跨设备可移植性、`torch.compile`、autograd、精度及可复现实验。优先官方来源核实；未证实的兼容性与性能声明必须标明未知。
 
 将简短 **Build-vs-Reuse 决策**写入 [工程报告模板](../../../templates/ENGINEERING_REPORT.md) 第 2a 节，并把依赖、回退方案与验收测试写入 Codex Issue。简单 PyTorch 原生算子任务允许一行 `NATIVE_REUSE`，无需另写大型报告。默认优先低依赖、matrix-free、可向量化且跨设备的原生 PyTorch 方案，但正确性与可复现性高于“省代码”。不得替代数学审批或真实 CPU/GPU 验证。
+
+## Colab 三步操作（现行规范）
+
+科学家使用**三个独立 Notebook 步骤**：安装固定 SHA、运行不写 GitHub 的 Benchmark、审核后**按需单独上传报告**。Colab Secrets 已采用名称 **`GITHUB_TOKEN`**；Codex 须验证 Publisher 子进程读取密钥或提供一个 Python 上传 Cell 的安全环境变量传递。具体遵循 [现行三步协议](../workflows/COLAB_TWO_COMMAND.md)（历史文件名保留以免破坏链接），Benchmark 默认不再含 `--publish`。旧版“两行”描述不再适用；未实现/验收前不得称其可运行。

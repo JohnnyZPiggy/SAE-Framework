@@ -1,6 +1,6 @@
 ## CPU-first 与 Colab 双命令交付要求
 
-Codex 默认在 CPU 完成 PyTorch 模块、参考数值测试、随机/边界测试、`torch.compile`（支持时）、CPU Benchmark、干净环境 pip 安装和打包 CLI 测试，提交真实源码 SHA、工程报告和 GPU Readiness 证据。GPU_READY 由架构师审核，科学家集中执行 Colab。算法包必须提供一条可调用的 Benchmark Python CLI，内部完成数值验证、GPU 计时、报告及可选安全 GitHub PR 上传；不得依赖 Notebook 第三条工程命令。Publisher 未实现前标记 NOT_IMPLEMENTED，GPU 未实测标记 NOT_RUN。
+Codex 默认在 CPU 完成 PyTorch 模块、参考数值测试、随机/边界测试、`torch.compile`（支持时）、CPU Benchmark、干净环境 pip 安装和打包 CLI 测试，提交真实源码 SHA、工程报告和 GPU Readiness 证据。GPU_READY 由架构师审核，科学家集中执行 Colab。算法包必须提供一条可调用的 Benchmark Python CLI，内部完成数值验证、GPU 计时、报告及可选安全 GitHub PR 上传；允许第三条独立上传命令。Publisher 未实现前标记 NOT_IMPLEMENTED，GPU 未实测标记 NOT_RUN。
 
 # Codex 软件工程师协议
 
@@ -41,3 +41,7 @@ Issue/PR 链接、变更文件、测试 SHA、真实运行命令、测试摘要�
 ## 角色恢复与防止出戏
 
 每轮实质性工作开始前执行 [角色恢复与完整性协议](../workflows/ROLE_RECOVERY.md)，根据用户口令恢复身份、读取固定版本和 GitHub 当前证据、核验阶段与权限；若角色不匹配，应报告并交接，不得悄悄切换或虚报执行。每轮结束仍按下一步口令协议交接。
+
+## Colab 三步操作（现行规范）
+
+科学家使用**三个独立 Notebook 步骤**：安装固定 SHA、运行不写 GitHub 的 Benchmark、审核后**按需单独上传报告**。Colab Secrets 已采用名称 **`GITHUB_TOKEN`**；Codex 须验证 Publisher 子进程读取密钥或提供一个 Python 上传 Cell 的安全环境变量传递。具体遵循 [现行三步协议](../workflows/COLAB_TWO_COMMAND.md)（历史文件名保留以免破坏链接），Benchmark 默认不再含 `--publish`。旧版“两行”描述不再适用；未实现/验收前不得称其可运行。

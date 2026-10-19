@@ -105,3 +105,7 @@
 ## 优先复用成熟生态
 
 架构师在向 Codex 派单前，依照 [生态感知型架构评估](i18n/zh-CN/workflows/ECOSYSTEM_REVIEW.md) 快速调查 PyTorch 原生功能、相关工具库和已有参考实现，在既有工程报告中记录简短 Build-vs-Reuse 决策。坚持 CPU-first、跨设备和低依赖，不增加单独报告。
+
+## Colab 三步操作（现行规范）
+
+科学家使用**三个独立 Notebook 步骤**：安装固定 SHA、运行不写 GitHub 的 Benchmark、审核后**按需单独上传报告**。Colab Secrets 已采用名称 **`GITHUB_TOKEN`**；Codex 须验证 Publisher 子进程读取密钥或提供一个 Python 上传 Cell 的安全环境变量传递。具体遵循 [现行三步协议](i18n/zh-CN/workflows/COLAB_TWO_COMMAND.md)（历史文件名保留以免破坏链接），Benchmark 默认不再含 `--publish`。旧版“两行”描述不再适用；未实现/验收前不得称其可运行。

@@ -1,65 +1,57 @@
-# Two-Command Colab Execution Contract
+# Three-Step Colab Contract — Install, Benchmark, Publish
 
-> Language: **English** | [简体中文](../i18n/zh-CN/workflows/COLAB_TWO_COMMAND.md)
+> Language: **English** | [简体中文](../i18n/zh-CN/workflows/COLAB_TWO_COMMAND.md)  
+> Compatibility note: this file keeps its historical path so existing links and pinned snapshots do not break. The current contract is **three independent steps**, not two commands.
 
-## Goal and scope
+## Scientist's approved notebook workflow
 
-**User experience is strictly two executable Colab notebook lines after one-time GPU/runtime and GitHub credential setup.** The first installs a **specific immutable algorithm commit** from GitHub; the second runs the packaged benchmark and, if explicitly requested and authorized, publishes a validated, compact experiment report to a GitHub PR.
+After selecting a GPU runtime and enabling a Colab Secret named **`GITHUB_TOKEN`** (one-time), the notebook has **three separate execution cells**:
 
 ```python
-!pip install "git+https://github.com/OWNER/REPO.git@<COMMIT_SHA>"
-!python -m <package>.benchmarks.run --device cuda --publish
+!pip install "git+https://github.com/OWNER/REPO.git@<EXACT_SOURCE_COMMIT_SHA>"
+!python -m <package>.benchmarks.run --device cuda --out reports/gpu/<run-id>
+!python -m <package>.benchmarks.publish --report-dir reports/gpu/<run-id>
 ```
 
-**These are interface examples, not commands currently guaranteed to exist.** Architect must replace repository, full commit SHA, importable package name and benchmark module with **real, reviewed** values. The package must include its benchmark modules when installed via pip. A GitHub URL containing only a branch or floating tag is inadequate for reproducible PR validation.
+These are **target CLI examples, not evidence of currently implemented commands**. The Architect/Codex must supply a real importable package, pinned 40-character source SHA and deterministic run path (or the explicit path returned by the benchmark). The third command is **optional**: the Scientist inspects the generated accuracy/performance report first and runs publish only if they choose to upload. Benchmark runs with **no GitHub token requirement** and **no GitHub writes**. The explicit publish command authorizes creating a sanitized report **branch and PR**, not merging to main. Do not mix publishing into the benchmark command or require `--publish` in the default path.
 
-`--publish` constitutes the Scientist's **explicit per-run request to submit a report PR**. Do not equate that with approving or merging the PR. Without `--publish`, benchmark runs locally without GitHub writes.
+## Secure Colab Secret bridge — crucial subprocess rule
 
-## Responsibility shifted out of the notebook
+The Scientist has named the **Colab Secrets** entry `GITHUB_TOKEN`. It is a *name*, not a token value; never print, copy or commit the secret. Give the notebook access to this secret in Colab's key sidebar.
 
-**GPT Chief Architect — design before delegation**
-- Define one stable `python -m <package>.benchmarks.run` CLI contract, `--device cpu|cuda`, `--publish`, meaningful defaults/presets and optional overrides.
-- Specify mathematical oracle, error tolerances and comparability, workload sizes, seeds, dtype, warmup/repetitions, compilation timing, synchronization, output schema and minimal safe upload payload.
-- Write Codex Issue acceptance criteria that **a clean pip install and one CLI command** cover setup, correctness, benchmark, report generation and requested publication without additional hand-written notebook code.
-- Design the thin Notebook as two command cells with short human-readable Markdown, not a shell/Python engineering script.
+**Colab Secrets are not guaranteed to be inherited as process environment variables by `!python` subprocesses.** Codex must implement and test a safe bridge for the publish step:
 
-**Codex Engineer — implement and test locally**
-- Package `pyproject.toml` so `pip install "git+https://...@<sha>"` installs the benchmark entrypoint, data/preset resources and the Python modules it needs; do not rely on a cloned working tree, Drive mount, Notebook `%cd` or uninstalled `benchmarks/`.
-- Keep separate, testable `.py` modules for numerical kernels, oracle/correctness, timed benchmark, hardware metadata, report serialization and GitHub publisher. One *orchestrating* CLI calls them in order.
-- Provide default parameters that require no additional configuration cell; advanced `--dtype`, `--seed`, `--sizes`, `--preset`, `--out` may be supported without changing the two-command baseline.
-- In the execution CLI: **preflight device/import/SHA → correctness against oracle → warmup and synchronized timing → write manifest/correctness/benchmark/summary → validate/sanitize → optional publish**. If correctness fails, do **not** claim speedup; preserve diagnostic results.
-- Auto-detect the actual installed source commit (e.g. from pip VCS `direct_url.json`) and compare with requested/recorded source SHA; do not invent one from repository `main` or from a report-branch commit.
-- Test packaging/install from a clean CPU environment, `python -m` entrypoint, subprocess exit statuses, missing GPU, wrong SHA, precision failure, publication idempotency, restricted token and GitHub API failures using mocks. Do **not** claim GPU tested locally when only CPU was available.
+- Preferred *only if proven in a real Colab subprocess*: the packaged publisher retrieves `google.colab.userdata.get("GITHUB_TOKEN")` securely at runtime, without echoing the value.
+- **Required fallback** if subprocess retrieval is unavailable: use one small Python upload cell (still the **third step**) to inject the Secret into the child process environment **without shell interpolation**:
 
-**Human Scientist — own actual Colab execution**
-- One-time steps outside the two command cells: choose Colab GPU runtime; make an approved minimum-scope GitHub credential available via **Colab Secrets** to the Publisher when publishing.
-- Run the two commands and inspect status, numerical correctness, environment, timing statistics and any **verified experiment PR URL**.
-- Review the proposed public report before final merge. Drive is an optional Notebook/temporary workspace only; it is not a data exchange channel.
+```python
+from google.colab import userdata
+import os, subprocess
+subprocess.run(
+    ["python", "-m", "<package>.benchmarks.publish", "--report-dir", "reports/gpu/<run-id>"],
+    env={**os.environ, "GITHUB_TOKEN": userdata.get("GITHUB_TOKEN")},
+    check=True,
+)
+```
 
-**GPT Scientific Mentor** explains the relevant math/accuracy/performance conclusions from the GitHub report and can return to structure research. Mentor does not create fake benchmark results.
+Never use `!export GITHUB_TOKEN=...`, `!echo`, token literals in shell command strings, printed environment dumps, or tokens in URL arguments. Treat the multiline fallback as **one publication cell**, not additional user-operated workflow stages. Do not promise the shorter `!python` line works until actually verified.
 
-## Publication safety and exact behavior
+## Clear separation and report contract
 
-- `--publish` can create an **experiment branch and PR only**, not push directly to protected `main` or merge. Prefer a draft PR if supported; the Scientist must approve publication scope and review before merge. For a public repo, even a draft PR is visible: **publish only pre-approved, sanitized, small allowlisted output files**.
-- Support Colab Secrets retrieval **inside the tested Python Publisher module**, or accept a scoped environment credential. Never require a notebook cell containing a token, never echo it and never transmit to another host. Confirm Colab-secret access actually works **from the CLI subprocess**, not merely inside an interactive cell.
-- Define explicit outcomes: `BENCHMARK_PASS / BENCHMARK_FAIL / NOT_RUN` and independently `PUBLISHED / PUBLISH_BLOCKED / PUBLISH_FAILED / NOT_REQUESTED`; GitHub PR URL is reported as published only after API confirmation.
-- No token or unverified Publisher: complete the local benchmark if possible, keep the reports locally and show `PUBLISH_BLOCKED` or `PUBLISH_FAILED` with actionable next steps. No third user-run publishing command is *required by the final design*, but **until Publisher is implemented** publishing remains manual.
-- If CUDA is unavailable, mark GPU benchmark `NOT_RUN` with a clear error; never silently benchmark CPU while labeling it GPU. If installing a VCS source fails, do not proceed and do not claim tested SHA.
-- If a numerical test fails or configuration is invalid, do not publish a misleading performance success; return a nonzero status and preserve the diagnostic files. If failure reports are published, status must remain FAIL.
-- No GitHub Actions, provider-specific CUDA kernels as a mandatory user API, Colab Drive sync, or notebook-embedded benchmark loops.
+- **Install:** fail fast if the exact candidate source commit cannot be installed. A floating branch/tag is not a reproducible benchmark target.
+- **Benchmark:** preflight GPU/device and source SHA → oracle correctness → warmup/synchronized timings → write `manifest.json`, `correctness.json`, `benchmark.csv`, `summary.md` in a unique `reports/gpu/<run-id>/`. Never automatically publish or retry GPU experiments.
+- **Publish:** read exactly the Scientist-selected existing report directory; do **not rerun benchmarks**. Validate schema, tested SHA and allowlisted files; reject secrets/oversize/private data; create an idempotent experiment branch and GitHub PR. Never force-push, auto-merge, overwrite a prior run or push reports directly to main.
+- Record **separate states**: `BENCHMARK_PASS / BENCHMARK_FAIL / NOT_RUN` and `PUBLISHED / PUBLISH_FAILED / PUBLISH_BLOCKED / NOT_REQUESTED`. A failed correctness check is never described as a successful speedup, even if diagnostic reporting is intentionally authorized. A returned URL alone is not proof of PR creation until GitHub confirms it.
+- The publisher should require a **fine-grained token scoped to the chosen repository**, with the least permissions needed (typically repository Contents: read/write and Pull requests: read/write; Issues only if commenting is part of the approved workflow). A public repository's draft PR is still public. Keep the token private and rotate it if exposed.
 
-## Required reproducibility evidence
-- `manifest.json`: actual installed code SHA, runtime, Python/PyTorch/GPU, dtype, seed, preset/parameters, command, timing methodology, status and linked Issue/PR.
-- `correctness.json`: oracle, accuracy metrics, tolerance, failing cases, PASS/FAIL/NOT RUN.
-- `benchmark.csv`: same-workload measurements and units, synchronization/warmup/repeats, aggregation, compilation cost.
-- `summary.md`: measured facts, known limits, paths, SHA and publish status.
-- Preserve output from every run in unique `reports/gpu/<run-id>/` directories and do not overwrite previous runs or leak large datasets.
+## Responsibilities and acceptance
 
-## Acceptance gate for an algorithm project
+**Architect:** specify package/CLIs, run path, numerical oracle/tolerances, CPU/GPU presets, evidence schema, selected publish payload, failure propagation and GitHub rights in the Codex Issue. Align Notebook instructions to three steps; keep the benchmark independent of publication.
 
-1. **Codex CPU evidence:** `pip install` from a pinned Git SHA works from a clean environment; invoking packaged benchmark succeeds on CPU with small smoke workload; offline/mocked publication and failure cases pass.
-2. **Scientist Colab integration:** from a freshly restarted GPU runtime, the exact **two commands** work for a reviewed candidate SHA, validate accuracy before measuring, and produce truthful GPU environment/timings.
-3. **Publisher E2E only after implementation:** `--publish` works with a separately authorized GitHub credential and creates the **verified experiment PR**, without additional Notebook setup code. Before this passes, report `PUBLISH: NOT IMPLEMENTED`.
-4. **Review:** GPT Architect checks the real tested SHA, Issue/PR evidence, flags, failure propagation and no notebook logic leakage. Do not mark this requirement achieved merely because this protocol exists.
+**Codex:** implement and package the independent `benchmarks.run` and `benchmarks.publish` Python modules. Validate clean pinned-SHA pip install, CPU oracle/edge tests and CLI smoke runs; offline/mocked Publisher tests for token missing, refusal/permissions, retries/idempotence, invalid report and no unexpected network writes; then request Scientist's real Colab integration check. Never claim a GPU or Colab-secret subprocess test was run without evidence.
 
-See [GPU Experiment Protocol](GPU_EXPERIMENT.md) and [Example Notebook Contract](../examples/colab/README.md).
+**Scientist:** manually selects GPU, launches benchmark, checks numerical/performance evidence, then **optionally** runs the third upload cell with the Colab `GITHUB_TOKEN` Secret. Reviews the report PR before any merge.
+
+**Status until implemented/tested:** `PUBLISHER_NOT_IMPLEMENTED` or `PUBLISH_UNVERIFIED`; defining a protocol does not enable upload. No GitHub Actions, Drive report syncing, notebook numerical kernels or machine-specific mandatory CUDA implementation.
+
+See [GPU Experiment](GPU_EXPERIMENT.md) and [Thin Colab Example](../examples/colab/README.md).

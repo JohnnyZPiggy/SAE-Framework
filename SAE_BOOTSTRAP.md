@@ -72,3 +72,7 @@ Include [ROLE_RECOVERY.md](workflows/ROLE_RECOVERY.md) and its [Chinese mirror](
 ## Ecosystem Review in project snapshots
 
 New project `.sae/workflows/` snapshots must also pin [ECOSYSTEM_REVIEW.md](workflows/ECOSYSTEM_REVIEW.md), with its [Chinese mirror](i18n/zh-CN/workflows/ECOSYSTEM_REVIEW.md). Ensure the pinned Architect protocol and engineering report include the brief Build-vs-Reuse gate; verify relative links in the copied snapshot. Existing projects must opt into updates rather than silently upgrading.
+
+## Colab three-step update (current contract)
+
+The Scientist now uses **three independent notebook steps**: pinned-SHA install, packaged benchmark (no GitHub writes), then **optional explicit report upload** after reviewing results. The Colab Secret is named **`GITHUB_TOKEN`**; Codex must test Publisher subprocess Secret access or provide the secure single-Python-cell environment bridge. Update all implementations and tests to follow [the current three-step contract](workflows/COLAB_TWO_COMMAND.md) (historical filename retained for link stability). No `--publish` in the benchmark default. This supersedes older two-command descriptions above; it is a target until implemented and tested.

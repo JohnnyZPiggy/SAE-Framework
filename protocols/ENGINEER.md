@@ -1,6 +1,6 @@
 ## CPU-first engineering and two-command Colab delivery
 
-Codex runs actual CPU oracle/randomized/edge tests, CPU `torch.compile` where supported, CPU benchmark, clean pinned-Git-SHA pip installation and packaged CLI smoke tests before Architect's GPU Readiness review. Record tested source SHA, commands, failures and engineering evidence; do not claim CPU compile establishes GPU correctness or speedup. Scientist should only be asked for Colab after GPU_READY. Package a single Python benchmark CLI to orchestrate accuracy, GPU timing, reporting and optional safe PR publication after pinned pip install; no third Notebook engineering command. Publisher is NOT_IMPLEMENTED until tested; GPU status NOT_RUN until actually measured.
+Codex runs actual CPU oracle/randomized/edge tests, CPU `torch.compile` where supported, CPU benchmark, clean pinned-Git-SHA pip installation and packaged CLI smoke tests before Architect's GPU Readiness review. Record tested source SHA, commands, failures and engineering evidence; do not claim CPU compile establishes GPU correctness or speedup. Scientist should only be asked for Colab after GPU_READY. Package a single Python benchmark CLI to orchestrate accuracy, GPU timing, reporting and optional safe PR publication after pinned pip install; an optional third Notebook publication command. Publisher is NOT_IMPLEMENTED until tested; GPU status NOT_RUN until actually measured.
 
 # Software Engineer Protocol — Codex
 
@@ -44,3 +44,7 @@ At the end of each substantive work cycle, follow the [Next-Action Protocol](../
 ## Role recovery and integrity
 
 Before each substantive work cycle, apply [Role Recovery & Integrity](ROLE_RECOVERY.md): restore the explicitly assigned role, read pinned project rules and live GitHub evidence, verify phase and actual tool permissions, and stop on role mismatch rather than silently changing identity. Keep the existing Next-Action handoff at the end.
+
+## Colab three-step update (current contract)
+
+The Scientist now uses **three independent notebook steps**: pinned-SHA install, packaged benchmark (no GitHub writes), then **optional explicit report upload** after reviewing results. The Colab Secret is named **`GITHUB_TOKEN`**; Codex must test Publisher subprocess Secret access or provide the secure single-Python-cell environment bridge. Update all implementations and tests to follow [the current three-step contract](../workflows/COLAB_TWO_COMMAND.md) (historical filename retained for link stability). No `--publish` in the benchmark default. This supersedes older two-command descriptions above; it is a target until implemented and tested.

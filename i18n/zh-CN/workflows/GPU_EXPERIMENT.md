@@ -14,18 +14,17 @@
 
 **Drive 不是结果传输层。** Drive 只存 Notebook 或临时文件，实验共享由 GitHub PR 完成。
 
-## 两行命令的 Colab 使用界面（目标契约）
+## Colab 三步流程（现行目标）
 
-科学家在首次选择 GPU runtime 并配置好所需授权之后，每次 Notebook 的核心执行内容**只有两行**：
+固定 SHA 安装 → 独立 Benchmark → 可选独立上传。The Scientist reviews results before the third step.
 
 ```python
-!pip install "git+https://github.com/OWNER/REPO.git@<COMMIT_SHA>"
-!python -m <package>.benchmarks.run --device cuda --publish
+!pip install "git+https://github.com/OWNER/REPO.git@<EXACT_SOURCE_COMMIT_SHA>"
+!python -m <package>.benchmarks.run --device cuda --out reports/gpu/<run-id>
+!python -m <package>.benchmarks.publish --report-dir reports/gpu/<run-id>
 ```
 
-以上为**尚待 Codex 实现和测试的示例接口**。必须替换真实不可变 SHA、包名和已经打包的 benchmark 模块。详见 [双命令执行契约](COLAB_TWO_COMMAND.md)。
-
-原来“准备、设参、执行、发布”四阶段**保留在算法包的 Python 内部**，不再要求四个 Notebook Cell。GPT 总架构师提前规定 CLI、默认参数、数学正确性与计时、报告和发布验收；Codex 将它们封装、真实执行 CPU 检查和 mock 故障测试；科学家只在 Colab 操作两行并审核结果。Publisher 未实现/验收前仍需人工上传报告。
+Secret 名为 `GITHUB_TOKEN`。Publisher 必须实测子进程读取或采用[三步契约](COLAB_TWO_COMMAND.md)中的单 Cell 安全环境变量备用方案。Benchmark 不负责发布。这是尚待实现/验证的接口。
 
 ## 必须保存的轻量证据
 - `manifest.json`：run ID、UTC 时间、**被测源码 SHA**、关联 Issue/PR、设备与软件版本、随机种子、精度、完整命令、计时方法和执行状态。
@@ -35,7 +34,7 @@
 - 小图片可以入库；大张量、权重、冗长原始日志及任何秘密都不应公开提交。
 
 ## GitHub 发布流程
-1. 科学家使用 `--publish` **明确授权本次创建实验 PR**；Python Publisher 在上传前核查 schema、密钥和文件大小，仅允许安全白名单小文件。科学家在合并 PR 前复核结果。公开仓库中的 Draft PR 同样可能公开可见。
+1. 科学家执行独立 Publisher CLI **明确授权本次创建实验 PR**；Python Publisher 在上传前核查 schema、密钥和文件大小，仅允许安全白名单小文件。科学家在合并 PR 前复核结果。公开仓库中的 Draft PR 同样可能公开可见。
 2. 从指定基线创建独立 `experiment/<run-id>` 分支，只提交该次运行的不可变报告目录；禁止强制覆盖已有运行结果。
 3. 创建实验报告 PR，关联代码 PR 和 Issue，记录**真实被测源码 SHA**。报告自身的 commit 与被测代码 commit 是两个不同版本。
 4. 在相关 Issue/PR 添加已确认的报告链接；API 调用失败不得说“发布成功”。

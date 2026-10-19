@@ -120,3 +120,7 @@ Before each substantive work cycle, apply [Role Recovery & Integrity](workflows/
 ## Reuse before reinventing
 
 Before Codex implementation dispatch, Architect performs a bounded [Ecosystem Review](workflows/ECOSYSTEM_REVIEW.md) covering native PyTorch, relevant maintained libraries and upstream reference implementations, and records a concise Build-vs-Reuse decision in the engineering report. CPU first, portable, low-dependency, with license and compatibility evidence; no new standalone report.
+
+## Colab three-step update (current contract)
+
+The Scientist now uses **three independent notebook steps**: pinned-SHA install, packaged benchmark (no GitHub writes), then **optional explicit report upload** after reviewing results. The Colab Secret is named **`GITHUB_TOKEN`**; Codex must test Publisher subprocess Secret access or provide the secure single-Python-cell environment bridge. Update all implementations and tests to follow [the current three-step contract](workflows/COLAB_TWO_COMMAND.md) (historical filename retained for link stability). No `--publish` in the benchmark default. This supersedes older two-command descriptions above; it is a target until implemented and tested.
