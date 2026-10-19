@@ -76,6 +76,6 @@
 
 科学家使用**三个独立 Notebook 步骤**：安装固定 SHA、运行不写 GitHub 的 Benchmark、审核后**按需单独上传报告**。Colab Secrets 已采用名称 **`GITHUB_TOKEN`**；Codex 须验证 Publisher 子进程读取密钥或提供一个 Python 上传 Cell 的安全环境变量传递。具体遵循 [现行三步协议](workflows/COLAB_TWO_COMMAND.md)（历史文件名保留以免破坏链接），Benchmark 默认不再含 `--publish`。旧版“两行”描述不再适用；未实现/验收前不得称其可运行。
 
-## 算法仓库的永久合并授权不随快照自动生效
+## 新算法项目也适用全部本人公开仓库的永久授权
 
-Bootstrap 必须在 `.sae/` 固定快照中包含治理协议及中文镜像，但**复制协议不等于授予算法仓库权限**。科学家需要一次性明确指定算法仓库准确 `owner/repo` 并登记到 Framework 最新[永久授权表](../../governance/STANDING_AUTHORIZATION.md)。**登记后 GPT Architect 永久拥有该仓库 PR 的最终 MERGE / DO_NOT_MERGE 决定权，不再逐 PR 请求合并许可**；每次仍须审核真实证据，科学家保留科研/安全等实质决定并可随时撤销。Bootstrap 不得擅自登记或扩大工具权限，仍需自包含快照、相对链接及禁用 GitHub Actions。
+Bootstrap 在固定的 `.sae/` 快照中包含治理协议及中文镜像，但**复制文档不自动生成 GitHub API 权限，也不能擅自升级旧项目固定快照**。依科学家最新明确授权，`JohnnyZPiggy` **现有及未来全部本人拥有的公开仓库**已覆盖，无需逐一授权登记或年度续期。GPT 架构师每轮必须核实实时 owner/public、GitHub 合并权限、分支保护、PR 审核证据和科学家保留的实质内容决定，再按 [最新常设授权](governance/STANDING_AUTHORIZATION.md) 自主决定 MERGE / DO_NOT_MERGE。不授权私有/他人仓库、Codex 自我合并、后台轮询或绕过保护。

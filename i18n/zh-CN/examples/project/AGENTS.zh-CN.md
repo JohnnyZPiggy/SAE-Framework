@@ -45,6 +45,6 @@ SAE Framework：`JohnnyZPiggy/SAE-Framework`，架构版本 V3.2
 
 架构师向 Codex 派单前，按固定版本 [生态评估协议](.sae/workflows/ECOSYSTEM_REVIEW.md) 检查 PyTorch 原生功能、第三方包与论文参考实现，在工程报告中说明 Build-vs-Reuse 方案；坚持 CPU-first、跨硬件和少依赖，不自动升级固定 SAE 快照。
 
-## 算法项目永久授权：只需一次登记
+## 本人公开算法项目自动在长期授权范围内
 
-固定[治理说明](.sae/governance/STANDING_AUTHORIZATION.md)支持 GPT Architect 审核后独立决定 MERGE / DO_NOT_MERGE，但**这份模板不自动授权 `<OWNER>/<PROJECT>`**。科学家须一次性明确授予该准确算法仓库权限，并在 [Framework 最新登记表](https://github.com/JohnnyZPiggy/SAE-Framework/blob/main/governance/STANDING_AUTHORIZATION.md) 登记。登记后 GPT 对合格 PR **永久、可撤销地拥有最终合并决定权，不再逐个请示**；必须遵守真实 Diff、数学/安全实质决定、CPU/必要 GPU 证据与 GitHub 规则。Codex 不得自我合并，固定项目协议也不得被悄悄升级。
+参照固定快照 [治理文件](.sae/governance/STANDING_AUTHORIZATION.md)，并核实 [Framework 当前正式授权](https://github.com/JohnnyZPiggy/SAE-Framework/blob/main/governance/STANDING_AUTHORIZATION.md)。科学家已将 `JohnnyZPiggy` **当前及未来本人全部公开仓库**纳入 GPT 架构师的永久最终 MERGE / DO_NOT_MERGE 权限，**不需本算法项目单独登记或续期**。复制快照不生成平台合并能力；仍需实时核实 owner、公开状态、连接权限、项目更严格要求、真实 Diff 与数学/CPU/必要 GPU 证据。科研/安全治理等实质决定仍须科学家，Codex 不得自我合并。

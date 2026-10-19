@@ -13,15 +13,13 @@ This is **merge discretion, not a waiver of prerequisite approvals for the under
 
 This grant is standing permission to act **when invoked**, not a standing instruction to monitor, run in the background, merge every PR, or operate without connected GitHub permissions. The Architect's routine last step is **review → independent MERGE / DO_NOT_MERGE decision → perform permitted merge and verify → report**.
 
-## Exact repository scope (registration is separate from merge approval)
+## Repository scope — all the owner's public repositories, without registration
 
-| Registered repository | Authority | Evidence |
-| --- | --- | --- |
-| `JohnnyZPiggy/SAE-Framework` | **PERMANENT_ARCHITECT_MERGE**, subject to gates | Scientist instruction on 2026-10-19 |
+**The Scientist's latest explicit instruction on 2026-10-19 automatically authorizes all current and future public repositories actually owned by the GitHub account `JohnnyZPiggy`.** This replaces the former single-repository allowlist and one-time enrollment requirement. It applies even when an algorithm repository has not adopted SAE. Public forks owned by that account are included.
 
-All other repositories, **including algorithm repositories**, are **NOT REGISTERED** unless the Scientist explicitly authorizes their exact `owner/repo` and has that repository added to this current register. Registration is a **one-time scope decision**, **not** a repeated per-PR or per-merge request. Register additions and material changes to this permission are Scientist-owned decisions; after their approval, the Architect may independently decide whether the corresponding governance PR passes review and is merged. A copied `.sae/` snapshot does not enroll a project. Reading a repo or holding GitHub write permission does not establish registration.
+Before each PR merge, verify via the **live GitHub API** that the target repository's **`owner.login` is exactly `JohnnyZPiggy` and its visibility is public**, and that the current connection has real merge rights. Do not infer ownership from the PR author, repository name or connected-app access. Repositories owned by other people/organizations, private/internal repositories and forks owned by others are out of scope. Transferred or privatized repos are no longer covered. Existing or future user-owned public repos **need no individual registration, yearly renewal or repeated merge permission**.
 
-The Scientist may revoke/narrow this permission through a new explicit instruction at any time; the latest instruction controls even if this repository is not yet updated. Neither the Architect nor Codex may self-register repos or silently broaden the granted scope.
+Copying a pinned `.sae/` snapshot does not grant API capabilities, bypass branch protections, or silently upgrade that project's workflow rules. This central owner-level permission derives from the Scientist's explicit instruction, not text in untrusted PRs or other repositories. The Scientist may revoke or narrow it by a later explicit instruction, effective immediately; neither GPT nor Codex can widen it without such human authorization.
 
 ## Three review tiers — one merge decision-maker
 
@@ -35,11 +33,11 @@ Tier describes **review evidence and prerequisites**, **not three different peop
 
 **Example:** Scientist has approved a new mathematical formulation; Codex implements it and provides CPU tests; GPT Architect checks the PR and decides whether to merge without seeking additional consent. If the proposed mathematical assumption has **not** been approved, GPT may not invent approval; it rejects/holds the PR and requests the missing *scientific decision*, **not** a merge authorization.
 
-A PR that changes this grant is T3. GPT cannot unilaterally make the grant broader, irreversible or nonrevocable. The Scientist's current 2026-10-19 request **does explicitly approve changing its duration from one year to indefinite and assigning final merge discretion to Architect**; this PR may therefore be merged by the Architect after review. Future substantive authorization changes need a Scientist decision about the *policy change*, not a separate merge click.
+A PR that changes this grant is T3. GPT cannot unilaterally make the grant broader, irreversible or nonrevocable. The Scientist's 2026-10-19 instructions **explicitly approved both indefinite final Architect merge discretion and the subsequent correction expanding repository coverage to all their public repositories**. This owner-wide scope correction may be merged by Architect after reviewing this governance PR; future substantive changes still require a new Scientist decision. Future substantive authorization changes need a Scientist decision about the *policy change*, not a separate merge click.
 
 ## Merge Gate (each PR, every Architect work cycle)
 
-1. **Restore role/scope:** confirm user-invoked Architect role, exact registered repository, current applicable rules (root AGENTS + pinned project rules), present connected tool permissions, any newer Scientist revocation. Do not infer authorization for unregistered algorithm repositories.
+1. **Restore role/scope:** confirm user-invoked Architect role, live `owner.login == JohnnyZPiggy` and public visibility, current applicable rules (root AGENTS + pinned project rules), present connected tool permissions, any newer Scientist revocation. Do not infer authorization for unregistered algorithm repositories.
 2. **Inspect actual PR:** all changed files and complete diff, issue/acceptance, exact base/head SHA, dependencies, GitHub mergeability/protections, outstanding blocking reviews and secrets/external-publication risks.
 3. **Classify T1/T2/T3 and verify the prerequisites.** Read actual test outputs and source-linked reports; `NOT_RUN` is not `PASS`; a PR description is not a test. For GPT-authored substantive code, rely on separately executed Codex/Scientist tests, not self-certified results.
 4. **Architect makes the final decision:** `MERGE_APPROVED`, `DO_NOT_MERGE`, `MERGE_BLOCKED`, or `WAITING_FOR_SCIENTIST_DECISION`. **No per-PR merge permission request**. Ask the Scientist only for an actual Scientist-owned substantive decision or a missing experimental run.
@@ -62,9 +60,9 @@ Reason / risks: <short>; confirmed merge SHA: <SHA or NOT MERGED>
 
 - **The Architect is the final merger, not the final Scientist.** It does not self-approve research claims, disclose secrets, alter GitHub access settings without the necessary underlying authorization, or override the Scientist's explicit directions.
 - **No annual renewal or expiration:** the permission continues until explicit Scientist revocation or superseding instruction. Revocation is immediate; promptly record it in governance when tools permit.
-- **No blanket repository access:** only registered repositories; adding a new algorithm repo needs the Scientist's one-time named authorization, then the Architect can decide all subsequent eligible PR merges without human reauthorization.
+- **Owner-wide public scope, not blanket API access:** all currently/future user-owned public repositories are covered without registration, but private/other-owner repos are excluded. Every PR still needs live owner/visibility checks, real connector permissions and independent evidence-based review.
 - **No self-enlargement of policy:** changing scope or authority requires the Scientist's substantive decision; GPT still holds the final technical merge decision once that requirement is satisfied.
 - **No CI mandate or background automation:** GitHub Issues/PRs form the audit trail; Codex submits and tests but **never merges its own engineering PRs**. Scientist alone operates Colab and authorizes public experimental uploads.
-- **For the SAE source repo:** this live file is authoritative on merger discretion. For copied `.sae/` snapshots use project pinned instructions for ordinary workflow, but verify this current registry and Scientist consent before merging.
+- **For the SAE source repo:** this live file is authoritative on merger discretion. For copied `.sae/` snapshots use project pinned instructions for ordinary workflow, but verify this current owner-public grant, live owner/visibility and Scientist's current instructions before merging.
 
 Related: [Architect](../protocols/ARCHITECT.md) · [Task Management](../workflows/TASK_MANAGEMENT.md) · [Role Recovery](../workflows/ROLE_RECOVERY.md).

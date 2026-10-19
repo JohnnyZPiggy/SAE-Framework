@@ -23,6 +23,6 @@
 **英文根目录是机器读取的规范版本**。保留 `AGENTS.md`、`SAE_BOOTSTRAP.md`、`sae.yaml`、CLI 参数与状态名的真实英文标识。中文文件用于理解与教学，不在缺乏验证的情况下修改实际协议语义。
 
 如中英文产生冲突，请在 GitHub 创建 Issue，并以英文规范文件及科学家的明确授权作为执行依据。
-## GPT 架构师永久合并裁量权
+## 本人全部公开仓库的无限期架构师合并裁量权
 
-科学家将已登记仓库已审 PR 的**最终 MERGE / DO_NOT_MERGE** 决定权**永久、可撤销地**授予 GPT 架构师，**不需逐次合并批准，也无年度到期**。当前只登记 SAE Framework 主仓库；其他算法项目需科学家一次授权、精准登记。T1/T2/T3 分类的是证据要求和科学家保留的**实质内容决策**；PR 具体是否合并由 GPT 最终决定。详见[永久常设授权](governance/STANDING_AUTHORIZATION.md)。Codex 仍不得自行合并，也不会产生后台执行或 GitHub 工具权限。
+Scientist 已把 `JohnnyZPiggy` **现有和未来本人全部公开仓库**中合格 PR 的最终 **MERGE / DO_NOT_MERGE** 决定权永久、可撤销地授予 GPT 架构师，**无需逐仓库登记、年度续期或每次再问合并许可**。每个 PR 仍需按照 [常设授权](governance/STANDING_AUTHORIZATION.md) 审查 T1/T2/T3、实际测试和科学家保留的科研/安全实质变更决定。真实 GitHub 权限与分支规则必须遵守；Codex 不自我合并，也无后台操作。

@@ -110,6 +110,6 @@
 
 科学家使用**三个独立 Notebook 步骤**：安装固定 SHA、运行不写 GitHub 的 Benchmark、审核后**按需单独上传报告**。Colab Secrets 已采用名称 **`GITHUB_TOKEN`**；Codex 须验证 Publisher 子进程读取密钥或提供一个 Python 上传 Cell 的安全环境变量传递。具体遵循 [现行三步协议](i18n/zh-CN/workflows/COLAB_TWO_COMMAND.md)（历史文件名保留以免破坏链接），Benchmark 默认不再含 `--publish`。旧版“两行”描述不再适用；未实现/验收前不得称其可运行。
 
-## GPT 架构师永久最终合并决定权
+## GPT 架构师对全部本人公开仓库拥有永久最终合并决定权
 
-科学家已将已登记仓库 PR 的**最终 MERGE / DO_NOT_MERGE 决策权永久、可撤销地交给 GPT Chief Architect**，**无到期日，不再逐 PR 向科学家请求合并许可**。初始仅登记 `JohnnyZPiggy/SAE-Framework`，算法仓库需科学家一次性准确授权和登记。T1/T2/T3 仅决定审核证据与科学家保留的**实质变更前置决策**，不是谁有权合并；条件满足后 GPT 审核、留 PR 记录、精确 head Squash Merge 并核验，条件不足则自主拒绝/搁置并说明缺少的科研/安全决定。科学家保留科研、Colab 与重要治理安全内容决策权且可随时撤销；Codex 不得自我合并。详见[永久常设授权](i18n/zh-CN/governance/STANDING_AUTHORIZATION.md)。不会自动赋予后台 GitHub 权限。
+Scientist 已将 `JohnnyZPiggy` **当前及未来全部本人拥有的公开 GitHub 仓库**中合格 PR 的最终 **MERGE / DO_NOT_MERGE** 决定权永久、可撤销地委托 GPT 总架构师；**不设到期日、无需逐仓库登记或逐 PR 合并许可**。T1/T2/T3 仅区分证据要求和科学家保留的**变更内容实质决策**，条件满足后 GPT 自主审核、留下 PR 审计、精确 head Squash Merge 并核验。科学家保留科研、Colab、重要治理安全内容决定及随时撤销权；Codex 不得自行合并。详见 [最新常设授权](i18n/zh-CN/governance/STANDING_AUTHORIZATION.md)。不自动赋予 GitHub 工具权限或后台工作。
