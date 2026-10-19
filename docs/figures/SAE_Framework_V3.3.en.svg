@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 890" role="img" aria-labelledby="title desc">
+<title id="title">SAE Framework V3.3 architecture</title>
+<desc id="desc">Scientist sets scientific direction and compute authorization. GPT Architect and Mentor plan and review. Codex implements and runs local CPU and authorized Colab CLI CPU GPU TPU experiments. GitHub is the central coordination and evidence hub. Optional Drive is scratch only. Two parallel goals are engineering productivity and scientific learning.</desc>
+<defs><style>
+text{font-family:Inter,Arial,Helvetica,sans-serif;fill:#18283d}.title{font-size:34px;font-weight:750}.sub{font-size:17px;fill:#52657d}.head{font-size:21px;font-weight:700}.body{font-size:16px}.tiny{font-size:14px;fill:#52657d}.box{stroke:#cad7e7;stroke-width:1.6}.arrow{fill:none;stroke:#53708f;stroke-width:2.5;marker-end:url(#arrow)}.dash{stroke-dasharray:7 6}.label{font-size:14px;fill:#375675}
+</style><marker id="arrow" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto"><path d="M0 0 L9 4.5 L0 9 Z" fill="#53708f"/></marker></defs>
+<rect width="1280" height="890" rx="26" fill="#f6f9fe"/>
+<text x="54" y="63" class="title">SAE Framework <tspan fill="#2563eb">V3.3</tspan></text>
+<text x="54" y="92" class="sub">Scientist · Architect / Mentor · Engineer — GitHub-first, iterative research engineering</text>
+<rect x="54" y="119" width="565" height="68" rx="15" fill="#e6f2ec" stroke="#b6dcc5"/>
+<text x="336" y="146" class="head" text-anchor="middle">01 · Engineering Productivity</text><text x="336" y="170" class="tiny" text-anchor="middle">Reliable, reproducible, low-cost software</text>
+<rect x="661" y="119" width="565" height="68" rx="15" fill="#f0eafe" stroke="#d5c7f7"/>
+<text x="943" y="146" class="head" text-anchor="middle">02 · Scientific Learning</text><text x="943" y="170" class="tiny" text-anchor="middle">Mathematics, numerics, PyTorch &amp; systems</text>
+<rect class="box" x="390" y="218" width="500" height="115" rx="19" fill="#fff2d8"/>
+<text x="640" y="251" class="head" text-anchor="middle">Human Scientist · Final scientific authority</text>
+<text x="640" y="280" class="body" text-anchor="middle">Research choices · mathematical approval</text>
+<text x="640" y="306" class="body" text-anchor="middle">GPU / TPU device, session, time &amp; quota authorization</text>
+<rect class="box" x="54" y="387" width="550" height="133" rx="19" fill="#e7f0ff"/>
+<text x="329" y="423" class="head" text-anchor="middle">GPT · Chief Architect + Scientific Mentor</text>
+<text x="329" y="454" class="body" text-anchor="middle">Mathematical guidance · experiment design · Issues</text>
+<text x="329" y="482" class="body" text-anchor="middle">Review evidence · decide eligible PR merges</text>
+<rect class="box" x="676" y="387" width="550" height="133" rx="19" fill="#e5f7f4"/>
+<text x="951" y="423" class="head" text-anchor="middle">Codex · Software &amp; Experiment Engineer</text>
+<text x="951" y="454" class="body" text-anchor="middle">Implementation · CPU tests · Colab CLI execution</text>
+<text x="951" y="482" class="body" text-anchor="middle">Integrity checks · cleanup · evidence PRs (no self-merge)</text>
+<path class="arrow" d="M525 333 L335 387"/><path class="arrow" d="M755 333 L945 387"/>
+<text x="423" y="359" class="label" text-anchor="middle">direction / decisions</text>
+<text x="852" y="359" class="label" text-anchor="middle">compute limits</text>
+<rect x="54" y="570" width="1172" height="117" rx="19" fill="#fff" stroke="#93a9c3" stroke-width="2.3"/>
+<text x="640" y="602" class="head" text-anchor="middle">GitHub · Single coordination &amp; evidence hub</text>
+<text x="640" y="633" class="body" text-anchor="middle">Issues · source SHA · branches / PRs · math / engineering / experiment reports</text>
+<text x="640" y="660" class="tiny" text-anchor="middle">Architect reviews and merges eligible PRs; no GitHub Actions required</text>
+<path class="arrow" d="M329 520 L329 570"/><path class="arrow" d="M951 520 L951 570"/>
+<rect class="box" x="54" y="734" width="754" height="115" rx="19" fill="#eaf5ff"/>
+<text x="431" y="768" class="head" text-anchor="middle">Codex → Colab CLI · CPU / GPU / TPU*</text>
+<text x="431" y="797" class="body" text-anchor="middle">1. Pinned SHA install → 2. No-write benchmark → 3. Optional authorized PR</text>
+<text x="431" y="825" class="tiny" text-anchor="middle">*TPU / PyTorch-XLA and full publishing workflow require real verification</text>
+<rect class="box" x="848" y="734" width="378" height="115" rx="19" fill="#f2f4f8"/>
+<text x="1037" y="768" class="head" text-anchor="middle">Google Drive · Optional</text>
+<text x="1037" y="799" class="body" text-anchor="middle">Notebook / temporary scratch only</text>
+<text x="1037" y="825" class="tiny" text-anchor="middle">Not a results exchange or sync layer</text>
+<path class="arrow" d="M431 687 L431 734"/><path class="arrow dash" d="M1037 734 L1037 706 L786 706 L786 687"/>
+<text x="820" y="718" class="tiny">scratch</text>
+</svg>
