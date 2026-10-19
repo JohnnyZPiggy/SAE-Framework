@@ -4,7 +4,11 @@
 
 **Scientist–Architect–Engineer** is a GitHub-first collaboration framework for mathematical algorithms, PyTorch scientific computing and ML engineering. It pursues **two equal goals**: reliable low-cost engineering and the Scientist's deeper mathematical/numerical/ML-systems learning.
 
-![SAE Framework V3.3 architecture (English)](docs/figures/SAE_Framework_V3.3.en.svg)
+## Architecture
+
+![SAE V3.3 — native card-style research and engineering architecture (English)](docs/figures/SAE_Framework_V3.3.en.svg)
+
+[Open the full-resolution SVG](docs/figures/SAE_Framework_V3.3.en.svg)
 
 [Editable Mermaid source (.mmd)](docs/figures/SAE_Framework_V3.3.en.mmd)
 
@@ -71,7 +75,7 @@ flowchart TB
 
 </details>
 
-The SVG is the high-resolution overview. The editable Mermaid source below is rendered natively by GitHub; both represent the V3.3 role and compute boundaries.
+The image above is a standalone vector reconstruction of the ChatGPT card layout: two equal objectives, Scientist leadership, GPT/Codex roles, GitHub evidence hub and Codex-operated compute. The collapsible Mermaid below remains the editable logical graph; the SVG is the presentation view, not a record of experiment completion.
 
 *TPU/PyTorch-XLA and automated report publication remain unverified.*
 
