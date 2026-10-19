@@ -20,7 +20,7 @@ assignees: []
 
 **验收测试（必须提供真实证据）：**
 
-**Colab 双命令验收（算法任务）：** 指定 SHA 的 pip 安装 + `python -m <package>.benchmarks.run --device cuda --publish`；Codex 在干净环境跑 CPU/CLI 安装测试，科学家真实 Colab GPU/Publisher 集成实验未执行则写 NOT RUN。Notebook 无第三条工程命令。
+**Colab 三阶段验收（算法任务）：** 固定 SHA 安装 → Benchmark 独立运行且不写 GitHub → 可选、经单独授权的 Publisher。Codex 运行 CPU/CLI 和获授权的 Colab CLI CPU/GPU/TPU，Scientist 事先批准 GPU/TPU 设备、会话、时长与额度；未测设备或发布均标 NOT RUN。
 
 **Colab GPU 验证方案（如需要）：**
 
