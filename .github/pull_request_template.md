@@ -7,7 +7,7 @@ Source SHA: `<sha>`
 ### Three-artifact traceability
 - Mathematical study: `docs/research/<algorithm>-tensorization.md` / N/A for infrastructure
 - Engineering report: `docs/engineering/<algorithm>-engineering.md` / N/A for infrastructure
-- Actual Scientist-run experiment: `reports/gpu/<run-id>/summary.md` / NOT RUN
+- Actual Codex-run, Scientist-authorized experiment: `reports/gpu/<run-id>/summary.md` / NOT RUN
 - Candidate **tested source SHA**: `<SHA>`
 
 ### Validation
@@ -18,6 +18,6 @@ Source SHA: `<sha>`
 
 ### Risks and follow-up
 
-### Architect acceptance and human authorization
-- [ ] Reviewed mathematical contract and actual evidence
-- [ ] Scientist approval for any needed privileged merge/destructive change
+### Architect merge review and Scientist-owned prerequisites
+- [ ] Architect reviewed actual diff, tested SHA and evidence under standing merge authorization
+- [ ] Scientist approved underlying scientific/security/destructive decision if applicable; no duplicate per-PR merge permission

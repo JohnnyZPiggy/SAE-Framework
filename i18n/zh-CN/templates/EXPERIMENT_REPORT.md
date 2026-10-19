@@ -17,7 +17,7 @@
 **实际被测源码 SHA：** `<sha>`  
 **实验报告发布 commit（如存在）：** `<另一个 SHA 或 NOT YET PUBLISHED>`
 
-这是 [三文档交接协议](../workflows/THREE_ARTIFACT_HANDOFF.md) 中的**实验验证文档**，必须基于科学家真实操作 Colab 的输出生成，不能预先声称成功。
+这是 [三文档交接协议](../workflows/THREE_ARTIFACT_HANDOFF.md) 中的**实验验证文档**，必须基于Codex 经 Scientist 计算资源授权实际执行 Colab 的输出生成，不能预先声称成功。
 
 ## 环境
 CPU/GPU 型号、驱动/CUDA/PyTorch 版本、Colab runtime、dtype、种子、具体安装源。

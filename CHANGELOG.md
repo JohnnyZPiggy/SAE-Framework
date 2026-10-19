@@ -3,6 +3,12 @@
 > Language: **English** | [简体中文](i18n/zh-CN/CHANGELOG.md)
 
 
+## V3.3 — Protocol consistency and documentation cleanup (2026-10-19)
+
+- Aligned historical Scientist-operated Colab wording to V3.3: Codex executes only approved local/Colab experiments; Scientist retains resource/scientific/publication decisions. No allocation or experimental claims.
+- Updated outdated benchmark/publisher and PR/Issue templates, placed Ecosystem Review section 2a before implementation in both engineering templates, removed duplicated embedded Mermaid blocks from bilingual architecture pages while preserving README diagrams and `.mmd` sources.
+- Preserved research gates, numerical evidence, three artifacts, standing merge scope, Next-Action completion, pinned project snapshots and GitHub Actions-free workflow.
+
 ## V3.3 — Next-Action Completion Gate (2026-10-19)
 
 - Make end-of-cycle status/evidence/one-command handoff a pre-send self-check for GPT Mentor, GPT Architect and Codex Engineer, including long or blocked cycles.

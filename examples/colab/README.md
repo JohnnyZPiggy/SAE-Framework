@@ -3,7 +3,7 @@
 > Language: **English** | [简体中文](../../i18n/zh-CN/examples/colab/README.md)
 
 
-**This directory is documentation, not a working notebook or Publisher.** GPT designs orchestration; Codex implements tested Python modules/CLI. The Scientist runs Colab and reviews results.
+**This directory is documentation, not a working notebook or Publisher.** GPT designs orchestration; Codex implements and runs authorized Colab CLI experiments. The Scientist approves resources and reviews scientific conclusions; the cells below are illustrative only.
 
 See the [Three-Step Colab Contract](../../workflows/COLAB_TWO_COMMAND.md).
 

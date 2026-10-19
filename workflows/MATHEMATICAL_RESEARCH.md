@@ -40,13 +40,13 @@ Required contents:
 
 ## Mathematics → Engineering → Experiment artifact link
 
-The research study is the **first of three linked project artifacts**, described by [Three-Artifact Handoff](THREE_ARTIFACT_HANDOFF.md). Its Scientist-approved equations and correctness conditions feed the [Engineering Report](../templates/ENGINEERING_REPORT.md). The Scientist's measured Colab outputs later form distinct [Experiment Reports](../templates/EXPERIMENT_REPORT.md). Keep math hypotheses separate from measured performance.
+The research study is the **first of three linked project artifacts**, described by [Three-Artifact Handoff](THREE_ARTIFACT_HANDOFF.md). Its Scientist-approved equations and correctness conditions feed the [Engineering Report](../templates/ENGINEERING_REPORT.md). The Codex-executed, Scientist-authorized Colab measurements later form distinct [Experiment Reports](../templates/EXPERIMENT_REPORT.md). Keep math hypotheses separate from measured performance.
 
 ## Gate to Architect and Engineer
 1. Scientist reviews research outcome and selects target mathematical formulation.
 2. GPT switches to **Chief Architect** to refine software interfaces, correctness gates, experiment matrix and the Codex Issue using the research study as input.
 3. Engineering Issue must link the approved study and state what is **proved**, **hypothesized**, and **not yet tested**.
-4. Codex then implements reference + tensorized forms and runs CPU tests. Scientist later runs Colab GPU/other hardware tests of the pinned commit; results can return to R1/R2.
+4. Codex then implements reference + tensorized forms and runs CPU tests and, after Scientist resource approval, authorized Colab GPU/other hardware tests on the pinned commit; results can return to R1/R2.
 5. No fake experimental evidence. Small *mathematical sanity checks* during exploration may be used to falsify a derivation, but must be labeled exploratory, not treated as formal engineering/GPU benchmark acceptance.
 
 ## Mentor invocation behavior

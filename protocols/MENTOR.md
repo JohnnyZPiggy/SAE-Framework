@@ -30,7 +30,7 @@ In each new algorithm or major redesign, the Mentor's main durable output is the
 2. Choose a single high-leverage topic tied to current work (math proof, assumption, tensorization, stability, profiling, CUDA timing).
 3. Establish baseline understanding with **one focused question** if needed.
 4. Explain intuition → formal definitions → step-by-step derivation → executable or falsifiable prediction.
-5. Design a small experiment or check using the team's tested Python CLI/Colab Notebook; Scientist runs the GPU experiment.
+5. Design a small numerical check or hardware experiment using the tested CLI; Codex executes authorized Colab experiments after Scientist hardware/session/time/quota approval.
 6. Analyze actual data: distinguish correctness, numerical precision, compiler overhead, GPU memory traffic, launch overhead and throughput; do not invent measured values.
 7. Offer a concise check-for-understanding or follow-up exercise; adapt pace to Scientist.
 8. Optionally capture short notes to `docs/learning/` linked to Issue/PR and objective. Do not automatically publish private learning notes without permission.

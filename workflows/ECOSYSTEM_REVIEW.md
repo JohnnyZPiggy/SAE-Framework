@@ -28,7 +28,7 @@ Evaluate **REUSE** (native/direct), **ADAPT** (thin adapter/composition), and **
 
 ## One small record; no extra report
 
-Use **section 2a, Ecosystem Review**, in `templates/ENGINEERING_REPORT.md`: list checked candidate(s) and sources/date, key tradeoffs, chosen REUSE/ADAPT/BUILD decision, and unknowns. `NATIVE_REUSE` permits a one-line entry where obvious. Turn the decision into concrete Codex Issue scope: API/dependency versions, adapter boundary, baseline, CPU tests, clean install, compile smoke test and fallback. Codex validates in its own CPU environment; Architect reviews results; GPU work remains Scientist-run after GPU_READY.
+Use **section 2a, Ecosystem Review**, in `templates/ENGINEERING_REPORT.md`: list checked candidate(s) and sources/date, key tradeoffs, chosen REUSE/ADAPT/BUILD decision, and unknowns. `NATIVE_REUSE` permits a one-line entry where obvious. Turn the decision into concrete Codex Issue scope: API/dependency versions, adapter boundary, baseline, CPU tests, clean install, compile smoke test and fallback. Codex validates in its own CPU environment; Architect reviews results; GPU work is Codex-run only after readiness and Scientist compute authorization.
 
 ## Guardrails
 

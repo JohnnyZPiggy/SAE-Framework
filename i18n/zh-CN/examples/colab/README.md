@@ -2,7 +2,7 @@
 
 > 语言：[English](../../../../examples/colab/README.md) | **简体中文**
 
-参见 [Colab 三步契约](../../../../workflows/COLAB_TWO_COMMAND.md)。
+此处为说明性 Cell，并非实测命令。Codex 负责获授权的 Colab CLI 实验，Scientist 负责科研决策和 GPU/TPU 资源预审批；参见 [Colab 三步契约](../../../../workflows/COLAB_TWO_COMMAND.md)。
 
 ```python
 !pip install "git+https://github.com/OWNER/REPO.git@<EXACT_SOURCE_COMMIT_SHA>"

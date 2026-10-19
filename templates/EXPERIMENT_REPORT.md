@@ -18,7 +18,7 @@
 **Implementation source commit (tested):** `<sha>`  
 **Report publication commit (if any):** `<distinct sha or NOT YET PUBLISHED>`  
 
-This file is the **Experimental Report** defined by the [Three-Artifact Handoff](../workflows/THREE_ARTIFACT_HANDOFF.md). It is created from **actual Scientist-operated Colab results**, not prefilled as a claimed success.
+This file is the **Experimental Report** defined by the [Three-Artifact Handoff](../workflows/THREE_ARTIFACT_HANDOFF.md). It is created from **actual Codex-executed, Scientist-authorized Colab results**, not prefilled as a claimed success.
 
 ## Setup
 GPU/CPU model, driver/CUDA/PyTorch versions, Colab runtime, dtype, seed, package install source.
