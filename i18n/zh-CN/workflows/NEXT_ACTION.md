@@ -17,7 +17,7 @@
 
 依据**实时 GitHub 证据、优先级、依赖、阶段关口和实际权限**选择下一步，不沿用过期建议。通常：`RESEARCH_BLOCKED` → 导师/Scientist；`RESEARCH_READY` → 架构师；`CPU_IN_PROGRESS` → Codex；`CPU_VALIDATED` → 架构师审核实验准备；`GPU_READY` → Scientist 批准计算资源后 Codex 才执行；`GPU_BLOCKED` → 先本地排查。正确性/安全阻塞优先。
 
-口令**不等于自动启动 Agent、分配算力或授予合并权限**。[任务管理](TASK_MANAGEMENT.md)管理 Issue/PR 状态，本文件仅规定回复交接。
+口令**不等于自动启动 Agent、分配算力或授予合并权限**。在 `GPU_READY` 前不得反复要求 Colab 实验，不泄露凭据、越过合并授权或承诺后台执行。[任务管理](TASK_MANAGEMENT.md)管理 Issue/PR 状态，本文件仅规定回复交接。
 
 ## Next-Action Completion Gate — 回复结束前自检（V3.3）
 
