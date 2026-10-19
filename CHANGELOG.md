@@ -3,6 +3,12 @@
 > Language: **English** | [简体中文](i18n/zh-CN/CHANGELOG.md)
 
 
+## V3.3 — Next-Action Completion Gate (2026-10-19)
+
+- Make end-of-cycle status/evidence/one-command handoff a pre-send self-check for GPT Mentor, GPT Architect and Codex Engineer, including long or blocked cycles.
+- Provide up to two genuine alternative commands and separate copyable plain-text blocks when the client lacks working interactive controls; never pretend a button invokes Codex.
+- Documentation-only, without an output validator, background runner, compute allocation, CI or silent updates to pinned algorithm-project snapshots.
+
 ## V3.3 — Codex-operated compute and constitution simplification (2026-10-19)
 
 - Re-rendered the bilingual V3.3 architecture diagrams as self-contained, ChatGPT-native-card-style SVGs; updated both READMEs and architecture pages. Retained Mermaid as an editable logical diagram and preserved all unverified execution caveats.
