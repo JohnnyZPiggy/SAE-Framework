@@ -3,6 +3,12 @@
 > 语言：[English](../../CHANGELOG.md) | **简体中文**
 
 
+## V3.3 — 协议一致性与文档去重（2026-10-19）
+
+- 把旧版“Scientist 操作 Colab”统一为 V3.3 职责：Codex 仅执行获授权实验，Scientist 保留科研、计算预算与公开发布的实质决定；不分配资源，不宣称实验完成。
+- 修正过时的 Benchmark/Publisher 与 Issue/PR 模板；将工程报告第 2a 节移至实现记录之前；删除架构说明中重复内嵌的 Mermaid，保留 README 图和 `.mmd` 源码。
+- 完整保留数学研究关口、数值证据、三份科研成果、常设合并范围、交接口令、固定快照及不启用 GitHub Actions 的限制。
+
 ## V3.3 — Next-Action Completion Gate（2026-10-19）
 
 - 将 GPT 导师、GPT 架构师与 Codex 工程师每轮结束的状态、证据及一条推荐口令，明确为最终回复前自检项，深度研究或阻塞时也不能忽略。
