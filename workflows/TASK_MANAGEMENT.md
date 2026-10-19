@@ -19,14 +19,14 @@ For a new algorithm or significant tensorization rewrite, the first scientific I
 
 ## Linked artifacts in Issue/PR handoffs
 
-The Scientist-reviewed mathematical study, the Architect/Codex engineering record, and the Scientist-operated Colab run report form one traceable evidence chain; see [Three-Artifact Handoff](THREE_ARTIFACT_HANDOFF.md). A Codex implementation Issue/PR links the mathematical study and engineering record; the actual experiment PR points to the tested implementation SHA and both earlier documents. Do not create a fourth competing status document or pretend a template proves work was done.
+The Scientist-reviewed mathematical study, the Architect/Codex engineering record, and the Codex-executed, Scientist-authorized Colab run report form one traceable evidence chain; see [Three-Artifact Handoff](THREE_ARTIFACT_HANDOFF.md). A Codex implementation Issue/PR links the mathematical study and engineering record; the actual experiment PR points to the tested implementation SHA and both earlier documents. Do not create a fourth competing status document or pretend a template proves work was done.
 
 ## Lifecycle
 1. **Architect creates Issue** with mathematics/interfaces, inputs/outputs, acceptance criteria, CPU/GPU test requirements, references, target milestone; label ready for Codex if applicable.
 2. **Engineer claims Issue** by explicit comment and status update to in-progress; one owner at a time.
 3. **Engineer implements** on `feat/<issue-number>-<slug>` and opens PR with `Closes #N` only if issue is truly satisfied. For GPU-gated work prefer `Refs #N` until GPU validation.
 4. **Architect reviews** diff + real CPU evidence. If accepted provisionally, move to experiment and provide exact candidate SHA.
-5. **Scientist runs Colab** with pinned candidate SHA; post experiment report PR/comment. If failed, return to Engineer with a specific reproducible failure case.
+5. **Codex runs authorized Colab CLI** with the pinned candidate SHA, verifies artifacts/session cleanup and submits a report PR/comment when separately authorized. Scientist approves resources and scientific conclusions; failures return to Engineer with a reproducible case.
 6. **Architect independently decides MERGE / DO_NOT_MERGE** after technical review and any required Scientist substantive decision, without seeking separate merge permission; update Issue and next task.
 7. **Mentor may summarize** a learning insight, but learning never replaces engineering checks.
 
