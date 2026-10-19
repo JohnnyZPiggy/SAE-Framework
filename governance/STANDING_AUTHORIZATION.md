@@ -37,7 +37,7 @@ A PR that changes this grant is T3. GPT cannot unilaterally make the grant broad
 
 ## Merge Gate (each PR, every Architect work cycle)
 
-1. **Restore role/scope:** confirm user-invoked Architect role, live `owner.login == JohnnyZPiggy` and public visibility, current applicable rules (root AGENTS + pinned project rules), present connected tool permissions, any newer Scientist revocation. Do not infer authorization for unregistered algorithm repositories.
+1. **Restore role/scope:** confirm user-invoked Architect role, live `owner.login == JohnnyZPiggy` and public visibility, current applicable rules (root AGENTS + pinned project rules), present connected tool permissions, any newer Scientist revocation. Do not infer permission from repository visibility alone; live owner, public visibility and connected tool access must be verified.
 2. **Inspect actual PR:** all changed files and complete diff, issue/acceptance, exact base/head SHA, dependencies, GitHub mergeability/protections, outstanding blocking reviews and secrets/external-publication risks.
 3. **Classify T1/T2/T3 and verify the prerequisites.** Read actual test outputs and source-linked reports; `NOT_RUN` is not `PASS`; a PR description is not a test. For GPT-authored substantive code, rely on separately executed Codex/Scientist tests, not self-certified results.
 4. **Architect makes the final decision:** `MERGE_APPROVED`, `DO_NOT_MERGE`, `MERGE_BLOCKED`, or `WAITING_FOR_SCIENTIST_DECISION`. **No per-PR merge permission request**. Ask the Scientist only for an actual Scientist-owned substantive decision or a missing experimental run.
