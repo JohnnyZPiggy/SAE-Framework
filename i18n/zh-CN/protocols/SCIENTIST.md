@@ -1,44 +1,18 @@
-# 人类科学家协议
+# 人类科学家协议（V3.3）
 
-> 语言：[English](../../../protocols/SCIENTIST.md) | **简体中文** · 中文译本。
+> [English](../../../protocols/SCIENTIST.md) 为规范版本 | 简体中文译本
 
-人类 Scientist 是项目负责人、最终科学决策者，也是实际 Colab 操作者。
+Scientist 是项目负责人和最终科学决策者，**不再是日常 Colab 操作者**。
 
-## 每个新算法的第一项科学决定
+## 保留的决定权
+- 选择科研问题，批准数学假设、研究关口（`RESEARCH_READY` / `RESEARCH_BLOCKED` / `NOT_TENSORIZABLE`）及科学结论。
+- 与 GPT Mentor/Architect 制定实验问题、精度/性能取舍、基线和验收标准。
+- GPU/TPU 使用前批准硬件、最大并发会话、时长和额度/预算，并可随时收窄或撤销。
+- 保留重要治理、安全、许可、破坏性变更和敏感对外发布的实质决策。GPT Architect 依[常设授权](../../../governance/STANDING_AUTHORIZATION.md)独立决定最终 PR 合并。
 
-在算法工程实现或 GPU Benchmark 前，你先与处于**科学导师模式**的 GPT 研究算法数学结构，探索矩阵—向量积、matrix-free 等张量表达。阅读并审查前置研究报告，检查公式推导与假设，然后确定 `RESEARCH_READY`、`RESEARCH_BLOCKED`、`NOT_TENSORIZABLE` 或明确批准有限参考实现。接下来才让 GPT 总架构师把选定数学方案转化为任务和实验设计。
+## 委托执行
+Codex 执行本地 CPU 与获授权的 Colab CLI CPU/GPU/TPU 实验，下载和校验结果，释放会话，并通过 GitHub 分支/PR 提交证据。Scientist 审核科研意义，可要求重跑或解释，无需日常操作 Notebook 或搬运文件。
 
-## 科学家负责的实验文档
+参见[计算实验](../../../workflows/GPU_EXPERIMENT.md)、[数学研究](../../../workflows/MATHEMATICAL_RESEARCH.md)和[三文档交接](../../../workflows/THREE_ARTIFACT_HANDOFF.md)。Drive 仅为可选 Notebook/临时工作空间，不作为结果交换层。
 
-在数学研究审核、Codex 工程验证之后，科学家使用 Colab 对**指定源码 SHA** 进行真实实验并审核结果。每次运行生成 `reports/gpu/<run-id>/summary.md`（采用 [实验报告模板](../templates/EXPERIMENT_REPORT.md)），根据实际结果附 `manifest.json`、`correctness.json`、`benchmark.csv`。必须链接数学和工程文档，区分被测源码 SHA 与实验报告发布 SHA。Publisher 未实现时依旧手动 PR 上传。参见 [三文档交接协议](../workflows/THREE_ARTIFACT_HANDOFF.md)。
-
-## 主要职责
-- 选择研究问题/论文、确定算法的科学价值与用途。
-- 请 GPT 导师解释数学假设、算法及 GPU 实验原理。
-- 决定参考基线、精度/性能权衡和报告重点。
-- 为 Colab 建立一个**小型 Google Drive 文件夹**，只存 Notebook 和临时文件；不启用桌面同步，不通过 Drive 交换结果。
-- 安装固定代码 commit/PR 版本，在薄 Notebook 中调用工程模块。
-- 检查 GPU 实际型号、数据、错误和警告，运行 CPU/GPU 实验。
-- 经检查后通过已测试 Publisher CLI（未实现前用手动 PR）把简洁、不敏感的实验结果发布到 GitHub。
-- 对破坏性操作及重要科学结论作最终决定。
-
-## Colab 实验检查
-1. 检查候选 SHA、已安装包版本、设备、PyTorch/CUDA 和随机种子。
-2. 先运行正确性测试；出现不合理误差时停止性能结论。
-3. 正确同步、预热、重复计时，保持 workload/精度公平一致。
-4. 公开结果前核对 `summary.md` 与真实运行输出。
-5. 将报告 PR/Issue 链接反馈给 GPT；失败案例交给 Codex 修复。
-6. 请导师解释出乎意料的结果，决定下个研究方向。
-
-科学家不需要亲自写大量底层 Python，AI 团队应尽量减少人工协调，但不能夸大自主执行能力。
-## 每轮结束的下一步口令
-
-每次完成实质性工作，按照 [下一步口令协议](../workflows/NEXT_ACTION.md) 给科学家一个最优、可复制的角色口令或人工操作，最多两项备选，并说明已核实状态、GitHub 证据和是否需要科学家批准。GPU_READY 前不得建议科学家重复 GPU 实验；无权限或受阻时如实说明。交互按钮仅在客户端真实支持时使用。
-
-## 角色恢复与防止出戏
-
-每轮实质性工作开始前执行 [角色恢复与完整性协议](../workflows/ROLE_RECOVERY.md)，根据用户口令恢复身份、读取固定版本和 GitHub 当前证据、核验阶段与权限；若角色不匹配，应报告并交接，不得悄悄切换或虚报执行。每轮结束仍按下一步口令协议交接。
-
-## 科学家在全部本人公开仓库永久合并授权下保留的决定权
-
-科学家已永久、可撤销地将 `JohnnyZPiggy` **当前和未来全部本人公开仓库**中合格 PR 的最终 MERGE / DO_NOT_MERGE 决定权授予 GPT 架构师，无需逐仓库登记、年度续期或逐 PR 重复合并许可，参见 [常设授权](../governance/STANDING_AUTHORIZATION.md)。科学家仍独占科研方向、数学假设与验收、重要安全治理和许可内容、真实 Colab/科学结论以及公开实验数据的授权。如果这些实质决定缺失，架构师应拒绝/暂缓并请求确认**变更内容**，不是再问是否允许合并。批准前置条件后 GPT 自主决定是否合并。科学家随时可撤销，授权不覆盖他人/私有仓库。
+只有真实测试后才能标记硬件或发布能力为已验证。截至 2026-10-19，TPU/PyTorch-XLA 和 GitHub 自动发布端到端仍未验证。

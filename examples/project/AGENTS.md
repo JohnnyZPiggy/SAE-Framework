@@ -1,50 +1,23 @@
-## Integrated algorithm-project operating contract
+# Project Agent Entry Point — SAE V3.3
 
-Use the pinned `.sae/` snapshot. Follow research → CPU engineering/`torch.compile` → Architect-reviewed GPU_READY → Scientist-run Colab. Maintain linked mathematical, engineering and experimental artifacts. A clean pinned-SHA pip install and one packaged benchmark CLI are the target Colab interface. Do not ask Scientist for repeated GPU runs before CPU-local fixes; do not claim Publisher implemented without real tests. See `.sae/workflows/RESEARCH_PIPELINE.md`, `.sae/workflows/THREE_ARTIFACT_HANDOFF.md`, `.sae/workflows/COLAB_TWO_COMMAND.md`.
+> Copy to the adopting project's root. Replace placeholders and verify pinned links.
 
-# Project Agent Entry Point (copy to your project root)
+**Project:** `<OWNER>/<PROJECT>`  
+**Scientific objective:** `<ALGORITHM_OR_PAPER>`  
+**SAE snapshot:** `.sae/` pinned at `<ACTUAL_40_CHARACTER_FRAMEWORK_SHA>`
 
-> Language: **English** (canonical). After installation, the Chinese reference is available at `.sae/i18n/zh-CN/examples/project/AGENTS.zh-CN.md`. This is a **copyable project-root template**; source-repository relative links must not be carried into a different root unchanged.
+## Before work
+Read this file, project `sae.yaml`, `.sae/AGENTS.md`, assigned `.sae/protocols/<ROLE>.md`, relevant `.sae/workflows/` and live GitHub Issues/PRs. Never silently upgrade the pinned snapshot or assume a linked file was read.
 
+## Project roles
+- **Scientist:** research questions, mathematical/scientific approval and GPU/TPU hardware/session/time/quota budgets.
+- **GPT Architect/Mentor:** mathematical guidance, specifications, Issue delegation, evidence review and eligible final merge decisions under [pinned governance](.sae/governance/STANDING_AUTHORIZATION.md) and current owner authorization.
+- **Codex:** implementation, local CPU and authorized Colab CLI CPU/GPU/TPU experiments, artifact verification, session cleanup and GitHub branch/PR evidence. No self-merge or protected-main writes.
 
-Project: `<OWNER>/<PROJECT>`
-SAE Framework: `JohnnyZPiggy/SAE-Framework`, version V3.2
-Pinned framework snapshot: `.sae/` at commit `<REPLACE_WITH_ACTUAL_FRAMEWORK_SHA>`
+## Workflow
+New algorithm/major redesign: Scientist-reviewed [mathematical study](.sae/workflows/MATHEMATICAL_RESEARCH.md) → Architect [Build-vs-Reuse](.sae/workflows/ECOSYSTEM_REVIEW.md) and task → Codex tests/experiments → GitHub evidence → Architect review/iteration. Use [Compute Experiment](.sae/workflows/GPU_EXPERIMENT.md) for the three separate install/benchmark/optional-publication stages. Device support, Publisher and speedups require actual evidence. No GitHub Actions, Drive sync or unapproved compute use.
 
-## Read before work
-1. This file and `sae.yaml`.
-2. `.sae/AGENTS.md` (shared rules).
-3. Your role: `.sae/protocols/ARCHITECT.md`, `ENGINEER.md` or `MENTOR.md`.
-4. Applicable `.sae/workflows/*.md` and Issue/PR specifications.
+## Role commands
+`推进架构师工作` / `推进导师工作` / `推进工程师工作`.
 
-**Do not assume a URL automatically loads instructions.** Check that the snapshot exists. If not, stop and request bootstrap.
-
-## Pre-engineering math discovery
-Before algorithm implementation/benchmarks, read `.sae/workflows/MATHEMATICAL_RESEARCH.md` and have GPT Mentor + Scientist produce and review `docs/research/<algorithm>-tensorization.md`. Architect dispatches Codex work only with `RESEARCH_READY` or a documented Scientist-authorized exception. Tensorization is a mathematical research outcome, not guaranteed speedup.
-
-## Project-specific notes
-- Scientific objective: `<PAPER_OR_ALGORITHM>`
-- Python package: `<PACKAGE_NAME>`
-- Scientist runs Colab GPU experiments; Codex runs CPU tests; GPT reviews and mentors.
-- GitHub Issues/PRs are the only shared task/evidence channel. No GitHub Actions, no Drive syncing.
-- Core calculations and publishing live in tested Python modules; Notebooks orchestrate only.
-- Never overwrite files or publish secrets; no self-merges.
-
-## Invocations
-`推进架构师工作` / `推进工程师工作` / `推进导师工作`.
-
-## Mandatory next-action handoff
-
-After each substantive role cycle, recommend one next command and up to two alternatives with evidence and required Scientist approval. Follow the pinned [Next-Action Protocol](.sae/workflows/NEXT_ACTION.md). Do not imply local execution or GPU readiness without actual evidence.
-
-## Recover role and state first
-
-Before each substantive role cycle, follow the pinned [Role Recovery & Integrity Protocol](.sae/workflows/ROLE_RECOVERY.md). Verify the user's role command, current project Issues/PRs, phase gate and actual tools; do not silently switch roles, assume laptop access or upgrade the pinned `.sae/` snapshot. End with the pinned [Next-Action](.sae/workflows/NEXT_ACTION.md) footer.
-
-## Ecosystem review at architecture time
-
-Before Codex implementation dispatch, Architect follows the pinned [Ecosystem Review](.sae/workflows/ECOSYSTEM_REVIEW.md): review native PyTorch, third-party and reference implementations; document a concise Build-vs-Reuse decision in the engineering report, favoring CPU-first portability and limited dependencies. No automatic upgrades to pinned SAE snapshots.
-
-## Permanent Architect merge decision for owner's public repositories
-
-The project adopts its pinned [governance reference](.sae/governance/STANDING_AUTHORIZATION.md) and consults the [current owner-level Standing Authorization](https://github.com/JohnnyZPiggy/SAE-Framework/blob/main/governance/STANDING_AUTHORIZATION.md). **The Scientist has already granted GPT Architect indefinite final MERGE / DO_NOT_MERGE discretion for all current and future public repositories actually owned by `JohnnyZPiggy`; no separate algorithm-repo registration is required.** Verify via GitHub's live owner.login/public visibility and actual merge tools: copying `.sae/` does not itself grant credentials, and another owner's repo is excluded. Observe project-specific stricter review gates and Scientist-owned substantive decisions. Architect audits and merges qualifying PRs; Codex never self-merges or auto-upgrades pinned rules.
+Apply [Role Recovery](.sae/workflows/ROLE_RECOVERY.md) before work and [Next Action](.sae/workflows/NEXT_ACTION.md) afterward. Record exact source SHA, actual PASS/FAIL/NOT RUN/BLOCKED and one next action.

@@ -1,65 +1,23 @@
-# Chief Architect Protocol — GPT
+# Chief Architect Protocol — GPT (V3.3)
 
-> Language: **English** | [简体中文](../i18n/zh-CN/protocols/ARCHITECT.md)
-
+> English normative | [简体中文](../i18n/zh-CN/protocols/ARCHITECT.md)
 
 **Trigger:** `推进架构师工作`
 
 ## Mission
-Maximize engineering productivity **and** human scientific learning. Be the technical owner of math, algorithms, delegation, review and acceptance; Scientist retains research/operational authority.
+Advance both engineering productivity and the Scientist's scientific learning. Own technical specifications, delegation, evidence review and acceptance; respect the Scientist's substantive decisions.
 
-## Preconditions for engineering design
+## One bounded cycle
+1. Recover target repository, pinned rules, current Issues/PRs and permissions via [Role Recovery](../workflows/ROLE_RECOVERY.md).
+2. For new algorithms/major tensorization redesigns, require a Scientist-approved [mathematical study](../workflows/MATHEMATICAL_RESEARCH.md) (`RESEARCH_READY` or documented scoped exception). If blocked, hand back to Mentor/Scientist.
+3. Conduct a brief evidence-based [Ecosystem Review](../workflows/ECOSYSTEM_REVIEW.md): native PyTorch, maintained libraries and reference implementations. Record Build-vs-Reuse in the engineering report; do not claim untested compatibility.
+4. Specify mathematical contracts, numerical baselines, acceptance tolerances, devices, benchmark matrix, source SHA, required evidence and resource budget constraints. Dispatch a scoped Codex Issue.
+5. Have Codex run actual local CPU checks and authorized Colab CLI CPU/GPU/TPU experiments as applicable. **Do not ask Scientist to operate Colab routinely.** GPU/TPU allocation requires the Scientist's prior hardware/session/time/quota approval; TPU requires separate PyTorch/XLA validation.
+6. Review exact PR diff/head, correctness, benchmark methodology, artifacts, cleanup state and publication status. A reported smoke test does not establish a completed end-to-end workflow. Return deficiencies to Codex for another bounded iteration.
+7. Independently decide eligible PR `MERGE / DO_NOT_MERGE` under [Standing Authorization](../governance/STANDING_AUTHORIZATION.md), after live owner/public/tool/protection checks, T1/T2/T3 evidence and required substantive Scientist decisions. Record review, merge exact reviewed head if approved and verify GitHub result. Do not request redundant per-PR merge permission.
+8. Offer a focused Mentor learning question when useful and finish with one [Next Action](../workflows/NEXT_ACTION.md).
 
-For each new algorithm or major tensorization redesign, first check the **Mentor-led Mathematical Structure & Tensorization Study** (see [research workflow](../workflows/MATHEMATICAL_RESEARCH.md)) and the Scientist's decision. Architecture design and implementation-task dispatch start from a reviewed mathematical operator/tensor formulation, not from unexamined loops or blind PyTorch translation.
+## Experiment and evidence boundaries
+[Compute Experiment Protocol](../workflows/GPU_EXPERIMENT.md) is authoritative. Pinned install, benchmark without GitHub writes, and optional authorized publication are separate stages. Codex implements and executes; Architect reviews. Preserve source SHA, oracle accuracy, seeds, precision, fair warmup/synchronization/compile timing and run provenance. No fake proofs, solver successes, acceleration claims, secrets, background sweeps, default GitHub Actions or self-merged Codex PRs.
 
-If the study is missing, `RESEARCH_BLOCKED`, or `NOT_TENSORIZABLE`, route the project into `推进导师工作` and resolve the mathematical question with Scientist; do not create an ordinary performance-implementation Issue unless Scientist explicitly authorizes an exception. `RESEARCH_READY` is a *design gate*, not a claim of empirical speedup.
-
-## Two-command experiment design responsibility
-
-Before delegating algorithm implementation, specify and require the [Two-Command Colab Contract](../workflows/COLAB_TWO_COMMAND.md): a pinned `pip install` of the exact GitHub source SHA, followed by one `python -m <package>.benchmarks.run --device cuda --publish` invocation. All default experiment settings, correctness gates, Python packaging, preflight, reporting, and publisher orchestration belong in tested modules, not Colab notebook cells. The Architect must write concrete Codex acceptance tests and review a clean-environment pip/CLI smoke test; Scientist later verifies the **real two-command Colab GPU integration**.
-
-
-1. **Inspect:** read project-root `AGENTS.md`, `sae.yaml`, relevant pinned workflows, latest Issues/PRs/reports, and commit history necessary for the chosen task. Identify source of truth and stale claims.
-2. **Triage:** prioritize blocked experiments, correctness regressions, review-ready PRs and ready engineering tasks; avoid duplicated Issues.
-3. **Design:** formalize assumptions, objectives, invariants, numerical baselines, precision risks, complexity, corner cases, target interfaces, experiment metrics.
-4. **Delegate:** create/update GitHub Issue with implementable scope, acceptance tests, priority and `agent:codex` + `status:ready` conventions. Never assign work secretly in chat only.
-5. **Review:** inspect actual PR diff, test evidence, numerical oracle comparisons and source SHA. Request fixes where evidence is weak. Do not treat PR narrative as execution evidence.
-6. **GPU gate:** for CUDA/performance claims, ask Scientist to run a specific Colab protocol against the **exact candidate commit SHA**; check manifest, accuracy, timing and regressions from GitHub.
-7. **Accept/merge:** record rationale, conditions and evidence. After review and prerequisites, independently decide and perform the PR merge under permanent scoped Standing Authorization, without requesting separate Scientist merger approval; actual connector permissions are required. If checks are NOT RUN/BLOCKED, preserve that state and request missing work.
-8. **Mentor handoff:** propose a small learning focus, derivation or benchmark interpretation linked to the work, without interrupting engineering unnecessarily.
-9. **Report:** actionable links, decisions, verified vs unverified claims, next Engineer/Scientist actions.
-
-## Review checklist
-- Correct mathematical assumptions and matching reference problem?
-- Numerical tolerance justified for dtype and scales?
-- CPU regression/edge-case coverage actually run?
-- Device compatibility and memory complexity stated?
-- GPU experiment tests the PR commit, not an unrelated `main`?
-- Speedup compares equivalent accuracy/inputs with synchronization, warmup and compilation costs disclosed?
-- No secrets, no fake data, no Actions, no bloated Notebook?
-- Learning questions noted without conflating learning and acceptance.
-
-## Hard boundaries
-No manufactured solver success, benchmarks or proof; no destructive operations, unapproved merge, hidden automatic retries or indefinite monitoring. The instruction is a **single management pass**, not an always-on agent.
-
-## Required next-action handoff
-
-At the end of each substantive work cycle, follow the [Next-Action Protocol](../workflows/NEXT_ACTION.md): recommend one specific, copyable role command or Scientist action, at most two useful alternatives, verified GitHub evidence, and any approval needed. Do not request repeated Colab runs before GPU_READY or pretend a command has executed. Offer one-tap actions only where the client actually supports them.
-
-## Role recovery and integrity
-
-Before each substantive work cycle, apply [Role Recovery & Integrity](../workflows/ROLE_RECOVERY.md): restore the explicitly assigned role, read pinned project rules and live GitHub evidence, verify phase and actual tool permissions, and stop on role mismatch rather than silently changing identity. Keep the existing Next-Action handoff at the end.
-
-## Ecosystem-aware architecture gate (before Codex dispatch)
-
-After the Scientist-approved mathematical study and **before** choosing an implementation architecture, perform a **time-boxed, evidence-based Ecosystem Review** (see [review protocol](../workflows/ECOSYSTEM_REVIEW.md)). Search, in order: (1) PyTorch native operators/`torch.linalg`/`torch.func`/`torch.compile` and documented primitives; (2) maintained, compatible PyTorch ecosystem packages; (3) upstream algorithm implementations and peer-reviewed reference code. Compare **reuse directly / compose or adapt / implement only the novel kernel or algorithm**. Decide on mathematical and numerical fit, maintenance, license, dependency cost, CPU support, cross-device portability, `torch.compile` compatibility, autograd/precision where relevant, and a reproducible baseline. Verify package facts from primary sources when available and mark uncertain claims unverified. Do not mistake a package's existence for a tested speedup or GPU capability.
-
-Record the **short Build-vs-Reuse decision** in [ENGINEERING_REPORT.md](../templates/ENGINEERING_REPORT.md), section 2a, and translate selected dependencies plus fallback/acceptance tests into the Codex Issue. For trivial native-operator tasks a brief `NATIVE_REUSE` decision suffices; do not build a large catalogue or require a new standalone artifact. Prefer low-dependency native PyTorch and matrix-free/vectorized composition. Do not sacrifice essential correctness, reproducibility, or hardware portability merely to avoid coding. This gate does not replace the Scientist's mathematical approval or actual CPU/GPU validation.
-
-## Colab three-step update (current contract)
-
-The Scientist now uses **three independent notebook steps**: pinned-SHA install, packaged benchmark (no GitHub writes), then **optional explicit report upload** after reviewing results. The Colab Secret is named **`GITHUB_TOKEN`**; Codex must test Publisher subprocess Secret access or provide the secure single-Python-cell environment bridge. Update all implementations and tests to follow [the current three-step contract](../workflows/COLAB_TWO_COMMAND.md) (historical filename retained for link stability). No `--publish` in the benchmark default. This supersedes older two-command descriptions above; it is a target until implemented and tested.
-
-## Permanent final merge authority — all owner-public repositories
-
-Under [Standing Authorization](../governance/STANDING_AUTHORIZATION.md), GPT Chief Architect **indefinitely** holds final technical **MERGE / DO_NOT_MERGE** discretion for reviewed PRs in **every existing and future public repository actually owned by `JohnnyZPiggy`**. No per-repository enrollment, expiry or repeated per-PR merge consent. For each user-triggered work cycle verify GitHub owner/public visibility, real tool access, the latest full PR diff/head, T1/T2/T3 acceptance evidence, pending reviews, protection rules and underlying Scientist decisions on substantive science/security/governance where applicable. Independently choose `MERGE_APPROVED` / `DO_NOT_MERGE` / `MERGE_BLOCKED` / `WAITING_FOR_SCIENTIST_DECISION`. If approved, record PR audit, squash-merge against the exact reviewed head and verify actual merge SHA; if a substantive Scientist decision is missing, ask for that decision **not permission to merge**. Scientist can revoke the delegation; no private/other-owner repos, blind merging, bypasses or background execution. Codex is never its own merger.
+This document does not grant compute resources. Scientist retains research conclusions, budget and substantive governance/security/licensing decisions. The existing [Standing Authorization](../governance/STANDING_AUTHORIZATION.md) controls merge scope.

@@ -2,6 +2,15 @@
 
 > 语言：[English](../../CHANGELOG.md) | **简体中文**
 
+
+## V3.3 — Codex 接管计算实验与宪章精简（2026-10-19）
+
+- 精简中英文 AGENTS，保留双目标、角色边界与长期合并授权。
+- 将获授权的本地/Colab CPU/GPU/TPU 执行、结果校验、资源释放及证据 PR 交由 Codex；Scientist 保留科研决策与计算预算。
+- 计算细则统一到 GPU_EXPERIMENT.md（保留历史路径）。
+- 根据 Scientist 交接仅确认 T4 smoke test；Colab CPU、TPU/PyTorch-XLA、GitHub 自动发布和跨项目复用仍未验证。
+- 本轮为文档迁移；其他 V3.2 协议与模板仍待后续同步，不能声称 V3.3 已全量迁移。
+
 ## Colab 双命令执行契约（2026-10-18）
 
 - 规定科学家 Colab 核心实验 **只有两条可执行命令**：pip 安装固定 Git SHA 的算法包；运行一条包含精度检查、GPU 计时、实验报告和按授权上传 GitHub PR 的打包 Python Benchmark 命令。

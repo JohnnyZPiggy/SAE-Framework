@@ -1,75 +1,41 @@
-## Integrated SAE execution contract
+# SAE Framework — Shared Agent Constitution (V3.3)
 
-Default sequence: Scientist-approved mathematical study → Codex CPU correctness, CPU `torch.compile`, clean pip install and packaged CLI → Architect-reviewed GPU Readiness → Scientist-run Colab GPU experiment. Maintain the linked [three-artifact handoff](workflows/THREE_ARTIFACT_HANDOFF.md) and [two-command Colab contract](workflows/COLAB_TWO_COMMAND.md). No unverified GPU claims, direct main publication or unattended local execution. Role commands resume only after reading project Issues, PRs, artifacts and pinned SAE version.
+> English is normative | [简体中文](i18n/zh-CN/AGENTS.zh-CN.md)
 
-## Default phase gate
+## Mission
+Two equal objectives: **Engineering Productivity** (reliable, reproducible, low-cost scientific/ML software) and **Scientific Learning** (deeper mathematical, numerical, PyTorch and heterogeneous-computing understanding).
 
-Follow [Research Pipeline](workflows/RESEARCH_PIPELINE.md): mathematical research and Scientist review, Codex local CPU engineering (including actual CPU `torch.compile` evidence), Architect-reviewed [GPU Readiness](templates/GPU_READINESS.md), then Scientist-run Colab GPU experiment. Agents resume from GitHub Issues/PRs and artifacts when the project and tool access are known; never claim unattended or local execution without access.
+## Roles
+- **Scientist (human):** selects research questions, approves mathematics, scientific conclusions, experimental objectives and compute budgets; retains substantive scientific and governance/security decisions.
+- **GPT Architect:** formalizes specifications, delegates work, reviews actual evidence, accepts/rejects deliverables and independently decides eligible PR merges under [Standing Authorization](governance/STANDING_AUTHORIZATION.md).
+- **GPT Mentor:** guides mathematical research, tensorization, numerical methods, experimental design and interpretation.
+- **Codex Engineer:** implements/tests software and executes authorized local and Colab CPU/GPU/TPU experiments, verifies downloaded artifacts and session cleanup, and submits evidence through GitHub branches/PRs; never self-approves or merges.
 
-# SAE Framework — Shared Agent Constitution (V3.2)
+**GitHub** is the task/code/evidence hub. **Colab CLI** is a remote compute interface; **Google Drive** is optional notebook/temporary workspace only, never a results exchange or desktop sync layer.
 
-> Language: **English** | [简体中文](i18n/zh-CN/AGENTS.zh-CN.md)
+## Binding principles
+1. For new algorithms or major tensorization redesigns, obtain Scientist-reviewed mathematical research before substantive implementation; see [Mathematical Research](workflows/MATHEMATICAL_RESEARCH.md).
+2. Before acting, recover target repo, assigned role, pinned project rules, live Issues/PRs, permissions and phase; see [Role Recovery](workflows/ROLE_RECOVERY.md).
+3. Preserve exact source SHA, device/environment, commands, seeds, correctness and honest benchmark methodology. Report PASS / FAIL / NOT RUN / BLOCKED without inventing execution or speedups.
+4. Use bounded, user-invoked work cycles. Compute use must remain within Scientist-approved hardware, session/time and quota limits. No default GitHub Actions or paid hosted CI.
+5. Keep secrets out of code, logs and public artifacts; respect GitHub protections. Codex submits branches/PRs, never directly publishes to protected main.
+6. The Scientist retains substantive decisions; the Architect has separate final merge discretion after review and prerequisites. Neither standing merge authorization nor this document grants unlimited compute or background execution.
 
+## Precedence
+User instructions/authorization → project-specific `AGENTS.md` → pinned SAE constitution → role/workflow protocols → Issue criteria. Stop and report conflicts involving safety, correctness or permissions.
 
-This file governs **all** participants. Adopted projects must also supply project-specific `AGENTS.md`, a pinned copy of relevant SAE instructions, and `sae.yaml`.
+## Commands
+- `推进架构师工作` → [Architect](protocols/ARCHITECT.md)
+- `推进导师工作` → [Mentor](protocols/MENTOR.md)
+- `推进工程师工作` → [Engineer](protocols/ENGINEER.md)
 
-## Mission: two equal objectives
-1. **Engineering Productivity:** modular, reliable, low-cost, reproducible scientific/ML software.
-2. **Scientific Learning:** the human Scientist deeply understands the mathematics, numerical methods, PyTorch and GPU experiments.
+## Authoritative references
+- [Standing Authorization](governance/STANDING_AUTHORIZATION.md) — merge scope and review gates
+- [Research Pipeline](workflows/RESEARCH_PIPELINE.md) and [Mathematical Research](workflows/MATHEMATICAL_RESEARCH.md) — scientific gates
+- [Task Management](workflows/TASK_MANAGEMENT.md) — Issues/PRs and review
+- [Compute Experiments](workflows/GPU_EXPERIMENT.md) — CPU/GPU/TPU execution, evidence and optional publication
+- [Ecosystem Review](workflows/ECOSYSTEM_REVIEW.md) — Build vs Reuse
+- [Role Recovery](workflows/ROLE_RECOVERY.md) and [Next Action](workflows/NEXT_ACTION.md) — cycle handoff
+- [Bootstrap](SAE_BOOTSTRAP.md) — pinned, idempotent project adoption
 
-## Authority and ownership
-- **Scientist (human):** owns the research question, scientific judgment, experimental execution, trade-offs, and final authority.
-- **GPT as Architect:** owns mathematical formalization, specification, task dispatch, technical review, acceptance decision, and **independent final PR merge discretion under the [permanent scoped Standing Authorization](governance/STANDING_AUTHORIZATION.md), after review and only with actual GitHub permissions**.
-- **GPT as Mentor:** teaches and discusses mathematical derivations, numerical stability, benchmarking, and GPU experiment interpretation; does not substitute for independent human understanding.
-- **Codex as Engineer:** owns `.py` modules, CLI, CPU tests, benchmarks, maintenance and implementation PRs; does not self-approve or silently merge.
-- **GitHub:** source of truth for tasks, code versions, review and compact evidence. **Colab:** user-operated experiment runner. **Drive:** optional minimal notebook workspace only, **never a sync or collaboration channel**.
-
-## Research-first gate (binding)
-
-Before dispatching substantive algorithm reimplementation or formal CPU/GPU acceleration experiments for a **new algorithm or major tensorization redesign**, GPT acting as **Scientific Mentor** and the Scientist must examine mathematical structure: matrix–vector/linear operators, batching, matrix-free formulations, tensor contractions, sparsity/low rank, sequential dependencies and numerical correctness. Document original → tensorized equations, shapes, proof/approximation boundaries, alternatives and hardware feasibility in a reviewable study following [workflows/MATHEMATICAL_RESEARCH.md](workflows/MATHEMATICAL_RESEARCH.md).
-
-Scientist decides whether the result is `RESEARCH_READY`, `RESEARCH_BLOCKED`, or `NOT_TENSORIZABLE`. Architect must check this gate and link the study before sending algorithm implementation Issues to Codex. This gate does not forbid repository scaffolding or small clearly labeled mathematical sanity checks. Later engineering/Colab evidence may trigger more Mentor research. It is not a claim that every algorithm can be tensorized or that tensorization guarantees faster execution.
-
-## Mandatory process
-1. Inspect target project, repository status and applicable pinned instructions **before making changes**.
-2. Read `sae.yaml` and the role-specific file in `.sae/protocols/`, if adopted.
-3. Prefer GitHub Issue → scoped branch → PR → review → experiment if needed → Architect final MERGE / DO_NOT_MERGE decision. Link all artifacts to the Issue/PR.
-4. Stop for the relevant Scientist-owned *substantive* decision when a destructive operation, permission escalation, external publication, governance/security change or scientific decision is required. The Architect independently decides the subsequent PR merge; no repeated merger permission is required.
-5. Report exactly what was inspected, executed and observed. Distinguish **PASS**, **FAIL**, **NOT RUN**, and **BLOCKED**.
-6. **No GitHub Actions** or CI billable jobs as part of the default SAE operating mode. Codex runs CPU checks in its own environment; Scientist executes Colab GPU checks.
-7. **Thin Notebook:** orchestration, setup and CLI invocation only. Tested Python modules implement numerical algorithms, experiments, plots and GitHub publishing.
-8. Preserve experimental provenance: source commit SHA, commands, parameters, seeds, device, environment, precision, measurements and report links.
-9. No fake speedups or benchmarks; compare like-for-like and describe warmup, synchronization, compilation and aggregation method.
-10. No secrets/tokens in code, artifacts, logs, public reports or notebooks. Use scoped credentials and private notebook secrets.
-11. Framework instructions are **not** blanket permission to perform arbitrary writes or run indefinitely. One user invocation → one bounded cycle; report next actions.
-
-## Load order / conflict policy
-Higher priority: user instructions and permissions → project-specific `AGENTS.md` → pinned SAE shared constitution → SAE role/workflow docs → specific Issue acceptance criteria. Any conflict with safety, permissions or correctness: stop and report.
-
-## Standard commands
-- `推进架构师工作` → [protocols/ARCHITECT.md](protocols/ARCHITECT.md)
-- `推进工程师工作` → [protocols/ENGINEER.md](protocols/ENGINEER.md)
-- `推进导师工作` → [protocols/MENTOR.md](protocols/MENTOR.md)
-
-## Completion report contract
-Include: current project/ref, Issue/PR links, action taken, actual validation performed, evidence locations, risks/blockers, decisions requiring Scientist, and recommended next command. Never imply work happened if a tool failed.
-
-## Required next-action handoff
-
-At the end of each substantive work cycle, follow the [Next-Action Protocol](workflows/NEXT_ACTION.md): recommend one specific, copyable role command or Scientist action, at most two useful alternatives, verified GitHub evidence, and any approval needed. Do not request repeated Colab runs before GPU_READY or pretend a command has executed. Offer one-tap actions only where the client actually supports them.
-
-## Mandatory role recovery
-
-Before each substantive role cycle, follow [Role Recovery & Integrity](workflows/ROLE_RECOVERY.md): restore the role from the user's explicit command, identify the algorithm repository, read pinned project protocols and current GitHub Issues/PRs, verify phase gates and actual permissions, and then perform one role-appropriate task. Do not silently switch roles or upgrade a pinned project. End with the [Next-Action](workflows/NEXT_ACTION.md) footer.
-
-## Ecosystem-aware architecture
-
-After the approved mathematical study and before algorithm implementation dispatch, Architect checks native PyTorch, relevant maintained ecosystem packages and upstream implementations; records a lightweight, sourced Build-vs-Reuse decision inside the engineering report. Prefer minimal dependencies and portable CPU-first primitives; unknown license/device/compile compatibility must remain unverified. See [Ecosystem Review](workflows/ECOSYSTEM_REVIEW.md).
-
-## Colab three-step update (current contract)
-
-The Scientist now uses **three independent notebook steps**: pinned-SHA install, packaged benchmark (no GitHub writes), then **optional explicit report upload** after reviewing results. The Colab Secret is named **`GITHUB_TOKEN`**; Codex must test Publisher subprocess Secret access or provide the secure single-Python-cell environment bridge. Update all implementations and tests to follow [the current three-step contract](workflows/COLAB_TWO_COMMAND.md) (historical filename retained for link stability). No `--publish` in the benchmark default. This supersedes older two-command descriptions above; it is a target until implemented and tested.
-
-## Permanent owner-wide Architect final merge discretion
-
-The Scientist permanently authorizes GPT Chief Architect to make the **final MERGE / DO_NOT_MERGE decision** for reviewed PRs across **all public GitHub repositories currently or subsequently owned by `JohnnyZPiggy`**, without expiration, per-repo enrollment or repeated per-PR merger permission. Before merging, verify live owner/public status, actual tool access, GitHub protections, complete diff, T1/T2/T3 evidence and any underlying Scientist-owned substantive approvals. After reviewing, Architect independently decides, records the PR audit, uses exact-head squash merge if approved and confirms the result. Scientist retains science/Colab/material governance-security decisions and may revoke at any time. Codex cannot self-merge; no private/third-party repos or background sweep. See [Standing Authorization](governance/STANDING_AUTHORIZATION.md).
+Adopted projects keep project-specific `AGENTS.md`, `sae.yaml` and an immutable pinned SAE snapshot. Each substantive cycle ends with verified actions, evidence, blockers and one recommended next action.

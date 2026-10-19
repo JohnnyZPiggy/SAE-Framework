@@ -7,7 +7,7 @@
 ## 快速导航
 - **[数学结构探索与张量化研究关口](workflows/MATHEMATICAL_RESEARCH.md)**
 - [张量化研究模板](templates/TENSORIZATION_STUDY.md)
-- **[Colab 双命令接口规范](workflows/COLAB_TWO_COMMAND.md)**
+- **[Colab CLI 三阶段兼容入口](workflows/COLAB_TWO_COMMAND.md)**
 - [初始化协议](SAE_BOOTSTRAP.md)
 - [智能体共同规则](AGENTS.zh-CN.md)
 - [角色协议：GPT 架构师 / Codex 工程师 / GPT 导师 / 科学家](protocols/)
@@ -18,6 +18,10 @@
 - [Colab 示例](examples/colab/README.md)
 - [项目 AGENTS 示例](examples/project/AGENTS.zh-CN.md)
 - [YAML 配置说明](examples/project/SAE_CONFIG.md)
+
+## V3.3 执行职责
+
+Codex 执行获授权的本地及 Colab CLI CPU/GPU/TPU 实验，Scientist 负责科研决策和计算预算；[计算实验协议](workflows/GPU_EXPERIMENT.md)是执行细则。T4 smoke test 已由用户报告验证，TPU、自动发布等尚未验证。
 
 ## 哪个语言版本具有执行效力？
 **英文根目录是机器读取的规范版本**。保留 `AGENTS.md`、`SAE_BOOTSTRAP.md`、`sae.yaml`、CLI 参数与状态名的真实英文标识。中文文件用于理解与教学，不在缺乏验证的情况下修改实际协议语义。

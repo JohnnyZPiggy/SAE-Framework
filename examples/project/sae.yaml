@@ -1,5 +1,5 @@
-# Copy as sae.yaml and replace all angle-bracket placeholders before activation.
-sae_version: "3.2"
+# SAE V3.3 example. Replace all placeholders and pin an actual immutable framework SHA.
+sae_version: "3.3"
 project:
   repository: "<OWNER>/<PROJECT>"
   name: "<PROJECT>"
@@ -31,14 +31,16 @@ collaboration:
   hosted_ci_required: false
   merge_requires_authorization: true
 experiments:
-  device_runner: "scientist_colab"
-  notebook_style: "two_command_orchestrator" 
-  notebook_command_count: 2
+  device_runner: "codex_local_and_colab_cli"
+  devices: ["cpu", "gpu", "tpu"]
+  gpu_tpu_require_scientist_budget_approval: true
+  notebook_style: "optional_thin_workspace"
+  execution_stages: ["pinned_install", "benchmark", "optional_publish"]
   install_source: "pinned_github_commit_via_pip"
-  benchmark_cli: "python -m <PACKAGE_NAME>.benchmarks.run --device cuda --publish" 
+  benchmark_cli: "python -m <PACKAGE_NAME>.benchmarks.run --device <DEVICE>"
   benchmark_in_pip_package: true
-  publisher_invoked_inside_benchmark_cli: true
-  publisher: "manual_until_implemented"
+  publisher_invoked_inside_benchmark_cli: false
+  publisher: "optional_separate_cli_unverified_until_tested"
   reports_in_github: true
   google_drive_role: "temporary_notebook_workspace_only"
   drive_sync: false

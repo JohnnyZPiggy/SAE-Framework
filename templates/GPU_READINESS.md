@@ -17,7 +17,7 @@
 | CPU benchmark and numerical tolerance | | |
 | Clean pinned-SHA pip install and packaged CLI | | |
 | GPU workload defaults, device failure and report design | | |
-| Two-command Colab instructions and source SHA | | |
+| Codex-operated Colab CLI plan, three separate stages and source SHA | | |
 
 **Waivers (reason + Architect approval):** <none or detail>  
 **Outstanding blockers:** <none or Issue URLs>  
