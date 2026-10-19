@@ -61,3 +61,7 @@ At the end of each substantive work cycle, follow the [Next-Action Protocol](wor
 ## Mandatory role recovery
 
 Before each substantive role cycle, follow [Role Recovery & Integrity](workflows/ROLE_RECOVERY.md): restore the role from the user's explicit command, identify the algorithm repository, read pinned project protocols and current GitHub Issues/PRs, verify phase gates and actual permissions, and then perform one role-appropriate task. Do not silently switch roles or upgrade a pinned project. End with the [Next-Action](workflows/NEXT_ACTION.md) footer.
+
+## Ecosystem-aware architecture
+
+After the approved mathematical study and before algorithm implementation dispatch, Architect checks native PyTorch, relevant maintained ecosystem packages and upstream implementations; records a lightweight, sourced Build-vs-Reuse decision inside the engineering report. Prefer minimal dependencies and portable CPU-first primitives; unknown license/device/compile compatibility must remain unverified. See [Ecosystem Review](workflows/ECOSYSTEM_REVIEW.md).

@@ -40,3 +40,7 @@ SAE Framework：`JohnnyZPiggy/SAE-Framework`，架构版本 V3.2
 ## 先恢复角色与项目状态
 
 每次实质性工作前读取固定的 [角色恢复协议](.sae/workflows/ROLE_RECOVERY.md)，核对用户口令、项目 Issue/PR、阶段关口和实际工具权限；不得悄悄换角色、假装已连接笔记本或升级固定快照。结束后使用 [下一步口令](.sae/workflows/NEXT_ACTION.md)。
+
+## 架构设计前的生态调查
+
+架构师向 Codex 派单前，按固定版本 [生态评估协议](.sae/workflows/ECOSYSTEM_REVIEW.md) 检查 PyTorch 原生功能、第三方包与论文参考实现，在工程报告中说明 Build-vs-Reuse 方案；坚持 CPU-first、跨硬件和少依赖，不自动升级固定 SAE 快照。

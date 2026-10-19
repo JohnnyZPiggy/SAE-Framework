@@ -68,3 +68,7 @@ A newly initialized project has an accessible, version-pinned SAE snapshot; root
 ## Role recovery in the pinned Bootstrap snapshot
 
 Include [ROLE_RECOVERY.md](workflows/ROLE_RECOVERY.md) and its [Chinese mirror](i18n/zh-CN/workflows/ROLE_RECOVERY.md) in the self-contained `.sae/workflows/` snapshot. Project `AGENTS.md` must link `.sae/workflows/ROLE_RECOVERY.md`. The Bootstrap implementation must preserve pinned-version behavior and check that role restoration works in a fresh chat, without silently upgrading existing projects.
+
+## Ecosystem Review in project snapshots
+
+New project `.sae/workflows/` snapshots must also pin [ECOSYSTEM_REVIEW.md](workflows/ECOSYSTEM_REVIEW.md), with its [Chinese mirror](i18n/zh-CN/workflows/ECOSYSTEM_REVIEW.md). Ensure the pinned Architect protocol and engineering report include the brief Build-vs-Reuse gate; verify relative links in the copied snapshot. Existing projects must opt into updates rather than silently upgrading.

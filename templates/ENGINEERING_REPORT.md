@@ -51,3 +51,20 @@ State measured maximum/relative error *only if actually measured*, tolerance pol
 - **Learning insight:** optional single algorithmic or numerical insight, not a mandatory essay.
 
 This engineering document is **not a substitute for GitHub PR review**, cannot certify unexecuted GPU tests, and must not overwrite other evidence.
+
+## 2a. Ecosystem Review — Build vs. Reuse (Architect; before Codex dispatch)
+
+**Review depth:** NATIVE_REUSE (one-line sufficient) / TARGETED_REVIEW / DEEP_REVIEW (only if justified)  
+**Search date and sources:** <official PyTorch docs, maintained package URLs, upstream/reference code; or NOT VERIFIED>  
+
+| Option / candidate | Mathematical/API fit | License, maintenance, dependencies | CPU + cross-device / compile / dtype risks | Decision |
+| --- | --- | --- | --- | --- |
+| Native PyTorch primitives | <evidence> | <version/none> | <known / UNKNOWN> | REUSE / ADAPT / REJECT |
+| Third-party package (if relevant) | <link/version> | <license/status or UNKNOWN> | <supported / UNKNOWN> | REUSE / ADAPT / REJECT |
+| Algorithm reference / own implementation | <paper/code link> | <license or UNKNOWN> | <baseline and risks> | REUSE / ADAPT / BUILD |
+
+**Selected Build-vs-Reuse approach and reason:** <one to three sentences; distinguish verified facts from hypotheses>.  
+**Codex handoff:** <version constraints, minimal dependencies, adapter boundaries, fallback, CPU oracle/edge tests, clean install and compile smoke tests>.  
+**Unverified claims / follow-up:** <NONE / specific verification task>.  
+
+Keep this review short; do not add a fourth project artifact. A library's presence is not evidence of correctness, acceleration or device portability. See [Ecosystem Review](../workflows/ECOSYSTEM_REVIEW.md).

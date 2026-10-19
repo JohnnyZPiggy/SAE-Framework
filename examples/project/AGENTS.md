@@ -40,3 +40,7 @@ After each substantive role cycle, recommend one next command and up to two alte
 ## Recover role and state first
 
 Before each substantive role cycle, follow the pinned [Role Recovery & Integrity Protocol](.sae/workflows/ROLE_RECOVERY.md). Verify the user's role command, current project Issues/PRs, phase gate and actual tools; do not silently switch roles, assume laptop access or upgrade the pinned `.sae/` snapshot. End with the pinned [Next-Action](.sae/workflows/NEXT_ACTION.md) footer.
+
+## Ecosystem review at architecture time
+
+Before Codex implementation dispatch, Architect follows the pinned [Ecosystem Review](.sae/workflows/ECOSYSTEM_REVIEW.md): review native PyTorch, third-party and reference implementations; document a concise Build-vs-Reuse decision in the engineering report, favoring CPU-first portability and limited dependencies. No automatic upgrades to pinned SAE snapshots.
