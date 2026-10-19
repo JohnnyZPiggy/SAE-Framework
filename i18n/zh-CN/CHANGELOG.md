@@ -2,6 +2,14 @@
 
 > 语言：[English](../../CHANGELOG.md) | **简体中文**
 
+## V3.2 单一权威协议精简整合（2026-10-19）
+
+- 科学家明确纠正了永久合并授权范围：`JohnnyZPiggy` 现在与未来全部本人拥有的公开仓库，无到期日；PR #21 已审核合并，重复的 #20 与早已被 #15 覆盖的 #14 已关闭。合并权的唯一正式定义为[当前治理文件](governance/STANDING_AUTHORIZATION.md)。
+- 科学家的 Colab 改为**三个独立步骤**：固定源码 SHA 安装、独立 Benchmark、审核后可选 Publisher。Token 在 Colab Secrets 中命名 `GITHUB_TOKEN`；子进程读取或安全传递必须真实测试。
+- 精简和整合角色、Bootstrap、任务管理、PR 审核、会话恢复、实验协议与中英镜像；`CODE_REVIEW.md`、`NEXT_ACTION.md`、`COLAB_TWO_COMMAND.md` 和旧模板路径保留短兼容入口。
+- 同步 `sae.yaml`、GitHub Issue 模板、路线图，把工程报告的 Ecosystem Review 调回实现记录之前。不擅自升级已采用算法项目的固定 `.sae/` 快照。
+- **仅文档更新：** 未声称 Bootstrap/Publisher CLI 或 CPU/GPU 测试已经实现；不使用 GitHub Actions。
+
 ## Colab 双命令执行契约（2026-10-18）
 
 - 规定科学家 Colab 核心实验 **只有两条可执行命令**：pip 安装固定 Git SHA 的算法包；运行一条包含精度检查、GPU 计时、实验报告和按授权上传 GitHub PR 的打包 Python Benchmark 命令。

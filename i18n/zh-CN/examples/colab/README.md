@@ -2,7 +2,7 @@
 
 > 语言：[English](../../../../examples/colab/README.md) | **简体中文**
 
-参见 [Colab 三步契约](../../../../workflows/COLAB_TWO_COMMAND.md)。
+参见 [Colab 三步权威协议](../../../../workflows/GPU_EXPERIMENT.md)。
 
 ```python
 !pip install "git+https://github.com/OWNER/REPO.git@<EXACT_SOURCE_COMMIT_SHA>"

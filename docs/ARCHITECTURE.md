@@ -78,4 +78,7 @@ For each algorithm, the Mentor/Scientist **Mathematical Research**, Architect/Co
 No GitHub Actions or hosted CI; no automatic merge by Engineer; no fabricated tests; no private credentials in a public repository; no direct experiment push to protected main; no changes to an existing repository without a diff/review plan.
 
 ## Lifecycle
-Idea → Architect mathematical contract → `agent:codex` Issue → Engineer claim/implementation/CPU testing → PR → Architect review → Scientist Colab GPU validation if required → experiment report PR → Architect acceptance → authorized merge → Mentor consolidation. Re-enter the loop wherever a real blocker or new result appears. This is iterative, **not a rigid linear pipeline**.
+Idea → Mentor + Scientist mathematical study/approval → Architect design → `agent:codex` Issue → Engineer claim/implementation/CPU testing → PR → Architect review → Scientist Colab GPU validation if required → experiment report PR → Architect acceptance → authorized merge → Mentor consolidation. Re-enter the loop wherever a real blocker or new result appears. This is iterative, **not a rigid linear pipeline**.
+
+
+**Current three-step Colab contract:** The Scientist installs a pinned SHA, runs an independent correctness/benchmark CLI without GitHub writes, then optionally publishes reviewed small reports using `GITHUB_TOKEN`. The separate Publisher is a target until implemented and tested; see [GPU Experiment](../workflows/GPU_EXPERIMENT.md).

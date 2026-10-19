@@ -5,7 +5,7 @@
 
 **This directory is documentation, not a working notebook or Publisher.** GPT designs orchestration; Codex implements tested Python modules/CLI. The Scientist runs Colab and reviews results.
 
-See the [Three-Step Colab Contract](../../workflows/COLAB_TWO_COMMAND.md).
+See the [canonical Three-Step Colab Contract](../../workflows/GPU_EXPERIMENT.md).
 
 ```python
 !pip install "git+https://github.com/OWNER/REPO.git@<EXACT_SOURCE_COMMIT_SHA>"

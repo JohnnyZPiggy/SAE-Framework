@@ -3,6 +3,14 @@
 > Language: **English** | [简体中文](i18n/zh-CN/CHANGELOG.md)
 
 
+## V3.2 single-source consolidation (2026-10-19)
+
+- The Scientist's corrected **indefinite owner-public** merge authorization for all current/future `JohnnyZPiggy`-owned public repositories was reviewed and merged in PR #21. Superseded duplicate PR #20 and role-recovery PR #14 were closed; the [live governance file](governance/STANDING_AUTHORIZATION.md) is the sole grant definition.
+- **Three separate Colab cells** supersede the historical two-command design: exact-SHA pip install → independent local benchmark → optional report Publisher after Scientist review. `GITHUB_TOKEN` is a Colab Secret; subprocess inheritance requires actual validation or secure Python upload fallback.
+- Consolidated duplicated role, Bootstrap, task-management, PR review, session recovery and experiment documentation. Retained historical `CODE_REVIEW.md`, `NEXT_ACTION.md`, `COLAB_TWO_COMMAND.md`, and Issue/PR template paths as short compatibility links, with canonical definitions elsewhere.
+- Updated `sae.yaml`, GitHub Issue templates, roadmap and bilingual mirrors; placed engineering Ecosystem Review section before implementation. No automatic rewrite of already-adopted projects' pinned `.sae/` snapshots.
+- **Documentation-only:** Bootstrap, Benchmark and Publisher runtime implementations or real CPU/GPU integration are not implied; no GitHub Actions.
+
 ## Colab two-command execution interface (2026-10-18)
 
 - Defined a strict end-user target of **two executable Colab command cells**: pip-install an immutable GitHub source SHA; run one packaged Python benchmark that handles correctness, GPU timing, reports, and **optional authorized** GitHub PR publication.

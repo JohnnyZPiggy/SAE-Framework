@@ -75,4 +75,6 @@ flowchart TD
 不使用 GitHub Actions/付费 CI；Codex 不得自动合并；不捏造测试；不能把私人凭证放在公共仓库；实验报告不直接推送受保护 `main`；修改旧项目之前先评估差异。
 
 ## 多轮研发闭环
-科学问题 → GPT 数学规格 → `agent:codex` Issue → Codex 领取/实现/CPU 验证 → PR → GPT 审查 → 科学家 Colab GPU 验证（按需）→ 实验报告 PR → GPT 验收/授权合并 → GPT 导师总结。新结果或阻塞可以让任意阶段回到之前步骤，**并非固定线性流水线**。
+科学问题 → 导师/科学家数学研究与批准 → 架构师工程设计 → `agent:codex` Issue → Codex 领取/实现/CPU 验证 → PR → GPT 审查 → 科学家 Colab GPU 验证（按需）→ 实验报告 PR → GPT 验收/授权合并 → GPT 导师总结。新结果或阻塞可以让任意阶段回到之前步骤，**并非固定线性流水线**。
+
+**现行 Colab 三步：** Scientist 安装固定 SHA、运行不写 GitHub 的独立 Benchmark，审核真实结果后可选使用 `GITHUB_TOKEN` 发布小型报告。独立 Publisher CLI 实现/实测前只能称目标接口；详见 [GPU 实验协议](../workflows/GPU_EXPERIMENT.md)。

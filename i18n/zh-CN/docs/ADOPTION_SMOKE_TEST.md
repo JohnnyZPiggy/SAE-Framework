@@ -44,3 +44,11 @@
 列出实际路径、固定 SHA、真实 Issue/PR 链接、完成与未完成项、风险和科学家需要批准的动作。
 
 **说明：** 这是冒烟检查协议，不是已通过测试的证明。
+
+
+## 检查 5：Colab 三步配置与本人公开仓库授权
+
+- 项目 `sae.yaml` 中 `notebook_command_count: 3`、`publisher_invoked_inside_benchmark_cli: false`、独立 run/publish CLI 与 Secret 名称 `GITHUB_TOKEN` 必须一致（不要写 token 值）。
+- 复制后的 `.sae/workflows/GPU_EXPERIMENT.md` 链接应真正可用，描述安装 → 仅本地 Benchmark → 可选独立上传；历史 `COLAB_TWO_COMMAND.md` 可以只是兼容指向。
+- 核对实际 GitHub owner/public 和工具权限，方可依据 [常设授权](../governance/STANDING_AUTHORIZATION.md)作出合并决定；不擅改已有项目固定 `.sae/`。
+- CLI/Secret/GPU 未经真实测试只能标 NOT_IMPLEMENTED/NOT_RUN，不要为了文档冒烟测试擅自上传。

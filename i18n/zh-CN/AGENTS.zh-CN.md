@@ -1,6 +1,6 @@
 # SAE Framework V3.2 — 共同 Agent 宪章（中文）
 
-> [English — 正式规范](../../../AGENTS.md) · **One Project, Two Outcomes: Better Software, Better Scientist.**
+> [English — 正式规范](../../AGENTS.md) · **One Project, Two Outcomes: Better Software, Better Scientist.**
 
 GitHub 是任务、证据和审查的权威来源；用户一次口令只触发**一个有边界工作周期**，不会凭角色扮演自行后台运行。
 
@@ -33,4 +33,4 @@ GitHub 是任务、证据和审查的权威来源；用户一次口令只触发*
 
 完成一轮工作后按 [角色恢复与交接](workflows/ROLE_RECOVERY.md) 输出可核验 Issue/PR/SHA、阻塞和**一条最优下一步口令**（最多两个必要备选）。无工具不声称已执行。
 
-[Bootstrap](../../../SAE_BOOTSTRAP.md) · [项目 AGENTS 示例](../../../examples/project/AGENTS.md)
+[Bootstrap](../../SAE_BOOTSTRAP.md) · [项目 AGENTS 示例](../../examples/project/AGENTS.md)

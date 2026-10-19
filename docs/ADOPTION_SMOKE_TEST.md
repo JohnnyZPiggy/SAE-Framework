@@ -45,3 +45,11 @@ All files under `.sae/` must come from **the same pinned revision**. Check that 
 A short pass/fail checklist with actual project paths and commits, real Issue/PR links, missing prerequisites, and Scientist actions needed.
 
 **Status:** This document defines a smoke-test procedure; it is **not** evidence that a target project passed the test.
+
+
+## Test 5 — Three-step Colab configuration and owner-wide grant
+
+- Check target `sae.yaml` has `notebook_command_count: 3`, `publisher_invoked_inside_benchmark_cli: false`, separate run/publish CLIs, and Secret **name** `GITHUB_TOKEN` (never a credential literal).
+- Verify pinned `.sae/workflows/GPU_EXPERIMENT.md` resolves **after copying** and describes install → benchmark (local only) → optional separate publish. The old `COLAB_TWO_COMMAND.md` URL may be a compatibility pointer.
+- Confirm **live repository ownership and public visibility** and actual GitHub write rights before assuming the owner's [standing grant](../governance/STANDING_AUTHORIZATION.md) applies; this policy does not auto-upgrade existing pinned snapshots or grant tool permissions.
+- Benchmark/Publisher are NOT_IMPLEMENTED/NOT_RUN until Codex and Scientist supply real evidence; do not run a tokened upload just to pass a documentation smoke test.
