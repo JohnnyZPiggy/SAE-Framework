@@ -25,29 +25,17 @@
 5. 对比**原始参考算法**、**候选张量表达**与**不可行时的备选方案**。若没有有价值的张量化方案，也应如实记录，这是有效研究结论。
 
 ## R3：输出数学研究交接报告
-在目标算法仓库中新建或更新 `docs/research/<algorithm>-tensorization.md`，使用 [张量化研究模板](../../../templates/TENSORIZATION_STUDY.md) 的中文版 [说明](../templates/TENSORIZATION_STUDY.md)。
+在算法项目内更新 `docs/research/<algorithm>-tensorization.md`，按[张量化研究模板](../templates/TENSORIZATION_STUDY.md)记录原问题与假设、原式到张量式的推导/形状、等价证明或近似限制、正确性基准/容差、数据依赖与不可并行处、数值风险、复杂度和硬件假设、备选方案及**尚未实测**的问题；必须有 **RESEARCH_READY / RESEARCH_BLOCKED / NOT_TENSORIZABLE** 结论、依据和 Scientist 决定。
 
-至少包含：
-- 原问题、假设、参考算法和目标算子；
-- 代数结构、数据依赖与不可并行部分；
-- 原式 → 重构式推导、形状/dtype、证明或近似边界；
-- 参考正确性判据、反例、容差与数值风险；
-- 理论计算量/内存、硬件可移植性假设；
-- 待验证的实验问题（不是已测性能）、备选方法与阻碍；
-- **结论：RESEARCH_READY / RESEARCH_BLOCKED / NOT_TENSORIZABLE**、依据和科学家审核。
-
-**RESEARCH_READY 只表示数学方案足以进入设计，并不意味着数值正确性已通过实验或已经实现 GPU 加速。** 若结果为 RESEARCH_BLOCKED / NOT_TENSORIZABLE，不得擅自将性能优化 Issue 交给 Codex。Scientist 可以改选方案、允许有限参考实现，或明确记录例外。
+`RESEARCH_READY` 仅允许进入设计，**不表示**数值正确性或加速已通过；`RESEARCH_BLOCKED` / `NOT_TENSORIZABLE` 不得直接进入性能开发，除非 Scientist 明确批准有限例外或改选方案。
 
 ## 从数学报告到工程、实验报告
-
-数学研究是 [三文档交接协议](THREE_ARTIFACT_HANDOFF.md) 的第一份成果。由科学家批准的推导、数值约束进入 [工程报告](../templates/ENGINEERING_REPORT.md)，真实 Colab 输出则进入不同 run-id 的 [实验报告](../templates/EXPERIMENT_REPORT.md)。数学加速假设不能写成已测的性能结论。
+数学报告是[三文档交接协议](THREE_ARTIFACT_HANDOFF.md)的第一份成果；后续通过[工程报告](../templates/ENGINEERING_REPORT.md)和实际运行的[实验报告](../templates/EXPERIMENT_REPORT.md)引用同一数学依据，不得将理论加速假设冒充实测性能。
 
 ## 进入架构师与工程阶段
-1. 科学家审核研究报告并选定数学表达。
-2. GPT 切换 **Chief Architect**：依据报告设计模块接口、正确性验收、实验矩阵与 Codex 任务。
-3. 工程 Issue 必须链接研究报告，并区分**已证明、待验证、尚未测试**的结论。
-4. Codex 实现参考版/张量版并真实运行 CPU 检查；经 Scientist 预先批准设备、会话、时长和额度后，Codex 对固定 commit 执行 Colab GPU/其他设备测试，必要时回到 R1/R2。
-5. 前置阶段允许少量**数学合理性检查**用于发现错误，但不能冒充正式工程验收或 GPU Benchmark。
+1. Scientist 批准研究方案或明确有限例外后，Architect 据此设计软件、数值验收、实验矩阵与 Codex Issue，并标明**已证明 / 待验证 / NOT RUN**。
+2. Codex 实现参考版/张量版并真实运行 CPU 检查；GPU/TPU 必须先过准备关口并取得 Scientist 设备、会话、时长及额度批准，使用固定 SHA 实测，失败可返回 R1/R2。
+3. 探索期小规模数学合理性检查不能冒充正式工程验证或 GPU Benchmark；禁止编造实验结果。
 
 ## 「推进导师工作」如何变化？
 新项目若没有被科学家认可的研究报告，**优先执行 R1–R3**，而不是直接跳到教学或性能测试。已有方案的项目则可以继续数学教学和发现新结构。一次指令可以只完成一个有边界的研究问题；涉及科学决策请科学家确认。

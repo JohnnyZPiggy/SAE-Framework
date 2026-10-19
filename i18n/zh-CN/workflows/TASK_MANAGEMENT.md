@@ -13,12 +13,10 @@
 如果缺少创建标签的权限，就在 Issue 评论里写出真实状态；不要假装已应用标签。Assignee 必须是真正的 GitHub 账户，不能使用不存在的机器人用户名。
 
 ## 工程任务前的数学研究关口
-
-针对新算法或重大张量化改写，首先形成**由 GPT 科学导师负责的数学结构研究任务/记录**，而不是立即创建交给 `agent:codex` 的实现任务。在标记算法实现 Issue 为 `status:ready` 前，必须链接科学家批准的 `docs/research/<algorithm>-tensorization.md` 与 `RESEARCH_READY` 结论。之后总架构师设计模块、正确性基线和正式实验。报告缺失或阻塞则先返回导师/科学家。仓库初始化等基础设施任务可独立进行。详见 [数学研究关口](MATHEMATICAL_RESEARCH.md)。
+新算法或重大张量化改写须先有经 Scientist 审核的 `RESEARCH_READY` 数学报告（`docs/research/<algorithm>-tensorization.md`），或已记录的有限例外，才能将 Codex 算法实现 Issue 标为 `status:ready`。研究缺失或阻塞返回导师/Scientist；仓库初始化不适用。详见[数学研究关口](MATHEMATICAL_RESEARCH.md)。
 
 ## Issue/PR 与三文档关联
-
-经科学家审查的数学报告、架构师/Codex 的工程报告、Codex 获授权运行 Colab 的实验报告构成可追溯的证据链。见 [三文档交接协议](THREE_ARTIFACT_HANDOFF.md)。工程 Issue/PR 链接数学与工程文档；实验 PR 链接被测源码 SHA 及前两份文档。无需额外建立第四份相互冲突的状态日报，模板也不能充当完成证据。
+按[三文档交接协议](THREE_ARTIFACT_HANDOFF.md)关联经批准的数学报告、工程报告、Codex 获 Scientist 授权执行的实验记录。实验 PR 应指明被测源码 SHA 及上游 Issue/PR；不建立第四份状态日报，模板不能冒充实测证据。
 
 ## 生命周期
 1. **GPT 创建 Issue：** 写出数学契约、接口、输入输出、CPU/GPU 验收条件、参考资料和依赖，合适时标记给 Codex。
@@ -32,13 +30,11 @@
 ## 状态一致性
 GitHub API 写入可能失败、标签缺失、PR 评论可能过时；关键操作后重新读取状态。引用 Issue、PR、run ID 和源码 SHA 交接；不能未经说明混用不同版本 Benchmark。组织流程是可反复交替的迭代，而不是固定流水线。
 ## 每轮结束的下一步口令
-
-每次完成实质性工作，按照 [下一步口令协议](NEXT_ACTION.md) 给科学家一个最优、可复制的角色口令或人工操作，最多两项备选，并说明已核实状态、GitHub 证据和是否需要科学家批准。GPU_READY 前不得建议科学家重复 GPU 实验；无权限或受阻时如实说明。交互按钮仅在客户端真实支持时使用。
+每轮实质性工作发送最终回复前执行[下一步交接完成关卡](NEXT_ACTION.md)：提供真实状态、证据、一条完整可复制的推荐口令，确有不同路径时最多两条备选。
 
 ## 角色恢复与防止出戏
-
-每轮实质性工作开始前执行 [角色恢复与完整性协议](ROLE_RECOVERY.md)，根据用户口令恢复身份、读取固定版本和 GitHub 当前证据、核验阶段与权限；若角色不匹配，应报告并交接，不得悄悄切换或虚报执行。每轮结束仍按下一步口令协议交接。
+每轮开始按[角色恢复协议](ROLE_RECOVERY.md)检查身份、固定协议、真实证据和权限；角色不匹配时停止并交接。
 
 ## 全部本人公开仓库由架构师永久独立决定是否合并
+GPT Architect 对本人公开仓库的合格 PR 依[常设授权](../governance/STANDING_AUTHORIZATION.md)独立作出 MERGE / DO_NOT_MERGE 决定，前提是实时核实所有权、公开状态、权限、真实 Diff/SHA/证据及 Scientist 保留的实质决定。不需逐 PR 申请合并许可；Codex 不自合并、不后台扫仓库。具体范围、T1/T2/T3 与合并关口以所链接治理协议为准。
 
-依据 [常设授权](../governance/STANDING_AUTHORIZATION.md)，GPT 架构师针对 `JohnnyZPiggy` **当前及未来全部本人拥有的公开 GitHub 仓库**，在用户触发的工作周期内自行决定每个合格 PR 的 **MERGE / DO_NOT_MERGE**，**无到期日、无逐仓库登记、无逐 PR 再请示**。T1/T2/T3 是证据与科学家负责的科研/重要治理安全**实质内容决定**之关口，不是合并权分级。每次核实实时 owner/public、权限、完整 Diff、匹配 SHA 的 CPU/必要 GPU 证据和 GitHub 保护，留 PR 审计，批准后精确 head Squash Merge 并核实结果。缺实质决定时先阻塞，请科学家确认**问题本身**而不是合并许可。Codex 不合并、不后台扫仓库。

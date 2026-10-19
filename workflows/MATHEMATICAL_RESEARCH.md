@@ -25,29 +25,17 @@ This is a **gate**, not a rigid linear pipeline. Findings from Codex or Colab ca
 5. Compare at least the **reference**, a **tensorized mathematical candidate**, and a **fallback** if the candidate is unproven or inefficient. If no useful tensorization exists, document this as a valid scientific outcome.
 
 ## Stage R3 — Produce a research handoff
-Create or update a compact, reviewable `docs/research/<algorithm>-tensorization.md` in the **target project**, using [TENSORIZATION_STUDY.md](../templates/TENSORIZATION_STUDY.md).
+Create/update `docs/research/<algorithm>-tensorization.md` in the **algorithm project** using the canonical [Tensorization Study template](../templates/TENSORIZATION_STUDY.md). Record source/assumptions, original-to-tensor equations and shapes, proof or approximation limits, reference oracle/tolerances, dependencies and nonparallelizable barriers, numerical risks, complexity/device hypotheses, alternatives, and **untested** experiment questions. Conclude with **RESEARCH_READY / RESEARCH_BLOCKED / NOT_TENSORIZABLE**, rationale and Scientist decision.
 
-Required contents:
-- Source problem, assumptions, reference and target operator;
-- discovered algebraic structures and data-dependency graph;
-- original → transformed equations, shapes/dtypes and proof/approximation boundaries;
-- correctness oracle, counterexamples, tolerance rationale and numerical risks;
-- theoretical compute/memory estimates and hardware-portability hypotheses;
-- proposed experiment questions (not measured outcomes), alternatives and blockers;
-- **decision: RESEARCH_READY / RESEARCH_BLOCKED / NOT_TENSORIZABLE**, rationale and Scientist review.
-
-**`RESEARCH_READY` means a mathematically specified, plausibly implementable plan exists; it does not certify numerical correctness or measured acceleration.** If `RESEARCH_BLOCKED` or `NOT_TENSORIZABLE`, do not silently dispatch performance engineering. Scientist may choose a different structure, a limited reference implementation, or explicit exception, recorded in an Issue.
+`RESEARCH_READY` permits design, **not** claimed correctness or acceleration. For `RESEARCH_BLOCKED` / `NOT_TENSORIZABLE`, hold performance implementation unless Scientist documents a limited exception or selects an alternative.
 
 ## Mathematics → Engineering → Experiment artifact link
-
-The research study is the **first of three linked project artifacts**, described by [Three-Artifact Handoff](THREE_ARTIFACT_HANDOFF.md). Its Scientist-approved equations and correctness conditions feed the [Engineering Report](../templates/ENGINEERING_REPORT.md). The Codex-executed, Scientist-authorized Colab measurements later form distinct [Experiment Reports](../templates/EXPERIMENT_REPORT.md). Keep math hypotheses separate from measured performance.
+The Scientist-approved study is the first of [Three Research Artifacts](THREE_ARTIFACT_HANDOFF.md); Architect/Codex use the linked [Engineering Report](../templates/ENGINEERING_REPORT.md), while independently verified runs get separate [Experimental Reports](../templates/EXPERIMENT_REPORT.md). Do not copy measured performance into mathematical hypotheses.
 
 ## Gate to Architect and Engineer
-1. Scientist reviews research outcome and selects target mathematical formulation.
-2. GPT switches to **Chief Architect** to refine software interfaces, correctness gates, experiment matrix and the Codex Issue using the research study as input.
-3. Engineering Issue must link the approved study and state what is **proved**, **hypothesized**, and **not yet tested**.
-4. Codex then implements reference + tensorized forms and runs CPU tests and, after Scientist resource approval, authorized Colab GPU/other hardware tests on the pinned commit; results can return to R1/R2.
-5. No fake experimental evidence. Small *mathematical sanity checks* during exploration may be used to falsify a derivation, but must be labeled exploratory, not treated as formal engineering/GPU benchmark acceptance.
+1. Scientist approves a formulation or documented narrow exception; Architect designs software, correctness checks, experiment matrix and an Issue linked to the study, distinguishing **proved / hypothesized / NOT RUN**.
+2. Codex implements reference/tensorized forms, verifies CPU correctness and executes any GPU/TPU experiment **only after** Scientist hardware/session/time/quota approval and readiness checks, on the exact pinned SHA. Failures may reopen R1/R2.
+3. Exploratory mathematical sanity checks may falsify a derivation, but are **not** formal engineering validation or GPU benchmarks. Never invent evidence.
 
 ## Mentor invocation behavior
 With `推进导师工作`, **if the project lacks an accepted research study**, prioritize R1–R3 before general learning or performance discussions. In an ongoing project with an approved study, Mentor can teach or investigate newly revealed structure. One user invocation may cover one bounded research subproblem; ask for scientific approval if decisions are needed.

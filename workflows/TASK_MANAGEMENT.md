@@ -14,12 +14,10 @@
 If labels cannot be created, write the exact intended state into an Issue comment; do not pretend labels were applied. `Assignee` must be a real GitHub username, not an imaginary bot account.
 
 ## Pre-engineering research gate
-
-For a new algorithm or significant tensorization rewrite, the first scientific Issue/record is a **Mentor-owned mathematical structure study**; it is **not** yet an `agent:codex` implementation task. Link the Scientist-reviewed `docs/research/<algorithm>-tensorization.md` and its `RESEARCH_READY` decision before marking any algorithm implementation Issue `status:ready`. Architect then prepares interfaces/tests and formal Colab experiment questions. A missing or blocked study must be routed to Mentor/Scientist, not silently handed to Codex. Basic repository bootstrap work is exempt; see [the research gate](MATHEMATICAL_RESEARCH.md).
+New algorithm implementations and substantial tensorization rewrites require a Scientist-approved `RESEARCH_READY` study (`docs/research/<algorithm>-tensorization.md`) or documented narrow exception **before** a Codex implementation Issue becomes `status:ready`. Missing/blocked studies return to Mentor/Scientist; repository scaffolding is exempt. Full criteria: [Mathematical Research](MATHEMATICAL_RESEARCH.md).
 
 ## Linked artifacts in Issue/PR handoffs
-
-The Scientist-reviewed mathematical study, the Architect/Codex engineering record, and the Codex-executed, Scientist-authorized Colab run report form one traceable evidence chain; see [Three-Artifact Handoff](THREE_ARTIFACT_HANDOFF.md). A Codex implementation Issue/PR links the mathematical study and engineering record; the actual experiment PR points to the tested implementation SHA and both earlier documents. Do not create a fourth competing status document or pretend a template proves work was done.
+Link the approved mathematical study, Engineering Report and Codex-executed, Scientist-authorized experiment evidence following [Three-Artifact Handoff](THREE_ARTIFACT_HANDOFF.md). Experiment PRs identify the exact tested source SHA and upstream Issue/PRs; do not create duplicate status reports or treat templates as proof of execution.
 
 ## Lifecycle
 1. **Architect creates Issue** with mathematics/interfaces, inputs/outputs, acceptance criteria, CPU/GPU test requirements, references, target milestone; label ready for Codex if applicable.
@@ -37,13 +35,11 @@ The Scientist-reviewed mathematical study, the Architect/Codex engineering recor
 - Never mix numeric performance claims from different code versions without disclosure.
 
 ## Required next-action handoff
-
-At the end of each substantive work cycle, follow the [Next-Action Protocol](NEXT_ACTION.md): recommend one specific, copyable role command or Scientist action, at most two useful alternatives, verified GitHub evidence, and any approval needed. Do not request repeated Colab runs before GPU_READY or pretend a command has executed. Offer one-tap actions only where the client actually supports them.
+Before the final response of each substantive cycle, apply the [Next-Action Completion Gate](NEXT_ACTION.md) with verified status/evidence and one complete copyable recommendation (up to two meaningful alternatives).
 
 ## Role recovery and integrity
-
-Before each substantive work cycle, apply [Role Recovery & Integrity](ROLE_RECOVERY.md): restore the explicitly assigned role, read pinned project rules and live GitHub evidence, verify phase and actual tool permissions, and stop on role mismatch rather than silently changing identity. Keep the existing Next-Action handoff at the end.
+At cycle start apply [Role Recovery](ROLE_RECOVERY.md): check role, pinned project rules, live evidence and actual permissions. Stop on role mismatch.
 
 ## Indefinite owner-wide Architect merge decision
+For eligible PRs in the owner's public repositories, GPT Architect makes the independent final MERGE / DO_NOT_MERGE decision **only** under [Standing Authorization](../governance/STANDING_AUTHORIZATION.md), after live ownership/visibility/permissions, diff/SHA/evidence and Scientist-owned substantive-decision checks. No per-PR merge permission, Codex self-merge or unattended PR sweep. The linked governance document alone defines the full scope, tiers and merge gate.
 
-At the end of a relevant user-invoked cycle GPT independently decides **MERGE / DO_NOT_MERGE** for each reviewed PR under [Standing Authorization](../governance/STANDING_AUTHORIZATION.md), across **all current/future public GitHub repositories owned by `JohnnyZPiggy`**. No repository registration, time limit or per-PR Scientist merger authorization. T1/T2/T3 remain *evidence and underlying Scientist-owned substantive-decision gates*, not distinct merge authorities. Confirm live GitHub owner/public status, tool permissions, full diff, tested SHA, relevant math/CPU/GPU evidence, safety and branch rules. Record pre-merge audit, exact-head squash-merge if accepted and verify response. If scientific/security decisions are missing, hold and ask about the underlying change, not merge permission. Codex cannot self-merge; no unattended branch sweep.
