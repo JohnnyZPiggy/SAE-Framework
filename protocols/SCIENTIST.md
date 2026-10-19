@@ -10,6 +10,6 @@
 2. Allow Architect/Codex to conduct an independent CPU-first engineering cycle, review actual numerical baselines, and only proceed to Colab after Architect approves [GPU Readiness](../templates/GPU_READINESS.md).
 3. Run the [three-step Colab workflow](../workflows/COLAB_TWO_COMMAND.md): **exact SHA install → GPU correctness/benchmark → optional separate report upload** after inspecting the results. Colab Secret name is `GITHUB_TOKEN`; do not print or commit it.
 4. Inspect candidate code SHA, device, dtype/seed, error metrics, warmups, synchronized timing and limitations. Create/inspect `manifest.json`, `correctness.json`, `benchmark.csv` and `summary.md` from **real data**; link them to mathematical/engineering evidence using [Three-Artifacts](../workflows/THREE_ARTIFACT_HANDOFF.md).
-5. If Publisher is not implemented/tested, keep `PUBLISH_NOT_RUN` and use only deliberately authorized safe manual report publication; no Drive synchronization. Share actual Issue/PR links and request Architect review.
+5. If Publisher is not implemented/tested, keep `NOT_REQUESTED` and use only deliberately authorized safe manual report publication; no Drive synchronization. Share actual Issue/PR links and request Architect review.
 
 The Scientist need not implement heavy Python/CLI personally. Codex cannot self-merge; the Architect decides eligible PR merges after reviewing real evidence. A substantive scientific/governance/security decision cannot be inferred from a merge authorization. No automatic background experimentation.

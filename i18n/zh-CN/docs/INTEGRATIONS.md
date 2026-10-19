@@ -9,7 +9,7 @@
 | GPT 审查与合并 | 实时核验公开仓库 owner、GitHub 合并权限、Diff 和科学家保留的实质决定 | [长期授权](../governance/STANDING_AUTHORIZATION.md) |
 | 科学家 Colab GPU | 真实 GPU、被测源码 SHA、通过 GPU Readiness | [GPU 实验](../workflows/GPU_EXPERIMENT.md) |
 | 科学家上传报告 | **独立 Publisher 尚需真实验收**、审核报告、`GITHUB_TOKEN` 安全传递 | [三步契约](../workflows/COLAB_TWO_COMMAND.md) |
-| 后台监控、GitHub Actions、Drive 同步 | **不包含** | [AGENTS](../AGENTS.md) |
+| 后台监控、GitHub Actions、Drive 同步 | **不包含** | [AGENTS](../AGENTS.zh-CN.md) |
 
 ## 采纳流程
 
