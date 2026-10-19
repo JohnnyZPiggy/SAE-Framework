@@ -45,6 +45,6 @@ SAE Framework：`JohnnyZPiggy/SAE-Framework`，架构版本 V3.2
 
 架构师向 Codex 派单前，按固定版本 [生态评估协议](.sae/workflows/ECOSYSTEM_REVIEW.md) 检查 PyTorch 原生功能、第三方包与论文参考实现，在工程报告中说明 Build-vs-Reuse 方案；坚持 CPU-first、跨硬件和少依赖，不自动升级固定 SAE 快照。
 
-## 年度常设合并权不会自动覆盖本算法仓库
+## 算法项目永久授权：只需一次登记
 
-项目可读取固定的 [治理规则](.sae/governance/STANDING_AUTHORIZATION.md)了解 T1/T2/T3 审查，但**复制 `.sae/` 不等于授权**。GPT 架构师在本项目合并 PR 前，须核实科学家明确授权**这个准确的 `<OWNER>/<PROJECT>`**，并已登记在 Framework [现行年度授权表](https://github.com/JohnnyZPiggy/SAE-Framework/blob/main/governance/STANDING_AUTHORIZATION.md)，同时确认 UTC 有效期、本轮 GitHub 权限及项目更严格限制。缺任何条件均请求科学家审批；Codex 永远不得自行合并。
+固定[治理说明](.sae/governance/STANDING_AUTHORIZATION.md)支持 GPT Architect 审核后独立决定 MERGE / DO_NOT_MERGE，但**这份模板不自动授权 `<OWNER>/<PROJECT>`**。科学家须一次性明确授予该准确算法仓库权限，并在 [Framework 最新登记表](https://github.com/JohnnyZPiggy/SAE-Framework/blob/main/governance/STANDING_AUTHORIZATION.md) 登记。登记后 GPT 对合格 PR **永久、可撤销地拥有最终合并决定权，不再逐个请示**；必须遵守真实 Diff、数学/安全实质决定、CPU/必要 GPU 证据与 GitHub 规则。Codex 不得自我合并，固定项目协议也不得被悄悄升级。

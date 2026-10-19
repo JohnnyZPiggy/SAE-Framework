@@ -1,67 +1,70 @@
-# Standing Merge Authorization — Scientist → GPT Chief Architect
+# Permanent Architect Merge Authority — Scientist → GPT Chief Architect
 
-> Normative: **English** | [简体中文](../i18n/zh-CN/governance/STANDING_AUTHORIZATION.md)
+> English is normative | [简体中文](../i18n/zh-CN/governance/STANDING_AUTHORIZATION.md)  
+> Historical path preserved to avoid breaking existing references.
 
-## Grant and expiry
+## What the Scientist authorizes
 
-**Grantor:** Human Scientist; **delegate:** GPT Chief Architect during a user-triggered SAE work cycle, using currently authorized GitHub tools. This initial grant and its initial PR merge were explicitly requested by the Scientist on **2026-10-19**. A copied policy file or an agent-authored statement is not proof of any *additional* grant.
+**Grantor:** human Scientist. **Authorized role:** GPT acting as SAE **Chief Architect** in a user-initiated, bounded work cycle with actual GitHub tools and permissions.
 
-**Effective UTC:** 2026-10-19 00:00:00 through **2027-10-18 23:59:59 inclusive**. **Automatically expires 2027-10-19 00:00:00 UTC.** No silent renewal. If the date or current authorization cannot be established, stop and ask.
+**Effective:** 2026-10-19. **Duration: indefinite / no expiration date, until the Scientist explicitly revokes or changes it.** The Scientist explicitly corrected the previous one-year policy on 2026-10-19: the Architect has **permanent, independent authority to make the final merge-or-do-not-merge decision** after its technical review. **Do not ask the Scientist to approve each merge**, including when a PR changes scientific, governance, or security files. The decision to merge is the Architect's engineering responsibility.
 
-### Exact repository allowlist
+This is **merge discretion, not a waiver of prerequisite approvals for the underlying change**. The Scientist retains the scientific direction, research-gate decisions, actual Colab execution, material security/permission settings, licensing/IP and other decisions explicitly reserved by the project. If an underlying decision is not approved or the required evidence is missing, the Architect decides **DO_NOT_MERGE / BLOCKED**, rather than asking "may I merge?" When prerequisite decisions are already satisfied, the Architect decides and may merge without a second human merge signoff.
 
-| Repository | Standing merge authority | Basis |
+This grant is standing permission to act **when invoked**, not a standing instruction to monitor, run in the background, merge every PR, or operate without connected GitHub permissions. The Architect's routine last step is **review → independent MERGE / DO_NOT_MERGE decision → perform permitted merge and verify → report**.
+
+## Exact repository scope (registration is separate from merge approval)
+
+| Registered repository | Authority | Evidence |
 | --- | --- | --- |
-| `JohnnyZPiggy/SAE-Framework` | **ACTIVE** during the term, subject to gates below | Scientist's explicit instruction on 2026-10-19 |
+| `JohnnyZPiggy/SAE-Framework` | **PERMANENT_ARCHITECT_MERGE**, subject to gates | Scientist instruction on 2026-10-19 |
 
-**All other repositories are NOT AUTHORIZED**, including algorithm repositories that GPT/Codex can access. An algorithm repository becomes eligible **only** when the Scientist explicitly specifies its exact `owner/repo` and grants standing merge authority, *and* a separately Scientist-approved governance PR adds it to this live register. A copied or pinned `.sae/` snapshot is never by itself an authorization. For algorithm repositories check both the up-to-date Framework register, the specific Scientist authorization and the project's pinned rules. Agents cannot add repositories, broaden powers, renew dates or self-approve governance changes under this standing grant. **Changes to AGENTS, role protocols or workflows that materially alter agent authority, safety/approval gates or governance rules are T3**, even when described as routine documentation.
+All other repositories, **including algorithm repositories**, are **NOT REGISTERED** unless the Scientist explicitly authorizes their exact `owner/repo` and has that repository added to this current register. Registration is a **one-time scope decision**, **not** a repeated per-PR or per-merge request. Register additions and material changes to this permission are Scientist-owned decisions; after their approval, the Architect may independently decide whether the corresponding governance PR passes review and is merged. A copied `.sae/` snapshot does not enroll a project. Reading a repo or holding GitHub write permission does not establish registration.
 
-The grant allows review and merge of qualifying PRs during **bounded, user-initiated Architect cycles**. It does **not** grant new GitHub permissions, unattended/background execution, direct pushes, force-push, deletions, automatic releases or public experimental-data publication. The Scientist can narrow/revoke this delegation immediately by explicit instruction; newer revocation overrides stale repository text.
+The Scientist may revoke/narrow this permission through a new explicit instruction at any time; the latest instruction controls even if this repository is not yet updated. Neither the Architect nor Codex may self-register repos or silently broaden the granted scope.
 
-## Three-tier merge authority
+## Three review tiers — one merge decision-maker
 
-Classify from the **full diff and highest-risk actual effects**, not the PR title; mixed-risk PRs take the strictest tier.
+Tier describes **review evidence and prerequisites**, **not three different people who must authorize the merge**. Assign by the highest-risk actual diff/effects, not a title or label.
 
-| Tier | Examples | Architect authority |
+| Tier | Typical changes | Preconditions before the Architect may choose MERGE |
 | --- | --- | --- |
-| **T1 — Routine** | Documentation/translation, non-governance protocol clarification, formatting, narrowly scoped tests, small non-behavior-changing fixes | May autonomously merge **after real diff review and applicable syntax/link/test checks** |
-| **T2 — Engineering** | Algorithm code under approved research, numerical corrections, PyTorch optimization, ordinary packaging, benchmark/Publisher code, compatible low-risk dependencies | May merge **only with applicable Scientist mathematical approval, real Codex CPU/oracle/regression and packaging evidence, safety/license checks, and satisfied Issue acceptance**. GPU evidence is essential **if GPU correctness/performance is claimed or is an explicit acceptance gate**; CPU-only changes can merge with clear `GPU_NOT_RUN` when GPU is not a gate. |
-| **T3 — Scientist-reserved** | Scientific objectives/assumptions or unproven mathematical acceptance; this grant, scope, expiry, authorizations or governance/security policy; GitHub permissions, branch protection, secrets; license/IP decisions, high-risk dependencies, releases, destructive changes, data deletion, force-push, unapproved external publication | **Not covered.** Requires a **fresh, explicit Scientist approval identifying that PR and intended scope**, plus ordinary GitHub enforcement. |
+| **T1 — Routine** | Ordinary docs, translations, formatting, non-authority-changing protocols, narrow tests | Actual diff and relevant link/syntax/behavior checks are reviewed |
+| **T2 — Engineering** | Algorithm code, numerical corrections, PyTorch optimizations, packaging, benchmark/Publisher, normal dependencies | Approved mathematical formulation when applicable, real Codex CPU oracle/edge/regression/install evidence, compatibility/security/license review; Scientist Colab GPU evidence **only when GPU success is claimed or is a required acceptance gate**. CPU-only PRs can merge with explicit `GPU_NOT_RUN` if GPU is out of scope. |
+| **T3 — Reserved substantive decisions** | Changed scientific question/assumptions, acceptance of unproved mathematical claims, security settings/secrets/permissions, governance/authorization scope, major licensing/IP or releases, destructive changes, sensitive external publication | Any **underlying Scientist-owned decision** must be separately documented before the change is accepted. Then **GPT Architect independently decides whether the PR should merge**, without requesting an extra "permission to merge." Where prerequisites are absent, choose `DO_NOT_MERGE` / `WAITING_FOR_SCIENTIST_DECISION`, not an unauthorized merge. |
 
-If tier or evidence is ambiguous, use `SCIENTIST_APPROVAL_REQUIRED` / `MERGE_BLOCKED` rather than downgrade risk. Publishing Colab reports to a public repository requires Scientist's separate, deliberate authorization; this grant does not authorize that publication.
+**Example:** Scientist has approved a new mathematical formulation; Codex implements it and provides CPU tests; GPT Architect checks the PR and decides whether to merge without seeking additional consent. If the proposed mathematical assumption has **not** been approved, GPT may not invent approval; it rejects/holds the PR and requests the missing *scientific decision*, **not** a merge authorization.
 
-## Merge Gate — every PR, every time
+A PR that changes this grant is T3. GPT cannot unilaterally make the grant broader, irreversible or nonrevocable. The Scientist's current 2026-10-19 request **does explicitly approve changing its duration from one year to indefinite and assigning final merge discretion to Architect**; this PR may therefore be merged by the Architect after review. Future substantive authorization changes need a Scientist decision about the *policy change*, not a separate merge click.
 
-1. **Authority:** verify current UTC term, exact registered repository, valid Scientist grant, active Architect role and user-triggered bounded cycle, connected write tools, applicable project-root `AGENTS.md` and pinned `.sae/`. No silent upgrade of project snapshots.
-2. **Actual diff:** inspect all changed files, base/head SHA, Issue, outstanding review threads, GitHub mergeability and branch protections. Never trust only a PR description, labels or another agent's summary.
-3. **Tier:** determine highest-risk category. T3 requires PR-specific Scientist approval; an AI comment saying "approved" is not Scientist approval.
-4. **Evidence:** for T1 verify applicable docs/links/syntax or tests; for T2 verify Scientist-approved math (or explicit narrow exception), actual Codex CPU numerical/oracle, edge/regression, install and `torch.compile` where supported, license/security/dependencies, and actual Scientist Colab evidence when GPU-gated. `NOT_RUN` is not `PASS`. A GPT-authored substantive code change still needs independently executed Codex/Scientist evidence—no self-certified tests.
-5. **Blockers:** do not merge secrets, unexpected public data, unapproved scientific changes, unresolved blocking review, missing required checks, or bypassed branch rules. Confirm the tested source SHA corresponds to the reviewed PR head.
-6. **Audit:** write a concise traceable review/comment on the PR **before merge**, listing tier, standing or explicit authorization, exact reviewed head SHA, evidence, risk and decision. If the comment tool is unavailable, use a permitted Issue/PR update or report the audit gap; do not pretend it was written.
-7. **Merge and verify:** only on `MERGE_APPROVED`, prefer **squash**, pass the exact reviewed head SHA as the expected head, refetch mergeability, obey GitHub rules, verify success and the resulting merge SHA. If head/base changed materially, re-review. Never force-push or directly push main.
+## Merge Gate (each PR, every Architect work cycle)
 
-**Statuses:** `MERGE_APPROVED`, `MERGED`, `MERGE_BLOCKED`, `SCIENTIST_APPROVAL_REQUIRED`, `AUTH_SCOPE_MISSING`, `AUTH_EXPIRED`, `UNVERIFIED`.
+1. **Restore role/scope:** confirm user-invoked Architect role, exact registered repository, current applicable rules (root AGENTS + pinned project rules), present connected tool permissions, any newer Scientist revocation. Do not infer authorization for unregistered algorithm repositories.
+2. **Inspect actual PR:** all changed files and complete diff, issue/acceptance, exact base/head SHA, dependencies, GitHub mergeability/protections, outstanding blocking reviews and secrets/external-publication risks.
+3. **Classify T1/T2/T3 and verify the prerequisites.** Read actual test outputs and source-linked reports; `NOT_RUN` is not `PASS`; a PR description is not a test. For GPT-authored substantive code, rely on separately executed Codex/Scientist tests, not self-certified results.
+4. **Architect makes the final decision:** `MERGE_APPROVED`, `DO_NOT_MERGE`, `MERGE_BLOCKED`, or `WAITING_FOR_SCIENTIST_DECISION`. **No per-PR merge permission request**. Ask the Scientist only for an actual Scientist-owned substantive decision or a missing experimental run.
+5. **Audit before merge:** leave a concise GitHub PR review/comment identifying tier, reviewed SHA, evidence, blockers/Scientist decisions, and Architect's independent merge decision. Do not claim the comment was written if tools fail.
+6. **Merge if approved:** prefer squash and pass the exact reviewed head SHA; obey GitHub branch protection, never bypass rules, push directly to main, force-push, or merge stale revisions. Verify the merged state and final merge SHA; if head or material base changes, re-review.
+7. **Report and hand off:** give merge SHA/PR or explicit reason for `DO_NOT_MERGE`, then the recommended Next-Action command. No silent sweep of unrelated PRs or background loop.
 
-**Compact PR audit example:**
+**Short PR audit:**
 
 ```text
-SAE MERGE GATE
-Repo/PR: <owner/repo>#<N>; base/head: <base-sha>/<reviewed-head-sha>
-Tier: T1/T2/T3; authority: standing 2026-10-19..2027-10-18 or Scientist approval <link>
-Diff and evidence: <real links/commands/status, or NOT RUN>
-Decision: MERGE_APPROVED / MERGE_BLOCKED / SCIENTIST_APPROVAL_REQUIRED
-Risk: <brief>; outcome: <verified merge SHA or NOT MERGED>
+SAE ARCHITECT MERGE GATE
+Repo/PR: <owner/repo>#<N>; reviewed base/head: <base-SHA>/<head-SHA>
+Tier: T1 / T2 / T3; standing authority: PERMANENT (until Scientist revokes)
+Evidence and Scientist-owned prerequisites: <links, status, or NOT RUN>
+Architect final decision: MERGE_APPROVED / DO_NOT_MERGE / MERGE_BLOCKED / WAITING_FOR_SCIENTIST_DECISION
+Reason / risks: <short>; confirmed merge SHA: <SHA or NOT MERGED>
 ```
 
-No extra artifact or mandatory GitHub Actions; PR/Issue history is the audit trail.
+## Boundary, revocation and adoption
 
-## Non-self-amendment, revocation and adoption
-
-- This file and its Chinese mirror are **T3 governance-controlled**, even if labeled documentation. Scope, dates, tiers, permissions, renewal, or approval gates cannot be amended/renewed by GPT under this authorization.
-- **Exception for initial installation only:** Scientist explicitly instructed, on 2026-10-19, to create, review and merge the initial authorization PR. This single instruction does not authorize later changes.
-- Revocation by a current explicit Scientist instruction takes effect at once; reflect it in GitHub governance and access settings when feasible. A policy file itself provides no technical access.
-- GitHub branch protection (PR-only, prevent force-push) is recommended but **not automatically configured** by this document; changing repository security settings remains Scientist-reserved.
-- Bootstrap may copy the governance text into an algorithm project's pinned snapshot for **reference**, but must never register/authorize that algorithm repository automatically.
-- **No blanket merge of all branches:** each PR must clear the gate individually; Codex cannot approve or merge its own implementation PR; Scientist owns scientific approval and actual Colab. One invocation is one bounded cycle, never 24/7 monitoring.
+- **The Architect is the final merger, not the final Scientist.** It does not self-approve research claims, disclose secrets, alter GitHub access settings without the necessary underlying authorization, or override the Scientist's explicit directions.
+- **No annual renewal or expiration:** the permission continues until explicit Scientist revocation or superseding instruction. Revocation is immediate; promptly record it in governance when tools permit.
+- **No blanket repository access:** only registered repositories; adding a new algorithm repo needs the Scientist's one-time named authorization, then the Architect can decide all subsequent eligible PR merges without human reauthorization.
+- **No self-enlargement of policy:** changing scope or authority requires the Scientist's substantive decision; GPT still holds the final technical merge decision once that requirement is satisfied.
+- **No CI mandate or background automation:** GitHub Issues/PRs form the audit trail; Codex submits and tests but **never merges its own engineering PRs**. Scientist alone operates Colab and authorizes public experimental uploads.
+- **For the SAE source repo:** this live file is authoritative on merger discretion. For copied `.sae/` snapshots use project pinned instructions for ordinary workflow, but verify this current registry and Scientist consent before merging.
 
 Related: [Architect](../protocols/ARCHITECT.md) · [Task Management](../workflows/TASK_MANAGEMENT.md) · [Role Recovery](../workflows/ROLE_RECOVERY.md).

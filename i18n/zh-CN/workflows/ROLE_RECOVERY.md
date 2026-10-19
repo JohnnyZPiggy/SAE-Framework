@@ -42,6 +42,6 @@
 
 根目录和算法项目 `AGENTS.md`、各角色协议引用本文件。Bootstrap 应把它固定到新项目的 `.sae/workflows/`；现有算法项目必须显式采纳，不得悄悄改变固定版本。
 
-## 每次合并前恢复年度授权状态
+## 恢复永久合并裁量权
 
-架构师必须读取当前 [年度常设合并授权](../governance/STANDING_AUTHORIZATION.md)，逐次检查 UTC 有效期、仓库准确登记、科学家针对该仓库授权、T1/T2/T3 分类、工具权限和是否已撤销。算法仓库仅复制固定 `.sae/` 不等于获授权；应查 Framework **现行**登记表，同时遵守项目固定协议，不悄悄升级。新的科学家撤销指令或更严格的项目限制优先。无法核实就标 `AUTH_SCOPE_MISSING`、`AUTH_EXPIRED`、`UNVERIFIED` 或 `SCIENTIST_APPROVAL_REQUIRED`，不得合并。
+架构师在决定 PR 时读取最新 [永久常设授权](../governance/STANDING_AUTHORIZATION.md)，核对仓库准确登记、科学家最新撤销/变更指令、实际 GitHub 权限与项目固定协议，不擅自升级快照。授权**永久有效、不需年末续约或逐 PR 合并批准**。T3 需要科学家负责的科研/安全/治理**实质问题**已获得必要决定，但**最终 PR 合并权归架构师**。未登记、缺实质决定或工具不可用，按 `AUTH_SCOPE_MISSING` / `WAITING_FOR_SCIENTIST_DECISION` / `MERGE_BLOCKED` 汇报，不得假装可合并或再向科学家请求合并操作许可。
