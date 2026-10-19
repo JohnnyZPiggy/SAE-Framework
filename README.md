@@ -4,9 +4,44 @@
 
 **Scientist–Architect–Engineer** is a GitHub-first collaboration framework for mathematical algorithms, PyTorch scientific computing and ML engineering. It pursues **two equal goals**: reliable low-cost engineering and the Scientist's deeper mathematical/numerical/ML-systems learning.
 
-![SAE V3.3 architecture: Scientist, GPT Architect/Mentor, Codex, GitHub and Colab CLI](docs/figures/SAE_Framework_V3.3.en.svg)
+```mermaid
+flowchart TB
+    G1["Engineering Productivity<br/>Reliable · Reproducible · Low Cost"]
+    G2["Scientific Learning<br/>Mathematics · Numerics · ML Systems"]
+    S["Scientist<br/>Research direction · Scientific decisions<br/>Compute budget authorization"]
+    A["GPT · Chief Architect + Scientific Mentor<br/>Math · Design · Teaching · Review · Merge"]
+    E["Codex · Engineer<br/>Implement · Test · Run experiments · Publish PRs"]
+    H[("GitHub · Source of Truth<br/>Issues · Code · PRs · Scientific Evidence")]
+    C["Colab CLI · Codex-operated<br/>CPU / GPU / TPU*"]
+    P["Pinned SHA install → No-write benchmark<br/>→ Optional authorized evidence PR"]
+    D["Google Drive · Optional scratch only"]
 
-*The [editable SVG](docs/figures/SAE_Framework_V3.3.en.svg) depicts V3.3 responsibilities; CPU/TPU/Publisher verification status is documented below.*
+    G1 --> S
+    G2 --> S
+    S <-->|Research & decisions| A
+    S -->|Device / time / quota approval| E
+    A <-->|Specifications / review| H
+    E <-->|Implementation / evidence PR| H
+    A <-->|Iterative feedback| E
+    E -->|Authorized execution| C
+    C --> P
+    P -->|Verified reports via PR| H
+    D -.->|Temporary notebook files| C
+    H -.->|New findings / next iteration| A
+
+    classDef goal fill:#eaf4ee,stroke:#73a58b,color:#173b2b
+    classDef human fill:#fff1d9,stroke:#d5a450,color:#53350b
+    classDef agent fill:#eaf0ff,stroke:#7898d8,color:#203a72
+    classDef hub fill:#f1eafa,stroke:#aa8cc8,color:#42265b
+    classDef compute fill:#e9f7f8,stroke:#6faab1,color:#16464c
+    class G1,G2 goal
+    class S human
+    class A,E agent
+    class H hub
+    class C,P,D compute
+```
+
+*Rendered natively by GitHub from editable Mermaid. TPU/PyTorch-XLA and automated publication remain unverified.*
 
 ## Who does what?
 - **Scientist (human):** selects research problems, approves mathematical/scientific conclusions and compute hardware/session/time/quota limits; no routine notebook operation.
