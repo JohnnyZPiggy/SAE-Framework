@@ -5,6 +5,8 @@
 
 ## V3.3 — Codex-operated compute and constitution simplification (2026-10-19)
 
+- Re-rendered the bilingual V3.3 architecture diagrams as self-contained, ChatGPT-native-card-style SVGs; updated both READMEs and architecture pages. Retained Mermaid as an editable logical diagram and preserved all unverified execution caveats.
+
 - Updated bilingual V3.3 architecture diagrams: high-resolution SVG, GitHub-rendered editable Mermaid, README and architecture docs; historical V3.2 SVGs retained.
 
 - Simplified bilingual AGENTS constitution; preserved two objectives, role boundaries and standing merge authorization.
