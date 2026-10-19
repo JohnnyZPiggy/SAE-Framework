@@ -3,6 +3,15 @@
 > Language: **English** | [简体中文](i18n/zh-CN/CHANGELOG.md)
 
 
+## V3.3 — Codex-operated compute and constitution simplification (2026-10-19)
+
+- Simplified bilingual AGENTS constitution; preserved two objectives, role boundaries and standing merge authorization.
+- Delegated authorized local/Colab CPU/GPU/TPU execution, artifact integrity checks, cleanup and evidence PRs to Codex; Scientist retains scientific decisions and compute budgets.
+- Consolidated compute execution rules in GPU_EXPERIMENT.md (historical path retained).
+- Verified only a T4 smoke test from the Scientist's handoff; Colab CPU, TPU/PyTorch-XLA, automated GitHub publication and cross-project reuse remain unverified.
+- This is a documentation migration; older V3.2 references in other protocols/templates require follow-up alignment before V3.3 can be considered fully migrated.
+
+
 ## Colab two-command execution interface (2026-10-18)
 
 - Defined a strict end-user target of **two executable Colab command cells**: pip-install an immutable GitHub source SHA; run one packaged Python benchmark that handles correctness, GPU timing, reports, and **optional authorized** GitHub PR publication.
