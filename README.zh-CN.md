@@ -4,9 +4,44 @@
 
 **Scientist–Architect–Engineer** 是面向数学算法、PyTorch 科学计算和 ML 工程的 GitHub-first 多 Agent 协作框架。两个**同等重要**的目标：**工程生产力**（可靠、可复现、低成本）与**科学学习**（数学、数值计算、PyTorch 和异构计算能力）。
 
-![SAE V3.3 架构：Scientist、GPT、Codex、GitHub 与 Colab CLI](docs/figures/SAE_Framework_V3.3.en.svg)
+```mermaid
+flowchart TB
+    G1["工程生产力<br/>可靠 · 可复现 · 低成本"]
+    G2["科学学习<br/>数学 · 数值计算 · ML Systems"]
+    S["Scientist · 科学家<br/>研究方向 · 科学决策<br/>计算资源授权"]
+    A["GPT · 总架构师 + 科学导师<br/>数学 · 设计 · 教学 · 审核 · 合并"]
+    E["Codex · 工程师<br/>实现 · 测试 · 实验 · 提交 PR"]
+    H[("GitHub · 唯一事实来源<br/>Issues · 代码 · PR · 科学证据")]
+    C["Colab CLI · Codex 操作<br/>CPU / GPU / TPU*"]
+    P["固定 SHA 安装 → 无写入 Benchmark<br/>→ 可选的授权证据 PR"]
+    D["Google Drive · 仅可选临时空间"]
 
-*新版 [V3.3 SVG 架构图](docs/figures/SAE_Framework_V3.3.en.svg) 体现 Codex 执行获授权的 Colab CPU/GPU/TPU 实验；实际硬件能力仍须单独验证。*
+    G1 --> S
+    G2 --> S
+    S <-->|科研讨论与决策| A
+    S -->|设备 / 时长 / 额度授权| E
+    A <-->|规格 / 审核| H
+    E <-->|代码 / 实验证据 PR| H
+    A <-->|多轮反馈| E
+    E -->|获授权的执行| C
+    C --> P
+    P -->|验证后提交报告 PR| H
+    D -.->|临时 Notebook 文件| C
+    H -.->|新发现 / 下一轮| A
+
+    classDef goal fill:#eaf4ee,stroke:#73a58b,color:#173b2b
+    classDef human fill:#fff1d9,stroke:#d5a450,color:#53350b
+    classDef agent fill:#eaf0ff,stroke:#7898d8,color:#203a72
+    classDef hub fill:#f1eafa,stroke:#aa8cc8,color:#42265b
+    classDef compute fill:#e9f7f8,stroke:#6faab1,color:#16464c
+    class G1,G2 goal
+    class S human
+    class A,E agent
+    class H hub
+    class C,P,D compute
+```
+
+*由 GitHub 原生渲染的可编辑 Mermaid 图；TPU/PyTorch-XLA 与自动发布仍须实测。*
 
 ## 角色
 - **Scientist（人类）：** 决定研究方向、数学/科学结论，预先批准计算设备、会话、时长与额度；不再日常手动操作 Notebook。
