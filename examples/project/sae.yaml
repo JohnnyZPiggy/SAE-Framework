@@ -1,4 +1,4 @@
-# Copy as sae.yaml and replace all angle-bracket placeholders before activation.
+# Copy to project-root sae.yaml; replace placeholders and pin a real immutable Framework SHA.
 sae_version: "3.2"
 project:
   repository: "<OWNER>/<PROJECT>"
@@ -29,16 +29,21 @@ collaboration:
   review_hub: "github_pull_requests"
   actions_enabled: false
   hosted_ci_required: false
+  # Existing compatibility key: satisfied by the Scientist's indefinite standing merge grant for
+  # JohnnyZPiggy-owned public repositories; still requires per-PR evidence and real tool access.
   merge_requires_authorization: true
 experiments:
   device_runner: "scientist_colab"
-  notebook_style: "two_command_orchestrator" 
-  notebook_command_count: 2
+  notebook_style: "three_independent_cells"
+  notebook_command_count: 3 # Third is optional, explicitly invoked after Scientist review
   install_source: "pinned_github_commit_via_pip"
-  benchmark_cli: "python -m <PACKAGE_NAME>.benchmarks.run --device cuda --publish" 
+  benchmark_cli: "python -m <PACKAGE_NAME>.benchmarks.run --device cuda --out reports/gpu/RUN_ID"
+  publish_cli: "python -m <PACKAGE_NAME>.benchmarks.publish --report-dir reports/gpu/RUN_ID"
   benchmark_in_pip_package: true
-  publisher_invoked_inside_benchmark_cli: true
-  publisher: "manual_until_implemented"
+  publisher_invoked_inside_benchmark_cli: false
+  publisher_optional: true
+  colab_secret_name: "GITHUB_TOKEN"
+  publisher: "not_implemented_until_tested"
   reports_in_github: true
   google_drive_role: "temporary_notebook_workspace_only"
   drive_sync: false

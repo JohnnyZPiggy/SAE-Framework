@@ -1,7 +1,3 @@
-## Integrated project acceptance
-
-The pinned SAE snapshot must include [research pipeline](workflows/RESEARCH_PIPELINE.md), [GPU readiness](templates/GPU_READINESS.md), [three-artifact handoff](workflows/THREE_ARTIFACT_HANDOFF.md), [engineering template](templates/ENGINEERING_REPORT.md) and [two-command Colab contract](workflows/COLAB_TWO_COMMAND.md), including bilingual mirrors and working relative links. Project-specific templates copied outside the snapshot must have relative links rewritten. Codex must prove clean CPU install, correctness and CPU compile before GPU_READY. Scientist's target Notebook runs pinned-SHA pip install and one packaged benchmark CLI; optional publication remains manual until the Publisher passes real Colab integration. Preserve the self-contained snapshot requirements of PR #7.
-
 # SAE Bootstrap — AI-Executable Initialization Protocol (V3.2)
 
 > Language: **English** | [简体中文](i18n/zh-CN/SAE_BOOTSTRAP.md)
@@ -55,7 +51,7 @@ Expected folders as appropriate: `src/`, `tests/`, `benchmarks/`, `tools/`, `not
 ## Phase 4 — Verify, present, hand off
 - Validate links and local relative paths **after copying to the target project's layout**, not only inside this Framework repository. Check `.sae/AGENTS.md`, `.sae/protocols/`, `.sae/workflows/`, `.sae/templates/`, `.sae/i18n/zh-CN/` and root `AGENTS.md`; confirm `sae.yaml` parses and pins a real revision. Use the [manual adoption smoke test](docs/ADOPTION_SMOKE_TEST.md) until the bootstrap CLI is implemented.
 - Codex runs available CPU tests and logs actual results; Scientist runs Colab tests later.
-- Architect reviews the proposed PR and independently decides MERGE / DO_NOT_MERGE under the permanent registered-scope grant; do not ask for a separate per-PR merge approval. Required Scientist substantive decisions still apply.
+- Architect reviews the proposed PR and independently decides MERGE / DO_NOT_MERGE under the indefinite owner-public [Standing Authorization](governance/STANDING_AUTHORIZATION.md); do not ask for a separate per-PR merge approval. Required Scientist substantive decisions still apply.
 - Report **completed / not run / blocked**, links, exact commit and outstanding credential/environment steps.
 - Next explicit instructions: `推进架构师工作`, `推进工程师工作`, `推进导师工作`.
 
@@ -65,18 +61,7 @@ Re-running bootstrap must inspect and *update deliberately*, not overwrite user 
 ## Acceptance criteria
 A newly initialized project has an accessible, version-pinned SAE snapshot; root `AGENTS.md`; validated `sae.yaml`; owner/acceptance definitions; an initial issue queue; reviewable engineering scaffolding PR; explicit Colab and GitHub report plan; and no GitHub Actions. These files are the protocol, **not an execution engine**.
 
-## Role recovery in the pinned Bootstrap snapshot
 
-Include [ROLE_RECOVERY.md](workflows/ROLE_RECOVERY.md) and its [Chinese mirror](i18n/zh-CN/workflows/ROLE_RECOVERY.md) in the self-contained `.sae/workflows/` snapshot. Project `AGENTS.md` must link `.sae/workflows/ROLE_RECOVERY.md`. The Bootstrap implementation must preserve pinned-version behavior and check that role restoration works in a fresh chat, without silently upgrading existing projects.
+## Canonical referenced contracts
 
-## Ecosystem Review in project snapshots
-
-New project `.sae/workflows/` snapshots must also pin [ECOSYSTEM_REVIEW.md](workflows/ECOSYSTEM_REVIEW.md), with its [Chinese mirror](i18n/zh-CN/workflows/ECOSYSTEM_REVIEW.md). Ensure the pinned Architect protocol and engineering report include the brief Build-vs-Reuse gate; verify relative links in the copied snapshot. Existing projects must opt into updates rather than silently upgrading.
-
-## Colab three-step update (current contract)
-
-The Scientist now uses **three independent notebook steps**: pinned-SHA install, packaged benchmark (no GitHub writes), then **optional explicit report upload** after reviewing results. The Colab Secret is named **`GITHUB_TOKEN`**; Codex must test Publisher subprocess Secret access or provide the secure single-Python-cell environment bridge. Update all implementations and tests to follow [the current three-step contract](workflows/COLAB_TWO_COMMAND.md) (historical filename retained for link stability). No `--publish` in the benchmark default. This supersedes older two-command descriptions above; it is a target until implemented and tested.
-
-## Permanent owner-wide merge authority in pinned algorithm projects
-
-Bootstrap includes the current governance policy and Chinese mirror in each version-pinned `.sae/` snapshot; copying these files **does not create GitHub API merge permissions** or automatically upgrade an existing project's pinned workflow. The Scientist's explicit **owner-wide, indefinite permission already covers all current and future public GitHub repositories actually owned by `JohnnyZPiggy`** without separate registration. Verify live repository owner and visibility, actual connected merge rights and the current [Standing Authorization](governance/STANDING_AUTHORIZATION.md) before each PR. Architect independently decides MERGE / DO_NOT_MERGE after review and required Scientist substantive decisions; the grant does not cover private/other-owned repos, force-pushes, bypassed protections or Codex self-merges.
+The copied snapshot must include the [research pipeline](workflows/RESEARCH_PIPELINE.md), [role recovery](workflows/ROLE_RECOVERY.md), [next action](workflows/NEXT_ACTION.md), [ecosystem review](workflows/ECOSYSTEM_REVIEW.md), [three artifacts](workflows/THREE_ARTIFACT_HANDOFF.md), [GPU readiness](templates/GPU_READINESS.md), [Colab three-step contract](workflows/COLAB_TWO_COMMAND.md), [governance](governance/STANDING_AUTHORIZATION.md) and Chinese mirrors. Do not duplicate their contents here. Three Colab cells: pinned install, benchmark, **optional** separate publish using Colab Secret `GITHUB_TOKEN`; Publisher remains unverified until implemented/tested. Owner-public merge scope needs no per-repo registration but does require real GitHub permissions and a complete PR gate. Existing projects' pinned `.sae/` snapshots remain untouched unless explicitly upgraded.

@@ -12,7 +12,7 @@ Investigate mathematical formulation, oracle, tensor/batch structure, complexity
 
 ### Phase II — CPU engineering and validation (Architect + Codex)
 
-Architect specifies interfaces, numerical tolerances, performance methodology, packaging and the eventual two-command Colab contract. Codex implements standalone, pip-installable Python modules and **runs real CPU tests**: reference/oracle comparison, randomized/edge tests, dtype/shape behavior, CPU eager execution, CPU `torch.compile` (where supported), optional `fullgraph=True` diagnostics, graph breaks, CPU benchmark, clean pip install and CLI smoke test. Record actual outputs, environment and tested source SHA in `docs/engineering/<algorithm>-engineering.md`. **CPU compilation does not prove GPU compilation or speedup.**
+Architect specifies interfaces, numerical tolerances, performance methodology, packaging and the three-step Colab contract. Codex implements standalone, pip-installable Python modules and **runs real CPU tests**: reference/oracle comparison, randomized/edge tests, dtype/shape behavior, CPU eager execution, CPU `torch.compile` (where supported), optional `fullgraph=True` diagnostics, graph breaks, CPU benchmark, clean pip install and CLI smoke test. Record actual outputs, environment and tested source SHA in `docs/engineering/<algorithm>-engineering.md`. **CPU compilation does not prove GPU compilation or speedup.**
 
 Codex completes [GPU Readiness](../templates/GPU_READINESS.md). Architect reviews evidence and labels **GPU_READY** only when required gates pass. A test that could not run must be marked **NOT_RUN**, never PASS. No need to invoke Scientist for every CPU iteration.
 
@@ -22,13 +22,13 @@ Required: Scientist-approved math study; real CPU correctness tests; CPU `torch.
 
 ### Phase III — GPU experiment and performance engineering (Scientist + Architect + Codex)
 
-Scientist batches **GPU_READY** projects into a manual GitHub Issue-based queue and runs real Colab experiments at a convenient time. Target Notebook: one pinned-Git-SHA pip install and one packaged Python benchmark command (with optional `--publish`); see [GPU Experiment](GPU_EXPERIMENT.md). **Until the CLI/Publisher is implemented and verified, use an honest manual fallback.** Validate GPU accuracy before timing; record device, compiler backend, synchronization, warmup, repetitions, compiled/eager timings, tested SHA and raw results. Preserve unique run IDs and link the existing Experimental Report.
+Scientist batches **GPU_READY** projects into a manual GitHub Issue-based queue and runs real Colab experiments at a convenient time. Target Notebook: **pinned SHA install → packaged benchmark → optional separate publish**; see [Three-Step Contract](COLAB_TWO_COMMAND.md). **Until the CLI/Publisher is implemented and verified, use an honest manual fallback.** Validate GPU accuracy before timing; record device, compiler backend, synchronization, warmup, repetitions, compiled/eager timings, tested SHA and raw results. Preserve unique run IDs and link the existing Experimental Report.
 
 If GPU reveals numerical/compilation issues, return to Phase II with a reproducible Issue; if a mathematical premise fails, return to Phase I. Do not ask Scientist to repeat GPU runs before the local reproducible problem is fixed. After verified measurements, record **GPU_VERIFIED**; it is not synonymous with a speedup.
 
-## Role command and session recovery
+## Resume and handoff
 
-Within a **specified algorithm repository and authorized connected tools**, `推进导师工作`, `推进架构师工作`, `推进工程师工作` mean: read pinned project `AGENTS.md` / `sae.yaml`, current Issues/PRs and reports; select the highest-priority **unblocked role-appropriate** task; perform one bounded cycle; write back evidence/next step. Do not fabricate local laptop access, start background jobs or claim work that tools cannot execute. If local Codex runtime is unavailable, create/clarify the GitHub task instead. Never skip Scientist's research and GPU approvals.
+Restore role/project/permissions from the pinned [Role Recovery](ROLE_RECOVERY.md); complete one scoped cycle and recommend the [Next Action](NEXT_ACTION.md). Do not infer access to local CPUs, Colab or background jobs.
 
 ## Evidence and status
 

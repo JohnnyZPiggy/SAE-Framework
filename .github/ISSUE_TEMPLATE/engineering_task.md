@@ -20,7 +20,7 @@ assignees: []
 
 **Acceptance tests (actual evidence required):**
 
-**Two-command Colab contract (algorithm tasks):** Exact pinned GitHub pip install + `python -m <package>.benchmarks.run --device cuda --publish`; clean pip-installed package/CPU CLI smoke-tested by Codex, actual GPU/publisher integration separately validated by Scientist (or NOT RUN). No extra Notebook engineering cells.
+**Colab three-step contract (algorithm tasks):** pinned GitHub SHA install → standalone packaged `benchmarks.run --device cuda --out reports/gpu/RUN_ID` → **optional separate** `benchmarks.publish --report-dir reports/gpu/RUN_ID` after Scientist inspects results. Benchmark does not publish; Publisher uses Colab Secret `GITHUB_TOKEN` with verified secure subprocess access. Codex runs real CPU oracle, packaging and CLI tests; Scientist GPU/upload is NOT_RUN until observed.
 
 **Candidate GPU experiment (if needed):**
 
