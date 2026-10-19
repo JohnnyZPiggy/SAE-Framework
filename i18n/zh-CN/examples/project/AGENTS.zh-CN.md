@@ -45,6 +45,6 @@ SAE Framework：`JohnnyZPiggy/SAE-Framework`，架构版本 V3.2
 
 架构师向 Codex 派单前，按固定版本 [生态评估协议](.sae/workflows/ECOSYSTEM_REVIEW.md) 检查 PyTorch 原生功能、第三方包与论文参考实现，在工程报告中说明 Build-vs-Reuse 方案；坚持 CPU-first、跨硬件和少依赖，不自动升级固定 SAE 快照。
 
-## 年度常设合并权不会自动覆盖本算法仓库
+## 本人公开算法仓库共享长期合并授权
 
-项目可读取固定的 [治理规则](.sae/governance/STANDING_AUTHORIZATION.md)了解 T1/T2/T3 审查，但**复制 `.sae/` 不等于授权**。GPT 架构师在本项目合并 PR 前，须核实科学家明确授权**这个准确的 `<OWNER>/<PROJECT>`**，并已登记在 Framework [现行年度授权表](https://github.com/JohnnyZPiggy/SAE-Framework/blob/main/governance/STANDING_AUTHORIZATION.md)，同时确认 UTC 有效期、本轮 GitHub 权限及项目更严格限制。缺任何条件均请求科学家审批；Codex 永远不得自行合并。
+阅读固定的 [治理规则](.sae/governance/STANDING_AUTHORIZATION.md)，并核对 [Framework 当前授权原文](https://github.com/JohnnyZPiggy/SAE-Framework/blob/main/governance/STANDING_AUTHORIZATION.md)。科学家已经**明确授权 GPT 架构师审核并合并 `JohnnyZPiggy` 当前及未来本人拥有的全部公开仓库中的合格 PR，且无期限限制**，因此无需针对算法项目逐个登记。不过，复制 `.sae/` 不产生平台工具权限；必须实时核实该仓库确属 `JohnnyZPiggy` 且公开，核实本轮连接权限、PR 证据和更严格项目约束。T3 必须科学家明确审批。Codex 不自行合并。

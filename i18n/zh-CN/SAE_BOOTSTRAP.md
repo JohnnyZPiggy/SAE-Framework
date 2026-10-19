@@ -76,6 +76,6 @@
 
 科学家使用**三个独立 Notebook 步骤**：安装固定 SHA、运行不写 GitHub 的 Benchmark、审核后**按需单独上传报告**。Colab Secrets 已采用名称 **`GITHUB_TOKEN`**；Codex 须验证 Publisher 子进程读取密钥或提供一个 Python 上传 Cell 的安全环境变量传递。具体遵循 [现行三步协议](workflows/COLAB_TWO_COMMAND.md)（历史文件名保留以免破坏链接），Benchmark 默认不再含 `--publish`。旧版“两行”描述不再适用；未实现/验收前不得称其可运行。
 
-## 治理快照与仓库逐项授权
+## 治理快照与全部公开仓库的常设授权
 
-固定版本 `.sae/` 文档快照还必须包含 `governance/` 及其 `i18n/zh-CN/governance/` 中文镜像。算法项目根 `AGENTS.md` 应指向 `.sae/governance/STANDING_AUTHORIZATION.md`，并明确**复制治理协议不代表算法仓库已获得年度合并权限**。新算法仓库需科学家明确指定仓库并授权、再通过科学家审查的 PR 加入 Framework **当前**[登记表](../../governance/STANDING_AUTHORIZATION.md)，Bootstrap 不得自行创建授权、扩张范围或期限。复制后检查相对路径，不启用 GitHub Actions。
+固定版本的 `.sae/` 快照须包含 `governance/` 和 `i18n/zh-CN/governance/`，项目 `AGENTS.md` 链接 `.sae/governance/STANDING_AUTHORIZATION.md`。**复制治理文本不自动创造 GitHub 权限，也不得悄悄升级已有项目的固定快照。** 根据科学家最新指令，`JohnnyZPiggy` 现有及未来**本人拥有的全部公开仓库**均在无限期 PR 审核与有条件合并范围，无需逐仓库登记；但每个 PR 仍需实时核实 owner、公有状态、工具权限、GitHub 分支规则和 T1/T2/T3 验收。私有或他人仓库不包括。见 [当前常设授权](governance/STANDING_AUTHORIZATION.md)。不启用 GitHub Actions。

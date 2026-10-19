@@ -58,6 +58,6 @@
 
 科学家使用**三个独立 Notebook 步骤**：安装固定 SHA、运行不写 GitHub 的 Benchmark、审核后**按需单独上传报告**。Colab Secrets 已采用名称 **`GITHUB_TOKEN`**；Codex 须验证 Publisher 子进程读取密钥或提供一个 Python 上传 Cell 的安全环境变量传递。具体遵循 [现行三步协议](../workflows/COLAB_TWO_COMMAND.md)（历史文件名保留以免破坏链接），Benchmark 默认不再含 `--publish`。旧版“两行”描述不再适用；未实现/验收前不得称其可运行。
 
-## 年度常设合并权限与强制审查关口
+## 全部本人公开仓库的无限期合并权限
 
-**2026-10-19 至 2027-10-18（UTC）**，科学家依据 [年度授权协议](../governance/STANDING_AUTHORIZATION.md) 将符合条件的 PR 审查和合并委托 GPT 架构师，但只适用于**已登记且逐个得到授权**的仓库、用户触发的一轮工作及本轮真实 GitHub 权限。目前仅有 `JohnnyZPiggy/SAE-Framework`。每个 PR 按完整 Diff 分类 T1 日常、T2 有数学/CPU/必要 GPU 证据的工程、T3 科学家保留；必须检查审查意见、源 SHA、安全与依赖，在 PR **合并前**留可核查记录，默认精确 head Squash Merge，成功后核对。T3（含变更本授权）必须科学家针对本 PR 新批准。不能自动合并全部分支、擅自扩大算法仓库、续约或将 CPU 通过冒充 GPU 通过。到期/撤销立即停止授权适用，不允许后台自动轮询。
+科学家根据 [常设授权](../governance/STANDING_AUTHORIZATION.md) 将 `JohnnyZPiggy` **现有及未来全部本人公开仓库**内符合验收要求的 PR 审查和合并权授予 GPT 架构师，**没有到期时间、没有逐仓库登记要求，也不需要逐 PR 再请示**。每轮用户触发的架构师工作中仍须逐 PR 真实核对公开状态和 owner、GitHub 权限、完整 Diff、T1 日常／T2 有证据工程／T3 科学家保留事项，留合并前审计记录、确认当前 head SHA，合并后核实 GitHub 返回的合并 SHA。T3（包括修改这份授权）仍须科学家针对当前变更新的明确批准。不得后台扫仓库、无条件合并、让 Codex 自我批准，或把 CPU 证据冒充 GPU 结果。用户可随时撤销。

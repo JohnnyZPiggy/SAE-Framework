@@ -110,6 +110,6 @@
 
 科学家使用**三个独立 Notebook 步骤**：安装固定 SHA、运行不写 GitHub 的 Benchmark、审核后**按需单独上传报告**。Colab Secrets 已采用名称 **`GITHUB_TOKEN`**；Codex 须验证 Publisher 子进程读取密钥或提供一个 Python 上传 Cell 的安全环境变量传递。具体遵循 [现行三步协议](i18n/zh-CN/workflows/COLAB_TWO_COMMAND.md)（历史文件名保留以免破坏链接），Benchmark 默认不再含 `--publish`。旧版“两行”描述不再适用；未实现/验收前不得称其可运行。
 
-## 科学家的年度有条件合并授权
+## 科学家的无限期全公开仓库合并授权
 
-**2026-10-19 至 2027-10-18（UTC）**，在用户触发的工作周期内，GPT 总架构师可以独立审核并合并**已经验收且证据真实的 T1/T2 PR**，但只限逐个登记、获得科学家授权的仓库。**初始仅授权 `JohnnyZPiggy/SAE-Framework`**。科学、治理、权限安全、许可及破坏性 T3 PR 仍须科学家针对具体 PR 新批准；每个 PR 必须审计，不能无条件合并全部分支。详见 [年度合并授权](i18n/zh-CN/governance/STANDING_AUTHORIZATION.md)。Codex 仍不得自行合并。授权不能扩大 GitHub 工具权限、启动后台工作，并于 2027-10-19 UTC 自动失效。
+科学家已明确授权 GPT 总架构师在用户触发的工作周期内，**审核并合并 `JohnnyZPiggy` 当前及未来拥有的所有公开 GitHub 仓库中的合格 PR**，不设到期日、不再逐仓库登记，也无需每次再次确认合并权限。每个 PR 仍须实际审核代码 Diff、数学及 CPU/GPU（如属验收条件）证据、GitHub 权限和分支规则；T3 科研/治理/安全/许可/破坏性决定仍须科学家新批准。见 [常设合并授权](i18n/zh-CN/governance/STANDING_AUTHORIZATION.md)。不授权 Codex 自行合并、私有/其他人仓库或后台自动操作；可随时撤销。
