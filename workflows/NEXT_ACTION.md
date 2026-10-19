@@ -25,6 +25,22 @@ Use this structure, adapted to the actual situation:
 - A client that supports **real, functional quick actions** may render one-tap options carrying the exact same command; text commands are always the fallback for Codex, terminals, mobile clients or unavailable UI controls. Never promise a button in a client that cannot render one.
 - Do not prompt for GPU experiments before `GPU_READY`; no silent auto-merge, credential disclosure, or background execution. Scientist retains scientific and compute-budget authority.
 
+## Next-Action Completion Gate — pre-send check (V3.3)
+
+Before sending the **final user-facing reply** of every substantive Mentor, Architect or Codex cycle—including long research, code changes, experimental runs, failures and blocked work—perform this compact self-check. A substantive cycle is **not communicatively complete** until the footer is present; keep the footer even when shortening the rest of a long response.
+
+1. **Status and evidence:** state what was actually completed versus NOT RUN / UNVERIFIED / BLOCKED, with verifiable Issue, PR, report or commit links when available. Never fabricate activity, approvals or progress.
+2. **One recommended handoff:** when a feasible next step exists, provide **one full, stand-alone, immediately copyable Chinese command** naming its target and action: `推进架构师工作：…`, `推进导师工作：…`, `推进工程师工作：…`, or `Scientist：…`. No placeholders, ambiguous fragments or commands to an agent that cannot actually be invoked.
+3. **Meaningful choices:** offer zero to two distinct, feasible alternatives only when there is a real fork in the workflow. Rank one as the recommendation; do not pad choices or repeat the same work with different wording.
+4. **Resource and authority gate:** preserve required scientific/compute approvals, actual tool access and role boundaries. A handoff is not an instruction to allocate hardware, merge, or launch Codex automatically.
+5. **Last visible section:** end the reply with **SAE · Next action** (including current state, evidence, recommendation/alternatives and Scientist requirements). Explicitly write DONE / BLOCKED / WAITING_FOR_SCIENTIST if there is no honest executable next action; when a safe recovery or approval step exists, make that the copyable recommendation.
+
+### Copy/paste and interactive-choice fallback
+
+- **Always expose complete command text**, even when the client also shows a working Copy / Continue control. If the client supports *real* copy and one-tap actions, associate each action with **exactly the same command** as its visible text; never draw pretend buttons or assert an external agent was invoked.
+- **If controls are unavailable (Codex CLI/desktop, terminal, Markdown-only clients), put each recommended/alternative command in its own fenced plain-text block**, so the Scientist can copy and paste it without editing. Do not combine multiple commands in a single block.
+- If no executable action exists, display the terminal/blocked status and needed external condition without inventing an actionable command. This protocol is a **response-level self-check**, not a machine-enforced output validator; context loss or interrupted execution can still prevent compliance.
+
 ## Example (illustrative only)
 
 **SAE · Next action**  
