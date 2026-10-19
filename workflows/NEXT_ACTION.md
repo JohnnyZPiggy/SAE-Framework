@@ -7,23 +7,17 @@
 At the end of **each substantive SAE Mentor, Architect or Codex Engineer work cycle**, provide the Scientist with a short, actionable next step. This is a presentation and handoff contract, **not** an autonomous scheduler, new agent, extra task database, or permission to execute future work without a new instruction.
 
 ## Mandatory compact footer
-
-Use this structure, adapted to the actual situation:
+End each substantive reply with this short user-facing **SAE · Next action** footer (fill real values, not placeholders):
 
 > **SAE · Next action**  
-> **Current state:** <verified phase/status or UNKNOWN> · **Evidence:** <GitHub Issue/PR/report link, or NOT_VERIFIED>  
-> **Recommended:** <exact copyable Chinese role command or human action> — <one short reason>  
-> **Alternatives:** <zero to two exact copyable commands, only when meaningful>  
-> **Needs Scientist:** <compute budget approval / scientific decision / choice / none>
+> **Current state:** <verified status or UNVERIFIED> · **Evidence:** <Issue/PR/report/commit or NOT RUN>  
+> **Recommended:** <one full copyable Chinese role command or Scientist action> — <reason>  
+> **Alternatives:** <zero to two only if genuinely different>  
+> **Needs Scientist:** <science/compute approval or none>
 
-- **Exactly one recommended action** when a feasible next action exists. If work is complete, blocked, or awaiting outside action, report **DONE / BLOCKED / WAITING_FOR_SCIENTIST** instead of manufacturing an action.
-- **No more than three choices total**: one recommendation and at most two genuinely distinct alternatives. Prefer one choice if it is clear. Keep the footer mobile-readable, generally 4–6 short lines.
-- Commands must be **copyable and specific**: `推进导师工作：<research question>`, `推进架构师工作：<review/dispatch target>`, `推进工程师工作：<Issue number / implementation target>`. Use `Scientist：<explicit action>` when the next step is human scientific or compute-budget approval. Do not imply GPT can directly run Codex or access a laptop unless connected tools actually permit it.
-- Base the choice on the **actual project, latest verified GitHub state, priority, dependencies, phase gate and permissions**. Do not repeat a stale recommendation or loop between roles without progress. A recommendation is not evidence of a task having been started.
-- For `RESEARCH_BLOCKED`, prefer Mentor + Scientist decision; for `RESEARCH_READY`, Architect handoff; for `CPU_IN_PROGRESS`, Codex; for `CPU_VALIDATED`, Architect GPU Readiness review; for `GPU_READY`, **Codex** authorized Colab execution after Scientist compute approval; for `GPU_BLOCKED`, Codex/Architect local investigation before asking for another GPU run. A higher-priority correctness/security blocker overrides these defaults.
-- Cite or link the **source Issue/PR, commit SHA or report** behind the status. If GitHub cannot be read, mark status **UNVERIFIED** and suggest a permission/retrieval step; do not invent links or claim the task was completed.
-- A client that supports **real, functional quick actions** may render one-tap options carrying the exact same command; text commands are always the fallback for Codex, terminals, mobile clients or unavailable UI controls. Never promise a button in a client that cannot render one.
-- Do not prompt for GPU experiments before `GPU_READY`; no silent auto-merge, credential disclosure, or background execution. Scientist retains scientific and compute-budget authority.
+Choose from current **GitHub evidence, task priority, dependencies, readiness and actual permissions**, not stale chat state. Typical routing: `RESEARCH_BLOCKED` → Mentor/Scientist; `RESEARCH_READY` → Architect; `CPU_IN_PROGRESS` → Codex; `CPU_VALIDATED` → Architect readiness review; `GPU_READY` → Codex experiment **only after Scientist compute approval**; `GPU_BLOCKED` → local Architect/Codex diagnosis. Correctness/security blockers override the default route.
+
+A recommended command **does not execute an Agent**, allocate compute or authorize merges. [Task Management](TASK_MANAGEMENT.md) owns Issue/PR state; this file owns the response handoff.
 
 ## Next-Action Completion Gate — pre-send check (V3.3)
 
@@ -54,5 +48,4 @@ Before sending the **final user-facing reply** of every substantive Mentor, Arch
 The task-management workflow remains the canonical GitHub Issue/PR handoff; this protocol only standardizes **what the agent tells the Scientist after each cycle**. Root/project AGENTS and role protocols should point here. Never duplicate the entire protocol into every role file.
 
 ## Role recovery and integrity
-
-Before each substantive work cycle, apply [Role Recovery & Integrity](ROLE_RECOVERY.md): restore the explicitly assigned role, read pinned project rules and live GitHub evidence, verify phase and actual tool permissions, and stop on role mismatch rather than silently changing identity. Keep the existing Next-Action handoff at the end.
+At cycle start apply [Role Recovery](ROLE_RECOVERY.md) to validate role, pinned rules and real permissions; end with this Completion Gate.
