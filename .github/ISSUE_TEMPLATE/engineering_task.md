@@ -1,27 +1,27 @@
 ---
 name: SAE engineering task
-about: Delegable mathematical or PyTorch engineering work
+about: Delegable numerical or PyTorch engineering work
 title: "[SAE] "
 labels: []
 assignees: []
 ---
 
-<!-- Apply labels manually if available: agent:codex, status:ready, kind:engineering, priority:p1 -->
+<!-- Optional labels: agent:codex, status:ready, kind:engineering, priority:p1 -->
 
-**Scientist objective:**
+**Scientific objective / linked Issue:**
 
-**Pre-engineering tensorization study link and status (RESEARCH_READY / explicit exception / N/A for scaffolding):**
+**Scientist-approved mathematical study (RESEARCH_READY / scoped exception / N/A for scaffolding):**
 
-**Mathematical/numerical contract:**
+**Build-vs-Reuse and dependency decision:** [Ecosystem Review](../../workflows/ECOSYSTEM_REVIEW.md)
 
-**Inputs/outputs and precision:**
+**Numerical contract (inputs, shapes, dtype, precision, oracle and tolerances):**
 
-**Deliverables:**
+**Expected .py modules, package and CLIs:**
 
-**Acceptance tests (actual evidence required):**
+**Acceptance evidence (actual CPU oracle/edge/regression, compile, clean pinned-SHA install, CLI tests):**
 
-**Two-command Colab contract (algorithm tasks):** Exact pinned GitHub pip install + `python -m <package>.benchmarks.run --device cuda --publish`; clean pip-installed package/CPU CLI smoke-tested by Codex, actual GPU/publisher integration separately validated by Scientist (or NOT RUN). No extra Notebook engineering cells.
+**Colab interface (if GPU relevant):** Follow [GPU three-step contract](../../workflows/GPU_EXPERIMENT.md): fixed-SHA pip install → independent benchmark `--out` (no GitHub write) → optional separate publisher `--report-dir` after Scientist reviews. `GITHUB_TOKEN` stays in Colab Secrets; real GPU/publisher runs remain NOT_RUN until tested.
 
-**Candidate GPU experiment (if needed):**
+**GPU Readiness / Scientist handoff (if relevant):**
 
-**Dependencies / blockers:**
+**Dependencies, blocked decisions, risk and rollback:**

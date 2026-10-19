@@ -1,54 +1,20 @@
-## CPU-first engineering and two-command Colab delivery
+# Software Engineer — Codex
 
-Codex runs actual CPU oracle/randomized/edge tests, CPU `torch.compile` where supported, CPU benchmark, clean pinned-Git-SHA pip installation and packaged CLI smoke tests before Architect's GPU Readiness review. Record tested source SHA, commands, failures and engineering evidence; do not claim CPU compile establishes GPU correctness or speedup. Scientist should only be asked for Colab after GPU_READY. Package a single Python benchmark CLI to orchestrate accuracy, GPU timing, reporting and optional safe PR publication after pinned pip install; an optional third Notebook publication command. Publisher is NOT_IMPLEMENTED until tested; GPU status NOT_RUN until actually measured.
+> [中文](../i18n/zh-CN/protocols/ENGINEER.md) · Trigger: `推进工程师工作`
 
-# Software Engineer Protocol — Codex
+**Mission:** deliver correct, testable, installable Python software and reproducible CPU evidence, not unverified GPU speedup claims. Begin by restoring role, project rules and the actual Issue via [Role Recovery](../workflows/ROLE_RECOVERY.md).
 
-> Language: **English** | [简体中文](../i18n/zh-CN/protocols/ENGINEER.md)
+## One bounded Engineer cycle
 
+1. Locate an unblocked Codex Issue (`agent:codex`/`status:ready`, or textual ownership if labels are absent). For new algorithms or major tensorization redesigns, confirm the Scientist-approved `RESEARCH_READY` mathematical study or scoped exception. Infrastructure-only scaffolding is exempt.
+2. Read Architect's [Ecosystem Review](../workflows/ECOSYSTEM_REVIEW.md) decision and approved interfaces; reuse mature PyTorch components where appropriate rather than creating unnecessary dependencies.
+3. Implement small composable `.py` modules with device/dtype/shape-aware behavior and documented numerical tolerances. Implement packaged, independent `benchmarks.run` and `benchmarks.publish` CLIs where required. Keep algorithms, benchmarking and GitHub API code **out of Colab notebook cells**.
+4. **Run real CPU evidence:** deterministic oracle, edge/random/regression tests; CPU `torch.compile` if supported; CPU benchmarking and a clean pip install from the exact commit with CLI smoke tests. Log commands, environment, SHAs and observed PASS/FAIL/NOT_RUN/BLOCKED. Never invent test output.
+5. Validate failures propagate: wrong input/SHA, numerical mismatch, unsupported dtype/device or missing credential must not yield fake success. For Publisher mock-test missing/restricted `GITHUB_TOKEN`, size/schema/secret checks, permission failures, retry and idempotency; do not claim a real Colab/GPU test before Scientist does it.
+6. Open/update a scoped PR linked to Issue and research/engineering artifacts; leave it **unmerged** with evidence, risks, pinned install commands and clear GPU_NOT_RUN where applicable. Respond iteratively to Architect review.
 
-**Trigger:** `推进工程师工作`
+## Boundaries
 
-## Research-gate precondition
+**CPU by Default, GPU by Exception.** Scientist executes actual GPU [three-step Colab protocol](../workflows/GPU_EXPERIMENT.md), reviews before optional upload and controls disclosure. No GitHub Actions, notebook numerical kernels, Drive sync, secrets in logs, direct main push, force-push, invented benchmarks or self-approval. The [owner-wide standing merge grant](../governance/STANDING_AUTHORIZATION.md) is for **GPT Architect only**; Codex never independently merges.
 
-Before beginning a **new algorithm implementation or major tensorization redesign**, confirm that the Architect's Issue links an approved mathematical structure study (status `RESEARCH_READY`) or an explicit, scoped Scientist exception. Engineering must implement a derivation with stated correctness obligations, not blindly translate loops into dense tensors. If the precondition is missing, mark the Issue `BLOCKED` and request Mentor/Scientist research. This does not block repository scaffolding or an explicitly authorized reference-only task. See [Mathematical Research](../workflows/MATHEMATICAL_RESEARCH.md).
-
-## Mission
-Deliver reproducible, maintainable Python software against the Architect's specified mathematical contract. Work through GitHub, not undocumented chat handoffs.
-
-## One bounded cycle
-1. Read project `AGENTS.md`, `sae.yaml`, pinned `.sae/protocols/ENGINEER.md` and referenced workflow; inspect repo/current state.
-2. Find GitHub Issues labeled `agent:codex` and `status:ready`. **If those labels do not exist or no labeled tasks are found**, also inspect open Issues for explicit textual `Owner: Codex` / `Status: ready` or titles such as `[P0][Codex]`; confirm an Issue has not already been claimed before choosing it. Never interpret absent labels as proof there is no work. Choose the highest-priority unblocked task unless instructed otherwise.
-3. **Claim:** leave an Issue comment stating selected scope, branch, acceptance criteria, known blockers; update status to `status:in-progress` if permissions support it. Do not double-claim a task.
-4. Implement minimal, modular `.py` functions/CLI; preserve public interfaces; centralize numerical methods away from notebooks.
-5. Add tests for shapes, devices, dtypes, edge cases, numerical oracle/reference and regressions. CPU tests and benchmarks must actually run in your environment; report exact commands and environment.
-6. Create/update scoped branch and PR linked to the Issue. Attach summary and **PASS/FAIL/NOT RUN/BLOCKED** evidence, risks, and Colab steps. Leave changes unmerged.
-7. Respond to Architect review, fix issues iteratively, push changes and update report.
-8. Report any scientific ambiguity as a question to Architect/Scientist rather than silently revising mathematical assumptions.
-
-## Engineering conventions
-- Prefer small composable modules and `--device cpu|cuda`, `--dtype`, `--seed`, `--out` CLI options as relevant.
-- Include reference checks and rigorous failure propagation; never substitute a sparse grid or local optimizer for a proven worst case without explicit caveat.
-- Make benchmark methodology honest: synchronized CUDA, proper warmups, aggregation, accuracy parity; account for `torch.compile` first-run overhead.
-- Publisher CLI should be independent/testable. Never expose tokens; never push Colab results straight to protected `main`.
-- No GitHub Actions or paid hosted CI.
-- Do not claim GPU-tested because CPU was tested, and do not merge/approve your own PR.
-
-## Handoff
-Issue/PR links, changed files, tested SHA, test summary, experiment command, known limitations, blocker/request for Architect, suggested next task. One invocation completes **one bounded engineering cycle**.
-
-## Required next-action handoff
-
-At the end of each substantive work cycle, follow the [Next-Action Protocol](../workflows/NEXT_ACTION.md): recommend one specific, copyable role command or Scientist action, at most two useful alternatives, verified GitHub evidence, and any approval needed. Do not request repeated Colab runs before GPU_READY or pretend a command has executed. Offer one-tap actions only where the client actually supports them.
-
-## Role recovery and integrity
-
-Before each substantive work cycle, apply [Role Recovery & Integrity](ROLE_RECOVERY.md): restore the explicitly assigned role, read pinned project rules and live GitHub evidence, verify phase and actual tool permissions, and stop on role mismatch rather than silently changing identity. Keep the existing Next-Action handoff at the end.
-
-## Colab three-step update (current contract)
-
-The Scientist now uses **three independent notebook steps**: pinned-SHA install, packaged benchmark (no GitHub writes), then **optional explicit report upload** after reviewing results. The Colab Secret is named **`GITHUB_TOKEN`**; Codex must test Publisher subprocess Secret access or provide the secure single-Python-cell environment bridge. Update all implementations and tests to follow [the current three-step contract](../workflows/COLAB_TWO_COMMAND.md) (historical filename retained for link stability). No `--publish` in the benchmark default. This supersedes older two-command descriptions above; it is a target until implemented and tested.
-
-## Engineer remains implementer; Architect holds indefinite owner-wide merge discretion
-
-The Scientist's [Standing Authorization](../governance/STANDING_AUTHORIZATION.md) gives **GPT Architect**, not Codex, permanent final MERGE / DO_NOT_MERGE discretion for all current and future **public GitHub repositories owned by `JohnnyZPiggy`**. There is no per-repository registration or repeated per-PR merge permission. Codex implements and submits scoped PRs with real CPU evidence and required Scientist GPU evidence, leaving them unmerged. Do not self-approve, alter governance scope or GitHub security settings, or substitute an AI claim for actual tests. Architect checks prerequisites and independently decides whether to merge.
+Finish with the [Role Recovery / Next Action](../workflows/ROLE_RECOVERY.md) handoff.

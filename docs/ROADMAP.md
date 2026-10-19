@@ -1,35 +1,37 @@
-# SAE Framework Roadmap
+# SAE Framework V3.2 — Engineering Roadmap
 
-> Language: **English** | [简体中文](../i18n/zh-CN/docs/ROADMAP.md)
+> English normative | [简体中文](../i18n/zh-CN/docs/ROADMAP.md)
 
+**Implemented here today:** SAE governance/roles, research and experiment protocol, linked artifact templates, pinned-snapshot examples. **Not an autonomous agent runner**; don't confuse a documented CLI target with an installed/testing-passed package.
 
-This repository currently provides **architecture, role instructions, onboarding steps, and templates**. The following automation components are proposed, **not yet implemented/tested**:
+## P0 — Bootstrap CLI (Codex, [Issue #2](https://github.com/JohnnyZPiggy/SAE-Framework/issues/2))
 
-## P0 — Bootstrap helper (Codex)
-- Safe, idempotent project scaffolder from a pinned SAE commit.
-- Dry-run and clear diff; no overwrite by default.
-- Generates project AGENTS/config, frozen policy snapshot, Issue/PR templates.
-- Unit tests for existing/empty repos, missing permissions and malformed config.
+- Idempotent, dry-run-first project scaffold from an **immutable** Framework commit.
+- Correct target-root AGENTS, `sae.yaml` and complete pinned `.sae/` snapshot with working English/Chinese relative links, protocols and governance.
+- CPU tests for fresh/existing repository, absent permissions, malformed YAML, frozen SHA and re-entry. No silent overwrite or framework-version upgrade.
 
-## P0 — Experiment Publisher CLI (Codex)
-- Validate report manifest/schema, redact potential secrets, enforce size limits.
-- Commit reports to `experiment/<run-id>` branch, propose PR and link originating Issue/implementation PR.
-- Report success only after GitHub API confirms commit and PR; retry safely with idempotency key.
-- Test publisher offline/mock first; execute integration test only with explicitly granted scope.
+## P0 — Separate GitHub Publisher CLI (Codex, [Issue #3](https://github.com/JohnnyZPiggy/SAE-Framework/issues/3))
 
-## P1 — Two-command Colab interface (GPT design + Codex implementation)
+- Independent `benchmarks.publish --report-dir`, **not** a `--publish` flag inside `benchmarks.run`.
+- Sanitize and validate `manifest.json`, `correctness.json`, `benchmark.csv`, `summary.md` with tested source SHA, file size and data safeguards.
+- Secure runtime `GITHUB_TOKEN` access (actual Colab subprocess test or safe Python-cell injection), branch/PR creation, idempotent retries and honest permission/error states; no direct main push/auto-merge.
+- Mock/offline test first. Scientist authorizes any real public report upload after reviewing results.
 
-- **Exactly two executable Notebook command cells** after one-time GPU/credential setup: pinned GitHub pip install → single packaged `python -m <package>.benchmarks.run --device cuda --publish`.
-- GPT specifies defaults, mathematical oracle, CLI, device checks, experiment evidence and acceptance; Codex implements/test-packages all algorithms, correctness, benchmarking, reporting and Publisher integration **outside Notebook**.
-- Device/env checks, correctness before timing and source-SHA provenance are performed inside the single CLI; no manual third publish command in the **final design**.
-- CPU clean pip/CLI smoke tests by Codex; real GPU + optional PR upload Colab acceptance by Scientist. Current state is **not implemented**. See [Two-Command Contract](../workflows/COLAB_TWO_COMMAND.md).
+## P1 — Three-cell Colab workflow (Architect specification + Codex packaged CLI)
 
-## P1 — Optional machine validation (Codex)
-- Local Python schema validation for `sae.yaml` and experiment JSON.
-- Run via Codex terminal/Colab; no GitHub Actions.
+1. Pinned-SHA pip install.
+2. Independent `benchmarks.run --device cuda --out ...`: verify correctness before GPU timings, write **local** report, **never** publish automatically.
+3. **Optional** `benchmarks.publish --report-dir ...`: the Scientist deliberately uploads an already reviewed report; third cell may be a secure Python subprocess fallback.
 
-## P2 — Quality of life
-- Issue/PR status report CLI; simple learning note templates.
-- Version migration guide with reviewed updates and backwards compatibility.
+See the sole [GPU Experiment / Colab Contract](../workflows/GPU_EXPERIMENT.md). Codex tests clean install and CPU behavior; real GPU and Secret access only pass after Scientist Colab evidence. Current CLIs remain **NOT_IMPLEMENTED / NOT_VERIFIED** unless a concrete project provides actual tested commands.
 
-All roadmap items require an Issue, an owner, acceptance criteria and real test evidence before marking complete.
+## P1 — Lightweight local validation
+
+- YAML/JSON schema checking and Markdown relative-link verification in Codex/local environment, **without GitHub Actions**.
+- Validate template instantiation in a fresh repository and preserve pinned adoption compatibility.
+
+## P2 — Optional quality of life
+
+- Small Issue/PR status summary, learning-note tooling and explicit opt-in snapshot migration.
+
+Only mark an item complete after inspecting real PR and actual test evidence. Keep the [Agent Constitution](../AGENTS.md), [Standing Authorization](../governance/STANDING_AUTHORIZATION.md) and [Role Recovery](../workflows/ROLE_RECOVERY.md) as single sources.

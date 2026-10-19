@@ -1,81 +1,26 @@
-## 项目初始化后的统一验收
+# SAE Bootstrap V3.2 — 项目初始化（中文）
 
-固定 SAE 快照必须包含 [三阶段协议](workflows/RESEARCH_PIPELINE.md)、[GPU Readiness](templates/GPU_READINESS.md)、[三文档交接](workflows/THREE_ARTIFACT_HANDOFF.md)、[工程报告模板](templates/ENGINEERING_REPORT.md) 和 [双命令 Colab 契约](workflows/COLAB_TWO_COMMAND.md) 及中英文镜像。复制到项目外部的模板须重写相对链接。Codex 在本地 CPU 真实完成安装、正确性、`torch.compile`、CLI 验收后才允许 GPU_READY。Colab 目标两行命令；Publisher 未实现前上传仍需人工处理。保留自包含 Bootstrap 快照要求。
+> [英文正式规范](../../SAE_BOOTSTRAP.md) · 本文是目标工作流程，不代表 Bootstrap CLI 已经实现。
 
-# SAE V3.2：新项目初始化协议（中文）
+## 先检查，再修改
 
-> 语言：[English](../../SAE_BOOTSTRAP.md) | **简体中文** · 英文是机器执行规范。
+确定真实目标 `OWNER/REPO`、默认分支、可用工具、已有文件、算法目标和**固定的 SAE Framework 源码 SHA**。不可把 SAE 主仓库默认为算法仓库；不得直接覆盖原文件。
 
-**入口指令：** `按照 SAE Framework V3.2 初始化这个项目`
+## 固定版本文档快照
 
-## 必须确认的输入
-- 目标仓库：准确的 `owner/repo` 与默认分支。
-- 科学目标：论文/算法、预期 PyTorch 产物（可暂定）。
-- 框架来源：`JohnnyZPiggy/SAE-Framework`，必须固定到**实际 release tag 或 commit SHA**，不使用漂移的 `main`。
-- 权限：对目标仓库的明确读写授权；Colab 凭证仍由科学家保管。
-- 现有文件：除非用户针对具体修改批准，否则全部保留。
+1. 从**同一个 Framework SHA** 复制自包含 `.sae/`，包含 `AGENTS.md`、`protocols/`、`workflows/`、`governance/`、`templates/`、`docs/`、`examples/` 和 `i18n/zh-CN/` 等需要的规范及相关 Bootstrap/README。不能混用不同版本。
+2. 使用 [算法项目 AGENTS 示例](../../examples/project/AGENTS.md) 填写目标仓库、固定 SHA 和正确链接；按 [sae.yaml 示例](../../examples/project/sae.yaml)填写配置。**复制后**检查到 `.sae/` 的相对链接、新会话 Role Recovery 与参数，而不仅是原始仓库里是否存在文件。
+3. 必须能访问 [角色恢复](workflows/ROLE_RECOVERY.md)、[数学研究](workflows/MATHEMATICAL_RESEARCH.md)、[生态调查](workflows/ECOSYSTEM_REVIEW.md)、[Colab 三步](workflows/GPU_EXPERIMENT.md)、[任务管理](workflows/TASK_MANAGEMENT.md) 和 [三成果交接](workflows/THREE_ARTIFACT_HANDOFF.md)。
+4. 中央 [长期授权](governance/STANDING_AUTHORIZATION.md)是科学家的可撤销人类指令；复制文件本身**不会创造 GitHub 工具权限**，也不会使私有或其他所有者仓库自动获得合并权限。不得擅自升级现有算法项目的固定 `.sae/` 流程。
 
-## 阶段 0：启动前检查
-1. 检查仓库、已有 README/AGENTS、默认分支、Issues/PR、打包与测试结构，以及工具权限。
-2. 读取固定版本的框架 `AGENTS.md`、相关角色/流程文档和本初始化文件。**仅提供 URL 不等于已读取。**
-3. 明确缺失的先决条件、计划改动与外部副作用；不可凭空假设 GitHub 写入可用。
+## 数学审批、CPU 工程、Colab 实验
 
-## 阶段 1：安装固定版本协议
-1. 使用 [项目 AGENTS 示例](../../examples/project/AGENTS.md) 创建/更新项目根 `AGENTS.md`。
-2. 使用 [配置示例](../../examples/project/sae.yaml) 写入 `sae.yaml`，填上**真实 SHA**、角色及禁用 Actions 规则。
-3. 从**同一个固定的母仓库 commit**，把 `AGENTS.md`、`SAE_BOOTSTRAP.md`、`README.md`、`README.zh-CN.md`、`CHANGELOG.md`、`protocols/`、`workflows/`、`templates/`、`docs/`（含架构图）、`examples/`、`i18n/zh-CN/`、`governance/`（含中文镜像）作为**完整的轻量文档快照**复制到项目 `.sae/`。不复制并执行 `.github/workflows/`，也不混用不同 commit；不要只留外部链接。
-4. 确认 Codex 实际读取项目内的 AGENTS，GPT 通过 GitHub 工具显式读取相应文件。
-5. 保留已有内容，在**新分支 + PR** 中提出变更。
+新算法/重大重构：Mentor 与 Scientist 先研究矩阵向量等数学结构，按 [数学模板](../../templates/TENSORIZATION_STUDY.md)提交 `docs/research/<algorithm>-tensorization.md`，Scientist 决定 `RESEARCH_READY`、`RESEARCH_BLOCKED`、`NOT_TENSORIZABLE` 或明确有限例外；未通过不得派发正式算法加速开发 Issue。
 
-## 阶段 1.5：数学结构探索与张量化研究（必需）
+Codex 按需要实现可安装 `src/`、`tests/`、`benchmarks/`、`reports/`、`docs/`，真实执行 CPU oracle/边界/回归、适用时 `torch.compile`、CPU Benchmark、固定 SHA 干净 pip 安装与 CLI 测试；GitHub Issue/PR 记录证据。架构师在派单前做 Build-vs-Reuse，审核 GPU_READY，之后 Scientist 按 [三步 Colab 流程](workflows/GPU_EXPERIMENT.md)安装、Benchmark、可选上传。`GITHUB_TOKEN` 必须安全传递，Benchmark 不自动上传。
 
-对于新算法或实质性张量化重构，在初步搭建仓库/协议之后、给 Codex 派发**算法实现和性能测试任务之前**：
-1. 科学家提供或确认论文、参考算法与数学研究目标。
-2. GPT 切换**科学导师**模式，按 [数学结构研究流程](workflows/MATHEMATICAL_RESEARCH.md) 找到矩阵向量等算子并推导数学等价、可检验的张量重构。
-3. 在目标项目形成 `docs/research/<algorithm>-tensorization.md`（使用 [研究模板](../../templates/TENSORIZATION_STUDY.md) 或 [中文版](templates/TENSORIZATION_STUDY.md)），记录数值判据、算法复杂度、硬件假设、替代方案及不确定性。
-4. 科学家审查并决定 `RESEARCH_READY` / `RESEARCH_BLOCKED` / `NOT_TENSORIZABLE`，必要时明确批准有限的参考实现例外。
-5. GPT 再以总架构师身份设计实现接口、验收测试与 Colab 实验矩阵。**未完成研究关口时不能默认派发重构任务或启动正式性能测试。** 基础设施搭建不受限，后续结果可以返回研究。
+## 验收与边界
 
-## 阶段 2：工程骨架（交给 Codex）
-可按需建立 `src/`、`tests/`、`benchmarks/`、`tools/`、`notebooks/`、`reports/`、`docs/`（空目录不受 Git 追踪）。
-- 与算法相匹配的 Python 打包/导入结构；
-- 实际 CPU 数值正确性、边界和回归测试；
-- 支持设备选择、随机种子、结构化输出的实验 CLI；
-- **薄 Colab Notebook**：安装指定源码 SHA、设参、调用已测试 CLI、发布报告；Notebook 由 GPT 设计，Python 实现由 Codex 负责；
-- 按 [GPU 实验协议](workflows/GPU_EXPERIMENT.md) 设计上传工具；未实现并测试前不得宣称可用；
-- 不配置 GitHub Actions、托管 CI 或付费自动化。
+按 [项目采纳检查](docs/ADOPTION_SMOKE_TEST.md)核对 Git SHA、YAML、文件及相对链接、中英文镜像、角色加载、GitHub Issue/PR、测试与真实运行状态。区分 `PASS/FAIL/NOT_RUN/BLOCKED`；无运行不得宣称成功。架构师依据 [当前长期授权](governance/STANDING_AUTHORIZATION.md)真实审核后自主决定 PR 是否合并；科学家保留重要科研/安全内容决定。
 
-## 阶段 3：GitHub 协作配置
-- 在权限允许时配置 Issue/PR 模板；不能操作的明确汇报。
-- 按 [任务管理协议](workflows/TASK_MANAGEMENT.md) 定义状态、优先级、交接和审核。
-- 建立初始 Issues：数学规格、参考基线、CPU 正确性、PyTorch 优化、Colab 实验、结果发布与学习目标。
-
-## 阶段 4：验收和交接
-- 在**目标项目的实际目录结构中**检查链接，确认 `.sae/AGENTS.md`、角色、流程、模板、中文镜像及根目录 AGENTS 的路径都可访问；验证 `sae.yaml` 能解析且指向真实不可变版本。可按 [手工初始化验收清单](../../docs/ADOPTION_SMOKE_TEST.md) 检查。
-- Codex 跑 CPU 检查并记录真实输出；GPU 留给科学家后续在 Colab 执行。
-- 通过 PR 提供审查，PR 是否合并由已授权的 GPT 架构师在验收后决定，无需额外合并许可。
-- 报告 **已完成 / 未运行 / 被阻塞**、对应 SHA、Issue/PR 链接、尚需的认证步骤。
-- 下一阶段使用三条推进指令。
-
-## 幂等与失败
-重新初始化必须先检查差异，不能静默覆盖已有文件。删除、force-push、暴露秘密、合并、对外发布均不能凭“默认权限”执行。缺少写权限时，应提供待应用的补丁和清单，并标记尚未提交。
-
-## 初始化成功标准
-项目具有项目根 AGENTS、合法 `sae.yaml`、可读取且**固定版本**的协议副本、清晰责任与验收标准、初始 Issue 队列、可审查的工程骨架 PR、Colab/GitHub 报告计划，而且没有 GitHub Actions。
-
-**注意：** 这是一份操作协议，不是自动运行服务。
-## Bootstrap 快照中的角色恢复
-
-固定版本的 `.sae/workflows/` 快照必须包含 [角色恢复协议](workflows/ROLE_RECOVERY.md) 与中英文镜像。算法项目 `AGENTS.md` 必须指向 `.sae/workflows/ROLE_RECOVERY.md`。Bootstrap 实现需要检查新对话能恢复角色与任务，不得悄悄升级既有项目。
-
-## 项目固定快照中的生态调查
-
-新算法项目的 `.sae/workflows/` 快照必须包含 [ECOSYSTEM_REVIEW.md](workflows/ECOSYSTEM_REVIEW.md) 和 [中文镜像](i18n/zh-CN/workflows/ECOSYSTEM_REVIEW.md)，固定版本架构师协议和工程报告需包含简短 Build-vs-Reuse 关口；复制后检查相对链接。既有项目不得悄悄自动升级。
-
-## Colab 三步操作（现行规范）
-
-科学家使用**三个独立 Notebook 步骤**：安装固定 SHA、运行不写 GitHub 的 Benchmark、审核后**按需单独上传报告**。Colab Secrets 已采用名称 **`GITHUB_TOKEN`**；Codex 须验证 Publisher 子进程读取密钥或提供一个 Python 上传 Cell 的安全环境变量传递。具体遵循 [现行三步协议](workflows/COLAB_TWO_COMMAND.md)（历史文件名保留以免破坏链接），Benchmark 默认不再含 `--publish`。旧版“两行”描述不再适用；未实现/验收前不得称其可运行。
-
-## 新算法项目也适用全部本人公开仓库的永久授权
-
-Bootstrap 在固定的 `.sae/` 快照中包含治理协议及中文镜像，但**复制文档不自动生成 GitHub API 权限，也不能擅自升级旧项目固定快照**。依科学家最新明确授权，`JohnnyZPiggy` **现有及未来全部本人拥有的公开仓库**已覆盖，无需逐一授权登记或年度续期。GPT 架构师每轮必须核实实时 owner/public、GitHub 合并权限、分支保护、PR 审核证据和科学家保留的实质内容决定，再按 [最新常设授权](governance/STANDING_AUTHORIZATION.md) 自主决定 MERGE / DO_NOT_MERGE。不授权私有/他人仓库、Codex 自我合并、后台轮询或绕过保护。
+重复初始化必须幂等；不能静默覆盖、删除、force-push、暴露 Token、绕过权限或升级快照。不启用 GitHub Actions、Drive 同步和后台执行。Bootstrap CLI / Publisher 仍在 [路线图](docs/ROADMAP.md)的实现范围。

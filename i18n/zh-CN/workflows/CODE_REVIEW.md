@@ -1,25 +1,5 @@
-# 技术审查与合并关口
+# 兼容入口：代码审核规则已整合
 
-> 语言：[English](../../../workflows/CODE_REVIEW.md) | **简体中文**
+**正式的 PR 审核与合并关口**现位于 [任务管理](TASK_MANAGEMENT.md)，包含 T1/T2/T3、被测 SHA、真实证据、合并前审计及架构师在 [常设授权](../governance/STANDING_AUTHORIZATION.md)下的最终决定。
 
-## GPT 总架构师依据证据审查
-- **数学：** 目标、假设、不变量、参考基线、证明或反例是否有效。
-- **API/代码：** 模块化、dtype/设备、形状契约、内存与可维护性。
-- **正确性：** 回归、边界、随机、对抗样例及有依据的误差容忍度。
-- **CPU 证据：** 真实命令、测试结果、环境和失败日志。
-- **GPU 证据：** 若声称 CUDA 加速，必须用对应源码 SHA 提供 Colab 精度/性能报告。
-- **诚信：** 不虚构测量；明确哪些测试未运行或因工具缺失而阻塞。
-- **安全：** 不泄露 PAT、token、私人文件、假数据；Publisher 凭证严格限权。
-- **流程：** 不添加 GitHub Actions/付费 CI；关联 Issue、PR 清晰；合并必须获授权。
-
-## 审查结果
-- **REQUEST_CHANGES：** 有缺陷、歧义、证据不足或不可信。
-- **CONDITIONALLY_READY：** CPU 审查完成，但 Colab 验证或非 GPU 范围确认仍待执行。
-- **ACCEPTED：** 验收证据满足任务要求，GPT 记录理由。
-- **MERGED：** 只有 GitHub 实际合并成功才能标记为已合并；审查评论不等于合并。
-
-## 合并政策
-Codex 不得自我合并。GPT 只有在用户授权并具备工具权限时才能执行合并。包括实验报告在内，优先使用 PR，而不是直接修改 `main`。不得 force-push 保护分支或覆盖历史。不使用 GitHub Actions 时写 `CI: NOT CONFIGURED (by design)`，不能写“CI Passed”。
-
-## 性能审查
-比较时确保问题规模、设备、dtype、结果正确性相同；如实披露编译时间、预热、GPU 同步、重复次数、聚合方式和波动，速度不能取代正确性。
+保留 `CODE_REVIEW.md` 历史链接，不再维护第二套审核条款。

@@ -1,27 +1,27 @@
 ---
 name: SAE 工程任务（中文）
-about: 适用于数学算法或 PyTorch 工程任务
+about: 数学、优化和 PyTorch 算法工程
 title: "[SAE] "
 labels: []
 assignees: []
 ---
 
-<!-- 如有标签权限，可选择 agent:codex、status:ready、kind:engineering、priority:p1 -->
+<!-- 可选标签：agent:codex、status:ready、kind:engineering、priority:p1 -->
 
-**研究目的：**
+**科研目标 / 关联 Issue：**
 
-**前置张量化研究报告链接与状态（RESEARCH_READY / 明确例外 / 基础设施不适用）：**
+**科学家批准的数学研究（RESEARCH_READY / 有限例外 / 基础设施 N/A）：**
 
-**数学 / 数值契约：**
+**生态复用与依赖决定：** [Ecosystem Review](../../workflows/ECOSYSTEM_REVIEW.md)
 
-**输入、输出与精度要求：**
+**数值接口（输入/形状/dtype/精度/oracle/误差容差）：**
 
-**交付成果：**
+**模块、安装包与 CLI 交付：**
 
-**验收测试（必须提供真实证据）：**
+**真实验收证据（CPU oracle/边界/回归、适用编译、固定 SHA 干净安装、CLI 测试）：**
 
-**Colab 双命令验收（算法任务）：** 指定 SHA 的 pip 安装 + `python -m <package>.benchmarks.run --device cuda --publish`；Codex 在干净环境跑 CPU/CLI 安装测试，科学家真实 Colab GPU/Publisher 集成实验未执行则写 NOT RUN。Notebook 无第三条工程命令。
+**GPU 有关时的 Colab：** 依照 [三步契约](../../workflows/GPU_EXPERIMENT.md)：固定 SHA 安装 → 独立 Benchmark 写报告、不上传 → Scientist 审核后可选独立 Publisher 上传。`GITHUB_TOKEN` 放 Colab Secrets；GPU/Publisher 实测前注明 NOT_RUN。
 
-**Colab GPU 验证方案（如需要）：**
+**GPU_READY / Scientist 交接（如需）：**
 
-**依赖与阻塞：**
+**依赖、阻塞、风险与回退：**

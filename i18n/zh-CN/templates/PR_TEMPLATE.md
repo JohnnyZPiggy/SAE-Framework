@@ -1,36 +1,9 @@
-# SAE Pull Request：<标题>
+# SAE PR 模板兼容入口
 
-> 语言：[English](../../../templates/PR_TEMPLATE.md) | **简体中文**
+> [English](../../../templates/PR_TEMPLATE.md)
 
-关联 Issue：#<编号>  
-候选源码 commit：`<SHA>`
+**正式 GitHub PR 模板：** [`.github/pull_request_template.md`](../../../.github/pull_request_template.md)，[中文 PR 模板](../../../.github/PULL_REQUEST_TEMPLATE/sae_zh-CN.md)。
 
-## 改动范围与数学动机
-说明解决的问题、数学假设、实现与公共 API 的变化。
+每个 PR 需要实际 head SHA、Issue、数学/工程/实验三成果、Codex CPU 证据以及必要的 Scientist Colab 证据。`PASS / FAIL / NOT_RUN / BLOCKED` 不得伪报。架构师依据唯一 [PR 审核规范](../workflows/TASK_MANAGEMENT.md)及 [常设授权](../governance/STANDING_AUTHORIZATION.md)独立决定是否合并。
 
-## 验证证据（未执行不能写通过）
-| 检查 | 状态：PASS / FAIL / NOT RUN / BLOCKED | 命令与链接 |
-| --- | --- | --- |
-| 单元/回归测试 | NOT RUN | |
-| 数值参考对照 | NOT RUN | |
-| CPU 性能测试 | NOT RUN | |
-| Colab GPU 正确性 | NOT RUN | |
-| Colab GPU 性能 | NOT RUN | |
-
-## 三份文档的关联
-- 科学家已批准的数学报告：`docs/research/<algorithm>-tensorization.md` / 纯基础设施任务 N/A
-- 工程实现与 CPU 证据：`docs/engineering/<algorithm>-engineering.md`
-- 真实 Colab 实验报告：`reports/gpu/<run-id>/summary.md` / NOT RUN
-- 被测源码 SHA：`<SHA>`（与报告发布 SHA 区分）
-
-## 复现
-Python/PyTorch 版本、设备、随机种子、命令、数据来源。
-
-## 风险与限制
-数值差异、未测试硬件、精度与性能取舍、跳过的测试。
-
-## 需要审查的事项
-总架构师需作何决定？科学家需跑什么实验？实验报告 PR 在哪里？
-
-## 学习主题（可选）
-值得在导师模式中进一步讨论的一个问题。
+保留历史路径，不重复维护完整 PR 模板。

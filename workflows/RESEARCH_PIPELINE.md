@@ -1,42 +1,29 @@
-# Research-First, CPU-Validated, GPU-Finalized Pipeline
+# SAE Research-First Pipeline — CPU by Default, GPU by Exception
 
-> English | [简体中文](../i18n/zh-CN/workflows/RESEARCH_PIPELINE.md)
+> English normative | [简体中文](../i18n/zh-CN/workflows/RESEARCH_PIPELINE.md)
 
-## Normative default
+A three-phase **scientific gate**, not a linear, unattended agent pipeline. GitHub Issues/PRs and [three linked artifacts](THREE_ARTIFACT_HANDOFF.md) record evidence; blocked projects return to the appropriate prior phase. No GitHub Actions or Drive synchronization.
 
-**CPU by Default. GPU by Exception.** SAE projects follow three phases, with the Scientist's GPU time concentrated **after** mathematics and CPU engineering are ready. This is a workflow rule, not a claim that CPU performance predicts GPU performance. Keep GitHub as the durable source of truth; no GitHub Actions, mandatory Drive sync or automatic background agents.
+## Phase I — Mathematical research (Mentor + Scientist)
 
-### Phase I — Mathematical research (Mentor + Scientist)
+Study original and tensorized mathematical formulations, matrix/vector or matrix-free structure, shapes, accuracy guarantees, oracle, stability, sparsity/low rank, batching and remaining sequential dependencies. Produce `docs/research/<algorithm>-tensorization.md` following [Mathematical Research](MATHEMATICAL_RESEARCH.md).
 
-Investigate mathematical formulation, oracle, tensor/batch structure, complexity, stability, JVP/VJP and sequential dependencies. Produce the existing `docs/research/<algorithm>-tensorization.md` mathematical study. Scientist reviews it. Transition to Phase II only on **RESEARCH_READY**. `RESEARCH_BLOCKED` returns to research; `NOT_TENSORIZABLE` may lead to a reasoned no-go or explicitly approved non-tensor approach.
+**Scientist controls the gate:** `RESEARCH_READY` to proceed, `RESEARCH_BLOCKED` for more research, `NOT_TENSORIZABLE` for reasoned no-go or an explicit narrow exception. Do not start full algorithm-acceleration engineering from unexamined loops.
 
-### Phase II — CPU engineering and validation (Architect + Codex)
+## Phase II — Architecture and actual CPU engineering
 
-Architect specifies interfaces, numerical tolerances, performance methodology, packaging and the eventual two-command Colab contract. Codex implements standalone, pip-installable Python modules and **runs real CPU tests**: reference/oracle comparison, randomized/edge tests, dtype/shape behavior, CPU eager execution, CPU `torch.compile` (where supported), optional `fullgraph=True` diagnostics, graph breaks, CPU benchmark, clean pip install and CLI smoke test. Record actual outputs, environment and tested source SHA in `docs/engineering/<algorithm>-engineering.md`. **CPU compilation does not prove GPU compilation or speedup.**
+Architect performs the [Ecosystem Review](ECOSYSTEM_REVIEW.md), specifies interfaces, oracle/tolerances, dependency/build decision, benchmarking and independent packaged run/publish CLIs. Codex implements testable Python modules and **actually executes** reference/edge/random/regression tests, CPU eager and applicable `torch.compile`, CPU benchmark, clean exact-SHA pip install and CLI smoke test. Record real outputs, tested SHA, environment and known failures in `docs/engineering/<algorithm>-engineering.md`.
 
-Codex completes [GPU Readiness](../templates/GPU_READINESS.md). Architect reviews evidence and labels **GPU_READY** only when required gates pass. A test that could not run must be marked **NOT_RUN**, never PASS. No need to invoke Scientist for every CPU iteration.
+**GPU Readiness gate:** Architect reviews the [small checklist](../templates/GPU_READINESS.md) and only then grants `GPU_READY`. Require approved math, real CPU correctness, relevant CPU compilation or justified waiver, package and CLI, pinned tested source, dataset/preset, device/error handling and report format. A missing test is `NOT_RUN`; `GPU_READY` means readiness only, **not** GPU success. Routine CPU fixes do not need repeated Scientist GPU runs.
 
-### Gate — GPU readiness
+## Phase III — Scientist-operated GPU experiment
 
-Required: Scientist-approved math study; real CPU correctness tests; CPU `torch.compile` evidence or explicit justified waiver; pip-installed packaged benchmark CLI; reproducible workload/preset; accurate source SHA; GPU device, error handling and report schema designed; minimal Notebook commands prepared. GPU Readiness is an **engineering readiness claim**, **not** a GPU-tested claim. Any waiver requires reason and Architect approval. Unmet criteria mean **CPU_BLOCKED** and a Codex Issue.
+Scientist batches ready experiments when convenient, with no unattended Colab execution. Use the [three-step Colab contract](GPU_EXPERIMENT.md): pinned-SHA pip install → independent `benchmarks.run --device cuda --out ...` (local report, no GitHub write) → **optional** separate `benchmarks.publish --report-dir ...` *after* inspecting accuracy/performance and public-disclosure safety. Both CLIs are targets until actually implemented. Secure Secret named `GITHUB_TOKEN`; subprocess reading must be verified or safely bridged.
 
-### Phase III — GPU experiment and performance engineering (Scientist + Architect + Codex)
+Record device/backend, source SHA, dtype, seeds, oracle errors and warmup/synchronized timings in the actual `reports/gpu/<run-id>/` artifact. `GPU_VERIFIED` means real compatible-device correctness was checked, **not automatically a speedup**. GPU failure → return reproducible Issue to Phase II; invalid mathematics → Phase I.
 
-Scientist batches **GPU_READY** projects into a manual GitHub Issue-based queue and runs real Colab experiments at a convenient time. Target Notebook: one pinned-Git-SHA pip install and one packaged Python benchmark command (with optional `--publish`); see [GPU Experiment](GPU_EXPERIMENT.md). **Until the CLI/Publisher is implemented and verified, use an honest manual fallback.** Validate GPU accuracy before timing; record device, compiler backend, synchronization, warmup, repetitions, compiled/eager timings, tested SHA and raw results. Preserve unique run IDs and link the existing Experimental Report.
+## State and resume
 
-If GPU reveals numerical/compilation issues, return to Phase II with a reproducible Issue; if a mathematical premise fails, return to Phase I. Do not ask Scientist to repeat GPU runs before the local reproducible problem is fixed. After verified measurements, record **GPU_VERIFIED**; it is not synonymous with a speedup.
+Use relevant `RESEARCH_READY/RESEARCH_BLOCKED`, `CPU_IN_PROGRESS/CPU_BLOCKED/CPU_VALIDATED`, `GPU_READY/GPU_IN_PROGRESS/GPU_VERIFIED/GPU_BLOCKED` with real Issue/PR evidence. For the user's `推进导师工作`/`推进架构师工作`/`推进工程师工作`, [Role Recovery](ROLE_RECOVERY.md) handles pinned rule loading and next action; this file defines **only stage gates**.
 
-## Role command and session recovery
-
-Within a **specified algorithm repository and authorized connected tools**, `推进导师工作`, `推进架构师工作`, `推进工程师工作` mean: read pinned project `AGENTS.md` / `sae.yaml`, current Issues/PRs and reports; select the highest-priority **unblocked role-appropriate** task; perform one bounded cycle; write back evidence/next step. Do not fabricate local laptop access, start background jobs or claim work that tools cannot execute. If local Codex runtime is unavailable, create/clarify the GitHub task instead. Never skip Scientist's research and GPU approvals.
-
-## Evidence and status
-
-Statuses: `RESEARCH_READY`, `RESEARCH_BLOCKED`, `CPU_IN_PROGRESS`, `CPU_BLOCKED`, `CPU_VALIDATED`, `GPU_READY`, `GPU_IN_PROGRESS`, `GPU_VERIFIED`, `GPU_BLOCKED`. Keep the canonical status in an Issue/PR, with links to the three existing artifacts. A GPU queue needs only GitHub Issues/labels; do not build queue software.
-
-## Acceptance and compatibility
-
-- The Architect must verify source SHA, actual CPU outputs and GPU Readiness before inviting the Scientist to Colab.
-- Existing mathematical, engineering and experimental templates remain authoritative; GPU Readiness is a small **gate record**, not a fourth long research report.
-- Project adoption requires a **pinned SAE framework version** containing this protocol; existing projects do not silently upgrade.
-- No unreviewed direct pushes of experiment results to main; an optional Publisher may create a report PR only, subject to Scientist review.
+Adopted algorithm projects retain their pinned version until explicitly migrated.

@@ -1,37 +1,9 @@
-# SAE Pull Request: <title>
+# SAE PR Template — compatibility entry
 
-> Language: **English** | [简体中文](../i18n/zh-CN/templates/PR_TEMPLATE.md)
+> [中文](../i18n/zh-CN/templates/PR_TEMPLATE.md)
 
+The **operative GitHub PR template** is [`.github/pull_request_template.md`](../.github/pull_request_template.md); the optional [Chinese variant](../.github/PULL_REQUEST_TEMPLATE/sae_zh-CN.md) is available separately.
 
-Closes/Refs: #<issue>
-Candidate source commit: `<SHA>`
+Document actual PR head SHA, Issue, mathematical/engineering/experimental artifacts, Codex CPU evidence, Scientist Colab evidence *if required*, and real `PASS / FAIL / NOT_RUN / BLOCKED`. Architect follows the single [Task Management / PR Review](../workflows/TASK_MANAGEMENT.md) and [Standing Authorization](../governance/STANDING_AUTHORIZATION.md) before deciding whether to merge.
 
-## Scope and mathematical motivation
-Describe changes, problem, assumptions and any changes to public API.
-
-## Evidence (no implied execution)
-| Check | Status: PASS / FAIL / NOT RUN / BLOCKED | Command / link |
-| --- | --- | --- |
-| Unit/regression tests | NOT RUN | |
-| Numerical baseline comparison | NOT RUN | |
-| CPU performance benchmark | NOT RUN | |
-| Colab GPU correctness | NOT RUN | |
-| Colab GPU performance | NOT RUN | |
-
-## Three-artifact links
-- Approved math: `docs/research/<algorithm>-tensorization.md` / N/A for infrastructure
-- Engineering and actual CPU evidence: `docs/engineering/<algorithm>-engineering.md`
-- Actual Colab experiment: `reports/gpu/<run-id>/summary.md` / NOT RUN
-- Tested source commit SHA: `<SHA>` (distinct from report publication SHA)
-
-## Reproduction
-Python/PyTorch version, device, seed, exact commands, data source.
-
-## Risks / limitations
-State numerical differences, untested hardware, accuracy/performance trade-offs, skipped checks.
-
-## Review requests
-Architect decision needed; Scientist experiment needed; linked report PR.
-
-## Learning opportunity (optional)
-One question or insight worth discussing in Mentor mode.
+This historical path is retained to preserve links, not to maintain a duplicate operational PR template.

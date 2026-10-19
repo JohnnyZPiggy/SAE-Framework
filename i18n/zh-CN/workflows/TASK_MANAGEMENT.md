@@ -1,44 +1,27 @@
-# GitHub 任务管理与交接协议
+# GitHub 任务管理、PR 审核与交接
 
-> 语言：[English](../../../workflows/TASK_MANAGEMENT.md) | **简体中文**
+> [English（正式规范）](../../../workflows/TASK_MANAGEMENT.md) · 简体中文
 
-**唯一正式任务队列：GitHub Issues**，不是不可追踪的私下聊天记录。
+**GitHub Issues 是正式任务队列，PR 和相互链接的研究报告是审查记录。** 聊天不能代替任务状态数据库；每次触发只推进一个有边界任务。
 
-## 推荐标签体系
-- 负责人：`agent:codex`、`agent:architect`、`human:scientist`。
-- 状态：`status:ready`、`status:in-progress`、`status:review`、`status:experiment`、`status:blocked`、`status:accepted`。
-- 工作类型：`kind:math`、`kind:engineering`、`kind:experiment`、`kind:learning`。
-- 优先级：`priority:p0`、`priority:p1`、`priority:p2`。
+## 工作流程
 
-如果缺少创建标签的权限，就在 Issue 评论里写出真实状态；不要假装已应用标签。Assignee 必须是真正的 GitHub 账户，不能使用不存在的机器人用户名。
+1. **恢复状态：** 读取实际仓库、Issue/PR、固定项目协议。可选使用 `agent:codex`、`agent:architect`、`human:scientist` 和 `status:ready`、`in-progress`、`review`、`experiment`、`blocked`、`accepted`；没有标签时用 Issue 正文恢复任务，不丢单。
+2. **数学前置：** 新算法/重大张量化重构先由 Mentor + Scientist 提交 `docs/research/<algorithm>-tensorization.md`，获得 `RESEARCH_READY` 或明确例外，才派给 Codex；基础设施搭建不强制数学研究。
+3. **架构设计：** 先做 [生态评估](ECOSYSTEM_REVIEW.md)，把 Build-vs-Reuse、数学/数值 oracle、容差、CPU/CLI/Benchmark 的验收写入工程报告和 Codex Issue。
+4. **工程证据：** Codex 认领 Issue，实际 CPU 测试、记录命令、SHA、错误和真实 `PASS/FAIL/NOT_RUN/BLOCKED`，提交关联 PR，**不得自我合并**。
+5. **必要的 GPU：** 架构师审核 CPU 并标 `GPU_READY` 后 Scientist 运行固定 SHA 的 [Colab 三步](GPU_EXPERIMENT.md)，审核结果后可选提交报告 PR。
+6. **架构师审核与最终决定：** 阅读**当前完整 Diff**、head SHA、测试证据、数学、相对链接、密钥、许可证、依赖和审查线程；按 [长期授权](../governance/STANDING_AUTHORIZATION.md)实时核实 owner/public、GitHub 工具及分支保护，留简短审计，自主决定 `MERGE_APPROVED` / `DO_NOT_MERGE` / `MERGE_BLOCKED` / `WAITING_FOR_SCIENTIST_DECISION`。合格才按**被审 head SHA** Squash Merge，并核验真实 merge SHA。
+7. **交接：** 更新 Issue 和状态，按 [角色恢复](ROLE_RECOVERY.md)提供下一步准确口令。
 
-## 工程任务前的数学研究关口
+## T1/T2/T3 审核门槛
 
-针对新算法或重大张量化改写，首先形成**由 GPT 科学导师负责的数学结构研究任务/记录**，而不是立即创建交给 `agent:codex` 的实现任务。在标记算法实现 Issue 为 `status:ready` 前，必须链接科学家批准的 `docs/research/<algorithm>-tensorization.md` 与 `RESEARCH_READY` 结论。之后总架构师设计模块、正确性基线和正式实验。报告缺失或阻塞则先返回导师/科学家。仓库初始化等基础设施任务可独立进行。详见 [数学研究关口](MATHEMATICAL_RESEARCH.md)。
+- **T1 日常文档/小测试：** 审真实变更、链接/格式，并确认没有隐藏权限或安全规则修改。
+- **T2 工程实现：** 必要的 Scientist 数学决定、Codex 实际 oracle/边界/回归、编译/干净安装/CLI 测试、许可证/安全和需求；GPU 为验收项或声称已提速时才要求对应 SHA 的 Scientist Colab 证据。纯 CPU 验收允许标 `GPU_NOT_RUN` 后合并，不能声称 GPU 已成功。
+- **T3 科研、授权、安全、许可、删除和公开数据：** **变更内容本身**必须先有 Scientist 可核验的实质决定，随后仍由 Architect 自主判断 PR 是否合并，不需要重复询问“允许点合并吗”。
 
-## Issue/PR 与三文档关联
+按实际最高风险分类，不根据标题降级；`NOT_RUN` 不等于 `PASS`。GPT 自己写的实质代码仍需独立测试；密钥泄露、缺少必要测试或权限、GitHub 阻塞评论都必须停止。
 
-经科学家审查的数学报告、架构师/Codex 的工程报告、科学家实际 Colab 运行的实验报告构成可追溯的证据链。见 [三文档交接协议](THREE_ARTIFACT_HANDOFF.md)。工程 Issue/PR 链接数学与工程文档；实验 PR 链接被测源码 SHA 及前两份文档。无需额外建立第四份相互冲突的状态日报，模板也不能充当完成证据。
+**审计一小段即可：** 仓库/PR、base/head SHA、等级、真实证据、Science 先决决定、理由、决策、已核验 merge SHA 或 NOT MERGED。不另造第四份报告，不使用 GitHub Actions、后台批量合并或强推。
 
-## 生命周期
-1. **GPT 创建 Issue：** 写出数学契约、接口、输入输出、CPU/GPU 验收条件、参考资料和依赖，合适时标记给 Codex。
-2. **Codex 领取任务：** 在 Issue 留下接受评论并改为 in-progress，同一项任务只允许一个当前负责人。
-3. **实现与 PR：** 使用 `feat/<issue-number>-<slug>` 分支。仅在全部条件已完成时使用 `Closes #N`；GPU 仍待验证时使用 `Refs #N`。
-4. **GPT 审查：** 查看真实代码变更和 CPU 证据；若涉及 GPU，指定候选源码 SHA 进入实验阶段。
-5. **科学家运行 Colab：** 提交准确对应候选 SHA 的报告 PR/评论，失败则将最小可复现案例交回 Codex。
-6. **GPT 验收：** 核实约定条件后自行决定是否合并，无需再向科学家申请合并许可，更新 Issue 与下一项任务。
-7. **GPT 导师总结：** 可选记录相关数学/工程学习要点，不能用学习笔记替代测试。
-
-## 状态一致性
-GitHub API 写入可能失败、标签缺失、PR 评论可能过时；关键操作后重新读取状态。引用 Issue、PR、run ID 和源码 SHA 交接；不能未经说明混用不同版本 Benchmark。组织流程是可反复交替的迭代，而不是固定流水线。
-## 每轮结束的下一步口令
-
-每次完成实质性工作，按照 [下一步口令协议](NEXT_ACTION.md) 给科学家一个最优、可复制的角色口令或人工操作，最多两项备选，并说明已核实状态、GitHub 证据和是否需要科学家批准。GPU_READY 前不得建议科学家重复 GPU 实验；无权限或受阻时如实说明。交互按钮仅在客户端真实支持时使用。
-
-## 角色恢复与防止出戏
-
-每轮实质性工作开始前执行 [角色恢复与完整性协议](ROLE_RECOVERY.md)，根据用户口令恢复身份、读取固定版本和 GitHub 当前证据、核验阶段与权限；若角色不匹配，应报告并交接，不得悄悄切换或虚报执行。每轮结束仍按下一步口令协议交接。
-
-## 全部本人公开仓库由架构师永久独立决定是否合并
-
-依据 [常设授权](../governance/STANDING_AUTHORIZATION.md)，GPT 架构师针对 `JohnnyZPiggy` **当前及未来全部本人拥有的公开 GitHub 仓库**，在用户触发的工作周期内自行决定每个合格 PR 的 **MERGE / DO_NOT_MERGE**，**无到期日、无逐仓库登记、无逐 PR 再请示**。T1/T2/T3 是证据与科学家负责的科研/重要治理安全**实质内容决定**之关口，不是合并权分级。每次核实实时 owner/public、权限、完整 Diff、匹配 SHA 的 CPU/必要 GPU 证据和 GitHub 保护，留 PR 审计，批准后精确 head Squash Merge 并核实结果。缺实质决定时先阻塞，请科学家确认**问题本身**而不是合并许可。Codex 不合并、不后台扫仓库。
+[三份科研成果](THREE_ARTIFACT_HANDOFF.md) · [研究流程](RESEARCH_PIPELINE.md)

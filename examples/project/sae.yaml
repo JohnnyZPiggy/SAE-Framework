@@ -1,4 +1,5 @@
-# Copy as sae.yaml and replace all angle-bracket placeholders before activation.
+# SAE V3.2 project configuration template: replace all <PLACEHOLDERS> before use.
+# This is an example of the intended protocol, not an implemented Bootstrap CLI.
 sae_version: "3.2"
 project:
   repository: "<OWNER>/<PROJECT>"
@@ -30,15 +31,19 @@ collaboration:
   actions_enabled: false
   hosted_ci_required: false
   merge_requires_authorization: true
+  merge_authority_source: "standing_grant_when_owner_public_else_explicit"
+  scientist_substantive_approval_for_t3: true
 experiments:
   device_runner: "scientist_colab"
-  notebook_style: "two_command_orchestrator" 
-  notebook_command_count: 2
+  notebook_style: "three_step_separate_optional_publish"
+  notebook_command_count: 3  # third cell optional; benchmark never publishes
   install_source: "pinned_github_commit_via_pip"
-  benchmark_cli: "python -m <PACKAGE_NAME>.benchmarks.run --device cuda --publish" 
+  benchmark_cli: "python -m <PACKAGE_NAME>.benchmarks.run --device cuda --out reports/gpu/<run-id>"
   benchmark_in_pip_package: true
-  publisher_invoked_inside_benchmark_cli: true
+  publisher_invoked_inside_benchmark_cli: false
+  publisher_cli: "python -m <PACKAGE_NAME>.benchmarks.publish --report-dir reports/gpu/<run-id>"
   publisher: "manual_until_implemented"
+  colab_secret_name: "GITHUB_TOKEN"
   reports_in_github: true
   google_drive_role: "temporary_notebook_workspace_only"
   drive_sync: false

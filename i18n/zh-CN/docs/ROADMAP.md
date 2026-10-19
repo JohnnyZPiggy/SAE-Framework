@@ -1,34 +1,36 @@
-# SAE Framework 工程路线图
+# SAE Framework V3.2 工程路线图
 
-> 语言：[English](../../../docs/ROADMAP.md) | **简体中文**
+> [English](../../../docs/ROADMAP.md) · 简体中文
 
-**现状：** 本仓库已提供组织架构、角色协议、启动说明和模板。以下工具属于**计划开发**，未完成验收前不得称为已实现。
+**目前实际具备：** 角色、治理协议、研究/Colab 契约、三成果模板和固定 `.sae/` 快照示例。**尚不是实际部署的后台 Agent 或已经验收的 CLI**。
 
-## P0：安全项目初始化工具（Codex）
-- 从母仓库固定 commit 为目标项目生成可审查的初始化结构；
-- 支持 dry-run、diff、不会覆盖现有代码；
-- 配置项目 AGENTS、sae.yaml、固定协议快照、Issues/PR 模板；
-- 对空仓库、已有仓库、权限不足和配置错误进行测试。
+## P0：Bootstrap CLI（Codex，[Issue #2](https://github.com/JohnnyZPiggy/SAE-Framework/issues/2)）
 
-## P0：实验结果 Publisher CLI（Codex）
-- 验证 report manifest/schema、过滤秘密、控制上传体积；
-- 创建 `experiment/<run-id>` 分支、commit 报告、提交 PR 并关联 Issue；
-- 只有 GitHub API 确认才宣称成功，支持安全幂等重试；
-- 先做离线/mocked CPU 测试，再在明确授权下集成验证。
+- 由固定 Framework SHA 安全、幂等地初始化项目，支持 dry-run、diff、不静默覆盖；
+- 生成目标根 AGENTS、`sae.yaml` 和完整固定 `.sae/` 中英文与治理快照；
+- 真实验证相对链接、初次/重复初始化、权限不足、配置异常和版本一致性。
 
-## P1：双命令 Colab Notebook（GPT 设计 + Codex 封装）
+## P0：独立 GitHub Publisher（Codex，[Issue #3](https://github.com/JohnnyZPiggy/SAE-Framework/issues/3)）
 
-- 首次 GPU/凭证设置后，仅需**两条可执行命令**：从指定 GitHub SHA 运行 pip 安装，再执行 `python -m <package>.benchmarks.run --device cuda --publish`。
-- GPT 设计默认参数、参考数值算法、CLI、验证及报告要求；Codex 实现并在本地测试打包、正确性、Benchmark、报告和安全上传，所有逻辑在 `.py` 内部。
-- 同一 CLI 内完成设备检查、精度先验验证、同步计时、源码 SHA 溯源及可选 PR 上传，正式版本无需第三条上传命令。
-- Codex 提供干净 CPU pip/CLI 测试，科学家提供真实 Colab GPU 与授权上传验证。**目前尚未实现完整功能**。详见 [双命令规范](../workflows/COLAB_TWO_COMMAND.md)。
+- 独立 `benchmarks.publish --report-dir`；`benchmarks.run` **不能再内置 `--publish`**；
+- 校验四份小报告格式、被测 SHA、体积及秘密/个人信息，安全创建报告分支与 PR，支持幂等和诚实失败状态；
+- `GITHUB_TOKEN` 安全从 Colab Secrets 获取，子进程需实测，必要时单 Python Cell 注入 `env`；先完成离线 Mock；
+- 不直接写 main、不自动合并或重跑 GPU，Scientist 审核后决定公开实验报告。
 
-## P1：机器可验证配置（Codex）
-- `sae.yaml`、JSON 实验报告的 Python schema 验证；
-- 在 Codex 执行环境/Colab 本地运行，不使用 GitHub Actions。
+## P1：Colab 三个 Cell（Architect 设计 + Codex 打包）
 
-## P2：体验优化
-- Issue/PR 状态摘要 CLI、简洁学习笔记模板；
-- 新版本协议升级及兼容性指南。
+1. 固定 Git SHA pip 安装。
+2. 独立 `benchmarks.run --device cuda --out ...`：数值先验验证与真实 GPU 计时，仅生成本地报告。
+3. **可选** `benchmarks.publish --report-dir ...`：Scientist 查看结果后自主上传；必要时一个 Python 上传 Cell 安全传 Secret。
 
-所有路线图事项需要独立 Issue、负责人、明确验收条件和真实测试结果后才可标记已完成。
+权威契约：[GPU 实验与 Colab 三步](../workflows/GPU_EXPERIMENT.md)。CPU 测试属于 Codex，真实 Colab GPU 与 Secret 集成属于 Scientist；实测前保留 `NOT_IMPLEMENTED / NOT_VERIFIED`。
+
+## P1：轻量本地验证
+
+Codex 本地检查 YAML/JSON、Markdown 链接和新项目快照，**不使用 GitHub Actions**。
+
+## P2：可选体验
+
+Issue/PR 状态摘要、科研学习笔记、显式采用的新固定版本迁移。
+
+真正完成 Issue/PR 与测试后才标成功。角色宪章、授权和会话恢复分别只在各自权威文件维护完整规则。

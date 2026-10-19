@@ -14,7 +14,24 @@
 链接已审核的数学报告，明确参考版和张量版、张量维度、dtype、支持的设备、数值参考判据、误差容差、边界和数学假设。**引用数学方程，不复制整篇研究报告。**
 
 ## 2. 工程设计（架构师 → Codex）
-记录模块位置、Python 接口、CLI 参数、输入输出结构、按需使用的 batching/`torch.compile`、硬件可移植性与资源限制。提出工程任务、依赖及验收关口。
+记录模块位置、Python 接口、CLI 参数、输入输出结构、按需使用的 batching/`torch.compile`、硬件可移植性与资源限制。GPU 实验须定义独立 `benchmarks.run` 与可选 `benchmarks.publish`，Benchmark 不内置 `--publish`。提出工程任务、依赖及验收关口。
+
+## 2a. 生态复用评估 — Build vs. Reuse（架构师，派单前）
+
+**调查深度：** NATIVE_REUSE（可仅写一行） / TARGETED_REVIEW / DEEP_REVIEW（须说明理由）  
+**检索日期与来源：** <PyTorch 官方文档、候选库官方链接、论文参考实现；或 NOT VERIFIED>  
+
+| 方案 / 候选工具 | 数学与接口适配 | 许可证、维护和依赖 | CPU、跨设备、编译与精度风险 | 决策 |
+| --- | --- | --- | --- | --- |
+| PyTorch 原生算子 | <证据> | <版本/无> | <已知 / UNKNOWN> | REUSE / ADAPT / REJECT |
+| 第三方包（如相关） | <链接及版本> | <许可证、维护情况或 UNKNOWN> | <已核实 / UNKNOWN> | REUSE / ADAPT / REJECT |
+| 算法参考实现 / 自研 | <论文、代码> | <许可证或 UNKNOWN> | <基线、风险> | REUSE / ADAPT / BUILD |
+
+**最终 Build-vs-Reuse 方案与理由：** <1–3 句，区分已核实事实和假设>。  
+**Codex 交接：** <依赖与版本约束、适配接口、回退方案、CPU 数值/边界测试、干净安装和编译冒烟测试>。  
+**未证实声明或后续核验：** <NONE / 明确任务>。  
+
+尽量精简，不创建第四份项目报告。存在工具包不等于验证了正确性、性能或设备兼容性。参见 [生态评估协议](../workflows/ECOSYSTEM_REVIEW.md)。
 
 ## 3. 实际实现记录（Codex）
 | 模块与修改路径 | 对应数学结构 / 功能 | 实现取舍与限制 |
@@ -51,20 +68,3 @@
 - **学习收获：** 可选的一条数学或数值洞见，不强制长文记录。
 
 工程文档**不取代 GitHub PR 正式审查**，不能把没有执行的 GPU 测试写成通过，也不能覆盖其他证据。
-
-## 2a. 生态复用评估 — Build vs. Reuse（架构师，派单前）
-
-**调查深度：** NATIVE_REUSE（可仅写一行） / TARGETED_REVIEW / DEEP_REVIEW（须说明理由）  
-**检索日期与来源：** <PyTorch 官方文档、候选库官方链接、论文参考实现；或 NOT VERIFIED>  
-
-| 方案 / 候选工具 | 数学与接口适配 | 许可证、维护和依赖 | CPU、跨设备、编译与精度风险 | 决策 |
-| --- | --- | --- | --- | --- |
-| PyTorch 原生算子 | <证据> | <版本/无> | <已知 / UNKNOWN> | REUSE / ADAPT / REJECT |
-| 第三方包（如相关） | <链接及版本> | <许可证、维护情况或 UNKNOWN> | <已核实 / UNKNOWN> | REUSE / ADAPT / REJECT |
-| 算法参考实现 / 自研 | <论文、代码> | <许可证或 UNKNOWN> | <基线、风险> | REUSE / ADAPT / BUILD |
-
-**最终 Build-vs-Reuse 方案与理由：** <1–3 句，区分已核实事实和假设>。  
-**Codex 交接：** <依赖与版本约束、适配接口、回退方案、CPU 数值/边界测试、干净安装和编译冒烟测试>。  
-**未证实声明或后续核验：** <NONE / 明确任务>。  
-
-尽量精简，不创建第四份项目报告。存在工具包不等于验证了正确性、性能或设备兼容性。参见 [生态评估协议](../workflows/ECOSYSTEM_REVIEW.md)。

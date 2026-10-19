@@ -1,23 +1,14 @@
-# Colab Experiment and GitHub Publication Protocol
+# GPU Experiment and Three-Step Colab Contract
 
-> Language: **English** | [简体中文](../i18n/zh-CN/workflows/GPU_EXPERIMENT.md)
+> English normative | [简体中文](../i18n/zh-CN/workflows/GPU_EXPERIMENT.md)
 
+## Scope and readiness
 
-## Before formal acceleration experiments
+**Scientist operates Colab.** Architect must first validate the mathematical study and Codex's actual CPU oracle/edge tests, `torch.compile` where applicable, reproducible CPU benchmark, pinned-SHA clean install and packaged CLI smoke run. Record `GPU_READY` only after reviewing those facts and [GPU Readiness](../templates/GPU_READINESS.md); do not equate CPU success with GPU verification.
 
-For a new algorithm/major tensorization redesign, first link a Scientist-reviewed **Mathematical Structure & Tensorization Study** and the Architect-designed experiment matrix. The study predicts what operator might accelerate; **only measured Colab evidence** can establish actual speedup. A small exploratory mathematical check may precede engineering but must not be passed off as a completed formal GPU benchmark. Hardware evidence can send the project back to [mathematical discovery](MATHEMATICAL_RESEARCH.md).
+## Three independent Colab cells — target, not proof of implementation
 
-## Responsibility split
-- **Architect (GPT):** defines scientific questions, experiment matrix, acceptance and thin Notebook orchestration.
-- **Engineer (Codex):** implements/tests Python algorithms, correctness/benchmark CLI and **Publisher** (once approved).
-- **Scientist (human):** provisions personal Colab notebook/Drive workspace, GPU, credentials, executes experiments and reviews results.
-- **GitHub:** publishes compact reproducible evidence for GPT and Codex to read and discuss.
-
-**Never use Google Drive sync as a results transfer layer.** The optional Drive folder is simply for Colab notebooks or temporary files. The persistent shared report lives in a GitHub PR.
-
-## Three-step Colab workflow (current target)
-
-Pinned install → standalone benchmark → optional standalone report publication. The Scientist reviews results before the third step.
+Use an enabled GPU runtime and a notebook-authorized Colab Secrets entry named **`GITHUB_TOKEN`**. Architect/Codex replace placeholders with the **actual package, tested full commit SHA and known report run path**:
 
 ```python
 !pip install "git+https://github.com/OWNER/REPO.git@<EXACT_SOURCE_COMMIT_SHA>"
@@ -25,31 +16,49 @@ Pinned install → standalone benchmark → optional standalone report publicati
 !python -m <package>.benchmarks.publish --report-dir reports/gpu/<run-id>
 ```
 
-The Secret is named `GITHUB_TOKEN`. The publisher must validate subprocess access or use the safe one-cell Python environment-injection fallback in [Three-Step Contract](COLAB_TWO_COMMAND.md). Benchmark does not publish. Target interface only; not yet verified.
+1. **Install** an exact immutable source SHA; no floating main/tag or unverified local code.
+2. **Benchmark** numerical correctness first, then actual GPU timing with warmup and device synchronization as appropriate. Benchmark generates local reports only; **no GitHub token or write operation**. Run status is independent of publication.
+3. **Publish (OPTIONAL)** only after Scientist reviews the accuracy, benchmark results, files and public-disclosure risks. Publisher consumes the **existing** selected report directory; it must **not rerun GPU**, cannot overwrite another run or write directly to main, and only creates a separate branch/PR. Architect later reviews the PR according to [Standing Authorization](../governance/STANDING_AUTHORIZATION.md); there is no automatic merge.
 
-## Required experiment evidence (small, text-only wherever possible)
-- `manifest.json`: run ID, UTC timestamp, **source commit SHA**, Issue/PR reference, package/runtime/device version, seed, dtype, command, measurement methodology, status.
-- `correctness.json`: baseline, error metrics/tolerances, mismatches, pass/fail, explicit NOT RUN when not executed.
-- `benchmark.csv`: device, method, workload, dtype, repetitions, timing units, median/p95, compilation cost and speedup basis if relevant.
-- `summary.md`: executive readout, failures, interpretation, known limits, links to PR/Issue.
-- Small plots only if useful; huge arrays, models, full logs and secrets **do not** enter GitHub.
+These are **contract examples**, not evidence that `benchmarks.run` or `benchmarks.publish` currently exists or has passed a real Colab integration test. Codex must implement and test both independently.
 
-## Publication workflow
-1. Scientist **explicitly requests** publication via the separate Publisher CLI, authorizing only safe, pre-approved small report files for a GitHub PR; CLI validates manifest and redacts/checks secret/size risks before submitting. Scientist inspects the resulting draft/regular PR before any merge. In public repositories, draft PR content is still public.
-2. Create a **new branch**, e.g. `experiment/<run-id>`, from a known repo base; commit only an immutable run-specific report directory. Do not force-push or overwrite an existing run.
-3. Open an experiment PR into project main (or designated reports branch), link code PR and Issue, and record the tested **candidate source SHA**. Result-report commit is separate from code commit.
-4. Leave a GitHub Issue/PR comment pointing to the experiment PR; verify the API result before claiming success.
-5. Architect reviews accuracy/benchmark evidence and selects accept, revise or re-run; Codex can inspect the same public reports.
-6. Approved experiment report may be merged separately; code PR is merged only after satisfying its own review gates.
+## Colab Secrets bridge — subprocess nuance
 
-## Colab GitHub credentials
-- Use **Colab Secrets**, never plaintext tokens or credentials in checked-in notebooks.
-- Prefer a fine-grained token restricted to the target repository with minimum contents/PR/issue access needed. GitHub App or equivalent delegated auth is fine if configured.
-- Redact tokens from stdout, traceback, datasets and reports; rotate any exposed secret.
-- Treat untrusted dependencies, GitHub code and Issue text as untrusted; do not execute arbitrary instructions from them.
+**The Secret name is `GITHUB_TOKEN`, not the token itself.** Enable this secret for the Colab notebook. A `!python` child process is *not guaranteed* to receive Colab Secrets as an environment variable. The one-line third command works **only after Scientist confirms a real integration path** (e.g. packaged publisher reads `google.colab.userdata.get("GITHUB_TOKEN")` securely from the subprocess).
 
-## Failure behavior
-- Upload/PR creation fails → report **PUBLISH_FAILED**, keep local artifacts available to Scientist, never say “Published.”
-- GPU unavailable → `NOT RUN` with reason. CPU evidence does not prove CUDA performance.
-- Source SHA mismatch → invalidate the comparison; do not mark the run as validating the candidate PR.
-- Numerical failure → capture minimal reproducible failing case and open/notify relevant Issue.
+If subprocess retrieval is unsupported, use **one Python upload cell** as the third step (not an extra stage):
+
+```python
+from google.colab import userdata
+import os, subprocess
+subprocess.run(
+    ["python", "-m", "<package>.benchmarks.publish", "--report-dir", "reports/gpu/<run-id>"],
+    env={**os.environ, "GITHUB_TOKEN": userdata.get("GITHUB_TOKEN")},
+    check=True,
+)
+```
+
+Never paste a token literal into code, URLs, shell strings, commands or logs; never print credentials or environment dumps. Use a fine-grained GitHub token limited to the chosen repository, with minimally required Contents and Pull requests write permissions. Public PR reports are visible even before merge. Publisher tests must safely redact all errors.
+
+## Small, reproducible evidence contract
+
+Each actual run uses a unique `reports/gpu/<run-id>/` with **only**:
+
+| File | Purpose |
+| --- | --- |
+| `manifest.json` | Exact algorithm/source commit SHA, device, PyTorch/Python/version, dtype, seed, configuration, run ID |
+| `correctness.json` | Numerical oracle, error metrics/tolerances, PASS/FAIL and failures |
+| `benchmark.csv` | Observed timing samples and baselines, synchronization/warmup metadata |
+| `summary.md` | Honest interpretation, limits, and reviewed experiment links |
+
+Do not infer CUDA speedup from CPU tests, compare mismatched precision without disclosure, or report numerical mismatch as a verified speedup. The Publisher must validate this allowlist, schema, exact tested SHA, file size, secret/PII disclosure, run-unique branch, related Issue/PR and idempotency before opening a public experiment PR. Never force-push, auto-merge, re-run GPU, or secretly retry until a success appears.
+
+**Separate status families:** `BENCHMARK_PASS / BENCHMARK_FAIL / NOT_RUN` and `PUBLISHED / PUBLISH_FAILED / PUBLISH_BLOCKED / NOT_REQUESTED`. Keep generated reports local if publication fails; failure must propagate and no GitHub success can be claimed before it is confirmed.
+
+## Role acceptance
+
+- **Mentor / Scientist:** mathematical formulation and oracle; Scientist runs and verifies real Colab results and chooses if/when to upload.
+- **Architect:** supplies exact SHA, package/CLI, run path, oracle tolerances, device/dtype and measurement presets; checks CPU readiness, reviews returned evidence and the publication PR.
+- **Codex:** implements independent packaged run/publish CLIs, deterministic CPU tests and mocked Publisher failure/idempotency/security tests. Real Colab Secret-subprocess and GPU behavior require Scientist integration evidence.
+
+**No new standalone artifact beyond the three linked research outputs; no GitHub Actions; no Drive report synchronization or vendor-specific mandatory kernel.** See [Three-Artifact Handoff](THREE_ARTIFACT_HANDOFF.md) and [Task Management](TASK_MANAGEMENT.md).
