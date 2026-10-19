@@ -1,30 +1,22 @@
-# Technical Review and Merge Gates
+# Technical PR Review — Evidence Gate
 
-> Language: **English** | [简体中文](../i18n/zh-CN/workflows/CODE_REVIEW.md)
+> English (normative) | [简体中文](../i18n/zh-CN/workflows/CODE_REVIEW.md)
 
+**Architect reviews actual latest PR diff, changed files, head SHA and Issue acceptance**, not a PR author's summary.
 
-## Architect review is evidence-driven
-- **Mathematics:** objective, assumptions, invariant, oracle/baseline, proof or counterexample as relevant.
-- **API/code:** modular design, dtype/device handling, shape contracts, memory behavior, maintainability.
-- **Correctness:** deterministic regressions, reference comparison, randomized and adversarial cases; explicitly justify tolerances.
-- **CPU evidence:** actual test commands, results, environment and failing logs where applicable.
-- **GPU evidence:** exact tested commit, Colab environment, correctness and performance; **required for any CUDA speedup claim**.
-- **Integrity:** real measurements only; distinguish partial tests, unavailable tooling and skipped checks.
-- **Security:** no leaked PATs, tokens, private files, fake data or unrestricted publisher scopes.
-- **Process:** no GitHub Actions/paid CI, Issue link, coherent PR diff, user merge authorization.
+## Evidence checklist
 
-## Decision outcome
-- **REQUEST_CHANGES:** defects, ambiguities, inaccurate claims or missing mandatory tests.
-- **CONDITIONALLY_READY:** CPU review satisfied; Scientist Colab validation or explicit non-GPU scope still outstanding.
-- **ACCEPTED:** required evidence complete; Architect records rationale.
-- **MERGED:** only after authorized action succeeds. A review comment does not mean merged.
+- **Math:** Scientist-approved assumptions and compatible objective/oracle; no silent change to derivations.
+- **API/numerics:** shapes, dtype/device, stability, tolerances, edge/regression/reference cases, memory effects.
+- **CPU:** real Codex commands/results, relevant `torch.compile` behavior and clean pip/CLI smoke tests. `NOT_RUN` is not `PASS`.
+- **GPU:** matching-source-SHA Scientist Colab accuracy and synchronized, warmed-up timing **when GPU verification is claimed or required**. CPU is not GPU evidence.
+- **Safety:** no secrets or private data, license/dependency risk checked, no GitHub Actions or unexpected deployment.
+- **Platform:** actual GitHub access, branch rules, conflicts, required checks/review threads; `CI: NOT CONFIGURED` must not be called `CI: PASS`.
 
-## Merge policy
-- Codex never self-merges.
-- Architect does not unilaterally merge without the required user authorization.
-- Prefer reviewable PR over direct `main` edits, including experiment reports.
-- Never force-push protected branches or overwrite others' history.
-- If GitHub checks are unavailable because Actions are disabled, display `CI: NOT CONFIGURED (by design)`; this is **not** a passed test.
+## Review outcomes
 
-## Performance gates
-Compare identical problem sizes, dtype, correctness level, device, clock/setup and data transfers consistently. Disclose compilation cost, warmup, GPU synchronization, repetitions, distribution and variability. Avoid interpreting raw speedup as numerical quality.
+`REQUEST_CHANGES` for defects; `CONDITIONALLY_READY` when an explicit prerequisite remains; `MERGE_APPROVED` or `DO_NOT_MERGE` after complete review; `MERGED` **only after GitHub confirms the merge SHA**.
+
+**Merge authority / T1-T2-T3 scope / auditing is defined only in [Standing Authorization](../governance/STANDING_AUTHORIZATION.md).** GPT Architect makes the final engineering merge decision for eligible PRs; Scientist retains substantive math/security/governance decisions. Codex never self-merges. Use normal PRs and exact head SHA, not direct pushes or force pushes.
+
+For benchmark claims compare equivalent problems, precision and accuracy; show compilation, warmup, synchronization, repetitions, distribution and uncertainty.

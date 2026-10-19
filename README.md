@@ -1,130 +1,60 @@
-## Integrated operating model
-
-**One role command, two Colab commands, three scientific artifacts.** Follow [research → CPU validation → GPU readiness → GPU experiment](workflows/RESEARCH_PIPELINE.md). The [three-artifact handoff](workflows/THREE_ARTIFACT_HANDOFF.md) links mathematics, engineering and experimental evidence; the [two-command Colab contract](workflows/COLAB_TWO_COMMAND.md) defines a pinned GitHub pip install and a packaged benchmark CLI with optional safe PR publication. These are target interfaces; Bootstrap and Publisher CLIs are not yet implemented.
-
-## Default research pipeline
-
-**Research-First → CPU-Validated → GPU-Finalized.** Day-to-day mathematical and CPU engineering work runs without Colab. Only a reviewed [GPU Readiness Gate](templates/GPU_READINESS.md) permits a Scientist-run GPU experiment. Read the [three-stage protocol](workflows/RESEARCH_PIPELINE.md). CPU `torch.compile` testing is required when supported, but does **not** establish GPU compatibility or speedup.
-
 # SAE Framework V3.2
 
-> Language: **English** | [简体中文](README.zh-CN.md)
+> English | [简体中文](README.zh-CN.md)
 
+**Scientist–Architect–Engineer** — a GitHub-first collaboration protocol for mathematics, PyTorch algorithm engineering and scientific learning.
 
-**Scientist–Architect–Engineer (SAE)** — a GitHub-first, plug-and-play collaboration framework for mathematical algorithms, PyTorch scientific computing, and ML engineering.
+**One Project, Two Outcomes: Better Software, Better Scientist.**
 
-> **One Project, Two Outcomes: Better Software, Better Scientist.**
+![SAE Framework V3.2 architecture](docs/figures/SAE_Framework_V3.2.en.svg)
 
-## Visual Overview
+[中文架构图](docs/figures/SAE_Framework_V3.2.zh-CN.svg) · [Architecture details](docs/ARCHITECTURE.md)
 
-The two equally important objectives—**Engineering Productivity** and **Scientific Learning**—guide every SAE project. The diagram shows how the human Scientist, GPT (Chief Architect + Scientific Mentor), Codex, GitHub, Colab and the optional lightweight Drive workspace fit together.
+## How it works
 
-<p align="center">
-  <img src="docs/figures/SAE_Framework_V3.2.en.svg" alt="SAE Framework V3.2 visual architecture: two parallel goals, Scientist, GPT Architect and Mentor, Codex Engineer, GitHub coordination hub, Colab GPU experiments and minimal Google Drive workspace" width="760" />
-</p>
+**Research first → verified CPU engineering → Architect GPU_READY review → Scientist-run Colab.** Mentor identifies mathematical matrix/vector/tensor structure; Architect designs and reviews; Codex implements and runs actual CPU tests; Scientist conducts real GPU experiments. The outputs are [three linked artifacts](workflows/THREE_ARTIFACT_HANDOFF.md): mathematical study, engineering report and experiment report. See [Research Pipeline](workflows/RESEARCH_PIPELINE.md).
 
-[English SVG](docs/figures/SAE_Framework_V3.2.en.svg) · [中文架构图](docs/figures/SAE_Framework_V3.2.zh-CN.svg) · [View the editable Mermaid architecture](docs/ARCHITECTURE.md)
-
-## Research-first algorithm workflow
-
-**Mathematical structure before implementation:** on every new algorithm or major tensorization redesign, GPT's **Scientific Mentor** first investigates exploitable mathematical operators (especially matrix–vector products, matrix-free linear maps, batching and tensor contractions) and derives a justified PyTorch-friendly tensor formulation. Only after the human Scientist reviews the resulting **[Mathematical Structure & Tensorization Study](workflows/MATHEMATICAL_RESEARCH.md)** does the Chief Architect design engineering tasks and experiments for Codex and Colab.
-
-`Mentor structure discovery → mathematical tensorization → Architect design & experiment plan → Codex CPU engineering → Scientist Colab validation → iterate`
-
-The entry gate guards against premature coding; feedback can always return to research. `RESEARCH_READY` is **not** a claim of benchmarked speedup.
-
-## Two parallel objectives
-
-| Engineering Productivity | Scientific Learning |
-| --- | --- |
-| Build reliable, modular, reproducible algorithm packages with low cost and minimal coordination overhead. | Learn mathematical algorithms, numerical methods, PyTorch, GPU experimentation, and ML engineering through real projects. |
-
-Neither objective is optional: a successful iteration records both **engineering evidence** and **learning opportunities/outcomes**.
-
-## Roles
-
-| Participant | Responsibility |
-| --- | --- |
-| **Human Scientist** | Selects problems, makes scientific decisions, prepares and runs Google Colab experiments, evaluates results, and retains final authority. |
-| **GPT — Chief Architect** | Formalizes mathematics, specifies algorithms and interfaces, creates/triages GitHub tasks, reviews engineering and experiment evidence, accepts and merges changes when authorized. |
-| **GPT — Scientific Mentor** | Teaches the mathematics, algorithms, numerical issues, PyTorch principles, and GPU experiment interpretation; supports independent understanding. |
-| **Codex — Software Engineer** | Claims ready GitHub tasks; implements modular Python/CLI, runs real CPU tests and benchmarks, maintains code, opens PRs, and provides evidence. |
-| **GitHub** | Shared durable hub for specifications, Issues, PRs, decisions, source code, and compact GPU experiment reports. |
-| **Colab + minimal Drive folder** | Human-operated CPU/GPU runtime; the Drive folder only stores notebook/workspace materials, **not** a synchronization or results-exchange layer. |
-
-## Start here
-
-1. Read [SAE_BOOTSTRAP.md](SAE_BOOTSTRAP.md) to initialize a **new or existing project** safely.
-2. Read [AGENTS.md](AGENTS.md) for shared rules.
-3. Read the relevant role file in [protocols/](protocols/) and workflows in [workflows/](workflows/).
-4. Adopt [examples/project/AGENTS.md](examples/project/AGENTS.md) and [examples/project/sae.yaml](examples/project/sae.yaml) in each new project, then import a **pinned** copy of the protocols under `.sae/`.
-5. Connect each AI to the **project's** GitHub repository. A URL in instructions does not itself grant access or cause files to be read.
-
-## Operating commands
-
-| Command (Chinese) | Role | A single cycle does... |
+| Trigger | Role | One bounded cycle |
 | --- | --- | --- |
-| **推进架构师工作** | GPT / Architect | Inspect project state → specify/dispatch → review code and Colab evidence → accept/merge when authorized → report next actions |
-| **推进工程师工作** | Codex / Engineer | Claim ready Issue → implement → test → document → open/update PR → report blockers |
-| **推进导师工作** | GPT / Mentor | **Before engineering:** discover matrix-vector/tensor structure → derive tensorization → deliver mathematical research study; **afterward:** teach and interpret experiments |
+| `推进导师工作` | GPT Mentor | Research mathematics, derive tensorization, teach and hand off |
+| `推进架构师工作` | GPT Architect | Review GitHub, make engineering decisions, check PR evidence, independently merge when eligible |
+| `推进工程师工作` | Codex Engineer | Implement, run real CPU tests, open an evidence-backed PR, never self-merge |
 
-Commands are **conventions defined by the role protocols**, not autonomous background agents or guaranteed built-in software features. Each command runs only with actual tool access and the user's invocation.
+The commands are instructions to the agents, **not running background services**. Tools and account permissions must be connected separately.
 
-## Operating rules
+## Colab: three steps, not two
 
-- **GitHub-first:** Issues are the task queue; PRs are proposed changes and reviews; small, reproducible experiment summaries return to GitHub.
-- **No GitHub Actions / no paid CI requirement.** Codex runs CPU tests in its available environment; the Scientist runs GPU tests in Colab. No CI results should be invented.
-- **Thin Notebooks:** GPT authors orchestration notebooks; Codex owns reusable Python modules, tests, benchmarks, experiment CLI, and publisher implementation.
-- **Evidence before claims:** record the tested source commit SHA, environment, commands, seeds, correctness metrics, timing methodology, and raw-data pointers. Do not claim unexecuted tests passed.
-- **Separate review from execution:** no silent force-pushes, secret commits, unreviewed merges, or destructive changes.
-- **No Drive sync:** only a small local-to-Colab workspace folder if useful; not a cross-agent transport.
-- **Learning is a first-class output:** a learning note is linked to meaningful milestones without turning education into bureaucratic busywork.
+1. Install the package from an **exact source commit SHA**.
+2. Run the packaged benchmark and inspect correctness/performance evidence.
+3. **Optionally**, after inspection, run a separate GitHub report Publisher using Colab Secret `GITHUB_TOKEN`.
 
-## Documentation languages
+See the [authoritative Colab contract](workflows/COLAB_TWO_COMMAND.md); its historical filename is retained for older links. The benchmark does **not** publish. Publisher/Bootstrap target CLIs are **not implemented or verified merely by these docs**. Scientist operates Colab; there is no GitHub Actions requirement or Drive report synchronization.
 
-- **English:** this README and the original protocol documents are canonical for agents.
-- **简体中文:** [中文首页](README.zh-CN.md) and [Chinese documentation index](i18n/zh-CN/README.md).
-- [Language policy / 翻译规范](docs/LANGUAGE_POLICY.md) explains how both versions stay aligned.
+## Start a project
 
-## File map
+1. Read [AGENTS.md](AGENTS.md) (shared agent entry).
+2. Read [SAE_BOOTSTRAP.md](SAE_BOOTSTRAP.md) (inspect first, copy **one immutable, self-contained** SAE revision into `.sae/`, preserve existing files).
+3. Adapt the [project AGENTS example](examples/project/AGENTS.md) and [`sae.yaml`](examples/project/sae.yaml).
+4. Connect the relevant GitHub tools and run the [adoption smoke test](docs/ADOPTION_SMOKE_TEST.md). **A link to a repository does not mean the agent read it.**
 
-- [SAE_BOOTSTRAP.md](SAE_BOOTSTRAP.md) — safe initialization procedure
-- [docs/ADOPTION_SMOKE_TEST.md](docs/ADOPTION_SMOKE_TEST.md) — verify imported links, pinned snapshots and role handoffs in a real target project
-- [AGENTS.md](AGENTS.md) — common constitution
-- [protocols/](protocols/) — role-specific instructions
-- [workflows/](workflows/) — tasks, review, experiments, learning, safety
-- [templates/](templates/) — ready-to-use Issue, PR, report and project snippets
-- [examples/](examples/) — minimal adopting-project configuration
-- [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) — decisions, interfaces, and boundaries
+## Single sources of truth
 
-## Deployment status
+| Concern | Authoritative source |
+| --- | --- |
+| Project roles and common limits | [AGENTS](AGENTS.md) · [role protocols](protocols/) |
+| Mathematics / CPU / GPU phase gates | [Research Pipeline](workflows/RESEARCH_PIPELINE.md) |
+| Role recovery and next-action messages | [Role Recovery](workflows/ROLE_RECOVERY.md) · [Next Action](workflows/NEXT_ACTION.md) |
+| PyTorch ecosystem Build-vs-Reuse | [Ecosystem Review](workflows/ECOSYSTEM_REVIEW.md) |
+| Three-cell Colab / safe secret transfer | [Colab Contract](workflows/COLAB_TWO_COMMAND.md) |
+| GitHub task workflow and PR review | [Task Management](workflows/TASK_MANAGEMENT.md) · [Code Review](workflows/CODE_REVIEW.md) |
+| Final merge authority | [Standing Authorization](governance/STANDING_AUTHORIZATION.md) |
 
-This repository contains the **instructions, configuration examples, and templates** to bootstrap SAE. It is not itself a hosted agent runner. Real GitHub writes require an authorized connector or CLI; GPU result publishing requires a separate implemented/tested publisher (see [workflows/GPU_EXPERIMENT.md](workflows/GPU_EXPERIMENT.md)). Until that exists, upload or commit reports manually.
+**Standing authorization:** GPT Architect has indefinite, revocable final merge discretion for reviewed PRs in **all current/future public GitHub repositories owned by `JohnnyZPiggy`**, without per-repository registration. Actual GitHub permissions, branch rules, independent evidence and Scientist-owned substantive decisions remain mandatory. Codex never self-merges.
 
-## Versioning
+## Current implementation status and boundaries
 
-Framework architecture: **V3.2**. Pin an actual immutable **Git commit SHA or release tag** when importing it into a project. Update only through reviewed changes. See [CHANGELOG.md](CHANGELOG.md).
+This is a **documented operating framework**, not a hosted autonomous agent or fully implemented Python package. CPU is the default, GPU the exception; no unexecuted test is a PASS. No token in a repo/log, force push, automatic sweeping or unattended background work. English protocols are normative; [Chinese index](i18n/zh-CN/README.md) and [Language Policy](docs/LANGUAGE_POLICY.md) describe mirrors.
 
-## License
+[Roadmap](docs/ROADMAP.md) · [Integrations](docs/INTEGRATIONS.md) · [Templates](templates/) · [Changelog](CHANGELOG.md)
 
-No license is selected yet. Public visibility **does not** imply permission to reuse or redistribute. The repository owner should choose a license before publishing this as a reusable software template.
-
-## Mobile-first next-step commands
-
-After each substantive GPT Mentor / Architect / Codex cycle, the agent must recommend **one specific next command**, with at most two alternatives, verified GitHub evidence and any Scientist approval required. See [Next-Action Protocol](workflows/NEXT_ACTION.md). The text command works across clients; optional interactive actions only where supported.
-
-## Role recovery and integrity
-
-Before each substantive work cycle, apply [Role Recovery & Integrity](workflows/ROLE_RECOVERY.md): restore the explicitly assigned role, read pinned project rules and live GitHub evidence, verify phase and actual tool permissions, and stop on role mismatch rather than silently changing identity. Keep the existing Next-Action handoff at the end.
-
-## Reuse before reinventing
-
-Before Codex implementation dispatch, Architect performs a bounded [Ecosystem Review](workflows/ECOSYSTEM_REVIEW.md) covering native PyTorch, relevant maintained libraries and upstream reference implementations, and records a concise Build-vs-Reuse decision in the engineering report. CPU first, portable, low-dependency, with license and compatibility evidence; no new standalone report.
-
-## Colab three-step update (current contract)
-
-The Scientist now uses **three independent notebook steps**: pinned-SHA install, packaged benchmark (no GitHub writes), then **optional explicit report upload** after reviewing results. The Colab Secret is named **`GITHUB_TOKEN`**; Codex must test Publisher subprocess Secret access or provide the secure single-Python-cell environment bridge. Update all implementations and tests to follow [the current three-step contract](workflows/COLAB_TWO_COMMAND.md) (historical filename retained for link stability). No `--publish` in the benchmark default. This supersedes older two-command descriptions above; it is a target until implemented and tested.
-
-## Permanent Architect merge discretion across all owner-public repositories
-
-The Scientist indefinitely and revocably delegates **final MERGE / DO_NOT_MERGE discretion** to GPT Architect for qualifying PRs in **all current and future public GitHub repositories owned by `JohnnyZPiggy`**, with **no expiry, no allowlist enrollment and no repeated per-PR merge consent**. T1/T2/T3 describe evidence and Scientist-owned *substantive prerequisites*, not who makes the final merge decision. Architect reviews actual changes/tests, checks owner/visibility/tool permissions and branch rules, records an audit, then independently merges or holds. Scientist retains research, Colab, substantive security/governance/licensing/data decisions and immediate revocation; Codex does not self-merge. See [Standing Authorization](governance/STANDING_AUTHORIZATION.md); no background work or private/other-owner repository access is implied.
+**License:** No repository license is selected yet; public visibility alone does not grant third-party reuse rights.

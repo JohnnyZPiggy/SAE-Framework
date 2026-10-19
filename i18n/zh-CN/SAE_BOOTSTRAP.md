@@ -1,7 +1,3 @@
-## 项目初始化后的统一验收
-
-固定 SAE 快照必须包含 [三阶段协议](workflows/RESEARCH_PIPELINE.md)、[GPU Readiness](templates/GPU_READINESS.md)、[三文档交接](workflows/THREE_ARTIFACT_HANDOFF.md)、[工程报告模板](templates/ENGINEERING_REPORT.md) 和 [双命令 Colab 契约](workflows/COLAB_TWO_COMMAND.md) 及中英文镜像。复制到项目外部的模板须重写相对链接。Codex 在本地 CPU 真实完成安装、正确性、`torch.compile`、CLI 验收后才允许 GPU_READY。Colab 目标两行命令；Publisher 未实现前上传仍需人工处理。保留自包含 Bootstrap 快照要求。
-
 # SAE V3.2：新项目初始化协议（中文）
 
 > 语言：[English](../../SAE_BOOTSTRAP.md) | **简体中文** · 英文是机器执行规范。
@@ -64,18 +60,7 @@
 项目具有项目根 AGENTS、合法 `sae.yaml`、可读取且**固定版本**的协议副本、清晰责任与验收标准、初始 Issue 队列、可审查的工程骨架 PR、Colab/GitHub 报告计划，而且没有 GitHub Actions。
 
 **注意：** 这是一份操作协议，不是自动运行服务。
-## Bootstrap 快照中的角色恢复
 
-固定版本的 `.sae/workflows/` 快照必须包含 [角色恢复协议](workflows/ROLE_RECOVERY.md) 与中英文镜像。算法项目 `AGENTS.md` 必须指向 `.sae/workflows/ROLE_RECOVERY.md`。Bootstrap 实现需要检查新对话能恢复角色与任务，不得悄悄升级既有项目。
+## 相关协议的唯一权威来源
 
-## 项目固定快照中的生态调查
-
-新算法项目的 `.sae/workflows/` 快照必须包含 [ECOSYSTEM_REVIEW.md](workflows/ECOSYSTEM_REVIEW.md) 和 [中文镜像](i18n/zh-CN/workflows/ECOSYSTEM_REVIEW.md)，固定版本架构师协议和工程报告需包含简短 Build-vs-Reuse 关口；复制后检查相对链接。既有项目不得悄悄自动升级。
-
-## Colab 三步操作（现行规范）
-
-科学家使用**三个独立 Notebook 步骤**：安装固定 SHA、运行不写 GitHub 的 Benchmark、审核后**按需单独上传报告**。Colab Secrets 已采用名称 **`GITHUB_TOKEN`**；Codex 须验证 Publisher 子进程读取密钥或提供一个 Python 上传 Cell 的安全环境变量传递。具体遵循 [现行三步协议](workflows/COLAB_TWO_COMMAND.md)（历史文件名保留以免破坏链接），Benchmark 默认不再含 `--publish`。旧版“两行”描述不再适用；未实现/验收前不得称其可运行。
-
-## 新算法项目也适用全部本人公开仓库的永久授权
-
-Bootstrap 在固定的 `.sae/` 快照中包含治理协议及中文镜像，但**复制文档不自动生成 GitHub API 权限，也不能擅自升级旧项目固定快照**。依科学家最新明确授权，`JohnnyZPiggy` **现有及未来全部本人拥有的公开仓库**已覆盖，无需逐一授权登记或年度续期。GPT 架构师每轮必须核实实时 owner/public、GitHub 合并权限、分支保护、PR 审核证据和科学家保留的实质内容决定，再按 [最新常设授权](governance/STANDING_AUTHORIZATION.md) 自主决定 MERGE / DO_NOT_MERGE。不授权私有/他人仓库、Codex 自我合并、后台轮询或绕过保护。
+固定版本的 `.sae/` 文档快照及中英文镜像须包括：[研发关口](workflows/RESEARCH_PIPELINE.md)、[角色恢复](workflows/ROLE_RECOVERY.md)、[下一步口令](workflows/NEXT_ACTION.md)、[生态调查](workflows/ECOSYSTEM_REVIEW.md)、[三份成果](workflows/THREE_ARTIFACT_HANDOFF.md)、[GPU 就绪清单](templates/GPU_READINESS.md)、[Colab 三步契约](workflows/COLAB_TWO_COMMAND.md)和[合并授权](governance/STANDING_AUTHORIZATION.md)。本文件只负责初始化，不重复其详细规则。Colab 目标是固定 SHA 安装、Benchmark、审核后**可选独立上传**，Secret 名为 `GITHUB_TOKEN`；Publisher 实现和验收仍待 Codex/Scientist 实证。科学家对 `JohnnyZPiggy` 所有本人公开仓库的长期授权无需逐仓库登记，但必须核实工具权限和 PR 审核。不得自动升级任何既有算法项目的固定快照。

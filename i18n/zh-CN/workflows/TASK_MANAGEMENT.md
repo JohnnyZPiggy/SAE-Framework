@@ -1,44 +1,18 @@
-# GitHub 任务管理与交接协议
+# GitHub 任务管理与交接
 
-> 语言：[English](../../../workflows/TASK_MANAGEMENT.md) | **简体中文**
+> [English](../../../workflows/TASK_MANAGEMENT.md)（正式规范） | 简体中文
 
-**唯一正式任务队列：GitHub Issues**，不是不可追踪的私下聊天记录。
+**GitHub Issues/PR 是唯一持久任务与证据队列**，不增加状态数据库、后台调度、GitHub Actions 或 Drive 同步。
 
-## 推荐标签体系
-- 负责人：`agent:codex`、`agent:architect`、`human:scientist`。
-- 状态：`status:ready`、`status:in-progress`、`status:review`、`status:experiment`、`status:blocked`、`status:accepted`。
-- 工作类型：`kind:math`、`kind:engineering`、`kind:experiment`、`kind:learning`。
-- 优先级：`priority:p0`、`priority:p1`、`priority:p2`。
+标签**仅在实际存在时**使用：`agent:codex` / `agent:architect` / `human:scientist`；`status:ready` / `status:in-progress` / `status:review` / `status:experiment` / `status:blocked` / `status:accepted`；可选 `priority:p0/p1/p2`。没有标签时使用 Issue 正文的 Owner/Status/Priority；避免重复认领和工单。
 
-如果缺少创建标签的权限，就在 Issue 评论里写出真实状态；不要假装已应用标签。Assignee 必须是真正的 GitHub 账户，不能使用不存在的机器人用户名。
+## 可反复回到早期阶段的生命周期
 
-## 工程任务前的数学研究关口
+1. **数学：** 新算法先有导师 `docs/research/<algorithm>-tensorization.md`、Scientist `RESEARCH_READY` 或明确例外，见 [研发流程](RESEARCH_PIPELINE.md)。
+2. **架构师：** 研究接口与验收、执行 [生态调查](ECOSYSTEM_REVIEW.md)，建立有来源 SHA、范围与验收条件的 Codex Issue。
+3. **Codex：** 认领 Issue，真实运行 CPU/oracle/打包/CLI 测试，更新 `docs/engineering/<algorithm>-engineering.md`，提交可审核 PR；没跑写 NOT_RUN。
+4. **架构师：** 根据真实 Diff 和 [技术审核](CODE_REVIEW.md)，必要时审核 [GPU_READY](../templates/GPU_READINESS.md)。
+5. **Scientist：** 运行真实 Colab，阅读结果后可选发布报告 PR，见 [三步契约](COLAB_TWO_COMMAND.md)。
+6. **架构师：** 按 [常设授权](../governance/STANDING_AUTHORIZATION.md)独立决定 MERGE/DO_NOT_MERGE，留证据、核实 SHA；重要科研/安全**实质决定**仍属于科学家，Codex 不能自我合并。
 
-针对新算法或重大张量化改写，首先形成**由 GPT 科学导师负责的数学结构研究任务/记录**，而不是立即创建交给 `agent:codex` 的实现任务。在标记算法实现 Issue 为 `status:ready` 前，必须链接科学家批准的 `docs/research/<algorithm>-tensorization.md` 与 `RESEARCH_READY` 结论。之后总架构师设计模块、正确性基线和正式实验。报告缺失或阻塞则先返回导师/科学家。仓库初始化等基础设施任务可独立进行。详见 [数学研究关口](MATHEMATICAL_RESEARCH.md)。
-
-## Issue/PR 与三文档关联
-
-经科学家审查的数学报告、架构师/Codex 的工程报告、科学家实际 Colab 运行的实验报告构成可追溯的证据链。见 [三文档交接协议](THREE_ARTIFACT_HANDOFF.md)。工程 Issue/PR 链接数学与工程文档；实验 PR 链接被测源码 SHA 及前两份文档。无需额外建立第四份相互冲突的状态日报，模板也不能充当完成证据。
-
-## 生命周期
-1. **GPT 创建 Issue：** 写出数学契约、接口、输入输出、CPU/GPU 验收条件、参考资料和依赖，合适时标记给 Codex。
-2. **Codex 领取任务：** 在 Issue 留下接受评论并改为 in-progress，同一项任务只允许一个当前负责人。
-3. **实现与 PR：** 使用 `feat/<issue-number>-<slug>` 分支。仅在全部条件已完成时使用 `Closes #N`；GPU 仍待验证时使用 `Refs #N`。
-4. **GPT 审查：** 查看真实代码变更和 CPU 证据；若涉及 GPU，指定候选源码 SHA 进入实验阶段。
-5. **科学家运行 Colab：** 提交准确对应候选 SHA 的报告 PR/评论，失败则将最小可复现案例交回 Codex。
-6. **GPT 验收：** 核实约定条件后自行决定是否合并，无需再向科学家申请合并许可，更新 Issue 与下一项任务。
-7. **GPT 导师总结：** 可选记录相关数学/工程学习要点，不能用学习笔记替代测试。
-
-## 状态一致性
-GitHub API 写入可能失败、标签缺失、PR 评论可能过时；关键操作后重新读取状态。引用 Issue、PR、run ID 和源码 SHA 交接；不能未经说明混用不同版本 Benchmark。组织流程是可反复交替的迭代，而不是固定流水线。
-## 每轮结束的下一步口令
-
-每次完成实质性工作，按照 [下一步口令协议](NEXT_ACTION.md) 给科学家一个最优、可复制的角色口令或人工操作，最多两项备选，并说明已核实状态、GitHub 证据和是否需要科学家批准。GPU_READY 前不得建议科学家重复 GPU 实验；无权限或受阻时如实说明。交互按钮仅在客户端真实支持时使用。
-
-## 角色恢复与防止出戏
-
-每轮实质性工作开始前执行 [角色恢复与完整性协议](ROLE_RECOVERY.md)，根据用户口令恢复身份、读取固定版本和 GitHub 当前证据、核验阶段与权限；若角色不匹配，应报告并交接，不得悄悄切换或虚报执行。每轮结束仍按下一步口令协议交接。
-
-## 全部本人公开仓库由架构师永久独立决定是否合并
-
-依据 [常设授权](../governance/STANDING_AUTHORIZATION.md)，GPT 架构师针对 `JohnnyZPiggy` **当前及未来全部本人拥有的公开 GitHub 仓库**，在用户触发的工作周期内自行决定每个合格 PR 的 **MERGE / DO_NOT_MERGE**，**无到期日、无逐仓库登记、无逐 PR 再请示**。T1/T2/T3 是证据与科学家负责的科研/重要治理安全**实质内容决定**之关口，不是合并权分级。每次核实实时 owner/public、权限、完整 Diff、匹配 SHA 的 CPU/必要 GPU 证据和 GitHub 保护，留 PR 审计，批准后精确 head Squash Merge 并核实结果。缺实质决定时先阻塞，请科学家确认**问题本身**而不是合并许可。Codex 不合并、不后台扫仓库。
+交接只使用[三份科研成果](THREE_ARTIFACT_HANDOFF.md)，不新增第四份报告。问题允许返回数学/CPU 阶段；每轮遵守 [角色恢复](ROLE_RECOVERY.md)与[下一步口令](NEXT_ACTION.md)。

@@ -1,37 +1,9 @@
-# SAE Pull Request: <title>
+# SAE PR Template — compatibility link
 
-> Language: **English** | [简体中文](../i18n/zh-CN/templates/PR_TEMPLATE.md)
+> [简体中文](../i18n/zh-CN/templates/PR_TEMPLATE.md)
 
+The **active GitHub PR template** is [`.github/pull_request_template.md`](../.github/pull_request_template.md); see the [optional Chinese form](../.github/PULL_REQUEST_TEMPLATE/sae_zh-CN.md).
 
-Closes/Refs: #<issue>
-Candidate source commit: `<SHA>`
+The PR must link its Issue, mathematical/engineering/experiment evidence, exact tested source SHA and actual CPU/GPU statuses (`PASS / FAIL / NOT_RUN / BLOCKED`). Architect reviews current diff, real evidence and [Standing Authorization](../governance/STANDING_AUTHORIZATION.md) before final merge decision; see [Technical Review](../workflows/CODE_REVIEW.md).
 
-## Scope and mathematical motivation
-Describe changes, problem, assumptions and any changes to public API.
-
-## Evidence (no implied execution)
-| Check | Status: PASS / FAIL / NOT RUN / BLOCKED | Command / link |
-| --- | --- | --- |
-| Unit/regression tests | NOT RUN | |
-| Numerical baseline comparison | NOT RUN | |
-| CPU performance benchmark | NOT RUN | |
-| Colab GPU correctness | NOT RUN | |
-| Colab GPU performance | NOT RUN | |
-
-## Three-artifact links
-- Approved math: `docs/research/<algorithm>-tensorization.md` / N/A for infrastructure
-- Engineering and actual CPU evidence: `docs/engineering/<algorithm>-engineering.md`
-- Actual Colab experiment: `reports/gpu/<run-id>/summary.md` / NOT RUN
-- Tested source commit SHA: `<SHA>` (distinct from report publication SHA)
-
-## Reproduction
-Python/PyTorch version, device, seed, exact commands, data source.
-
-## Risks / limitations
-State numerical differences, untested hardware, accuracy/performance trade-offs, skipped checks.
-
-## Review requests
-Architect decision needed; Scientist experiment needed; linked report PR.
-
-## Learning opportunity (optional)
-One question or insight worth discussing in Mentor mode.
+This historical file is preserved for existing links; do not maintain a duplicate PR form here.

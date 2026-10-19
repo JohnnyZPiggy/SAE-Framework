@@ -3,6 +3,14 @@
 > Language: **English** | [简体中文](i18n/zh-CN/CHANGELOG.md)
 
 
+## V3.2 canonical-contract consolidation (2026-10-19)
+
+- Replaced the earlier annual / repository-allowlist merge policy with the Scientist's **indefinite, revocable owner-public repository authorization**; GPT Architect retains final reviewed PR merge discretion, not Scientist's substantive decision-making.
+- Changed the Scientist's target from two combined commands to **three independent Colab steps**: pinned install, benchmark without publication, and optional separately authorized report upload using Colab Secret `GITHUB_TOKEN`.
+- Shortened AGENTS, README, Bootstrap, bilingual role and session/workflow prose; each rule now has a clear canonical source instead of repeated update appendices.
+- Updated roadmap, integration docs, `sae.yaml`, issue templates, engineering report order, project/Colab examples, bilingual relative links and CPU/GPU readiness references.
+- Preserved historical file paths and the research/CPU/GPU gates; **no existing algorithm project's pinned `.sae/` snapshot was changed**, no Actions were added, and no CLI/CPU/GPU execution is claimed by these documentation changes.
+
 ## Colab two-command execution interface (2026-10-18)
 
 - Defined a strict end-user target of **two executable Colab command cells**: pip-install an immutable GitHub source SHA; run one packaged Python benchmark that handles correctness, GPU timing, reports, and **optional authorized** GitHub PR publication.
