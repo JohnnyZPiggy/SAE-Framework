@@ -1,67 +1,70 @@
-# 年度常设合并授权 — Scientist → GPT 总架构师
+# 永久性架构师合并授权 — Scientist → GPT Chief Architect
 
-> [English（正式规范）](../../../governance/STANDING_AUTHORIZATION.md) | **简体中文**
+> [English（正式规范）](../../../governance/STANDING_AUTHORIZATION.md) | **简体中文**  
+> 为兼容既有项目链接，保留历史文件名 `STANDING_AUTHORIZATION.md`。
 
-## 授权与有效期
+## 科学家究竟授权了什么
 
-**授权人：** 人类 Scientist；**被授权角色：** 在用户主动触发的一轮 SAE 工作中担任 Chief Architect、且本轮实际有 GitHub 权限的 GPT。科学家于 **2026-10-19** 明确指令落实、审查和合并本次初始授权；授权来自科学家而非 AI 的自我声明或复制的文档。
+**授权人：** 人类 Scientist；**被授权角色：** 由用户触发一个有边界工作周期、且当次具备真实 GitHub 工具权限的 GPT **Chief Architect**。
 
-**UTC 有效期：** 2026-10-19 00:00:00 至 **2027-10-18 23:59:59（含）**；于 **2027-10-19 00:00:00** 自动失效，不得自动续期。无法核验日期或真实授权时停止并请科学家确认。
+**生效：** 2026-10-19。**期限：永久有效（无到期日），直到科学家明确撤销或修改。** 科学家于 2026-10-19 纠正之前一年期设计：架构师在审查后，**独立作出合并或不合并的最终决定**。**不必为每个 PR 再请科学家批准合并操作**，即使 PR 涉及科研、治理或安全文件，合并的工程决定仍由架构师承担。
 
-### 精确仓库登记表
+但这**不等于免除变更内容本身所需的科学家决定**。研究方向、数学研究关口、实际 Colab、重要安全/权限设置、许可证/IP 及项目已明确保留的实质决策仍属于 Scientist。若变更内容本身尚未批准或证据不足，架构师直接作出 **DO_NOT_MERGE / BLOCKED** 决定；不是询问“我能合并吗”。如果实质前置条件已满足，GPT 独立决定并合并，**不需要第二次人工点头**。
 
-| 仓库 | 常设合并权限 | 依据 |
+永久授权不是后台常驻任务：只有用户主动触发并实际连接 GitHub 的工作周期才执行。架构师正常的最后步骤是 **审查 → 自主决定 MERGE / DO_NOT_MERGE → 符合条件则合并并核验 → 汇报**。
+
+## 精确仓库范围（一次登记不等于每次批准）
+
+| 已登记仓库 | 权限 | 依据 |
 | --- | --- | --- |
-| `JohnnyZPiggy/SAE-Framework` | **有效**（须满足下述验收条件） | 科学家 2026-10-19 明确指令 |
+| `JohnnyZPiggy/SAE-Framework` | **PERMANENT_ARCHITECT_MERGE**（受审查关口约束） | 科学家 2026-10-19 明确指令 |
 
-**其他仓库全部未授权**，即使 GPT 或 Codex 已连接并有 GitHub 写入权限。未来新增算法仓库必须由科学家明确给出完整 `owner/repo` 并单独授予年度合并权限，再通过**科学家审批的治理 PR**加入上述实时登记表。复制项目的固定 `.sae/` 快照本身**不授予权限**；对算法仓库须核对 Framework 最新登记表、科学家单独授权与算法项目固定协议。Agent 不能自行增加仓库、修改范围、降低审查标准或续期；**不得自行批准任何治理规则修改**。即使 PR 标为“普通文档”，凡修改 AGENTS、角色协议或工作流程并实质改变角色权限、安全或审批关口，均属于 **T3**。
+**其他仓库（包括算法仓库）尚未登记。** 科学家需要**一次性**明确指定准确 `owner/repo` 并授予该仓库常设合并权，再把它登记到当前列表。这是新增仓库范围的一次性科学家决定，**不是每次合并都请示**。复制 `.sae/` 固定快照、或者工具能访问某个仓库，都不自动赋予该仓库权限。新增仓库和扩大范围不能由 Agent 自己批准；范围决定获科学家认可后，架构师可以独立审核、决定是否合并对应的治理 PR。
 
-本授权仅允许 **用户触发、有边界的架构师工作周期** 内审核并合并合格 PR；**不授予后台执行、额外 GitHub 工具权限、Token、直接 push、force push、删除分支、自动发版或公开实验资料上传权**。科学家可随时明确撤销或缩小范围，新指令优先于旧文件。
+科学家可随时通过新指令撤销或缩小权限，新指令优先于仓库旧文本。GPT/Codex 不得自行增加仓库、扩大权限。
 
-## 三级合并权限
+## 三级审查，不是三级合并授权人
 
-按**PR 真实 Diff 中最高风险**分类，而不是标题、标签或作者陈述；混合 PR 取最严格一级。
+**T1/T2/T3 是审核证据与前置条件分级，最后是否合并统一由 GPT Architect 决定。** 以真实 Diff 的最高风险分类，不能只看 PR 标题。
 
-| 级别 | 典型内容 | GPT 权限 |
+| 级别 | 典型内容 | 架构师作出 MERGE 前需要检查 |
 | --- | --- | --- |
-| **T1 日常** | 文档、翻译、非治理协议澄清、格式、针对性测试、小型不改变行为的修复 | 审核真实 Diff、链接和适用语法/测试证据后**可自主合并** |
-| **T2 工程** | 已批准数学方案下的算法实现、数值修复、PyTorch 优化、普通打包、Benchmark、Publisher、低风险兼容依赖 | 数学关口、Codex 真实 CPU 数值/oracle/回归和打包证据、许可安全与 Issue 验收全部通过后**有条件自主合并**。若声明 GPU 已通过或 GPU 是该 PR 明确验收条件，须有科学家 Colab 真实证据；只验收 CPU 的改动可以在 GPU 非必要时合并，但标记 `GPU_NOT_RUN`，不得宣称 GPU 已通过。 |
-| **T3 科学家保留** | 科学目标/假设或未验证数学结论；本授权、仓库范围、期限或治理安全策略；GitHub 权限、分支保护、Secrets；重要许可证/IP、高风险依赖、发布版本、破坏性变更、删除、强制推送、未经批准的对外公开 | **年度授权不覆盖。** 必须获得科学家**针对这个 PR 和具体变更范围**的新的明确批准，并遵守 GitHub 实际保护规则。 |
+| **T1 日常** | 普通文档、翻译、格式、不改变权限的协议说明、针对性测试 | 审查真实 Diff、链接、语法与相关检查 |
+| **T2 工程** | 算法、数值修复、PyTorch 优化、打包、Benchmark/Publisher、一般依赖 | 适用时已通过数学研究关口、Codex 真实 CPU/oracle/边界/回归/打包证据、许可和安全审核。只有在声称 GPU 成功或 GPU 为明确验收项时要求 Scientist Colab 证据；CPU-only PR 若 GPU 非验收条件可合并，但必须注明 `GPU_NOT_RUN`。 |
+| **T3 科学家保留的实质决策** | 科学问题/数学假设、接纳未证明结论、安全设置/Secrets/权限、治理授权范围、重大许可/IP/发版、破坏性修改、敏感数据对外公布 | **变更内容本身**如需科学家决定，必须先有明确可核实的批准；然后由 **GPT Architect 自主决定是否合并 PR，不额外请示合并许可**。若实质决策缺失，则决定 `DO_NOT_MERGE / WAITING_FOR_SCIENTIST_DECISION`，不能猜测批准。 |
 
-分级或证据不确定则标记 `SCIENTIST_APPROVAL_REQUIRED` 或 `MERGE_BLOCKED`，不得降级风险。Colab 实验报告上传公开仓库仍须科学家单独主动授权，不得用合并授权替代。
+**例如：** 科学家已批准数学公式；Codex 实现并运行 CPU 测试；GPT 审查 PR 并自行决定是否合并，**不再问“可以合并吗”**。如果数学假设尚未由科学家确认，GPT 应拒绝/搁置并请求**科学判断**，而不是请求一次合并授权。
 
-## Merge Gate：每个 PR 重新检查
+修改本永久授权属于 T3。GPT 不得自行把授权扩大成不可撤销、无限仓库或绕过科研关口。科学家**本次 2026-10-19 指令已明确批准**将期限从一年改成永久、把合并最终决定交给架构师，因此这次治理 PR 可以在架构师审核后自主合并。未来权限范围或规则的实质修改仍要科学家批准**改动内容**，但合并动作不用再授权一次。
 
-1. **验证授权：** 核验 UTC 日期、精确登记仓库、科学家当前授权、本轮 Architect 身份和用户触发、实际 GitHub 权限、项目 AGENTS 和固定 `.sae/`；不得悄悄升级快照。
-2. **读取真实 Diff：** 全部变更文件、base/head SHA、Issue、未解决审查评论、可合并状态、分支保护；不只看 PR 描述或旧消息。
-3. **判定风险：** T3 必须有科学家对该 PR 的明确批准；GPT 自己写的“Approved”不算。
-4. **核验实际证据：** T1 检查链接、语法和适用测试；T2 检查科学家数学批准或有限例外、Codex 真实运行 CPU oracle/边界/回归、干净安装和适用时 `torch.compile`、许可证/安全，以及 GPU 为验收条件时科学家真实 Colab。**NOT_RUN 不是 PASS**。GPT 自己编写的实质代码也需要 Codex/科学家独立测试，不能自证。
-5. **排查阻塞：** Token 泄露、未批准公开数据、科学决策越界、未解决审查、缺少必要测试、不当依赖或绕过 GitHub 保护都必须阻止合并；测试源码 SHA 对应被审 head。
-6. **合并前留审计记录：** 在 PR 评论/审查中记录级别、授权、被审核 head SHA、证据、风险和决定。工具不支持就如实说明，必要时写入允许的 Issue/PR 记录，不得假装已留痕。
-7. **合并后验证：** 只有 `MERGE_APPROVED` 才执行，默认 **Squash Merge**，使用预期的精确 PR head SHA；合并前再次核查，遵守所有保护规则；GitHub 确认成功并核实合并 SHA 才报 `MERGED`，head/base 变化需重新审核。禁止直接 push 或 force push。
+## 每个 PR 的 Merge Gate
 
-**状态：** `MERGE_APPROVED`、`MERGED`、`MERGE_BLOCKED`、`SCIENTIST_APPROVAL_REQUIRED`、`AUTH_SCOPE_MISSING`、`AUTH_EXPIRED`、`UNVERIFIED`。
+1. **恢复角色与范围：** 核对本轮用户主动触发 Architect、仓库已准确登记、当前 AGENTS 和固定项目协议、真实 GitHub 权限、科学家是否有更新的撤销指令。未登记算法仓库不能自动纳入。
+2. **查看真实 PR：** 完整 Diff/文件表、Issue、验收条件、base/head SHA、阻塞评论、可合并状态、分支保护、Secrets 或外部公布风险。
+3. **按 T1/T2/T3 检查前置条件与证据：** `NOT_RUN` 不是 `PASS`，PR 自述不算执行证据；GPT 自己写的实质代码需 Codex/Scientist 独立运行证据。
+4. **架构师最终决定：** `MERGE_APPROVED`、`DO_NOT_MERGE`、`MERGE_BLOCKED`、`WAITING_FOR_SCIENTIST_DECISION`。**不得再要求科学家逐 PR 授予合并权**；只在真正缺少科学家负责的科研/安全等实质决定时请求相关决定。
+5. **合并前审计：** PR 留精简评论/审查，写明级别、被审 SHA、证据、科学家前置决策、风险及最终决定。工具失败则如实说明，不伪造留痕。
+6. **符合条件则合并并核实：** 默认 Squash Merge，使用精确的已审 head SHA，遵守 GitHub 分支保护，不能绕过规则、直接推 main、强推或合并过期代码。合并回执和 merge SHA 核实后才写 `MERGED`。
+7. **完成汇报与交接：** 给出 PR/merge SHA 或不合并的具体理由，以及下一条口令。不后台无限循环处理其他 PR。
 
-**简短 PR 审计模板：**
+**最小 PR 审计格式：**
 
 ```text
-SAE MERGE GATE
-Repo/PR: <owner/repo>#<N>; base/head: <base-sha>/<reviewed-head-sha>
-Tier: T1/T2/T3; authority: standing 2026-10-19..2027-10-18 或 Scientist 单次批准 <链接>
-Diff/evidence: <实际链接、命令、状态或 NOT RUN>
-Decision: MERGE_APPROVED / MERGE_BLOCKED / SCIENTIST_APPROVAL_REQUIRED
-Risk: <说明>; result: <已核验合并 SHA 或 NOT MERGED>
+SAE ARCHITECT MERGE GATE
+Repo/PR: <owner/repo>#<N>; reviewed base/head: <base-SHA>/<head-SHA>
+Tier: T1 / T2 / T3; standing authority: PERMANENT (until Scientist revokes)
+Evidence / Scientist-owned prerequisites: <真实链接、状态或 NOT RUN>
+Architect final decision: MERGE_APPROVED / DO_NOT_MERGE / MERGE_BLOCKED / WAITING_FOR_SCIENTIST_DECISION
+Reason / risks: <简述>; confirmed merge SHA: <SHA 或 NOT MERGED>
 ```
 
-审计存 GitHub PR/Issue，不增加第四份科研报告，也不强制使用 GitHub Actions。
+## 边界、撤销与新仓库
 
-## 禁止自行修改授权、撤销与新项目
+- **GPT 是最终合并决策者，不是最终科学决策者。** 不能自认科研批准、泄露 Secrets、未经必要授权修改 GitHub 安全权限，或否定 Scientist 新指令。
+- **不再年度续期、不再到期：** 权限持续生效，直到科学家明确撤销或被新指令取代；撤销立即生效，应尽快同步仓库文件。
+- **不无限扩展仓库：** 只限准确登记仓库；算法仓库由 Scientist 一次授权加入后，GPT 即可自主决定后续 PR 合并，不必次次问。
+- **不能自行扩大授权：** 仓库范围/权限变化须科学家批准具体内容，之后 GPT 仍拥有合并时的最终技术决定。
+- **不启用后台自动执行或强制 CI：** GitHub Issue/PR 是审计轨迹；Codex 提交并测试但**不能自行合并**。Scientist 负责 Colab 和公开实验资料上传。
+- SAE 主仓库以上述**最新在线文件**为合并裁量权依据。算法项目应遵守固定快照的日常规则，但合并时仍须核实此处的现行登记表与 Scientist 授权。
 
-- **本文件及中英文镜像均是 T3 治理内容**。未来修改期限、范围、级别、角色权限和审查条件都必须由科学家另行审批；“仅修改文档”的标题也不能绕过。
-- **仅本次初始落地例外：** 科学家 2026-10-19 已明确要求创建、审查并合并本次初始授权 PR；这个指令不能用于未来治理变更。
-- 科学家任何时候发出新的明确撤销指令即生效；随后有权限时同步文件与 GitHub 设置。仓库文档不会自动赋予永久连接权。
-- 建议在 GitHub 设置保护 `main`，只允许 PR 并禁止强制推送；**这份文档不会自动启用保护**，配置变更本身仍需科学家批准。
-- Bootstrap 可以将治理文件放进算法项目的固定快照供**参考**，但不能自动登记或启用算法仓库年度合并授权。
-- **不能无条件批量合并所有分支**：每个 PR 单独审核。Codex 不准自行审批或合并自己的工程 PR，科学决策与真实 Colab 仍归科学家。每次用户指令只推进有限工作，不代表 24/7 自动监控。
-
-详见：[架构师](../protocols/ARCHITECT.md) · [任务管理](../workflows/TASK_MANAGEMENT.md) · [角色恢复](../workflows/ROLE_RECOVERY.md)。
+相关：[架构师协议](../protocols/ARCHITECT.md) · [任务管理](../workflows/TASK_MANAGEMENT.md) · [角色恢复](../workflows/ROLE_RECOVERY.md)。

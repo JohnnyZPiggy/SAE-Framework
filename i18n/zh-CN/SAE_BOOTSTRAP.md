@@ -53,7 +53,7 @@
 ## 阶段 4：验收和交接
 - 在**目标项目的实际目录结构中**检查链接，确认 `.sae/AGENTS.md`、角色、流程、模板、中文镜像及根目录 AGENTS 的路径都可访问；验证 `sae.yaml` 能解析且指向真实不可变版本。可按 [手工初始化验收清单](../../docs/ADOPTION_SMOKE_TEST.md) 检查。
 - Codex 跑 CPU 检查并记录真实输出；GPU 留给科学家后续在 Colab 执行。
-- 通过 PR 提供审查，合并权限由科学家决定。
+- 通过 PR 提供审查，PR 是否合并由已授权的 GPT 架构师在验收后决定，无需额外合并许可。
 - 报告 **已完成 / 未运行 / 被阻塞**、对应 SHA、Issue/PR 链接、尚需的认证步骤。
 - 下一阶段使用三条推进指令。
 
@@ -76,6 +76,6 @@
 
 科学家使用**三个独立 Notebook 步骤**：安装固定 SHA、运行不写 GitHub 的 Benchmark、审核后**按需单独上传报告**。Colab Secrets 已采用名称 **`GITHUB_TOKEN`**；Codex 须验证 Publisher 子进程读取密钥或提供一个 Python 上传 Cell 的安全环境变量传递。具体遵循 [现行三步协议](workflows/COLAB_TWO_COMMAND.md)（历史文件名保留以免破坏链接），Benchmark 默认不再含 `--publish`。旧版“两行”描述不再适用；未实现/验收前不得称其可运行。
 
-## 治理快照与仓库逐项授权
+## 算法仓库的永久合并授权不随快照自动生效
 
-固定版本 `.sae/` 文档快照还必须包含 `governance/` 及其 `i18n/zh-CN/governance/` 中文镜像。算法项目根 `AGENTS.md` 应指向 `.sae/governance/STANDING_AUTHORIZATION.md`，并明确**复制治理协议不代表算法仓库已获得年度合并权限**。新算法仓库需科学家明确指定仓库并授权、再通过科学家审查的 PR 加入 Framework **当前**[登记表](../../governance/STANDING_AUTHORIZATION.md)，Bootstrap 不得自行创建授权、扩张范围或期限。复制后检查相对路径，不启用 GitHub Actions。
+Bootstrap 必须在 `.sae/` 固定快照中包含治理协议及中文镜像，但**复制协议不等于授予算法仓库权限**。科学家需要一次性明确指定算法仓库准确 `owner/repo` 并登记到 Framework 最新[永久授权表](../../governance/STANDING_AUTHORIZATION.md)。**登记后 GPT Architect 永久拥有该仓库 PR 的最终 MERGE / DO_NOT_MERGE 决定权，不再逐 PR 请求合并许可**；每次仍须审核真实证据，科学家保留科研/安全等实质决定并可随时撤销。Bootstrap 不得擅自登记或扩大工具权限，仍需自包含快照、相对链接及禁用 GitHub Actions。

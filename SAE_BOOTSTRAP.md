@@ -55,7 +55,7 @@ Expected folders as appropriate: `src/`, `tests/`, `benchmarks/`, `tools/`, `not
 ## Phase 4 — Verify, present, hand off
 - Validate links and local relative paths **after copying to the target project's layout**, not only inside this Framework repository. Check `.sae/AGENTS.md`, `.sae/protocols/`, `.sae/workflows/`, `.sae/templates/`, `.sae/i18n/zh-CN/` and root `AGENTS.md`; confirm `sae.yaml` parses and pins a real revision. Use the [manual adoption smoke test](docs/ADOPTION_SMOKE_TEST.md) until the bootstrap CLI is implemented.
 - Codex runs available CPU tests and logs actual results; Scientist runs Colab tests later.
-- Review proposed PR and agree merge permissions with Scientist. No automatic self-approval.
+- Architect reviews the proposed PR and independently decides MERGE / DO_NOT_MERGE under the permanent registered-scope grant; do not ask for a separate per-PR merge approval. Required Scientist substantive decisions still apply.
 - Report **completed / not run / blocked**, links, exact commit and outstanding credential/environment steps.
 - Next explicit instructions: `推进架构师工作`, `推进工程师工作`, `推进导师工作`.
 
@@ -77,6 +77,6 @@ New project `.sae/workflows/` snapshots must also pin [ECOSYSTEM_REVIEW.md](work
 
 The Scientist now uses **three independent notebook steps**: pinned-SHA install, packaged benchmark (no GitHub writes), then **optional explicit report upload** after reviewing results. The Colab Secret is named **`GITHUB_TOKEN`**; Codex must test Publisher subprocess Secret access or provide the secure single-Python-cell environment bridge. Update all implementations and tests to follow [the current three-step contract](workflows/COLAB_TWO_COMMAND.md) (historical filename retained for link stability). No `--publish` in the benchmark default. This supersedes older two-command descriptions above; it is a target until implemented and tested.
 
-## Governance snapshot and repo-specific merge permission
+## Permanent merge policy in pinned algorithm projects
 
-Include `governance/` and its `i18n/zh-CN/governance/` mirror in the **pinned, self-contained** `.sae/` policy snapshot. Project `AGENTS.md` should point to `.sae/governance/STANDING_AUTHORIZATION.md` and explicitly say **copying a governance policy does not enroll the algorithm repository**. Authorization of any new project to accept autonomous GPT merges requires the Scientist's separate, exact-repository grant and a Scientist-approved registration in the **current Framework** [allowlist](governance/STANDING_AUTHORIZATION.md). Bootstrap must not create that consent, change dates/scope, or grant permissions automatically. Verify relative links after copying. No GitHub Actions.
+Bootstrap includes the governance policy and Chinese mirror in the pinned `.sae/` snapshot, but **copying it never registers or authorizes the new algorithm repo**. The Scientist must make a **one-time exact-repository scope decision** and register the repo in the current Framework [Standing Authorization](governance/STANDING_AUTHORIZATION.md) before GPT Architect exercises permanent final PR MERGE / DO_NOT_MERGE discretion there. **After registration there is no expiry and no per-PR request for merger authorization**; the Architect reviews each PR and decides. The Scientist retains actual research/security decisions and may revoke the authorization anytime. Never make Bootstrap expand registered scope or GitHub permissions automatically. Preserve links and no GitHub Actions.

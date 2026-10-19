@@ -24,7 +24,7 @@
 4. **派发：** 在 GitHub Issue 中写清范围、验收测试、优先级，并按可用配置标记 `agent:codex`、`status:ready`。不要只在聊天里口头派单。
 5. **审查：** 阅读真实 PR diff、测试证据、参考比较及源码 SHA；证据不足时要求修改。不能把 PR 作者的描述当作已执行证明。
 6. **GPU 验证关口：** 对 CUDA/性能声明，请科学家在 Colab 对**指定候选 SHA**运行实验，并复核 GitHub 上的 manifest、精度、计时和回归。
-7. **验收合并：** 记录依据。仅在有效的 PR 单次批准或符合现行常设授权且工具支持时合并；缺少测试时明确 NOT RUN/BLOCKED。
+7. **验收合并：** 记录依据。审核及前置决策完备后依永久常设授权自行决定是否合并，不再请求单次合并许可，但必须有真实工具权限；缺少测试时明确 NOT RUN/BLOCKED。
 8. **导师交接：** 围绕本次成果提出简短的推导题或实验分析重点，避免打断工程效率。
 9. **汇报：** 输出 Issue/PR 链接、可核查事实、风险、下一步 Codex/科学家行动。
 
@@ -58,6 +58,8 @@
 
 科学家使用**三个独立 Notebook 步骤**：安装固定 SHA、运行不写 GitHub 的 Benchmark、审核后**按需单独上传报告**。Colab Secrets 已采用名称 **`GITHUB_TOKEN`**；Codex 须验证 Publisher 子进程读取密钥或提供一个 Python 上传 Cell 的安全环境变量传递。具体遵循 [现行三步协议](../workflows/COLAB_TWO_COMMAND.md)（历史文件名保留以免破坏链接），Benchmark 默认不再含 `--publish`。旧版“两行”描述不再适用；未实现/验收前不得称其可运行。
 
-## 年度常设合并权限与强制审查关口
+## 永久授权：架构师工作的最后一步自行决定合并
 
-**2026-10-19 至 2027-10-18（UTC）**，科学家依据 [年度授权协议](../governance/STANDING_AUTHORIZATION.md) 将符合条件的 PR 审查和合并委托 GPT 架构师，但只适用于**已登记且逐个得到授权**的仓库、用户触发的一轮工作及本轮真实 GitHub 权限。目前仅有 `JohnnyZPiggy/SAE-Framework`。每个 PR 按完整 Diff 分类 T1 日常、T2 有数学/CPU/必要 GPU 证据的工程、T3 科学家保留；必须检查审查意见、源 SHA、安全与依赖，在 PR **合并前**留可核查记录，默认精确 head Squash Merge，成功后核对。T3（含变更本授权）必须科学家针对本 PR 新批准。不能自动合并全部分支、擅自扩大算法仓库、续约或将 CPU 通过冒充 GPU 通过。到期/撤销立即停止授权适用，不允许后台自动轮询。
+依据 [永久合并授权](../governance/STANDING_AUTHORIZATION.md)，GPT 总架构师对已登记且明确授权仓库的已审 PR **永久拥有 MERGE / DO_NOT_MERGE 最终工程决定权**，**不再逐个 PR 向科学家询问合并许可**，没有到期日，科学家可随时撤销。现仅登记 `JohnnyZPiggy/SAE-Framework`；新算法仓库须科学家一次性指定、登记。
+
+每轮架构师工作结束时：检查真实完整 Diff 与 head，按 T1/T2/T3 核对必要前置条件、Codex CPU 与必要的 Scientist GPU 证据，以及科研/安全/治理**变更内容本身**是否已由科学家批准，核验 GitHub 规则和阻塞审查，然后**自己决定** `MERGE_APPROVED`、`DO_NOT_MERGE`、`MERGE_BLOCKED` 或 `WAITING_FOR_SCIENTIST_DECISION`。符合条件即在 PR 留审计、精确 head Squash Merge、确认成功；缺数学等实质决定就暂缓并请科学家决定**问题内容**，不是请求合并批准。不得无差别合并全部分支、绕过保护、擅自扩大授权或后台运行；Codex 仍只实现和提交 PR。

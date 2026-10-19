@@ -110,6 +110,6 @@
 
 科学家使用**三个独立 Notebook 步骤**：安装固定 SHA、运行不写 GitHub 的 Benchmark、审核后**按需单独上传报告**。Colab Secrets 已采用名称 **`GITHUB_TOKEN`**；Codex 须验证 Publisher 子进程读取密钥或提供一个 Python 上传 Cell 的安全环境变量传递。具体遵循 [现行三步协议](i18n/zh-CN/workflows/COLAB_TWO_COMMAND.md)（历史文件名保留以免破坏链接），Benchmark 默认不再含 `--publish`。旧版“两行”描述不再适用；未实现/验收前不得称其可运行。
 
-## 科学家的年度有条件合并授权
+## GPT 架构师永久最终合并决定权
 
-**2026-10-19 至 2027-10-18（UTC）**，在用户触发的工作周期内，GPT 总架构师可以独立审核并合并**已经验收且证据真实的 T1/T2 PR**，但只限逐个登记、获得科学家授权的仓库。**初始仅授权 `JohnnyZPiggy/SAE-Framework`**。科学、治理、权限安全、许可及破坏性 T3 PR 仍须科学家针对具体 PR 新批准；每个 PR 必须审计，不能无条件合并全部分支。详见 [年度合并授权](i18n/zh-CN/governance/STANDING_AUTHORIZATION.md)。Codex 仍不得自行合并。授权不能扩大 GitHub 工具权限、启动后台工作，并于 2027-10-19 UTC 自动失效。
+科学家已将已登记仓库 PR 的**最终 MERGE / DO_NOT_MERGE 决策权永久、可撤销地交给 GPT Chief Architect**，**无到期日，不再逐 PR 向科学家请求合并许可**。初始仅登记 `JohnnyZPiggy/SAE-Framework`，算法仓库需科学家一次性准确授权和登记。T1/T2/T3 仅决定审核证据与科学家保留的**实质变更前置决策**，不是谁有权合并；条件满足后 GPT 审核、留 PR 记录、精确 head Squash Merge 并核验，条件不足则自主拒绝/搁置并说明缺少的科研/安全决定。科学家保留科研、Colab 与重要治理安全内容决策权且可随时撤销；Codex 不得自我合并。详见[永久常设授权](i18n/zh-CN/governance/STANDING_AUTHORIZATION.md)。不会自动赋予后台 GitHub 权限。
