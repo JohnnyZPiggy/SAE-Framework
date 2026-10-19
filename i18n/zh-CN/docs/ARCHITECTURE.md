@@ -2,42 +2,74 @@
 
 > [English](../../../docs/ARCHITECTURE.md) 为规范版本 | 简体中文说明
 
+![SAE V3.3 中文架构图](../../../docs/figures/SAE_Framework_V3.3.zh-CN.svg)
+
+[可编辑 Mermaid 源码 (.mmd)](../../../docs/figures/SAE_Framework_V3.3.zh-CN.mmd)
+
+<details>
+<summary>展开可编辑的 Mermaid 架构图</summary>
+
 ```mermaid
 flowchart TB
-    G1["工程生产力<br/>可靠 · 可复现 · 低成本"]
-    G2["科学学习<br/>数学 · 数值计算 · ML Systems"]
-    S["Scientist · 科学家<br/>研究方向 · 科学决策<br/>计算资源授权"]
-    A["GPT · 总架构师 + 科学导师<br/>数学 · 设计 · 教学 · 审核 · 合并"]
-    E["Codex · 工程师<br/>实现 · 测试 · 实验 · 提交 PR"]
-    H[("GitHub · 唯一事实来源<br/>Issues · 代码 · PR · 科学证据")]
-    C["Colab CLI · Codex 操作<br/>CPU / GPU / TPU*"]
-    P["固定 SHA 安装 → 无写入 Benchmark<br/>→ 可选的授权证据 PR"]
-    D["Google Drive · 仅可选临时空间"]
+    subgraph OBJECTIVES["01 · 双重目标 / Two Equal Objectives"]
+      direction LR
+      O1["工程生产力<br/>正确 · 可复现 · 低成本"]
+      O2["科学学习<br/>数学 · 数值方法 · ML Systems"]
+    end
 
-    G1 --> S
-    G2 --> S
-    S <-->|科研讨论与决策| A
-    S -->|设备 / 时长 / 额度授权| E
-    A <-->|规格 / 审核| H
-    E <-->|代码 / 实验证据 PR| H
-    A <-->|多轮反馈| E
-    E -->|获授权的执行| C
+    S["Scientist · 科学家<br/>研究方向、科学结论、计算预算决策"]
+
+    subgraph PEOPLE["02 · 科研与工程角色"]
+      direction LR
+      G["GPT · 总架构师 + 科学导师<br/>数学研究 / 张量化 · 设计 / 派单<br/>教学 / 审核 / 合格 PR 合并"]
+      E["Codex · 工程师<br/>实现 / 测试 · 本地 CPU<br/>获授权的 Colab CPU / GPU / TPU 实验"]
+    end
+
+    H[("GitHub · 唯一协作与证据中心<br/>Issues · Code · PRs · Source SHA · Reports")]
+
+    subgraph COMPUTE["03 · Codex 执行 / Evidence Loop"]
+      direction LR
+      L["本地 CPU<br/>安装 · 数值正确性 · 回归测试"]
+      C["Colab CLI / WSL2<br/>CPU · GPU · TPU*<br/>运行 / 下载校验 / 会话清理"]
+    end
+
+    P["固定源码 SHA → 无 GitHub 写入的实验与 Benchmark<br/>→ 可选的、单独授权的证据 PR"]
+    D["Google Drive<br/>可选临时 Notebook 空间"]
+
+    O1 --> S
+    O2 --> S
+    S <-->|研究讨论与科学审批| G
+    S -->|设备 / 时长 / 配额预授权| E
+    G <-->|Issue 规格 / 审核反馈| H
+    E <-->|工程代码 / 证据 PR| H
+    G <-->|循环协作| E
+    E --> L
+    E -->|已授权计算| C
+    L --> P
     C --> P
-    P -->|验证后提交报告 PR| H
-    D -.->|临时 Notebook 文件| C
-    H -.->|新发现 / 下一轮| A
+    P -.->|核验证据，经 PR 回流| H
+    D -.->|仅临时文件| C
+    H -.->|新证据触发下一轮研究| G
 
-    classDef goal fill:#eaf4ee,stroke:#73a58b,color:#173b2b
-    classDef human fill:#fff1d9,stroke:#d5a450,color:#53350b
-    classDef agent fill:#eaf0ff,stroke:#7898d8,color:#203a72
-    classDef hub fill:#f1eafa,stroke:#aa8cc8,color:#42265b
-    classDef compute fill:#e9f7f8,stroke:#6faab1,color:#16464c
-    class G1,G2 goal
+    classDef goal fill:#EFF5FC,stroke:#9EB9D8,color:#243F5B,stroke-width:1.5px
+    classDef human fill:#FFF4E2,stroke:#DDB875,color:#6E4820,stroke-width:2px
+    classDef agent fill:#EEF2FF,stroke:#9FA8E7,color:#2D3D73,stroke-width:1.5px
+    classDef engineer fill:#EAF8F5,stroke:#78B8AD,color:#164E4B,stroke-width:1.5px
+    classDef github fill:#F3EDFB,stroke:#B19ACF,color:#4E3974,stroke-width:2px
+    classDef compute fill:#F2F7FA,stroke:#B1C6D4,color:#274659,stroke-width:1.5px
+    classDef scratch fill:#F7F7F9,stroke:#C8CBD0,color:#66717D,stroke-dasharray:5 4
+    class O1,O2 goal
     class S human
-    class A,E agent
-    class H hub
-    class C,P,D compute
+    class G agent
+    class E engineer
+    class H github
+    class L,C,P compute
+    class D scratch
 ```
+
+</details>
+
+SVG 矢量图与 Mermaid 源码共同描述 V3.3 的角色分工和实验闭环；架构变化时应同步维护。
 
 
 ## 两个同等重要的目标

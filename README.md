@@ -4,44 +4,76 @@
 
 **Scientist–Architect–Engineer** is a GitHub-first collaboration framework for mathematical algorithms, PyTorch scientific computing and ML engineering. It pursues **two equal goals**: reliable low-cost engineering and the Scientist's deeper mathematical/numerical/ML-systems learning.
 
+![SAE Framework V3.3 architecture (English)](docs/figures/SAE_Framework_V3.3.en.svg)
+
+[Editable Mermaid source (.mmd)](docs/figures/SAE_Framework_V3.3.en.mmd)
+
+<details>
+<summary>Editable Mermaid architecture diagram</summary>
+
 ```mermaid
 flowchart TB
-    G1["Engineering Productivity<br/>Reliable · Reproducible · Low Cost"]
-    G2["Scientific Learning<br/>Mathematics · Numerics · ML Systems"]
-    S["Scientist<br/>Research direction · Scientific decisions<br/>Compute budget authorization"]
-    A["GPT · Chief Architect + Scientific Mentor<br/>Math · Design · Teaching · Review · Merge"]
-    E["Codex · Engineer<br/>Implement · Test · Run experiments · Publish PRs"]
-    H[("GitHub · Source of Truth<br/>Issues · Code · PRs · Scientific Evidence")]
-    C["Colab CLI · Codex-operated<br/>CPU / GPU / TPU*"]
-    P["Pinned SHA install → No-write benchmark<br/>→ Optional authorized evidence PR"]
-    D["Google Drive · Optional scratch only"]
+    subgraph OBJECTIVES["01 · Two Equal Objectives"]
+      direction LR
+      O1["Engineering Productivity<br/>Correct · Reproducible · Low Cost"]
+      O2["Scientific Learning<br/>Math · Numerics · ML Systems"]
+    end
 
-    G1 --> S
-    G2 --> S
-    S <-->|Research & decisions| A
-    S -->|Device / time / quota approval| E
-    A <-->|Specifications / review| H
-    E <-->|Implementation / evidence PR| H
-    A <-->|Iterative feedback| E
-    E -->|Authorized execution| C
+    S["Scientist · Human<br/>Research direction · Scientific decisions · Compute budgets"]
+
+    subgraph PEOPLE["02 · Research and Engineering Roles"]
+      direction LR
+      G["GPT · Chief Architect + Scientific Mentor<br/>Math / Tensorization · Design / Delegation<br/>Teaching / Review / Eligible PR Merges"]
+      E["Codex · Engineer<br/>Implement / Test · Local CPU<br/>Authorized Colab CPU / GPU / TPU"]
+    end
+
+    H[("GitHub · Single Collaboration and Evidence Hub<br/>Issues · Code · PRs · Source SHA · Reports")]
+
+    subgraph COMPUTE["03 · Codex Execution / Evidence Loop"]
+      direction LR
+      L["Local CPU<br/>Install · Numerical correctness · Regression tests"]
+      C["Colab CLI / WSL2<br/>CPU · GPU · TPU*<br/>Run / Integrity check / Session cleanup"]
+    end
+
+    P["Pinned source SHA → No-GitHub-write benchmark<br/>→ Optional, separately authorized evidence PR"]
+    D["Google Drive<br/>Optional notebook scratch"]
+
+    O1 --> S
+    O2 --> S
+    S <-->|Research exchange / Scientific approval| G
+    S -->|Device / Time / Quota approval| E
+    G <-->|Issues / Review feedback| H
+    E <-->|Code / Evidence PR| H
+    G <-->|Iterative collaboration| E
+    E --> L
+    E -->|Authorized compute| C
+    L --> P
     C --> P
-    P -->|Verified reports via PR| H
-    D -.->|Temporary notebook files| C
-    H -.->|New findings / next iteration| A
+    P -.->|Verified reports via PR| H
+    D -.->|Temporary files only| C
+    H -.->|New evidence / Next research cycle| G
 
-    classDef goal fill:#eaf4ee,stroke:#73a58b,color:#173b2b
-    classDef human fill:#fff1d9,stroke:#d5a450,color:#53350b
-    classDef agent fill:#eaf0ff,stroke:#7898d8,color:#203a72
-    classDef hub fill:#f1eafa,stroke:#aa8cc8,color:#42265b
-    classDef compute fill:#e9f7f8,stroke:#6faab1,color:#16464c
-    class G1,G2 goal
+    classDef goal fill:#EFF5FC,stroke:#9EB9D8,color:#243F5B,stroke-width:1.5px
+    classDef human fill:#FFF4E2,stroke:#DDB875,color:#6E4820,stroke-width:2px
+    classDef agent fill:#EEF2FF,stroke:#9FA8E7,color:#2D3D73,stroke-width:1.5px
+    classDef engineer fill:#EAF8F5,stroke:#78B8AD,color:#164E4B,stroke-width:1.5px
+    classDef github fill:#F3EDFB,stroke:#B19ACF,color:#4E3974,stroke-width:2px
+    classDef compute fill:#F2F7FA,stroke:#B1C6D4,color:#274659,stroke-width:1.5px
+    classDef scratch fill:#F7F7F9,stroke:#C8CBD0,color:#66717D,stroke-dasharray:5 4
+    class O1,O2 goal
     class S human
-    class A,E agent
-    class H hub
-    class C,P,D compute
+    class G agent
+    class E engineer
+    class H github
+    class L,C,P compute
+    class D scratch
 ```
 
-*Rendered natively by GitHub from editable Mermaid. TPU/PyTorch-XLA and automated publication remain unverified.*
+</details>
+
+The SVG is the high-resolution overview. The editable Mermaid source below is rendered natively by GitHub; both represent the V3.3 role and compute boundaries.
+
+*TPU/PyTorch-XLA and automated report publication remain unverified.*
 
 ## Who does what?
 - **Scientist (human):** selects research problems, approves mathematical/scientific conclusions and compute hardware/session/time/quota limits; no routine notebook operation.

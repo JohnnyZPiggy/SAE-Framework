@@ -5,6 +5,8 @@
 
 ## V3.3 — Codex-operated compute and constitution simplification (2026-10-19)
 
+- Updated bilingual V3.3 architecture diagrams: high-resolution SVG, GitHub-rendered editable Mermaid, README and architecture docs; historical V3.2 SVGs retained.
+
 - Simplified bilingual AGENTS constitution; preserved two objectives, role boundaries and standing merge authorization.
 - Delegated authorized local/Colab CPU/GPU/TPU execution, artifact integrity checks, cleanup and evidence PRs to Codex; Scientist retains scientific decisions and compute budgets.
 - Consolidated compute execution rules in GPU_EXPERIMENT.md (historical path retained).
