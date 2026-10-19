@@ -46,6 +46,6 @@ Issue/PR 链接、变更文件、测试 SHA、真实运行命令、测试摘要�
 
 科学家使用**三个独立 Notebook 步骤**：安装固定 SHA、运行不写 GitHub 的 Benchmark、审核后**按需单独上传报告**。Colab Secrets 已采用名称 **`GITHUB_TOKEN`**；Codex 须验证 Publisher 子进程读取密钥或提供一个 Python 上传 Cell 的安全环境变量传递。具体遵循 [现行三步协议](../workflows/COLAB_TWO_COMMAND.md)（历史文件名保留以免破坏链接），Benchmark 默认不再含 `--publish`。旧版“两行”描述不再适用；未实现/验收前不得称其可运行。
 
-## 工程师不合并，架构师永久独立决定
+## 工程师不合并，架构师对全部本人公开仓库永久自主决定
 
-[永久常设授权](../governance/STANDING_AUTHORIZATION.md)规定：对已登记仓库，GPT 架构师审查后**永久、可撤销地自主决定 PR 是否合并**，**不需要每次再请科学家授权合并操作**；Codex 永远只负责实现、CPU 测试、提供必要 GPU 证据并提交未合并的 PR。科学家负责的数学/安全等**实质变更决定**若缺失应如实标注，交由架构师暂缓或拒绝。不得自行登记仓库、扩大权限或修改 GitHub 安全设置。
+[最新常设授权](../governance/STANDING_AUTHORIZATION.md)规定：GPT 架构师对 `JohnnyZPiggy` **现有及未来本人全部公开仓库**中符合验收条件的 PR **永久拥有最终 MERGE / DO_NOT_MERGE 裁量权**，无需逐仓库登记或逐 PR 再请求合并许可。Codex 只负责实现、真实 CPU 测试、提供必要的科学家 GPU 证据并提交未合并的 PR；不得自我批准或合并、扩大授权或修改 GitHub 安全设置。科学家负责的数学/安全等实质问题若未确认，交由架构师阻塞并向科学家询问该问题。

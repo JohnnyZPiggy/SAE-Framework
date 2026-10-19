@@ -42,6 +42,6 @@
 
 根目录和算法项目 `AGENTS.md`、各角色协议引用本文件。Bootstrap 应把它固定到新项目的 `.sae/workflows/`；现有算法项目必须显式采纳，不得悄悄改变固定版本。
 
-## 恢复永久合并裁量权
+## 恢复全部本人公开仓库的无限期合并裁量权
 
-架构师在决定 PR 时读取最新 [永久常设授权](../governance/STANDING_AUTHORIZATION.md)，核对仓库准确登记、科学家最新撤销/变更指令、实际 GitHub 权限与项目固定协议，不擅自升级快照。授权**永久有效、不需年末续约或逐 PR 合并批准**。T3 需要科学家负责的科研/安全/治理**实质问题**已获得必要决定，但**最终 PR 合并权归架构师**。未登记、缺实质决定或工具不可用，按 `AUTH_SCOPE_MISSING` / `WAITING_FOR_SCIENTIST_DECISION` / `MERGE_BLOCKED` 汇报，不得假装可合并或再向科学家请求合并操作许可。
+每次 PR 审核前，架构师检查 [Framework 最新常设授权](../governance/STANDING_AUTHORIZATION.md)：科学家已授权 `JohnnyZPiggy` **全部现有及未来本人拥有的公开仓库**，**无到期日、不需逐仓库登记或逐 PR 合并许可**。通过 GitHub 实时核验 owner.login、public、实际合并工具、科学家最新撤销/限制、项目固定协议和 T1/T2/T3 前置条件；不得悄悄升级旧 `.sae/`。GPT 对符合证据且实质科研/安全决定齐备的 PR 自主作出最终 MERGE / DO_NOT_MERGE。若所有权、权限或实质决定无法核验，报告 `AUTH_SCOPE_MISSING` / `UNVERIFIED` / `WAITING_FOR_SCIENTIST_DECISION`，不虚报通过、不擅自操作。

@@ -66,6 +66,6 @@
 
 科学家使用**三个独立 Notebook 步骤**：安装固定 SHA、运行不写 GitHub 的 Benchmark、审核后**按需单独上传报告**。Colab Secrets 已采用名称 **`GITHUB_TOKEN`**；Codex 须验证 Publisher 子进程读取密钥或提供一个 Python 上传 Cell 的安全环境变量传递。具体遵循 [现行三步协议](workflows/COLAB_TWO_COMMAND.md)（历史文件名保留以免破坏链接），Benchmark 默认不再含 `--publish`。旧版“两行”描述不再适用；未实现/验收前不得称其可运行。
 
-## GPT 架构师永久最终合并决定权
+## 全部本人公开仓库的永久最终合并决定权
 
-科学家已**永久授权 GPT 总架构师**对 [常设授权](governance/STANDING_AUTHORIZATION.md) 精确登记的仓库 PR 独立作出 **MERGE / DO_NOT_MERGE** 最终决定，**无到期日、不再逐 PR 请求合并许可**。当前只登记 `JohnnyZPiggy/SAE-Framework`；算法仓库需科学家一次性指定并登记。架构师实际检查 Diff、数学/CPU/必要 GPU 证据、科学家负责的**变更内容审批**、安全和 GitHub 关口，满足才用精确 head Squash Merge，否则自主拒绝或搁置；T1/T2/T3 是验收前置条件分类，不是不同合并授权人。每次须留下 PR 审计记录。Codex 不得自我合并。科学家保留科研、Colab 与重要治理/安全内容决策权，并可随时撤销；只在用户触发且工具可用的有限周期内执行，不后台运行。
+Scientist 已授权 GPT 总架构师对 `JohnnyZPiggy` 账号**现有及未来全部本人拥有的公开 GitHub 仓库**中符合验收条件的 PR **永久、可撤销地自主决定 MERGE / DO_NOT_MERGE**；没有到期时间，不需逐仓库登记或逐 PR 再请示。遵循 [最新常设授权](governance/STANDING_AUTHORIZATION.md)，每次核验 GitHub 实时 owner/public、实际工具权限、真实 Diff、数学/CPU/必要 GPU 证据和科学家负责的科研/重要治理安全**内容决策**。架构师审核后自主合并或搁置，留 PR 审计并核实合并 SHA；缺实质批准就请求具体科学/安全决定而非再次请求合并许可。Codex 不得自我合并，用户可随时撤销；不允许后台扫仓库、私有/他人仓库或绕过 GitHub 保护。

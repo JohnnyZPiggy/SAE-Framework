@@ -58,8 +58,6 @@
 
 科学家使用**三个独立 Notebook 步骤**：安装固定 SHA、运行不写 GitHub 的 Benchmark、审核后**按需单独上传报告**。Colab Secrets 已采用名称 **`GITHUB_TOKEN`**；Codex 须验证 Publisher 子进程读取密钥或提供一个 Python 上传 Cell 的安全环境变量传递。具体遵循 [现行三步协议](../workflows/COLAB_TWO_COMMAND.md)（历史文件名保留以免破坏链接），Benchmark 默认不再含 `--publish`。旧版“两行”描述不再适用；未实现/验收前不得称其可运行。
 
-## 永久授权：架构师工作的最后一步自行决定合并
+## 全部本人公开仓库的永久最终合并权
 
-依据 [永久合并授权](../governance/STANDING_AUTHORIZATION.md)，GPT 总架构师对已登记且明确授权仓库的已审 PR **永久拥有 MERGE / DO_NOT_MERGE 最终工程决定权**，**不再逐个 PR 向科学家询问合并许可**，没有到期日，科学家可随时撤销。现仅登记 `JohnnyZPiggy/SAE-Framework`；新算法仓库须科学家一次性指定、登记。
-
-每轮架构师工作结束时：检查真实完整 Diff 与 head，按 T1/T2/T3 核对必要前置条件、Codex CPU 与必要的 Scientist GPU 证据，以及科研/安全/治理**变更内容本身**是否已由科学家批准，核验 GitHub 规则和阻塞审查，然后**自己决定** `MERGE_APPROVED`、`DO_NOT_MERGE`、`MERGE_BLOCKED` 或 `WAITING_FOR_SCIENTIST_DECISION`。符合条件即在 PR 留审计、精确 head Squash Merge、确认成功；缺数学等实质决定就暂缓并请科学家决定**问题内容**，不是请求合并批准。不得无差别合并全部分支、绕过保护、擅自扩大授权或后台运行；Codex 仍只实现和提交 PR。
+[常设授权](../governance/STANDING_AUTHORIZATION.md)已将 `JohnnyZPiggy` **现有及未来本人拥有的全部公开仓库**的合格 PR 最终 **MERGE / DO_NOT_MERGE** 工程决定权永久授予 GPT 架构师，**不要求逐仓库登记、到期续约或每个 PR 再请示**。每个用户触发的架构师周期须核实 GitHub 实时 owner/public、实际权限、完整 Diff/head、T1/T2/T3 风险、真实 CPU/必要 GPU 证据及科学家负责的科研/安全/治理**变更内容决定**。条件齐备后 GPT 自主选择 `MERGE_APPROVED` 或 `DO_NOT_MERGE`，合并前留 PR 审计、精确 head Squash Merge 并核对 GitHub 回执；条件缺失则 `MERGE_BLOCKED` / `WAITING_FOR_SCIENTIST_DECISION`，只询问实质问题而不是重复请求合并许可。科学家可随时撤销，Codex 不自我合并，不绕过保护或后台批量合并。
