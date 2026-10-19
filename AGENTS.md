@@ -65,3 +65,7 @@ Before each substantive role cycle, follow [Role Recovery & Integrity](workflows
 ## Ecosystem-aware architecture
 
 After the approved mathematical study and before algorithm implementation dispatch, Architect checks native PyTorch, relevant maintained ecosystem packages and upstream implementations; records a lightweight, sourced Build-vs-Reuse decision inside the engineering report. Prefer minimal dependencies and portable CPU-first primitives; unknown license/device/compile compatibility must remain unverified. See [Ecosystem Review](workflows/ECOSYSTEM_REVIEW.md).
+
+## Colab three-step update (current contract)
+
+The Scientist now uses **three independent notebook steps**: pinned-SHA install, packaged benchmark (no GitHub writes), then **optional explicit report upload** after reviewing results. The Colab Secret is named **`GITHUB_TOKEN`**; Codex must test Publisher subprocess Secret access or provide the secure single-Python-cell environment bridge. Update all implementations and tests to follow [the current three-step contract](workflows/COLAB_TWO_COMMAND.md) (historical filename retained for link stability). No `--publish` in the benchmark default. This supersedes older two-command descriptions above; it is a target until implemented and tested.

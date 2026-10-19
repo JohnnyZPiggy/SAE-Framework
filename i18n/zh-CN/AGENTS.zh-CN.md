@@ -61,3 +61,7 @@
 ## 生态感知型工程架构
 
 科学家批准数学研究后、算法实现派单前，架构师必须检查 PyTorch 原生算子、相关成熟生态库以及上游算法实现，在工程报告内简洁记录带来源的 Build-vs-Reuse 决定；优先低依赖、CPU-first 和跨硬件可移植性。未核实的许可证、设备或编译兼容性不得写成已验证。详见 [生态复用评估](workflows/ECOSYSTEM_REVIEW.md)。
+
+## Colab 三步操作（现行规范）
+
+科学家使用**三个独立 Notebook 步骤**：安装固定 SHA、运行不写 GitHub 的 Benchmark、审核后**按需单独上传报告**。Colab Secrets 已采用名称 **`GITHUB_TOKEN`**；Codex 须验证 Publisher 子进程读取密钥或提供一个 Python 上传 Cell 的安全环境变量传递。具体遵循 [现行三步协议](workflows/COLAB_TWO_COMMAND.md)（历史文件名保留以免破坏链接），Benchmark 默认不再含 `--publish`。旧版“两行”描述不再适用；未实现/验收前不得称其可运行。

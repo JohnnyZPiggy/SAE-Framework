@@ -15,18 +15,17 @@ For a new algorithm/major tensorization redesign, first link a Scientist-reviewe
 
 **Never use Google Drive sync as a results transfer layer.** The optional Drive folder is simply for Colab notebooks or temporary files. The persistent shared report lives in a GitHub PR.
 
-## Two-command Colab surface (required target contract)
+## Three-step Colab workflow (current target)
 
-The Scientist's core Notebook has **two executable command cells** after selecting the GPU runtime and arranging any one-time authorization:
+Pinned install → standalone benchmark → optional standalone report publication. The Scientist reviews results before the third step.
 
 ```python
-!pip install "git+https://github.com/OWNER/REPO.git@<COMMIT_SHA>"
-!python -m <package>.benchmarks.run --device cuda --publish
+!pip install "git+https://github.com/OWNER/REPO.git@<EXACT_SOURCE_COMMIT_SHA>"
+!python -m <package>.benchmarks.run --device cuda --out reports/gpu/<run-id>
+!python -m <package>.benchmarks.publish --report-dir reports/gpu/<run-id>
 ```
 
-This is **an unimplemented example contract**, not an executable claim. See [Two-Command Colab Contract](COLAB_TWO_COMMAND.md). The pip source SHA and installed benchmark import path must be real; the benchmark module must be **inside the pip-installed package**, not a loose script in the cloned repo.
-
-The former setup → configuration → execution → publication phases remain **internal Python module operations**, not four user-operated Notebook cells. Codex owns setup preflight, safe defaults, numerical oracle comparison, synchronized timing, report generation, and an optional tested Publisher integrated behind `--publish`. GPT Architect defines all interfaces, measurements, fail-fast behavior and Codex acceptance tests *before* handoff. Scientist reviews the resulting evidence/PR. No Publisher exists yet, so report upload still needs manual handling until implementation and Colab integration acceptance.
+The Secret is named `GITHUB_TOKEN`. The publisher must validate subprocess access or use the safe one-cell Python environment-injection fallback in [Three-Step Contract](COLAB_TWO_COMMAND.md). Benchmark does not publish. Target interface only; not yet verified.
 
 ## Required experiment evidence (small, text-only wherever possible)
 - `manifest.json`: run ID, UTC timestamp, **source commit SHA**, Issue/PR reference, package/runtime/device version, seed, dtype, command, measurement methodology, status.
@@ -36,7 +35,7 @@ The former setup → configuration → execution → publication phases remain *
 - Small plots only if useful; huge arrays, models, full logs and secrets **do not** enter GitHub.
 
 ## Publication workflow
-1. Scientist **explicitly requests** publication via `--publish`, authorizing only safe, pre-approved small report files for a GitHub PR; CLI validates manifest and redacts/checks secret/size risks before submitting. Scientist inspects the resulting draft/regular PR before any merge. In public repositories, draft PR content is still public.
+1. Scientist **explicitly requests** publication via the separate Publisher CLI, authorizing only safe, pre-approved small report files for a GitHub PR; CLI validates manifest and redacts/checks secret/size risks before submitting. Scientist inspects the resulting draft/regular PR before any merge. In public repositories, draft PR content is still public.
 2. Create a **new branch**, e.g. `experiment/<run-id>`, from a known repo base; commit only an immutable run-specific report directory. Do not force-push or overwrite an existing run.
 3. Open an experiment PR into project main (or designated reports branch), link code PR and Issue, and record the tested **candidate source SHA**. Result-report commit is separate from code commit.
 4. Leave a GitHub Issue/PR comment pointing to the experiment PR; verify the API result before claiming success.
