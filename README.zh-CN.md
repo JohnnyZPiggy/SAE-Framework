@@ -4,7 +4,11 @@
 
 **Scientist–Architect–Engineer** 是面向数学算法、PyTorch 科学计算和 ML 工程的 GitHub-first 多 Agent 协作框架。两个**同等重要**的目标：**工程生产力**（可靠、可复现、低成本）与**科学学习**（数学、数值计算、PyTorch 和异构计算能力）。
 
-![SAE Framework V3.3 中文架构图](docs/figures/SAE_Framework_V3.3.zh-CN.svg)
+## 组织架构图
+
+![SAE V3.3 — ChatGPT 原生卡片风格科研与工程组织架构图](docs/figures/SAE_Framework_V3.3.zh-CN.svg)
+
+[查看高清 SVG 矢量原图](docs/figures/SAE_Framework_V3.3.zh-CN.svg)
 
 [可编辑 Mermaid 源码 (.mmd)](docs/figures/SAE_Framework_V3.3.zh-CN.mmd)
 
@@ -71,7 +75,7 @@ flowchart TB
 
 </details>
 
-上方为高清 SVG 架构图；下方为 GitHub 原生渲染、可编辑的 Mermaid 版本。两者均按 V3.3 角色与计算边界更新。
+上图以独立 SVG 矢量元素重绘 ChatGPT 原生卡片布局，保留双重目标、Scientist 决策层、GPT/Codex 协作、GitHub 证据中心和 Codex 操作的计算层。下方 Mermaid 保留可编辑的逻辑结构，不代表尚未验收的实验能力已经通过。
 
 *TPU/PyTorch-XLA 与自动发布仍须实测。*
 

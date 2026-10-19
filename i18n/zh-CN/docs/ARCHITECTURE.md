@@ -2,7 +2,9 @@
 
 > [English](../../../docs/ARCHITECTURE.md) 为规范版本 | 简体中文说明
 
-![SAE V3.3 中文架构图](../../../docs/figures/SAE_Framework_V3.3.zh-CN.svg)
+![SAE V3.3 原生卡片式组织架构图](../../../docs/figures/SAE_Framework_V3.3.zh-CN.svg)
+
+[查看高清 SVG 矢量原图](../../../docs/figures/SAE_Framework_V3.3.zh-CN.svg)
 
 [可编辑 Mermaid 源码 (.mmd)](../../../docs/figures/SAE_Framework_V3.3.zh-CN.mmd)
 
@@ -69,7 +71,7 @@ flowchart TB
 
 </details>
 
-SVG 矢量图与 Mermaid 源码共同描述 V3.3 的角色分工和实验闭环；架构变化时应同步维护。
+独立 SVG 使用原生卡片风格呈现 V3.3，折叠的 Mermaid 保留可编辑的逻辑架构。两者均遵循 V3.3 职责与实验验收边界；架构变动须同步更新中英文图和源码。
 
 
 ## 两个同等重要的目标

@@ -2,7 +2,9 @@
 
 > English normative | [简体中文](../i18n/zh-CN/docs/ARCHITECTURE.md)
 
-![SAE V3.3 architecture (English)](figures/SAE_Framework_V3.3.en.svg)
+![SAE V3.3 native card-style organization architecture (English)](figures/SAE_Framework_V3.3.en.svg)
+
+[View high-resolution vector SVG](figures/SAE_Framework_V3.3.en.svg)
 
 [Editable Mermaid source (.mmd)](figures/SAE_Framework_V3.3.en.mmd)
 
@@ -69,7 +71,7 @@ flowchart TB
 
 </details>
 
-The SVG visual and editable Mermaid diagram describe the same V3.3 boundaries. Keep both synchronized when roles or workflows change.
+The standalone SVG is the designed native-card presentation of V3.3; the collapsible Mermaid remains the editable logical diagram. Both preserve role authority and experiment verification boundaries. Keep bilingual SVGs and Mermaid counterparts synchronized when architecture rules change.
 
 [Current role contracts](../AGENTS.md)
 
