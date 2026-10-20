@@ -49,7 +49,7 @@
 | CPU 单元与回归测试 | NOT RUN | |
 | 随机与特殊边界情况 | NOT RUN | |
 | CPU Benchmark（如适用） | NOT RUN | |
-| GPU / TPU 实验（Codex 执行，Scientist 授权） | NOT RUN | 链接实验报告，不能编造结果 |
+| GPU / TPU 实验（Codex 默认执行，正式验收需证据） | NOT RUN | 链接实验报告，不能编造结果 |
 
 仅在实际测量后才报告最大/相对误差，描述容差和失败；GPU 加速结论引用 `reports/gpu/<run-id>/summary.md`，不重复抄性能数值。
 
@@ -58,7 +58,7 @@
 - **Python/PyTorch、dtype、设备：** <真实环境 / NOT RUN>
 - **命令、输入、种子：** <实际命令>
 - **Issue / PR / 附件：** <链接>
-- **交付 Codex 的获授权 Colab 实验说明：** <候选 SHA、CLI、规模、容差>
+- **交付 Codex 的有界 Colab 实验说明（无须算力审批）：** <候选 SHA、CLI、规模、容差>
 - **已知问题与限制：** <说明>
 
 ## 6. 审核与后续（架构师 + 科学家）
