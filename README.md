@@ -94,6 +94,9 @@ GPT-decided concise [mathematical study](workflows/MATHEMATICAL_RESEARCH.md) + p
 
 Experiments have **three separate stages**: exact source-SHA install, benchmark **without GitHub writes**, and optional GPT-reviewed, sanitized report publication (separate user permission remains required for sensitive release or new billing). See [Compute Experiment Protocol](workflows/GPU_EXPERIMENT.md); the [historically named compatibility file](workflows/COLAB_TWO_COMMAND.md) remains linked.
 
+## Optional one-click continuation
+When the ChatGPT client supports native actions, each completed GPT cycle may end with 2–3 clickable **SAE · Next Action** choices that submit a complete instruction in the same conversation. This does not operate the Codex desktop window or change SAE authorization. See [Scientist One-Click Next Actions](workflows/SCIENTIST_ONE_CLICK_NEXT_ACTIONS.md); ordinary concise commands remain the fallback.
+
 ## Start
 Read [AGENTS.md](AGENTS.md), then [Bootstrap V3.3](SAE_BOOTSTRAP.md). Adopt [project AGENTS](examples/project/AGENTS.md) and [sae.yaml](examples/project/sae.yaml) with a **real pinned framework commit SHA**; do not silently upgrade existing projects.
 
