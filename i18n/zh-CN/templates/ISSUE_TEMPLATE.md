@@ -13,7 +13,7 @@
 
 ## 数学结构研究前置审核
 **研究报告：** `docs/research/<algorithm>-tensorization.md` / 链接  
-**科学家决策：** RESEARCH_READY / 明确批准的有限例外  
+**GPT 科研决定：** RESEARCH_READY / 有界假设例外 / RESEARCH_BLOCKED  
 **矩阵向量 / 张量化结构与限制：** <概述>  
 *仅做仓库初始化的任务可以标记不适用。*
 
@@ -26,8 +26,8 @@
 - [ ] 文档和可复现运行命令
 
 ## 计算实验交付关口（算法实现任务）
-- [ ] 固定准确源码 SHA 干净安装；Codex 完成真实 CPU 打包、CLI 与数值测试
-- [ ] 打包的 Benchmark CLI **不写入 GitHub**；可选 Publisher 是独立、单独授权的阶段，未验收不得视为已实现
+- [ ] 固定源码 SHA；如实记录 CPU 打包/CLI/数值测试 PASS / FAIL / NOT RUN，独立 `PROBE_ONLY` 可并行启动
+- [ ] 打包的 Benchmark CLI **不写入 GitHub**；可选 Publisher 由 GPT 决定提交安全非敏感资料，仍须独立实测验证，不能冒充已实现
 - [ ] Codex 直接执行 Colab CPU/GPU/TPU，报告发布及会话清理分别标注 PASS / FAIL / NOT RUN / BLOCKED；无需 Scientist 算力审批，有界 `PROBE_ONLY` 不计入正式 Benchmark 验收
 - [ ] 记录被测源码 SHA、真实命令、输出和失败
 
