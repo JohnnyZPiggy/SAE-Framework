@@ -5,6 +5,7 @@ import argparse
 from datetime import datetime, timezone
 import hashlib
 import json
+import math
 from pathlib import Path, PurePosixPath
 import re
 import subprocess
@@ -23,6 +24,18 @@ def strict_json(raw):
             result[key] = value
         return result
     return json.loads(raw, object_pairs_hook=unique)
+
+
+def authenticated_usage(output):
+    """CLI 0.7.4 prints this only after authenticated, schema-validated ccu-info."""
+    if len(output) > 1024:
+        return None
+    match = re.fullmatch(r'Current balance: (-?\d+\.\d{2}) compute units\r?\n'
+                        r'Usage rate: (\d+\.\d{2})/hr\r?\n'
+                        r'Active assignments: (0|[1-9]\d*)\r?\n?', output)
+    if not match or not all(math.isfinite(float(match[i])) for i in (1, 2)):
+        return None
+    return {'balance': float(match[1]), 'assignments': int(match[3])}
 
 
 def load_adapter(repo, sha, driver, manifest, deadline):
@@ -99,7 +112,7 @@ def run(args):
     report = {'status': 'FAIL',
               'source_sha': args.source_sha if re.fullmatch(r'[0-9a-f]{40}', args.source_sha) else None,
               'run_id': args.run_id if re.fullmatch(r'[a-z0-9][a-z0-9-]{0,39}', args.run_id) else None,
-              'created': False, 'cleanup_confirmed': False, 'utc_start': utc(), 'commands': [],
+              'created': False, 'cleanup_confirmed': False, 'utc_start': utc(), 'commands': [], 'readbacks': [],
               'classification': 'PREFLIGHT_ONLY' if args.preflight_only else 'TRANSPORT_ONLY_SCIENCE_UNREVIEWED',
               'events': {name: None for name in ('cli_resolution', 'environment_preflight', 'adapter_validation', 'snapshot_extraction',
                          'wheel_pip_install', 'first_cpu_pass', 'exact_pinned_cpu_test',
@@ -126,7 +139,7 @@ def run(args):
             prefix = [cli_path]
             result = subprocess.run([*prefix, '--auth=oauth2', *map(str, cmd)],
                                     stdin=subprocess.DEVNULL, capture_output=True, text=True, timeout=timeout)
-            code, output = result.returncode, result.stdout + result.stderr
+            code, output = result.returncode, result.stdout
             status = 'PASS' if code == 0 else 'FAIL'
         except subprocess.TimeoutExpired:
             status = 'TIMEOUT'
@@ -137,6 +150,17 @@ def run(args):
             report['commands'].append({'operation': cmd[0], 'status': status, 'exit_code': code,
                                        'timeout_seconds': timeout, 'elapsed_seconds': time.monotonic() - tick})
         return code, output
+
+    def readback(phase, **bounds):
+        code, output = cli('usage', **bounds)
+        info = authenticated_usage(output) if code == 0 else None
+        record = {'phase': phase, 'method': 'CLI_074_AUTHENTICATED_CCU_INFO',
+                  'status': 'READBACK_UNVERIFIED' if info is None else (
+                      'AUTHENTICATED_ZERO' if info['assignments'] == 0 else 'ACTIVE_ASSIGNMENTS')}
+        if info is not None:
+            record['assignments'] = info['assignments']
+        report['readbacks'].append(record)
+        return info
 
     def step(name, action):
         tick = time.monotonic()
@@ -179,14 +203,16 @@ def run(args):
         transport = tempfile.TemporaryDirectory(prefix='sae-driver-', dir=args.temp_root)
         driver_path = Path(transport.name) / 'driver.py'
         driver_path.write_bytes(code)
-        code, sessions = cli('sessions')
-        if code or 'No active sessions found on server.' not in sessions:
+        if report['preflight'].get('cli_version') != '0.7.4':
+            raise PreflightError('READBACK_UNVERIFIED')
+        info = readback('preallocation')
+        if info is None:
+            raise PreflightError('READBACK_UNVERIFIED')
+        if info['assignments'] != 0:
             raise PreflightError('EXISTING_OR_UNKNOWN_SESSIONS')
-        code, usage = cli('usage')
-        balance = re.search(r'Current balance:\s*([0-9.]+) compute units', usage)
-        if code or not balance or float(balance[1]) <= 0 or not re.search(r'Active assignments:\s*0\b', usage):
+        if info['balance'] <= 0:
             raise PreflightError('ENTITLEMENT_NOT_ESTABLISHED')
-        report['balance_before'] = float(balance[1])
+        report['balance_before'] = info['balance']
         (args.out / 'allocation_attempted.lock').touch(exist_ok=False)
         attempted = True
         allocation_start = time.monotonic()
@@ -248,8 +274,8 @@ def run(args):
             for attempt in range(2):
                 try:
                     code, _ = cli('stop', '-s', session, timeout=15, cleanup=True, slots=4 - attempt * 2)
-                    verify, listing = cli('sessions', timeout=15, cleanup=True, slots=3 - attempt * 2)
-                    if code == 0 and verify == 0 and 'No active sessions found on server.' in listing:
+                    info = readback('cleanup', timeout=15, cleanup=True, slots=3 - attempt * 2)
+                    if code == 0 and info is not None and info['assignments'] == 0:
                         report['cleanup_confirmed'] = True
                         report['utc_cleanup_verified'] = utc()
                         report['events']['cleanup']['status'] = 'PASS'
