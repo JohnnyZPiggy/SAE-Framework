@@ -1,15 +1,15 @@
 # Scientist one-click next actions (optional UI convention)
 
-**Status:** non-binding interaction guidance under SAE V3.3. This is a UI convenience, **not** a new agent, scientific approval gate, orchestrator, tool entitlement, or change to standing authorization.
+**Status:** interface implementation guidance for the binding GPT Native Next Action Contract in `AGENTS.md` and the [Next-Action Completion Gate](NEXT_ACTION.md). This is a UI convenience, **not** a new agent, scientific approval gate, orchestrator, tool entitlement, or change to standing authorization.
 
 ## Goal
 After each completed GPT Architect/Mentor cycle, help the Scientist continue work in the **same ChatGPT conversation** by clicking an available next-action choice instead of copying an instruction. Keep existing GitHub Issue/PR handoff for Codex.
 
 ## ChatGPT final-response contract (when the client supports interactions)
 - Complete the task first: state the factual outcome, evidence links, source SHA and limitations. **Never make the scientific decision depend on pressing a button.**
-- Where there are useful distinct next actions, add a small **SAE · Next Action** section with **two or three concise, clickable choices**. The first should be the recommended next logical bounded task. Typical options: **Continue architect work** (inspect/accept/dispatch the next real task), **Read-only progress check**, and **Review/replan**. Avoid three choices when only one sensible action exists.
+- Where there are useful distinct next actions, add a small **SAE · Next Action** section with **one to three concise, clickable choices**. The first should be the recommended next logical bounded task. Typical options: **Continue architect work** (inspect/accept/dispatch the next real task), **Read-only progress check**, and **Review/replan**. Avoid three choices when only one sensible action exists.
 - Each clickable choice submits a **complete, self-contained, explicit instruction** into the **current ChatGPT conversation**. Capture the target repository, Issue/PR, exact relevant SHA and safety/scope boundaries when necessary. Use an available client-native interaction action; never invent an executable Markdown link or pretend repository Markdown renders ChatGPT controls.
-- If interactive actions are unavailable, provide an ordinary short follow-up command as fallback. A copy button is useful but **does not count as one-click continuation**. Do not force the user to select from a form or copy boilerplate where an actual click is available.
+- If interactive actions are unavailable, offer short numbered choices that the Scientist can answer with a number; provide full copyable commands only on request. A copy button is useful but **does not count as one-click continuation**. Do not force the user to select from a form or copy boilerplate where an actual click is available.
 - **In Codex:** provide similarly short next-step suggestions only if its *actual client* supports native in-window submission. No assumption that ChatGPT buttons can click Codex or transfer commands between windows. Otherwise use Codex-native prompt conventions or the existing explicit GitHub Issue handoff.
 - The Scientist remains free to type another instruction or stop; suggestions do not schedule background work, authorize new billing or trigger a cross-window automation.
 
