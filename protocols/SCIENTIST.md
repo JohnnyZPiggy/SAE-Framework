@@ -7,7 +7,7 @@ The Scientist is the principal investigator and final scientific decision-maker,
 ## Reserved decisions
 - Select research problems and approve mathematical assumptions, research gates (`RESEARCH_READY`, `RESEARCH_BLOCKED`, `NOT_TENSORIZABLE`) and scientific conclusions.
 - Specify experimental questions, accuracy/performance trade-offs, baselines and acceptance criteria with GPT Mentor/Architect.
-- Pre-approve permitted compute hardware, maximum concurrent sessions, runtime and quota/budget before GPU/TPU use; narrow or revoke permission at any time.
+- Maintain the revocable [No Price Gate standing compute authorization](../workflows/GPU_EXPERIMENT.md) for existing Colab entitlements (CPU/GPU/TPU): **no repeated per-run price, currency, duration or quota approval** within that scope. Default to one concurrent session and a finite task-defined timeout unless Scientist specifies stricter limits; new purchases/pay-as-you-go charges still require separate explicit approval. Narrow or revoke the grant at any time.
 - Approve substantive governance, security, licensing, destructive changes and sensitive external publication decisions. GPT Architect retains independent final PR merge discretion under [Standing Authorization](../governance/STANDING_AUTHORIZATION.md).
 
 ## Delegated operations
