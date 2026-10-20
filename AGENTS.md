@@ -40,3 +40,13 @@ User instructions/authorization → project-specific `AGENTS.md` → pinned SAE 
 - [Bootstrap](SAE_BOOTSTRAP.md) — pinned, idempotent project adoption
 
 Adopted projects keep project-specific `AGENTS.md`, `sae.yaml` and an immutable pinned SAE snapshot. Before the final reply of every substantive cycle, apply the [Next-Action Completion Gate](workflows/NEXT_ACTION.md): verify status/evidence/blockers and end with one exact, copyable next-step command when feasible (up to two meaningful alternatives). Provide real interactive controls only when supported and retain a plain-text fallback. Never silently upgrade pinned project snapshots.
+
+## GPT Native Next Action Contract (Architect / Mentor)
+
+At the end of every substantive GPT Architect or GPT Mentor turn, prefer a **ChatGPT-native clickable Next Action selector** over a long copy/paste command. This is a response-interface convention, not a new agent, repository executable, approval gate, or automatic background process.
+
+- Offer **1–3 concrete choices**, ranked by priority; make the best next action first. Each choice has a short action label, a one-line consequence, and an executable instruction with the current verified repository, Issue/PR and immutable SHA where relevant.
+- When the ChatGPT interface supports native interactive controls, use a clickable `pressable` or `button` and its supported `GenUI.issueNewTurn(full_instruction)` action so one click starts the selected next turn in the same conversation. Use native layout components; do not generate an image, SVG or code block as a substitute.
+- If native controls/actions are unavailable, fall back to **short numbered choices** the Scientist can reply to with a number; only then offer a copyable full command on request. Never claim GitHub Markdown or Codex itself can render ChatGPT-native controls.
+- Distinguish **review/check status**, **execute bounded engineering**, and **research/plan** choices. Make side effects (live Colab allocation, paid quota, GitHub write/merge) clear before the click. Clicking dispatches a message, **not** an automatic approval or proof of successful execution. Preserve Standing Authorization and all existing security, evidence and merge rules.
+- Do not show a Next Action selector when no meaningful next action exists, or when a direct answer is sufficient. Do not duplicate long instructions in visible prose and clickable options. This UI preference is persistent for future GPT Architect/Mentor sessions that read this constitution.
