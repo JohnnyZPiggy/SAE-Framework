@@ -7,11 +7,11 @@ Scientist 是项目负责人和最终科学决策者，**不再是日常 Colab �
 ## 保留的决定权
 - 选择科研问题，批准数学假设、研究关口（`RESEARCH_READY` / `RESEARCH_BLOCKED` / `NOT_TENSORIZABLE`）及科学结论。
 - 与 GPT Mentor/Architect 制定实验问题、精度/性能取舍、基线和验收标准。
-- 已授予可撤销的 [No Price Gate Colab 常设计算授权](../../../workflows/GPU_EXPERIMENT.md)，覆盖现有账户权益内的 CPU/GPU/TPU；不再逐次审批价格、金额、时长和额度。默认最多一个并发会话、由任务设定有限超时；Scientist 可设更严格限制或随时撤销。充值、新订阅及新增按量收费须另获明确批准。
+- **不承担算力审批职责：** 按[实验默认执行](../../../workflows/GPU_EXPERIMENT.md)，Codex 在真实权限和技术条件允许时直接使用现有账户权益开展 CPU/GPU/TPU 实验，**不查验 Scientist 算力批准或常设授权记录**。Scientist 可随时发新指令暂停/收窄未来工作；新购买、充值、按量付费仍须用户明确同意。
 - 保留重要治理、安全、许可、破坏性变更和敏感对外发布的实质决策。GPT Architect 依[常设授权](../../../governance/STANDING_AUTHORIZATION.md)独立决定最终 PR 合并。
 
 ## 委托执行
-Codex 执行本地 CPU 与获授权的 Colab CLI CPU/GPU/TPU 实验，下载和校验结果，释放会话，并通过 GitHub 分支/PR 提交证据。Scientist 审核科研意义，可要求重跑或解释，无需日常操作 Notebook 或搬运文件。
+Codex 执行本地 CPU 与技术条件允许的 Colab CLI CPU/GPU/TPU 实验，下载和校验结果，释放会话，并通过 GitHub 分支/PR 提交证据。Scientist 审核科研意义，可要求重跑或解释，无需日常操作 Notebook 或搬运文件。
 
 参见[计算实验](../../../workflows/GPU_EXPERIMENT.md)、[数学研究](../../../workflows/MATHEMATICAL_RESEARCH.md)和[三文档交接](../../../workflows/THREE_ARTIFACT_HANDOFF.md)。Drive 仅为可选 Notebook/临时工作空间，不作为结果交换层。
 
