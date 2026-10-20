@@ -15,7 +15,7 @@ End each substantive reply with this short user-facing **SAE · Next action** fo
 > **Alternatives:** <zero to two only if genuinely different>  
 > **Needs Scientist:** <science/compute approval or none>
 
-Choose from current **GitHub evidence, task priority, dependencies, readiness and actual permissions**, not stale chat state. Typical routing: `RESEARCH_BLOCKED` → Mentor/Scientist; `RESEARCH_READY` → Architect; `CPU_IN_PROGRESS` → Codex; `CPU_VALIDATED` → Architect readiness review; `GPU_READY` → Codex experiment **only after Scientist compute approval**; `GPU_BLOCKED` → local Architect/Codex diagnosis. Correctness/security blockers override the default route.
+Choose from current **GitHub evidence, task priority, dependencies, readiness and actual permissions**, not stale chat state. Typical routing: `RESEARCH_BLOCKED` → Mentor/Scientist; `RESEARCH_READY` → Architect; `CPU_IN_PROGRESS` → Codex; `CPU_VALIDATED` → Architect readiness review; `GPU_READY` → Codex experiment under the Scientist's **existing [No Price Gate standing compute authorization](GPU_EXPERIMENT.md)** (or later stricter terms), without renewed price/budget debate; `GPU_BLOCKED` → local Architect/Codex diagnosis. Correctness/security blockers override the default route.
 
 A recommended command **does not execute an Agent**, allocate compute or authorize merges. Never request repeated Colab runs before `GPU_READY`, reveal credentials, bypass merge authority or promise background execution. [Task Management](TASK_MANAGEMENT.md) owns Issue/PR state; this file owns the response handoff.
 
@@ -26,7 +26,7 @@ Before sending the **final user-facing reply** of every substantive Mentor, Arch
 1. **Status and evidence:** state what was actually completed versus NOT RUN / UNVERIFIED / BLOCKED, with verifiable Issue, PR, report or commit links when available. Never fabricate activity, approvals or progress.
 2. **One recommended handoff:** when a feasible next step exists, provide **one full, stand-alone, immediately copyable Chinese command** naming its target and action: `推进架构师工作：…`, `推进导师工作：…`, `推进工程师工作：…`, or `Scientist：…`. No placeholders, ambiguous fragments or commands to an agent that cannot actually be invoked.
 3. **Meaningful choices:** offer zero to two distinct, feasible alternatives only when there is a real fork in the workflow. Rank one as the recommendation; do not pad choices or repeat the same work with different wording.
-4. **Resource and authority gate:** preserve required scientific/compute approvals, actual tool access and role boundaries. A handoff is not an instruction to allocate hardware, merge, or launch Codex automatically.
+4. **Resource and authority gate:** treat the Scientist's [No Price Gate standing grant](GPU_EXPERIMENT.md) as valid prior approval for existing Colab entitlements; **do not route back for per-run price or quota signoff**. Preserve scientific/readiness gates, actual tool access, later restrictions and separate approval for new charges. A handoff is not a claim that hardware, merge or Codex was automatically invoked.
 5. **Last visible section:** end the reply with **SAE · Next action** (including current state, evidence, recommendation/alternatives and Scientist requirements). Explicitly write DONE / BLOCKED / WAITING_FOR_SCIENTIST if there is no honest executable next action; when a safe recovery or approval step exists, make that the copyable recommendation.
 
 ### Copy/paste and interactive-choice fallback
