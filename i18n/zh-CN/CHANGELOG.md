@@ -3,6 +3,15 @@
 > 语言：[English](../../CHANGELOG.md) | **简体中文**
 
 
+## V3.3 — Experiment by Default：取消 Scientist 算力审批（2026-10-20）
+
+- 按用户 T3 明确决定，取代此前 No Price Gate 的“常设授权核验”流程：Codex 在现有账户内直接执行有界 CPU/GPU/TPU 实验，**无须 Scientist 算力许可或查验授权记录**；Architect 派单审核，Scientist 保留科研结论和实质决定。
+- 有界的 GPU/TPU-XLA/环境 `PROBE_ONLY` 探针可先于正式数学及 CPU Benchmark 准备开展，但不得冒充数值正确性或正式性能证据。
+- 保留真实工具/账户权限、固定 SHA、有限超时、默认单会话、结果证据与会话释放；新增收费及敏感对外发布遵守独立用户/安全审批。旧算法项目固定快照不自动升级，不增加后台调度或 CI。
+- 同步中英文角色、治理引用、任务管理、角色恢复、实验报告及 Issue/PR 模板。
+
+> Historical note: superseded by the 2026-10-20 Experiment by Default amendment above.
+
 ## V3.3 — No Price Gate 常设 Colab 计算授权（2026-10-20）
 
 - Scientist 明确授予 Codex 使用现有 Colab 账户权益及预付 Compute Units 的可撤销常设授权，用于有范围的 CPU/GPU/TPU 实验；不再要求逐次价格预测、预算数字与额度审批，允许使用既有额度直至实际耗尽。
