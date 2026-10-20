@@ -11,7 +11,7 @@ Windows Codex → WSL2 Ubuntu 24.04 → Colab CLI 0.7.4 → 真实 T4 GPU smoke 
 - 实测 Colab CLI CPU 和使用真实算法 Benchmark CLI 的有限 GPU 实验，固定源码 SHA 并验证数值参考。
 - 验证下载完整性、失败传播、会话释放和使用仓库最小权限凭据的 GitHub 报告分支/PR 发布。
 - 独立验证 TPU 分配与 PyTorch/XLA，不根据设备菜单推断支持。
-- 遵守 Scientist 批准的硬件、会话/时长与额度，不强制绑定 NVIDIA/CUDA。
+- Codex 直接使用现有账户设备，不设 Scientist 签核；遵守实际服务商限制、有限超时与资源释放，不强制绑定 NVIDIA/CUDA。
 
 ## P1 — 跨项目复用
 - 从固定 SAE commit 安全幂等初始化：dry-run、不覆盖、在目标项目检查链接和配置。
