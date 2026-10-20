@@ -6,7 +6,7 @@
 
 ## 组织架构图
 
-未来项目可使用[本地预检与有界 Colab 传输工具](tools/compute/README.zh-CN.md)：**LOCAL_VALIDATED / LIVE_NOT_RUN**。driver 与 manifest 由算法项目提供；不会迁移旧项目的固定快照。
+未来项目可使用[本地预检与有界 Colab 传输工具](tools/compute/README.zh-CN.md)：基于 [SAE PR #48](https://github.com/JohnnyZPiggy/SAE-Framework/pull/48)，已获得 **SCOPED LIVE_READY（Colab CLI 0.7.4、请求 T4 的 transport-only 路径）**；该次纯传输实验未直接核实实际设备型号。driver 与 manifest 由算法项目提供；不会迁移旧项目的固定快照。
 
 ![SAE V3.3 — ChatGPT 原生卡片风格科研与工程组织架构图](docs/figures/SAE_Framework_V3.3.zh-CN.svg)
 
@@ -108,8 +108,10 @@ GPT 自主判断简明[数学结构研究](workflows/MATHEMATICAL_RESEARCH.md)�
 
 口令是用户触发的有边界工作周期，不代表后台自主服务。不默认使用 GitHub Actions/付费 CI、不泄密、不虚报实验、不通过 Drive 同步结果。
 
-## 验证状态（2026-10-19）
-据 Scientist 交接，Codex → WSL2 → Colab CLI 已完成 T4 GPU smoke test、结果完整性验证和会话释放。**尚未验证：** Colab CPU、TPU 分配/PyTorch-XLA、GitHub 自动发布、跨项目复用、完整 SAE Benchmark→PR 链路。文档本身不代表 Bootstrap/Publisher 已实现。
+## 验证状态（2026-10-20）
+- **真实 Colab 传输已验收：** [SAE PR #48](https://github.com/JohnnyZPiggy/SAE-Framework/pull/48) 已合并（`c0cb3c1c59073e61bd8f12e54f9e05eaea7bf2e7`）。固定工具源码 `8081b6e02eee0754903898d5afe5b112f1bb23d0`、CLI 0.7.4，一次真实请求 T4 的分配、Kernel 探针、driver 执行、文件 SHA-256 校验及认证可信零活动会话清理通过。**LIVE_READY 仅限传输范围**；该次实验未直接观察硬件身份。
+- **首个科学 CPU/GPU 试点已验收：** [TorchYAND PR #22](https://github.com/JohnnyZPiggy/TorchYAND/pull/22) 已合并（`1ee2a100db61bc3be62ced9cc7923f261b512b35`）。独立 Autograd 梯度对照、限定的 simplex/KKT 测试，以及实际确认的 Tesla T4 上的 MVSK `value_grad` CPU/GPU 对照与性能实验通过。仅支持该次试点的结论，不代表通用求解器加速保证。
+- **仍未完成/验证：** 通用实验 Publisher、Bootstrap CLI、跨多个算法项目的复用、TPU/PyTorch-XLA 和通用异构兼容性；这两项 PR 未单独验证 Colab CPU 分配。Codex 已通过 PR 发布真实结果，但不等于通用 Publisher 已实现。
 
 ## 文档
 [架构师](i18n/zh-CN/protocols/ARCHITECT.md) · [工程师](i18n/zh-CN/protocols/ENGINEER.md) · [导师](i18n/zh-CN/protocols/MENTOR.md) · [科学家](i18n/zh-CN/protocols/SCIENTIST.md) · [角色恢复](i18n/zh-CN/workflows/ROLE_RECOVERY.md) · [变更记录](i18n/zh-CN/CHANGELOG.md) · [中文导航](i18n/zh-CN/README.md)
