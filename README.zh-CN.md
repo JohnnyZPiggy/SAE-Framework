@@ -75,7 +75,7 @@ flowchart TB
 
 </details>
 
-上图以独立 SVG 矢量元素重绘 ChatGPT 原生卡片布局，保留双重目标、Scientist 决策层、GPT/Codex 协作、GitHub 证据中心和 Codex 操作的计算层。下方 Mermaid 保留可编辑的逻辑结构，不代表尚未验收的实验能力已经通过。
+中英文 SVG 忠实重绘已确认的 **ChatGPT 原生 UI 卡片式组织架构**：双重目标 → Scientist 设定目标与叫停 → GPT Chief Architect + Scientific Mentor 自主科研/工程决策 → Codex 执行 → CPU/GPU/TPU → GitHub 证据回流。圆角卡片、矢量图标、连接箭头和真实执行边界均直接由 SVG 元素组成。上方 Mermaid 与 `.mmd` 是可编辑的**逻辑视图**；SVG 仅作架构展示，不代表未执行的实验已验证。
 
 *TPU/PyTorch-XLA 与自动发布仍须实测。*
 
