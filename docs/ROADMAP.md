@@ -11,7 +11,7 @@ Windows Codex → WSL2 Ubuntu 24.04 → Colab CLI 0.7.4 → real T4 GPU smoke te
 - Prove Colab CLI CPU execution and bounded GPU experiments using real algorithm benchmark CLIs, pinned source SHA and numerical oracle.
 - Verify download integrity, failure propagation, session cleanup and GitHub report branch/PR publication with repository-scoped credentials.
 - Verify TPU allocation and PyTorch/XLA independently; never infer support from listed TPU models.
-- Respect Scientist-approved hardware, session/time and quota; avoid mandatory NVIDIA/CUDA-specific code.
+- Default to direct Codex use of existing-account devices without Scientist approval; apply real provider limits, finite session timeout and cleanup, and avoid mandatory NVIDIA/CUDA-specific code.
 
 ## P1 — Reusable project adoption
 - Safe idempotent bootstrap from pinned SAE commit; dry-run, no overwrite, target-project link/config validation.
