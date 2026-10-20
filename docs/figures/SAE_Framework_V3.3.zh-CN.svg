@@ -1,213 +1,175 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="2740" viewBox="0 0 1440 2740" role="img" aria-labelledby="title desc">
-<title id="title">SAE Framework V3.3 — 原生卡片式组织架构图</title>
-<desc id="desc">Scientist leads scientific decisions; GPT is Architect and Mentor; Codex engineers and executes authorized experiments; GitHub is the evidence hub, Colab CLI is the execution layer.</desc>
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="3020" viewBox="0 0 1280 3020" role="img" aria-labelledby="title desc">
+<title id="title">SAE V3.3 · GPT 自主科研组织架构</title>
+<desc id="desc">原生卡片风格：Scientist 设定目标，GPT 负责科研与工程决策，Codex 执行，CPU/GPU/TPU 与 GitHub 证据循环。</desc>
 <defs>
-<g id="ic-network" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"><rect x="2" y="3" width="8" height="6" rx="2"/><rect x="14" y="3" width="8" height="6" rx="2"/><rect x="8" y="15" width="8" height="6" rx="2"/><path d="M6 9v3h12V9M12 12v3"/></g>
-<g id="ic-rocket" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"><path d="M4.5 16.5c-2.5 0-3.5 2.5-3.5 5.5 3 0 5.5-1 5.5-3.5"/><path d="M12 15l-3 3-3-3 3-3"/><path d="M9 12C11 6 16 3 22 2c0 6-3 11-9 13z"/><circle cx="16.5" cy="7.5" r="1.5"/></g>
-<g id="ic-brain" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"><path d="M12 18V5a3 3 0 0 0-5.5-1.5A4 4 0 0 0 3 10a4 4 0 0 0 1 7 3.5 3.5 0 0 0 6.5 1.5A3 3 0 0 0 12 18zm0 0V5a3 3 0 0 1 5.5-1.5A4 4 0 0 1 21 10a4 4 0 0 1-1 7 3.5 3.5 0 0 1-6.5 1.5A3 3 0 0 1 12 18z"/><path d="M8 9c2 0 3 1 4 3m4-3c-2 0-3 1-4 3m-6 2c3 0 4-1 6-2m6 2c-3 0-4-1-6-2"/></g>
-<g id="ic-user" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"><circle cx="12" cy="8" r="4"/><path d="M4 21v-2a8 8 0 0 1 16 0v2"/></g>
-<g id="ic-target" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></g>
-<g id="ic-check" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></g>
-<g id="ic-shield" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/><path d="m9 12 2 2 4-4"/></g>
-<g id="ic-openai" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M7 6c3-3 9 0 9 4v7M9 19c-4 0-6-5-3-8l6-5m7 1c3 5-1 9-5 9H7m6-11c5-1 9 5 6 9l-6 4M4 13c-1 4 4 8 8 6l6-4"/></g>
-<g id="ic-book" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"><path d="M12 7c-2-2-6-3-10-2v14c4-1 8 0 10 2 2-2 6-3 10-2V5c-4-1-8 0-10 2zm0 0v14"/></g>
-<g id="ic-merge" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"><circle cx="6" cy="4" r="2"/><circle cx="18" cy="6" r="2"/><circle cx="6" cy="20" r="2"/><path d="M6 6v12M18 8c0 7-12 2-12 8"/></g>
-<g id="ic-code" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"><path d="m8 6-6 6 6 6m8-12 6 6-6 6m-2-16-4 20"/></g>
-<g id="ic-terminal" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"><rect x="2" y="3" width="20" height="18" rx="3"/><path d="m6 9 4 3-4 3m7 0h5"/></g>
-<g id="ic-cpu" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"><rect x="5" y="5" width="14" height="14" rx="2"/><rect x="9" y="9" width="6" height="6" rx="1"/><path d="M9 1v4m6-4v4m-6 14v4m6-4v4M1 9h4m-4 6h4m14-6h4m-4 6h4"/></g>
-<g id="ic-git" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"><circle cx="6" cy="3.5" r="2.5"/><circle cx="18" cy="9" r="2.5"/><circle cx="6" cy="20.5" r="2.5"/><path d="M6 6v12M18 11.5v3.5a5 5 0 0 1-5 5H8.5M8.5 3.5H13a5 5 0 0 1 5 5"/></g>
-<g id="ic-tasks" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"><path d="M10 5h11M10 12h11M10 19h11m-18-14 2 2 3-4m-5 9 2 2 3-4m-5 9 2 2 3-4"/></g>
-<g id="ic-chart" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"><path d="M3 21h18M6 17v-5m6 5V7m6 10V3"/></g>
-<g id="ic-flask" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"><path d="M9 3h6m-5 0v7L4 20a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2l-6-10V3M8 16h8"/></g>
-<g id="ic-download" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"><path d="M12 3v13m-5-5 5 5 5-5M4 18v3h16v-3"/></g>
-<g id="ic-upload" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"><path d="M12 16V3m-5 5 5-5 5 5M4 16v5h16v-5"/></g>
-<g id="ic-arrowright" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"><path d="M4 12h16m-6-6 6 6-6 6"/></g>
-<g id="ic-arrowdown" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"><path d="M12 4v16m-6-6 6 6 6-6"/></g>
-<g id="ic-repeat" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"><path d="M17 1l4 4-4 4M3 11V8a3 3 0 0 1 3-3h15M7 23l-4-4 4-4m14-2v3a3 3 0 0 1-3 3H3"/></g>
-<g id="ic-cloud" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"><path d="M20 17H7a5 5 0 1 1 1-9 7 7 0 0 1 13 3 3 3 0 0 1-1 6Z"/><path d="M12 11v6m-3-3h6"/></g>
-<g id="ic-folder" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"><path d="M3 6a2 2 0 0 1 2-2h5l2 3h7a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Z"/></g>
-<g id="ic-info" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M12 10v6m0-10v.3"/></g>
-<g id="ic-zap" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"><path d="m13 2-10 12h8l-1 8 11-13h-8z"/></g>
-<g id="ic-circuit" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"><rect x="4" y="4" width="16" height="16" rx="3"/><circle cx="9" cy="9" r="1"/><circle cx="15" cy="15" r="1"/><path d="M9 10v4h6M1 8h3m-3 8h3m16-8h3m-3 8h3"/></g>
-<g id="ic-gauge" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"><path d="M4 18a9 9 0 1 1 16 0"/><path d="m12 15 4-6"/><circle cx="12" cy="15" r="1.5"/></g>
-<g id="ic-lock" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"><rect x="5" y="11" width="14" height="11" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></g>
-<marker id="chevron" markerWidth="10" markerHeight="10" refX="7" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M1 1L8 5 1 9" stroke="#A9BACF" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></marker>
-</defs>
-<rect x="0" y="0" width="1440" height="2740" rx="0" fill="#F8FAFD" stroke="none" stroke-width="0"/>
-<rect x="86" y="55" width="230" height="46" rx="23" fill="#E8EEF8" stroke="none" stroke-width="0"/>
-<g transform="translate(105 65) scale(1.00000)" color="#516C94"><use href="#ic-network"/></g>
-<text x="145" y="85" text-anchor="start" font-family="'Noto Sans CJK SC','Noto Sans CJK JP','Microsoft YaHei','PingFang SC','Arial',sans-serif" font-size="20" font-weight="760" fill="#48607F">SAE  /  V3.3</text>
-<text x="87" y="164" text-anchor="start" font-family="'Noto Sans CJK SC','Noto Sans CJK JP','Microsoft YaHei','PingFang SC','Arial',sans-serif" font-size="57" font-weight="780" fill="#1C2C43" letter-spacing="-.8">SAE Framework</text>
-<text x="92" y="214" text-anchor="start" font-family="'Noto Sans CJK SC','Noto Sans CJK JP','Microsoft YaHei','PingFang SC','Arial',sans-serif" font-size="24" font-weight="450" fill="#65758B">科研优先  ·  工程可靠  ·  持续学习</text>
-<text x="1354" y="160" text-anchor="end" font-family="'Noto Sans CJK SC','Noto Sans CJK JP','Microsoft YaHei','PingFang SC','Arial',sans-serif" font-size="18" font-weight="620" fill="#7C8DA4">AI 科研协作架构  /  V3.3</text>
-<path d="M86 246H1354" fill="none" stroke="#E2E8F0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="1"/>
-<text x="86" y="286" text-anchor="start" font-family="'Noto Sans CJK SC','Noto Sans CJK JP','Microsoft YaHei','PingFang SC','Arial',sans-serif" font-size="22" font-weight="760" fill="#5C789C">01</text>
-<text x="132" y="286" text-anchor="start" font-family="'Noto Sans CJK SC','Noto Sans CJK JP','Microsoft YaHei','PingFang SC','Arial',sans-serif" font-size="24" font-weight="730" fill="#3A4C65">双重目标</text>
-<text x="1353" y="286" text-anchor="end" font-family="'Noto Sans CJK SC','Noto Sans CJK JP','Microsoft YaHei','PingFang SC','Arial',sans-serif" font-size="18" font-weight="620" fill="#8B98A9" letter-spacing=".65">TWO EQUAL OBJECTIVES</text>
-<rect x="86" y="318" width="615" height="189" rx="24" fill="#E8EEF5" opacity=".55"/>
-<rect x="86" y="312" width="615" height="189" rx="24" fill="#EFF6FF" stroke="#CBDEF6" stroke-width="1.7"/>
-<rect x="739" y="318" width="615" height="189" rx="24" fill="#E8EEF5" opacity=".55"/>
-<rect x="739" y="312" width="615" height="189" rx="24" fill="#EDF8F3" stroke="#C7E8D9" stroke-width="1.7"/>
-<rect x="113" y="337" width="66" height="66" rx="17" fill="#DDEBFC" stroke="none" stroke-width="0"/>
-<g transform="translate(130.49 354.49) scale(1.29250)" color="#3168A8"><use href="#ic-rocket"/></g>
-<rect x="766" y="337" width="66" height="66" rx="17" fill="#DCF2E7" stroke="none" stroke-width="0"/>
-<g transform="translate(783.49 354.49) scale(1.29250)" color="#238165"><use href="#ic-brain"/></g>
-<text x="197" y="368" text-anchor="start" font-family="'Noto Sans CJK SC','Noto Sans CJK JP','Microsoft YaHei','PingFang SC','Arial',sans-serif" font-size="31" font-weight="740" fill="#244F80">工程生产力</text>
-<text x="850" y="368" text-anchor="start" font-family="'Noto Sans CJK SC','Noto Sans CJK JP','Microsoft YaHei','PingFang SC','Arial',sans-serif" font-size="31" font-weight="740" fill="#245E4A">科学学习</text>
-<text x="197" y="397" text-anchor="start" font-family="'Noto Sans CJK SC','Noto Sans CJK JP','Microsoft YaHei','PingFang SC','Arial',sans-serif" font-size="19" font-weight="420" fill="#6685A9">Engineering Productivity</text>
-<text x="850" y="397" text-anchor="start" font-family="'Noto Sans CJK SC','Noto Sans CJK JP','Microsoft YaHei','PingFang SC','Arial',sans-serif" font-size="19" font-weight="420" fill="#5E937C">Scientific Learning</text>
-<path d="M121 421H664" fill="none" stroke="#C7D9EC" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" opacity="1"/>
-<path d="M774 421H1316" fill="none" stroke="#C4E3D6" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" opacity="1"/>
-<text x="126" y="469" text-anchor="start" font-family="'Noto Sans CJK SC','Noto Sans CJK JP','Microsoft YaHei','PingFang SC','Arial',sans-serif" font-size="23" font-weight="520" fill="#55718F">可靠 · 可复现 · 低成本</text>
-<text x="779" y="469" text-anchor="start" font-family="'Noto Sans CJK SC','Noto Sans CJK JP','Microsoft YaHei','PingFang SC','Arial',sans-serif" font-size="23" font-weight="520" fill="#4B816C">数学 · 数值计算 · ML Systems</text>
-<path d="M393 506V532H720M1046 506V532H720M720 532V569" fill="none" stroke="#AFBFCD" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity="1" marker-end="url(#chevron)"/>
-<text x="740" y="552" text-anchor="start" font-family="'Noto Sans CJK SC','Noto Sans CJK JP','Microsoft YaHei','PingFang SC','Arial',sans-serif" font-size="18" font-weight="550" fill="#8A97AA">共同服务于科学家</text>
-<text x="86" y="606" text-anchor="start" font-family="'Noto Sans CJK SC','Noto Sans CJK JP','Microsoft YaHei','PingFang SC','Arial',sans-serif" font-size="22" font-weight="760" fill="#5C789C">02</text>
-<text x="132" y="606" text-anchor="start" font-family="'Noto Sans CJK SC','Noto Sans CJK JP','Microsoft YaHei','PingFang SC','Arial',sans-serif" font-size="24" font-weight="730" fill="#3A4C65">决策与管理层</text>
-<text x="1353" y="606" text-anchor="end" font-family="'Noto Sans CJK SC','Noto Sans CJK JP','Microsoft YaHei','PingFang SC','Arial',sans-serif" font-size="18" font-weight="620" fill="#8B98A9" letter-spacing=".65">LEADERSHIP</text>
-<rect x="86" y="636" width="1268" height="240" rx="26" fill="#E8EEF5" opacity=".55"/>
-<rect x="86" y="630" width="1268" height="240" rx="26" fill="#FFF6E7" stroke="#EED8B7" stroke-width="1.8"/>
-<rect x="119" y="657" width="73" height="73" rx="17" fill="#F8E8C9" stroke="none" stroke-width="0"/>
-<g transform="translate(138.345 676.345) scale(1.42958)" color="#9C6930"><use href="#ic-user"/></g>
-<text x="218" y="695" text-anchor="start" font-family="'Noto Sans CJK SC','Noto Sans CJK JP','Microsoft YaHei','PingFang SC','Arial',sans-serif" font-size="36" font-weight="760" fill="#654C32">Scientist · 科学家</text>
-<text x="220" y="728" text-anchor="start" font-family="'Noto Sans CJK SC','Noto Sans CJK JP','Microsoft YaHei','PingFang SC','Arial',sans-serif" font-size="20" font-weight="510" fill="#9E8060">Human  ·  Research Director</text>
-<text x="120" y="781" text-anchor="start" font-family="'Noto Sans CJK SC','Noto Sans CJK JP','Microsoft YaHei','PingFang SC','Arial',sans-serif" font-size="24" font-weight="500" fill="#614F3F">决定科研方向、批准数学结论、掌握最终科学决策权。</text>
-<rect x="117" y="801" width="282" height="56" rx="15" fill="#FFFFFF" stroke="#E0E7F0" stroke-width="1.4"/>
-<g transform="translate(134 817) scale(1.00000)" color="#9C6930"><use href="#ic-target"/></g>
-<text x="170" y="836" text-anchor="start" font-family="'Noto Sans CJK SC','Noto Sans CJK JP','Microsoft YaHei','PingFang SC','Arial',sans-serif" font-size="20" font-weight="600" fill="#45556B">科研选题</text>
-<rect x="416" y="801" width="287" height="56" rx="15" fill="#FFFFFF" stroke="#E0E7F0" stroke-width="1.4"/>
-<g transform="translate(433 817) scale(1.00000)" color="#9C6930"><use href="#ic-check"/></g>
-<text x="469" y="836" text-anchor="start" font-family="'Noto Sans CJK SC','Noto Sans CJK JP','Microsoft YaHei','PingFang SC','Arial',sans-serif" font-size="20" font-weight="600" fill="#45556B">科学验收</text>
-<rect x="720" y="801" width="322" height="56" rx="15" fill="#FFFFFF" stroke="#E0E7F0" stroke-width="1.4"/>
-<g transform="translate(737 817) scale(1.00000)" color="#9C6930"><use href="#ic-shield"/></g>
-<text x="773" y="836" text-anchor="start" font-family="'Noto Sans CJK SC','Noto Sans CJK JP','Microsoft YaHei','PingFang SC','Arial',sans-serif" font-size="20" font-weight="600" fill="#45556B">算力预算授权</text>
-<path d="M720 875V905M403 905H1037M403 905V940M1037 905V940" fill="none" stroke="#A4B6C9" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity="1" marker-end="url(#chevron)"/>
-<text x="720" y="932" text-anchor="middle" font-family="'Noto Sans CJK SC','Noto Sans CJK JP','Microsoft YaHei','PingFang SC','Arial',sans-serif" font-size="19" font-weight="500" fill="#617086">科研任务  ·  工程授权  ·  多轮协调</text>
-<text x="86" y="994" text-anchor="start" font-family="'Noto Sans CJK SC','Noto Sans CJK JP','Microsoft YaHei','PingFang SC','Arial',sans-serif" font-size="22" font-weight="760" fill="#5C789C">03</text>
-<text x="132" y="994" text-anchor="start" font-family="'Noto Sans CJK SC','Noto Sans CJK JP','Microsoft YaHei','PingFang SC','Arial',sans-serif" font-size="24" font-weight="730" fill="#3A4C65">智能体协作层</text>
-<text x="1353" y="994" text-anchor="end" font-family="'Noto Sans CJK SC','Noto Sans CJK JP','Microsoft YaHei','PingFang SC','Arial',sans-serif" font-size="18" font-weight="620" fill="#8B98A9" letter-spacing=".65">AI AGENTS</text>
-<rect x="86" y="1029" width="615" height="407" rx="25" fill="#E8EEF5" opacity=".55"/>
-<rect x="86" y="1023" width="615" height="407" rx="25" fill="#F2F2FE" stroke="#D9DAF4" stroke-width="1.8"/>
-<rect x="739" y="1029" width="615" height="407" rx="25" fill="#E8EEF5" opacity=".55"/>
-<rect x="739" y="1023" width="615" height="407" rx="25" fill="#EFF9F7" stroke="#C8E8E3" stroke-width="1.8"/>
-<rect x="112" y="1053" width="75" height="75" rx="17" fill="#E0E2FA" stroke="none" stroke-width="0"/>
-<g transform="translate(131.875 1072.875) scale(1.46875)" color="#5B60B0"><use href="#ic-openai"/></g>
-<rect x="766" y="1053" width="75" height="75" rx="17" fill="#D9F2EA" stroke="none" stroke-width="0"/>
-<g transform="translate(785.875 1072.875) scale(1.46875)" color="#207A77"><use href="#ic-code"/></g>
-<text x="207" y="1092" text-anchor="start" font-family="'Noto Sans CJK SC','Noto Sans CJK JP','Microsoft YaHei','PingFang SC','Arial',sans-serif" font-size="35" font-weight="760" fill="#394A8B">GPT</text>
-<text x="207" y="1124" text-anchor="start" font-family="'Noto Sans CJK SC','Noto Sans CJK JP','Microsoft YaHei','PingFang SC','Arial',sans-serif" font-size="18" font-weight="470" fill="#767DB5">Chief Architect + Scientific Mentor</text>
-<text x="858" y="1092" text-anchor="start" font-family="'Noto Sans CJK SC','Noto Sans CJK JP','Microsoft YaHei','PingFang SC','Arial',sans-serif" font-size="35" font-weight="760" fill="#235D59">Codex</text>
-<text x="858" y="1124" text-anchor="start" font-family="'Noto Sans CJK SC','Noto Sans CJK JP','Microsoft YaHei','PingFang SC','Arial',sans-serif" font-size="18" font-weight="470" fill="#5F9890">Software &amp; Experiment Engineer</text>
-<path d="M115 1150H670" fill="none" stroke="#D9DDF4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" opacity="1"/>
-<path d="M766 1150H1326" fill="none" stroke="#CEEBE4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" opacity="1"/>
-<rect x="112" y="1170" width="563" height="113" rx="16" fill="#FFFFFF" stroke="#DFE6EF" stroke-width="1.5"/>
-<rect x="127" y="1188" width="54" height="54" rx="17" fill="#E3E5FA" stroke="none" stroke-width="0"/>
-<g transform="translate(141.31 1202.31) scale(1.05750)" color="#5B60B0"><use href="#ic-book"/></g>
-<text x="195" y="1205" text-anchor="start" font-family="'Noto Sans CJK SC','Noto Sans CJK JP','Microsoft YaHei','PingFang SC','Arial',sans-serif" font-size="24" font-weight="710" fill="#2D3B50">科学导师</text>
-<text x="195" y="1236" text-anchor="start" font-family="'Noto Sans CJK SC','Noto Sans CJK JP','Microsoft YaHei','PingFang SC','Arial',sans-serif" font-size="20" font-weight="450" fill="#57677D">数学结构研究 · 张量化 · 数值分析</text>
-<text x="195" y="1265" text-anchor="start" font-family="'Noto Sans CJK SC','Noto Sans CJK JP','Microsoft YaHei','PingFang SC','Arial',sans-serif" font-size="19" font-weight="450" fill="#697990">实验解释与科学学习指导</text>
-<rect x="112" y="1296" width="563" height="112" rx="16" fill="#FFFFFF" stroke="#DFE6EF" stroke-width="1.5"/>
-<rect x="127" y="1316" width="54" height="54" rx="17" fill="#E3E5FA" stroke="none" stroke-width="0"/>
-<g transform="translate(141.31 1330.31) scale(1.05750)" color="#5B60B0"><use href="#ic-merge"/></g>
-<text x="195" y="1332" text-anchor="start" font-family="'Noto Sans CJK SC','Noto Sans CJK JP','Microsoft YaHei','PingFang SC','Arial',sans-serif" font-size="24" font-weight="710" fill="#2D3B50">总架构师</text>
-<text x="195" y="1364" text-anchor="start" font-family="'Noto Sans CJK SC','Noto Sans CJK JP','Microsoft YaHei','PingFang SC','Arial',sans-serif" font-size="20" font-weight="450" fill="#57677D">技术设计 · GitHub Issues 派发</text>
-<text x="195" y="1391" text-anchor="start" font-family="'Noto Sans CJK SC','Noto Sans CJK JP','Microsoft YaHei','PingFang SC','Arial',sans-serif" font-size="19" font-weight="450" fill="#697990">成果审核 · 合格 PR 独立合并</text>
-<rect x="765" y="1170" width="563" height="113" rx="16" fill="#FFFFFF" stroke="#DFE6EF" stroke-width="1.5"/>
-<rect x="780" y="1188" width="54" height="54" rx="17" fill="#DDF3ED" stroke="none" stroke-width="0"/>
-<g transform="translate(794.31 1202.31) scale(1.05750)" color="#207A77"><use href="#ic-terminal"/></g>
-<text x="848" y="1205" text-anchor="start" font-family="'Noto Sans CJK SC','Noto Sans CJK JP','Microsoft YaHei','PingFang SC','Arial',sans-serif" font-size="24" font-weight="710" fill="#2D3B50">软件工程师</text>
-<text x="848" y="1236" text-anchor="start" font-family="'Noto Sans CJK SC','Noto Sans CJK JP','Microsoft YaHei','PingFang SC','Arial',sans-serif" font-size="20" font-weight="450" fill="#57677D">算法实现 · PyTorch 重构</text>
-<text x="848" y="1265" text-anchor="start" font-family="'Noto Sans CJK SC','Noto Sans CJK JP','Microsoft YaHei','PingFang SC','Arial',sans-serif" font-size="19" font-weight="450" fill="#697990">数值正确性 · 回归与边界测试</text>
-<rect x="765" y="1296" width="563" height="112" rx="16" fill="#FFFFFF" stroke="#DFE6EF" stroke-width="1.5"/>
-<rect x="780" y="1316" width="54" height="54" rx="17" fill="#DDF3ED" stroke="none" stroke-width="0"/>
-<g transform="translate(794.31 1330.31) scale(1.05750)" color="#207A77"><use href="#ic-cpu"/></g>
-<text x="848" y="1332" text-anchor="start" font-family="'Noto Sans CJK SC','Noto Sans CJK JP','Microsoft YaHei','PingFang SC','Arial',sans-serif" font-size="24" font-weight="710" fill="#2D3B50">实验工程师</text>
-<text x="848" y="1364" text-anchor="start" font-family="'Noto Sans CJK SC','Noto Sans CJK JP','Microsoft YaHei','PingFang SC','Arial',sans-serif" font-size="20" font-weight="450" fill="#57677D">本地 CPU · Colab CLI CPU/GPU/TPU*</text>
-<text x="848" y="1391" text-anchor="start" font-family="'Noto Sans CJK SC','Noto Sans CJK JP','Microsoft YaHei','PingFang SC','Arial',sans-serif" font-size="19" font-weight="450" fill="#697990">结果校验 · 资源释放 · 证据 PR</text>
-<g transform="translate(292 1454) scale(1.16667)" color="#617086"><use href="#ic-repeat"/></g>
-<text x="334" y="1478" text-anchor="start" font-family="'Noto Sans CJK SC','Noto Sans CJK JP','Microsoft YaHei','PingFang SC','Arial',sans-serif" font-size="20" font-weight="550" fill="#62758B">GPT ↔ Codex   ·   设计 / 实现 / 反馈 / 审查，循环迭代</text>
-<path d="M393 1489V1514H720M1047 1489V1514H720M720 1514V1556" fill="none" stroke="#AEBDCE" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity="1" marker-end="url(#chevron)"/>
-<text x="86" y="1590" text-anchor="start" font-family="'Noto Sans CJK SC','Noto Sans CJK JP','Microsoft YaHei','PingFang SC','Arial',sans-serif" font-size="22" font-weight="760" fill="#5C789C">04</text>
-<text x="132" y="1590" text-anchor="start" font-family="'Noto Sans CJK SC','Noto Sans CJK JP','Microsoft YaHei','PingFang SC','Arial',sans-serif" font-size="24" font-weight="730" fill="#3A4C65">协作中心</text>
-<text x="1353" y="1590" text-anchor="end" font-family="'Noto Sans CJK SC','Noto Sans CJK JP','Microsoft YaHei','PingFang SC','Arial',sans-serif" font-size="18" font-weight="620" fill="#8B98A9" letter-spacing=".65">SOURCE OF TRUTH</text>
-<rect x="86" y="1623" width="1268" height="373" rx="26" fill="#E8EEF5" opacity=".55"/>
-<rect x="86" y="1617" width="1268" height="373" rx="26" fill="#F7F3FC" stroke="#E5D8F4" stroke-width="1.8"/>
-<rect x="113" y="1645" width="73" height="73" rx="17" fill="#EBE0F6" stroke="none" stroke-width="0"/>
-<g transform="translate(132.345 1664.345) scale(1.42958)" color="#6B55A0"><use href="#ic-git"/></g>
-<text x="207" y="1685" text-anchor="start" font-family="'Noto Sans CJK SC','Noto Sans CJK JP','Microsoft YaHei','PingFang SC','Arial',sans-serif" font-size="37" font-weight="740" fill="#554279">GitHub</text>
-<text x="208" y="1718" text-anchor="start" font-family="'Noto Sans CJK SC','Noto Sans CJK JP','Microsoft YaHei','PingFang SC','Arial',sans-serif" font-size="22" font-weight="470" fill="#8E78AB">唯一长期任务管理与科学证据中心</text>
-<path d="M117 1737H1323" fill="none" stroke="#E6DDF1" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" opacity="1"/>
-<rect x="114" y="1762" width="281" height="129" rx="18" fill="#FFFFFF" stroke="#E2DDEC" stroke-width="1.6"/>
-<rect x="128" y="1782" width="50" height="50" rx="17" fill="#F1EAF9" stroke="none" stroke-width="0"/>
-<g transform="translate(141.25 1795.25) scale(0.97917)" color="#6B55A0"><use href="#ic-tasks"/></g>
-<text x="188" y="1815" text-anchor="start" font-family="'Noto Sans CJK SC','Noto Sans CJK JP','Microsoft YaHei','PingFang SC','Arial',sans-serif" font-size="23" font-weight="700" fill="#453B62">Issues</text>
-<text x="131" y="1866" text-anchor="start" font-family="'Noto Sans CJK SC','Noto Sans CJK JP','Microsoft YaHei','PingFang SC','Arial',sans-serif" font-size="20" font-weight="480" fill="#6E6387">任务 · 规格</text>
-<rect x="423" y="1762" width="281" height="129" rx="18" fill="#FFFFFF" stroke="#E2DDEC" stroke-width="1.6"/>
-<rect x="437" y="1782" width="50" height="50" rx="17" fill="#F1EAF9" stroke="none" stroke-width="0"/>
-<g transform="translate(450.25 1795.25) scale(0.97917)" color="#6B55A0"><use href="#ic-code"/></g>
-<text x="497" y="1815" text-anchor="start" font-family="'Noto Sans CJK SC','Noto Sans CJK JP','Microsoft YaHei','PingFang SC','Arial',sans-serif" font-size="23" font-weight="700" fill="#453B62">Code</text>
-<text x="440" y="1866" text-anchor="start" font-family="'Noto Sans CJK SC','Noto Sans CJK JP','Microsoft YaHei','PingFang SC','Arial',sans-serif" font-size="20" font-weight="480" fill="#6E6387">源码 · 固定 SHA</text>
-<rect x="732" y="1762" width="281" height="129" rx="18" fill="#FFFFFF" stroke="#E2DDEC" stroke-width="1.6"/>
-<rect x="746" y="1782" width="50" height="50" rx="17" fill="#F1EAF9" stroke="none" stroke-width="0"/>
-<g transform="translate(759.25 1795.25) scale(0.97917)" color="#6B55A0"><use href="#ic-merge"/></g>
-<text x="806" y="1815" text-anchor="start" font-family="'Noto Sans CJK SC','Noto Sans CJK JP','Microsoft YaHei','PingFang SC','Arial',sans-serif" font-size="23" font-weight="700" fill="#453B62">Pull Requests</text>
-<text x="749" y="1866" text-anchor="start" font-family="'Noto Sans CJK SC','Noto Sans CJK JP','Microsoft YaHei','PingFang SC','Arial',sans-serif" font-size="20" font-weight="480" fill="#6E6387">审核 · 合并</text>
-<rect x="1041" y="1762" width="281" height="129" rx="18" fill="#FFFFFF" stroke="#E2DDEC" stroke-width="1.6"/>
-<rect x="1055" y="1782" width="50" height="50" rx="17" fill="#F1EAF9" stroke="none" stroke-width="0"/>
-<g transform="translate(1068.25 1795.25) scale(0.97917)" color="#6B55A0"><use href="#ic-chart"/></g>
-<text x="1115" y="1815" text-anchor="start" font-family="'Noto Sans CJK SC','Noto Sans CJK JP','Microsoft YaHei','PingFang SC','Arial',sans-serif" font-size="23" font-weight="700" fill="#453B62">Evidence</text>
-<text x="1058" y="1866" text-anchor="start" font-family="'Noto Sans CJK SC','Noto Sans CJK JP','Microsoft YaHei','PingFang SC','Arial',sans-serif" font-size="20" font-weight="480" fill="#6E6387">正确性 · Benchmark</text>
-<g transform="translate(124 1924) scale(1.12500)" color="#6B55A0"><use href="#ic-repeat"/></g>
-<text x="168" y="1947" text-anchor="start" font-family="'Noto Sans CJK SC','Noto Sans CJK JP','Microsoft YaHei','PingFang SC','Arial',sans-serif" font-size="20" font-weight="510" fill="#69597E">代码与证据通过 PR 归档 · 架构师审核合并 · 新发现回流下一轮研究</text>
-<path d="M720 1995V2054" fill="none" stroke="#AFBECE" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity="1" marker-end="url(#chevron)"/>
-<text x="744" y="2035" text-anchor="start" font-family="'Noto Sans CJK SC','Noto Sans CJK JP','Microsoft YaHei','PingFang SC','Arial',sans-serif" font-size="19" font-weight="530" fill="#617086">获授权的执行  ·  结果和证据返回 GitHub</text>
-<text x="86" y="2105" text-anchor="start" font-family="'Noto Sans CJK SC','Noto Sans CJK JP','Microsoft YaHei','PingFang SC','Arial',sans-serif" font-size="22" font-weight="760" fill="#5C789C">05</text>
-<text x="132" y="2105" text-anchor="start" font-family="'Noto Sans CJK SC','Noto Sans CJK JP','Microsoft YaHei','PingFang SC','Arial',sans-serif" font-size="24" font-weight="730" fill="#3A4C65">算力执行层</text>
-<text x="1353" y="2105" text-anchor="end" font-family="'Noto Sans CJK SC','Noto Sans CJK JP','Microsoft YaHei','PingFang SC','Arial',sans-serif" font-size="18" font-weight="620" fill="#8B98A9" letter-spacing=".65">COMPUTE &amp; EVIDENCE</text>
-<rect x="86" y="2138" width="1268" height="362" rx="26" fill="#E8EEF5" opacity=".55"/>
-<rect x="86" y="2132" width="1268" height="362" rx="26" fill="#F0F8FB" stroke="#C8E5EE" stroke-width="1.8"/>
-<rect x="115" y="2159" width="70" height="70" rx="17" fill="#DDF1F8" stroke="none" stroke-width="0"/>
-<g transform="translate(133.55 2177.55) scale(1.37083)" color="#27748E"><use href="#ic-cloud"/></g>
-<text x="204" y="2199" text-anchor="start" font-family="'Noto Sans CJK SC','Noto Sans CJK JP','Microsoft YaHei','PingFang SC','Arial',sans-serif" font-size="35" font-weight="760" fill="#235C71">Colab CLI</text>
-<text x="206" y="2231" text-anchor="start" font-family="'Noto Sans CJK SC','Noto Sans CJK JP','Microsoft YaHei','PingFang SC','Arial',sans-serif" font-size="20" font-weight="470" fill="#6790A0">Codex-operated  ·  Remote Compute</text>
-<rect x="113" y="2253" width="386" height="94" rx="17" fill="#FFFFFF" stroke="#D5E7ED" stroke-width="1.5"/>
-<rect x="128" y="2270" width="58" height="58" rx="17" fill="#E5F3F9" stroke="none" stroke-width="0"/>
-<g transform="translate(143.37 2285.37) scale(1.13583)" color="#27748E"><use href="#ic-cpu"/></g>
-<text x="200" y="2294" text-anchor="start" font-family="'Noto Sans CJK SC','Noto Sans CJK JP','Microsoft YaHei','PingFang SC','Arial',sans-serif" font-size="27" font-weight="700" fill="#2B5870">CPU</text>
-<text x="200" y="2323" text-anchor="start" font-family="'Noto Sans CJK SC','Noto Sans CJK JP','Microsoft YaHei','PingFang SC','Arial',sans-serif" font-size="19" font-weight="490" fill="#6D8190">本地 / Colab</text>
-<rect x="525" y="2253" width="386" height="94" rx="17" fill="#FFFFFF" stroke="#D5E7ED" stroke-width="1.5"/>
-<rect x="540" y="2270" width="58" height="58" rx="17" fill="#E5F3F9" stroke="none" stroke-width="0"/>
-<g transform="translate(555.37 2285.37) scale(1.13583)" color="#27748E"><use href="#ic-zap"/></g>
-<text x="612" y="2294" text-anchor="start" font-family="'Noto Sans CJK SC','Noto Sans CJK JP','Microsoft YaHei','PingFang SC','Arial',sans-serif" font-size="27" font-weight="700" fill="#2B5870">GPU</text>
-<text x="612" y="2323" text-anchor="start" font-family="'Noto Sans CJK SC','Noto Sans CJK JP','Microsoft YaHei','PingFang SC','Arial',sans-serif" font-size="19" font-weight="490" fill="#6D8190">T4 冒烟测试已报告</text>
-<rect x="937" y="2253" width="386" height="94" rx="17" fill="#FFFFFF" stroke="#D5E7ED" stroke-width="1.5"/>
-<rect x="952" y="2270" width="58" height="58" rx="17" fill="#E5F3F9" stroke="none" stroke-width="0"/>
-<g transform="translate(967.37 2285.37) scale(1.13583)" color="#27748E"><use href="#ic-circuit"/></g>
-<text x="1024" y="2294" text-anchor="start" font-family="'Noto Sans CJK SC','Noto Sans CJK JP','Microsoft YaHei','PingFang SC','Arial',sans-serif" font-size="27" font-weight="700" fill="#2B5870">TPU*</text>
-<text x="1024" y="2323" text-anchor="start" font-family="'Noto Sans CJK SC','Noto Sans CJK JP','Microsoft YaHei','PingFang SC','Arial',sans-serif" font-size="19" font-weight="490" fill="#6D8190">PyTorch/XLA 待验证</text>
-<text x="115" y="2385" text-anchor="start" font-family="'Noto Sans CJK SC','Noto Sans CJK JP','Microsoft YaHei','PingFang SC','Arial',sans-serif" font-size="21" font-weight="690" fill="#365D6D">可复现实验 · 三个独立阶段</text>
-<rect x="157" y="2412" width="49" height="49" rx="17" fill="#E0F1F6" stroke="none" stroke-width="0"/>
-<g transform="translate(169.985 2424.985) scale(0.95958)" color="#27748E"><use href="#ic-download"/></g>
-<text x="220" y="2433" text-anchor="start" font-family="'Noto Sans CJK SC','Noto Sans CJK JP','Microsoft YaHei','PingFang SC','Arial',sans-serif" font-size="22" font-weight="690" fill="#315F75">固定源码 SHA</text>
-<text x="220" y="2460" text-anchor="start" font-family="'Noto Sans CJK SC','Noto Sans CJK JP','Microsoft YaHei','PingFang SC','Arial',sans-serif" font-size="18" font-weight="450" fill="#6A8391">安装准确版本</text>
-<g transform="translate(503.0 2424) scale(1.00000)" color="#9FBDCB"><use href="#ic-arrowright"/></g>
-<rect x="567" y="2412" width="49" height="49" rx="17" fill="#E0F1F6" stroke="none" stroke-width="0"/>
-<g transform="translate(579.985 2424.985) scale(0.95958)" color="#27748E"><use href="#ic-flask"/></g>
-<text x="630" y="2433" text-anchor="start" font-family="'Noto Sans CJK SC','Noto Sans CJK JP','Microsoft YaHei','PingFang SC','Arial',sans-serif" font-size="22" font-weight="690" fill="#315F75">Benchmark</text>
-<text x="630" y="2460" text-anchor="start" font-family="'Noto Sans CJK SC','Noto Sans CJK JP','Microsoft YaHei','PingFang SC','Arial',sans-serif" font-size="18" font-weight="450" fill="#6A8391">不写 GitHub</text>
-<g transform="translate(913.0 2424) scale(1.00000)" color="#9FBDCB"><use href="#ic-arrowright"/></g>
-<rect x="977" y="2412" width="49" height="49" rx="17" fill="#E0F1F6" stroke="none" stroke-width="0"/>
-<g transform="translate(989.985 2424.985) scale(0.95958)" color="#27748E"><use href="#ic-upload"/></g>
-<text x="1040" y="2433" text-anchor="start" font-family="'Noto Sans CJK SC','Noto Sans CJK JP','Microsoft YaHei','PingFang SC','Arial',sans-serif" font-size="22" font-weight="690" fill="#315F75">证据 PR</text>
-<text x="1040" y="2460" text-anchor="start" font-family="'Noto Sans CJK SC','Noto Sans CJK JP','Microsoft YaHei','PingFang SC','Arial',sans-serif" font-size="18" font-weight="450" fill="#6A8391">单独授权发布</text>
-<rect x="86" y="2520" width="1268" height="67" rx="17" fill="#FFFFFF" stroke="#E0E7F0" stroke-width="1.5"/>
-<g transform="translate(113 2541) scale(1.12500)" color="#74859B"><use href="#ic-folder"/></g>
-<text x="157" y="2563" text-anchor="start" font-family="'Noto Sans CJK SC','Noto Sans CJK JP','Microsoft YaHei','PingFang SC','Arial',sans-serif" font-size="22" font-weight="660" fill="#394A5F">Google Drive</text>
-<text x="327" y="2563" text-anchor="start" font-family="'Noto Sans CJK SC','Noto Sans CJK JP','Microsoft YaHei','PingFang SC','Arial',sans-serif" font-size="19" font-weight="440" fill="#617086">仅可选 Notebook 临时空间 · 不同步实验结果</text>
-<g transform="translate(113 2610) scale(1.04167)" color="#8A95A7"><use href="#ic-info"/></g>
-<text x="154" y="2630" text-anchor="start" font-family="'Noto Sans CJK SC','Noto Sans CJK JP','Microsoft YaHei','PingFang SC','Arial',sans-serif" font-size="19" font-weight="500" fill="#66758A">状态说明:  仅 T4 GPU 基础执行已报告；Colab CPU、TPU/XLA、自动发布和完整闭环仍待验证。</text>
-<text x="154" y="2659" text-anchor="start" font-family="'Noto Sans CJK SC','Noto Sans CJK JP','Microsoft YaHei','PingFang SC','Arial',sans-serif" font-size="19" font-weight="460" fill="#66758A">不默认运行 GitHub Actions / 付费 CI；Codex 不自行合并 PR。</text>
-<path d="M86 2686H1354" fill="none" stroke="#DFE7EF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" opacity="1"/>
-<text x="86" y="2720" text-anchor="start" font-family="'Noto Sans CJK SC','Noto Sans CJK JP','Microsoft YaHei','PingFang SC','Arial',sans-serif" font-size="20" font-weight="730" fill="#536B89">更好的算法工程，更强的科学家</text>
-<text x="1354" y="2720" text-anchor="end" font-family="'Noto Sans CJK SC','Noto Sans CJK JP','Microsoft YaHei','PingFang SC','Arial',sans-serif" font-size="16" font-weight="490" fill="#92A0B2" letter-spacing=".35">GITHUB-FIRST  ·  RESEARCH-FIRST  ·  HUMAN-LED SCIENTIFIC DECISIONS</text>
+   <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FAFCFF"/><stop offset="1" stop-color="#F5F8FE"/></linearGradient>
+   <linearGradient id="top" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F0F4FF"/><stop offset="1" stop-color="#F9FBFF"/></linearGradient>
+   <linearGradient id="gpt" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F6F5FF"/><stop offset="1" stop-color="#F8FBFF"/></linearGradient>
+   <linearGradient id="eng" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F0FBF7"/><stop offset="1" stop-color="#F8FFFD"/></linearGradient>
+   <filter id="shadow" x="-30%" y="-30%" width="160%" height="170%"><feDropShadow dx="0" dy="6" stdDeviation="10" flood-color="#314F7B" flood-opacity="0.075"/></filter>
+   <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 1 1 L 9 5 L 1 9" stroke="#91A4C5" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" fill="none"/></marker>
+  </defs>
+<rect x="0" y="0" width="1280" height="3020" rx="0" fill="url(#bg)"/>
+<circle cx="1100" cy="100" r="310" fill="#E9EEFF" opacity=".28"/>
+<circle cx="70" cy="1420" r="260" fill="#DFF9F3" opacity=".26"/>
+<path d="M 1215 2478 H 1242 V 927 H 1213" stroke="#ABC5DD" stroke-width="2.6" stroke-dasharray="7 9" fill="none" marker-end="url(#arrow)" opacity=".88"/>
+<rect x="60" y="52" width="1160" height="282" rx="29" fill="url(#top)" stroke="#DAE3F6" stroke-width="1.15" filter="url(#shadow)"/>
+<rect x="100" y="88" width="49" height="49" rx="14" fill="#E5ECFF"/>
+<g transform="translate(111.0 99.0) scale(1.125)" fill="none" stroke="#476BD5" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="3.5" width="7" height="7" rx="2"/><rect x="13.5" y="3.5" width="7" height="7" rx="2"/><rect x="8.5" y="14.5" width="7" height="7" rx="2"/><path d="M10.5 7h3M7 10.5l3 4M17 10.5l-4 4"/></g>
+<text x="166" y="117" font-family="Noto Sans CJK SC, Noto Sans SC, PingFang SC, Microsoft YaHei, sans-serif" font-size="15" fill="#476BD5" font-weight="650" text-anchor="start" letter-spacing="0.6">SAE FRAMEWORK   /   V3.3</text>
+<rect x="986" y="91" width="189" height="36" rx="18" fill="#E1F8F1"/>
+<g transform="translate(1000 99) scale(0.875)" fill="none" stroke="#0E9477" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m7.5 12 3.2 3.2 6-6.2"/></g>
+<text x="1027" y="115" font-family="Noto Sans CJK SC, Noto Sans SC, PingFang SC, Microsoft YaHei, sans-serif" font-size="14" fill="#087D61" font-weight="750" text-anchor="start">PR #33  ·  MERGED</text>
+<text x="100" y="175" font-family="Noto Sans CJK SC, Noto Sans SC, PingFang SC, Microsoft YaHei, sans-serif" font-size="42" fill="#1E293B" font-weight="740" text-anchor="start">GPT 自主科研组织架构</text>
+<text x="100" y="206" font-family="Noto Sans CJK SC, Noto Sans SC, PingFang SC, Microsoft YaHei, sans-serif" font-size="19" fill="#68788F" font-weight="400" text-anchor="start">Scientist–Architect–Engineer   ·   自主科研快速通道</text>
+<rect x="98" y="236" width="522" height="79" rx="16" fill="#FFFFFF" stroke="#E2E8F4" stroke-width="1.15"/>
+<rect x="113" y="252" width="46" height="46" rx="14" fill="#E9F1FF"/>
+<g transform="translate(122.5 261.5) scale(1.125)" fill="none" stroke="#476BD5" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 15c4-7 9-11 17-12-1 8-5 13-12 17z"/><path d="M9 15 4 20l1-5M11 20l-5 2 1-5"/><circle cx="15" cy="9" r="2"/></g>
+<text x="175" y="268" font-family="Noto Sans CJK SC, Noto Sans SC, PingFang SC, Microsoft YaHei, sans-serif" font-size="21" fill="#1E293B" font-weight="690" text-anchor="start">工程生产力</text>
+<text x="175" y="294" font-family="Noto Sans CJK SC, Noto Sans SC, PingFang SC, Microsoft YaHei, sans-serif" font-size="16" fill="#68788F" font-weight="400" text-anchor="start">快速实现 · 跨硬件 · 可复现</text>
+<rect x="658" y="236" width="522" height="79" rx="16" fill="#FFFFFF" stroke="#E2E8F4" stroke-width="1.15"/>
+<rect x="673" y="252" width="46" height="46" rx="14" fill="#F0EBFB"/>
+<g transform="translate(682.5 261.5) scale(1.125)" fill="none" stroke="#7755B8" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4c-2-3-7-1-7 2-3 0-4 5-1 7-3 3 0 7 4 7 1 3 4 2 4 0z"/><path d="M12 4c2-3 7-1 7 2 3 0 4 5 1 7 3 3 0 7-4 7-1 3-4 2-4 0z"/><path d="M7 9c3-1 5 2 5 4M17 9c-3-1-5 2-5 4M8 16c2 0 4-1 4-3M16 16c-2 0-4-1-4-3"/></g>
+<text x="735" y="268" font-family="Noto Sans CJK SC, Noto Sans SC, PingFang SC, Microsoft YaHei, sans-serif" font-size="21" fill="#1E293B" font-weight="690" text-anchor="start">科学学习</text>
+<text x="735" y="294" font-family="Noto Sans CJK SC, Noto Sans SC, PingFang SC, Microsoft YaHei, sans-serif" font-size="16" fill="#68788F" font-weight="400" text-anchor="start">数学结构 · 张量化 · 数值与系统理解</text>
+<path d="M 640 335 V 392" stroke="#A3B3D0" stroke-width="2.6" fill="none" marker-end="url(#arrow)"/>
+<rect x="397" y="342.5" width="486" height="30" rx="15" fill="#F7FAFE"/>
+<text x="640" y="363.5" font-family="Noto Sans CJK SC, Noto Sans SC, PingFang SC, Microsoft YaHei, sans-serif" font-size="15" fill="#68788F" font-weight="550" text-anchor="middle">研究目标与方向</text>
+<rect x="249" y="405" width="782" height="171" rx="26" fill="#FFFFFF" stroke="#D8E2EE" stroke-width="1.15" filter="url(#shadow)"/>
+<rect x="275" y="429" width="65" height="65" rx="14" fill="#EEF1F5"/>
+<g transform="translate(294.0 448.0) scale(1.125)" fill="none" stroke="#53677E" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="7.5" r="4"/><path d="M4 21v-2c0-4 3-6 8-6s8 2 8 6v2"/></g>
+<text x="364" y="446" font-family="Noto Sans CJK SC, Noto Sans SC, PingFang SC, Microsoft YaHei, sans-serif" font-size="15" fill="#68788F" font-weight="650" text-anchor="start" letter-spacing="0.6">STRATEGIC DIRECTION</text>
+<text x="364" y="483" font-family="Noto Sans CJK SC, Noto Sans SC, PingFang SC, Microsoft YaHei, sans-serif" font-size="29" fill="#1E293B" font-weight="720" text-anchor="start">Scientist · 人类研究者</text>
+<text x="364" y="512" font-family="Noto Sans CJK SC, Noto Sans SC, PingFang SC, Microsoft YaHei, sans-serif" font-size="19" fill="#68788F" font-weight="400" text-anchor="start">研究目标设定 · 反馈 · 随时调整或叫停</text>
+<rect x="276" y="530" width="729" height="30" rx="10" fill="#F4F7FC"/>
+<text x="640" y="551" font-family="Noto Sans CJK SC, Noto Sans SC, PingFang SC, Microsoft YaHei, sans-serif" font-size="17" fill="#5C6C81" font-weight="550" text-anchor="middle">不承担常规科研、实验、算力或 PR 审批</text>
+<path d="M 640 576 V 669" stroke="#A3B3D0" stroke-width="2.6" fill="none" marker-end="url(#arrow)"/>
+<rect x="397" y="601.5" width="486" height="30" rx="15" fill="#F7FAFE"/>
+<text x="640" y="622.5" font-family="Noto Sans CJK SC, Noto Sans SC, PingFang SC, Microsoft YaHei, sans-serif" font-size="15" fill="#68788F" font-weight="550" text-anchor="middle">授权 GPT 自主决策 · 不设审批队列</text>
+<rect x="64" y="681" width="1152" height="513" rx="28" fill="url(#gpt)" stroke="#C6C8EC" stroke-width="1.15" filter="url(#shadow)"/>
+<rect x="93" y="712" width="59" height="59" rx="14" fill="#E9E5FF"/>
+<g transform="translate(109.0 728.0) scale(1.125)" fill="none" stroke="#7755B8" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4c-2-3-7-1-7 2-3 0-4 5-1 7-3 3 0 7 4 7 1 3 4 2 4 0z"/><path d="M12 4c2-3 7-1 7 2 3 0 4 5 1 7 3 3 0 7-4 7-1 3-4 2-4 0z"/><path d="M7 9c3-1 5 2 5 4M17 9c-3-1-5 2-5 4M8 16c2 0 4-1 4-3M16 16c-2 0-4-1-4-3"/></g>
+<text x="172" y="744" font-family="Noto Sans CJK SC, Noto Sans SC, PingFang SC, Microsoft YaHei, sans-serif" font-size="31" fill="#1E293B" font-weight="750" text-anchor="start">GPT · 自主科研决策核心</text>
+<text x="172" y="773" font-family="Noto Sans CJK SC, Noto Sans SC, PingFang SC, Microsoft YaHei, sans-serif" font-size="18" fill="#68788F" font-weight="400" text-anchor="start">科学与工程决策权 · 双重角色</text>
+<rect x="1127" y="717" width="48" height="48" rx="14" fill="#E6F6F0"/>
+<g transform="translate(1137.5 727.5) scale(1.125)" fill="none" stroke="#0E9477" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="m13 2-9 11h7l-1 9 10-12h-7z"/></g>
+<rect x="92" y="801" width="524" height="305" rx="22" fill="#FFFFFF" stroke="#E1E6F3" stroke-width="1.15"/>
+<rect x="640" y="801" width="548" height="305" rx="22" fill="#FFFFFF" stroke="#E1E6F3" stroke-width="1.15"/>
+<rect x="116" y="828" width="45" height="45" rx="14" fill="#E8EFFD"/>
+<g transform="translate(125.0 837.0) scale(1.125)" fill="none" stroke="#476BD5" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="3.5" width="7" height="7" rx="2"/><rect x="13.5" y="3.5" width="7" height="7" rx="2"/><rect x="8.5" y="14.5" width="7" height="7" rx="2"/><path d="M10.5 7h3M7 10.5l3 4M17 10.5l-4 4"/></g>
+<text x="173" y="858" font-family="Noto Sans CJK SC, Noto Sans SC, PingFang SC, Microsoft YaHei, sans-serif" font-size="25" fill="#1E293B" font-weight="730" text-anchor="start">Chief Architect</text>
+<text x="116" y="892" font-family="Noto Sans CJK SC, Noto Sans SC, PingFang SC, Microsoft YaHei, sans-serif" font-size="16" fill="#68788F" font-weight="400" text-anchor="start">总架构师 · 科研与工程决策</text>
+<line x1="116" y1="910" x2="589" y2="910" stroke="#DCE5F1" stroke-width="1.2"/>
+<g transform="translate(116 934) scale(0.9583333333333334)" fill="none" stroke="#0E9477" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m7.5 12 3.2 3.2 6-6.2"/></g>
+<text x="154" y="954" font-family="Noto Sans CJK SC, Noto Sans SC, PingFang SC, Microsoft YaHei, sans-serif" font-size="19" fill="#1E293B" font-weight="400" text-anchor="start">架构规划、实验设计、Codex 派单</text>
+<g transform="translate(116 988) scale(0.9583333333333334)" fill="none" stroke="#0E9477" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m7.5 12 3.2 3.2 6-6.2"/></g>
+<text x="154" y="1008" font-family="Noto Sans CJK SC, Noto Sans SC, PingFang SC, Microsoft YaHei, sans-serif" font-size="19" fill="#1E293B" font-weight="400" text-anchor="start">数值正确性与 T1/T2/T3 证据审核</text>
+<g transform="translate(116 1042) scale(0.9583333333333334)" fill="none" stroke="#0E9477" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m7.5 12 3.2 3.2 6-6.2"/></g>
+<text x="154" y="1062" font-family="Noto Sans CJK SC, Noto Sans SC, PingFang SC, Microsoft YaHei, sans-serif" font-size="19" fill="#1E293B" font-weight="400" text-anchor="start">合格 PR 自主决定与合并</text>
+<rect x="664" y="828" width="45" height="45" rx="14" fill="#EDE7FB"/>
+<g transform="translate(673.0 837.0) scale(1.125)" fill="none" stroke="#7755B8" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M18 4H6l7 8-7 8h12"/></g>
+<text x="721" y="858" font-family="Noto Sans CJK SC, Noto Sans SC, PingFang SC, Microsoft YaHei, sans-serif" font-size="25" fill="#1E293B" font-weight="730" text-anchor="start">Scientific Mentor</text>
+<text x="664" y="892" font-family="Noto Sans CJK SC, Noto Sans SC, PingFang SC, Microsoft YaHei, sans-serif" font-size="16" fill="#68788F" font-weight="400" text-anchor="start">科学导师 · 数学结构探索与决策</text>
+<line x1="664" y1="910" x2="1159" y2="910" stroke="#DCE5F1" stroke-width="1.2"/>
+<g transform="translate(664 934) scale(0.9583333333333334)" fill="none" stroke="#0E9477" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m7.5 12 3.2 3.2 6-6.2"/></g>
+<text x="702" y="954" font-family="Noto Sans CJK SC, Noto Sans SC, PingFang SC, Microsoft YaHei, sans-serif" font-size="18" fill="#1E293B" font-weight="400" text-anchor="start">R1–R3 数学结构、等价推导与假设</text>
+<g transform="translate(664 988) scale(0.9583333333333334)" fill="none" stroke="#0E9477" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m7.5 12 3.2 3.2 6-6.2"/></g>
+<text x="702" y="1008" font-family="Noto Sans CJK SC, Noto Sans SC, PingFang SC, Microsoft YaHei, sans-serif" font-size="18" fill="#1E293B" font-weight="400" text-anchor="start">张量化机会、数值风险与科研解释</text>
+<g transform="translate(664 1042) scale(0.9583333333333334)" fill="none" stroke="#0E9477" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m7.5 12 3.2 3.2 6-6.2"/></g>
+<text x="702" y="1062" font-family="Noto Sans CJK SC, Noto Sans SC, PingFang SC, Microsoft YaHei, sans-serif" font-size="18" fill="#1E293B" font-weight="400" text-anchor="start">自主决定 RESEARCH_READY / 阻塞</text>
+<rect x="92" y="1122" width="1096" height="53" rx="17" fill="#E5F7EF"/>
+<g transform="translate(366 1134) scale(1.0416666666666667)" fill="none" stroke="#0E9477" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="m13 2-9 11h7l-1 9 10-12h-7z"/></g>
+<text x="640" y="1156" font-family="Noto Sans CJK SC, Noto Sans SC, PingFang SC, Microsoft YaHei, sans-serif" font-size="19" fill="#16765B" font-weight="720" text-anchor="middle">FAST LANE  ·  GPT 自主放行，无 Scientist 阶段审批</text>
+<path d="M 640 1197 V 1284" stroke="#A3B3D0" stroke-width="2.6" fill="none" marker-end="url(#arrow)"/>
+<rect x="397" y="1219.5" width="486" height="30" rx="15" fill="#F7FAFE"/>
+<text x="640" y="1240.5" font-family="Noto Sans CJK SC, Noto Sans SC, PingFang SC, Microsoft YaHei, sans-serif" font-size="15" fill="#68788F" font-weight="550" text-anchor="middle">实验规格 · 直接派单 · 快速执行</text>
+<rect x="64" y="1294" width="1152" height="308" rx="26" fill="url(#eng)" stroke="#BCE2D6" stroke-width="1.15" filter="url(#shadow)"/>
+<rect x="92" y="1315" width="68" height="68" rx="14" fill="#D7F5E8"/>
+<g transform="translate(112.5 1335.5) scale(1.125)" fill="none" stroke="#0E9477" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="18" rx="3"/><path d="m6 9 4 3-4 3M12 16h5"/></g>
+<text x="185" y="1358" font-family="Noto Sans CJK SC, Noto Sans SC, PingFang SC, Microsoft YaHei, sans-serif" font-size="32" fill="#1E293B" font-weight="760" text-anchor="start">Codex · Engineer</text>
+<text x="185" y="1389" font-family="Noto Sans CJK SC, Noto Sans SC, PingFang SC, Microsoft YaHei, sans-serif" font-size="18" fill="#68788F" font-weight="400" text-anchor="start">工程执行主体 · 默认运行 CPU / GPU / TPU</text>
+<rect x="91" y="1424" width="354" height="151" rx="18" fill="#FFFFFF" stroke="#DDEAE6" stroke-width="1.15"/>
+<rect x="108" y="1446" width="43" height="43" rx="14" fill="#DCF5EB"/>
+<g transform="translate(116.0 1454.0) scale(1.125)" fill="none" stroke="#0E9477" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="m8 7-5 5 5 5M16 7l5 5-5 5M14 4l-4 16"/></g>
+<text x="164" y="1477" font-family="Noto Sans CJK SC, Noto Sans SC, PingFang SC, Microsoft YaHei, sans-serif" font-size="21" fill="#1E293B" font-weight="700" text-anchor="start">实现与重构</text>
+<text x="109" y="1532" font-family="Noto Sans CJK SC, Noto Sans SC, PingFang SC, Microsoft YaHei, sans-serif" font-size="16" fill="#68788F" font-weight="400" text-anchor="start">PyTorch · CLI · 张量化 · Compile</text>
+<rect x="460" y="1424" width="354" height="151" rx="18" fill="#FFFFFF" stroke="#DDEAE6" stroke-width="1.15"/>
+<rect x="477" y="1446" width="43" height="43" rx="14" fill="#DCF5EB"/>
+<g transform="translate(485.0 1454.0) scale(1.125)" fill="none" stroke="#0E9477" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 2h6M10 2v7l-6 9a3 3 0 0 0 2.5 4h11a3 3 0 0 0 2.5-4l-6-9V2"/><path d="M6 16h12"/></g>
+<text x="533" y="1477" font-family="Noto Sans CJK SC, Noto Sans SC, PingFang SC, Microsoft YaHei, sans-serif" font-size="21" fill="#1E293B" font-weight="700" text-anchor="start">实验与诊断</text>
+<text x="478" y="1532" font-family="Noto Sans CJK SC, Noto Sans SC, PingFang SC, Microsoft YaHei, sans-serif" font-size="16" fill="#68788F" font-weight="400" text-anchor="start">CPU / GPU / TPU · PROBE_ONLY</text>
+<rect x="829" y="1424" width="354" height="151" rx="18" fill="#FFFFFF" stroke="#DDEAE6" stroke-width="1.15"/>
+<rect x="846" y="1446" width="43" height="43" rx="14" fill="#DCF5EB"/>
+<g transform="translate(854.0 1454.0) scale(1.125)" fill="none" stroke="#0E9477" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h8l5 5v14a1 1 0 0 1-1 1H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2z"/><path d="M14 2v5h5M8 13h7M8 17h6"/></g>
+<text x="902" y="1477" font-family="Noto Sans CJK SC, Noto Sans SC, PingFang SC, Microsoft YaHei, sans-serif" font-size="21" fill="#1E293B" font-weight="700" text-anchor="start">证据与交付</text>
+<text x="847" y="1532" font-family="Noto Sans CJK SC, Noto Sans SC, PingFang SC, Microsoft YaHei, sans-serif" font-size="16" fill="#68788F" font-weight="400" text-anchor="start">真实运行 · SHA · 日志 · PR</text>
+<path d="M 640 1606 V 1678" stroke="#A3B3D0" stroke-width="2.6" fill="none" marker-end="url(#arrow)"/>
+<rect x="397" y="1621.0" width="486" height="30" rx="15" fill="#F7FAFE"/>
+<text x="640" y="1642.0" font-family="Noto Sans CJK SC, Noto Sans SC, PingFang SC, Microsoft YaHei, sans-serif" font-size="15" fill="#68788F" font-weight="550" text-anchor="middle">Colab CLI · 设备执行 · 数值验证</text>
+<rect x="64" y="1688" width="1152" height="373" rx="27" fill="#F4F7FB" stroke="#D7E2EE" stroke-width="1.15" filter="url(#shadow)"/>
+<rect x="94" y="1713" width="54" height="54" rx="14" fill="#E4ECF6"/>
+<g transform="translate(107.5 1726.5) scale(1.125)" fill="none" stroke="#657C96" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="7" rx="2"/><rect x="3" y="13" width="18" height="7" rx="2"/><path d="M7 7.5h.01M7 16.5h.01M11 7.5h7M11 16.5h7"/></g>
+<text x="168" y="1748" font-family="Noto Sans CJK SC, Noto Sans SC, PingFang SC, Microsoft YaHei, sans-serif" font-size="29" fill="#1E293B" font-weight="740" text-anchor="start">异构计算执行层</text>
+<text x="1179" y="1743" font-family="Noto Sans CJK SC, Noto Sans SC, PingFang SC, Microsoft YaHei, sans-serif" font-size="15" fill="#68788F" font-weight="700" text-anchor="end" letter-spacing="0.6">HARDWARE-AGNOSTIC</text>
+<rect x="92" y="1781" width="353" height="218" rx="19" fill="#FFFFFF" stroke="#DFE7F0" stroke-width="1.15"/>
+<rect x="112" y="1803" width="51" height="51" rx="14" fill="#E9F1FF"/>
+<g transform="translate(124.0 1815.0) scale(1.125)" fill="none" stroke="#476BD5" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="6" width="12" height="12" rx="2"/><path d="M9 9h6v6H9zM2 9h4M2 15h4M18 9h4M18 15h4M9 2v4M15 2v4M9 18v4M15 18v4"/></g>
+<text x="112" y="1891" font-family="Noto Sans CJK SC, Noto Sans SC, PingFang SC, Microsoft YaHei, sans-serif" font-size="28" fill="#1E293B" font-weight="760" text-anchor="start">CPU</text>
+<text x="112" y="1933" font-family="Noto Sans CJK SC, Noto Sans SC, PingFang SC, Microsoft YaHei, sans-serif" font-size="19" fill="#68788F" font-weight="400" text-anchor="start">Oracle · Correctness</text>
+<text x="112" y="1965" font-family="Noto Sans CJK SC, Noto Sans SC, PingFang SC, Microsoft YaHei, sans-serif" font-size="18" fill="#68788F" font-weight="400" text-anchor="start">本地 / Colab CLI</text>
+<rect x="461" y="1781" width="353" height="218" rx="19" fill="#FFFFFF" stroke="#DFE7F0" stroke-width="1.15"/>
+<rect x="481" y="1803" width="51" height="51" rx="14" fill="#F1ECFD"/>
+<g transform="translate(493.0 1815.0) scale(1.125)" fill="none" stroke="#7755B8" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5.4 18a9 9 0 1 1 13.2 0"/><path d="M12 13 17.5 7.5M5 19h14M12 4v2M5.4 8.8 7 10"/></g>
+<text x="481" y="1891" font-family="Noto Sans CJK SC, Noto Sans SC, PingFang SC, Microsoft YaHei, sans-serif" font-size="28" fill="#1E293B" font-weight="760" text-anchor="start">GPU</text>
+<text x="481" y="1933" font-family="Noto Sans CJK SC, Noto Sans SC, PingFang SC, Microsoft YaHei, sans-serif" font-size="19" fill="#68788F" font-weight="400" text-anchor="start">PyTorch · Compile</text>
+<text x="481" y="1965" font-family="Noto Sans CJK SC, Noto Sans SC, PingFang SC, Microsoft YaHei, sans-serif" font-size="18" fill="#68788F" font-weight="400" text-anchor="start">Benchmark · Profiling</text>
+<rect x="830" y="1781" width="353" height="218" rx="19" fill="#FFFFFF" stroke="#DFE7F0" stroke-width="1.15"/>
+<rect x="850" y="1803" width="51" height="51" rx="14" fill="#E9F7F3"/>
+<g transform="translate(862.0 1815.0) scale(1.125)" fill="none" stroke="#0E9477" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="5" width="14" height="14" rx="3"/><path d="M9 9h6v6H9zM2 9h3M2 15h3M19 9h3M19 15h3M9 2v3M15 2v3M9 19v3M15 19v3"/></g>
+<text x="850" y="1891" font-family="Noto Sans CJK SC, Noto Sans SC, PingFang SC, Microsoft YaHei, sans-serif" font-size="28" fill="#1E293B" font-weight="760" text-anchor="start">TPU</text>
+<text x="850" y="1933" font-family="Noto Sans CJK SC, Noto Sans SC, PingFang SC, Microsoft YaHei, sans-serif" font-size="19" fill="#68788F" font-weight="400" text-anchor="start">PyTorch / XLA</text>
+<text x="850" y="1965" font-family="Noto Sans CJK SC, Noto Sans SC, PingFang SC, Microsoft YaHei, sans-serif" font-size="18" fill="#68788F" font-weight="400" text-anchor="start">设备探针 · 兼容验证</text>
+<g transform="translate(342 2014) scale(0.9166666666666666)" fill="none" stroke="#0E9477" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 20 5v6c0 6-4 9-8 11-4-2-8-5-8-11V5z"/><path d="m8.4 11.9 2.4 2.4 5-5"/></g>
+<text x="640" y="2033" font-family="Noto Sans CJK SC, Noto Sans SC, PingFang SC, Microsoft YaHei, sans-serif" font-size="18" fill="#68788F" font-weight="560" text-anchor="middle">真实权限 · 有界超时 · 会话释放 · 不虚报结果</text>
+<path d="M 640 2067 V 2142" stroke="#A3B3D0" stroke-width="2.6" fill="none" marker-end="url(#arrow)"/>
+<rect x="397" y="2083.5" width="486" height="30" rx="15" fill="#F7FAFE"/>
+<text x="640" y="2104.5" font-family="Noto Sans CJK SC, Noto Sans SC, PingFang SC, Microsoft YaHei, sans-serif" font-size="15" fill="#68788F" font-weight="550" text-anchor="middle">源码 SHA · 真实实验结果 · 可复现证据</text>
+<rect x="64" y="2152" width="1152" height="414" rx="26" fill="#F2F6FF" stroke="#CBDCF2" stroke-width="1.15" filter="url(#shadow)"/>
+<rect x="92" y="2179" width="63" height="63" rx="14" fill="#E6EDFB"/>
+<g transform="translate(110.0 2197.0) scale(1.125)" fill="none" stroke="#536985" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M7 20c-3 0-5-4-5-8a10 10 0 0 1 20 0c0 4-2 8-5 8M9 22v-5c-2 1-4 0-4-2 0-1 0-3 2-4 0-2 0-3 1-4M15 22v-5c2 1 4 0 4-2 0-1 0-3-2-4 0-2 0-3-1-4M9 17h6"/></g>
+<text x="179" y="2222" font-family="Noto Sans CJK SC, Noto Sans SC, PingFang SC, Microsoft YaHei, sans-serif" font-size="29" fill="#1E293B" font-weight="730" text-anchor="start">GitHub · 协作与证据中心</text>
+<text x="179" y="2254" font-family="Noto Sans CJK SC, Noto Sans SC, PingFang SC, Microsoft YaHei, sans-serif" font-size="15" fill="#68788F" font-weight="650" text-anchor="start" letter-spacing="0.8">SINGLE SOURCE OF TRUTH</text>
+<rect x="93" y="2290" width="352" height="131" rx="18" fill="#FFFFFF" stroke="#DCE5F3" stroke-width="1.15"/>
+<rect x="115" y="2314" width="48" height="48" rx="14" fill="#E9EFFA"/>
+<g transform="translate(125.5 2324.5) scale(1.125)" fill="none" stroke="#476BD5" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="3"/><path d="m7 9 1.5 1.5L11 8M13 9h4m-10 6 1.5 1.5L11 14m2 1h4"/></g>
+<text x="182" y="2350" font-family="Noto Sans CJK SC, Noto Sans SC, PingFang SC, Microsoft YaHei, sans-serif" font-size="23" fill="#1E293B" font-weight="680" text-anchor="start">Issues / Tasks</text>
+<rect x="462" y="2290" width="352" height="131" rx="18" fill="#FFFFFF" stroke="#DCE5F3" stroke-width="1.15"/>
+<rect x="484" y="2314" width="48" height="48" rx="14" fill="#E9EFFA"/>
+<g transform="translate(494.5 2324.5) scale(1.125)" fill="none" stroke="#476BD5" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="2"/><circle cx="18" cy="12" r="2"/><circle cx="6" cy="18" r="2"/><path d="M6 8v8M8 6h5a5 5 0 0 1 5 5"/></g>
+<text x="551" y="2350" font-family="Noto Sans CJK SC, Noto Sans SC, PingFang SC, Microsoft YaHei, sans-serif" font-size="23" fill="#1E293B" font-weight="680" text-anchor="start">Branches / PRs</text>
+<rect x="831" y="2290" width="352" height="131" rx="18" fill="#FFFFFF" stroke="#DCE5F3" stroke-width="1.15"/>
+<rect x="853" y="2314" width="48" height="48" rx="14" fill="#E9EFFA"/>
+<g transform="translate(863.5 2324.5) scale(1.125)" fill="none" stroke="#476BD5" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h8l5 5v14a1 1 0 0 1-1 1H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2z"/><path d="M14 2v5h5M8 13h7M8 17h6"/></g>
+<text x="920" y="2350" font-family="Noto Sans CJK SC, Noto Sans SC, PingFang SC, Microsoft YaHei, sans-serif" font-size="23" fill="#1E293B" font-weight="680" text-anchor="start">Research / Reports</text>
+<rect x="92" y="2446" width="1096" height="91" rx="18" fill="#E6F3FE"/>
+<rect x="117" y="2465" width="48" height="48" rx="14" fill="#D5E9FB"/>
+<g transform="translate(127.5 2475.5) scale(1.125)" fill="none" stroke="#476BD5" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20 7v5h-5M4 17v-5h5"/><path d="M6 9a7 7 0 0 1 12-2l2 5M4 12l2 5a7 7 0 0 0 12-2"/></g>
+<text x="188" y="2488" font-family="Noto Sans CJK SC, Noto Sans SC, PingFang SC, Microsoft YaHei, sans-serif" font-size="23" fill="#1E293B" font-weight="720" text-anchor="start">真实证据 → GPT 审查 → 下一轮迭代</text>
+<text x="188" y="2519" font-family="Noto Sans CJK SC, Noto Sans SC, PingFang SC, Microsoft YaHei, sans-serif" font-size="16" fill="#68788F" font-weight="400" text-anchor="start">科研、工程、实验持续循环 · 失败返回数学或工程阶段</text>
+<rect x="64" y="2650" width="1152" height="234" rx="24" fill="#FFFFFF" stroke="#DEE5EF" stroke-width="1.15" filter="url(#shadow)"/>
+<rect x="91" y="2676" width="54" height="54" rx="14" fill="#E9F4ED"/>
+<g transform="translate(104.5 2689.5) scale(1.125)" fill="none" stroke="#0E9477" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 20 5v6c0 6-4 9-8 11-4-2-8-5-8-11V5z"/><path d="m8.4 11.9 2.4 2.4 5-5"/></g>
+<text x="164" y="2712" font-family="Noto Sans CJK SC, Noto Sans SC, PingFang SC, Microsoft YaHei, sans-serif" font-size="26" fill="#1E293B" font-weight="730" text-anchor="start">自主决策的真实边界</text>
+<g transform="translate(96 2745) scale(1.0)" fill="none" stroke="#0E9477" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m7.5 12 3.2 3.2 6-6.2"/></g>
+<text x="132" y="2764" font-family="Noto Sans CJK SC, Noto Sans SC, PingFang SC, Microsoft YaHei, sans-serif" font-size="18" fill="#1E293B" font-weight="540" text-anchor="start">无需 Scientist 常规审批</text>
+<g transform="translate(654 2745) scale(1.0)" fill="none" stroke="#0E9477" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m7.5 12 3.2 3.2 6-6.2"/></g>
+<text x="690" y="2764" font-family="Noto Sans CJK SC, Noto Sans SC, PingFang SC, Microsoft YaHei, sans-serif" font-size="18" fill="#1E293B" font-weight="540" text-anchor="start">科研 / 实现 / 设备准备可并行</text>
+<g transform="translate(96 2806) scale(1.0)" fill="none" stroke="#8C7B96" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="10" width="14" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3M12 15v2"/></g>
+<text x="132" y="2825" font-family="Noto Sans CJK SC, Noto Sans SC, PingFang SC, Microsoft YaHei, sans-serif" font-size="18" fill="#1E293B" font-weight="540" text-anchor="start">新增付费与敏感外发需用户明确同意</text>
+<g transform="translate(654 2806) scale(1.0)" fill="none" stroke="#8C7B96" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 20 5v6c0 6-4 9-8 11-4-2-8-5-8-11V5z"/><path d="m8.4 11.9 2.4 2.4 5-5"/></g>
+<text x="690" y="2825" font-family="Noto Sans CJK SC, Noto Sans SC, PingFang SC, Microsoft YaHei, sans-serif" font-size="18" fill="#1E293B" font-weight="540" text-anchor="start">正式结论必须有数学与实测证据</text>
+<line x1="178" y1="2928" x2="1102" y2="2928" stroke="#DCE5F1" stroke-width="1.2"/>
+<g transform="translate(337 2947) scale(0.8333333333333334)" fill="none" stroke="#8593AA" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="2"/><circle cx="18" cy="12" r="2"/><circle cx="6" cy="18" r="2"/><path d="M6 8v8M8 6h5a5 5 0 0 1 5 5"/></g>
+<text x="640" y="2964" font-family="Noto Sans CJK SC, Noto Sans SC, PingFang SC, Microsoft YaHei, sans-serif" font-size="17" fill="#68788F" font-weight="600" text-anchor="middle">SAE V3.3  ·  GPT Autonomous Fast Lane  ·  policy @ b1b48ce</text>
+<text x="640" y="2992" font-family="Noto Sans CJK SC, Noto Sans SC, PingFang SC, Microsoft YaHei, sans-serif" font-size="13" fill="#92A0B5" font-weight="400" text-anchor="middle">Architecture diagram · Documentation only · No runtime execution implied</text>
 </svg>

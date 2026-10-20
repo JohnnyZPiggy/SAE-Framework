@@ -75,7 +75,7 @@ flowchart TB
 
 </details>
 
-The image above is a standalone vector reconstruction of the ChatGPT card layout: two equal objectives, Scientist leadership, GPT/Codex roles, GitHub evidence hub and Codex-operated compute. The collapsible Mermaid below remains the editable logical graph; the SVG is the presentation view, not a record of experiment completion.
+The bilingual SVGs faithfully reconstruct the **confirmed ChatGPT Native UI card architecture**: two equal objectives → Scientist goal setting/stop control → GPT Chief Architect + Scientific Mentor autonomous decisions → Codex execution → CPU/GPU/TPU → GitHub evidence feedback. Rounded cards, vector icons, arrows and execution boundaries are all drawn as SVG primitives. The embedded Mermaid and linked `.mmd` are the editable **logical** view; the SVG is documentation, not proof of executed experiments.
 
 *TPU/PyTorch-XLA and automated report publication remain unverified.*
 
@@ -83,14 +83,14 @@ The image above is a standalone vector reconstruction of the ChatGPT card layout
 - **Scientist (human):** sets/changes research goals and can stop work; **no routine mathematical, experimental, resource, T3 or PR approvals**.
 - **GPT Architect:** autonomously decides science, mathematical readiness, engineering/experimental acceptance, iterations and eligible PR merges under [Standing Authorization](governance/STANDING_AUTHORIZATION.md).
 - **GPT Mentor:** leads mathematical structure/tensorization research and explains numerical/experimental results.
-- **Codex Engineer:** implements, tests and runs authorized local CPU and Colab CLI CPU/GPU/TPU experiments; verifies downloads and resource cleanup; submits evidence through GitHub branches/PRs without self-merging.
+- **Codex Engineer:** implements, tests and runs eligible existing-account local CPU and Colab CLI CPU/GPU/TPU experiments by default; verifies outputs and resource cleanup; submits safe evidence through GitHub branches/PRs without self-merging.
 
 **GitHub** is the collaboration and evidence hub. **Colab CLI** supplies remote compute. **Drive** is an optional thin notebook workspace, not a sync/results transport.
 
 ## Workflow
 GPT-decided concise [mathematical study](workflows/MATHEMATICAL_RESEARCH.md) + parallel [Build-vs-Reuse](workflows/ECOSYSTEM_REVIEW.md), reference work and `PROBE_ONLY` device checks → Codex implementation, correctness and eligible compute → GitHub evidence PR → GPT review/iteration/eligible merge. **No Scientist stage signoffs.** Multiple rounds can return to research.
 
-Experiments have **three separate stages**: exact source-SHA install, benchmark **without GitHub writes**, and optional separately authorized safe report publication. See [Compute Experiment Protocol](workflows/GPU_EXPERIMENT.md); the [historically named compatibility file](workflows/COLAB_TWO_COMMAND.md) remains linked.
+Experiments have **three separate stages**: exact source-SHA install, benchmark **without GitHub writes**, and optional GPT-reviewed, sanitized report publication (separate user permission remains required for sensitive release or new billing). See [Compute Experiment Protocol](workflows/GPU_EXPERIMENT.md); the [historically named compatibility file](workflows/COLAB_TWO_COMMAND.md) remains linked.
 
 ## Start
 Read [AGENTS.md](AGENTS.md), then [Bootstrap V3.3](SAE_BOOTSTRAP.md). Adopt [project AGENTS](examples/project/AGENTS.md) and [sae.yaml](examples/project/sae.yaml) with a **real pinned framework commit SHA**; do not silently upgrade existing projects.
