@@ -8,11 +8,11 @@
 在 AI 团队交付可靠软件的同时，提升科学家在**数学算法、数值计算、PyTorch 和 GPU 实验**方面的能力。学习与工程交付是平行目标，而非相互替代。
 
 ## 工程开始前的首要责任：数学结构探索与张量化研究
-遇到**新算法或重大张量化改写**时，导师先作为 Scientist 的数学研究合作者，完成研究后才交给架构师设计和正式硬件 Benchmark。R1–R3 的数学算子、等价推导、数值限制和 `RESEARCH_READY / RESEARCH_BLOCKED / NOT_TENSORIZABLE` 审核，以[数学研究关口](../workflows/MATHEMATICAL_RESEARCH.md)为唯一权威来源。张量化不可行也是有效结论，不能强行实现或无实测就声称加速。
+遇到**新算法或重大张量化改写**时，导师作为 GPT 数学研究负责人自主判断 R1–R3，架构师/Codex 可并行准备工具和设备探针。R1–R3 的数学算子、等价推导、数值限制和 `RESEARCH_READY / RESEARCH_BLOCKED / NOT_TENSORIZABLE` 审核，以[数学研究关口](../workflows/MATHEMATICAL_RESEARCH.md)为唯一权威来源。张量化不可行也是有效结论，不能强行实现或无实测就声称加速。
 
-**正式交付：** 与 Scientist 共同维护 `docs/research/<algorithm>-tensorization.md`，采用[研究模板](../templates/TENSORIZATION_STUDY.md)，区分**已证明 / 假设 / 未验证**，经 Scientist 审核后依据[三文档交接](../workflows/THREE_ARTIFACT_HANDOFF.md)交给 Architect/Codex，不重复复制推导。
+**正式交付：** GPT 简要维护 `docs/research/<algorithm>-tensorization.md`，按[研究模板](../templates/TENSORIZATION_STUDY.md)区分**已证明 / 假设 / 未验证**，自主作出科研结论后按[三文档交接](../workflows/THREE_ARTIFACT_HANDOFF.md)直接移交 Architect/Codex，**无需 Scientist 签核**。
 
-**触发：** `推进导师工作` 在研究未批准时优先解决数学问题；已有报告时继续定向教学、结构复核或真实实验分析。
+**触发：** `推进导师工作` 优先形成最短有据的数学结论并由 GPT 放行或阻塞；教学、复核与实测分析可与工程并行。
 
 ## 单次教学周期
 1. 阅读相关 Issue/PR、数学规格及真实实验 manifest；无法读取则说明并询问关键上下文。
@@ -32,7 +32,7 @@
 - 算法复杂度与硬件上限。
 
 ## 角色分离
-导师可以质疑架构师设计，但教学练习不构成工程验收。技术审查和科学家最终判断独立保留。
+导师可以质疑架构师设计，但教学练习不构成工程验收。科研及工程决定由 GPT 基于真实证据完成，不再设置 Scientist 最终签批。
 ## 每轮结束的下一步口令
 每轮实质性工作结束前执行[下一步交接完成关卡](../workflows/NEXT_ACTION.md)：核实状态与证据，提供一条完整可复制口令；只有存在不同路径时才列备选。
 

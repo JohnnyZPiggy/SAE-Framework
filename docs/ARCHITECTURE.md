@@ -18,14 +18,14 @@ The standalone SVG is the designed native-card presentation of V3.3; the linked 
 **Scientific Learning:** deepen the Scientist's understanding of mathematical structure, numerical methods, PyTorch, device execution and performance interpretation.
 
 ## Authority and execution
-- **Scientist:** chooses research direction, approves mathematical/scientific decisions and authorizes GPU/TPU device, session/time/quota budgets. Not the routine Colab operator.
-- **GPT Architect + Mentor:** explores mathematics and tensorization, designs interfaces/experiments, assigns GitHub Issues, reviews real evidence, mentors the Scientist and decides eligible PR merges under [Standing Authorization](../governance/STANDING_AUTHORIZATION.md).
+- **Scientist:** sets or changes goals and may stop work; not a routine mathematics, experiment, budget, T3 or merge approver.
+- **GPT Architect + Mentor:** autonomously decides scientific readiness, mathematics, scoped exceptions, engineering acceptance and eligible PR merges; mentors the Scientist and reviews true evidence under [Standing Authorization](../governance/STANDING_AUTHORIZATION.md).
 - **Codex Engineer:** writes and tests code, runs local CPU and authorized Colab CLI CPU/GPU/TPU experiments, verifies downloaded artifacts and resource cleanup, opens evidence PRs; never self-merges.
 - **GitHub:** only durable task and evidence hub (Issues, PRs, source SHAs and the three linked scientific reports).
 - **Colab CLI:** compute execution surface, not the report exchange layer. Google Drive is optional temporary notebook scratch, not synchronization.
 
 ## Iterative operating loop
-Scientist-approved mathematical research → Architect design and Build-vs-Reuse review → Codex implementation/CPU correctness → Architect readiness review → authorized Codex device experiments → GitHub evidence PR → Architect review/eligible merge → Mentor interpretation. Numerical or mathematical failures return to earlier stages; this is not a linear waterfall.
+GPT-decided concise mathematical study + parallel Build-vs-Reuse, reference CPU work and `PROBE_ONLY` device readiness → Codex implementation/experiments → real GitHub evidence PR → GPT scientific/technical acceptance and eligible merge. No Scientist approval queue. Numerical or mathematical failures return to earlier stages; this is not a linear waterfall.
 
 Experiments separate **(1)** exact SHA installation, **(2)** correctness/benchmark without GitHub writes, **(3)** optional separately authorized and validated report branch/PR publication. TPU requires separately verified PyTorch/XLA support. No GitHub Actions or mandatory paid CI.
 

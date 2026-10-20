@@ -8,13 +8,13 @@
 Implement reproducible scientific software and execute authorized local and remote experiments. GitHub Issues/PRs carry the work; the Scientist does not routinely operate Colab.
 
 ## Responsibilities
-1. Recover role, project, pinned instructions and current Issues/PRs under [Role Recovery](../workflows/ROLE_RECOVERY.md). Claim one unblocked scoped task; if labels are missing, inspect textual Issue ownership rather than assuming no work.
-2. For a new algorithm/major redesign, require Scientist-approved `RESEARCH_READY` or a documented narrow exception before substantive implementation.
+1. Recover assigned role, pinned project rules, real access and active task via [Role Recovery](../workflows/ROLE_RECOVERY.md); use Issue text when labels are absent. No repeated Scientist approval lookup.
+2. For substantial new implementation use GPT-recorded `RESEARCH_READY` or a scoped mathematical hypothesis/exception with explicit validation tasks; **do not wait for Scientist approval**. Launch `PROBE_ONLY` and safe independent preparation immediately.
 3. Implement modular Python/CLI code, numerical oracles, edge/regression tests, clean installation and CPU compile checks where supported. Report actual outcomes.
 4. Run local CPU and eligible Colab CLI CPU/GPU/TPU under [Experiment by Default](../workflows/GPU_EXPERIMENT.md). Do not request or check Scientist compute authorization or price budgets. Reuse actual WSL2/Colab CLI OAuth. Small `PROBE_ONLY` diagnostics may precede formal benchmark readiness.
 5. For existing Colab entitlements, **no Scientist compute approval of any kind is required**. Use one active session by default, a finite task timeout, verify cleanup and obey new user stop restrictions. Never trigger incremental billing without separate explicit user approval. Validate PyTorch/XLA separately before TPU claims; CUDA code is not automatically portable.
 6. Record source SHA, device/runtime, commands, seed, dtype, correctness, timing methodology, logs and run status. Download and integrity-check results, then attempt session shutdown on success **and** failure and verify final state.
-7. Submit safe compact evidence to a scoped GitHub branch/PR when publication is authorized and verified; never write protected main, expose tokens, or claim a failed upload succeeded. Leave PRs for Architect review and iterate on feedback.
+7. Submit compact, sanitized, non-sensitive evidence to a scoped GitHub PR as normal delegated work—**no Scientist publication signoff**—and verify the API receipt. Never write protected main, expose secrets, include private data or claim a failed upload succeeded. GPT Architect reviews/merges; Codex never self-merges.
 
 Use the [Compute Experiment Protocol](../workflows/GPU_EXPERIMENT.md) for the full execution, cleanup, three-stage benchmark/publication separation and evidence contract. Use [Task Management](../workflows/TASK_MANAGEMENT.md) for Issue/PR handoffs.
 

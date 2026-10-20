@@ -3,29 +3,29 @@
 > Historical path retained for compatibility | [简体中文](../i18n/zh-CN/workflows/GPU_EXPERIMENT.md)
 
 ## Ownership and prerequisites
-- **Scientist:** scientific direction, research conclusions and substantive scientific decisions; no approval of routine CPU/GPU/TPU compute use.
+- **Scientist:** sets goals and may stop/change work, **not** a scientific, experiment or compute signoff role. GPT decides scoped scientific readiness and conclusions.
 - **Architect:** experiment matrix, readiness/acceptance criteria, review of evidence and final eligible PR merge discretion.
-- **Codex:** local/Colab CLI execution, correctness and benchmark tooling, artifact retrieval/integrity verification, session cleanup and authorized GitHub evidence PRs.
+- **Codex:** local/Colab CLI execution, correctness/benchmark tooling, artifact verification, session cleanup and safe non-sensitive GitHub evidence PRs as normal work.
 - **GitHub:** shared code/task/report source of truth. Drive is optional temporary Colab workspace only.
 
-For new algorithms/major tensorization changes, require a Scientist-reviewed [mathematical study](MATHEMATICAL_RESEARCH.md) and Architect experiment plan. CPU correctness/installation and relevant readiness checks precede formal accelerator performance claims. No hardware claim without actual execution.
+For new algorithms/major tensorization work, GPT decides a concise [mathematical study](MATHEMATICAL_RESEARCH.md) and Architect experiment plan without human approval. Start independent probes, packaging/reference CPU and hardware preparation concurrently; **formal acceleration claims** need justified math, actual numerical correctness and fair measurements. Never claim device performance without execution.
 
 ## Three separate logical stages
 1. **Pinned install:** run exact source commit SHA in the selected local/Colab environment.
 2. **Benchmark:** execute correctness and performance CLI; **no GitHub writes**.
-3. **Optional publication:** after evidence validation and applicable independent security/publication checks, publish only reviewed safe artifacts to a dedicated GitHub branch/PR.
+3. **Optional publication:** after evidence validation and independent secret/sensitive-data checks; routine safe non-sensitive public PRs need no Scientist signoff, publish only reviewed safe artifacts to a dedicated GitHub branch/PR.
 
 The existing [three-stage compatibility entry](COLAB_TWO_COMMAND.md) retains its historical filename. Its illustrative notebook commands are not proof of a working CLI. Codex may orchestrate these stages via Colab CLI without requiring the Scientist to click notebook cells. Publisher remains unverified until end-to-end tested.
 
 ## Experiment by Default — no Scientist compute gate (2026-10-20)
 
-**CPU/GPU/TPU experimentation is a normal Codex Engineer execution responsibility, not a Scientist authorization workflow.** Within an already connected Colab account's included or prepaid resources, neither GPT nor Codex shall request, verify, cite or wait for **Scientist compute permission**, standing-grant confirmation, individual device approval, price quotation, Compute Unit estimate, per-run budget or elapsed-time signoff. The Scientist retains scientific direction, acceptance of research conclusions and the right to stop or narrow work through explicit new instructions; this is **not** a prerequisite to launching each experiment.
+**CPU/GPU/TPU experimentation is a normal Codex Engineer execution responsibility, not a Scientist authorization workflow.** Within an already connected Colab account's included or prepaid resources, neither GPT nor Codex shall request, verify, cite or wait for **Scientist compute permission**, standing-grant confirmation, individual device approval, price quotation, Compute Unit estimate, per-run budget or elapsed-time signoff. GPT autonomously decides scientific direction within the user's goal and acceptance of research conclusions; explicit user stop/change instructions override future work.
 
 - **Fast start:** On a user-invoked, bounded SAE task, Codex may run local or Colab CLI CPU/GPU/TPU experiments once the concrete task, exact source SHA, available authenticated tool/account and applicable technical readiness are established. Architect selects acceptance criteria and reviews results; Codex executes without a human compute-approval checkpoint.
-- **Exploratory hardware probes:** Short, bounded environment/TPU-XLA/GPU smoke tests may precede formal `RESEARCH_READY` / CPU benchmark readiness **solely to establish real device availability or diagnose tooling**. Mark such results `PROBE_ONLY`; they cannot substitute for mathematical approval, numerical correctness or formal performance acceptance. Formal accelerator claims still require the mathematical and engineering gates.
+- **Exploratory hardware probes:** Short, bounded environment/TPU-XLA/GPU smoke tests may precede formal `RESEARCH_READY` / CPU benchmark readiness **solely to establish real device availability or diagnose tooling**. Mark such results `PROBE_ONLY`; they cannot substitute for GPT-reviewed mathematical justification, numerical correctness or formal performance acceptance. Formal accelerator claims still require the mathematical and engineering gates.
 - **Safe execution defaults:** One active Colab session maximum, finite per-task timeout, no unbounded automatic retry/background scheduler, and verified cleanup after success, failure or interruption. Honor explicit new Scientist restrictions and provider-enforced limits. Genuine permission failures, unavailable device or exhausted resources are real blockers; predicted cost is not.
 - **New billing exception:** A purchase, credit top-up, new subscription/account/provider, enabling pay-as-you-go, or any **new monetary commitment outside existing entitlements** requires separate explicit user approval. If the current account would generate incremental charges without a safely enforceable pre-existing entitlement boundary, stop rather than guess. No billing-setting changes by default.
-- **Separate decisions:** Scientist scientific approval for new algorithm conclusions, sensitive/public data release and substantive governance stays separate. Report publication follows its own publication/security rules; the experiment itself does **not** require a Scientist permission or a signed resource budget.
+- **Delegated decisions:** GPT decides in-scope scientific correctness criteria, algorithm acceptance, routine non-sensitive GitHub evidence publication and engineering signoff. No Scientist research/T3/experiment approval. New monetary commitments, nonpublic/sensitive disclosure or external destructive/account-permission actions need separate explicit user instruction.
 
 ## Compute and hardware controls
 

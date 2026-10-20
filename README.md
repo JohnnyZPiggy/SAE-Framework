@@ -23,12 +23,12 @@ flowchart TB
       O2["Scientific Learning<br/>Math · Numerics · ML Systems"]
     end
 
-    S["Scientist · Human<br/>Research direction · Scientific decisions · Compute budgets"]
+    S["Scientist · Human<br/>Set Goals · Redirect / Stop"]
 
     subgraph PEOPLE["02 · Research and Engineering Roles"]
       direction LR
-      G["GPT · Chief Architect + Scientific Mentor<br/>Math / Tensorization · Design / Delegation<br/>Teaching / Review / Eligible PR Merges"]
-      E["Codex · Engineer<br/>Implement / Test · Local CPU<br/>Authorized Colab CPU / GPU / TPU"]
+      G["GPT · Chief Architect + Scientific Mentor<br/>Autonomous Math / Research Decisions · Fast Dispatch<br/>Evidence Review · Eligible PR Merges"]
+      E["Codex · Engineer<br/>Implement / Test · Local CPU<br/>Default Colab CPU / GPU / TPU"]
     end
 
     H[("GitHub · Single Collaboration and Evidence Hub<br/>Issues · Code · PRs · Source SHA · Reports")]
@@ -39,18 +39,18 @@ flowchart TB
       C["Colab CLI / WSL2<br/>CPU · GPU · TPU*<br/>Run / Integrity check / Session cleanup"]
     end
 
-    P["Pinned source SHA → No-GitHub-write benchmark<br/>→ Optional, separately authorized evidence PR"]
+    P["Pinned source SHA → No-GitHub-write benchmark<br/>→ Optional, GPT-reviewed safe evidence PR"]
     D["Google Drive<br/>Optional notebook scratch"]
 
     O1 --> S
     O2 --> S
-    S <-->|Research exchange / Scientific approval| G
-    S -->|Device / Time / Quota approval| E
+    S <-->|Set goals / Feedback / Stop| G
+    S -.->|No routine approval queue| E
     G <-->|Issues / Review feedback| H
     E <-->|Code / Evidence PR| H
     G <-->|Iterative collaboration| E
     E --> L
-    E -->|Authorized compute| C
+    E -->|Default eligible compute| C
     L --> P
     C --> P
     P -.->|Verified reports via PR| H
@@ -80,15 +80,15 @@ The image above is a standalone vector reconstruction of the ChatGPT card layout
 *TPU/PyTorch-XLA and automated report publication remain unverified.*
 
 ## Who does what?
-- **Scientist (human):** selects research problems, approves mathematical/scientific conclusions and compute hardware/session/time/quota limits; no routine notebook operation.
-- **GPT Architect:** designs specifications and experiments, delegates via Issues, reviews evidence and independently decides eligible PR merges under [Standing Authorization](governance/STANDING_AUTHORIZATION.md).
+- **Scientist (human):** sets/changes research goals and can stop work; **no routine mathematical, experimental, resource, T3 or PR approvals**.
+- **GPT Architect:** autonomously decides science, mathematical readiness, engineering/experimental acceptance, iterations and eligible PR merges under [Standing Authorization](governance/STANDING_AUTHORIZATION.md).
 - **GPT Mentor:** leads mathematical structure/tensorization research and explains numerical/experimental results.
 - **Codex Engineer:** implements, tests and runs authorized local CPU and Colab CLI CPU/GPU/TPU experiments; verifies downloads and resource cleanup; submits evidence through GitHub branches/PRs without self-merging.
 
 **GitHub** is the collaboration and evidence hub. **Colab CLI** supplies remote compute. **Drive** is an optional thin notebook workspace, not a sync/results transport.
 
 ## Workflow
-Scientist-reviewed [mathematical study](workflows/MATHEMATICAL_RESEARCH.md) → Architect [Build-vs-Reuse](workflows/ECOSYSTEM_REVIEW.md) and engineering Issue → Codex implementation, numerical tests and authorized compute → GitHub evidence PR → Architect review/iteration/eligible merge. Multiple rounds can return to research.
+GPT-decided concise [mathematical study](workflows/MATHEMATICAL_RESEARCH.md) + parallel [Build-vs-Reuse](workflows/ECOSYSTEM_REVIEW.md), reference work and `PROBE_ONLY` device checks → Codex implementation, correctness and eligible compute → GitHub evidence PR → GPT review/iteration/eligible merge. **No Scientist stage signoffs.** Multiple rounds can return to research.
 
 Experiments have **three separate stages**: exact source-SHA install, benchmark **without GitHub writes**, and optional separately authorized safe report publication. See [Compute Experiment Protocol](workflows/GPU_EXPERIMENT.md); the [historically named compatibility file](workflows/COLAB_TWO_COMMAND.md) remains linked.
 

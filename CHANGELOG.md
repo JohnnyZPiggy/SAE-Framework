@@ -3,6 +3,13 @@
 > Language: **English** | [简体中文](i18n/zh-CN/CHANGELOG.md)
 
 
+## V3.3 — GPT autonomous decision Fast Lane (2026-10-20)
+
+- Scientist explicitly delegates in-scope **scientific, R1–R3 research-gate, acceptance, engineering and T1/T2/T3 PR decisions** to GPT Architect/Mentor; the Scientist sets/redirects goals but has **no routine approval role**. Replaces earlier reserved-science and Scientist-stage-approval language while preserving the revocable user direction and owner-public merge scope.
+- Run fast: GPT may record `RESEARCH_READY / RESEARCH_BLOCKED / NOT_TENSORIZABLE` or a scoped hypothesis directly; overlap math, Build-vs-Reuse, CPU reference/package preparation and finite `PROBE_ONLY` Colab device diagnostics. Codex executes and provides verifiable evidence, GPT reviews/merges. No mandatory Scientist approvals or repeated multi-agent signoff.
+- Retain real numeric correctness and formal-benchmark proof, exact tested SHA, actual GitHub/device permissions, sanitized public evidence, session timeouts/cleanup and no invented execution. New billable commitments, nonpublic/sensitive releases, external account/security-permission changes and irreversible external destructive actions require distinct explicit user instructions. No background scheduler, GitHub Actions or automatic upgrades of pinned project snapshots.
+- Synchronized normative bilingual roles, governance, research/compute/review workflows, task/report templates, bootstrap, README Mermaid and documentation. Existing illustrative SVG artwork predates this role-decision update and is non-normative; render a new visual in a separate cosmetic update if desired.
+
 ## V3.3 — Experiment by Default: remove Scientist compute permission gate (2026-10-20)
 
 - User-directed T3 simplification supersedes the earlier No Price Gate standing-approval mechanism: Codex directly performs bounded existing-account CPU/GPU/TPU runs with **no Scientist compute authorization/grant lookup**. Architect dispatches/reviews; Scientist keeps scientific conclusions and substantive decisions.

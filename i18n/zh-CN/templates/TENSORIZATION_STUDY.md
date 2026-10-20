@@ -4,7 +4,7 @@
 
 **目标项目 / Issue：** `<owner/repo>` / #<编号>  
 **研究负责人：** GPT 科学导师  
-**科学审核人：** 人类 Scientist  
+**科研决策人：** GPT Mentor / Architect（无 Scientist 签字）  
 **状态：** NOT_STARTED / RESEARCH_READY / RESEARCH_BLOCKED / NOT_TENSORIZABLE  
 **论文/参考算法：** <链接>  
 **报告版本/决策时间：** <commit / 日期>
@@ -35,15 +35,15 @@ PyTorch 操作/API、参考与张量版比较、正确性优先的实验规模/d
 
 这份文件是 [三文档交接协议](../workflows/THREE_ARTIFACT_HANDOFF.md) 中的**数学研究文档**，保存为目标算法项目的 `docs/research/<algorithm>-tensorization.md`。
 
-经科学家审核后，总架构师和 Codex 基于 [工程报告模板](ENGINEERING_REPORT.md) 建立 `docs/engineering/<algorithm>-engineering.md`；Codex 真实运行 Colab 后，才创建 `reports/gpu/<run-id>/summary.md`。实验数值通过链接关联，不复制到数学研究报告里，也不能把假设写成测量结论。
+GPT 自主作出科研决定后，架构师和 Codex 基于 [工程报告模板](ENGINEERING_REPORT.md) 建立 `docs/engineering/<algorithm>-engineering.md`；Codex 真实运行 Colab 后，才创建 `reports/gpu/<run-id>/summary.md`。实验数值通过链接关联，不复制到数学研究报告里，也不能把假设写成测量结论。
 
-## 7. 备选路径、风险和科学家决策
+## 7. 备选路径、风险和 GPT 科研决定
 - **结论：** RESEARCH_READY / RESEARCH_BLOCKED / NOT_TENSORIZABLE
 - **已证明：** …
 - **待验证假设：** …
 - **尚未检验：** …
-- **科学家批准与决策链接：** …
+- **GPT 科研决定与依据链接：** …
 - **交给架构师的 Issue：** …
 - **下一研究问题：** …
 
-这是进入工程前的**数学研究记录**，不是 GPU Benchmark。若研究阻塞，应暂停性能工程，除非科学家明确批准有限例外。
+这是进入工程前的**数学研究记录**，不是 GPU Benchmark。研究阻塞时 GPT 自行决定有界假设/备选或暂停正式验收；独立 `PROBE_ONLY` 与参考准备可并行。

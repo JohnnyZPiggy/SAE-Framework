@@ -2,16 +2,16 @@
 
 > 语言：[English](../../../workflows/MATHEMATICAL_RESEARCH.md) | **简体中文**
 
-**主要负责人：GPT 科学导师；科学批准：人类 Scientist。**  
-**位置：** 新算法实现或实质性张量化重构的**前置研究阶段**，发生在工程任务派发和正式硬件 Benchmark 之前。
+**科研负责人及决策人：GPT 科学导师 / GPT 架构师；不设 Scientist 签批。**  
+**位置：** 正式正确性/加速结论前的数学证据关口；独立设备探针、参考实现和工程准备可与数学研究并行。
 
 ## 研究先于工程
 
 **数学结构探索 → 等价张量数学重构 → 架构与实验设计 → 工程实现 → CPU/GPU 证据验证。**
 
-这是进入工程的**研究关口**，而非不可返回的流水线。Codex 或 Colab 的结果可以随时触发回到数学研究。创建仓库、安装协议等基础设施可以先进行，但在完成前置研究前，不应直接派发算法重写或声称已有硬件加速。
+这是 GPT 自主决定的**精简证据关口**，不是等待人类签字的线性队列。R1/R2 与设备探针、参考实现、打包可并行；带明显假设标签的张量候选也可作为探索实验运行。**正式等价性与加速结论**必须有数学依据和真实数值/性能证据，失败可返回 R1/R2。
 
-## R1：研究原始数学结构（Mentor + Scientist）
+## R1：研究原始数学结构（GPT Mentor）
 1. 阅读论文、数学定义、目标函数、维度、输入条件、数值契约和现有实现（如果有）。
 2. 系统寻找可复用的算子：线性/仿射变换，矩阵向量和矩阵矩阵乘法，张量缩并，可分离结构，独立批次，matrix-free `Ax` / `Aᵀx`，Jacobian-vector / vector-Jacobian / Hessian-vector product，低秩、稀疏、分块、Kronecker、归约和 scan。
 3. 分析张量化阻碍：顺序递推、分支、不规则访存、host 同步、计算图断裂、动态形状和数据相关控制流。
@@ -25,17 +25,17 @@
 5. 对比**原始参考算法**、**候选张量表达**与**不可行时的备选方案**。若没有有价值的张量化方案，也应如实记录，这是有效研究结论。
 
 ## R3：输出数学研究交接报告
-在算法项目内更新 `docs/research/<algorithm>-tensorization.md`，按[张量化研究模板](../templates/TENSORIZATION_STUDY.md)记录原问题与假设、原式到张量式的推导/形状、等价证明或近似限制、正确性基准/容差、数据依赖与不可并行处、数值风险、复杂度和硬件假设、备选方案及**尚未实测**的问题；必须有 **RESEARCH_READY / RESEARCH_BLOCKED / NOT_TENSORIZABLE** 结论、依据和 Scientist 决定。
+在算法项目内更新 `docs/research/<algorithm>-tensorization.md`，按[张量化研究模板](../templates/TENSORIZATION_STUDY.md)记录原问题与假设、原式到张量式的推导/形状、等价证明或近似限制、正确性基准/容差、数据依赖与不可并行处、数值风险、复杂度和硬件假设、备选方案及**尚未实测**的问题；必须有 **RESEARCH_READY / RESEARCH_BLOCKED / NOT_TENSORIZABLE**、简短依据和 GPT Mentor/Architect 的科研决定，**不需要 Scientist 批准字段**。
 
-`RESEARCH_READY` 仅允许进入设计，**不表示**数值正确性或加速已通过；`RESEARCH_BLOCKED` / `NOT_TENSORIZABLE` 不得直接进入性能开发，除非 Scientist 明确批准有限例外或改选方案。
+`RESEARCH_READY` 允许正式实现与 Benchmark 评估，**不等于**通过数值或加速验收；遇到 `RESEARCH_BLOCKED` / `NOT_TENSORIZABLE`，GPT 自行决定有限假设实验、回退或停止，**不需要 Scientist 签批**；`PROBE_ONLY` 仍可执行。
 
 ## 从数学报告到工程、实验报告
 数学报告是[三文档交接协议](THREE_ARTIFACT_HANDOFF.md)的第一份成果；后续通过[工程报告](../templates/ENGINEERING_REPORT.md)和实际运行的[实验报告](../templates/EXPERIMENT_REPORT.md)引用同一数学依据，不得将理论加速假设冒充实测性能。
 
 ## 进入架构师与工程阶段
-1. Scientist 批准研究方案或明确有限例外后，Architect 据此设计软件、数值验收、实验矩阵与 Codex Issue，并标明**已证明 / 待验证 / NOT RUN**。
+1. GPT Mentor/Architect 自行接受数学方案或限定假设/例外，立即定义最小实现、数值检查与实验矩阵，区分**已证明 / 假设 / NOT RUN**，不经人工研究批准。
 2. Codex 实现参考版/张量版并真实执行 CPU 检查；正式 GPU/TPU Benchmark 通过技术准备关口、固定 SHA 即可执行，**无须 Scientist 算力批准**；有界 `PROBE_ONLY` 设备诊断可更早启动，失败可返回 R1/R2。
 3. 探索期数学检查或 `PROBE_ONLY` 设备探针可否证推导、确认设备可用，但不能冒充正式工程/GPU Benchmark；禁止编造实验结果。
 
 ## 「推进导师工作」如何变化？
-新项目若没有被科学家认可的研究报告，**优先执行 R1–R3**，而不是直接跳到教学或性能测试。已有方案的项目则可以继续数学教学和发现新结构。一次指令可以只完成一个有边界的研究问题；涉及科学决策请科学家确认。
+新项目缺少报告时，快速完成最小 R1–R3 理由并由 GPT 决定，同时并行推进独立探针和工程准备；已有方案继续调查数学新结构及数值失败。**科研决策不再请求 Scientist 签批**，只报告真实不确定性和阻塞。

@@ -13,18 +13,18 @@
 如果缺少创建标签的权限，就在 Issue 评论里写出真实状态；不要假装已应用标签。Assignee 必须是真正的 GitHub 账户，不能使用不存在的机器人用户名。
 
 ## 工程任务前的数学研究关口
-新算法或重大张量化改写须先有经 Scientist 审核的 `RESEARCH_READY` 数学报告（`docs/research/<algorithm>-tensorization.md`），或已记录的有限例外，才能将 Codex 算法实现 Issue 标为 `status:ready`。研究缺失或阻塞返回导师/Scientist；仓库初始化不适用。详见[数学研究关口](MATHEMATICAL_RESEARCH.md)。
+新算法/重大改写由 GPT Mentor/Architect 自主记录简明 `RESEARCH_READY` 报告或限定数学假设/例外，详见[数学研究](MATHEMATICAL_RESEARCH.md)，**无需 Scientist 签批**。只要有可检验的工程范围，Codex Issue 即可标 `status:ready`；独立探针、参考实现与初始化可和 R1/R2 并行，正式验收仍需证据。
 
 ## Issue/PR 与三文档关联
-按[三文档交接协议](THREE_ARTIFACT_HANDOFF.md)关联经批准的数学报告、工程报告、Codex 直接执行的实验记录。实验 PR 应指明被测源码 SHA 及上游 Issue/PR；不建立第四份状态日报，模板不能冒充实测证据。
+按[三文档交接协议](THREE_ARTIFACT_HANDOFF.md)关联 GPT 决定的数学研究、精简工程报告和 Codex 实测证据。实验 PR 应指明被测源码 SHA 及上游 Issue/PR；不建立第四份状态日报，模板不能冒充实测证据。
 
 ## 生命周期
-1. **GPT 创建 Issue：** 写出数学契约、接口、输入输出、CPU/GPU 验收条件、参考资料和依赖，合适时标记给 Codex。
+1. **GPT 立即派单：** 使用一个现有或新建的简明 Issue，记录目标 SHA/接口、必要数值基准及实验目的；有安全可做的任务就标就绪，不因材料不齐或人类签核等待。
 2. **Codex 领取任务：** 在 Issue 留下接受评论并改为 in-progress，同一项任务只允许一个当前负责人。
 3. **实现与 PR：** 使用 `feat/<issue-number>-<slug>` 分支。仅在全部条件已完成时使用 `Closes #N`；GPU 仍待验证时使用 `Refs #N`。
-4. **GPT 审查：** 查看真实代码变更和 CPU 证据；若涉及 GPU，指定候选源码 SHA 进入实验阶段。
+4. **GPT 做一次基于证据的审核：** 核对 SHA/Diff 和相关正确性证据；Codex 可同时跑合适 CPU/GPU 探针，再根据结果进行正式 Benchmark，不无谓串行。
 5. **Codex 默认执行现有账户 Colab CLI：** 核对固定源码 SHA、结果完整性及会话释放；提交报告 PR/评论仍遵守独立发布规则。不设 Scientist 算力许可或价格关口，数值/权限失败交回可复现案例。
-6. **GPT 验收：** 核实约定条件后自行决定是否合并，无需再向科学家申请合并许可，更新 Issue 与下一项任务。
+6. **GPT 自主决定科研、证据验收及合并：** 核实真实 Diff/SHA/测试/权限后直接决定 MERGE / DO_NOT_MERGE，不等待 Scientist 研究/T3 签字，更新 Issue 与下一步。
 7. **GPT 导师总结：** 可选记录相关数学/工程学习要点，不能用学习笔记替代测试。
 
 ## 状态一致性
@@ -36,5 +36,5 @@ GitHub API 写入可能失败、标签缺失、PR 评论可能过时；关键操
 每轮开始按[角色恢复协议](ROLE_RECOVERY.md)检查身份、固定协议、真实证据和权限；角色不匹配时停止并交接。
 
 ## 全部本人公开仓库由架构师永久独立决定是否合并
-GPT Architect 对本人公开仓库的合格 PR 依[常设授权](../governance/STANDING_AUTHORIZATION.md)独立作出 MERGE / DO_NOT_MERGE 决定，前提是实时核实所有权、公开状态、权限、真实 Diff/SHA/证据及 Scientist 保留的实质决定。不需逐 PR 申请合并许可；Codex 不自合并、不后台扫仓库。具体范围、T1/T2/T3 与合并关口以所链接治理协议为准。
+GPT Architect 对本人公开仓库的合格 PR 依[常设授权](../governance/STANDING_AUTHORIZATION.md)独立作出 MERGE / DO_NOT_MERGE 决定，前提是实时核实所有权、公开状态、权限、真实 Diff/SHA/证据，不设 Scientist 科研/T3 审批。不需逐 PR 申请合并许可；Codex 不自合并、不后台扫仓库。具体范围、T1/T2/T3 与合并关口以所链接治理协议为准。
 

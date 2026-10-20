@@ -40,7 +40,7 @@ Keep this review short; do not add a fourth project artifact. A library's presen
 | `tests/...` | | |
 | `benchmarks/...` | | |
 
-Document divergences from the spec with an explicit Architect/Scientist decision, not silent assumptions.
+Document deviations with an explicit GPT Architect scientific/engineering decision and rationale, not silent assumptions or a Scientist signoff.
 
 ## 4. Actual validation evidence (Codex)
 | Test / correctness comparison | PASS / FAIL / NOT RUN / BLOCKED | Real command, environment, seed and evidence link |
@@ -61,9 +61,9 @@ State measured maximum/relative error *only if actually measured*, tolerance pol
 - **Scoped CPU/GPU/TPU experiment instruction for Codex (no compute signoff):** <candidate SHA, CLI, dataset/size, tolerances>
 - **Known blockers and risks:** <details>
 
-## 6. Review and decision (Architect + Scientist)
+## 6. Review and decision (GPT Architect)
 - **Architect review:** REQUEST_CHANGES / CONDITIONALLY_READY / ACCEPTED (with rationale and link).
-- **Scientist scientific decision:** <decision/link or pending>.
+- **GPT scientific/engineering decision:** <status, evidence or uncertainty link>; no human approval.
 - **Follow-up:** Fix / rerun CPU / Colab experiment / revisit mathematics.
 - **Learning insight:** optional single algorithmic or numerical insight, not a mandatory essay.
 

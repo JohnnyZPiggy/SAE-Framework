@@ -13,11 +13,11 @@ End each substantive reply with this short user-facing **SAE · Next action** fo
 > **Current state:** <verified status or UNVERIFIED> · **Evidence:** <Issue/PR/report/commit or NOT RUN>  
 > **Recommended:** <one full copyable Chinese role command or Scientist action> — <reason>  
 > **Alternatives:** <zero to two only if genuinely different>  
-> **Needs Scientist:** <science/compute approval or none>
+> **Needs Scientist:** <none by default; only genuinely required new billing, sensitive-data, external-permission or irreversible action>
 
-Choose from current **GitHub evidence, task priority, dependencies, readiness and actual permissions**, not stale chat state. Typical routing: `RESEARCH_BLOCKED` → Mentor/Scientist; `RESEARCH_READY` → Architect; `CPU_IN_PROGRESS` → Codex; `CPU_VALIDATED` → Architect readiness review; `GPU_READY` → Codex experiment under [Experiment by Default](GPU_EXPERIMENT.md), **without Scientist compute authorization or grant checks**; `GPU_BLOCKED` → local Architect/Codex diagnosis. Correctness/security blockers override the default route.
+Choose from current **GitHub evidence, task priority, dependencies, readiness and actual permissions**, not stale chat state. Typical routing: `RESEARCH_BLOCKED` → GPT Mentor/Architect mathematical revision; `RESEARCH_READY` → Architect; `CPU_IN_PROGRESS` → Codex; `CPU_VALIDATED` → Architect readiness review; `GPU_READY` → Codex experiment under [Experiment by Default](GPU_EXPERIMENT.md), **without Scientist compute authorization or grant checks**; `GPU_BLOCKED` → local Architect/Codex diagnosis. Correctness/security blockers override the default route.
 
-A recommended command **does not execute an Agent**, allocate compute or authorize merges. Never request repeated Colab runs before `GPU_READY`, reveal credentials, bypass merge authority or promise background execution. [Task Management](TASK_MANAGEMENT.md) owns Issue/PR state; this file owns the response handoff.
+A recommended command **does not execute an Agent**, allocate compute or authorize merges. Never request formal accelerator acceptance before `GPU_READY`; bounded `PROBE_ONLY` hardware probes may run earlier, reveal credentials, bypass merge authority or promise background execution. [Task Management](TASK_MANAGEMENT.md) owns Issue/PR state; this file owns the response handoff.
 
 ## Next-Action Completion Gate — pre-send check (V3.3)
 
@@ -26,8 +26,8 @@ Before sending the **final user-facing reply** of every substantive Mentor, Arch
 1. **Status and evidence:** state what was actually completed versus NOT RUN / UNVERIFIED / BLOCKED, with verifiable Issue, PR, report or commit links when available. Never fabricate activity, approvals or progress.
 2. **One recommended handoff:** when a feasible next step exists, provide **one full, stand-alone, immediately copyable Chinese command** naming its target and action: `推进架构师工作：…`, `推进导师工作：…`, `推进工程师工作：…`, or `Scientist：…`. No placeholders, ambiguous fragments or commands to an agent that cannot actually be invoked.
 3. **Meaningful choices:** offer zero to two distinct, feasible alternatives only when there is a real fork in the workflow. Rank one as the recommendation; do not pad choices or repeat the same work with different wording.
-4. **Resource and authority gate:** Existing-account compute is Codex's default execution duty under [Experiment by Default](GPU_EXPERIMENT.md). **Do not ask for, look up or cite Scientist compute approval**. Verify real access, source SHA, bounded timeout, scientific gates for formal claims and user stop instructions; new monetary commitments need distinct user consent. A handoff is not proof that Codex or hardware ran.
-5. **Last visible section:** end the reply with **SAE · Next action** (including current state, evidence, recommendation/alternatives and Scientist requirements). Explicitly write DONE / BLOCKED / WAITING_FOR_SCIENTIST if there is no honest executable next action; when a safe recovery or approval step exists, make that the copyable recommendation.
+4. **No human approval queue:** GPT owns scoped science, readiness, engineering and T1/T2/T3 evidence decisions; Codex runs existing-account compute under [Experiment by Default](GPU_EXPERIMENT.md). Never recommend waiting for Scientist science, CPU/GPU, T3 or PR signoff. Preserve real access, SHA, evidence, and new-billing/nonpublic-data external boundaries; a command is not proof of execution.
+5. **Last visible section:** end the reply with **SAE · Next action** (including current state, evidence, recommendation/alternatives and Scientist requirements). Explicitly write DONE / BLOCKED / WAITING_FOR_EXTERNAL_ACTION if there is no honest executable next action; when a safe recovery or approval step exists, make that the copyable recommendation.
 
 ### Copy/paste and interactive-choice fallback
 
@@ -41,7 +41,7 @@ Before sending the **final user-facing reply** of every substantive Mentor, Arch
 **Current state:** CPU_VALIDATED *(example, not a real project claim)* · **Evidence:** example Issue #42  
 **Recommended:** `推进架构师工作：审核 Issue #42 的 GPU Readiness` — verify the CPU evidence before Colab.  
 **Alternative:** `推进工程师工作：复核 Issue #42 的 CPU 编译日志`  
-**Needs Scientist:** None for routine existing-account device probes or experiments; scientific decisions remain separate.
+**Needs Scientist:** None for scoped science, engineering, experiment and merge; only real new-billing/nonpublic-data/external-permission actions.
 
 ## Integration
 

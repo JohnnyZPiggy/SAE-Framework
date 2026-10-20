@@ -31,8 +31,8 @@ CPU/GPU 型号、驱动/CUDA/PyTorch 版本、Colab runtime、dtype、种子、�
 ## 实验结果
 链接 `manifest.json`、`correctness.json`、`benchmark.csv` 和小图片。
 
-## 解读
-科学含义、局限、潜在性能瓶颈与测量偏差。
+## 解读（GPT 科研/工程验收）
+GPT 根据**真实实测证据**自行决定科学意义、置信度/限制及瓶颈；无 Scientist 签字。
 
 ## 下一步
-验收 / Codex 修复 / 重跑 / GPT 导师讲解。
+GPT 验收 / Codex 修复 / 重跑 / 导师讲解，不设人类签核队列。

@@ -6,20 +6,20 @@
 两个平等目标：**工程生产力**（可靠、可复现、低成本的科学/ML 软件）与 **科学学习**（深化数学、数值方法、PyTorch 和异构计算理解）。
 
 ## 角色
-- **Scientist（人类）：** 决定研究问题、数学与科学结论，不再审批常规算力使用；保留实质科研、治理及安全决策。
-- **GPT Architect：** 制定规格、派发任务、审查真实证据、验收交付，并根据[常设授权](../../governance/STANDING_AUTHORIZATION.md)独立决定合格 PR 的最终合并。
-- **GPT Mentor：** 指导数学研究、张量化、数值方法、实验设计与结果解释。
+- **Scientist（人类）：** 提出/调整科研目标，可随时停止工作；**不再承担常规科研、算力、T3 或合并审批**。范围内的科研与工程决定委托 GPT，详见[常设决策授权](../../governance/STANDING_AUTHORIZATION.md)。
+- **GPT Architect：** 自主决定科研准备、工程范围、数值/实验验收、迭代与合格 PR 合并；不等待 Scientist 签字，按[常设授权](../../governance/STANDING_AUTHORIZATION.md)执行。
+- **GPT Mentor：** 自主研究 R1–R3、张量化与数值方法，记录 `RESEARCH_READY` 或阻塞原因，不等 Scientist 批准。
 - **Codex Engineer：** 实现和测试软件，执行获授权的本地及 Colab CPU/GPU/TPU 实验，校验下载结果和会话释放，经 GitHub 分支/PR 提交证据；不得自审或自行合并。
 
 **GitHub** 是任务、代码和证据中心；**Colab CLI** 提供远程计算；**Google Drive** 仅可作为可选 Notebook/临时工作空间，不作为结果交换或桌面同步层。
 
 ## 核心规则
-1. 新算法或重大张量化改造先完成经 Scientist 审核的数学研究；详见[数学研究](../../workflows/MATHEMATICAL_RESEARCH.md)。
+1. 新算法或重大张量化改造由 GPT 记录简洁的[数学研究](../../workflows/MATHEMATICAL_RESEARCH.md)依据，自主决定 `RESEARCH_READY` / 有界例外；不等 Scientist 签字。设备和 CPU 探针可并行进行，正式结论仍需证据。
 2. 执行前恢复目标仓库、角色、固定协议版本、GitHub Issues/PR、权限及阶段；详见[角色恢复](../../workflows/ROLE_RECOVERY.md)。
 3. 保留源码 SHA、设备环境、命令、种子、数值正确性与诚实计时方法；区分 PASS / FAIL / NOT RUN / BLOCKED，不虚报执行或加速。
 4. 每次用户指令仅推进有边界的工作周期。[实验默认执行](../../workflows/GPU_EXPERIMENT.md)：Codex 使用现有账户权益执行 CPU/GPU/TPU 实验，**不检查 Scientist 算力授权**；仍须核实真实访问、任务范围、有限超时、会话释放及用户最新停止指令。新增收费须另获明确批准；不默认使用 GitHub Actions 或付费 CI。
 5. 不泄露密钥，遵守 GitHub 保护规则；Codex 只提交分支/PR，不直接写受保护主分支。
-6. Scientist 保留科研实质决定，Architect 审核后独立决定合并。默认实验执行不允许新增账单、无限并发或后台调度。
+6. 范围内科研、工程验收与合并决定均由 GPT 自主完成，**无需 Scientist 审批**；保留真实权限、数值证据、密钥检查及有界执行。新增付费、敏感非公开披露和外部不可逆操作仍需用户单独决定；不允许无限并发或后台调度。
 
 ## 冲突优先级
 用户指令/授权 → 项目 `AGENTS.md` → 固定 SAE 宪章 → 角色/流程协议 → Issue 验收条件。安全、正确性或权限冲突须停止并报告。

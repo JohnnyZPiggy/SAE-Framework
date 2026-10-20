@@ -4,7 +4,7 @@
 
 **Target repository / Issue:** `<owner/repo>` / #<number>  
 **Research owner:** GPT — Scientific Mentor  
-**Scientific reviewer:** Human Scientist  
+**Research decision:** GPT Mentor / GPT Architect (no Scientist signoff)  
 **Status:** NOT_STARTED / RESEARCH_READY / RESEARCH_BLOCKED / NOT_TENSORIZABLE  
 **Source paper/reference:** <link>  
 **Study revision and decision date:** <commit / date>
@@ -35,7 +35,7 @@ Candidate operations and PyTorch API; baseline vs tensorized comparison; correct
 This file is the **Mathematical Research** record in the [Three-Artifact Handoff](../workflows/THREE_ARTIFACT_HANDOFF.md).
 
 - **Source of truth:** `docs/research/<algorithm>-tensorization.md` in the algorithm project.
-- **Next record, after Scientist approval:** `docs/engineering/<algorithm>-engineering.md` based on [Engineering Report template](ENGINEERING_REPORT.md).
+- **Next record, after GPT research decision (no human approval):** `docs/engineering/<algorithm>-engineering.md` based on [Engineering Report template](ENGINEERING_REPORT.md).
 - **Later real measurements:** `reports/gpu/<run-id>/summary.md`; link the actual run only when executed.
 
 Do not copy downstream performance numbers into this study; refer to them by links and distinguish conjectures from measurements.
@@ -45,8 +45,8 @@ Do not copy downstream performance numbers into this study; refer to them by lin
 - **Proved:** …
 - **Hypothesized:** …
 - **Unverified:** …
-- **Scientist approval / decision link:** …
+- **GPT research decision / rationale link:** …
 - **Architect handoff Issue:** …
 - **Next research question:** …
 
-This document is a **pre-engineering research artifact**, not a benchmark report. If blocked, pause performance implementation or record a narrowly approved exception.
+This document is a **pre-engineering research artifact**, not a benchmark report. If blocked, GPT documents a bounded hypothesis/exception or pauses formal acceptance; independent `PROBE_ONLY` and reference preparation can proceed.

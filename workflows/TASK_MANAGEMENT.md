@@ -14,18 +14,18 @@
 If labels cannot be created, write the exact intended state into an Issue comment; do not pretend labels were applied. `Assignee` must be a real GitHub username, not an imaginary bot account.
 
 ## Pre-engineering research gate
-New algorithm implementations and substantial tensorization rewrites require a Scientist-approved `RESEARCH_READY` study (`docs/research/<algorithm>-tensorization.md`) or documented narrow exception **before** a Codex implementation Issue becomes `status:ready`. Missing/blocked studies return to Mentor/Scientist; repository scaffolding is exempt. Full criteria: [Mathematical Research](MATHEMATICAL_RESEARCH.md).
+For new algorithms or substantial redesigns, GPT Mentor/Architect autonomously records a concise `RESEARCH_READY` study or limited hypothesis/exception using [Mathematical Research](MATHEMATICAL_RESEARCH.md); **Scientist signoff is not required**. Mark Codex tasks ready once testable scope is clear. Safe probes/reference code/setup may run in parallel with R1/R2; formal acceptance remains evidence-gated.
 
 ## Linked artifacts in Issue/PR handoffs
-Link the approved mathematical study, Engineering Report and Codex-executed experimental evidence following [Three-Artifact Handoff](THREE_ARTIFACT_HANDOFF.md). Experiment PRs identify the exact tested source SHA and upstream Issue/PRs; do not create duplicate status reports or treat templates as proof of execution.
+Link the GPT-decided mathematical study, concise Engineering Report and Codex-executed experimental evidence following [Three-Artifact Handoff](THREE_ARTIFACT_HANDOFF.md). Experiment PRs identify the exact tested source SHA and upstream Issue/PRs; do not create duplicate status reports or treat templates as proof of execution.
 
 ## Lifecycle
-1. **Architect creates Issue** with mathematics/interfaces, inputs/outputs, acceptance criteria, CPU/GPU test requirements, references, target milestone; label ready for Codex if applicable.
+1. **Architect dispatches immediately:** use one scoped Issue (or existing Issue) with target SHA/interface, minimal oracle/checks and experiment goal. Mark ready as soon as safe work is available; do not wait for full paperwork or human research approval.
 2. **Engineer claims Issue** by explicit comment and status update to in-progress; one owner at a time.
 3. **Engineer implements** on `feat/<issue-number>-<slug>` and opens PR with `Closes #N` only if issue is truly satisfied. For GPU-gated work prefer `Refs #N` until GPU validation.
-4. **Architect reviews** diff + real CPU evidence. If accepted provisionally, move to experiment and provide exact candidate SHA.
+4. **Architect makes one evidence-based review** of source SHA/diff and relevant correctness results, while Codex runs eligible CPU/GPU probes and later formal benchmarks. Do not serialize independent tasks needlessly.
 5. **Codex runs existing-account Colab CLI by default** on the pinned candidate SHA, checks results and session cleanup, and submits report PR/comment only under separate publication rules. No Scientist compute consent or cost gate; genuine correctness/permission failures return to Engineer with a reproducible case.
-6. **Architect independently decides MERGE / DO_NOT_MERGE** after technical review and any required Scientist substantive decision, without seeking separate merge permission; update Issue and next task.
+6. **Architect decides scoped science, evidence acceptance and MERGE / DO_NOT_MERGE** without Scientist approvals, after actual diff/SHA/test/permission checks; update Issue and next action once.
 7. **Mentor may summarize** a learning insight, but learning never replaces engineering checks.
 
 ## State consistency
@@ -41,5 +41,5 @@ Before the final response of each substantive cycle, apply the [Next-Action Comp
 At cycle start apply [Role Recovery](ROLE_RECOVERY.md): check role, pinned project rules, live evidence and actual permissions. Stop on role mismatch.
 
 ## Indefinite owner-wide Architect merge decision
-For eligible PRs in the owner's public repositories, GPT Architect makes the independent final MERGE / DO_NOT_MERGE decision **only** under [Standing Authorization](../governance/STANDING_AUTHORIZATION.md), after live ownership/visibility/permissions, diff/SHA/evidence and Scientist-owned substantive-decision checks. No per-PR merge permission, Codex self-merge or unattended PR sweep. The linked governance document alone defines the full scope, tiers and merge gate.
+For eligible PRs in the owner's public repositories, GPT Architect makes the independent final MERGE / DO_NOT_MERGE decision **only** under [Standing Authorization](../governance/STANDING_AUTHORIZATION.md), after live ownership/visibility/permissions and diff/SHA/test evidence checks; no Scientist research/T3 signoff. No per-PR merge permission, Codex self-merge or unattended PR sweep. [Standing Authorization](../governance/STANDING_AUTHORIZATION.md) alone defines the full scope and tiered evidence requirements; evidence review is not a repeated human approval cycle.
 
