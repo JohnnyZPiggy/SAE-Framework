@@ -34,8 +34,8 @@ The Scientist-approved study is the first of [Three Research Artifacts](THREE_AR
 
 ## Gate to Architect and Engineer
 1. Scientist approves a formulation or documented narrow exception; Architect designs software, correctness checks, experiment matrix and an Issue linked to the study, distinguishing **proved / hypothesized / NOT RUN**.
-2. Codex implements reference/tensorized forms, verifies CPU correctness and executes any GPU/TPU experiment **only after** Scientist hardware/session/time/quota approval and readiness checks, on the exact pinned SHA. Failures may reopen R1/R2.
-3. Exploratory mathematical sanity checks may falsify a derivation, but are **not** formal engineering validation or GPU benchmarks. Never invent evidence.
+2. Codex implements reference/tensorized forms, verifies CPU correctness and runs formal GPU/TPU benchmarks after technical readiness checks on the exact pinned SHA, **without Scientist compute approval**. Bounded `PROBE_ONLY` device diagnostics may run earlier; failures may reopen R1/R2.
+3. Exploratory math or `PROBE_ONLY` device checks may falsify a derivation or confirm environment availability, but are **not** formal engineering validation or GPU benchmarks. Never invent evidence.
 
 ## Mentor invocation behavior
 With `推进导师工作`, **if the project lacks an accepted research study**, prioritize R1–R3 before general learning or performance discussions. In an ongoing project with an approved study, Mentor can teach or investigate newly revealed structure. One user invocation may cover one bounded research subproblem; ask for scientific approval if decisions are needed.
