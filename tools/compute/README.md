@@ -2,7 +2,7 @@
 
 > English | [简体中文](README.zh-CN.md)
 
-Status: **LOCAL_VALIDATED / LIVE_NOT_RUN**. Extracted from owner-authored SAE_Test PR 3; [source/license/dependency provenance](NOTICE.md). This is three standalone Python files, not a package, daemon, bootstrap installer or publisher. Only transport is generic; algorithms, numerical oracles, installation commands and experimental interpretation belong to the project driver.
+Status: **LOCAL_VALIDATED + SCOPED LIVE_READY (CLI 0.7.4, T4-requested transport-only)**, evidenced by [SAE PR #48](https://github.com/JohnnyZPiggy/SAE-Framework/pull/48) on pinned source `8081b6e02eee0754903898d5afe5b112f1bb23d0`. One real remote kernel/driver/artifact-hash/stop/authenticated-zero cycle passed; actual T4 identity was not observed in this transport experiment. [TorchYAND PR #22](https://github.com/JohnnyZPiggy/TorchYAND/pull/22) separately validated a scientific pilot on an observed Tesla T4, not universal transport/science capability. Extracted from owner-authored SAE_Test PR 3; [source/license/dependency provenance](NOTICE.md). This is three standalone Python files, not a package, daemon, bootstrap installer or publisher. Only transport is generic; algorithms, numerical oracles, installation commands and experimental interpretation belong to the project driver.
 
 | Component | Dependency | Scope |
 |---|---|---|
