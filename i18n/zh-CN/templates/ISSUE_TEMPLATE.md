@@ -28,7 +28,7 @@
 ## 计算实验交付关口（算法实现任务）
 - [ ] 固定准确源码 SHA 干净安装；Codex 完成真实 CPU 打包、CLI 与数值测试
 - [ ] 打包的 Benchmark CLI **不写入 GitHub**；可选 Publisher 是独立、单独授权的阶段，未验收不得视为已实现
-- [ ] 经授权的 Colab CPU/GPU/TPU 结果、报告发布及会话清理分别标注 PASS / FAIL / NOT RUN / BLOCKED；GPU/TPU 分配前由 Scientist 批准设备、会话、时长、额度
+- [ ] Codex 直接执行 Colab CPU/GPU/TPU，报告发布及会话清理分别标注 PASS / FAIL / NOT RUN / BLOCKED；无需 Scientist 算力审批，有界 `PROBE_ONLY` 不计入正式 Benchmark 验收
 - [ ] 记录被测源码 SHA、真实命令、输出和失败
 
 ## 验收条件
