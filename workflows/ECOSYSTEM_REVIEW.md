@@ -4,7 +4,7 @@
 
 ## When and who
 
-**Owner: GPT Chief Architect.** After the Scientist accepts the Mentor's mathematical/tensorization study and **before** the first implementation Issue for a new algorithm or substantial redesign, investigate whether the needed building blocks are already available. For a dependency update or small bug fix, review only what changed. This does not bypass the research gate.
+**Owner: GPT Chief Architect.** In parallel with GPT Mentor's initial mathematical analysis and Codex preparation, briefly check reusable building blocks **without waiting for Scientist acceptance** or delaying a safe implementation/probe task. For a dependency update or small bug fix, review only what changed. This does not bypass the research gate.
 
 ## Three-pass bounded discovery
 
@@ -18,7 +18,7 @@
 
 Evaluate **REUSE** (native/direct), **ADAPT** (thin adapter/composition), and **BUILD** (implement distinctive mathematics only). For each plausible choice consider:
 
-- Mathematical equivalence to the approved derivation and numerical stability / error tolerances.
+- Mathematical equivalence to the GPT-reviewed derivation and numerical stability / error tolerances.
 - Maintenance, license compatibility and provenance; transitive dependency cost and clean pinned-SHA install.
 - CPU support by default; device-agnostic tensor operations, dtype and autograd requirements where applicable.
 - `torch.compile` suitability, dynamic shapes, host synchronizations and fallback for unsupported devices.
