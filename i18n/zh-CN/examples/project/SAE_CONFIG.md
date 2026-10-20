@@ -17,7 +17,7 @@
 - `max_self_repair_attempts_per_failure_class: 3`：一类失败最多三次批内自主修复，无进展更早停止；可在同批次连续进行多个实验。
 - `one_concise_evidence_summary_per_batch: true`：探索只需一份简洁汇总；正式验收才关联必要数学/工程/实验文档。
 - `additional_per_attempt_scientist_or_gpt_signoff: false`：批内修复/重测无需人工或 GPT 逐次签批，最终科研验收仍由 GPT 完成。
-- 实际流程以[Lean Research Lab（中文）](../../../workflows/LEAN_RESEARCH_LAB.md)和[英文规范](../../../../workflows/LEAN_RESEARCH_LAB.md)为准。
+- 实际流程以[Lean Research Lab（中文）](../../workflows/LEAN_RESEARCH_LAB.md)和[英文规范](../../../../workflows/LEAN_RESEARCH_LAB.md)为准。
 
 ## 算力、证据及发布
 - `experiments.gpu_tpu_require_scientist_budget_approval: false`：已有 Colab 权益内不设 Scientist 算力审批。
