@@ -3,6 +3,12 @@
 > Language: **English** | [简体中文](i18n/zh-CN/CHANGELOG.md)
 
 
+## V3.3 — Bilingual native-card architecture SVG refresh (2026-10-20)
+
+- Replaced the English and Chinese `docs/figures/SAE_Framework_V3.3.*.svg` diagrams with vector-only reproductions of the confirmed ChatGPT Native UI card organization: equal engineering/science goals, Scientist goal setting, GPT Architect/Mentor delegated authority, Codex direct execution, CPU/GPU/TPU and GitHub feedback.
+- Verified local SVG parsing and rendered previews, and updated both README embeds/architecture descriptions. Existing SVG paths remain stable; `.mmd` and README Mermaid are logical companion sources rather than the exact card artwork.
+- Diagram reflects post-PR #33 authority; it does not imply unverified TPU, Publisher or agent-autonomy E2E tests have passed.
+
 ## V3.3 — GPT autonomous decision Fast Lane (2026-10-20)
 
 - Scientist explicitly delegates in-scope **scientific, R1–R3 research-gate, acceptance, engineering and T1/T2/T3 PR decisions** to GPT Architect/Mentor; the Scientist sets/redirects goals but has **no routine approval role**. Replaces earlier reserved-science and Scientist-stage-approval language while preserving the revocable user direction and owner-public merge scope.
