@@ -17,14 +17,14 @@ If labels cannot be created, write the exact intended state into an Issue commen
 New algorithm implementations and substantial tensorization rewrites require a Scientist-approved `RESEARCH_READY` study (`docs/research/<algorithm>-tensorization.md`) or documented narrow exception **before** a Codex implementation Issue becomes `status:ready`. Missing/blocked studies return to Mentor/Scientist; repository scaffolding is exempt. Full criteria: [Mathematical Research](MATHEMATICAL_RESEARCH.md).
 
 ## Linked artifacts in Issue/PR handoffs
-Link the approved mathematical study, Engineering Report and Codex-executed, Scientist-authorized experiment evidence following [Three-Artifact Handoff](THREE_ARTIFACT_HANDOFF.md). Experiment PRs identify the exact tested source SHA and upstream Issue/PRs; do not create duplicate status reports or treat templates as proof of execution.
+Link the approved mathematical study, Engineering Report and Codex-executed experimental evidence following [Three-Artifact Handoff](THREE_ARTIFACT_HANDOFF.md). Experiment PRs identify the exact tested source SHA and upstream Issue/PRs; do not create duplicate status reports or treat templates as proof of execution.
 
 ## Lifecycle
 1. **Architect creates Issue** with mathematics/interfaces, inputs/outputs, acceptance criteria, CPU/GPU test requirements, references, target milestone; label ready for Codex if applicable.
 2. **Engineer claims Issue** by explicit comment and status update to in-progress; one owner at a time.
 3. **Engineer implements** on `feat/<issue-number>-<slug>` and opens PR with `Closes #N` only if issue is truly satisfied. For GPU-gated work prefer `Refs #N` until GPU validation.
 4. **Architect reviews** diff + real CPU evidence. If accepted provisionally, move to experiment and provide exact candidate SHA.
-5. **Codex runs authorized Colab CLI** with the pinned candidate SHA, verifies artifacts/session cleanup and submits a report PR/comment when separately authorized. Scientist approves resources and scientific conclusions; failures return to Engineer with a reproducible case.
+5. **Codex runs existing-account Colab CLI by default** on the pinned candidate SHA, checks results and session cleanup, and submits report PR/comment only under separate publication rules. No Scientist compute consent or cost gate; genuine correctness/permission failures return to Engineer with a reproducible case.
 6. **Architect independently decides MERGE / DO_NOT_MERGE** after technical review and any required Scientist substantive decision, without seeking separate merge permission; update Issue and next task.
 7. **Mentor may summarize** a learning insight, but learning never replaces engineering checks.
 
