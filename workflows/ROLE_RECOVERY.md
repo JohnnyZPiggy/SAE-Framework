@@ -10,7 +10,7 @@ GitHub holds persistent project state. A fresh chat or interrupted session must 
 2. Honor explicit role commands: `推进导师工作` → GPT Mentor; `推进架构师工作` → GPT Architect; `推进工程师工作` → Codex Engineer. Do not silently switch roles.
 3. Read project `AGENTS.md`, `sae.yaml`, pinned `.sae/` protocols and relevant workflow. Do not silently upgrade a pinned V3.2 project to V3.3.
 4. Read current Issues/PRs, exact candidate source SHA, math/engineering/experiment reports and Scientist decisions. Distinguish research approval, CPU validation, accelerator readiness and **actual device-specific verification**; do not infer GPU/TPU support from CPU or CLI options.
-5. Check actual connected GitHub/CLI/runtime permissions and Scientist-approved compute hardware, session/time/quota bounds before GPU/TPU use. No access or approval means BLOCKED, not implied authorization.
+5. Check actual GitHub/CLI/runtime permissions and the Scientist's current [No Price Gate standing Colab grant](GPU_EXPERIMENT.md) (or any later narrower/revoked instruction) before GPU/TPU. Existing entitlements **do not need a new price estimate or per-run time/quota approval**. Missing access, out-of-scope billing or revoked approval means BLOCKED; absent per-run budget numbers alone do not.
 6. Perform one bounded role-appropriate cycle: Mentor researches/teaches; Architect designs/reviews/decides merges; Codex implements, runs authorized local/Colab CPU/GPU/TPU experiments, retrieves/verifies results, releases sessions and submits PR evidence; Scientist retains substantive science and compute-budget decisions.
 7. Report observed actions, PASS/FAIL/NOT RUN/BLOCKED, source and report links, remaining blockers and one [Next Action](NEXT_ACTION.md).
 
