@@ -18,13 +18,16 @@
 ## Issue/PR 与三文档关联
 按[三文档交接协议](THREE_ARTIFACT_HANDOFF.md)关联 GPT 决定的数学研究、精简工程报告和 Codex 实测证据。实验 PR 应指明被测源码 SHA 及上游 Issue/PR；不建立第四份状态日报，模板不能冒充实测证据。
 
+## Lean Lab 精简执行
+以[Lean Research Lab](../../../workflows/LEAN_RESEARCH_LAB.md)为统一的 **EXPLORE / VALIDATE** 模式和有界批次契约。EXPLORE 在**同一个 Issue 或工作分支**只需假设/源码/命令/结果简记，不为每次探针建 PR 或写全套三文档；VALIDATE 才集中关联正式数学、工程和实验依据。GPT 按证据切换模式，无需 Scientist 签字。
+
 ## 生命周期
-1. **GPT 立即派单：** 使用一个现有或新建的简明 Issue，记录目标 SHA/接口、必要数值基准及实验目的；有安全可做的任务就标就绪，不因材料不齐或人类签核等待。
+1. **GPT 立即派单：** 使用现有或一个新 Issue，写明源码身份、模式、最小 oracle、实验目的、有限超时和清理计划；有安全可执行的任务就标就绪，不等待人类签批。
 2. **Codex 领取任务：** 在 Issue 留下接受评论并改为 in-progress，同一项任务只允许一个当前负责人。
-3. **实现与 PR：** 使用 `feat/<issue-number>-<slug>` 分支。仅在全部条件已完成时使用 `Closes #N`；GPU 仍待验证时使用 `Refs #N`。
+3. **批内实施与实验：** 使用 `feat/<issue-number>-<slug>` 分支，在任务超时和有界尝试内完成实现→测试→诊断→修复→复测，每次尝试不另行请求批准；积累可用成果后再创建 PR。只有满足全部验收时才用 `Closes #N`，GPU 待验证时用 `Refs #N`。
 4. **GPT 做一次基于证据的审核：** 核对 SHA/Diff 和相关正确性证据；Codex 可同时跑合适 CPU/GPU 探针，再根据结果进行正式 Benchmark，不无谓串行。
-5. **Codex 默认执行现有账户 Colab CLI：** 核对固定源码 SHA、结果完整性及会话释放；提交报告 PR/评论仍遵守独立发布规则。不设 Scientist 算力许可或价格关口，数值/权限失败交回可复现案例。
-6. **GPT 自主决定科研、证据验收及合并：** 核实真实 Diff/SHA/测试/权限后直接决定 MERGE / DO_NOT_MERGE，不等待 Scientist 研究/T3 签字，更新 Issue 与下一步。
+5. **Codex 默认使用现有账户 Colab CLI：** 远程安装固定精确 SHA，默认同一时间一个活动会话，有限超时并核实清理；多次探索合并为**一次批次证据汇总**，可选发布须单独实测验证。无 Scientist 算力/价格关口，真实数值、权限或收费阻塞须记录。
+6. **GPT 做一次实质审查并自主决定 MERGE / DO_NOT_MERGE：** 核验真实 Diff/SHA/测试/权限，问题在**同一 Issue**明确派回修复，不增加重复交接或 Scientist 签字。
 7. **GPT 导师总结：** 可选记录相关数学/工程学习要点，不能用学习笔记替代测试。
 
 ## 状态一致性
