@@ -7,11 +7,11 @@ The Scientist is the principal investigator and final scientific decision-maker,
 ## Reserved decisions
 - Select research problems and approve mathematical assumptions, research gates (`RESEARCH_READY`, `RESEARCH_BLOCKED`, `NOT_TENSORIZABLE`) and scientific conclusions.
 - Specify experimental questions, accuracy/performance trade-offs, baselines and acceptance criteria with GPT Mentor/Architect.
-- Maintain the revocable [No Price Gate standing compute authorization](../workflows/GPU_EXPERIMENT.md) for existing Colab entitlements (CPU/GPU/TPU): **no repeated per-run price, currency, duration or quota approval** within that scope. Default to one concurrent session and a finite task-defined timeout unless Scientist specifies stricter limits; new purchases/pay-as-you-go charges still require separate explicit approval. Narrow or revoke the grant at any time.
+- **No compute-approval role:** under [Experiment by Default](../workflows/GPU_EXPERIMENT.md), Codex directly executes existing-account CPU/GPU/TPU work with real access and technical readiness. Do not request or validate any Scientist compute approval, including a standing-grant record. Scientist may stop/narrow future work at any time; new purchases/pay-as-you-go charges still require explicit user approval.
 - Approve substantive governance, security, licensing, destructive changes and sensitive external publication decisions. GPT Architect retains independent final PR merge discretion under [Standing Authorization](../governance/STANDING_AUTHORIZATION.md).
 
 ## Delegated operations
-Codex handles local CPU and authorized Colab CLI CPU/GPU/TPU execution, artifact download/integrity checks, session shutdown and GitHub branch/PR evidence submission. Scientist reviews the scientific meaning and may request reruns or clarification, without routinely running notebooks or transferring files.
+Codex handles local CPU and eligible Colab CLI CPU/GPU/TPU execution, artifact download/integrity checks, session shutdown and GitHub branch/PR evidence submission. Scientist reviews the scientific meaning and may request reruns or clarification, without routinely running notebooks or transferring files.
 
 See [Compute Experiment Protocol](../workflows/GPU_EXPERIMENT.md), [Mathematical Research](../workflows/MATHEMATICAL_RESEARCH.md) and [Three-Artifact Handoff](../workflows/THREE_ARTIFACT_HANDOFF.md). Google Drive is optional notebook/temporary workspace only, not a results exchange layer.
 
