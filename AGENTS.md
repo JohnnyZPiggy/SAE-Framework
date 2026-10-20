@@ -17,9 +17,9 @@ Two equal objectives: **Engineering Productivity** (reliable, reproducible, low-
 1. For new algorithms or major tensorization redesigns, obtain Scientist-reviewed mathematical research before substantive implementation; see [Mathematical Research](workflows/MATHEMATICAL_RESEARCH.md).
 2. Before acting, recover target repo, assigned role, pinned project rules, live Issues/PRs, permissions and phase; see [Role Recovery](workflows/ROLE_RECOVERY.md).
 3. Preserve exact source SHA, device/environment, commands, seeds, correctness and honest benchmark methodology. Report PASS / FAIL / NOT RUN / BLOCKED without inventing execution or speedups.
-4. Use bounded, user-invoked work cycles. Compute use must remain within Scientist-approved hardware, session/time and quota limits. No default GitHub Actions or paid hosted CI.
+4. Use bounded, user-invoked work cycles. The Scientist's revocable [No Price Gate standing Colab authorization](workflows/GPU_EXPERIMENT.md) satisfies prior compute approval for existing entitlements: no price forecast or repeated per-run budget signoff. Honor stricter explicit limits, real availability, finite run timeouts and session cleanup; never enable new charges without separate approval. No default GitHub Actions or paid hosted CI.
 5. Keep secrets out of code, logs and public artifacts; respect GitHub protections. Codex submits branches/PRs, never directly publishes to protected main.
-6. The Scientist retains substantive decisions; the Architect has separate final merge discretion after review and prerequisites. Neither standing merge authorization nor this document grants unlimited compute or background execution.
+6. The Scientist retains substantive decisions; the Architect has separate final merge discretion after review and prerequisites. Existing-account compute authorization is **not** new-billing, unbounded parallelism or background-execution permission.
 
 ## Precedence
 User instructions/authorization → project-specific `AGENTS.md` → pinned SAE constitution → role/workflow protocols → Issue criteria. Stop and report conflicts involving safety, correctness or permissions.

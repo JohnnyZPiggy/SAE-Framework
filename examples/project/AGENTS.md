@@ -15,7 +15,7 @@ Read this file, project `sae.yaml`, `.sae/AGENTS.md`, assigned `.sae/protocols/<
 - **Codex:** implementation, local CPU and authorized Colab CLI CPU/GPU/TPU experiments, artifact verification, session cleanup and GitHub branch/PR evidence. No self-merge or protected-main writes.
 
 ## Workflow
-New algorithm/major redesign: Scientist-reviewed [mathematical study](.sae/workflows/MATHEMATICAL_RESEARCH.md) → Architect [Build-vs-Reuse](.sae/workflows/ECOSYSTEM_REVIEW.md) and task → Codex tests/experiments → GitHub evidence → Architect review/iteration. Use [Compute Experiment](.sae/workflows/GPU_EXPERIMENT.md) for the three separate install/benchmark/optional-publication stages. Device support, Publisher and speedups require actual evidence. No GitHub Actions, Drive sync or unapproved compute use.
+New algorithm/major redesign: Scientist-reviewed [mathematical study](.sae/workflows/MATHEMATICAL_RESEARCH.md) → Architect [Build-vs-Reuse](.sae/workflows/ECOSYSTEM_REVIEW.md) and task → Codex tests/experiments → GitHub evidence → Architect review/iteration. Use [Compute Experiment](.sae/workflows/GPU_EXPERIMENT.md) for the three separate install/benchmark/optional-publication stages. If the project's pinned snapshot contains the Scientist's No Price Gate standing grant, existing Colab credits need no repeated price/quota signoff; new charges still need separate approval. Do not silently upgrade older snapshots. Device support, Publisher and speedups require actual evidence. No GitHub Actions, Drive sync or unapproved compute use.
 
 ## Role commands
 `推进架构师工作` / `推进导师工作` / `推进工程师工作`.

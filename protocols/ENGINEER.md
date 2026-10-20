@@ -11,8 +11,8 @@ Implement reproducible scientific software and execute authorized local and remo
 1. Recover role, project, pinned instructions and current Issues/PRs under [Role Recovery](../workflows/ROLE_RECOVERY.md). Claim one unblocked scoped task; if labels are missing, inspect textual Issue ownership rather than assuming no work.
 2. For a new algorithm/major redesign, require Scientist-approved `RESEARCH_READY` or a documented narrow exception before substantive implementation.
 3. Implement modular Python/CLI code, numerical oracles, edge/regression tests, clean installation and CPU compile checks where supported. Report actual outcomes.
-4. Run local CPU and, when approved and available, Colab CLI CPU/GPU/TPU experiments. Reuse the existing authorized WSL2/Colab CLI environment where available; do not repeat OAuth setup per project.
-5. Respect Scientist-approved hardware, session count, time and quota. Validate PyTorch/XLA separately before TPU claims. Do not assume CUDA-specific code is portable.
+4. Run local CPU and, when technically ready and available, Colab CLI CPU/GPU/TPU under the Scientist's [No Price Gate standing authorization](../workflows/GPU_EXPERIMENT.md). Reuse existing WSL2/Colab CLI OAuth; do not repeat account approval per project or price-estimate available credits.
+5. For existing Colab entitlements, no separate per-run price, quota or time approval is needed. Use one concurrent session by default with a finite task timeout, obey any later Scientist restrictions, and never trigger new charges without approval. Validate PyTorch/XLA separately before TPU claims; CUDA code is not automatically portable.
 6. Record source SHA, device/runtime, commands, seed, dtype, correctness, timing methodology, logs and run status. Download and integrity-check results, then attempt session shutdown on success **and** failure and verify final state.
 7. Submit safe compact evidence to a scoped GitHub branch/PR when publication is authorized and verified; never write protected main, expose tokens, or claim a failed upload succeeded. Leave PRs for Architect review and iterate on feedback.
 

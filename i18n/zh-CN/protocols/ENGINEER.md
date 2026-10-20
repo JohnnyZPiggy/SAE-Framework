@@ -11,8 +11,8 @@
 1. 按[角色恢复](../../../workflows/ROLE_RECOVERY.md)读取角色、项目、固定协议及现有 Issue/PR；领取一项未阻塞任务。缺标签时也应检查 Issue 正文中的责任人。
 2. 新算法/重大改造须先有 Scientist 批准的 `RESEARCH_READY` 或明确的有限例外。
 3. 实现模块化 Python/CLI、数值参考测试、边界回归测试、干净安装和支持时的 CPU 编译验证；如实报告。
-4. 执行本地 CPU 及获批准且可用的 Colab CLI CPU/GPU/TPU 实验；尽可能复用已授权的 WSL2/CLI 环境，不为每个项目重新 OAuth。
-5. 严格遵守 Scientist 批准的硬件、会话数量、时长与额度。TPU 先单独验证 PyTorch/XLA；不得假定 CUDA 代码天然跨设备。
+4. 执行本地 CPU 和通过科研/设备准备关口的 Colab CLI CPU/GPU/TPU 实验，遵循 Scientist 的 [No Price Gate 常设计算授权](../../../workflows/GPU_EXPERIMENT.md)；复用已授权 WSL2/CLI OAuth，不逐项目重复问价或重新授权现有权益。
+5. 现有 Colab 权益内无需逐次价格、额度或时长批准；默认一个并发会话并设置任务超时，遵守 Scientist 后续明确的严格限制，新增收费须另行审批。TPU 先验证 PyTorch/XLA；不能假定 CUDA 代码天然跨设备。
 6. 记录源码 SHA、设备环境、命令、种子、精度、正确性、计时方法、日志和状态。下载并校验结果；无论成功失败均尝试关闭会话并核实最终状态。
 7. 获授权发布时，通过独立 GitHub 分支/PR 提交安全、精简且已验证的证据；不写受保护主分支、不泄露密钥、不虚报上传。由 Architect 审核，按反馈迭代。
 

@@ -3,6 +3,12 @@
 > Language: **English** | [简体中文](i18n/zh-CN/CHANGELOG.md)
 
 
+## V3.3 — No Price Gate standing Colab compute authorization (2026-10-20)
+
+- Scientist expressly grants revocable standing authorization for Codex to use existing Colab account entitlements/prepaid Compute Units for scoped CPU/GPU/TPU work without new per-run price estimates, quotas or budget approvals. Existing credits may be consumed to exhaustion.
+- Keep math/CPU-readiness/source SHA and actual access checks, one active session by default, finite task timeout, cleanup and honest device evidence. New subscriptions, top-ups, pay-as-you-go or other incremental billing remain separately authorized.
+- Align English/Chinese role recovery, Architect/Engineer/Scientist, research pipeline, Next-Action and merge-governance references; no compute run, new CI, background scheduler or silent pinned snapshot upgrade.
+
 ## V3.3 — Protocol consistency and documentation cleanup (2026-10-19)
 
 - Aligned historical Scientist-operated Colab wording to V3.3: Codex executes only approved local/Colab experiments; Scientist retains resource/scientific/publication decisions. No allocation or experimental claims.
