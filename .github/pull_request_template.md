@@ -7,7 +7,7 @@ Source SHA: `<sha>`
 ### Three-artifact traceability
 - Mathematical study: `docs/research/<algorithm>-tensorization.md` / N/A for infrastructure
 - Engineering report: `docs/engineering/<algorithm>-engineering.md` / N/A for infrastructure
-- Actual Codex-run, Scientist-authorized experiment: `reports/gpu/<run-id>/summary.md` / NOT RUN
+- Actual Codex-run experiment (no Scientist compute approval required): `reports/gpu/<run-id>/summary.md` / NOT RUN
 - Candidate **tested source SHA**: `<SHA>`
 
 ### Validation

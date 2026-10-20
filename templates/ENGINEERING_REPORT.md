@@ -49,7 +49,7 @@ Document divergences from the spec with an explicit Architect/Scientist decision
 | CPU unit and regression tests | NOT RUN | |
 | Randomized/adversarial edge cases | NOT RUN | |
 | CPU benchmark (if applicable) | NOT RUN | |
-| GPU / TPU (Codex-operated, Scientist-authorized experiment) | NOT RUN | Link separate experimental report, **do not invent GPU runs** |
+| GPU / TPU (Codex-run by default; formal acceptance evidence required) | NOT RUN | Link separate experimental report, **do not invent GPU runs** |
 
 State measured maximum/relative error *only if actually measured*, tolerance policy and known failures. For GPU performance conclusions, link `reports/gpu/<run-id>/summary.md` instead of copying its values.
 
@@ -58,7 +58,7 @@ State measured maximum/relative error *only if actually measured*, tolerance pol
 - **Python/PyTorch/dtype/device:** <versions / NOT RUN>
 - **Commands, inputs, seeds:** <actual commands>
 - **Open PR / Issue and artifacts:** <links>
-- **Authorized CPU/GPU/TPU experiment instruction for Codex:** <candidate SHA, CLI, dataset/size, tolerances>
+- **Scoped CPU/GPU/TPU experiment instruction for Codex (no compute signoff):** <candidate SHA, CLI, dataset/size, tolerances>
 - **Known blockers and risks:** <details>
 
 ## 6. Review and decision (Architect + Scientist)

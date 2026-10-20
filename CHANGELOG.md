@@ -3,6 +3,15 @@
 > Language: **English** | [简体中文](i18n/zh-CN/CHANGELOG.md)
 
 
+## V3.3 — Experiment by Default: remove Scientist compute permission gate (2026-10-20)
+
+- User-directed T3 simplification supersedes the earlier No Price Gate standing-approval mechanism: Codex directly performs bounded existing-account CPU/GPU/TPU runs with **no Scientist compute authorization/grant lookup**. Architect dispatches/reviews; Scientist keeps scientific conclusions and substantive decisions.
+- Short environment/GPU/TPU-XLA `PROBE_ONLY` diagnostics may start before formal mathematical/CPU benchmark readiness; they are never accepted as numerical correctness or performance evidence.
+- Keep actual tool/account permission checks, pinned SHA, task-defined finite timeout, default single session, artifact evidence and session cleanup; new monetary commitments and sensitive/public publication require distinct user/security approval. No silent upgrades of pinned algorithm snapshots, no new background scheduler or CI.
+- Align bilingual protocols, governance cross-references, task lifecycle, role recovery, experimental evidence and Issue/PR templates.
+
+> Historical note: superseded by the 2026-10-20 Experiment by Default amendment above.
+
 ## V3.3 — No Price Gate standing Colab compute authorization (2026-10-20)
 
 - Scientist expressly grants revocable standing authorization for Codex to use existing Colab account entitlements/prepaid Compute Units for scoped CPU/GPU/TPU work without new per-run price estimates, quotas or budget approvals. Existing credits may be consumed to exhaustion.

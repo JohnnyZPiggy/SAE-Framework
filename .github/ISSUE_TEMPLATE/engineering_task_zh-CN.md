@@ -20,7 +20,7 @@ assignees: []
 
 **验收测试（必须提供真实证据）：**
 
-**Colab 三阶段验收（算法任务）：** 固定 SHA 安装 → Benchmark 独立运行且不写 GitHub → 可选、经单独授权的 Publisher。Codex 运行 CPU/CLI 和获授权的 Colab CLI CPU/GPU/TPU，Scientist 事先批准 GPU/TPU 设备、会话、时长与额度；未测设备或发布均标 NOT RUN。
+**Colab 三阶段验收（算法任务）：** 固定 SHA 安装 → Benchmark 独立运行且不写 GitHub → 可选、经单独授权的 Publisher。Codex 在现有账户权益内直接运行 CPU/CLI、Colab CLI CPU/GPU/TPU，无需 Scientist 算力审批；有界 `PROBE_ONLY` 不能作为正式 Benchmark 通过，未测设备或发布均标 NOT RUN。
 
 **Colab GPU 验证方案（如需要）：**
 

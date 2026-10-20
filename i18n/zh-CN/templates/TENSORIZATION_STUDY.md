@@ -35,7 +35,7 @@ PyTorch 操作/API、参考与张量版比较、正确性优先的实验规模/d
 
 这份文件是 [三文档交接协议](../workflows/THREE_ARTIFACT_HANDOFF.md) 中的**数学研究文档**，保存为目标算法项目的 `docs/research/<algorithm>-tensorization.md`。
 
-经科学家审核后，总架构师和 Codex 基于 [工程报告模板](ENGINEERING_REPORT.md) 建立 `docs/engineering/<algorithm>-engineering.md`；Codex 经 Scientist 资源批准真实运行 Colab 后，才创建 `reports/gpu/<run-id>/summary.md`。实验数值通过链接关联，不复制到数学研究报告里，也不能把假设写成测量结论。
+经科学家审核后，总架构师和 Codex 基于 [工程报告模板](ENGINEERING_REPORT.md) 建立 `docs/engineering/<algorithm>-engineering.md`；Codex 真实运行 Colab 后，才创建 `reports/gpu/<run-id>/summary.md`。实验数值通过链接关联，不复制到数学研究报告里，也不能把假设写成测量结论。
 
 ## 7. 备选路径、风险和科学家决策
 - **结论：** RESEARCH_READY / RESEARCH_BLOCKED / NOT_TENSORIZABLE

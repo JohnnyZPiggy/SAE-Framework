@@ -7,7 +7,7 @@
 **Code PR:** #<number>  
 **Tested source commit:** `<40-char-sha>`  
 **Publication report PR:** <link>  
-**Scientist / operator:** human  
+**Experiment operator:** Codex Engineer  
 **Timestamp UTC:** <timestamp>  
 **Status:** PASS / FAIL / NOT RUN / BLOCKED
 
@@ -18,7 +18,7 @@
 **Implementation source commit (tested):** `<sha>`  
 **Report publication commit (if any):** `<distinct sha or NOT YET PUBLISHED>`  
 
-This file is the **Experimental Report** defined by the [Three-Artifact Handoff](../workflows/THREE_ARTIFACT_HANDOFF.md). It is created from **actual Codex-executed, Scientist-authorized Colab results**, not prefilled as a claimed success.
+This file is the **Experimental Report** defined by the [Three-Artifact Handoff](../workflows/THREE_ARTIFACT_HANDOFF.md). It is created from **actual Codex-executed Colab results (no Scientist compute approval required)**, not prefilled as a claimed success.
 
 ## Setup
 GPU/CPU model, driver/CUDA/PyTorch versions, Colab runtime, dtype, seed, package install source.

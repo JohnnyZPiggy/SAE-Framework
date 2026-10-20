@@ -15,7 +15,7 @@
 > **备选：** <仅在真正不同的路径存在时零至两条>  
 > **需要科学家：** <科研/计算资源审批或无>
 
-依据**实时 GitHub 证据、优先级、依赖、阶段关口和实际权限**选择下一步，不沿用过期建议。通常：`RESEARCH_BLOCKED` → 导师/Scientist；`RESEARCH_READY` → 架构师；`CPU_IN_PROGRESS` → Codex；`CPU_VALIDATED` → 架构师审核实验准备；`GPU_READY` → Codex 依据 Scientist 已有的 [No Price Gate 常设授权](../../../workflows/GPU_EXPERIMENT.md)执行（如有更新的严格限制则遵守），不重复讨论价格/预算；`GPU_BLOCKED` → 先本地排查。正确性/安全阻塞优先。
+依据**实时 GitHub 证据、优先级、依赖、阶段关口和实际权限**选择下一步，不沿用过期建议。通常：`RESEARCH_BLOCKED` → 导师/Scientist；`RESEARCH_READY` → 架构师；`CPU_IN_PROGRESS` → Codex；`CPU_VALIDATED` → 架构师审核实验准备；`GPU_READY` → Codex 按[实验默认执行](../../../workflows/GPU_EXPERIMENT.md)直接实验，**不要求 Scientist 算力批准或常设授权核验**；`GPU_BLOCKED` → 先本地排查。正确性/安全阻塞优先。
 
 口令**不等于自动启动 Agent、分配算力或授予合并权限**。在 `GPU_READY` 前不得反复要求 Colab 实验，不泄露凭据、越过合并授权或承诺后台执行。[任务管理](TASK_MANAGEMENT.md)管理 Issue/PR 状态，本文件仅规定回复交接。
 
@@ -26,7 +26,7 @@ GPT 导师、GPT 架构师与 Codex 工程师完成**每轮实质性工作**后�
 1. **状态与证据：** 明确已完成、NOT RUN、UNVERIFIED、BLOCKED 的区别，引用可核实的 Issue/PR/报告/commit；不虚报结果。
 2. **唯一推荐口令：** 若存在可继续的下一步，提供**一条完整、独立、可直接复制的中文命令**，写明对象与任务：`推进架构师工作：…`、`推进导师工作：…`、`推进工程师工作：…` 或 `Scientist：…`。不得保留占位符、模糊片段或建议无法实际调用的 Agent。
 3. **有意义的多选：** 仅在存在真正不同且可执行的路线时，最多增加两条备选。推荐项始终只有一个；不得为凑数或换句话重复同一任务。
-4. **权限与资源边界：** 现有 Colab 权益适用 Scientist 的 [No Price Gate 常设授权](../../../workflows/GPU_EXPERIMENT.md)，**不再索取逐次价格、额度或预算批准**；保留科研和准备关口、真实工具权限、后续更严限制及新增收费的单独审批。显示口令不等于已分配硬件、合并 PR 或启动 Codex。
+4. **权限与资源边界：** 现有 Colab 算力按[实验默认执行](../../../workflows/GPU_EXPERIMENT.md)由 Codex 负责，**不询问、查找或引用 Scientist 算力授权**。仅检查真实权限、固定 SHA、有限超时、正式科研/数值关口和用户停止指令；新增收费需另获用户同意。交接口令不等于已启动设备或 Codex。
 5. **固定结尾：** 最后一节应为 **SAE · 下一步行动**，包含状态、证据、推荐/备选及需 Scientist 决定之事。如果不存在诚实可执行的下一步，明确写 DONE / BLOCKED / WAITING_FOR_SCIENTIST；若有安全的恢复权限/审批动作，就以此作为可复制推荐。
 
 ### 复制粘贴与交互式多选降级
@@ -41,7 +41,7 @@ GPT 导师、GPT 架构师与 Codex 工程师完成**每轮实质性工作**后�
 **当前状态：** CPU_VALIDATED（示例）· **证据：** 示例 Issue #42  
 **推荐：** `推进架构师工作：审核 Issue #42 的 GPU Readiness` — 先核验 CPU 证据。  
 **备选：** `推进工程师工作：复核 Issue #42 的 CPU 编译日志`  
-**需要科学家：** 架构师确认 GPU_READY 前暂无操作。
+**需要科学家：** 既有账户的常规设备探针或实验无需批准；科研决策单独处理。
 
 ## 与现有协议关系
 
