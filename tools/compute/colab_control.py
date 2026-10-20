@@ -194,6 +194,9 @@ def run(args):
         work_deadline = cleanup_deadline - args.cleanup_seconds
         code, _ = cli('new', '-s', session, '--gpu', args.device, timeout=120)
         if code:
+            report['allocation_failure_scope'] = ('CLI_SUBPROCESS_TIMEOUT'
+                if report['commands'][-1]['status'] == 'TIMEOUT' else 'CLI_COMMAND_FAILED')
+            report['allocation_http_phase'] = 'UNKNOWN'
             raise PreflightError('ALLOCATION_FAILED')
         report['created'] = True
 

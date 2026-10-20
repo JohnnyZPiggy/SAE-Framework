@@ -1,5 +1,7 @@
 # 本地预检与有界 Colab 传输
 
+分配超时见 [CLI 0.7.4 无分配诊断](diagnostics/README.md)：HTTP 超时与外层进程时限不同，外层超时不能判定 GET/POST 阶段。分配期间不轮询 `status`；它会同步远端 assignments 并可能改写本地会话状态。控制器没有 status 观察循环。
+
 > [English](README.md) | 简体中文
 
 状态：**LOCAL_VALIDATED / LIVE_NOT_RUN**。基于 SAE_Test PR #3 合并提交提炼；[来源与许可证](NOTICE.md)。只需要相邻的三个 Python 文件、标准库、已有 Git 和 Colab CLI；不提供包发布、后台进程、bootstrap 或 Publisher。数学算法、安装与数值验收属于项目 driver。
