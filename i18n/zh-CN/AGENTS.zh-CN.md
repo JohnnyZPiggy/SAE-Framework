@@ -15,9 +15,9 @@
 
 ## 核心规则
 1. 新算法或重大张量化改造由 GPT 记录简洁的[数学研究](../../workflows/MATHEMATICAL_RESEARCH.md)依据，自主决定 `RESEARCH_READY` / 有界例外；不等 Scientist 签字。设备和 CPU 探针可并行进行，正式结论仍需证据。
-2. 执行前恢复目标仓库、角色、固定协议版本、GitHub Issues/PR、权限及阶段；详见[角色恢复](../../workflows/ROLE_RECOVERY.md)。
+2. 执行前恢复目标仓库、角色、固定协议版本、GitHub Issues/PR、权限及阶段；详见[角色恢复](../../workflows/ROLE_RECOVERY.md)。**EXPLORE** 允许早期探针，**VALIDATE** 用实测证据约束正式科研结论而非人工审批。
 3. 保留源码 SHA、设备环境、命令、种子、数值正确性与诚实计时方法；区分 PASS / FAIL / NOT RUN / BLOCKED，不虚报执行或加速。
-4. 每次用户指令仅推进有边界的工作周期。[实验默认执行](../../workflows/GPU_EXPERIMENT.md)：Codex 使用现有账户权益执行 CPU/GPU/TPU 实验，**不检查 Scientist 算力授权**；仍须核实真实访问、任务范围、有限超时、会话释放及用户最新停止指令。新增收费须另获明确批准；不默认使用 GitHub Actions 或付费 CI。
+4. 每次用户指令仅推进有边界的工作周期。[实验默认执行](../../workflows/GPU_EXPERIMENT.md)及[Lean Lab](../../workflows/LEAN_RESEARCH_LAB.md)：Codex 在单次有限批次内直接实现→测试→修复→复测，使用现有账户权益执行 CPU/GPU/TPU 实验，**无需 Scientist 算力签批或逐次修复审批**；仍须核实真实访问、任务范围、有限超时、会话释放及用户最新停止指令。新增收费须另获明确批准；不默认使用 GitHub Actions 或付费 CI。
 5. 不泄露密钥，遵守 GitHub 保护规则；Codex 只提交分支/PR，不直接写受保护主分支。
 6. 范围内科研、工程验收与合并决定均由 GPT 自主完成，**无需 Scientist 审批**；保留真实权限、数值证据、密钥检查及有界执行。新增付费、敏感非公开披露和外部不可逆操作仍需用户单独决定；不允许无限并发或后台调度。
 
@@ -34,6 +34,7 @@
 - [研发流程](../../workflows/RESEARCH_PIPELINE.md)及[数学研究](../../workflows/MATHEMATICAL_RESEARCH.md)
 - [任务管理](../../workflows/TASK_MANAGEMENT.md) — Issue/PR
 - [计算实验](../../workflows/GPU_EXPERIMENT.md) — CPU/GPU/TPU 执行、证据与可选发布
+- [Lean Research Lab](../../workflows/LEAN_RESEARCH_LAB.md) — EXPLORE/VALIDATE 双模式与单次 Codex 有界批次
 - [生态评估](../../workflows/ECOSYSTEM_REVIEW.md) — 复用还是重建
 - [角色恢复](../../workflows/ROLE_RECOVERY.md)与[下一步](../../workflows/NEXT_ACTION.md)
 - [初始化](../../SAE_BOOTSTRAP.md) — 固定版本、幂等采用

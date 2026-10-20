@@ -30,17 +30,22 @@
 `.sae/` 必须来自**同一固定版本**。在子项目目录中检查相对路径，防止它们指向缺失的母仓库目录。根 `AGENTS.md` 是**经过适配**的项目入口，需检查项目名称、SHA、角色路径和中文说明的链接。
 
 ## 检查 3：用实际指令演练
-- **导师：** 新算法执行「推进导师工作」时，应优先研究矩阵向量/张量结构并形成数学研究报告。
-- **架构师：** 「推进架构师工作」需要先检查科学家批准的研究关口，再派发算法实现 Issue；仓库基础设施可先准备。
-- **工程师：** 「推进工程师工作」要真正找到开放任务。若 `agent:codex`、`status:ready` 标签不存在，须检查 Issue 标题/正文中的负责人及 ready 状态；真正评论领取后才报告已领取。
-- **Colab：** GPU 由科学家运行；Publisher 尚未开发完成时只能手动发布，不可宣称自动完成。
+- **导师 / GPT：** 执行「推进导师工作」时由 GPT 自主记录可检验数学假设，决定 EXPLORE、`RESEARCH_READY` 或有界例外；没有 Scientist 审批，正式验收才需完整数学证据。
+- **架构师：** 「推进架构师工作」直接交付一个[Lean Lab 有界批次](../../../workflows/LEAN_RESEARCH_LAB.md)：目标、模式、源码身份、数值 oracle、有限超时及资源释放；不等待 Scientist 签字，正式 VALIDATE 仍须研究证据。
+- **工程师：** 「推进工程师工作」领取一个真实就绪 Issue（缺标签时检查正文），在同一有界任务内完成实现→测试→修复→复测；无需每次 EXPLORE 运行创建新 Issue/PR，不虚报。
+- **Colab：** Codex 直接使用真实可用的本地/Colab CLI 资源，无 Scientist 算力审批；保留真实权限、任务超时、单会话和释放检查。Publisher 未真实验收时标 `NOT VERIFIED`，不虚报 GPU/TPU 通过。
 
-## 检查 4：证据和权限
+## 检查 4：配置与快速通道
+- 检查 `sae.yaml`：`research_gate.scientist_review_required: false`、`research_gate.required_before_formal_acceptance: true`、`collaboration.per_pr_scientist_approval_required: false`、`experiments.gpu_tpu_require_scientist_budget_approval: false`、`experiments.new_billing_requires_explicit_user_approval: true`。
+- 检查 `workflow.default_mode: EXPLORE`、支持 VALIDATE、有限超时、最多一个 Colab 会话及有界修复；探针不算正式验收。
+- 远程正式复现必须固定精确 SHA；本地 dirty 原型须如实标记。
+
+## 检查 5：证据和权限
 - CPU 测试必须按真实命令与结果记录 `PASS/FAIL/NOT RUN/BLOCKED`。
 - 不添加 `.github/workflows/` Actions，不同步 Drive，不向 Git 提交密钥。
 - 改动通过可审查 PR，不静默覆盖/合并，不 force-push。
 
 ## 输出
-列出实际路径、固定 SHA、真实 Issue/PR 链接、完成与未完成项、风险和科学家需要批准的动作。
+列出真实路径、固定 SHA、Issue/PR、PASS/FAIL/NOT RUN/BLOCKED 与风险；仅新增付费、非公开敏感披露或外部账户权限等真实操作需要用户单独决定。
 
 **说明：** 这是冒烟检查协议，不是已通过测试的证明。

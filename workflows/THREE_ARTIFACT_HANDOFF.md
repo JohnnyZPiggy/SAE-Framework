@@ -3,16 +3,16 @@
 > Language: **English** | [简体中文](../i18n/zh-CN/workflows/THREE_ARTIFACT_HANDOFF.md)
 
 ## Purpose
-SAE coordinates work through **three linked scientific artifacts**, rather than relying on chat history or generating unnecessary status paperwork. They live in each **algorithm project repository**, **not** in the SAE Framework repository itself. GitHub Issues and PRs remain the coordination and review system.
+For **VALIDATE** and accepted research, SAE coordinates through **three linked scientific artifacts**, rather than relying on chat history or unnecessary status paperwork. During **EXPLORE**, [Lean Lab](LEAN_RESEARCH_LAB.md) uses a single concise batch note instead; full reports are **not required per exploratory attempt**. They live in each **algorithm project repository**, **not** in the SAE Framework repository itself. GitHub Issues and PRs remain the coordination and review system.
 
 | Deliverable and target-project path | Owner / decision authority | Question answered | When updated |
 | --- | --- | --- | --- |
 | **Mathematical Research** — `docs/research/<algorithm>-tensorization.md` | GPT Scientific Mentor drafts and decides; Architect may challenge/revise | What is the mathematical structure? Which matvec/matrix-free/tensor formulations are justified, and when? | New algorithm, significant redesign, or new mathematical finding |
 | **Engineering Report** — `docs/engineering/<algorithm>-engineering.md` | GPT Chief Architect defines specification & acceptance; **Codex owns implementation/test evidence**; Architect reviews | What interfaces/algorithms were implemented, where is the code, and what actually passed? | Architect handoff; then significant engineering PR/revision |
-| **Experimental Report** — `reports/gpu/<run-id>/summary.md`, with small machine-readable results | **Codex directly executes** existing-account Colab CPU/GPU/TPU experiments; GPT owns scientific conclusions and evidence review | On which source SHA, device, dtype and workload were correctness and performance actually measured? | **Each actual experiment run**; do not overwrite old runs |
+| **Experimental Report** — `reports/gpu/<run-id>/summary.md`, with small machine-readable results | **Codex directly executes** existing-account Colab CPU/GPU/TPU experiments; GPT owns scientific conclusions and evidence review | On which source SHA, device, dtype and workload were correctness and performance actually measured? | **Each published/accepted VALIDATE run**; preserve unique run identity; exploratory probes need only a compact batch note |
 
 ## Contract: one question, one authority, connected evidence
-- **Math → Engineering:** the GPT-decided research study supplies equations, assumptions, tensor shapes, reference oracle, limits and `RESEARCH_READY` (or an explicitly documented exception). An unapproved study does not silently authorize optimization engineering.
+- **Math → Engineering:** for formal VALIDATE acceptance, the GPT-decided research study supplies equations, assumptions, tensor shapes, oracle, limits and `RESEARCH_READY` (or a bounded documented hypothesis). EXPLORE may start testable local prototypes and `PROBE_ONLY` checks earlier but must not imply formal acceptance.
 - **Engineering → Experiment:** the Architect's acceptance criteria and Codex's exact candidate **source commit SHA**, CLI, correctness evidence and reproducible commands define the experiment. CPU verification is **not** GPU verification.
 - **Experiment → Research/Engineering:** measured failures and bottlenecks link back to the responsible code PR and mathematical study; GPT decides whether to revise math or implementation.
 - **No second source of truth:** do not re-copy benchmark numbers into multiple reports. Use links and SHAs. A GitHub Issue/PR records work status; documents record *scientific reasoning and evidence*.
@@ -26,7 +26,7 @@ SAE coordinates work through **three linked scientific artifacts**, rather than 
 ## Minimal lifecycle
 1. **Mentor:** documents a concise mathematical case and autonomously records `RESEARCH_READY` or limits; **no Scientist approval**. Early `PROBE_ONLY` checks do not count as production acceptance.
 2. **Architect:** specifies software contract, acceptance and formal experiment plan in the Engineering Report or linked Issue; submits a scoped Codex task referencing the mathematical study.
-3. **Codex:** implements on branch, **runs actual CPU tests**, updates the Engineering Report with tested commit and commands, and opens a PR. Never self-merges or invents a passing status.
+3. **Codex:** implements on branch and runs real CPU tests; EXPLORE may iterate repeatedly under one task with a compact batch note. Update the Engineering Report and open a PR when formal VALIDATE evidence or useful code is ready. Never self-merge or invent PASS.
 4. **Codex:** runs the pinned candidate on available local/Colab CPU/GPU/TPU, verifies artifacts and cleanup, and submits safe non-sensitive per-run evidence PRs; GPT judges science and technical evidence.
 5. **Architect:** briefly checks SHA-linked artifacts, accepts/returns work and revisits Mentor mathematics whenever evidence challenges assumptions; no human approval round.
 

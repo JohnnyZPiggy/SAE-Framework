@@ -18,7 +18,7 @@
 | Colab GPU 性能 | NOT RUN | |
 
 ## 三份文档的关联
-- 科学家已批准的数学报告：`docs/research/<algorithm>-tensorization.md` / 纯基础设施任务 N/A
+- GPT 审核的正式数学研究（VALIDATE）：`docs/research/<algorithm>-tensorization.md` / EXPLORE 或基础设施 N/A
 - 工程实现与 CPU 证据：`docs/engineering/<algorithm>-engineering.md`
 - 真实 Colab 实验报告：`reports/gpu/<run-id>/summary.md` / NOT RUN
 - 被测源码 SHA：`<SHA>`（与报告发布 SHA 区分）
@@ -30,7 +30,7 @@ Python/PyTorch 版本、设备、随机种子、命令、数据来源。
 数值差异、未测试硬件、精度与性能取舍、跳过的测试。
 
 ## 需要审查的事项
-总架构师需作何决定？科学家需跑什么实验？实验报告 PR 在哪里？
+GPT Architect 核对被测 SHA、数值证据与风险，自主接受 / 退回 / 合并；无需 Scientist 实验签批。EXPLORE 仅汇总一次有界批次，不要求每次设备探针单独建 PR。
 
 ## 学习主题（可选）
 值得在导师模式中进一步讨论的一个问题。

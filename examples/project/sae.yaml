@@ -1,4 +1,5 @@
-# SAE V3.3 example. Replace all placeholders and pin an actual immutable framework SHA.
+# SAE V3.3-compatible Lean Lab example. Replace placeholders and pin an immutable framework SHA.
+# This is a configuration template, not proof that any runner/Publisher exists.
 sae_version: "3.3"
 project:
   repository: "<OWNER>/<PROJECT>"
@@ -18,10 +19,10 @@ objectives:
   engineering_productivity: true
   scientific_learning: true
 research_gate:
-  required_before_algorithm_engineering: true
-  primary_role: "mentor"
+  required_before_formal_acceptance: true
+  decision_role: "gpt"
   study_path_template: "docs/research/<algorithm>-tensorization.md"
-  scientist_review_required: true
+  scientist_review_required: false
   outcome_values: ["RESEARCH_READY", "RESEARCH_BLOCKED", "NOT_TENSORIZABLE"]
   speedup_claims_require_real_measurement: true
 collaboration:
@@ -29,11 +30,16 @@ collaboration:
   review_hub: "github_pull_requests"
   actions_enabled: false
   hosted_ci_required: false
-  merge_requires_authorization: true
+  merge_decision_role: "gpt_architect"
+  merge_requires_architect_evidence_review: true
+  per_pr_scientist_approval_required: false
 experiments:
   device_runner: "codex_local_and_colab_cli"
   devices: ["cpu", "gpu", "tpu"]
-  gpu_tpu_require_scientist_budget_approval: true
+  gpu_tpu_require_scientist_budget_approval: false
+  new_billing_requires_explicit_user_approval: true
+  max_active_colab_sessions: 1
+  task_timeout_required: true
   notebook_style: "optional_thin_workspace"
   execution_stages: ["pinned_install", "benchmark", "optional_publish"]
   install_source: "pinned_github_commit_via_pip"
@@ -45,3 +51,13 @@ experiments:
   google_drive_role: "temporary_notebook_workspace_only"
   drive_sync: false
   publish_branch_prefix: "experiment/"
+workflow:
+  default_mode: "EXPLORE"
+  supported_modes: ["EXPLORE", "VALIDATE"]
+  validate_requires_real_numerical_evidence: true
+  experiment_batch:
+    one_issue_per_batch: true
+    max_self_repair_attempts_per_failure_class: 3
+    one_concise_evidence_summary_per_batch: true
+    additional_per_attempt_scientist_or_gpt_signoff: false
+    protocol: ".sae/workflows/LEAN_RESEARCH_LAB.md"

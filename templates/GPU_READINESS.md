@@ -10,7 +10,7 @@
 
 | Gate | Status: PASS / FAIL / NOT_RUN / WAIVED | Evidence (command, real output, link) |
 | --- | --- | --- |
-| Scientist-reviewed mathematical research | | |
+| GPT-decided `RESEARCH_READY` / explicit bounded assumptions for **formal VALIDATE** | | |
 | CPU oracle, randomized and edge correctness | | |
 | CPU eager + `torch.compile` execution | | |
 | CPU fullgraph/graph-break diagnostics if relevant | | |
@@ -23,5 +23,7 @@
 **Outstanding blockers:** <none or Issue URLs>  
 **GPU queue Issue:** <URL or NOT_QUEUED>  
 **Decision evidence:** <short justification>
+
+**Mode boundary:** This checklist gates `VALIDATE` formal performance/correctness acceptance, **not** short `EXPLORE / PROBE_ONLY` device diagnostics. Probes alone cannot establish `GPU_READY`, TPU support or speedup. See [Lean Lab](../workflows/LEAN_RESEARCH_LAB.md).
 
 Do not set GPU_READY if any mandatory gate failed or was not run without an approved waiver. **GPU_READY does not assert GPU correctness, GPU compilation or speedup.** The actual GPU run and its experimental report are separate.
