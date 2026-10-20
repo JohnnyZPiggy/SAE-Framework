@@ -30,6 +30,14 @@ PR #41's temporary host observer made 71 such status calls; it is discontinued, 
 
 An additional upstream limitation is reproduced locally: with an empty store, `sync_sessions()` catches authentication `SystemExit` and returns an empty assignment list. Thus a printed empty list alone is not unconditional proof of successful authenticated server readback. This does not establish that authentication failed in PR #41. No third-party authentication or cleanup behavior is changed here; GPT should assess a separate, minimal authenticated-readback fix before relying on that edge case in future live acceptance.
 
+Issue #43 replaces the controller's text-only sessions check with the existing CLI 0.7.4 authenticated `usage`/ccu-info path; see the current [readback contract](../README.md#bounds-and-evidence). To check that installed path locally, run the following **with the existing CLI's Python** (same network/credential guards and fresh output requirement):
+
+```sh
+EXISTING_CLI_PYTHON tools/compute/diagnostics/authenticated_readback_074.py --out NEW_REPORT.json
+```
+
+This mocks backend authentication success with a synthetic bearer token and a schema-valid HTTP 200 response, and separately covers swallowed auth exit, expired credentials, HTTP 403, timeout, empty body, missing count and nonempty assignments. It does not load real credentials or call CLI main/new. Tests require the full usage success path, not exit status or empty lists alone. [Issue 43 evidence](../../../reports/compute-issue43/summary.md) distinguishes simulated authenticated responses from real provider verification.
+
 ## Evidence limits
 
 [Recorded local evidence](../../../reports/colab-cli-074-offline-diagnosis/summary.md) includes installed source SHA-256 and function line ranges. No upstream code is vendored. Mocks test GET/POST timeout forwarding, hangs and parent process termination, plus status synchronization; they do **not** test socket timer accuracy, real credential refresh, provider root cause, current remote session state, live release or LIVE_READY. Keep Issue #40's observed timeout and verified cleanup evidence unchanged.

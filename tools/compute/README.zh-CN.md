@@ -2,6 +2,8 @@
 
 分配超时见 [CLI 0.7.4 无分配诊断](diagnostics/README.md)：HTTP 超时与外层进程时限不同，外层超时不能判定 GET/POST 阶段。分配期间不轮询 `status`；它会同步远端 assignments 并可能改写本地会话状态。控制器没有 status 观察循环。
 
+认证可信零会话检查仅支持已审查的 CLI **0.7.4**：复用 `usage` 已认证的只读 `ccu-info` 返回，严格核对完整 balance/rate/assignment count 三行 stdout。分配前要求 count=0 和余额为正；stop 后要求新的可信 count=0 且 stop 成功，余额无需为正。此路径不经过会吞认证退出的 `sync_sessions()`。退出码 0、旧 `sessions` 空列表、仅 stderr 的内容、重复/缺失字段、认证失败、超时或未知 CLI 版本均不能证明释放；失败记 `READBACK_UNVERIFIED` 或 `CLEANUP_FAILED`。继续保留有限清理预算与两次 stop+回读上限，无新增认证管理、API 或供应商文件修改。它依赖受信任的已安装 CLI/服务端响应，不证明回读后的并发账户状态；本地 Mock 不能代替真实端到端验收。
+
 > [English](README.md) | 简体中文
 
 状态：**LOCAL_VALIDATED / LIVE_NOT_RUN**。基于 SAE_Test PR #3 合并提交提炼；[来源与许可证](NOTICE.md)。只需要相邻的三个 Python 文件、标准库、已有 Git 和 Colab CLI；不提供包发布、后台进程、bootstrap 或 Publisher。数学算法、安装与数值验收属于项目 driver。

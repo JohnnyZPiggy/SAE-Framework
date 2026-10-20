@@ -31,6 +31,7 @@ class FakeCLI:
     def __init__(self, clock, failure=None):
         self.clock, self.failure = clock, failure
         self.calls = []
+        self.usage_calls = 0
         self.active = False
         self.artifacts = {name: (json.dumps({'source_sha': SHA, 'status': 'PASS',
                             'kind': 'fake-test-only'})+'\n').encode()
@@ -49,8 +50,24 @@ class FakeCLI:
         if op == 'sessions':
             output = 'unrelated active session' if self.failure == 'existing' or self.active else ZERO
         elif op == 'usage':
-            output = ('Current balance: 0 compute units\nActive assignments: 0' if self.failure == 'quota'
-                      else 'Current balance: 10 compute units\nActive assignments: 0')
+            self.usage_calls += 1
+            balance = '0.00' if self.failure == 'quota' else '10.00'
+            count = 1 if self.failure == 'existing' or self.active else 0
+            output = f'Current balance: {balance} compute units\nUsage rate: 0.00/hr\nActive assignments: {count}'
+            failure = self.failure or ''
+            if failure.startswith('readback-') or (failure.startswith('cleanup-') and self.usage_calls > 1):
+                kind = failure.split('-', 1)[1]
+                if kind in ('auth', 'unauthorized'):
+                    code = 1
+                elif kind in ('empty', 'stop-and-empty'):
+                    output = ZERO  # swallowed auth can print this with exit 0
+                elif kind == 'timeout':
+                    self.clock.now += kwargs['timeout']
+                    raise subprocess.TimeoutExpired(argv, kwargs['timeout'], output='https://secret.invalid/?token=private')
+                elif kind == 'nonempty':
+                    output = output.replace('Active assignments: 0', 'Active assignments: 1')
+                elif kind == 'duplicate':
+                    output += '\nActive assignments: 0'
         elif op == 'new':
             self.active = True
             if self.failure == 'allocation-timeout':
@@ -76,17 +93,22 @@ class FakeCLI:
             name = Path(cmd[-2]).name
             Path(cmd[-1]).write_bytes(b'bad' if self.failure == 'hash' else self.artifacts[name])
         elif op == 'stop':
+            if self.failure in ('cleanup-stop', 'cleanup-stop-and-empty'):
+                self.active = self.failure != 'cleanup-stop'
+                return subprocess.CompletedProcess(argv, 1, '', 'token=secret')
             if self.failure == 'cleanup':
                 self.clock.now += kwargs['timeout']
                 raise subprocess.TimeoutExpired(argv, kwargs['timeout'])
             self.active = False
         else:
             raise AssertionError(op)
+        if self.failure == 'readback-stderr' and op == 'usage':
+            return subprocess.CompletedProcess(argv, 0, '', output + '\n')
         return subprocess.CompletedProcess(argv, code, output + '\n', 'secret path /home/private/oauth https://private.invalid token=secret')
 
 
 class ControllerTests(unittest.TestCase):
-    def run_fake(self, failure=None, extra=()):
+    def run_fake(self, failure=None, extra=(), cli_version='0.7.4'):
         with tempfile.TemporaryDirectory() as temp:
             args = control.parser().parse_args(['--source-sha', SHA, '--repo-path', temp, '--run-id', 'test-run',
                  '--out', str(Path(temp) / 'new-run'), '--driver', 'driver.py', '--artifacts', 'artifacts.json', '--task-seconds', '100',
@@ -94,7 +116,7 @@ class ControllerTests(unittest.TestCase):
                  '--work-timeout', '100', *extra])
             clock = Clock()
             fake = FakeCLI(clock, failure)
-            ready = {'status': 'PASS', 'events': {'snapshot_extraction': None, 'wheel_pip_install': None}}
+            ready = {'status': 'PASS', 'cli_version': cli_version, 'events': {'snapshot_extraction': None, 'wheel_pip_install': None}}
             with patch.object(control, 'resolve_cli', return_value='/verified/colab'), \
                  patch.object(control, 'preflight', return_value=ready), \
                  patch.object(control, 'load_adapter', return_value=(b'print(1)', ['measurement.json'], 'b'*64)), \
@@ -118,6 +140,7 @@ class ControllerTests(unittest.TestCase):
         self.assertTrue(execs[0][execs[0].index('-f') + 1].endswith('kernel_smoke.py'))
         self.assertTrue(execs[1][execs[1].index('-f') + 1].endswith('driver.py'))
         self.assertTrue(r['cleanup_confirmed'])
+        self.assertEqual([b['status'] for b in r['readbacks']], ['AUTHENTICATED_ZERO', 'AUTHENTICATED_ZERO'])
         self.assertIsNone(r['events']['github_publication'])
         self.assertIsNone(r['events']['first_cpu_pass'])
 
@@ -171,7 +194,7 @@ class ControllerTests(unittest.TestCase):
         self.assertEqual(r['allocation_failure_scope'], 'CLI_SUBPROCESS_TIMEOUT')
         self.assertEqual(r['allocation_http_phase'], 'UNKNOWN')
         self.assertTrue(r['cleanup_confirmed'])
-        self.assertEqual([c[0] for c, _ in fake.calls], ['sessions', 'usage', 'new', 'stop', 'sessions'])
+        self.assertEqual([c[0] for c, _ in fake.calls], ['usage', 'new', 'stop', 'usage'])
         self.assertLessEqual(r['allocation_lifecycle_seconds'], 80)
 
     def test_interrupt_stops(self):
@@ -189,12 +212,56 @@ class ControllerTests(unittest.TestCase):
     def test_existing_sessions_not_touched(self):
         r, fake = self.run_fake('existing')
         self.assertEqual(r['error'], 'EXISTING_OR_UNKNOWN_SESSIONS')
-        self.assertEqual([c[0] for c, _ in fake.calls], ['sessions'])
+        self.assertEqual([c[0] for c, _ in fake.calls], ['usage'])
 
     def test_quota_blocks_allocation(self):
         r, fake = self.run_fake('quota')
         self.assertEqual(r['error'], 'ENTITLEMENT_NOT_ESTABLISHED')
         self.assertNotIn('new', [c[0] for c, _ in fake.calls])
+
+    def test_untrusted_preallocation_readbacks_never_allocate(self):
+        for kind in ('empty', 'auth', 'unauthorized', 'timeout', 'duplicate', 'stderr'):
+            with self.subTest(kind=kind):
+                r, fake = self.run_fake('readback-' + kind)
+                self.assertEqual(r['error'], 'READBACK_UNVERIFIED')
+                self.assertFalse(r['created'])
+                self.assertFalse(r['cleanup_confirmed'])
+                self.assertEqual([c[0] for c, _ in fake.calls], ['usage'])
+                self.assertEqual(r['readbacks'][0]['status'], 'READBACK_UNVERIFIED')
+
+    def test_untrusted_cleanup_readback_or_failed_stop_never_passes(self):
+        for kind in ('empty', 'auth', 'unauthorized', 'timeout', 'nonempty', 'stop', 'stop-and-empty'):
+            with self.subTest(kind=kind):
+                r, fake = self.run_fake('cleanup-' + kind)
+                self.assertEqual(r['status'], 'CLEANUP_FAILED')
+                self.assertFalse(r['cleanup_confirmed'])
+                self.assertEqual(sum(c[0] == 'new' for c, _ in fake.calls), 1)
+                self.assertEqual(sum(c[0] == 'stop' for c, _ in fake.calls), 2)
+                self.assertNotIn('sessions', [c[0] for c, _ in fake.calls])
+                self.assertNotIn('status', [c[0] for c, _ in fake.calls])
+                self.assertLessEqual(r['allocation_lifecycle_seconds'], 80)
+                expected = ('AUTHENTICATED_ZERO' if kind == 'stop' else
+                            'ACTIVE_ASSIGNMENTS' if kind == 'nonempty' else 'READBACK_UNVERIFIED')
+                self.assertEqual(r['readbacks'][-1]['status'], expected)
+
+    def test_unreviewed_cli_version_blocks_before_provider(self):
+        for version in (None, '0.7.5'):
+            with self.subTest(version=version):
+                r, fake = self.run_fake(cli_version=version)
+                self.assertEqual(r['error'], 'READBACK_UNVERIFIED')
+                self.assertEqual(fake.calls, [])
+
+    def test_authenticated_usage_rejects_partial_ambiguous_or_nonfinite_text(self):
+        good = 'Current balance: 10.00 compute units\nUsage rate: 0.00/hr\nActive assignments: 0\n'
+        self.assertEqual(control.authenticated_usage(good), {'balance': 10.0, 'assignments': 0})
+        self.assertEqual(control.authenticated_usage(good.replace('\n', '\r\n'))['assignments'], 0)
+        self.assertEqual(control.authenticated_usage(good.replace('10.00', '-1.00'))['assignments'], 0)
+        for text in ('', ZERO, good + good, 'warning\n' + good, good + 'warning',
+                     good.replace('10.00', 'nan'), good.replace('0.00/hr', 'inf/hr'),
+                     good.replace('assignments: 0', 'assignments: -1'),
+                     good.replace('assignments: 0', 'assignments: 0 extra'), '9'*10000):
+            with self.subTest(text=text[:40]):
+                self.assertIsNone(control.authenticated_usage(text))
 
     def test_preflight_only_never_calls_provider(self):
         r, fake = self.run_fake(extra=['--preflight-only'])
@@ -232,7 +299,7 @@ class ControllerTests(unittest.TestCase):
                 if 'exec' in argv:
                     return REAL_RUN([sys.executable, '-c', 'import time; time.sleep(30)'], **kwargs)
                 return fake(argv, **kwargs)
-            ready = {'status': 'PASS', 'events': {'snapshot_extraction': None, 'wheel_pip_install': None}}
+            ready = {'status': 'PASS', 'cli_version': '0.7.4', 'events': {'snapshot_extraction': None, 'wheel_pip_install': None}}
             with patch.object(control, 'resolve_cli', return_value='fake-colab'), \
                  patch.object(control, 'preflight', return_value=ready), \
                  patch.object(control, 'load_adapter', return_value=(b'print(1)', ['measurement.json'], 'b'*64)), \
@@ -256,7 +323,7 @@ class ControllerTests(unittest.TestCase):
                 if 'new' in argv:
                     return REAL_RUN([sys.executable, '-c', 'import time; time.sleep(30)'], **kwargs)
                 return fake(argv, **kwargs)
-            ready = {'status': 'PASS', 'events': {'snapshot_extraction': None, 'wheel_pip_install': None}}
+            ready = {'status': 'PASS', 'cli_version': '0.7.4', 'events': {'snapshot_extraction': None, 'wheel_pip_install': None}}
             with patch.object(control, 'resolve_cli', return_value='fake-colab'), \
                  patch.object(control, 'preflight', return_value=ready), \
                  patch.object(control, 'load_adapter', return_value=(b'print(1)', ['measurement.json'], 'b'*64)), \
@@ -264,7 +331,7 @@ class ControllerTests(unittest.TestCase):
                 r = control.run(args)
             self.assertEqual(r['allocation_failure_scope'], 'CLI_SUBPROCESS_TIMEOUT')
             self.assertEqual(r['allocation_http_phase'], 'UNKNOWN')
-            self.assertEqual([c['operation'] for c in r['commands']], ['sessions', 'usage', 'new', 'stop', 'sessions'])
+            self.assertEqual([c['operation'] for c in r['commands']], ['usage', 'new', 'stop', 'usage'])
             self.assertTrue(r['cleanup_confirmed'])
             self.assertFalse(r['created'])
             self.assertIsNone(r['events']['kernel_probe'])
