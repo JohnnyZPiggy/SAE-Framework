@@ -13,8 +13,8 @@
 What problem does this solve, and why does it matter?
 
 ## Pre-engineering mathematical research gate
-**Approved structure/tensorization study:** `docs/research/<algorithm>-tensorization.md` / link  
-**Scientist decision:** RESEARCH_READY / approved narrow exception  
+**GPT-decided structure/tensorization study:** `docs/research/<algorithm>-tensorization.md` / link  
+**GPT research decision:** RESEARCH_READY / scoped hypothesis-exception / RESEARCH_BLOCKED  
 **Matrix-vector / tensor structure and limitations:** <summary>  
 *Repository scaffolding-only issues can mark this as not applicable.*
 
@@ -27,8 +27,8 @@ Definitions, assumptions, reference baseline, invariants, input/output shapes, d
 - [ ] Documentation and reproduction commands
 
 ## Compute delivery gate (algorithm implementation tasks)
-- [ ] Clean install from the exact pinned source SHA; Codex actually passed CPU packaging/CLI/numerical tests
-- [ ] Packaged benchmark CLI writes local reports **without GitHub writes**; optional Publisher is a distinct, separately authorized stage (do not imply implemented)
+- [ ] Source SHA pinned; actual CPU packaging/CLI/numerical tests recorded PASS / FAIL / NOT RUN; safe `PROBE_ONLY` device checks may start in parallel
+- [ ] Benchmark CLI writes local reports **without GitHub writes**; optional safe/non-sensitive Publisher is a separately verifiable stage directed by GPT (do not imply implemented)
 - [ ] Codex-run Colab CPU/GPU/TPU results, independent publication and cleanup have distinct PASS / FAIL / NOT RUN / BLOCKED evidence; no Scientist compute signoff. Short `PROBE_ONLY` device checks are not formal benchmark acceptance.
 - [ ] Record tested source SHA, actual commands, outputs and failures
 
