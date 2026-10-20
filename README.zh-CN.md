@@ -109,4 +109,4 @@ GPT 自主判断简明[数学结构研究](workflows/MATHEMATICAL_RESEARCH.md)�
 ## 文档
 [架构师](i18n/zh-CN/protocols/ARCHITECT.md) · [工程师](i18n/zh-CN/protocols/ENGINEER.md) · [导师](i18n/zh-CN/protocols/MENTOR.md) · [科学家](i18n/zh-CN/protocols/SCIENTIST.md) · [角色恢复](i18n/zh-CN/workflows/ROLE_RECOVERY.md) · [变更记录](i18n/zh-CN/CHANGELOG.md) · [中文导航](i18n/zh-CN/README.md)
 
-**版本：** V3.3 文档迁移中；已固定的 V3.2 项目快照须经审查后主动升级。**许可：** 仓库尚未选定 License，公开可见不代表可以任意再利用。
+**版本：** V3.3 文档迁移中；已固定的 V3.2 项目快照须经审查后主动升级。**许可：** [MIT License](LICENSE) · Copyright © 2026 JohnnyZPiggy。本许可适用于仓库内的原创内容；如含第三方素材，其原有许可条款仍然适用。
