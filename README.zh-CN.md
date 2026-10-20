@@ -6,6 +6,8 @@
 
 ## 组织架构图
 
+未来项目可使用[本地预检与有界 Colab 传输工具](tools/compute/README.zh-CN.md)：**LOCAL_VALIDATED / LIVE_NOT_RUN**。driver 与 manifest 由算法项目提供；不会迁移旧项目的固定快照。
+
 ![SAE V3.3 — ChatGPT 原生卡片风格科研与工程组织架构图](docs/figures/SAE_Framework_V3.3.zh-CN.svg)
 
 [查看高清 SVG 矢量原图](docs/figures/SAE_Framework_V3.3.zh-CN.svg)

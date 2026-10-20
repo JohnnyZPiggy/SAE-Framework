@@ -6,6 +6,8 @@
 
 ## Architecture
 
+Reusable [local preflight and bounded Colab transport](tools/compute/README.md) tools are available for future projects: **LOCAL_VALIDATED / LIVE_NOT_RUN**. Project-owned drivers/manifests keep scientific code separate; existing pinned snapshots are not migrated.
+
 ![SAE V3.3 — native card-style research and engineering architecture (English)](docs/figures/SAE_Framework_V3.3.en.svg)
 
 [Open the full-resolution SVG](docs/figures/SAE_Framework_V3.3.en.svg)
