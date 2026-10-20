@@ -16,14 +16,14 @@
 新算法或重大张量化改写须先有经 Scientist 审核的 `RESEARCH_READY` 数学报告（`docs/research/<algorithm>-tensorization.md`），或已记录的有限例外，才能将 Codex 算法实现 Issue 标为 `status:ready`。研究缺失或阻塞返回导师/Scientist；仓库初始化不适用。详见[数学研究关口](MATHEMATICAL_RESEARCH.md)。
 
 ## Issue/PR 与三文档关联
-按[三文档交接协议](THREE_ARTIFACT_HANDOFF.md)关联经批准的数学报告、工程报告、Codex 获 Scientist 授权执行的实验记录。实验 PR 应指明被测源码 SHA 及上游 Issue/PR；不建立第四份状态日报，模板不能冒充实测证据。
+按[三文档交接协议](THREE_ARTIFACT_HANDOFF.md)关联经批准的数学报告、工程报告、Codex 直接执行的实验记录。实验 PR 应指明被测源码 SHA 及上游 Issue/PR；不建立第四份状态日报，模板不能冒充实测证据。
 
 ## 生命周期
 1. **GPT 创建 Issue：** 写出数学契约、接口、输入输出、CPU/GPU 验收条件、参考资料和依赖，合适时标记给 Codex。
 2. **Codex 领取任务：** 在 Issue 留下接受评论并改为 in-progress，同一项任务只允许一个当前负责人。
 3. **实现与 PR：** 使用 `feat/<issue-number>-<slug>` 分支。仅在全部条件已完成时使用 `Closes #N`；GPU 仍待验证时使用 `Refs #N`。
 4. **GPT 审查：** 查看真实代码变更和 CPU 证据；若涉及 GPU，指定候选源码 SHA 进入实验阶段。
-5. **Codex 执行获授权 Colab CLI：** 核对固定候选 SHA、结果完整性和会话释放，经单独发布授权提交报告 PR/评论；Scientist 审批计算资源并判定科学结论，失败时交回可复现案例。
+5. **Codex 默认执行现有账户 Colab CLI：** 核对固定源码 SHA、结果完整性及会话释放；提交报告 PR/评论仍遵守独立发布规则。不设 Scientist 算力许可或价格关口，数值/权限失败交回可复现案例。
 6. **GPT 验收：** 核实约定条件后自行决定是否合并，无需再向科学家申请合并许可，更新 Issue 与下一项任务。
 7. **GPT 导师总结：** 可选记录相关数学/工程学习要点，不能用学习笔记替代测试。
 
