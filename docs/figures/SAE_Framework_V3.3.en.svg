@@ -170,6 +170,6 @@
 <text x="690" y="2825" font-family="Inter, Noto Sans, Arial, sans-serif" font-size="17" fill="#1E293B" font-weight="540" text-anchor="start">Formal claims require mathematical &amp; measured evidence</text>
 <line x1="178" y1="2928" x2="1102" y2="2928" stroke="#DCE5F1" stroke-width="1.2"/>
 <g transform="translate(348 2947) scale(0.8333333333333334)" fill="none" stroke="#8593AA" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="2"/><circle cx="18" cy="12" r="2"/><circle cx="6" cy="18" r="2"/><path d="M6 8v8M8 6h5a5 5 0 0 1 5 5"/></g>
-<text x="640" y="2964" font-family="Inter, Noto Sans, Arial, sans-serif" font-size="17" fill="#68788F" font-weight="600" text-anchor="middle">SAE V3.3  ·  GPT Autonomous Fast Lane  ·  main @ b1b48ce</text>
+<text x="640" y="2964" font-family="Inter, Noto Sans, Arial, sans-serif" font-size="17" fill="#68788F" font-weight="600" text-anchor="middle">SAE V3.3  ·  GPT Autonomous Fast Lane  ·  policy @ b1b48ce</text>
 <text x="640" y="2992" font-family="Inter, Noto Sans, Arial, sans-serif" font-size="13" fill="#92A0B5" font-weight="400" text-anchor="middle">Architecture diagram · Documentation only · No runtime execution implied</text>
 </svg>
