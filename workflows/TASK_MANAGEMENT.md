@@ -19,13 +19,16 @@ For new algorithms or substantial redesigns, GPT Mentor/Architect autonomously r
 ## Linked artifacts in Issue/PR handoffs
 Link the GPT-decided mathematical study, concise Engineering Report and Codex-executed experimental evidence following [Three-Artifact Handoff](THREE_ARTIFACT_HANDOFF.md). Experiment PRs identify the exact tested source SHA and upstream Issue/PRs; do not create duplicate status reports or treat templates as proof of execution.
 
+## Lean execution path
+Use [Lean Research Lab](LEAN_RESEARCH_LAB.md) as the single **EXPLORE / VALIDATE** mode and bounded-batch contract. During EXPLORE, retain a short hypothesis/source/command/outcome record in the **same Issue or working branch**; do not make a new PR or full three-artifact packet for each probe. For VALIDATE, compile/link the required formal math, engineering and run evidence. GPT may switch modes on evidence without Scientist signoff.
+
 ## Lifecycle
-1. **Architect dispatches immediately:** use one scoped Issue (or existing Issue) with target SHA/interface, minimal oracle/checks and experiment goal. Mark ready as soon as safe work is available; do not wait for full paperwork or human research approval.
+1. **Architect dispatches immediately:** use one scoped Issue (or existing Issue) with target SHA/interface, mode, minimal oracle/checks, experiment goal, finite timeout and cleanup plan. Mark ready as soon as safe work is available; do not wait for full paperwork or human research approval.
 2. **Engineer claims Issue** by explicit comment and status update to in-progress; one owner at a time.
-3. **Engineer implements** on `feat/<issue-number>-<slug>` and opens PR with `Closes #N` only if issue is truly satisfied. For GPU-gated work prefer `Refs #N` until GPU validation.
+3. **Engineer batches implementation and experiments** on `feat/<issue-number>-<slug>`: implement → test → diagnose → repair → rerun within task-defined timeout and bounded attempts, without new signoff per attempt. Open an appropriate PR after useful scope/evidence accumulates; use `Closes #N` only when issue acceptance is met, otherwise `Refs #N`.
 4. **Architect makes one evidence-based review** of source SHA/diff and relevant correctness results, while Codex runs eligible CPU/GPU probes and later formal benchmarks. Do not serialize independent tasks needlessly.
-5. **Codex runs existing-account Colab CLI by default** on the pinned candidate SHA, checks results and session cleanup, and submits report PR/comment only under separate publication rules. No Scientist compute consent or cost gate; genuine correctness/permission failures return to Engineer with a reproducible case.
-6. **Architect decides scoped science, evidence acceptance and MERGE / DO_NOT_MERGE** without Scientist approvals, after actual diff/SHA/test/permission checks; update Issue and next action once.
+5. **Codex runs existing-account Colab CLI by default**, with exact SHA for remote installed code, one active session, finite timeout and verified cleanup. Consolidate multiple exploratory runs into **one batch evidence update**; report PR/publication remains optional and separately verified. No Scientist compute/price gate; real correctness, permissions or billing blockers must be reported.
+6. **Architect performs one substantive evidence review and decides MERGE / DO_NOT_MERGE** for eligible PRs without Scientist approvals; missing/failed checks yield a targeted correction on the **same Issue**, rather than redundant handoff paperwork.
 7. **Mentor may summarize** a learning insight, but learning never replaces engineering checks.
 
 ## State consistency
