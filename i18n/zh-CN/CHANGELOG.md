@@ -3,6 +3,12 @@
 > 语言：[English](../../CHANGELOG.md) | **简体中文**
 
 
+## V3.3 — 中英文原生卡片式 SVG 架构更新（2026-10-20）
+
+- 原路径替换中英文 `docs/figures/SAE_Framework_V3.3.*.svg`：直接用矢量卡片、图标和箭头还原已确认的 ChatGPT 原生 UI 布局，包含双重目标、Scientist 目标设定、GPT 双重自主决策、Codex 直接执行、CPU/GPU/TPU 及 GitHub 证据回流。
+- 本地 SVG XML 解析和渲染预览检查通过，已同步 README 图片展示及架构说明；`.mmd` 与 README Mermaid 仍是逻辑图，不是卡片艺术源文件。
+- 显示 PR #33 后最新职责，但不虚报 TPU、Publisher 或跨应用自动闭环已经验证。
+
 ## V3.3 — GPT 自主决策快速通道（2026-10-20）
 
 - Scientist 明确将范围内**数学 R1–R3、科研关口、科研结论、工程验收及 T1/T2/T3 PR 决定权**全面委托 GPT Mentor/Architect；Scientist 只设定/调整目标、随时停止，不再承担常规审批。替代此前保留科研/逐环节签核的旧规则，但不扩大本人公开仓库合并范围。
