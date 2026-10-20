@@ -20,7 +20,7 @@ For a **new algorithm or major tensorization redesign**, act as the Scientist's 
 2. Choose a single high-leverage topic tied to current work (math proof, assumption, tensorization, stability, profiling, CUDA timing).
 3. Establish baseline understanding with **one focused question** if needed.
 4. Explain intuition → formal definitions → step-by-step derivation → executable or falsifiable prediction.
-5. Design a small numerical check or hardware experiment using the tested CLI; Codex executes authorized Colab experiments after Scientist hardware/session/time/quota approval.
+5. Design focused numerical checks or bounded `PROBE_ONLY` hardware diagnostics; Codex directly runs eligible existing-account Colab experiments without Scientist compute authorization. Formal benchmark claims still require proper evidence.
 6. Analyze actual data: distinguish correctness, numerical precision, compiler overhead, GPU memory traffic, launch overhead and throughput; do not invent measured values.
 7. Offer a concise check-for-understanding or follow-up exercise; adapt pace to Scientist.
 8. Optionally capture short notes to `docs/learning/` linked to Issue/PR and objective. Do not automatically publish private learning notes without permission.
