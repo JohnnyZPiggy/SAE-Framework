@@ -15,9 +15,9 @@ Two equal objectives: **Engineering Productivity** (reliable, reproducible, low-
 
 ## Binding principles
 1. For new algorithms/major tensorization redesigns, GPT completes a concise [Mathematical Research](workflows/MATHEMATICAL_RESEARCH.md) rationale and autonomously decides `RESEARCH_READY` / exception; never wait for Scientist signoff. Early device/CPU probes may proceed in parallel, but formal claims still need evidence.
-2. Before acting, recover target repo, assigned role, pinned project rules, live Issues/PRs, permissions and phase; see [Role Recovery](workflows/ROLE_RECOVERY.md).
+2. Before acting, recover target repo, assigned role, pinned project rules, live Issues/PRs, permissions and phase; see [Role Recovery](workflows/ROLE_RECOVERY.md). **EXPLORE** enables early probes; **VALIDATE** gates formal claims with evidence, not human approval.
 3. Preserve exact source SHA, device/environment, commands, seeds, correctness and honest benchmark methodology. Report PASS / FAIL / NOT RUN / BLOCKED without inventing execution or speedups.
-4. Use bounded, user-invoked cycles. [Experiment by Default](workflows/GPU_EXPERIMENT.md): Codex runs eligible existing-account CPU/GPU/TPU experiments **without checking any Scientist compute authorization**. Respect real access, task scope, finite timeouts, session cleanup and user stop instructions. New monetary commitments still need separate explicit user approval. No default GitHub Actions or paid hosted CI.
+4. Use bounded, user-invoked cycles. [Experiment by Default](workflows/GPU_EXPERIMENT.md) and [Lean Lab](workflows/LEAN_RESEARCH_LAB.md): Codex runs eligible existing-account CPU/GPU/TPU and may implement→test→repair→rerun repeatedly **within one finite batch**, without checking Scientist compute authorization or asking for new approval per attempt. Respect real access, task scope, finite timeouts, session cleanup and user stop instructions. New monetary commitments still need separate explicit user approval. No default GitHub Actions or paid hosted CI.
 5. Keep secrets out of code, logs and public artifacts; respect GitHub protections. Codex submits branches/PRs, never directly publishes to protected main.
 6. GPT handles in-scope science, engineering acceptance and merge decisions **without user approval gates**. Keep real permissions, numerical evidence, secrets screening and scoped execution; new charges and sensitive/nonpublic release or external irreversible changes still require user action. No unlimited parallelism or background scheduler.
 
@@ -34,6 +34,7 @@ User instructions/authorization → project-specific `AGENTS.md` → pinned SAE 
 - [Research Pipeline](workflows/RESEARCH_PIPELINE.md) and [Mathematical Research](workflows/MATHEMATICAL_RESEARCH.md) — scientific gates
 - [Task Management](workflows/TASK_MANAGEMENT.md) — Issues/PRs and review
 - [Compute Experiments](workflows/GPU_EXPERIMENT.md) — CPU/GPU/TPU execution, evidence and optional publication
+- [Lean Research Lab](workflows/LEAN_RESEARCH_LAB.md) — EXPLORE/VALIDATE mode and one bounded Codex batch per handoff
 - [Ecosystem Review](workflows/ECOSYSTEM_REVIEW.md) — Build vs Reuse
 - [Role Recovery](workflows/ROLE_RECOVERY.md) and [Next Action](workflows/NEXT_ACTION.md) — cycle handoff
 - [Bootstrap](SAE_BOOTSTRAP.md) — pinned, idempotent project adoption
