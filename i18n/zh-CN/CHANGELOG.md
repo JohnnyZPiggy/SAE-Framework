@@ -3,6 +3,13 @@
 > 语言：[English](../../CHANGELOG.md) | **简体中文**
 
 
+## V3.3 — GPT 自主决策快速通道（2026-10-20）
+
+- Scientist 明确将范围内**数学 R1–R3、科研关口、科研结论、工程验收及 T1/T2/T3 PR 决定权**全面委托 GPT Mentor/Architect；Scientist 只设定/调整目标、随时停止，不再承担常规审批。替代此前保留科研/逐环节签核的旧规则，但不扩大本人公开仓库合并范围。
+- 快速执行：GPT 自行记录 `RESEARCH_READY / RESEARCH_BLOCKED / NOT_TENSORIZABLE` 或有界假设；数学研究、生态复用、CPU 基准/打包和有界 `PROBE_ONLY` Colab 设备探针可并行。Codex 实测并提交真实证据，GPT 自主验收/合并，不设人类签字及重复 Agent 审批。
+- 仍要求真实数值正确性、正式 Benchmark、公平计时、源码 SHA、GitHub/设备权限、非敏感结果、有限会话超时和资源释放，不得虚报。新增收费、非公开敏感披露、外部账户安全权限改变及外部不可逆破坏须用户另外明确指令。不引入后台调度、GitHub Actions 或旧项目固定快照静默升级。
+- 已同步中英文角色、治理、研究/计算/评审、任务模板、项目初始化及 README Mermaid；旧 SVG 属此前角色示意图，不作为现行授权规范，如需更新外观另行处理。
+
 ## V3.3 — Experiment by Default：取消 Scientist 算力审批（2026-10-20）
 
 - 按用户 T3 明确决定，取代此前 No Price Gate 的“常设授权核验”流程：Codex 在现有账户内直接执行有界 CPU/GPU/TPU 实验，**无须 Scientist 算力许可或查验授权记录**；Architect 派单审核，Scientist 保留科研结论和实质决定。
