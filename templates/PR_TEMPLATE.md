@@ -19,7 +19,7 @@ Describe changes, problem, assumptions and any changes to public API.
 | Colab GPU performance | NOT RUN | |
 
 ## Three-artifact links
-- Approved math: `docs/research/<algorithm>-tensorization.md` / N/A for infrastructure
+- GPT-reviewed formal mathematics (VALIDATE): `docs/research/<algorithm>-tensorization.md` / N/A for EXPLORE or infrastructure
 - Engineering and actual CPU evidence: `docs/engineering/<algorithm>-engineering.md`
 - Actual Colab experiment: `reports/gpu/<run-id>/summary.md` / NOT RUN
 - Tested source commit SHA: `<SHA>` (distinct from report publication SHA)
@@ -31,7 +31,7 @@ Python/PyTorch version, device, seed, exact commands, data source.
 State numerical differences, untested hardware, accuracy/performance trade-offs, skipped checks.
 
 ## Review requests
-Architect decision needed; Scientist experiment needed; linked report PR.
+GPT Architect: review actual tested SHA, numerical evidence and risk, then accept / request fixes / merge. No Scientist experimental signoff. For EXPLORE, summarize one batch instead of requiring a PR for every probe.
 
 ## Learning opportunity (optional)
 One question or insight worth discussing in Mentor mode.
