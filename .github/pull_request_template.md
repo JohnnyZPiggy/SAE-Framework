@@ -18,6 +18,6 @@ Source SHA: `<sha>`
 
 ### Risks and follow-up
 
-### Architect merge review and Scientist-owned prerequisites
+### GPT Architect evidence review and merge decision
 - [ ] Architect reviewed actual diff, tested SHA and evidence under standing merge authorization
-- [ ] Scientist approved underlying scientific/security/destructive decision if applicable; no duplicate per-PR merge permission
+- [ ] GPT decided in-scope scientific/T1–T3 substance without Scientist signoff; checked real numerical evidence, secrets/privacy and external new-billing/destructive/account-permission boundaries
