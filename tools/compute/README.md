@@ -53,6 +53,8 @@ python -m unittest discover -s tools/compute/tests -v
 
 ## Bounds and evidence
 
+For allocation failures, see the [offline CLI 0.7.4 call-chain diagnosis](diagnostics/README.md). HTTP request timeouts differ from the outer process bound; an outer timeout cannot identify GET versus POST. Do not poll `status` during allocation: it synchronizes remote assignments and may modify local session state. This controller has no status observer loop.
+
 New output directory and explicit run ID are required; existing output is never overwritten. Before allocation, unknown/unrelated active sessions or unconfirmed positive entitlement block. Every fresh `new` gets `kernel_smoke.py` with a default 30-second remote/35-second external limit, capped by remaining main budget. Missing marker, error or timeout records `KERNEL_PROBE_FAILED`, skips workload and enters cleanup. Later workloads can still hang; they have separate finite external bounds. No assertion that this fixes the original pilot hang.
 
 Defaults: task 5400s, allocation 600s (max 2700), cleanup reserve 60s, kernel 30s (max 60), workload 240s (max 420). Allocation/work deadlines reserve cleanup even after main-budget exhaustion. At most two stop+zero-server-session checks share the finite cleanup allowance; partial allocation/error/interrupt also attempts cleanup. Unknown release is `CLEANUP_FAILED`, never PASS. No overlapping allocation, implicit billing purchase, new authentication/token manager, diagnostic monkeypatch, background retry or approval stage is added. Abrupt OS termination or provider/network failure can still prevent release; mocks do not verify live cleanup.

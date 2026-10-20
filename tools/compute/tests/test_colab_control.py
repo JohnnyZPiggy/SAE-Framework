@@ -53,6 +53,9 @@ class FakeCLI:
                       else 'Current balance: 10 compute units\nActive assignments: 0')
         elif op == 'new':
             self.active = True
+            if self.failure == 'allocation-timeout':
+                self.clock.now += kwargs['timeout']
+                raise subprocess.TimeoutExpired(argv, kwargs['timeout'], output='https://secret.invalid/?token=private')
             if self.failure == 'allocation':
                 code = 1  # partial allocation must still stop
         elif op == 'exec':
@@ -158,7 +161,18 @@ class ControllerTests(unittest.TestCase):
     def test_partial_new_failure_stops(self):
         r, _ = self.run_fake('allocation')
         self.assertEqual(r['error'], 'ALLOCATION_FAILED')
+        self.assertEqual(r['allocation_failure_scope'], 'CLI_COMMAND_FAILED')
+        self.assertEqual(r['allocation_http_phase'], 'UNKNOWN')
         self.assertTrue(r['cleanup_confirmed'])
+
+    def test_allocation_timeout_is_outer_scope_not_http_diagnosis(self):
+        r, fake = self.run_fake('allocation-timeout')
+        self.assertEqual(r['error'], 'ALLOCATION_FAILED')
+        self.assertEqual(r['allocation_failure_scope'], 'CLI_SUBPROCESS_TIMEOUT')
+        self.assertEqual(r['allocation_http_phase'], 'UNKNOWN')
+        self.assertTrue(r['cleanup_confirmed'])
+        self.assertEqual([c[0] for c, _ in fake.calls], ['sessions', 'usage', 'new', 'stop', 'sessions'])
+        self.assertLessEqual(r['allocation_lifecycle_seconds'], 80)
 
     def test_interrupt_stops(self):
         r, _ = self.run_fake('interrupt')
@@ -229,6 +243,32 @@ class ControllerTests(unittest.TestCase):
             probe = next(c for c in r['commands'] if c['operation'] == 'exec')
             self.assertEqual(probe['status'], 'TIMEOUT')
             self.assertGreater(probe['elapsed_seconds'], 0)
+
+    def test_real_local_allocation_child_timeout_without_status_polling(self):
+        # Only the sleeping Python child is real; every provider operation is fake.
+        with tempfile.TemporaryDirectory() as temp:
+            args = control.parser().parse_args(['--source-sha', SHA, '--repo-path', temp,
+                '--run-id', 'allocation-child-timeout', '--out', str(Path(temp)/'run'),
+                '--driver', 'driver.py', '--artifacts', 'artifacts.json',
+                '--task-seconds', '20', '--allocation-seconds', '4', '--cleanup-seconds', '3'])
+            fake = FakeCLI(Clock())
+            def subprocess_cli(argv, **kwargs):
+                if 'new' in argv:
+                    return REAL_RUN([sys.executable, '-c', 'import time; time.sleep(30)'], **kwargs)
+                return fake(argv, **kwargs)
+            ready = {'status': 'PASS', 'events': {'snapshot_extraction': None, 'wheel_pip_install': None}}
+            with patch.object(control, 'resolve_cli', return_value='fake-colab'), \
+                 patch.object(control, 'preflight', return_value=ready), \
+                 patch.object(control, 'load_adapter', return_value=(b'print(1)', ['measurement.json'], 'b'*64)), \
+                 patch.object(control.subprocess, 'run', side_effect=subprocess_cli):
+                r = control.run(args)
+            self.assertEqual(r['allocation_failure_scope'], 'CLI_SUBPROCESS_TIMEOUT')
+            self.assertEqual(r['allocation_http_phase'], 'UNKNOWN')
+            self.assertEqual([c['operation'] for c in r['commands']], ['sessions', 'usage', 'new', 'stop', 'sessions'])
+            self.assertTrue(r['cleanup_confirmed'])
+            self.assertFalse(r['created'])
+            self.assertIsNone(r['events']['kernel_probe'])
+            self.assertIsNone(r['events']['remote_workload'])
 
     def test_preflight_failure_keeps_timed_child_report(self):
         with tempfile.TemporaryDirectory() as temp:
