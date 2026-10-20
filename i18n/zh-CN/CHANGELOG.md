@@ -3,6 +3,13 @@
 > 语言：[English](../../CHANGELOG.md) | **简体中文**
 
 
+## V3.3 — Lean Research Lab 第一阶段：Explore / Validate 双模式与 Codex 单批次（2026-10-20）
+
+- 修正新项目 `sae.yaml`：科研决定属于 GPT，不再要求 Scientist 数学/GPU 额度签批，PR 需 Architect 证据审核而非逐次人工授权；新增付费仍需用户同意。保持 V3.3 配置版本，不自动升级旧项目快照。
+- 新增[双语 Lean Lab](../../workflows/LEAN_RESEARCH_LAB.md)：EXPLORE 是有界、可检验假设与简短批次记录，VALIDATE 才要求数学推导、精确 SHA、真实数值及公平性能证据；`PROBE_ONLY` 不代表加速或 TPU 通过。
+- 一个现有或新建 Issue 可承载 Codex 有限的实现→测试→修复→复测，默认单 Colab 会话、任务有限超时、有界修复尝试和一次汇总交付；不为每次探索生成新 PR/报告。
+- 同步中英文初始化、采用冒烟、GPU Readiness、PR/任务/三文档/研发流程模板。不修改旧算法项目、不增加 Agent、后台服务、Actions、收费资源，也不虚报真实端到端执行。
+
 ## V3.3 — 中英文原生卡片式 SVG 架构更新（2026-10-20）
 
 - 原路径替换中英文 `docs/figures/SAE_Framework_V3.3.*.svg`：直接用矢量卡片、图标和箭头还原已确认的 ChatGPT 原生 UI 布局，包含双重目标、Scientist 目标设定、GPT 双重自主决策、Codex 直接执行、CPU/GPU/TPU 及 GitHub 证据回流。
