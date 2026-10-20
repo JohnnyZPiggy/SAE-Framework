@@ -6,7 +6,7 @@
 
 ## Architecture
 
-Reusable [local preflight and bounded Colab transport](tools/compute/README.md) tools are available for future projects: **LOCAL_VALIDATED / LIVE_NOT_RUN**. Project-owned drivers/manifests keep scientific code separate; existing pinned snapshots are not migrated.
+Reusable [local preflight and bounded Colab transport](tools/compute/README.md) tools are available for future projects: **SCOPED LIVE_READY (Colab CLI 0.7.4, T4-requested transport-only)** based on [SAE PR #48](https://github.com/JohnnyZPiggy/SAE-Framework/pull/48). Actual device identity was not observed in that transport test. Project-owned drivers/manifests keep scientific code separate; existing pinned snapshots are not migrated.
 
 ![SAE V3.3 — native card-style research and engineering architecture (English)](docs/figures/SAE_Framework_V3.3.en.svg)
 
@@ -108,8 +108,10 @@ Read [AGENTS.md](AGENTS.md), then [Bootstrap V3.3](SAE_BOOTSTRAP.md). Adopt [pro
 
 These are user-invoked bounded cycles, not a hosted autonomous agent. No default GitHub Actions/paid CI, secrets in reports, fabricated benchmarks or Drive sync.
 
-## Verification status (2026-10-19)
-The Scientist reported one successful Codex → WSL2 → Colab CLI T4 GPU smoke test with result integrity verification and zero active sessions after shutdown. **Not yet verified:** Colab CPU, TPU allocation/PyTorch-XLA, automatic GitHub publication, cross-project reuse and a complete SAE benchmark-to-PR workflow. Bootstrap/Publisher automation is not established by documentation alone.
+## Verification status (2026-10-20)
+- **Real Colab transport verified:** [SAE PR #48](https://github.com/JohnnyZPiggy/SAE-Framework/pull/48) is merged (merge SHA `c0cb3c1c59073e61bd8f12e54f9e05eaea7bf2e7`). Pinned tool/source `8081b6e02eee0754903898d5afe5b112f1bb23d0` with Colab CLI 0.7.4 passed one genuine T4-requested allocation, kernel probe, driver execution, artifact SHA-256 and authenticated zero-session cleanup. **SCOPED LIVE_READY applies to transport only**; the hardware identity was not observed in this smoke.
+- **First scientific CPU/GPU pilot verified:** [TorchYAND PR #22](https://github.com/JohnnyZPiggy/TorchYAND/pull/22) is merged (merge SHA `1ee2a100db61bc3be62ced9cc7923f261b512b35`). Independent Autograd oracle/gradient and a limited simplex/KKT case passed on CPU and a **verified Tesla T4**, with representative eager MVSK `value_grad` CPU/GPU benchmarks. This is one project-specific scientific pilot, not a blanket full-solver or universal speedup claim.
+- **Not established:** generic automatic Colab-to-GitHub publisher, bootstrap CLI, multi-project reuse, TPU/PyTorch-XLA and general cross-device readiness. Independent Colab CPU allocation has not been verified in these two PRs. Project-owned Codex publication of evidence via GitHub PR is demonstrated but does **not** establish the generic Publisher.
 
 ## Documentation
 [Architect](protocols/ARCHITECT.md) · [Engineer](protocols/ENGINEER.md) · [Mentor](protocols/MENTOR.md) · [Scientist](protocols/SCIENTIST.md) · [Role Recovery](workflows/ROLE_RECOVERY.md) · [Changelog](CHANGELOG.md) · [Chinese index](i18n/zh-CN/README.md)
