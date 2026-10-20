@@ -32,8 +32,8 @@ Workload, timing methodology, synchronization, warmups, compile time, repetition
 ## Results
 Link to manifest.json, correctness.json, benchmark.csv and small figures.
 
-## Interpretation
-Scientific meaning and limitations; performance bottlenecks and potential bias.
+## Interpretation (GPT science/engineering acceptance)
+GPT decides the scientific meaning, confidence/limitations and performance bottlenecks from the **actual** measured evidence; no Scientist approval field.
 
 ## Next action
-Accept / Engineer fix / Re-run / Mentor learning exercise.
+GPT Accept / Engineer fix / Re-run / Mentor learning exercise; no human approval queue.
