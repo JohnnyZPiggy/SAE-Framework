@@ -29,7 +29,7 @@ Definitions, assumptions, reference baseline, invariants, input/output shapes, d
 ## Compute delivery gate (algorithm implementation tasks)
 - [ ] Clean install from the exact pinned source SHA; Codex actually passed CPU packaging/CLI/numerical tests
 - [ ] Packaged benchmark CLI writes local reports **without GitHub writes**; optional Publisher is a distinct, separately authorized stage (do not imply implemented)
-- [ ] Authorized Colab CPU/GPU/TPU results, report publication and session cleanup have separate PASS / FAIL / NOT RUN / BLOCKED evidence; Scientist approves device/session/time/quota limits before GPU/TPU allocation
+- [ ] Codex-run Colab CPU/GPU/TPU results, independent publication and cleanup have distinct PASS / FAIL / NOT RUN / BLOCKED evidence; no Scientist compute signoff. Short `PROBE_ONLY` device checks are not formal benchmark acceptance.
 - [ ] Record tested source SHA, actual commands, outputs and failures
 
 ## Acceptance criteria
