@@ -3,6 +3,13 @@
 > Language: **English** | [简体中文](i18n/zh-CN/CHANGELOG.md)
 
 
+## V3.3 — Lean Research Lab Phase 1: Explore / Validate and one Codex batch (2026-10-20)
+
+- Fix the new-project `sae.yaml` template: GPT decides research, prior Scientist science/GPU-budget approval defaults are false, Architect evidence review replaces ambiguous per-PR authorization, and extra billing still requires explicit user consent. Preserve existing V3.3 schema version and immutable project snapshots.
+- Introduce bilingual [Lean Lab](workflows/LEAN_RESEARCH_LAB.md): EXPLORE uses a bounded testable hypothesis and compact batch log; VALIDATE requires justified math, exact source SHA, numerical correctness and reproducible performance evidence. A `PROBE_ONLY` check is not proof of speedup/TPU support.
+- One existing/new GitHub Issue can hold a finite Codex implementation→test→repair→rerun batch, with default one active Colab session, a task-defined timeout, bounded repair attempts and one consolidated outcome rather than PR/report spam.
+- Align bilingual new-project bootstrap, adoption smoke test, GPU Readiness, PR and task/three-artifact/research templates. No algorithm-project migration, extra agent, background service, Actions, purchased compute or claimed end-to-end runtime validation.
+
 ## V3.3 — Bilingual native-card architecture SVG refresh (2026-10-20)
 
 - Replaced the English and Chinese `docs/figures/SAE_Framework_V3.3.*.svg` diagrams with vector-only reproductions of the confirmed ChatGPT Native UI card organization: equal engineering/science goals, Scientist goal setting, GPT Architect/Mentor delegated authority, Codex direct execution, CPU/GPU/TPU and GitHub feedback.
