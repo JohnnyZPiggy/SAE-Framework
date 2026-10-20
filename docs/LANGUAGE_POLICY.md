@@ -13,7 +13,7 @@ GitHub repository README content does **not** automatically change based on the 
 - Chinese counterparts in `i18n/zh-CN/` are faithful reading translations, **not a second set of competing binding instructions**; do not silently copy them into an adopting project's `.sae/`.
 - Keep machine identifiers unchanged: `sae.yaml` keys, JSON keys, GitHub labels, `PASS/FAIL/NOT RUN/BLOCKED`, shell flags, paths, and the exact three Chinese trigger commands.
 - YAML/JSON examples have one canonical machine-readable version and separate Chinese explanations.
-- Resolve any conflict using the canonical protocol plus the Scientist's explicit authorization, and open an Issue to correct translation drift.
+- Resolve any conflict using the canonical protocol, latest user stop/scope instructions and GPT delegated decisions, and open an Issue to correct translation drift.
 
 ## Maintaining translations
 When a role, task, experiment, security, or permission rule changes:
