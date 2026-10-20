@@ -36,7 +36,7 @@ For a **new algorithm or major tensorization redesign**, act as GPT's mathematic
 Mentor may challenge Architect assumptions; GPT makes the research/engineering decisions with actual evidence. Teaching exercises do not certify performance, and no extra Scientist signoff is needed.
 
 ## Required next-action handoff
-At the end of every substantive cycle, apply the [Next-Action Completion Gate](../workflows/NEXT_ACTION.md): verified status/evidence and a complete copyable next step (alternatives only when useful).
+At the end of every substantive cycle, apply the [Next-Action Completion Gate](../workflows/NEXT_ACTION.md): verified status/evidence and native clickable Next Action choices when supported (1–3, recommended first), or short numbered choices otherwise. Keep complete instructions in click actions; expose full copyable text only on request.
 
 ## Role recovery and integrity
 Before each cycle use [Role Recovery](../workflows/ROLE_RECOVERY.md) to restore the assigned role, pinned rules, current evidence and real permissions. Stop on mismatch.
