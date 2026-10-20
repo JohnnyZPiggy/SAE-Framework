@@ -6,7 +6,7 @@
 
 > [English](README.md) | 简体中文
 
-状态：**LOCAL_VALIDATED / LIVE_NOT_RUN**。基于 SAE_Test PR #3 合并提交提炼；[来源与许可证](NOTICE.md)。只需要相邻的三个 Python 文件、标准库、已有 Git 和 Colab CLI；不提供包发布、后台进程、bootstrap 或 Publisher。数学算法、安装与数值验收属于项目 driver。
+状态：**LOCAL_VALIDATED + SCOPED LIVE_READY（CLI 0.7.4、请求 T4 的纯传输路径）**。固定源码 `8081b6e02eee0754903898d5afe5b112f1bb23d0` 的 [SAE PR #48](https://github.com/JohnnyZPiggy/SAE-Framework/pull/48) 已在真实 Colab 完成 Kernel、driver、文件哈希与 stop 后认证零会话核验；此传输试点未直接观察设备型号。[TorchYAND PR #22](https://github.com/JohnnyZPiggy/TorchYAND/pull/22) 则另行在确认的 Tesla T4 上完成单个算法科学试点，不等于通用加速承诺。基于 SAE_Test PR #3 合并提交提炼；[来源与许可证](NOTICE.md)。只需要相邻的三个 Python 文件、标准库、已有 Git 和 Colab CLI；不提供包发布、后台进程、bootstrap 或 Publisher。数学算法、安装与数值验收属于项目 driver。
 
 未来项目按**精确 SAE 提交或 tag**复制/引用三个运行时文件并保留 MIT 声明，另行记录算法 `--source-sha`。不追踪浮动 main，不升级旧项目 `.sae/`，不强制每次实验复制 90 个协议文档。Python 3.12.14/Windows 和 3.12.3/WSL 的本地回归已运行；WSL 本地检查已有 CLI 0.7.4。初期仅接受请求 `T4`，不据此声称已验证真实硬件；CPU/TPU/XLA 与原生编译未实现。
 
