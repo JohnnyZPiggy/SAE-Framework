@@ -4,6 +4,10 @@
 
 **Scientist–Architect–Engineer** is a GitHub-first collaboration framework for mathematical algorithms, PyTorch scientific computing and ML engineering. It pursues **two equal goals**: reliable low-cost engineering and the Scientist's deeper mathematical/numerical/ML-systems learning.
 
+## Provider-neutral roles
+
+SAE roles are **capability and authority contracts, not product bindings**: **Scientist** (human), **Architect** (AI agent, e.g., GPT), **Mentor** (AI agent, e.g., GPT), and **Engineer** (AI coding agent, e.g., Codex or Claude Code). One agent may fill Architect and Mentor; multiple Engineers can take turns using separate workspaces and a GitHub Issue/PR + exact-SHA + evidence handoff. Reassignment never transfers credentials, approvals or unverified capabilities. The Engineer never self-merges; the Architect retains the independent review gate. Existing project-pinned snapshots remain unchanged.
+
 ## Architecture
 
 Reusable [local preflight and bounded Colab transport](tools/compute/README.md) tools are available for future projects: **SCOPED LIVE_READY (Colab CLI 0.7.4, T4-requested transport-only)** based on [SAE PR #48](https://github.com/JohnnyZPiggy/SAE-Framework/pull/48). Actual device identity was not observed in that transport test. Project-owned drivers/manifests keep scientific code separate; existing pinned snapshots are not migrated.
@@ -29,19 +33,19 @@ flowchart TB
 
     subgraph PEOPLE["02 · Research and Engineering Roles"]
       direction LR
-      G["GPT · Chief Architect + Scientific Mentor<br/>Autonomous Math / Research Decisions · Fast Dispatch<br/>Evidence Review · Eligible PR Merges"]
-      E["Codex · Engineer<br/>Implement / Test · Local CPU<br/>Default Colab CPU / GPU / TPU"]
+      G["Architect + Mentor · AI Agent (e.g., GPT)<br/>Autonomous Math / Research Decisions · Fast Dispatch<br/>Evidence Review · Eligible PR Merges"]
+      E["Engineer · AI Agent (e.g., Codex / Claude Code)<br/>Implement / Test · Local CPU<br/>Default Colab CPU / GPU / TPU"]
     end
 
     H[("GitHub · Single Collaboration and Evidence Hub<br/>Issues · Code · PRs · Source SHA · Reports")]
 
-    subgraph COMPUTE["03 · Codex Execution / Evidence Loop"]
+    subgraph COMPUTE["03 · Engineer Execution / Evidence Loop"]
       direction LR
       L["Local CPU<br/>Install · Numerical correctness · Regression tests"]
       C["Colab CLI / WSL2<br/>CPU · GPU · TPU*<br/>Run / Integrity check / Session cleanup"]
     end
 
-    P["Pinned source SHA → No-GitHub-write benchmark<br/>→ Optional, GPT-reviewed safe evidence PR"]
+    P["Pinned source SHA → No-GitHub-write benchmark<br/>→ Optional, Architect-reviewed safe evidence PR"]
     D["Google Drive<br/>Optional notebook scratch"]
 
     O1 --> S
@@ -77,25 +81,25 @@ flowchart TB
 
 </details>
 
-The bilingual SVGs faithfully reconstruct the **confirmed ChatGPT Native UI card architecture**: two equal objectives → Scientist goal setting/stop control → GPT Chief Architect + Scientific Mentor autonomous decisions → Codex execution → CPU/GPU/TPU → GitHub evidence feedback. Rounded cards, vector icons, arrows and execution boundaries are all drawn as SVG primitives. The embedded Mermaid and linked `.mmd` are the editable **logical** view; the SVG is documentation, not proof of executed experiments.
+The linked bilingual SVGs are historical V3.3 illustrations of the original GPT/Codex implementation, not a normative agent assignment. The provider-neutral Mermaid diagram above is the current logical architecture. Historical illustration: two equal objectives → Scientist goal setting/stop control → GPT Chief Architect + Scientific Mentor autonomous decisions → Codex execution → CPU/GPU/TPU → GitHub evidence feedback. Rounded cards, vector icons, arrows and execution boundaries are all drawn as SVG primitives. The embedded Mermaid is the current **logical** view; the linked `.mmd` is a historical editable source for the historical SVG; the SVG is documentation, not proof of executed experiments.
 
 *TPU/PyTorch-XLA and automated report publication remain unverified.*
 
 ## Who does what?
 - **Scientist (human):** sets/changes research goals and can stop work; **no routine mathematical, experimental, resource, T3 or PR approvals**.
-- **GPT Architect:** autonomously decides science, mathematical readiness, engineering/experimental acceptance, iterations and eligible PR merges under [Standing Authorization](governance/STANDING_AUTHORIZATION.md).
-- **GPT Mentor:** leads mathematical structure/tensorization research and explains numerical/experimental results.
-- **Codex Engineer:** implements, tests and runs eligible existing-account local CPU and Colab CLI CPU/GPU/TPU experiments by default; verifies outputs and resource cleanup; submits safe evidence through GitHub branches/PRs without self-merging.
+- **Architect (AI agent; e.g., GPT):** autonomously decides science, mathematical readiness, engineering/experimental acceptance, iterations and eligible PR merges under [Standing Authorization](governance/STANDING_AUTHORIZATION.md).
+- **Mentor (AI agent; e.g., GPT):** leads mathematical structure/tensorization research and explains numerical/experimental results.
+- **Engineer (AI coding agent; e.g., Codex or Claude Code):** implements, tests and runs eligible existing-account local CPU and Colab CLI CPU/GPU/TPU experiments by default; verifies outputs and resource cleanup; submits safe evidence through GitHub branches/PRs without self-merging.
 
 **GitHub** is the collaboration and evidence hub. **Colab CLI** supplies remote compute. **Drive** is an optional thin notebook workspace, not a sync/results transport.
 
 ## Workflow
-GPT-decided concise [mathematical study](workflows/MATHEMATICAL_RESEARCH.md) + parallel [Build-vs-Reuse](workflows/ECOSYSTEM_REVIEW.md), reference work and `PROBE_ONLY` device checks → Codex implementation, correctness and eligible compute → GitHub evidence PR → GPT review/iteration/eligible merge. **No Scientist stage signoffs.** Multiple rounds can return to research.
+Mentor/Architect-decided concise [mathematical study](workflows/MATHEMATICAL_RESEARCH.md) + parallel [Build-vs-Reuse](workflows/ECOSYSTEM_REVIEW.md), reference work and `PROBE_ONLY` device checks → Engineer implementation, correctness and eligible compute → GitHub evidence PR → Architect review/iteration/eligible merge. **No Scientist stage signoffs.** Multiple rounds can return to research.
 
-Experiments have **three separate stages**: exact source-SHA install, benchmark **without GitHub writes**, and optional GPT-reviewed, sanitized report publication (separate user permission remains required for sensitive release or new billing). See [Compute Experiment Protocol](workflows/GPU_EXPERIMENT.md); the [historically named compatibility file](workflows/COLAB_TWO_COMMAND.md) remains linked.
+Experiments have **three separate stages**: exact source-SHA install, benchmark **without GitHub writes**, and optional Architect-reviewed, sanitized report publication (separate user permission remains required for sensitive release or new billing). See [Compute Experiment Protocol](workflows/GPU_EXPERIMENT.md); the [historically named compatibility file](workflows/COLAB_TWO_COMMAND.md) remains linked.
 
 ## Optional one-click continuation
-When the ChatGPT client supports native actions, each completed GPT cycle may end with 2–3 clickable **SAE · Next Action** choices that submit a complete instruction in the same conversation. This does not operate the Codex desktop window or change SAE authorization. See [Scientist One-Click Next Actions](workflows/SCIENTIST_ONE_CLICK_NEXT_ACTIONS.md); ordinary concise commands remain the fallback.
+When the ChatGPT client supports native actions, each completed Architect/Mentor cycle may end with 2–3 clickable **SAE · Next Action** choices that submit a complete instruction in the same conversation. This does not operate an external Engineer desktop window or change SAE authorization. See [Scientist One-Click Next Actions](workflows/SCIENTIST_ONE_CLICK_NEXT_ACTIONS.md); ordinary concise commands remain the fallback.
 
 ## Start
 Read [AGENTS.md](AGENTS.md), then [Bootstrap V3.3](SAE_BOOTSTRAP.md). Adopt [project AGENTS](examples/project/AGENTS.md) and [sae.yaml](examples/project/sae.yaml) with a **real pinned framework commit SHA**; do not silently upgrade existing projects.
