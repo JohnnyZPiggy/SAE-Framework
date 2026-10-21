@@ -6,7 +6,7 @@
 **Canonical task source:** GitHub Issues, not private chat histories.
 
 ## Minimal label vocabulary
-- Ownership: `agent:codex`, `agent:architect`, `human:scientist`
+- Ownership: `role:engineer`, `role:architect`, `role:mentor`, `human:scientist`; legacy `agent:codex` remains valid for existing Issues. A GitHub username/assignee identifies the actual Engineer when available.
 - State: `status:ready`, `status:in-progress`, `status:review`, `status:experiment`, `status:blocked`, `status:accepted`
 - Work type: `kind:math`, `kind:engineering`, `kind:experiment`, `kind:learning`
 - Priority: `priority:p0`, `priority:p1`, `priority:p2`
@@ -20,7 +20,7 @@ For new algorithms or substantial redesigns, Mentor/Architect agents autonomousl
 Link the Mentor/Architect-decided mathematical study, concise Engineering Report and Engineer-executed experimental evidence following [Three-Artifact Handoff](THREE_ARTIFACT_HANDOFF.md). Experiment PRs identify the exact tested source SHA and upstream Issue/PRs; do not create duplicate status reports or treat templates as proof of execution.
 
 ## Lean execution path
-Use [Lean Research Lab](LEAN_RESEARCH_LAB.md) as the single **EXPLORE / VALIDATE** mode and bounded-batch contract. During EXPLORE, retain a short hypothesis/source/command/outcome record in the **same Issue or working branch**; do not make a new PR or full three-artifact packet for each probe. For VALIDATE, compile/link the required formal math, engineering and run evidence. GPT may switch modes on evidence without Scientist signoff.
+Use [Lean Research Lab](LEAN_RESEARCH_LAB.md) as the single **EXPLORE / VALIDATE** mode and bounded-batch contract. During EXPLORE, retain a short hypothesis/source/command/outcome record in the **same Issue or working branch**; do not make a new PR or full three-artifact packet for each probe. For VALIDATE, compile/link the required formal math, engineering and run evidence. The Architect may switch modes on evidence without Scientist signoff.
 
 ## Lifecycle
 1. **Architect dispatches immediately:** use one scoped Issue (or existing Issue) with target SHA/interface, mode, minimal oracle/checks, experiment goal, finite timeout and cleanup plan. Mark ready as soon as safe work is available; do not wait for full paperwork or human research approval.
@@ -44,5 +44,5 @@ Before the final response of each substantive cycle, apply the [Next-Action Comp
 At cycle start apply [Role Recovery](ROLE_RECOVERY.md): check role, pinned project rules, live evidence and actual permissions. Stop on role mismatch.
 
 ## Indefinite owner-wide Architect merge decision
-For eligible PRs in the owner's public repositories, the assigned Architect makes the independent final MERGE / DO_NOT_MERGE decision **only** under [Standing Authorization](../governance/STANDING_AUTHORIZATION.md), after live ownership/visibility/permissions and diff/SHA/test evidence checks; no Scientist research/T3 signoff. No per-PR merge permission, Codex self-merge or unattended PR sweep. [Standing Authorization](../governance/STANDING_AUTHORIZATION.md) alone defines the full scope and tiered evidence requirements; evidence review is not a repeated human approval cycle.
+For eligible PRs in the owner's public repositories, the assigned Architect makes the independent final MERGE / DO_NOT_MERGE decision **only** under [Standing Authorization](../governance/STANDING_AUTHORIZATION.md), after live ownership/visibility/permissions and diff/SHA/test evidence checks; no Scientist research/T3 signoff. No per-PR merge permission, Engineer self-merge or unattended PR sweep. [Standing Authorization](../governance/STANDING_AUTHORIZATION.md) alone defines the full scope and tiered evidence requirements; evidence review is not a repeated human approval cycle.
 
