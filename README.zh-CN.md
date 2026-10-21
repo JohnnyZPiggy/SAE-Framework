@@ -12,7 +12,7 @@ SAE 的角色由**职责、能力与权限**定义，而非绑定具体模型：
 
 未来项目可使用[本地预检与有界 Colab 传输工具](tools/compute/README.zh-CN.md)：基于 [SAE PR #48](https://github.com/JohnnyZPiggy/SAE-Framework/pull/48)，已获得 **SCOPED LIVE_READY（Colab CLI 0.7.4、请求 T4 的 transport-only 路径）**；该次纯传输实验未直接核实实际设备型号。driver 与 manifest 由算法项目提供；不会迁移旧项目的固定快照。
 
-![SAE V3.3 — ChatGPT 原生卡片风格科研与工程组织架构图](docs/figures/SAE_Framework_V3.3.zh-CN.svg)
+![SAE V3.3 — 通用 AI Agent 卡片式科研与工程组织架构图](docs/figures/SAE_Framework_V3.3.zh-CN.svg)
 
 [查看高清 SVG 矢量原图](docs/figures/SAE_Framework_V3.3.zh-CN.svg)
 
@@ -81,7 +81,7 @@ flowchart TB
 
 </details>
 
-中英文 SVG 保留原始 GPT/Codex 配置的历史 V3.3 示意，不代表角色固定绑定；上方 Mermaid 是当前通用 Agent 的规范逻辑视图。历史示意：双重目标 → Scientist 设定目标与叫停 → GPT Chief Architect + Scientific Mentor 自主科研/工程决策 → Codex 执行 → CPU/GPU/TPU → GitHub 证据回流。圆角卡片、矢量图标、连接箭头和真实执行边界均直接由 SVG 元素组成。上方 Mermaid 是当前通用 Agent 的**逻辑视图**；链接的 `.mmd` 是旧 SVG 的历史可编辑源码；SVG 仅作架构展示，不代表未执行的实验已验证。
+上方中英文 SVG 卡片图展示当前**通用 AI Agent 角色架构**：双重目标 → 人类 Scientist → Architect 与 Mentor（例如 GPT）→ 可轮流接力的 Engineer（例如 Codex、Claude Code）→ GitHub 共享证据和本地/远程执行层。图中的卡片、图标、文字和箭头均为独立矢量元素，不依赖外部图片、脚本、字体文件或网络资源。上方 Mermaid 是另一种**逻辑视图**；链接的 `.mmd` 保留历史图的编辑源码，并非新版卡片 SVG 的源文件。架构图不代表相关计算实验已经验收。
 
 *TPU/PyTorch-XLA 与自动发布仍须实测。*
 
