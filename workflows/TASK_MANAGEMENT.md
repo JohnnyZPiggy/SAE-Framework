@@ -14,7 +14,7 @@
 If labels cannot be created, write the exact intended state into an Issue comment; do not pretend labels were applied. `Assignee` must be a real GitHub username, not an imaginary bot account.
 
 ## Pre-engineering research gate
-For new algorithms or substantial redesigns, Mentor/Architect agents autonomously records a concise `RESEARCH_READY` study or limited hypothesis/exception using [Mathematical Research](MATHEMATICAL_RESEARCH.md); **Scientist signoff is not required**. Mark Codex tasks ready once testable scope is clear. Safe probes/reference code/setup may run in parallel with R1/R2; formal acceptance remains evidence-gated.
+For new algorithms or substantial redesigns, Mentor/Architect agents autonomously record a concise `RESEARCH_READY` study or limited hypothesis/exception using [Mathematical Research](MATHEMATICAL_RESEARCH.md); **Scientist signoff is not required**. Mark Engineer tasks ready once testable scope is clear. Safe probes/reference code/setup may run in parallel with R1/R2; formal acceptance remains evidence-gated.
 
 ## Linked artifacts in Issue/PR handoffs
 Link the Mentor/Architect-decided mathematical study, concise Engineering Report and Engineer-executed experimental evidence following [Three-Artifact Handoff](THREE_ARTIFACT_HANDOFF.md). Experiment PRs identify the exact tested source SHA and upstream Issue/PRs; do not create duplicate status reports or treat templates as proof of execution.
