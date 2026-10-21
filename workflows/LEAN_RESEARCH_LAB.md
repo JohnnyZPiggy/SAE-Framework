@@ -10,11 +10,11 @@ This is a **lightweight execution path**, not a new agent, scheduler, approval h
 | | `EXPLORE` — fast falsification | `VALIDATE` — reproducible acceptance |
 | --- | --- | --- |
 | Goal | Feasibility, quick numerical checks, tool/device diagnosis | Defensible correctness, speedup or merge decision |
-| Start | the assigned Mentor records a testable hypothesis, minimal oracle, device/task scope; no Scientist signoff or complete study needed | the Mentor records `RESEARCH_READY` or documented, bounded assumptions; select formal acceptance criteria |
+| Start | The assigned Mentor records a testable hypothesis, minimal oracle, device/task scope; no Scientist signoff or complete study needed | the Mentor records `RESEARCH_READY` or documented, bounded assumptions; select formal acceptance criteria |
 | Execution | Reference/prototype and bounded `PROBE_ONLY` GPU/TPU-XLA diagnostics may run alongside mathematical research | Pinned exact source commit SHA; applicable oracle/edge/randomized accuracy tests and fair benchmark controls |
 | Evidence | One short batch log: source identity (full SHA for remotely installed code; local revision and dirty state otherwise), environment, commands, observations, actual PASS/FAIL/NOT RUN/BLOCKED | Mathematical rationale, tested SHA, correctness/benchmark methodology, device/dtype/seeds, run-specific artifact manifest, reproducible evidence |
 | GitHub | Reuse the task Issue and working branch; **no PR or three full reports required for each exploratory run**. Preserve useful observations for handoff | Submit reviewed, sanitized compact evidence linked to code PR; optional report publication is separately verified |
-| Claim | **HYPOTHESIS / PROBE_ONLY / UNVERIFIED**; never formal acceleration evidence | the Architect accepts/rejects only measured results; `NOT RUN` is never `PASS` |
+| Claim | **HYPOTHESIS / PROBE_ONLY / UNVERIFIED**; never formal acceleration evidence | The Architect accepts/rejects only measured results; `NOT RUN` is never `PASS` |
 
 Changing from EXPLORE to VALIDATE is an **Architect evidence decision**, not an extra Scientist approval. A smoke probe does not establish algorithm correctness, full TPU/XLA support or speedup.
 
@@ -23,7 +23,7 @@ The Architect hands off **one existing or new Issue**, not a string of independe
 1. **Goal and mode:** target algorithm, testable hypothesis, output expected and what counts as success/failure; list the math assumptions and smallest oracle.
 2. **Source and environment:** owner/repo, branch or candidate SHA, actual existing local/Colab CLI access, hardware candidates. Formal remote tests install from exact SHA; exploratory local dirty changes are explicitly identified and never misreported as pinned remote results.
 3. **Execution budget in engineering terms:** one active Colab session maximum, **task-defined finite timeout**, bounded retries (**default at most three self-repair attempts per failure class**, lower if continued attempts cannot make progress), explicit cleanup on success/failure/interruption. Reuse one running session for multiple sequential experiments when permitted; no indefinite loops or background scheduler.
-4. **Autonomous actions within the batch:** inspect → implement a minimal candidate → reference/numerical test → bounded CPU/GPU/TPU probe or formal benchmark when ready → diagnose/fix → rerun, stopping on success, substantive math ambiguity, exhausted resources or a real access/security/billing boundary. Codex may iterate without a new Issue or Scientist/GPT signoff per attempt, **but cannot approve its own PR or scientific claim**.
+4. **Autonomous actions within the batch:** inspect → implement a minimal candidate → reference/numerical test → bounded CPU/GPU/TPU probe or formal benchmark when ready → diagnose/fix → rerun, stopping on success, substantive math ambiguity, exhausted resources or a real access/security/billing boundary. The Engineer may iterate without a new Issue or Scientist/Architect signoff per attempt, **but cannot approve its own PR or scientific claim**.
 5. **One return artifact:** a concise Issue/PR update with actual tested SHA/source identity, commands, device/runtime, numeric evidence, iteration/failure summary, cleanup and next blocker; attach only the necessary run artifacts. Do not create duplicate reports or one PR per exploratory attempt.
 
 **Hard boundaries:** no new purchases, top-ups, pay-as-you-go settings or charges beyond existing entitlements without explicit user approval; no sensitive/nonpublic release or external account/security-permission changes; no protected-main write, Engineer self-merge, GitHub Actions or default paid hosted CI. Run-time permission/provider checks, precise reproduction, secret screening and honest error/status reporting are mandatory.
@@ -35,4 +35,4 @@ The Architect hands off **one existing or new Issue**, not a string of independe
 - **Learning:** communicate one concise structural/numerical lesson when it materially helps; no mandatory learning diary.
 
 ## Implementation status
-Protocol and task contract **only**. This document does not implement a Engineer autonomous runner, Colab CLI, Publisher or Bootstrap. A real end-to-end batch, cross-window Architect–Engineer handoff, and TPU/XLA support must be tested separately and reported `NOT RUN` until verified.
+Protocol and task contract **only**. This document does not implement an Engineer autonomous runner, Colab CLI, Publisher or Bootstrap. A real end-to-end batch, cross-window Architect–Engineer handoff, and TPU/XLA support must be tested separately and reported `NOT RUN` until verified.
