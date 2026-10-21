@@ -1,24 +1,24 @@
-# Lean Research Lab — Explore / Validate and Codex Experiment Batches (V3.3-compatible)
+# Lean Research Lab — Explore / Validate and Engineer Experiment Batches (V3.3-compatible)
 
 > English normative | [简体中文](../i18n/zh-CN/workflows/LEAN_RESEARCH_LAB.md)
 
 ## Purpose and precedence
-This is a **lightweight execution path**, not a new agent, scheduler, approval hierarchy, experiment runtime or automatic CLI implementation. A scoped user-invoked SAE cycle can delegate one **bounded Codex batch**; GPT Mentor/Architect owns research hypotheses, science decisions and final evidence review. Apply [Mathematical Research](MATHEMATICAL_RESEARCH.md) for formal claims, [Compute Experiment](GPU_EXPERIMENT.md) for allocation/publication and [Standing Authorization](../governance/STANDING_AUTHORIZATION.md) for PR merges. User stop instructions and pinned project-specific rules take precedence.
+This is a **lightweight execution path**, not a new agent, scheduler, approval hierarchy, experiment runtime or automatic CLI implementation. A scoped user-invoked SAE cycle can delegate one **bounded Engineer batch**; the assigned Mentor/Architect owns research hypotheses, science decisions and final evidence review. Apply [Mathematical Research](MATHEMATICAL_RESEARCH.md) for formal claims, [Compute Experiment](GPU_EXPERIMENT.md) for allocation/publication and [Standing Authorization](../governance/STANDING_AUTHORIZATION.md) for PR merges. User stop instructions and pinned project-specific rules take precedence.
 
 ## Two modes, chosen by the intended claim
 
 | | `EXPLORE` — fast falsification | `VALIDATE` — reproducible acceptance |
 | --- | --- | --- |
 | Goal | Feasibility, quick numerical checks, tool/device diagnosis | Defensible correctness, speedup or merge decision |
-| Start | GPT records a testable hypothesis, minimal oracle, device/task scope; no Scientist signoff or complete study needed | GPT records `RESEARCH_READY` or documented, bounded assumptions; select formal acceptance criteria |
+| Start | the assigned Mentor records a testable hypothesis, minimal oracle, device/task scope; no Scientist signoff or complete study needed | the Mentor records `RESEARCH_READY` or documented, bounded assumptions; select formal acceptance criteria |
 | Execution | Reference/prototype and bounded `PROBE_ONLY` GPU/TPU-XLA diagnostics may run alongside mathematical research | Pinned exact source commit SHA; applicable oracle/edge/randomized accuracy tests and fair benchmark controls |
 | Evidence | One short batch log: source identity (full SHA for remotely installed code; local revision and dirty state otherwise), environment, commands, observations, actual PASS/FAIL/NOT RUN/BLOCKED | Mathematical rationale, tested SHA, correctness/benchmark methodology, device/dtype/seeds, run-specific artifact manifest, reproducible evidence |
 | GitHub | Reuse the task Issue and working branch; **no PR or three full reports required for each exploratory run**. Preserve useful observations for handoff | Submit reviewed, sanitized compact evidence linked to code PR; optional report publication is separately verified |
-| Claim | **HYPOTHESIS / PROBE_ONLY / UNVERIFIED**; never formal acceleration evidence | GPT accepts/rejects only measured results; `NOT RUN` is never `PASS` |
+| Claim | **HYPOTHESIS / PROBE_ONLY / UNVERIFIED**; never formal acceleration evidence | the Architect accepts/rejects only measured results; `NOT RUN` is never `PASS` |
 
-Changing from EXPLORE to VALIDATE is a **GPT evidence decision**, not an extra Scientist approval. A smoke probe does not establish algorithm correctness, full TPU/XLA support or speedup.
+Changing from EXPLORE to VALIDATE is an **Architect evidence decision**, not an extra Scientist approval. A smoke probe does not establish algorithm correctness, full TPU/XLA support or speedup.
 
-## One Codex task → one bounded engineering/experiment batch
+## One Engineer task → one bounded engineering/experiment batch
 The Architect hands off **one existing or new Issue**, not a string of independent approvals. Its compact batch contract must name:
 1. **Goal and mode:** target algorithm, testable hypothesis, output expected and what counts as success/failure; list the math assumptions and smallest oracle.
 2. **Source and environment:** owner/repo, branch or candidate SHA, actual existing local/Colab CLI access, hardware candidates. Formal remote tests install from exact SHA; exploratory local dirty changes are explicitly identified and never misreported as pinned remote results.
@@ -29,10 +29,10 @@ The Architect hands off **one existing or new Issue**, not a string of independe
 **Hard boundaries:** no new purchases, top-ups, pay-as-you-go settings or charges beyond existing entitlements without explicit user approval; no sensitive/nonpublic release or external account/security-permission changes; no protected-main write, Codex self-merge, GitHub Actions or default paid hosted CI. Run-time permission/provider checks, precise reproduction, secret screening and honest error/status reporting are mandatory.
 
 ## Lightweight handoff and learning
-- **Before dispatch:** GPT gives one concise research decision and one executable batch contract. Build-vs-Reuse, reference preparation and device probing can proceed concurrently where dependencies permit.
-- **After batch:** GPT performs one substantive review of results and risks, accepts/merges an eligible PR or writes a targeted follow-up to the **same Issue**. If mathematical evidence fails, return to Mentor reasoning; do not pretend a full study has been approved.
+- **Before dispatch:** the Architect gives one concise research decision and one executable batch contract. Build-vs-Reuse, reference preparation and device probing can proceed concurrently where dependencies permit.
+- **After batch:** the Architect performs one substantive review of results and risks, accepts/merges an eligible PR or writes a targeted follow-up to the **same Issue**. If mathematical evidence fails, return to Mentor reasoning; do not pretend a full study has been approved.
 - **Report only when justified:** exploration needs a compact note, not the full [Three Research Artifacts](THREE_ARTIFACT_HANDOFF.md). For formally accepted research, assemble/link the mathematics, engineering and experimental evidence without duplicating numerical tables.
 - **Learning:** communicate one concise structural/numerical lesson when it materially helps; no mandatory learning diary.
 
 ## Implementation status
-Protocol and task contract **only**. This document does not implement a Codex autonomous runner, Colab CLI, Publisher or Bootstrap. A real end-to-end batch, cross-window GPT–Codex handoff, and TPU/XLA support must be tested separately and reported `NOT RUN` until verified.
+Protocol and task contract **only**. This document does not implement a Engineer autonomous runner, Colab CLI, Publisher or Bootstrap. A real end-to-end batch, cross-window Architect–Engineer handoff, and TPU/XLA support must be tested separately and reported `NOT RUN` until verified.
