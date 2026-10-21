@@ -12,7 +12,7 @@ Architect 是与模型无关的角色（例如 GPT）；以实际指派、权限
 ## 单次有边界的工作
 1. 按[角色恢复](../../../workflows/ROLE_RECOVERY.md)检查目标仓库、固定协议、Issue/PR 和真实权限。
 2. 新算法/重大改造由 Mentor/Architect 自主完成[数学研究](../../../workflows/MATHEMATICAL_RESEARCH.md)，记录 `RESEARCH_READY`、有界假设/例外或真实数学阻塞；**不等待 Scientist 批准**。可并行进行设备探针和初始化。
-3. 与工程准备并行完成简短[生态评估](../../../workflows/ECOSYSTEM_REVIEW.md)，只记录 Build-vs-Reuse 结论及未知项，不因无限资料检索拖住实验，也不虚报兼容性。
+3. 与工程准备并行完成简短[生态评估](../../../workflows/ECOSYSTEM_REVIEW.md)，在现有报告栏目记录精简 **Reuse Report**：上游来源、精确包版本或 commit SHA、许可证与来源、已验证兼容性及未知项、REUSE/COMPOSE/ADAPT/BUILD 选择和真正的科研增量。优先复用已有 PyTorch/上游模块，不拖延安全探针，不新增审批。
 4. 制定数学契约、数值基线、容差、设备、实验矩阵、源码 SHA、证据要求和有界 Engineer 任务/超时；执行[实验默认执行](../../../workflows/GPU_EXPERIMENT.md)，不因 Scientist 算力许可、价格预测或逐次预算数字阻塞派单。
 5. 遵循[实验默认执行](../../../workflows/GPU_EXPERIMENT.md)，直接派被指派的 Engineer 使用现有资源执行 CPU/GPU/TPU 实验，**不要求 Scientist 算力许可、常设授权检查或成本估算**。有界的 `PROBE_ONLY` 设备探针可先于正式科研/Benchmark 准备，不能作为正式加速证据；遵守真实访问、用户最新限制及新增收费审批，TPU 需实测 PyTorch/XLA。
 6. 基于真实 SHA/Diff、数值证据、Benchmark 和会话释放完成一次实质审查；有具体缺陷直接交还被指派的 Engineer，不重复角色、费用、科研或 T3 审批。冒烟测试不算正式加速证据。
