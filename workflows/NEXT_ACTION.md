@@ -8,7 +8,7 @@ At the end of **each substantive SAE Mentor, Architect or Engineer work cycle**,
 
 ## Compact completion handoff (native-first)
 
-At the end of a substantive GPT Architect/Mentor cycle, report verified state, evidence and any real Scientist-only external boundary in the main answer, then show **SAE · Next Action** only when a meaningful continuation exists. Prefer **1–3 ChatGPT-native clickable choices**, best first, each with a short label, one-line consequence and a complete self-contained Chinese role instruction in its click action. Do **not** duplicate full instructions in visible prose. When native submission is unavailable, show short numbered choices answerable with a number; provide a full copyable command only on request. The assigned Engineer uses only controls its own client actually supports and otherwise follows its normal concise handoff.
+At the end of a substantive Architect/Mentor cycle, report verified state, evidence and any real Scientist-only external boundary in the main answer, then show **SAE · Next Action** only when a meaningful continuation exists. Prefer **1–3 ChatGPT-native clickable choices**, best first, each with a short label, one-line consequence and a complete self-contained Chinese role instruction in its click action. Do **not** duplicate full instructions in visible prose. When native submission is unavailable, show short numbered choices answerable with a number; provide a full copyable command only on request. The assigned Engineer uses only controls its own client actually supports and otherwise follows its normal concise handoff.
 
 If there is no feasible next step, clearly report DONE / BLOCKED / WAITING_FOR_EXTERNAL_ACTION without inventing a selector or action. The completion gate is about evidence and truthful communication, not mandatory decorative UI.
 
@@ -18,17 +18,17 @@ A recommended command **does not execute an Agent**, allocate compute or authori
 
 ## Next-Action Completion Gate — pre-send check (V3.3)
 
-Before sending the **final user-facing reply** of every substantive Mentor, Architect or Codex cycle, apply this self-check. Complete status/evidence reporting is mandatory; interactive choices are conditional on a useful next action and actual client capability.
+Before sending the **final user-facing reply** of every substantive Mentor, Architect or Engineer cycle, apply this self-check. Complete status/evidence reporting is mandatory; interactive choices are conditional on a useful next action and actual client capability.
 
 1. **Status and evidence:** state what was actually completed versus NOT RUN / UNVERIFIED / BLOCKED, with verifiable Issue, PR, report or commit links when available. Never fabricate activity, approvals or progress.
 2. **One recommended handoff:** when a feasible next step exists, prepare **one full, stand-alone Chinese instruction** inside the clickable action (or on request in fallback mode), naming its target and action: `推进架构师工作：…`, `推进导师工作：…`, `推进工程师工作：…`, or `Scientist：…`. No placeholders, ambiguous fragments or commands to an agent that cannot actually be invoked.
 3. **Meaningful choices:** offer zero to two distinct, feasible alternatives only when there is a real fork in the workflow. Rank one as the recommendation; do not pad choices or repeat the same work with different wording.
-4. **No human approval queue:** GPT owns scoped science, readiness, engineering and T1/T2/T3 evidence decisions; the assigned Engineer runs existing-account compute under [Experiment by Default](GPU_EXPERIMENT.md). Never recommend waiting for Scientist science, CPU/GPU, T3 or PR signoff. Preserve real access, SHA, evidence, and new-billing/nonpublic-data external boundaries; a command is not proof of execution.
+4. **No human approval queue:** the assigned Architect/Mentor roles own scoped science, readiness, engineering and T1/T2/T3 evidence decisions; the assigned Engineer runs existing-account compute under [Experiment by Default](GPU_EXPERIMENT.md). Never recommend waiting for Scientist science, CPU/GPU, T3 or PR signoff. Preserve real access, SHA, evidence, and new-billing/nonpublic-data external boundaries; a command is not proof of execution.
 5. **Final handoff:** where a useful continuation exists, finish with a compact **SAE · Next Action** selector or numbered fallback. Keep current state, evidence and genuine Scientist-only requirements clear in the answer. Do not require a selector when the answer is terminal or a direct answer is sufficient.
 
 ### Native interaction and fallback
 
-- **ChatGPT native-first:** use actual supported `pressable` or `button` controls and `GenUI.issueNewTurn(full_instruction)` only when the current client supports them. The click starts a new bounded conversation turn, not a external engineering-client action, a successful execution or new authorization.
+- **ChatGPT native-first:** use actual supported `pressable` or `button` controls and `GenUI.issueNewTurn(full_instruction)` only when the current client supports them. The click starts a new bounded conversation turn, not an external engineering-client action, a successful execution or new authorization.
 - **No native controls:** show 1–3 brief numbered options, recommended first, that the Scientist can select by replying with a number. Supply the full copyable command on request, not by default. Never fake buttons in Markdown, SVG or images.
 - **Other agent clients (e.g., Codex, Claude Code):** use their actual supported interaction affordances only; otherwise give a concise ordinary handoff without assuming ChatGPT UI features.
 - Preserve the [Standing Authorization](../governance/STANDING_AUTHORIZATION.md), exact SHA/evidence, no Scientist routine approval, no new billing or sensitive publication, and all existing experiment/merge gates. This remains a response-level convention, not an enforced runtime validator.
