@@ -81,7 +81,7 @@ flowchart TB
 
 </details>
 
-The linked bilingual SVGs are historical V3.3 illustrations of the original GPT/Codex implementation, not a normative agent assignment. The provider-neutral Mermaid diagram above is the current logical architecture. Historical illustration: two equal objectives → Scientist goal setting/stop control → GPT Chief Architect + Scientific Mentor autonomous decisions → Codex execution → CPU/GPU/TPU → GitHub evidence feedback. Rounded cards, vector icons, arrows and execution boundaries are all drawn as SVG primitives. The embedded Mermaid is the current **logical** view; the linked `.mmd` is a historical editable source for the historical SVG; the SVG is documentation, not proof of executed experiments.
+The bilingual SVG cards above illustrate the **current provider-neutral SAE roles**: two equal objectives → human Scientist → Architect and Mentor (AI agents, e.g., GPT) → interchangeable Engineers (e.g., Codex and Claude Code) → shared GitHub evidence and local/remote execution. The artwork uses self-contained vector shapes, icons and labels (no raster assets, scripts, external fonts or network dependencies). The embedded Mermaid is an alternate **logical** view; the linked `.mmd` retains the historical diagram source for reference and is not the source of the new card SVGs. Diagram artwork does not itself validate experiments.
 
 *TPU/PyTorch-XLA and automated report publication remain unverified.*
 
