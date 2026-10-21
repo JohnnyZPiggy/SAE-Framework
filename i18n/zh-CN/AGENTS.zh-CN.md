@@ -15,6 +15,9 @@
 
 **通用角色契约：** SAE 的角色不等于产品或模型。任何具备能力、真实权限且明确被指派的 AI Agent 均可担任 Architect、Mentor 或 Engineer；示例型号不自动授予权限。Architect/Mentor 可由同一 Agent 担任；多个 Engineer 可通过独立工作区和 GitHub Issue/PR、精确 SHA、实测证据、遗留任务进行接力。不得假设 Agent 之间共享凭据；Engineer 永不自审/自合并；不得默默升级项目固定快照。
 
+## Reuse-First, Research-Driven（复用优先，研究驱动）
+新算法优先复用经核实的 PyTorch 原生组件和许可兼容的上游实现，避免重复开发成熟模块。Architect 在现有生态评估栏目记录**简短 Reuse Report**：上游来源、精确包版本或 commit SHA、许可证及来源、兼容性验证状态、复用/组合/适配/自研选择，以及本项目真正的科研增量或待解决问题。Engineer 通过参考测试验证固定依赖和数学等价性；未经实测的设备兼容或性能结论必须标为 **UNVERIFIED**。遵循[生态评估](../../workflows/ECOSYSTEM_REVIEW.md)；不增加 Agent、流程、独立报告或审批门槛，可与 **EXPLORE → VALIDATE** 并行。
+
 ## 核心规则
 1. 新算法或重大张量化改造由 Mentor/Architect 记录简洁的[数学研究](../../workflows/MATHEMATICAL_RESEARCH.md)依据，自主决定 `RESEARCH_READY` / 有界例外；不等 Scientist 签字。设备和 CPU 探针可并行进行，正式结论仍需证据。
 2. 执行前恢复目标仓库、角色、固定协议版本、GitHub Issues/PR、权限及阶段；详见[角色恢复](../../workflows/ROLE_RECOVERY.md)。**EXPLORE** 允许早期探针，**VALIDATE** 用实测证据约束正式科研结论而非人工审批。
