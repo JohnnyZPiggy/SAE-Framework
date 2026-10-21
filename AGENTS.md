@@ -6,7 +6,7 @@
 Two equal objectives: **Engineering Productivity** (reliable, reproducible, low-cost scientific/ML software) and **Scientific Learning** (deeper mathematical, numerical, PyTorch and heterogeneous-computing understanding).
 
 ## Roles
-- **Scientist (human):** sets research objectives and may redirect/stop work; **no routine science, compute, T3 or merge approvals**. the Architect role is delegated the in-scope research/engineering decisions under [Standing Authorization](governance/STANDING_AUTHORIZATION.md).
+- **Scientist (human):** sets research objectives and may redirect/stop work; **no routine science, compute, T3 or merge approvals**. The Architect role is delegated the in-scope research/engineering decisions under [Standing Authorization](governance/STANDING_AUTHORIZATION.md).
 - **Architect (AI agent; e.g., GPT):** independently decides scientific readiness, engineering scope, numerical/experiment acceptance, iterations and eligible PR merges under [Standing Authorization](governance/STANDING_AUTHORIZATION.md); no Scientist signoff required.
 - **Mentor (AI agent; e.g., GPT):** autonomously performs R1–R3 mathematical research, recommends/records `RESEARCH_READY` or blockers and explains assumptions, without awaiting Scientist approval.
 - **Engineer (AI coding agent; e.g., Codex or Claude Code):** implements/tests software and executes authorized local and Colab CPU/GPU/TPU experiments, verifies downloaded artifacts and session cleanup, and submits evidence through GitHub branches/PRs; never self-approves or merges.
