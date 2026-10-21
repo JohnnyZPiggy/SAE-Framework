@@ -81,7 +81,7 @@ flowchart TB
 
 </details>
 
-中英文 SVG 保留原始 GPT/Codex 配置的历史 V3.3 示意，不代表角色固定绑定；上方 Mermaid 是当前通用 Agent 的规范逻辑视图。历史示意：双重目标 → Scientist 设定目标与叫停 → GPT Chief Architect + Scientific Mentor 自主科研/工程决策 → Codex 执行 → CPU/GPU/TPU → GitHub 证据回流。圆角卡片、矢量图标、连接箭头和真实执行边界均直接由 SVG 元素组成。上方 Mermaid 与 `.mmd` 是可编辑的**逻辑视图**；SVG 仅作架构展示，不代表未执行的实验已验证。
+中英文 SVG 保留原始 GPT/Codex 配置的历史 V3.3 示意，不代表角色固定绑定；上方 Mermaid 是当前通用 Agent 的规范逻辑视图。历史示意：双重目标 → Scientist 设定目标与叫停 → GPT Chief Architect + Scientific Mentor 自主科研/工程决策 → Codex 执行 → CPU/GPU/TPU → GitHub 证据回流。圆角卡片、矢量图标、连接箭头和真实执行边界均直接由 SVG 元素组成。上方 Mermaid 是当前通用 Agent 的**逻辑视图**；链接的 `.mmd` 是旧 SVG 的历史可编辑源码；SVG 仅作架构展示，不代表未执行的实验已验证。
 
 *TPU/PyTorch-XLA 与自动发布仍须实测。*
 
@@ -99,7 +99,7 @@ Mentor/Architect 自主判断简明[数学结构研究](workflows/MATHEMATICAL_R
 实验保留**三个独立阶段**：固定源码 SHA 安装、**不写 GitHub** 的 Benchmark、可选且经 Architect 审核的安全非敏感报告发布。详见[计算实验协议](workflows/GPU_EXPERIMENT.md)和[保留历史文件名的兼容入口](workflows/COLAB_TWO_COMMAND.md)。
 
 ## 可选：一键继续下一轮
-当前 ChatGPT 客户端支持原生交互时，Architect/Mentor 每轮完成后可展示 2～3 个 **SAE · 下一步行动** 可点击选项；点击即可在当前对话提交完整指令。它不控制 外部 Engineer 桌面窗口，也不改变 SAE 授权和科研验收标准。详见 [Scientist One-Click Next Actions](workflows/SCIENTIST_ONE_CLICK_NEXT_ACTIONS.md)；无法提供原生控件时保留简短指令。
+当前 ChatGPT 客户端支持原生交互时，Architect/Mentor 每轮完成后可展示 2～3 个 **SAE · 下一步行动** 可点击选项；点击即可在当前对话提交完整指令。它不控制外部 Engineer 桌面窗口，也不改变 SAE 授权和科研验收标准。详见 [Scientist One-Click Next Actions](workflows/SCIENTIST_ONE_CLICK_NEXT_ACTIONS.md)；无法提供原生控件时保留简短指令。
 
 ## 快速开始
 阅读[共同宪章](i18n/zh-CN/AGENTS.zh-CN.md)与[初始化协议 V3.3](i18n/zh-CN/SAE_BOOTSTRAP.md)。采用[项目 AGENTS](examples/project/AGENTS.md)、[sae.yaml](examples/project/sae.yaml)，固定到**真实不可变 SAE commit SHA**；旧项目不自动升级。
