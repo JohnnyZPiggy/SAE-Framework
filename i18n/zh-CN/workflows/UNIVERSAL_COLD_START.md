@@ -4,6 +4,8 @@
 
 ## 一句话启动
 
+**工作区存储默认规则：** 本地 Engineer 在首次需要写文件时，优先使用用户指定的工作区和临时根目录；允许 D 盘 Dropbox 同步目录及其中隔离的任务 scratch 子目录，不得仅因同步路径拒绝，也不得随意把大型临时文件写入 C 盘。冷启动只读，不要求额外的磁盘审计或审批。
+
 **GPT（Architect + Mentor）：**“访问 SAE-Framework，作为 Chief Architect + Scientific Mentor，针对 <owner/Torch项目> 执行冷启动并准备研发。”
 
 **Claude Code / Codex（Engineer）：**“访问 SAE-Framework，作为 Software Engineer，以当前工作目录的 Torch 项目执行冷启动并准备研发。”
