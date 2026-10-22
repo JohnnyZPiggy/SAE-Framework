@@ -2,6 +2,9 @@
 
 > Historical path retained for compatibility | [简体中文](../i18n/zh-CN/workflows/GPU_EXPERIMENT.md)
 
+## GPU-first scheduling
+GPU is the preferred execution device for genuinely GPU-suitable tensorized science and performance experiments when a supported GPU is accessible within existing account entitlements. The Architect should propose GPU paths early and the Engineer should run bounded GPU probes without waiting for formal CPU completion when mathematically safe. CPU reference, edge tests and debug runs remain essential and may proceed concurrently. Do not manufacture GPU demand for trivial workloads or substitute a smoke test for numerical correctness/performance evidence. No extra billing, provider privileges, overlapping sessions or unbounded retries.
+
 ## Ownership and prerequisites
 - **Scientist:** sets goals and may stop/change work, **not** a scientific, experiment or compute signoff role. The assigned Architect decides scoped scientific readiness and conclusions.
 - **Architect:** experiment matrix, readiness/acceptance criteria, review of evidence and final eligible PR merge discretion.
