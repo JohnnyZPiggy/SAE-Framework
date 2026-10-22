@@ -121,3 +121,7 @@ These are user-invoked bounded cycles, not a hosted autonomous agent. No default
 [Architect](protocols/ARCHITECT.md) · [Engineer](protocols/ENGINEER.md) · [Mentor](protocols/MENTOR.md) · [Scientist](protocols/SCIENTIST.md) · [Role Recovery](workflows/ROLE_RECOVERY.md) · [Changelog](CHANGELOG.md) · [Chinese index](i18n/zh-CN/README.md)
 
 **Version:** V3.3 architecture and protocol; existing pinned V3.2 project snapshots remain unchanged until explicitly upgraded. **License:** [MIT License](LICENSE) · Copyright © 2026 JohnnyZPiggy. The MIT grant covers original content in this repository; any third-party materials retain their own license terms.
+
+## Universal agent cold start
+
+For any Torch project, begin with [Universal Agent Cold Start](workflows/UNIVERSAL_COLD_START.md) ([中文](i18n/zh-CN/workflows/UNIVERSAL_COLD_START.md)). Tell GPT to act as **Architect + Mentor** for the target GitHub repository, or start Claude Code/Codex as **Engineer** in the project directory. Each agent reads the project's pinned SAE rules and live GitHub state before doing work; the first recovery pass is read-only. Existing projects are **not** automatically upgraded.

@@ -121,3 +121,7 @@ Mentor/Architect 自主判断简明[数学结构研究](workflows/MATHEMATICAL_R
 [架构师](i18n/zh-CN/protocols/ARCHITECT.md) · [工程师](i18n/zh-CN/protocols/ENGINEER.md) · [导师](i18n/zh-CN/protocols/MENTOR.md) · [科学家](i18n/zh-CN/protocols/SCIENTIST.md) · [角色恢复](i18n/zh-CN/workflows/ROLE_RECOVERY.md) · [变更记录](i18n/zh-CN/CHANGELOG.md) · [中文导航](i18n/zh-CN/README.md)
 
 **版本：** V3.3 文档迁移中；已固定的 V3.2 项目快照须经审查后主动升级。**许可：** [MIT License](LICENSE) · Copyright © 2026 JohnnyZPiggy。本许可适用于仓库内的原创内容；如含第三方素材，其原有许可条款仍然适用。
+
+## 通用 Agent 冷启动
+
+新建 GPT/Claude Code/Codex 窗口时，可使用一句话启动：**“访问 SAE-Framework，以 Architect + Mentor / Engineer 角色，为目标 Torch 项目执行冷启动。”** 先读 [通用冷启动协议](i18n/zh-CN/workflows/UNIVERSAL_COLD_START.md)，再按项目 `AGENTS.md`、`sae.yaml` 和固定 `.sae/` 恢复 GitHub 实时状态；首次只读，不自动改写已有项目快照。
