@@ -6,7 +6,7 @@ Status: **LOCAL_VALIDATED + SCOPED LIVE_READY (CLI 0.7.4, T4-requested transport
 
 | Component | Dependency | Scope |
 |---|---|---|
-| `environment_preflight.py` | Python standard library + installed Git | Exact commit, dirty state, blob export, writable non-synced temporary paths |
+| `environment_preflight.py` | Python standard library + installed Git | Exact commit, dirty state, blob export, writable user-selected temporary paths |
 | `colab_control.py`, `kernel_smoke.py` | Standard library + existing `colab` executable | One bounded T4 allocation, default short probe, transport and cleanup |
 | Explicit `--install-local` | Existing Python pip/build backend | Optional no-deps temporary project install; never default |
 | Project adapter | Project chooses dependencies | Scientific code, exact-source install, real device checks and outputs |
@@ -25,7 +25,7 @@ python tools/compute/colab_control.py --preflight-only --cli colab \
   --run-id local-check-1 --out local-evidence/new-run
 ```
 
-Replace the path/SHA with an existing local project checkout and full immutable commit. Preflight only calls CLI `version` and local Git/filesystem operations; no credentials, sessions, usage, allocation, driver execution or login fallback. Exact export uses `ls-tree`/`cat-file` bytes independent of dirty CRLF checkout. `.sae/` is excluded from temporary project export; its immutable documentation is not copied into every command. Other regular tracked files are exported; symlinks/submodules/unsafe paths are rejected. Temporary build/cache paths must be writable, outside checkout and Dropbox; `--temp-root` overrides OS temp without global settings changes. `--install-local` is explicit and uses existing pip/build requirements with no dependency installation; default is no install.
+Replace the path/SHA with an existing local project checkout and full immutable commit. Preflight only calls CLI `version` and local Git/filesystem operations; no credentials, sessions, usage, allocation, driver execution or login fallback. Exact export uses `ls-tree`/`cat-file` bytes independent of dirty CRLF checkout. `.sae/` is excluded from temporary project export; its immutable documentation is not copied into every command. Other regular tracked files are exported; symlinks/submodules/unsafe paths are rejected. Temporary build/cache paths must be writable and task-isolated. Dropbox-synced directories and isolated scratch subdirectories within a checkout are allowed when explicitly selected by the user. The checkout root itself is not a valid temp root; `--temp-root` overrides OS temp without global settings changes. On Windows, direct scratch to the user's D: workspace rather than silently filling C:. Dropbox synchronization may add overhead, but is not a blocker. `--install-local` is explicit and uses existing pip/build requirements with no dependency installation; default is no install.
 
 ## Project-owned adapter contract
 
