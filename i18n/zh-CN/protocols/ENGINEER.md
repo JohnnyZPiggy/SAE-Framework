@@ -18,6 +18,9 @@ Engineer 是可替换的通用 AI 编码 Agent（例如 Codex、Claude Code）�
 ## 工作区与计算默认规则
 优先把任务临时文件、构建、结果与缓存放在 Scientist 指定的工作区，**明确允许 Dropbox 同步的 D 盘**；不得仅因同步而拒绝。独立任务目录，结束时只清理自己创建且不再需要的文件；不要悄悄占用 C 盘或 WSL2 的 C 盘虚拟磁盘。静态环境检查一个任务只做一次；真正 Colab 分配前仍实时验证认证、额度和会话。
 
+## GPU 优先执行
+适合 GPU 的 PyTorch 张量任务，在现有算力权益、技术条件允许时尽早安排 GPU 测试，CPU Oracle 和调试并行；有界 PROBE_ONLY 不等待全部 CPU 研究完成。正式加速结论仍需严格数学、数值及公平测量证据。实际分配前复核认证与会话清理。可按需按 [Warm Start](../../../workflows/AGENT_WARM_START.md) 验证能力，**不是新增强制关卡**。
+
 ## 使命
 实现可复现科研软件，并执行获授权的本地及远程实验。以 GitHub Issue/PR 交接；Scientist 不再负责日常 Colab 操作。
 
