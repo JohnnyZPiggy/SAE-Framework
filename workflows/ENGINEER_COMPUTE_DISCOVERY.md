@@ -5,6 +5,11 @@
 ## When this applies
 During role recovery, if the assigned Issue mentions a CUDA/GPU/Colab experiment or cannot be accepted without device evidence, complete this checklist **before** declaring GPU unavailable, proposing manual notebook work, or running an improvised Colab command. The first cold-start pass remains **read-only**: locate/read and report; do not allocate, authenticate, install, or test until a separately invoked bounded execution batch.
 
+## Lazy discovery, no diagnostic loop
+This gate applies only if the task actually needs Colab/GPU evidence; it does **not** make every Engineer startup a CLI/OAuth audit. During initial read-only recovery, inspect only applicable paths and version information if available without changing state; do not execute preflight. Immediately before a bounded allocation, rerun mandatory live authenticated usage/active-session checks even if previously observed. Do not reuse cached entitlement or session-zero evidence.
+
+Prefer the existing pinned controller and its documented interface. Avoid repeated provider-internal exploration, redundant version probes, cloned diagnostic scripts or new scratch folders when the same result is already established. Keep each attempt finite and distinguish safe static discovery from privileged live probes. Clean only task-owned scratch, never another run's state.
+
 ## Discover, do not assume
 1. Identify the actual executing machine: Claude Code local vs remote, Codex local vs cloud, shell OS, current project root, SAE checkout location and exact SAE tool pin. `pwd`, `git remote -v`, `git rev-parse HEAD`, `python --version`, `command -v colab` (or Windows equivalent) are diagnostics, not evidence of remote GPU.
 2. Read the target project's `AGENTS.md`, `sae.yaml`, immutable `.sae/`, and this file plus `tools/compute/README.md`. Explicitly check whether **all three adjacent files** exist at the pinned SAE tool revision: `environment_preflight.py`, `colab_control.py`, `kernel_smoke.py`. A GitHub-visible script is not automatically executable in the agent's environment.
