@@ -9,7 +9,7 @@ Confirm target `owner/repo`, default branch, scientific goal, actual tool permis
 
 ## Adopt a minimal pinned entrypoint by default
 1. Create or update project-root `AGENTS.md` using [project template](examples/project/AGENTS.md) and `sae.yaml` using [config](examples/project/sae.yaml), replacing every placeholder. Adapt any template links that assume local `.sae/` files to the immutable pinned upstream reference.
-2. Record **one immutable SAE commit SHA** and a minimal `.sae/README.md` pointing to the pinned root constitution, assigned role, and task-relevant workflows. Fetch the needed rules at that immutable revision; cache only the few files needed when offline use is required. A full self-contained bilingual snapshot is **opt-in**, not the default. Never assume a URL alone means its content was read.
+2. Record **one immutable SAE commit SHA** and a minimal `.sae/README.md` pointing to the pinned root constitution, assigned role, and task-relevant workflows. Fetch the needed rules at that immutable revision; cache only the few files needed when offline use is required. A full self-contained bilingual snapshot is **opt-in**, not the default. The minimal `.sae/README.md` contains the exact source SHA and immutable URL references; it must not embed private credentials. Never assume a URL alone means its content was read.
 3. Propose changes on a new branch/PR. Do not install GitHub Actions, paid hosted CI, or a Google Drive synchronization layer.
 4. Verify pinned links and config in the **target project layout**, not just this source repository. Use [Adoption Smoke Test](docs/ADOPTION_SMOKE_TEST.md) for manual checks; an automatic bootstrap tool is not assumed to exist.
 
