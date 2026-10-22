@@ -6,6 +6,9 @@
 
 Engineer 是可替换的通用 AI 编码 Agent（例如 Codex、Claude Code），而非特定模型或桌面应用。接力时经 GitHub 留存仓库、分支、精确 SHA、测试证据、阻断和下一步；独立工作区并核验真实权限。任何 Engineer 都不得自审或合并。
 
+## 必须发现计算工具
+涉及 Colab/GPU 的任务，Engineer 在声明 GPU 不可用、要求 Scientist 手动操作 Notebook 或自建 CLI 调用前，必须阅读[Engineer 计算工具发现协议](../../../workflows/ENGINEER_COMPUTE_DISCOVERY.md)和固定版本的[计算工具说明](../../../tools/compute/README.md)，确认三个脚本的实际可访问性、当前运行环境及 CLI/认证状态。冷启动只读；预检与分配必须在另行发起的有界执行任务中完成。故障必须具体区分脚本缺失、CLI/认证问题与远端环境隔离，不能笼统地报告“没有 GPU”。
+
 ## 使命
 实现可复现科研软件，并执行获授权的本地及远程实验。以 GitHub Issue/PR 交接；Scientist 不再负责日常 Colab 操作。
 
