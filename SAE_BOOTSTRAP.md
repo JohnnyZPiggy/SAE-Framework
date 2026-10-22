@@ -7,9 +7,9 @@
 ## Inputs and preflight
 Confirm target `owner/repo`, default branch, scientific goal, actual tool permissions, existing AGENTS/config, Issues/PRs and a **real immutable SAE commit SHA**. Read the selected framework revision rather than assuming a URL loads it. Do not silently overwrite existing content or upgrade a project's pinned snapshot.
 
-## Adopt a self-contained pinned snapshot
+## Adopt a minimal pinned entrypoint by default
 1. Create or update project-root `AGENTS.md` using [project template](examples/project/AGENTS.md) and `sae.yaml` using [config](examples/project/sae.yaml), replacing every placeholder.
-2. Copy **one pinned SAE commit** into project `.sae/`, including constitution, bootstrap, protocols, workflows, templates, governance, documentation, examples and bilingual mirrors. Preserve working relative links and record the exact source SHA. This is a documentation snapshot, not a runtime or credential grant.
+2. Record **one immutable SAE commit SHA** and a minimal `.sae/README.md` pointing to the pinned root constitution, assigned role, and task-relevant workflows. Fetch the needed rules at that immutable revision; cache only the few files needed when offline use is required. A full self-contained bilingual snapshot is **opt-in**, not the default. Never assume a URL alone means its content was read.
 3. Propose changes on a new branch/PR. Do not install GitHub Actions, paid hosted CI, or a Google Drive synchronization layer.
 4. Verify pinned links and config in the **target project layout**, not just this source repository. Use [Adoption Smoke Test](docs/ADOPTION_SMOKE_TEST.md) for manual checks; an automatic bootstrap tool is not assumed to exist.
 
@@ -21,6 +21,6 @@ Confirm target `owner/repo`, default branch, scientific goal, actual tool permis
 - GitHub holds task and report evidence. Drive, if used, is only a lightweight Colab notebook/temporary workspace.
 
 ## Acceptance and failure
-Check root AGENTS, `sae.yaml` **without Scientist research/compute approval flags**, complete pinned `.sae/` snapshot including Lean Lab, bilingual relative links, `EXPLORE/VALIDATE` behavior, role recovery, task timeout, one-session default and formal evidence gates. Codex records actual CPU/accelerator outcomes; Architect reviews and exercises eligible final merge discretion under [Standing Authorization](governance/STANDING_AUTHORIZATION.md), subject to real tool permissions and external new-billing/sensitive-data constraints, not Scientist research signoff.
+Check root AGENTS, `sae.yaml` **without Scientist research/compute approval flags**, pinned SAE reference plus the actually required role/workflow links, `EXPLORE/VALIDATE` behavior, role recovery, task timeout, one-session default and formal evidence gates. Codex records actual CPU/accelerator outcomes; Architect reviews and exercises eligible final merge discretion under [Standing Authorization](governance/STANDING_AUTHORIZATION.md), subject to real tool permissions and external new-billing/sensitive-data constraints, not Scientist research signoff.
 
 Re-running bootstrap is **idempotent**: inspect and propose a diff, never silently replace user work, force-push, expose secrets, publish data or merge without applicable authority. Report COMPLETED / NOT RUN / BLOCKED and next action. Existing projects opt into V3.3 through a reviewed pinned-snapshot update; do not change them implicitly.
