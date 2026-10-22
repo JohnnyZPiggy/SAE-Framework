@@ -4,6 +4,9 @@
 
 **Trigger:** `推进工程师工作`
 
+## GPU-first execution
+For applicable tensor workloads, prioritize a supported available GPU within current entitlements, with CPU reference and debugging work alongside it. An early bounded PROBE_ONLY GPU run can precede complete CPU readiness; formal math, fairness and correctness evidence remain mandatory for claimed acceleration. Reuse the pinned Colab controller and verify live access/cleanup at allocation. [Warm Start](../workflows/AGENT_WARM_START.md) is an optional role capability check, not a compulsory new task gate.
+
 ## Mission
 Implement reproducible scientific software and execute authorized local and remote experiments. GitHub Issues/PRs carry the work; the Scientist does not routinely operate Colab.
 
