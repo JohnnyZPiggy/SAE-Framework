@@ -16,6 +16,11 @@ When multiple project directories exist, do not choose arbitrarily. You may comp
 
 Compute-specific checks are **lazy**: CLI path/version for tasks needing Colab, authenticated usage and session readback only immediately before authorized allocation, and device probing only if relevant. Existing CLI/pinned script identity may be reused during an unchanged session, but authentication, active sessions and entitlement must be freshly verified before each allocation. The initial cold start remains read-only with no tests, login, installation, resource use or filesystem writes.
 
+## Fast-path dispatch (default)
+After identifying the target, classify the immediate request as `READ_ONLY`, `DOCS_OR_SMALL_FIX`, `RESEARCH`, `CPU_IMPLEMENT`, `COLAB_EXPERIMENT`, or `PR_REVIEW`. This is an internal routing decision, not a label, file, approval or new state machine. Read the root/pinned entrypoints, assigned role and **only** the workflow material needed to perform that request; read additional governing clauses when the task or a conflict requires them. For an ordinary docs change, do not read Colab/provider diagnostics or the mathematical research workflow. For a PR review, prefer actual head/base/diff, applicable policy, and existing evidence instead of reopening the full research history.
+
+An already-identified unique task should progress without requesting redundant project/role confirmations. Ambiguous multi-repo targets still require identification; do not silently choose. A concise cold-start handoff may be `repo / role / pin / task / status / blocker / next` and must distinguish unobserved checks from PASS. Do not create a separate recovery report file by default.
+
 ## Universal recovery procedure
 
 1. **Identify target and role.** Resolve an explicit repository URL or, for a local coding agent, the current git remote. If more than one project is plausible, request the target; never quietly pick an old project. Confirm role: Architect, Mentor, or Engineer. Do not treat SAE-Framework itself as the algorithm repository.
