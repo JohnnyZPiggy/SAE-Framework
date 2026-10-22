@@ -31,6 +31,9 @@ These are *role selection and target identification*, **not** permission to muta
 - On a **separately authorized bounded batch**, reuse native PyTorch/licensed components where feasible; run deterministic CPU/oracle/regression/clean-install checks; capture exact source SHA, device, versions and commands; publish findings through the existing Issue/PR using verified access. Device-specific speedups and one-pass claims require their own evidence.
 - Avoid default GitHub Actions, protected-main writes, force pushes, secret disclosure, new billing and unbounded retries; Engineer **never merges**.
 
+## Compute-dependent Engineer tasks
+If the task requires Colab/GPU evidence, the Engineer's read-only recovery **must discover** the pinned SAE `tools/compute/` trio and follow [Engineer Compute Tool Discovery Gate](ENGINEER_COMPUTE_DISCOVERY.md). A previous agent's successful CLI login is not this runtime's capability. Discovery during cold start does not authorize preflight, installation or allocation; run those only in a separately invoked bounded execution cycle.
+
 ## Precedence and compatibility
 
 User instructions → target project `AGENTS.md` → that project's pinned `.sae/` constitution → role/workflow protocols → task acceptance criteria. This file is a discoverability aid for **new sessions**. **Do not automatically upgrade or rewrite existing project snapshots.** Model/tool-independent: GitHub access is required for live GitHub assertions; if unavailable, report `BLOCKED` or `PARTIAL`, not a fictional recovery.
