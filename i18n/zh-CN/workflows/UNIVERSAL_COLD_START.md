@@ -10,11 +10,14 @@
 
 这两句话仅确定角色与目标，不等于授权立即改代码或合并。
 
+## 一次恢复，直接执行
+用户发起有界任务后，冷启动与 Role Recovery 视为**同一次轻量恢复**，不是两份串行检查清单。确认项目、角色、固定协议来源及当前任务后直接执行；仅在实际使用时核实变化的 SHA、权限和实时算力状态。轻量 `.sae/` 固定引用有效，无需先复制完整快照。
+
 ## 冷启动步骤
 
 1. **识别项目和角色。** GPT 从明确的 GitHub URL，Engineer 从当前目录 Git remote 识别仓库；目标不唯一就询问，不得套用旧聊天中的项目。SAE-Framework 本身不是默认算法项目。
-2. **恢复项目固定协议。** 阅读根目录 `AGENTS.md`、`sae.yaml`、存在时的 `CLAUDE.md`、不可变的 `.sae/` 固定快照，再按角色阅读协议及相关 workflow。先读 [Role Recovery](../../../workflows/ROLE_RECOVERY.md)、[Task Management](../../../workflows/TASK_MANAGEMENT.md)、[Standing Authorization](../../../governance/STANDING_AUTHORIZATION.md)，并沿项目真实依赖阅读数学、工程、审查、安全、实验和 Next Action 章节。区分列出的文件与实际逐字阅读的文件。若未采用 SAE，报告 `NOT_BOOTSTRAPPED`，不能默默写入配置。
-3. **核对 GitHub 最新状态。** 检索 owner、visibility、main/工作分支精确 SHA、Issue/PR、评论、Review、checks 和测试证据。Engineer 同时核查本地 git 工作树和 CLI 登录，不读取或暴露 token。旧会话只能作为背景。
+2. **恢复项目固定协议。** 阅读根目录 `AGENTS.md`、`sae.yaml`、存在时的 `CLAUDE.md`、不可变 SAE 版本引用（或可选的 `.sae/` 本地快照），再按角色阅读协议及相关 workflow。先读 [Role Recovery](../../../workflows/ROLE_RECOVERY.md)、[Task Management](../../../workflows/TASK_MANAGEMENT.md)、[Standing Authorization](../../../governance/STANDING_AUTHORIZATION.md)，并沿项目真实依赖阅读数学、工程、审查、安全、实验和 Next Action 章节。区分列出的文件与实际逐字阅读的文件。若未采用 SAE，报告 `NOT_BOOTSTRAPPED`，不能默默写入配置。
+3. **核对 GitHub 最新状态。** 只核实当前目标仓库、相关分支/PR 的 SHA 与任务证据；审查/合并或资源分配时再按需核对具体权限和实时状态。Engineer 同时核查本地 git 工作树和 CLI 登录，不读取或暴露 token。旧会话只能作为背景。
 4. **恢复角色边界。** Mentor 做 R1–R3 数学与数值研究；Architect 做架构、复用决策、GitHub 任务交接与有条件的独立 PR 审核/合并；Engineer 做实现和测试、直接发布工程证据，**不自合并**。Engineer 报告的测试不自动变成 GPT 独立复跑的证据。
 5. **首次只读。** 新窗口第一次只恢复角色和状态：不写 Issue/PR、不修改源码、不创建分支、不合并、不运行 CPU/GPU 测试、不申请资源或付费。完成恢复后，按用户随后启动的有界工作批次执行；本条不永久禁止实验。
 6. **简短交代下一步。** 报告目标仓库、角色、固定 SAE SHA、实际文件阅读覆盖、最新活跃任务、精确提交、测试证据及 PASS/FAIL/NOT RUN/BLOCKED，并给出一个具体 Next Action。不要重复造 Issue/PR，不让 Scientist 人工转发 Agent 交接。
