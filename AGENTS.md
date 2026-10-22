@@ -55,3 +55,7 @@ At the end of every substantive Architect or Mentor turn, prefer a **client-nati
 - If native controls/actions are unavailable, fall back to **short numbered choices** the Scientist can reply to with a number; only then offer a copyable full command on request. Never claim GitHub Markdown or Codex itself can render ChatGPT-native controls.
 - Distinguish **review/check status**, **execute bounded engineering**, and **research/plan** choices. Make side effects (live Colab allocation, paid quota, GitHub write/merge) clear before the click. Clicking dispatches a message, **not** an automatic approval or proof of successful execution. Preserve Standing Authorization and all existing security, evidence and merge rules.
 - Do not show a Next Action selector when no meaningful next action exists, or when a direct answer is sufficient. Do not duplicate long instructions in visible prose and clickable options. This client-capability-aware UI preference is persistent for future Architect/Mentor sessions that read this constitution.
+
+## Universal fresh-session entry point
+
+For a new GPT/Claude Code/Codex session, start at [Universal Agent Cold Start](workflows/UNIVERSAL_COLD_START.md) ([中文](i18n/zh-CN/workflows/UNIVERSAL_COLD_START.md)) to select the explicit Architect/Mentor or Engineer role and discover the target Torch project. Then follow this constitution, the target project's pinned `.sae/` and [Role Recovery](workflows/ROLE_RECOVERY.md). Startup is read-only; no silent migration, project selection, privileged work or background task is implied.
