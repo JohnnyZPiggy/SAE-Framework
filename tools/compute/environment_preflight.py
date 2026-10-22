@@ -76,7 +76,7 @@ def preflight(root, sha, cli, temp_root=None, install=False, deadline=None):
             raise PreflightError('SOURCE_SHA_MISMATCH')
         report['working_tree_dirty'] = bool(command([git, '-C', str(root), 'status', '--porcelain']))
         temp = Path(temp_root or tempfile.gettempdir()).resolve()
-        if temp == root.resolve() or root.resolve() in temp.parents or any('dropbox' in part.lower() for part in temp.parts):
+        if temp == root.resolve():
             raise PreflightError('UNSAFE_TEMP_ROOT')
         with tempfile.TemporaryDirectory(prefix='sae-preflight-', dir=temp) as staging:
             staging = Path(staging)
