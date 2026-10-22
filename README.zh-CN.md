@@ -196,6 +196,6 @@ PyTorch CPU 数值测试，确认临时文件和结果路径、安全清理任�
 
 **日常流程：** GPT 在已有 Issue 给出数学和工程规格 → Codex 在指定工作区编写代码并实测 → 经 SHA 和证据提交 PR → GPT 独立审核并决定合格合并。Warm Start 按需执行，不必每项任务都热身。已有项目固定 SAE 版本不会自动升级。详见[Cold Start](i18n/zh-CN/workflows/UNIVERSAL_COLD_START.md)、[Warm Start](i18n/zh-CN/workflows/AGENT_WARM_START.md)、[常设授权](governance/STANDING_AUTHORIZATION.md)。
 
-## 通用 Agent 冷启动
+## 通用 Agent 冷启动与热启动
 
-新建 GPT/Claude Code/Codex 窗口时，可使用一句话启动：**“访问 SAE-Framework，以 Architect + Mentor / Engineer 角色，为目标 Torch 项目执行冷启动。”** 先读 [通用冷启动协议](i18n/zh-CN/workflows/UNIVERSAL_COLD_START.md)，再按项目 `AGENTS.md`、`sae.yaml` 和固定 `.sae/` 恢复 GitHub 实时状态；首次只读，不自动改写已有项目快照。
+新建 GPT、Codex 或 Claude Code 窗口时，先执行[通用冷启动协议](i18n/zh-CN/workflows/UNIVERSAL_COLD_START.md)：GPT 担任 **Chief Architect + Scientific Mentor**，Codex/Claude Code 在目标 Torch 工作区担任 **Software Engineer**。首次只读恢复项目固定 SAE 版本、当前 GitHub 任务及精确 SHA。**随后按需执行 [Agent Warm Start 热启动](i18n/zh-CN/workflows/AGENT_WARM_START.md)**：Standard 通过一次简短角色实测验证能力；Full 增加跨角色端到端证据，并在 Engineer 已有认证和 Colab 算力权益允许时执行一次有界 GPU 冒烟。复用冷启动上下文，优先用户指定的工作区（包括 Dropbox 同步 D 盘），如实报告 PASS/FAIL/NOT RUN/BLOCKED。热启动不是日常开发的强制关卡，已有项目固定 SAE 版本**不会自动升级**。
