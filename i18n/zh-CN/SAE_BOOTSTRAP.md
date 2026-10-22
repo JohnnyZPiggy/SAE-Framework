@@ -8,7 +8,7 @@
 确认目标 `owner/repo`、默认分支、科研目标、真实工具权限、现有 AGENTS/配置、Issue/PR 及**真实不可变 SAE commit SHA**。必须实际读取指定版本，不能假设 URL 会自动加载。不得覆盖已有内容或悄悄升级固定快照。
 
 ## 默认轻量固定入口
-1. 用[项目模板](../../examples/project/AGENTS.md)与[配置](../../examples/project/sae.yaml)建立项目根 `AGENTS.md`、`sae.yaml`，替换全部占位符。
+1. 用[项目模板](../../examples/project/AGENTS.md)与[配置](../../examples/project/sae.yaml)建立项目根 `AGENTS.md`、`sae.yaml`，替换全部占位符，并将原来指向本地 `.sae/` 的链接改为固定上游版本。
 2. 记录**同一个不可变 SAE commit SHA**，项目 `.sae/README.md` 仅保留该固定版本的协议入口、角色与任务相关工作流引用；按需从固定版本读取，离线时仅缓存实际需要的文件。完整中英双语自包含快照仅在明确需要时选择，不再默认整库复制。链接不等于已经阅读。
 3. 通过独立分支/PR 提交，不添加 GitHub Actions、付费托管 CI 或 Drive 同步层。
 4. 在**目标项目目录**检查固定版本链接及配置，按[初始化验收清单](../../docs/ADOPTION_SMOKE_TEST.md)手动检查；不假设自动 Bootstrap CLI 已实现。
