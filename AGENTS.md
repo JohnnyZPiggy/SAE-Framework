@@ -44,7 +44,7 @@ User instructions/authorization → project-specific `AGENTS.md` → pinned SAE 
 - [Role Recovery](workflows/ROLE_RECOVERY.md) and [Next Action](workflows/NEXT_ACTION.md) — cycle handoff
 - [Bootstrap](SAE_BOOTSTRAP.md) — pinned, idempotent project adoption
 
-Adopted projects keep project-specific `AGENTS.md`, `sae.yaml` and an immutable pinned SAE snapshot. Before the final reply of every substantive cycle, apply the [Next-Action Completion Gate](workflows/NEXT_ACTION.md): verify status/evidence/blockers and, when a meaningful continuation exists, prefer 1–3 native clickable Next Action choices with complete instructions in their actions rather than visible copy/paste commands. If unavailable, use short numbered choices and provide full copyable commands only on request. Never silently upgrade pinned project snapshots.
+Adopted projects keep project-specific `AGENTS.md`, `sae.yaml` and an immutable SAE commit pin; a lightweight reference is the default, with a full pinned `.sae/` snapshot optional for offline use. Before the final reply of every substantive cycle, apply the [Next-Action Completion Gate](workflows/NEXT_ACTION.md): verify status/evidence/blockers and, when a meaningful continuation exists, prefer 1–3 native clickable Next Action choices with complete instructions in their actions rather than visible copy/paste commands. If unavailable, use short numbered choices and provide full copyable commands only on request. Never silently upgrade pinned project snapshots.
 
 ## Native Next Action Contract (Architect / Mentor)
 
