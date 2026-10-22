@@ -82,12 +82,19 @@ class PreflightTests(unittest.TestCase):
         self.assertEqual(caught.exception.code, 'INVALID_SOURCE_SHA')
         run.assert_not_called()
 
-    def test_reject_synced_or_checkout_temp(self):
-        for target in (self.root, self.base / 'Dropbox-build'):
+    def test_allow_user_selected_dropbox_and_checkout_subdirectory(self):
+        for target in (self.base / 'Dropbox-build', self.root / '.sae-scratch'):
+            target.mkdir()
             with self.subTest(target=target), patch.object(env.subprocess, 'run', side_effect=self.fake):
-                with self.assertRaises(env.PreflightError) as caught:
-                    env.preflight(self.root, self.sha, 'fake-colab', target)
-            self.assertEqual(caught.exception.code, 'UNSAFE_TEMP_ROOT')
+                result = env.preflight(self.root, self.sha, 'fake-colab', target)
+            self.assertEqual(result['status'], 'PASS')
+            self.assertFalse(list(target.glob('sae-preflight-*')))
+
+    def test_reject_checkout_root_as_temp(self):
+        with patch.object(env.subprocess, 'run', side_effect=self.fake):
+            with self.assertRaises(env.PreflightError) as caught:
+                env.preflight(self.root, self.sha, 'fake-colab', self.root)
+        self.assertEqual(caught.exception.code, 'UNSAFE_TEMP_ROOT')
 
     def test_nonwritable_temp_stops_before_pip(self):
         with patch.object(env.subprocess, 'run', side_effect=self.fake), \
