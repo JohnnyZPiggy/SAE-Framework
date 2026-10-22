@@ -19,6 +19,11 @@ For new algorithms or substantial redesigns, Mentor/Architect agents autonomousl
 ## Linked artifacts in Issue/PR handoffs
 Link the Mentor/Architect-decided mathematical study, concise Engineering Report and Engineer-executed experimental evidence following [Three-Artifact Handoff](THREE_ARTIFACT_HANDOFF.md). Experiment PRs identify the exact tested source SHA and upstream Issue/PRs; do not create duplicate status reports or treat templates as proof of execution.
 
+## One-task fast path
+Use the **existing** Issue or PR as the durable handoff record; do not create a fresh planning Issue, design report, scratch checklist, status comment or PR for every tiny step. If scope and acceptance criteria are clear, proceed within the current bounded batch. Record one concise completion/update comment when useful, containing exact SHA, outcomes, blocked items and next action; avoid per-attempt narration or duplicate comments. Preserve source/evidence records required for actual scientific or device claims.
+
+Prefer a single Engineer implementation→test→repair cycle and one Architect evidence-based decision for unchanged head. Re-review only material changes, newly surfaced risks or stale base/head. Run independent preparation in parallel only when it reduces elapsed time without competing GPU sessions or conflicting writes. No automatic background polling, CI mandate, extra approval or override of real GitHub protections.
+
 ## Lean execution path
 Use [Lean Research Lab](LEAN_RESEARCH_LAB.md) as the single **EXPLORE / VALIDATE** mode and bounded-batch contract. During EXPLORE, retain a short hypothesis/source/command/outcome record in the **same Issue or working branch**; do not make a new PR or full three-artifact packet for each probe. For VALIDATE, compile/link the required formal math, engineering and run evidence. The Architect may switch modes on evidence without Scientist signoff.
 
