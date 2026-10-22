@@ -19,6 +19,9 @@ Compute-specific checks are **lazy**: CLI path/version for tasks needing Colab, 
 ## One recovery, then execute
 For a user-invoked bounded task, cold start and role recovery are **one combined lightweight pass**, not sequential checklists. Once target, role, relevant pinned rules and task are known, proceed directly. Refresh changed refs and task-specific permissions at use, rather than re-reading all Issues, PRs, CLI versions or environment state. Minimal pin-only adoption is valid; load task-relevant pinned sections directly without requiring a complete `.sae/` directory.
 
+## Warm Start and GPU-first handoff
+After Cold Start, the user may invoke [Agent Warm Start](AGENT_WARM_START.md) in Standard or Full mode to test actual role capabilities; this is optional, not a default cold-start gate. When a task has meaningful GPU-ready tensor work, schedule available GPU execution early and run CPU oracle/preparation in parallel rather than treating CPU completion as an unconditional prerequisite. No extra runtime probes for unrelated tasks.
+
 ## Fast-path dispatch (default)
 After identifying the target, classify the immediate request as `READ_ONLY`, `DOCS_OR_SMALL_FIX`, `RESEARCH`, `CPU_IMPLEMENT`, `COLAB_EXPERIMENT`, or `PR_REVIEW`. This is an internal routing decision, not a label, file, approval or new state machine. Read the root/pinned entrypoints, assigned role and **only** the workflow material needed to perform that request; read additional governing clauses when the task or a conflict requires them. For an ordinary docs change, do not read Colab/provider diagnostics or the mathematical research workflow. For a PR review, prefer actual head/base/diff, applicable policy, and existing evidence instead of reopening the full research history.
 
