@@ -18,6 +18,9 @@
 ## Reuse-First, Research-Driven（复用优先，研究驱动）
 新算法优先复用经核实的 PyTorch 原生组件和许可兼容的上游实现，避免重复开发成熟模块。Architect 在现有生态评估栏目记录**简短 Reuse Report**：上游来源、精确包版本或 commit SHA、许可证及来源、兼容性验证状态、复用/组合/适配/自研选择，以及本项目真正的科研增量或待解决问题。Engineer 通过参考测试验证固定依赖和数学等价性；未经实测的设备兼容或性能结论必须标为 **UNVERIFIED**。遵循[生态评估](../../workflows/ECOSYSTEM_REVIEW.md)；不增加 Agent、流程、独立报告或审批门槛，可与 **EXPLORE → VALIDATE** 并行。
 
+## GPU 优先执行原则
+对于适合 PyTorch 张量化、批量线性代数和数值实验的任务，**存在已授权、技术可用、无需新增费用的 GPU 时优先使用 GPU**；Architect 从开始便规划 GPU 方案，Mentor 设计可移植数学 Oracle，Engineer 主动实施 GPU 实验。CPU 保留为参考基线、小型调试及 GPU 不适合或暂不可用时的回退；允许早期有界 PROBE_ONLY 探针，无需等待一整套 CPU/GPU 就绪仪式。GPU 优先不等于保证加速或没有 GPU 就阻断研发；真实数值、算力额度、会话清理与用户约束仍有效。[Warm Start](../../workflows/AGENT_WARM_START.md) 按需验证各角色能力。
+
 ## 核心规则
 1. 新算法或重大张量化改造由 Mentor/Architect 记录简洁的[数学研究](../../workflows/MATHEMATICAL_RESEARCH.md)依据，自主决定 `RESEARCH_READY` / 有界例外；不等 Scientist 签字。设备和 CPU 探针可并行进行，正式结论仍需证据。
 2. 执行前恢复目标仓库、角色、固定协议版本、GitHub Issues/PR、权限及阶段；详见[角色恢复](../../workflows/ROLE_RECOVERY.md)。**EXPLORE** 允许早期探针，**VALIDATE** 用实测证据约束正式科研结论而非人工审批。
