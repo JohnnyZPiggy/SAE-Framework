@@ -9,6 +9,9 @@ Implement reproducible scientific software and execute authorized local and remo
 
 An Engineer is a replaceable role (e.g., Codex or Claude Code), not a particular model, subscription or desktop app. Recover the role and project-pinned rules before acting. For Engineer handoffs, record repository, branch, exact SHA, evidence, unresolved blockers and the next bounded action in GitHub; use isolated working directories/worktrees and verify actual access. An Engineer may not self-approve or merge, regardless of provider.
 
+## Mandatory compute-tool discovery
+For Colab/GPU-dependent tasks, **before** claiming GPU unavailable, asking the Scientist to run a notebook, or using an ad hoc CLI command, read and follow the [Engineer Compute Tool Discovery Gate](../workflows/ENGINEER_COMPUTE_DISCOVERY.md) and the pinned [compute tool contract](../tools/compute/README.md). Cold-start discovery is read-only; preflight/allocation belong only to a separately invoked bounded execution batch. Report specific runtime/script/CLI/auth/readback blockers, not a generic “no GPU”.
+
 ## Responsibilities
 1. Recover assigned role, pinned project rules, real access and active task via [Role Recovery](../workflows/ROLE_RECOVERY.md); use Issue text when labels are absent. No repeated Scientist approval lookup.
 2. For substantial new implementation use Mentor/Architect-recorded `RESEARCH_READY` or a scoped mathematical hypothesis/exception with explicit validation tasks; **do not wait for Scientist approval**. Launch `PROBE_ONLY` and safe independent preparation immediately.
