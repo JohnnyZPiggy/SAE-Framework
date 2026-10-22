@@ -11,6 +11,9 @@ For **VALIDATE** and accepted research, SAE coordinates through **three linked s
 | **Engineering Report** — `docs/engineering/<algorithm>-engineering.md` | GPT Chief Architect defines specification & acceptance; **Codex owns implementation/test evidence**; Architect reviews | What interfaces/algorithms were implemented, where is the code, and what actually passed? | Architect handoff; then significant engineering PR/revision |
 | **Experimental Report** — `reports/gpu/<run-id>/summary.md`, with small machine-readable results | **Codex directly executes** existing-account Colab CPU/GPU/TPU experiments; GPT owns scientific conclusions and evidence review | On which source SHA, device, dtype and workload were correctness and performance actually measured? | **Each published/accepted VALIDATE run**; preserve unique run identity; exploratory probes need only a compact batch note |
 
+## Evidence-first, format-flexible VALIDATE
+Three *questions* must be answerable in a formal claim, but three separate files are not mandatory. For a small project, consolidate mathematics, implementation and measured experiment evidence in one concise versioned report or existing PR, with source SHA and run identity. Split into the suggested paths only when clarity or independent updates justify it; do not duplicate results. Never replace actual correctness/benchmark evidence with prose.
+
 ## Contract: one question, one authority, connected evidence
 - **Math → Engineering:** for formal VALIDATE acceptance, the GPT-decided research study supplies equations, assumptions, tensor shapes, oracle, limits and `RESEARCH_READY` (or a bounded documented hypothesis). EXPLORE may start testable local prototypes and `PROBE_ONLY` checks earlier but must not imply formal acceptance.
 - **Engineering → Experiment:** the Architect's acceptance criteria and Codex's exact candidate **source commit SHA**, CLI, correctness evidence and reproducible commands define the experiment. CPU verification is **not** GPU verification.
@@ -42,4 +45,4 @@ When creating a new project document from a Framework template, replace placehol
 - No GitHub Actions; Codex directly operates eligible Colab CLI experiments; Drive is optional Notebook workspace only.
 
 ## Handoff integrity check
-The research study, engineering report and experiment summary must cross-reference the same algorithm/Issue and **the actual relevant commits**. Record separate **implementation source SHA** and **report publication SHA** where applicable; do not confuse them.
+The chosen evidence sections/files must cross-reference the same algorithm/Issue and **the actual relevant commits**. Record separate **implementation source SHA** and **report publication SHA** where applicable; do not confuse them.
