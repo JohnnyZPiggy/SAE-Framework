@@ -16,6 +16,9 @@ When multiple project directories exist, do not choose arbitrarily. You may comp
 
 Compute-specific checks are **lazy**: CLI path/version for tasks needing Colab, authenticated usage and session readback only immediately before authorized allocation, and device probing only if relevant. Existing CLI/pinned script identity may be reused during an unchanged session, but authentication, active sessions and entitlement must be freshly verified before each allocation. The initial cold start remains read-only with no tests, login, installation, resource use or filesystem writes.
 
+## Workspace-first storage (local Engineers)
+When a bounded task first needs to write files, use the Scientist-designated workspace and scratch root (including Dropbox-synced D: locations). Do not reject a directory solely because it is synced. Isolate disposable per-task outputs, avoid silently filling C: or WSL2's C:-backed virtual disk, and clean only self-owned verified residue. Warn about sync overhead without making it a blocking gate. Initial cold start remains read-only; no extra disk inventory or repeated setup ritual.
+
 ## Fast-path dispatch (default)
 After identifying the target, classify the immediate request as `READ_ONLY`, `DOCS_OR_SMALL_FIX`, `RESEARCH`, `CPU_IMPLEMENT`, `COLAB_EXPERIMENT`, or `PR_REVIEW`. This is an internal routing decision, not a label, file, approval or new state machine. Read the root/pinned entrypoints, assigned role and **only** the workflow material needed to perform that request; read additional governing clauses when the task or a conflict requires them. For an ordinary docs change, do not read Colab/provider diagnostics or the mathematical research workflow. For a PR review, prefer actual head/base/diff, applicable policy, and existing evidence instead of reopening the full research history.
 
