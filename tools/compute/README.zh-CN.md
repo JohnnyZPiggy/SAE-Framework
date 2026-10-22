@@ -10,9 +10,9 @@
 
 未来项目按**精确 SAE 提交或 tag**复制/引用三个运行时文件并保留 MIT 声明，另行记录算法 `--source-sha`。不追踪浮动 main，不升级旧项目 `.sae/`，不强制每次实验复制 90 个协议文档。Python 3.12.14/Windows 和 3.12.3/WSL 的本地回归已运行；WSL 本地检查已有 CLI 0.7.4。初期仅接受请求 `T4`，不据此声称已验证真实硬件；CPU/TPU/XLA 与原生编译未实现。
 
-在与实际执行相同的 shell（需要时使用已有 WSL 登录 shell）调用 `--preflight-only --repo-path path/to/project --source-sha 完整40位SHA --run-id 唯一名称 --out 新目录 --cli colab`。它只调用 `version`、本地 Git/文件系统，不认证、不查询会话、不分配资源。使用 Git blob 原始字节导出，忽略脏工作树与 CRLF 转换，临时导出排除 `.sae/`；拒绝符号链接、子模块和不安全路径。临时构建/缓存目录必须可写且位于项目与 Dropbox 外；`--temp-root` 可覆盖。默认不安装；显式 `--install-local` 只用已有 pip/构建依赖进行临时 no-deps 安装，无失败后自动安装或登录。
+在与实际执行相同的 shell（需要时使用已有 WSL 登录 shell）调用 `--preflight-only --repo-path path/to/project --source-sha 完整40位SHA --run-id 唯一名称 --out 新目录 --cli colab`。它只调用 `version`、本地 Git/文件系统，不认证、不查询会话、不分配资源。使用 Git blob 原始字节导出，忽略脏工作树与 CRLF 转换，临时导出排除 `.sae/`；拒绝符号链接、子模块和不安全路径。临时构建/缓存目录必须可写且按任务隔离；明确允许用户指定的 Dropbox 同步目录，也允许仓库内独立 scratch 子目录（但不能把仓库根目录本身作为临时根目录）。`--temp-root` 可覆盖系统默认临时路径，Windows 下应优先用户指定的 D 盘工作区，避免默认占用 C 盘；同步开销仅提醒，不得因 Dropbox 路径而阻断。默认不安装；显式 `--install-local` 只用已有 pip/构建依赖进行临时 no-deps 安装，无失败后自动安装或登录。
 
-单独授权的计算任务可去掉 `--preflight-only`，传入项目自己的 `--driver scripts/my_driver.py --artifacts experiments/artifacts.json`。两者从项目精确提交读取，拒绝绝对/越界路径及符号链接，不执行脏文件。driver 临时放在非同步目录，收到 `SAE_CANDIDATE_SHA`；driver 与 manifest 哈希分别记录，框架不包含算法仓库地址或安装逻辑。
+单独授权的计算任务可去掉 `--preflight-only`，传入项目自己的 `--driver scripts/my_driver.py --artifacts experiments/artifacts.json`。两者从项目精确提交读取，拒绝绝对/越界路径及符号链接，不执行脏文件。driver 临时放在选定的任务隔离目录，收到 `SAE_CANDIDATE_SHA`；driver 与 manifest 哈希分别记录，框架不包含算法仓库地址或安装逻辑。
 
 manifest 为 `{"artifacts":[{"name":"measurement.json"}]}`：1–16 个 JSON 文件名，禁止目录、控制报告重名、Windows 保留名或大小写重复；manifest 最大 64 KiB，driver 最大 1 MiB，每个输出最大 1 MiB，远程路径 `/content/<name>`。driver 每个文件输出一行 `ARTIFACT 文件名 字节数 SHA256`。框架核对长度、哈希、JSON 的 `source_sha` 和 `status: PASS`，拒绝重复 JSON 键。**传输 PASS 不等于科学验收**；必要输出 FAIL 会阻止传输通过，可选 NOT_RUN 信息应放在主报告内，不能伪报通过。
 
