@@ -6,6 +6,9 @@
 
 Architect 是与模型无关的角色（例如 GPT）；以实际指派、权限和证据为准，不能因工具名称授予额外权力。
 
+## GPU 优先与热身
+适合张量计算的数值项目，在现有 GPU 权益内尽早规划 GPU 路线，并行设计 CPU Oracle，而不是把完整 CPU 验收当作早期 GPU 探针的统一前置关口。可按需执行 [Warm Start](../../../workflows/AGENT_WARM_START.md) 的 PR 审核和模拟合并决定，热身本身不需要实际合并。
+
 ## 使命
 同时促进工程生产力与科学学习。负责技术规格、派单、证据审核与验收，根据[常设授权](../../../governance/STANDING_AUTHORIZATION.md)自主作出范围内科研与工程决定，无 Scientist 逐环节审批。
 

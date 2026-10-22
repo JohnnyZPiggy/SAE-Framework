@@ -5,6 +5,9 @@
 
 **Canonical task source:** GitHub Issues, not private chat histories.
 
+## Optional label vocabulary
+Labels are organizational hints, **not prerequisites**. A single active Engineer and clear existing Issue/PR can proceed without adding labels, a claim comment, or a state-transition ceremony. Write a claim only to avoid actual concurrent ownership conflicts.
+
 ## Minimal label vocabulary
 - Ownership: `role:engineer`, `role:architect`, `role:mentor`, `human:scientist`; legacy `agent:codex` remains valid for existing Issues. A GitHub username/assignee identifies the actual Engineer when available.
 - State: `status:ready`, `status:in-progress`, `status:review`, `status:experiment`, `status:blocked`, `status:accepted`
@@ -29,7 +32,7 @@ Use [Lean Research Lab](LEAN_RESEARCH_LAB.md) as the single **EXPLORE / VALIDATE
 
 ## Lifecycle
 1. **Architect dispatches immediately:** use one scoped Issue (or existing Issue) with target SHA/interface, mode, minimal oracle/checks, experiment goal, finite timeout and cleanup plan. Mark ready as soon as safe work is available; do not wait for full paperwork or human research approval.
-2. **Engineer claims Issue** by explicit comment and status update to in-progress; one owner at a time.
+2. **Engineer starts on the assigned task** immediately; claim/comment only when concurrent agents could conflict. One owner per conflicting worktree/task.
 3. **Engineer batches implementation and experiments** on `feat/<issue-number>-<slug>`: implement → test → diagnose → repair → rerun within task-defined timeout and bounded attempts, without new signoff per attempt. Open an appropriate PR after useful scope/evidence accumulates; use `Closes #N` only when issue acceptance is met, otherwise `Refs #N`.
 4. **Architect makes one evidence-based review** of source SHA/diff and relevant correctness results, while the assigned Engineer runs eligible CPU/GPU probes and later formal benchmarks. Do not serialize independent tasks needlessly.
 5. **The assigned Engineer runs existing-account Colab CLI by default**, with exact SHA for remote installed code, one active session, finite timeout and verified cleanup. Consolidate multiple exploratory runs into **one batch evidence update**; report PR/publication remains optional and separately verified. No Scientist compute/price gate; real correctness, permissions or billing blockers must be reported.

@@ -4,6 +4,9 @@
 
 **Trigger:** `推进工程师工作`
 
+## GPU-first execution
+For applicable tensor workloads, prioritize a supported available GPU within current entitlements, with CPU reference and debugging work alongside it. An early bounded PROBE_ONLY GPU run can precede complete CPU readiness; formal math, fairness and correctness evidence remain mandatory for claimed acceleration. Reuse the pinned Colab controller and verify live access/cleanup at allocation. [Warm Start](../workflows/AGENT_WARM_START.md) is an optional role capability check, not a compulsory new task gate.
+
 ## Mission
 Implement reproducible scientific software and execute authorized local and remote experiments. GitHub Issues/PRs carry the work; the Scientist does not routinely operate Colab.
 
@@ -15,8 +18,11 @@ For Colab/GPU-dependent tasks, **before** claiming GPU unavailable, asking the S
 ## Lean execution and temporary workspace discipline
 - **Task-triggered checks:** do not repeat environment probes, full protocol scans or broad GitHub sweeps without a changed SHA/runtime, new task prerequisite, conflicting evidence or actual failure. Read the minimum applicable material and retain immutable SHA provenance. A Colab-independent docs/CPU task does not require OAuth, provider usage or GPU inspection. Preserve all mandatory pre-allocation checks at the point of use.
 - **Reuse the known entrypoint:** inspect the pinned compute controller contract first, not provider internals or exploratory scripts. Cap diagnosis to a finite attempt budget. If the documented tool reports a real blocker, record it and continue independent work rather than repeating equivalent probes.
-- **Zero-residue by default:** create disposable scratch files only in an isolated task/run directory under a known non-synced temporary root, with an owner/run identifier. Record paths and approximate size when material. Clean only self-created scratch after evidence has been retained/verified, including on failure when safe. Never delete unknown, shared, dirty, user-authored or still-in-use paths; report unresolved residue explicitly. Avoid accumulating numbered trial directories. No blind recursive cleanup of `C:\\t` or other shared roots.
+- **Zero-residue by default:** create disposable scratch files only in an isolated task/run directory under the Scientist-selected writable task root (Dropbox-synced workspace permitted), with an owner/run identifier. Record paths and approximate size when material. Clean only self-created scratch after evidence has been retained/verified, including on failure when safe. Never delete unknown, shared, dirty, user-authored or still-in-use paths; report unresolved residue explicitly. Avoid accumulating numbered trial directories. No blind recursive cleanup of `C:\\t` or other shared roots.
 - **No new blocking ritual:** lightweight tracking is part of ordinary execution, not a separate approval, mandatory logfile, cache service, CI job or extra Agent. Cold start is read-only; cleanup only concerns a subsequently authorized bounded task.
+
+## Workspace and compute defaults
+Use the Scientist-designated drive/workspace first for task scratch, builds, results and caches, including Dropbox-synced D: roots. Do not reject a writable path solely because it is synced. Keep scratch isolated and delete only task-owned disposable residue; do not silently consume C: via Windows temp or WSL2 virtual disks when a selected workspace is available. Route immutable environment/protocol checks through one task-scoped recovery; authenticated live Colab allocation checks remain fresh when invoked.
 
 ## Execution fast lane
 For a task with a clear owner, scope and acceptance criteria: **inspect relevant code → make the smallest change → run targeted tests → report and hand off**. Do not start with broad installation, environment recreation, repository-wide test suites or benchmarking unless demanded by the task or a real failure. Escalate from focused to comprehensive tests when changed behavior, dependencies or numerical risks justify it. An exploratory negative result can close an EXPLORE question without inventing a performance claim.

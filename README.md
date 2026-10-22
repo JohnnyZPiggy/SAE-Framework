@@ -122,6 +122,80 @@ These are user-invoked bounded cycles, not a hosted autonomous agent. No default
 
 **Version:** V3.3 architecture and protocol; existing pinned V3.2 project snapshots remain unchanged until explicitly upgraded. **License:** [MIT License](LICENSE) · Copyright © 2026 JohnnyZPiggy. The MIT grant covers original content in this repository; any third-party materials retain their own license terms.
 
+## GPT + Codex deployment: quick start
+
+Use **GPT (ChatGPT + connected GitHub)** as Chief Architect + Scientific Mentor, and **Codex (local coding agent)** as Software Engineer. ChatGPT's GitHub connection does not automatically access Codex's local machine or credentials; share tasks and test evidence through GitHub Issues/PRs and exact commit SHAs.
+
+### Local installation and workspace
+
+Install Git, Python/PyTorch, Codex and optional GitHub CLI by their supported installation methods only if missing. Select your own **D: Dropbox-synced workspace**; this is explicitly allowed, including per-task scratch and cache directories. Example PowerShell commands (replace the placeholder path and repo):
+
+~~~powershell
+$Workspace = 'D:\Dropbox\SAE-Work'
+New-Item -ItemType Directory -Force $Workspace | Out-Null
+Set-Location $Workspace
+git clone https://github.com/JohnnyZPiggy/TorchXXX.git
+Set-Location .\TorchXXX
+git status --short
+gh auth status
+python -c "import torch; print(torch.__version__)"
+~~~
+
+Open the checked-out Torch project in your installed Codex app/CLI. Ask the Engineer to keep task-owned outputs under the user-selected workspace, with isolated Git-ignored scratch (e.g. a project-specific scratch directory). Only clear disposable files created by that task. On WSL2 verify that scratch points to the D: mount (usually /mnt/d/...), not default Linux temp/home inside a C:-backed virtual disk. A project location alone cannot redirect every third-party cache; pass the explicit scratch/cache root to tools that support it. Dropbox sync overhead is an advisory, **not a reason to refuse the workspace**.
+
+### GPT — Architect + Mentor
+
+Connect GitHub to ChatGPT and authorize repository access. In the GPT conversation, replace TorchXXX:
+
+**Cold Start (read-only)**
+
+~~~text
+Read https://github.com/JohnnyZPiggy/SAE-Framework Universal Agent Cold Start.
+Act as Chief Architect + Scientific Mentor for
+https://github.com/JohnnyZPiggy/TorchXXX.
+Recover project-pinned SAE rules, task-related Issues/PRs, actual SHA and
+mathematical context. First pass read-only; report evidence and next action.
+~~~
+
+**Warm Start (Full, or replace with Standard)**
+
+~~~text
+Run SAE Full Agent Warm Start as Chief Architect + Scientific Mentor for
+https://github.com/JohnnyZPiggy/TorchXXX. Reuse completed Cold Start.
+Review one real change, verify one meaningful mathematical identity and
+numerical oracle, and specify a bounded Engineer CPU/GPU test.
+Report real evidence; do not merge merely to demonstrate readiness.
+~~~
+
+### Codex — Software Engineer
+
+Run the installed Codex agent **inside the Torch project directory**.
+
+**Cold Start (read-only)**
+
+~~~text
+Read https://github.com/JohnnyZPiggy/SAE-Framework Universal Agent Cold Start.
+Act as Software Engineer for the Git repository in the current directory.
+Read project-pinned SAE rules, inspect git/gh, branch SHA and relevant
+Issue/PR. First pass read-only. Report actual tool access and next action.
+~~~
+
+**Warm Start (Full, or replace with Standard for no-GPU check)**
+
+~~~text
+Run SAE Full Agent Warm Start as Software Engineer. Reuse Cold Start.
+Use my designated D: Dropbox workspace for isolated CPU PyTorch smoke tests,
+temporary files and results; verify their location and safe owned cleanup.
+If existing authenticated supported Colab CLI and entitlement permit,
+run one bounded GPU PROBE_ONLY with observed device identity, CPU oracle,
+artifact SHA-256 and confirmed remote session release. No new billing.
+Report PASS/FAIL/NOT RUN/BLOCKED, actual paths and next action.
+~~~
+
+**GPU-first:** prefer available, supported GPUs for suitable tensor workloads; keep a CPU numerical oracle in parallel. GPU absence never blocks independent CPU/math work. Each actual Colab allocation still needs live authentication, entitlement/session checks and verified cleanup. The generic controller's demonstrated scope is T4-requested transport, not universal GPU/TPU support.
+
+**Daily loop:** GPT scopes mathematics/architecture in an existing Issue → Codex implements and tests in the project workspace → Codex submits SHA-linked code/evidence PR → GPT independently reviews and decides eligible merges. Warm Start is optional and not repeated for every task. Existing projects keep their pinned SAE revisions until intentionally updated. See [Cold Start](workflows/UNIVERSAL_COLD_START.md), [Warm Start](workflows/AGENT_WARM_START.md) and [Standing Authorization](governance/STANDING_AUTHORIZATION.md).
+
 ## Universal agent cold start
 
 For any Torch project, begin with [Universal Agent Cold Start](workflows/UNIVERSAL_COLD_START.md) ([中文](i18n/zh-CN/workflows/UNIVERSAL_COLD_START.md)). Tell GPT to act as **Architect + Mentor** for the target GitHub repository, or start Claude Code/Codex as **Engineer** in the project directory. Each agent reads the project's pinned SAE rules and live GitHub state before doing work; the first recovery pass is read-only. Existing projects are **not** automatically upgraded.

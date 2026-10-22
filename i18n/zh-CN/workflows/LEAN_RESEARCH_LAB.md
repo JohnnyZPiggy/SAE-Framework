@@ -2,6 +2,9 @@
 
 > [English](../../../workflows/LEAN_RESEARCH_LAB.md) 为规范版本 | **简体中文**
 
+## GPU 优先试验
+EXPLORE 阶段遇适合 GPU 的张量任务，在现有权益与技术条件允许时尽早执行有界 GPU 探针，CPU Oracle 并行准备，无须先完成整套 CPU 验收；VALIDATE 则用真实参考数值与设备计时证据。GPU 不可用或不划算时不阻断数学与 CPU 研发。
+
 ## 目的及优先级
 这是**精简执行协议**，不是新增 Agent、后台调度、审批机构或已实现的 CLI。每次用户触发的 SAE 工作周期中，Mentor/Architect 负责数学假设、科学决定和最终验收，可向 Engineer 一次交付**有界批量实验任务**。正式结论依[数学研究](../../../workflows/MATHEMATICAL_RESEARCH.md)，计算执行/发布依[计算实验](../../../workflows/GPU_EXPERIMENT.md)，PR 合并依[常设授权](../../../governance/STANDING_AUTHORIZATION.md)；用户最新停止指令及已固定的项目协议优先。
 

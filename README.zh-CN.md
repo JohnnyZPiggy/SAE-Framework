@@ -122,6 +122,80 @@ Mentor/Architect 自主判断简明[数学结构研究](workflows/MATHEMATICAL_R
 
 **版本：** V3.3 文档迁移中；已固定的 V3.2 项目快照须经审查后主动升级。**许可：** [MIT License](LICENSE) · Copyright © 2026 JohnnyZPiggy。本许可适用于仓库内的原创内容；如含第三方素材，其原有许可条款仍然适用。
 
+## GPT + Codex 本地部署快速指南
+
+**角色分工：** ChatGPT 中的 GPT 担任 Chief Architect + Scientific Mentor（需要连接 GitHub 以读取真实 Issue/PR）；本地 Codex 担任 Software Engineer。ChatGPT 的 GitHub 连接不会自动获得 Codex 的本地文件和凭据，两者使用 GitHub Issue/PR、精确 SHA 与真实测试证据交接。
+
+### 1. 安装和指定工作区
+
+准备 Git、Python/PyTorch、Codex，以及可选的 GitHub CLI（没有才按官方方式安装）。**用户指定的 D 盘 Dropbox 同步工作区完全允许**存放源码、任务临时文件和缓存。以下路径只是示例，请替换为真实目录：
+
+~~~powershell
+$Workspace = 'D:\Dropbox\SAE-Work'
+New-Item -ItemType Directory -Force $Workspace | Out-Null
+Set-Location $Workspace
+git clone https://github.com/JohnnyZPiggy/TorchXXX.git
+Set-Location .\TorchXXX
+git status --short
+gh auth status
+python -c "import torch; print(torch.__version__)"
+~~~
+
+用已安装的 Codex 应用或 CLI 打开这个 Torch 项目目录。让 Engineer 把任务文件、缓存和结果放在**指定工作区**内，使用每任务隔离且不被 Git 意外追踪的 Scratch 目录；仅清理本任务创建的临时文件。使用 WSL2 时，应确认实际路径落在 D 盘挂载（常见 /mnt/d/...），避免默认 Linux home/tmp 消耗 C 盘虚拟磁盘。项目目录设置并不会自动重定向所有第三方缓存；工具支持时显式传入 Scratch/Cache 路径。Dropbox 同步开销只是提醒，**不能因此拒绝用户工作区**。
+
+### 2. GPT：Architect + Scientific Mentor
+
+先在 ChatGPT 连接 GitHub 并授权目标仓库。将 TorchXXX 换成目标项目名，发送：
+
+**Cold Start（只读）**
+
+~~~text
+访问 https://github.com/JohnnyZPiggy/SAE-Framework 的 Universal Agent Cold Start。
+你担任 Chief Architect + Scientific Mentor，目标项目：
+https://github.com/JohnnyZPiggy/TorchXXX
+按固定 SAE 版本恢复角色、相关 Issue/PR、实际 SHA 与数学背景。
+首次只读，报告真实状态和下一步。
+~~~
+
+**Warm Start（Full；快速验证可改为 Standard）**
+
+~~~text
+推进 SAE Full Agent Warm Start，担任 Chief Architect + Scientific Mentor，
+目标 https://github.com/JohnnyZPiggy/TorchXXX。
+复用 Cold Start，审查一项真实代码变更，独立推导并核实一个算法
+数学恒等式与数值 Oracle，形成有界 Engineer CPU/GPU 验证任务。
+如实报告证据；不要仅为热身而合并 PR。
+~~~
+
+### 3. Codex：Software Engineer
+
+在真正的 Torch Git 工作目录中打开/启动 Codex，发送：
+
+**Cold Start（只读）**
+
+~~~text
+访问 https://github.com/JohnnyZPiggy/SAE-Framework 的 Universal Agent Cold Start。
+担任 Software Engineer，目标是当前工作目录的 Torch Git 项目。
+读取项目固定 SAE 协议，核实 git/gh、分支 SHA 和相关 Issue/PR。
+先只读角色恢复，报告真实工具能力和下一步。
+~~~
+
+**Warm Start（Full；Standard 不分配 GPU）**
+
+~~~text
+推进 SAE Full Agent Warm Start，担任 Software Engineer。
+复用 Cold Start，优先在指定 D 盘 Dropbox 工作区完成小型
+PyTorch CPU 数值测试，确认临时文件和结果路径、安全清理任务自产物。
+如当前环境的现有 Colab CLI 已认证、受支持且已有权益允许，
+执行一次有界 GPU PROBE_ONLY，记录真实设备、CPU Oracle 对照、
+下载产物 SHA-256，关闭并核对零活动会话。不新增付费。
+报告 PASS/FAIL/NOT RUN/BLOCKED、实际路径和下一步。
+~~~
+
+**GPU-first：** 对适合的 PyTorch 张量工作，优先使用现有权益内实际可用的 GPU，CPU Oracle 并行。GPU 不可用不阻断数学和 CPU 研究；每次远端分配前仍须实时验证认证、权益、活动会话并确认清理。通用 Controller 当前只有有限的**请求 T4 的传输路径**证据，不能宣称任意 GPU/TPU 都得到支持。
+
+**日常流程：** GPT 在已有 Issue 给出数学和工程规格 → Codex 在指定工作区编写代码并实测 → 经 SHA 和证据提交 PR → GPT 独立审核并决定合格合并。Warm Start 按需执行，不必每项任务都热身。已有项目固定 SAE 版本不会自动升级。详见[Cold Start](i18n/zh-CN/workflows/UNIVERSAL_COLD_START.md)、[Warm Start](i18n/zh-CN/workflows/AGENT_WARM_START.md)、[常设授权](governance/STANDING_AUTHORIZATION.md)。
+
 ## 通用 Agent 冷启动
 
 新建 GPT/Claude Code/Codex 窗口时，可使用一句话启动：**“访问 SAE-Framework，以 Architect + Mentor / Engineer 角色，为目标 Torch 项目执行冷启动。”** 先读 [通用冷启动协议](i18n/zh-CN/workflows/UNIVERSAL_COLD_START.md)，再按项目 `AGENTS.md`、`sae.yaml` 和固定 `.sae/` 恢复 GitHub 实时状态；首次只读，不自动改写已有项目快照。

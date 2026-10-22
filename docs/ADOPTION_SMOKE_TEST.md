@@ -2,15 +2,15 @@
 
 > Language: **English** | [简体中文](../i18n/zh-CN/docs/ADOPTION_SMOKE_TEST.md)
 
-**Purpose:** confirm the **copied** SAE Framework is usable inside a target project, not merely that links work in this documentation repository. A protocol file alone does not make an autonomous agent, and this checklist does not claim tests were executed.
+**Purpose:** confirm the **pinned** SAE Framework reference or optional copy is usable inside a target project, not merely that links work in this documentation repository. A protocol file alone does not make an autonomous agent, and this checklist does not claim tests were executed.
 
 ## Test 1 — Inspect before any write
 1. Pick a disposable or explicitly authorized target repository and record its default branch and current files.
 2. Fix the SAE framework at a **real commit SHA** (or immutable release). Avoid a floating reference to `main`.
 3. Prepare a proposed patch/branch; do not overwrite an existing project's `AGENTS.md` or other data without review.
 
-## Test 2 — Make the snapshot self-contained
-Confirm the target project contains:
+## Test 2 — Validate the lean pin or optional self-contained snapshot
+For the default minimal adoption, verify root `AGENTS.md`, `sae.yaml`, and `.sae/README.md` containing an immutable SHA and resolvable references to task-relevant upstream protocols. Also ensure the root template's original `.sae/` links were replaced with pinned URLs. For an **optional full offline snapshot**, confirm the target project contains:
 
 ```text
 <project>/
@@ -28,7 +28,7 @@ Confirm the target project contains:
     i18n/zh-CN/                   # matching bilingual navigation
 ```
 
-All files under `.sae/` must come from **the same pinned revision**. Check that copied Markdown links resolve within `.sae/` and do not unintentionally escape into missing directories. The root `AGENTS.md` is a **generated/adapted** entry point: its language notice, paths, owner/repository placeholders and SHA must be correct for its new location. Do not assume the raw example's original relative links remain valid.
+All cached files under `.sae/` must come from **the same pinned revision**. Check that copied Markdown links resolve within `.sae/` and do not unintentionally escape into missing directories. The root `AGENTS.md` is a **generated/adapted** entry point: its language notice, paths, owner/repository placeholders and SHA must be correct for its new location. Do not assume the raw example's original relative links remain valid.
 
 ## Test 3 — Verify protocol behavior
 - **Mentor / GPT:** with `推进导师工作`, check that GPT states a testable mathematical hypothesis and independently selects EXPLORE, `RESEARCH_READY` or a bounded exception. No Scientist signoff; a full study is needed only for formal acceptance.

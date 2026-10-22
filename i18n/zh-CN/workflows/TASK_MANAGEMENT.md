@@ -4,6 +4,9 @@
 
 **唯一正式任务队列：GitHub Issues**，不是不可追踪的私下聊天记录。
 
+## 标签可选，不是准入条件
+单工程师、目标明确的 Issue/PR 直接开发，不强制额外认领评论、补标签或状态流转。仅在多 Agent 同时改同一任务可能冲突时记录负责人。
+
 ## 推荐标签体系
 - 负责人：`role:engineer`、`role:architect`、`role:mentor`、`human:scientist`；旧 Issue 的 `agent:codex` 标签保持兼容。
 - 状态：`status:ready`、`status:in-progress`、`status:review`、`status:experiment`、`status:blocked`、`status:accepted`。
@@ -23,7 +26,7 @@
 
 ## 生命周期
 1. **Architect 立即派单：** 使用现有或一个新 Issue，写明源码身份、模式、最小 oracle、实验目的、有限超时和清理计划；有安全可执行的任务就标就绪，不等待人类签批。
-2. **Engineer 领取任务：** 在 Issue 留下接受评论并改为 in-progress，同一项任务只允许一个当前负责人。
+2. **Engineer 领取任务：** 已明确分配则直接执行；仅在存在并发冲突时认领或更新状态，不增加无意义评论。
 3. **批内实施与实验：** 使用 `feat/<issue-number>-<slug>` 分支，在任务超时和有界尝试内完成实现→测试→诊断→修复→复测，每次尝试不另行请求批准；积累可用成果后再创建 PR。只有满足全部验收时才用 `Closes #N`，GPU 待验证时用 `Refs #N`。
 4. **Architect 做一次基于证据的审核：** 核对 SHA/Diff 和相关正确性证据；Engineer 可同时跑合适 CPU/GPU 探针，再根据结果进行正式 Benchmark，不无谓串行。
 5. **Engineer 默认使用现有账户 Colab CLI：** 远程安装固定精确 SHA，默认同一时间一个活动会话，有限超时并核实清理；多次探索合并为**一次批次证据汇总**，可选发布须单独实测验证。无 Scientist 算力/价格关口，真实数值、权限或收费阻塞须记录。

@@ -4,10 +4,13 @@
 
 **Project:** `<OWNER>/<PROJECT>`  
 **Scientific objective:** `<ALGORITHM_OR_PAPER>`  
-**SAE snapshot:** `.sae/` pinned at `<ACTUAL_40_CHARACTER_FRAMEWORK_SHA>`
+**SAE pin:** `<ACTUAL_40_CHARACTER_FRAMEWORK_SHA>`; optional full `.sae/` snapshot for offline use
 
 ## Before work
-Read this file, project `sae.yaml`, `.sae/AGENTS.md`, assigned `.sae/protocols/<ROLE>.md`, relevant `.sae/workflows/` and live GitHub Issues/PRs. Never silently upgrade the pinned snapshot or assume a linked file was read.
+Read this file and `sae.yaml`, then load the actual pinned SAE constitution, assigned role and task-relevant workflow from the immutable SHA (or optional matching local snapshot). Inspect the current task Issue/PR only as needed. Never silently upgrade the pin or assume a link was read.
+
+## Pinned references
+For minimal adoption, relative `.sae/` links below are examples for an optional full snapshot; replace them with immutable GitHub URLs at the recorded SHA, or retain them only if that snapshot is present. Keep roles and acceptance conditions identical.
 
 ## Project roles
 - **Scientist:** sets/changes research objectives and can stop work; no routine scientific/engineering/compute signoff.

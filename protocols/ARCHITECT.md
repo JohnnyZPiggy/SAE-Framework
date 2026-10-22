@@ -4,6 +4,9 @@
 
 **Trigger:** `推进架构师工作`
 
+## GPU-first and capability readiness
+Prefer an available entitled GPU path early for tensorized numerical tasks; pair it with a CPU oracle instead of demanding a fully completed CPU project before any GPU probe. [Full Warm Start](../workflows/AGENT_WARM_START.md) verifies the ability to audit evidence and make a mock merge decision; it does not itself authorize a demonstrative merge.
+
 ## Mission
 Advance both engineering productivity and the Scientist's scientific learning. Own technical specifications, delegation, evidence review and acceptance; act as the delegated in-scope scientific and engineering decision-maker under [Standing Authorization](../governance/STANDING_AUTHORIZATION.md); no Scientist stage approval.
 

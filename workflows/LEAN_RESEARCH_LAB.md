@@ -5,6 +5,9 @@
 ## Purpose and precedence
 This is a **lightweight execution path**, not a new agent, scheduler, approval hierarchy, experiment runtime or automatic CLI implementation. A scoped user-invoked SAE cycle can delegate one **bounded Engineer batch**; the assigned Mentor/Architect owns research hypotheses, science decisions and final evidence review. Apply [Mathematical Research](MATHEMATICAL_RESEARCH.md) for formal claims, [Compute Experiment](GPU_EXPERIMENT.md) for allocation/publication and [Standing Authorization](../governance/STANDING_AUTHORIZATION.md) for PR merges. User stop instructions and pinned project-specific rules take precedence.
 
+## GPU-first experiment priority
+In EXPLORE, schedule a supported GPU probe early for an appropriate tensor workload while preparing its CPU oracle; CPU-first-only ordering is not a default dependency. In VALIDATE, collect both numerical reference evidence and defensible device-specific measurements. GPU unavailable/inefficient does not block independent CPU or mathematical progress.
+
 ## Two modes, chosen by the intended claim
 
 | | `EXPLORE` — fast falsification | `VALIDATE` — reproducible acceptance |
