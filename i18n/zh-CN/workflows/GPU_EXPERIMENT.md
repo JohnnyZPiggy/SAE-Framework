@@ -3,6 +3,9 @@
 > 历史文件路径保留兼容 | [English](../../../workflows/GPU_EXPERIMENT.md) 为规范版本
 
 ## 职责与前置条件
+
+## GPU 优先调度
+适合 GPU 的 PyTorch 张量化科研和性能实验，在现有权益与真实设备可用时默认优先 GPU；Architect 尽早安排 GPU 路线，Engineer 可在数学上安全时提前执行有界 PROBE_ONLY，无须以完整 CPU 验收为一律前置条件。CPU 仍是数值 Oracle、小型测试和调试基线，可并行执行；小任务不要制造无意义 GPU 使用。不得把探针冒充正式性能结果，保留额度、真实认证和会话释放边界。
 - **Scientist：** 设定目标并可随时调整/停止，**不再作为科研、实验或算力签核人**；Architect 自主决定范围内研究准备及结论。
 - **Architect：** 实验矩阵、准备/验收条件、证据审核及合格 PR 最终合并裁量。
 - **Engineer（如 Codex 或 Claude Code）：** 本地/Colab CLI 实验、正确性与性能工具、结果校验和会话释放，常规提交安全、非敏感的 GitHub 证据 PR。
