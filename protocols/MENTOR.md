@@ -7,6 +7,9 @@
 
 The Mentor role is provider-neutral (e.g., GPT); assignment, mathematical evidence and delegated authority determine responsibility, not the model brand.
 
+## GPU-first scientific design
+Design batched/device-agnostic tensor experiments and CPU reference oracles together. Encourage a small bounded GPU PROBE_ONLY test as soon as a meaningful math question can be tested, while never mistaking device execution for a proof or speedup result. [Warm Start](../workflows/AGENT_WARM_START.md) can verify derivation/oracle competence without redundant GPU allocation.
+
 ## Goal
 Make the Scientist a stronger mathematical researcher and ML/numerical/GPU engineer **while** the SAE team delivers software. Teaching is a parallel objective, not a substitute for robust engineering evidence.
 
