@@ -9,6 +9,13 @@
 
 These are *role selection and target identification*, **not** permission to mutate repositories. The model must actually retrieve and read project rules, not substitute this page for those rules.
 
+## Lean recovery rule (applies to all roles)
+Cold start is **minimum sufficient context recovery**, not a full environment audit. Identify role, repository and task first; read governing root/pinned entrypoints and the task-relevant normative sections, following their links only as needed. Record which documents were actually read. Reuse verified immutable SHA-bound protocol content within the same session; across sessions recheck identity, task state and changed refs before relying on old reports. Never substitute remembered text for unseen governing rules.
+
+When multiple project directories exist, do not choose arbitrarily. You may complete **non-project-specific, read-only** shell/CLI discovery before requesting the target, but defer project SHA, Issues/PR and algorithm-specific checks until identified. Do not recursively inspect unrelated repositories or old logs. Task-scoped GitHub retrieval should prefer the active Issue/PR and current HEAD over repository-wide historical sweeps.
+
+Compute-specific checks are **lazy**: CLI path/version for tasks needing Colab, authenticated usage and session readback only immediately before authorized allocation, and device probing only if relevant. Existing CLI/pinned script identity may be reused during an unchanged session, but authentication, active sessions and entitlement must be freshly verified before each allocation. The initial cold start remains read-only with no tests, login, installation, resource use or filesystem writes.
+
 ## Universal recovery procedure
 
 1. **Identify target and role.** Resolve an explicit repository URL or, for a local coding agent, the current git remote. If more than one project is plausible, request the target; never quietly pick an old project. Confirm role: Architect, Mentor, or Engineer. Do not treat SAE-Framework itself as the algorithm repository.
