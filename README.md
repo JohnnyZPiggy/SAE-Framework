@@ -1,5 +1,8 @@
 # SAE Framework V3.3
 
+> **Compute policy:** [Compute Throughput Policy](governance/COMPUTE_THROUGHPUT_POLICY.md) governs GPU-first, high-throughput experiments for all roles. Use all scientifically useful Colab GPU types available under existing authorization; do not impose compute-saving quotas or speculative GPU gates. Provider limits, billing authorization, numerical evidence and session cleanup remain mandatory.
+
+
 > English normative | [简体中文](README.zh-CN.md)
 
 **Scientist–Architect–Engineer** is a GitHub-first collaboration framework for mathematical algorithms, PyTorch scientific computing and ML engineering. It pursues **two equal goals**: reliable low-cost engineering and the Scientist's deeper mathematical/numerical/ML-systems learning.
