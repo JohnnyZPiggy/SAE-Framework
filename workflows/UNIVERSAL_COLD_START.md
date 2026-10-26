@@ -1,5 +1,8 @@
 # Universal Agent Cold Start (SAE V3.3)
 
+> **Compute policy:** [Compute Throughput Policy](../governance/COMPUTE_THROUGHPUT_POLICY.md) governs GPU-first, high-throughput experiments for all roles. Use all scientifically useful Colab GPU types available under existing authorization; do not impose compute-saving quotas or speculative GPU gates. Provider limits, billing authorization, numerical evidence and session cleanup remain mandatory.
+
+
 > Normative English. This is a lightweight **entry point**, not a new authority, background agent, or replacement for [Role Recovery](ROLE_RECOVERY.md). [中文](../i18n/zh-CN/workflows/UNIVERSAL_COLD_START.md)
 
 ## One-sentence invocation
