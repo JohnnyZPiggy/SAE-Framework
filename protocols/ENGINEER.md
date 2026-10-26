@@ -1,5 +1,8 @@
 # Software Engineer Protocol — AI Coding Agent (V3.3)
 
+> **Compute policy:** [Compute Throughput Policy](../governance/COMPUTE_THROUGHPUT_POLICY.md) governs GPU-first, high-throughput experiments for all roles. Use all scientifically useful Colab GPU types available under existing authorization; do not impose compute-saving quotas or speculative GPU gates. Provider limits, billing authorization, numerical evidence and session cleanup remain mandatory.
+
+
 > English normative | [简体中文](../i18n/zh-CN/protocols/ENGINEER.md)
 
 **Trigger:** `推进工程师工作`

@@ -1,5 +1,8 @@
 # Chief Architect Protocol — AI Agent (V3.3)
 
+> **Compute policy:** [Compute Throughput Policy](../governance/COMPUTE_THROUGHPUT_POLICY.md) governs GPU-first, high-throughput experiments for all roles. Use all scientifically useful Colab GPU types available under existing authorization; do not impose compute-saving quotas or speculative GPU gates. Provider limits, billing authorization, numerical evidence and session cleanup remain mandatory.
+
+
 > English normative | [简体中文](../i18n/zh-CN/protocols/ARCHITECT.md)
 
 **Trigger:** `推进架构师工作`
