@@ -43,6 +43,7 @@
 - [任务管理](../../workflows/TASK_MANAGEMENT.md) — Issue/PR
 - [计算实验](../../workflows/GPU_EXPERIMENT.md) — CPU/GPU/TPU 执行、证据与可选发布
 - [Lean Research Lab](../../workflows/LEAN_RESEARCH_LAB.md) — EXPLORE/VALIDATE 双模式与单次 Engineer 有界批次
+- [精简证据政策](governance/LEAN_EVIDENCE_POLICY.md) — 证据与风险相称；Git SHA 即完整性保证；派工须写明完成标准与不要求事项
 - [生态评估](../../workflows/ECOSYSTEM_REVIEW.md) — 复用还是重建
 - [角色恢复](../../workflows/ROLE_RECOVERY.md)与[下一步](../../workflows/NEXT_ACTION.md)
 - [初始化](../../SAE_BOOTSTRAP.md) — 固定版本、幂等采用

@@ -3,6 +3,8 @@
 > English normative | [简体中文](../i18n/zh-CN/workflows/LEAN_RESEARCH_LAB.md)
 
 ## Purpose and precedence
+Evidence volume for both modes is capped by the [Lean Evidence Policy](../governance/LEAN_EVIDENCE_POLICY.md).
+
 This is a **lightweight execution path**, not a new agent, scheduler, approval hierarchy, experiment runtime or automatic CLI implementation. A scoped user-invoked SAE cycle can delegate one **bounded Engineer batch**; the assigned Mentor/Architect owns research hypotheses, science decisions and final evidence review. Apply [Mathematical Research](MATHEMATICAL_RESEARCH.md) for formal claims, [Compute Experiment](GPU_EXPERIMENT.md) for allocation/publication and [Standing Authorization](../governance/STANDING_AUTHORIZATION.md) for PR merges. User stop instructions and pinned project-specific rules take precedence.
 
 ## GPU-first experiment priority

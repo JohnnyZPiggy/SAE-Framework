@@ -42,6 +42,7 @@ User instructions/authorization → project-specific `AGENTS.md` → pinned SAE 
 
 ## Authoritative references
 - [Standing Authorization](governance/STANDING_AUTHORIZATION.md) — merge scope and review gates
+- [Lean Evidence Policy](governance/LEAN_EVIDENCE_POLICY.md) — evidence proportional to risk; Git SHA is the integrity layer; dispatches state Definition of Done and Not-required lists
 - [Research Pipeline](workflows/RESEARCH_PIPELINE.md) and [Mathematical Research](workflows/MATHEMATICAL_RESEARCH.md) — scientific gates
 - [Task Management](workflows/TASK_MANAGEMENT.md) — Issues/PRs and review
 - [Compute Experiments](workflows/GPU_EXPERIMENT.md) — CPU/GPU/TPU execution, evidence and optional publication
