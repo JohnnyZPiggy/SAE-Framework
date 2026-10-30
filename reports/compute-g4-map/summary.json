@@ -1,0 +1,45 @@
+{
+  "status": "OFFLINE_AND_G4_LIVE_PASS",
+  "base_sha": "de9833b56768a522cbc438244a941737b63293e9",
+  "tested_sha": "d55a5c4330f7f02dfb1ce82ca68c469d334991a2",
+  "offline": {
+    "tests": 47,
+    "subtests": 74,
+    "status": "PASS",
+    "seconds": 23.06,
+    "python": "3.14.6 | packaged by Anaconda, Inc. | (main, Jul  9 2026, 14:29:05) [MSC v.1942 64 bit (AMD64)]"
+  },
+  "live": {
+    "status": "PASS",
+    "device_requested": "G4",
+    "device_observed": {
+      "nvidia_smi": [
+        {
+          "name": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+          "memory_total_mib": 97887,
+          "driver_version": "580.82.07"
+        }
+      ],
+      "torch": {
+        "status": "AVAILABLE",
+        "version": "2.11.0+cu130",
+        "cuda": "13.0",
+        "name": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+        "capability": [
+          12,
+          0
+        ]
+      }
+    },
+    "balance_before": 58.9,
+    "balance_after": 58.9,
+    "assignments_after": 0,
+    "cleanup_confirmed": true,
+    "artifact_bytes": 202,
+    "artifact_sha256": "c1d331efbf230883a6c34b2ad45b6a8058be3e5155041169a3c5aded8ba8c26a"
+  },
+  "h100": "Issue66 observed BLOCKED_PROVIDER preserved; no new H100 attempt in Issue68",
+  "source": "https://cloud.google.com/blog/products/compute/introducing-g4-vm-with-nvidia-rtx-pro-6000",
+  "scope": "IDENTITY_AND_TRANSPORT_ONLY_NO_SCIENCE",
+  "downstream_modified": false
+}

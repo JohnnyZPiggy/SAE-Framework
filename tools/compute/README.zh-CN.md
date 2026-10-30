@@ -1,5 +1,21 @@
 # 本地预检与有界 Colab 传输
 
+Issue #68 通过显式家族映射修复 G4 机器系列与 GPU 名称的区别。一次真实 G4 探针
+已读回 NVIDIA RTX PRO 6000 Blackwell Server Edition，传输与认证零会话清理通过；
+见[证据](../../reports/compute-g4-map/ENGINEER_HANDOFF.md)。
+
+| 请求 | 接受的实际名称家族（忽略大小写，词边界匹配） | 实测 |
+|---|---|---|
+| T4 | T4 | Issue66 PASS |
+| L4 | L4 | Issue66 PASS；拒绝 L40S |
+| A100 | A100 | Issue66 PASS；拒绝 A10G |
+| H100 | H100 | 保留 Issue66 服务商拒绝；未观察硬件 |
+| G4 | RTX PRO 6000 | Issue68 PASS；拒绝 RTX 6000 Ada |
+
+G4 是机器系列，来源为 [Google Cloud 官方说明](https://cloud.google.com/blog/products/compute/introducing-g4-vm-with-nvidia-rtx-pro-6000)。
+未知映射报 DEVICE_IDENTITY_UNVERIFIED；不重命名实际硬件。下文 Issue66 的 G4
+不匹配是旧规则的历史结果，不代表当前映射行为。
+
 Issue #66 当前状态：**离线验证通过／五种请求均已真实探测**。已安装 CLI0.7.4
 的帮助与 `commands/session.py` 映射确认请求集合为 **T4、L4、G4、H100、A100**；
 这不等于账户拥有这些设备。固定测试提交 d4e4185d153976e7b966b7a4a1623c6cf80543cb
@@ -38,7 +54,7 @@ Kernel输出 KERNEL_REACHABLE 后，输出一行严格 DEVICE_OBSERVED JSON：�
 `nvidia-smi --query-gpu=name,memory.total,driver_version --format=csv,noheader`
 读名称、显存、驱动（子进程10秒）；如 torch 可导入，再记录 torch/CUDA 版本、设备0
 名称和 capability，不安装 torch。缺失/畸形身份拒绝工作。报告区分 device_requested
-与 device_observed，不重新命名实际硬件；名称缺少请求家族标记时分类 DEVICE_MISMATCH。
+与 device_observed，不重新命名实际硬件；名称不符合上表显式家族映射时分类 DEVICE_MISMATCH。
 默认跳过工作，仅固定提交中的项目 driver 顶层显式声明
 `SAE_ALLOW_DEVICE_MISMATCH = True` 才可继续，仍保留不匹配分类。
 driver还收到 SAE_DEVICE_REQUESTED 和 JSON SAE_DEVICE_OBSERVED 环境字段。

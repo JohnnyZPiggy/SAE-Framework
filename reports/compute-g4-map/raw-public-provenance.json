@@ -1,0 +1,38 @@
+{
+  "validate\\pytest.log": {
+    "raw_sha256": "48c9e0d81b54e2f4868edb7aa7c05183a3b079adbff8e2cd3f96d3c1398eec58",
+    "raw_bytes": 129,
+    "public_sha256": "c259af036738d617b1547fa75ef5cfec254a3572c6f2ecfa49b00b01948ce22c",
+    "exact": false
+  },
+  "validate\\junit.xml": {
+    "raw_sha256": "5a04e50ee2b98aaf9035c6294922def1c78d7084f9f7f00223215d7c919972da",
+    "raw_bytes": 7026,
+    "public_sha256": "710dff556174dcff340d9a9b830e0cef948adc011c85b035f4a05620f9468d89",
+    "exact": false
+  },
+  "preflight\\colab-control.json": {
+    "raw_sha256": "225242db6ac0ce60ab95ca0448a575ed87ed1c5df55206c0515a537ab904b0da",
+    "raw_bytes": 3156,
+    "public_sha256": "225242db6ac0ce60ab95ca0448a575ed87ed1c5df55206c0515a537ab904b0da",
+    "exact": true
+  },
+  "live\\colab-control.json": {
+    "raw_sha256": "b8c3d424f73d71889d97e7229028ed1774cbef33933fab42f580175189411866",
+    "raw_bytes": 6807,
+    "public_sha256": "b8c3d424f73d71889d97e7229028ed1774cbef33933fab42f580175189411866",
+    "exact": true
+  },
+  "commands.json": {
+    "raw_sha256": "56693f0f7f800919d009b2d0b2f584cbfe50b4e58501eb299e26385a3f2e2e2a",
+    "raw_bytes": 2057,
+    "public_sha256": "b7f6b38badf33963908daba7e3bb049752591f233bcd1b0a2d5c8e5e4759b94b",
+    "exact": false
+  },
+  "live\\transport-check.json": {
+    "raw_sha256": "c1d331efbf230883a6c34b2ad45b6a8058be3e5155041169a3c5aded8ba8c26a",
+    "raw_bytes": 202,
+    "public_sha256": "c1d331efbf230883a6c34b2ad45b6a8058be3e5155041169a3c5aded8ba8c26a",
+    "exact": true
+  }
+}

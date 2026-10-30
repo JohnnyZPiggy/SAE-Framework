@@ -2,6 +2,23 @@
 
 > English | [简体中文](README.zh-CN.md)
 
+Issue #68 fixes the G4 machine-series/name distinction using explicit observed
+families. One real G4 probe passed on NVIDIA RTX PRO 6000 Blackwell Server
+Edition, with authenticated-zero cleanup; see [evidence](../../reports/compute-g4-map/ENGINEER_HANDOFF.md).
+
+| Request | Accepted observed-name family (case-insensitive word boundaries) | Live evidence |
+|---|---|---|
+| T4 | T4 | Issue66 PASS |
+| L4 | L4 | Issue66 PASS; L40S rejected |
+| A100 | A100 | Issue66 PASS; A10G rejected |
+| H100 | H100 | Issue66 BLOCKED_PROVIDER; no hardware observed |
+| G4 | RTX PRO 6000 | Issue68 PASS; RTX 6000 Ada rejected |
+
+G4 is a machine series, as documented by [Google Cloud](https://cloud.google.com/blog/products/compute/introducing-g4-vm-with-nvidia-rtx-pro-6000).
+Unknown mappings raise DEVICE_IDENTITY_UNVERIFIED. This is a family check, not
+a rename: the full actual name stays in device_observed. Issue66's G4 mismatch
+is historical evidence under the former literal-request rule, not current behavior.
+
 Status for Issue #66: **OFFLINE_VALIDATED + LIVE_MULTI_GPU_PROBED**. The verified CLI0.7.4 request set is **T4, L4, G4, H100, A100**; it is not a guarantee of account entitlement or hardware availability. At tested source `d4e4185d153976e7b966b7a4a1623c6cf80543cb`, T4/L4/A100 transport passed; G4 was observed as RTX PRO6000 Blackwell and correctly blocked as DEVICE_MISMATCH, and H100 was refused by the provider. All five attempts completed authenticated-zero cleanup and post-run readback. See [per-type evidence](../../reports/compute-multi-gpu/ENGINEER_HANDOFF.md). This is three standalone Python files, not a package, daemon, bootstrap installer or publisher. Algorithms and scientific acceptance belong to the project driver; [source/license/dependency provenance](NOTICE.md).
 
 Historical [PR #48](https://github.com/JohnnyZPiggy/SAE-Framework/pull/48) tested source `8081b6e02eee0754903898d5afe5b112f1bb23d0` with a T4 request but no observed identity. That older evidence does not establish the new multi-device interface.
@@ -48,7 +65,7 @@ torch/CUDA versions, device0 name and capability. Missing/malformed identity
 blocks work; no torch installation is attempted.
 
 `device_requested` and `device_observed` are separate fields. Every observed
-name must contain the requested family as a token; no automatic SKU mapping or
+name must match the explicit family table above; no inferred SKU mapping or
 relabeling. A mismatch sets `classification=DEVICE_MISMATCH` and skips work by
 default. Only an exact top-level `SAE_ALLOW_DEVICE_MISMATCH = True` declaration
 in the committed project driver opts in. Even then the mismatch classification

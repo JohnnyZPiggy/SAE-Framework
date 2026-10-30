@@ -1,0 +1,224 @@
+{
+  "status": "PASS",
+  "source_sha": "d55a5c4330f7f02dfb1ce82ca68c469d334991a2",
+  "run_id": "sae68-live-20261030",
+  "created": true,
+  "cleanup_confirmed": true,
+  "utc_start": "2026-10-30T19:31:05.120968+00:00",
+  "commands": [
+    {
+      "operation": "usage",
+      "status": "PASS",
+      "exit_code": 0,
+      "timeout_seconds": 30,
+      "elapsed_seconds": 1.4466309689999974
+    },
+    {
+      "operation": "new",
+      "status": "PASS",
+      "exit_code": 0,
+      "timeout_seconds": 120,
+      "elapsed_seconds": 4.049237476999998
+    },
+    {
+      "operation": "exec",
+      "status": "PASS",
+      "exit_code": 0,
+      "timeout_seconds": 65.0,
+      "elapsed_seconds": 8.445396210999998
+    },
+    {
+      "operation": "exec",
+      "status": "PASS",
+      "exit_code": 0,
+      "timeout_seconds": 65.0,
+      "elapsed_seconds": 1.6242030359999973
+    },
+    {
+      "operation": "download",
+      "status": "PASS",
+      "exit_code": 0,
+      "timeout_seconds": 30,
+      "elapsed_seconds": 1.1191394749999972
+    },
+    {
+      "operation": "stop",
+      "status": "PASS",
+      "exit_code": 0,
+      "timeout_seconds": 15,
+      "elapsed_seconds": 1.6907612060000048
+    },
+    {
+      "operation": "usage",
+      "status": "PASS",
+      "exit_code": 0,
+      "timeout_seconds": 15,
+      "elapsed_seconds": 1.3922491550000018
+    },
+    {
+      "operation": "usage",
+      "status": "PASS",
+      "exit_code": 0,
+      "timeout_seconds": 15,
+      "elapsed_seconds": 1.3911244909999994
+    }
+  ],
+  "readbacks": [
+    {
+      "phase": "preallocation",
+      "method": "CLI_074_AUTHENTICATED_CCU_INFO",
+      "status": "AUTHENTICATED_ZERO",
+      "assignments": 0
+    },
+    {
+      "phase": "cleanup",
+      "method": "CLI_074_AUTHENTICATED_CCU_INFO",
+      "status": "AUTHENTICATED_ZERO",
+      "assignments": 0
+    },
+    {
+      "phase": "post_cleanup",
+      "method": "CLI_074_AUTHENTICATED_CCU_INFO",
+      "status": "AUTHENTICATED_ZERO",
+      "assignments": 0
+    }
+  ],
+  "device_requested": "G4",
+  "device_observed": {
+    "nvidia_smi": [
+      {
+        "name": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+        "memory_total_mib": 97887,
+        "driver_version": "580.82.07"
+      }
+    ],
+    "torch": {
+      "status": "AVAILABLE",
+      "version": "2.11.0+cu130",
+      "cuda": "13.0",
+      "name": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+      "capability": [
+        12,
+        0
+      ]
+    }
+  },
+  "classification": "TRANSPORT_ONLY_SCIENCE_UNREVIEWED",
+  "events": {
+    "cli_resolution": {
+      "utc_start": "2026-10-30T19:31:05.136395+00:00",
+      "status": "PASS",
+      "utc_end": "2026-10-30T19:31:05.136602+00:00",
+      "elapsed_seconds": 0.00021557300000019097
+    },
+    "environment_preflight": {
+      "utc_start": "2026-10-30T19:31:05.149229+00:00",
+      "status": "PASS",
+      "utc_end": "2026-10-30T19:31:09.881383+00:00",
+      "elapsed_seconds": 4.732175792
+    },
+    "adapter_validation": {
+      "utc_start": "2026-10-30T19:31:09.881410+00:00",
+      "status": "PASS",
+      "utc_end": "2026-10-30T19:31:10.201836+00:00",
+      "elapsed_seconds": 0.3204436039999994
+    },
+    "snapshot_extraction": {
+      "utc_start": "2026-10-30T19:31:06.443949+00:00",
+      "status": "PASS",
+      "utc_end": "2026-10-30T19:31:09.499518+00:00",
+      "elapsed_seconds": 3.055587450999999
+    },
+    "wheel_pip_install": null,
+    "first_cpu_pass": null,
+    "exact_pinned_cpu_test": null,
+    "kernel_probe": {
+      "utc_start": "2026-10-30T19:31:15.710802+00:00",
+      "status": "PASS",
+      "utc_end": "2026-10-30T19:31:24.156687+00:00",
+      "elapsed_seconds": 8.445909172
+    },
+    "remote_workload": {
+      "utc_start": "2026-10-30T19:31:24.156713+00:00",
+      "status": "PASS",
+      "utc_end": "2026-10-30T19:31:25.780962+00:00",
+      "elapsed_seconds": 1.6242694700000015
+    },
+    "artifact_download": {
+      "utc_start": "2026-10-30T19:31:25.780988+00:00",
+      "status": "PASS",
+      "utc_end": "2026-10-30T19:31:26.910021+00:00",
+      "elapsed_seconds": 1.1288291880000045
+    },
+    "github_publication": null,
+    "cleanup": {
+      "utc_start": "2026-10-30T19:31:26.910040+00:00",
+      "status": "PASS",
+      "utc_end": "2026-10-30T19:31:29.993157+00:00",
+      "elapsed_seconds": 3.0831213390000016
+    }
+  },
+  "per_attempt_approvals_actual": null,
+  "api_escalation_requests_actual": null,
+  "handoffs_actual": null,
+  "tool_script_sha256": {
+    "colab_control.py": "735d6e1bed83415c0e72f4217e84ec326273069b43e02bdf0016c855a4c317f6",
+    "environment_preflight.py": "45bd9eb029f563c7b1ea646576be44ce7eb5ca9dfd79dba2093d559884dea6e1",
+    "kernel_smoke.py": "f1121de0e051f6f4f13045c9f07775cdd19fd8e5449b5ceeea80de3e4b009c02"
+  },
+  "preflight": {
+    "status": "PASS",
+    "python_version": "3.12.3",
+    "source_sha": "d55a5c4330f7f02dfb1ce82ca68c469d334991a2",
+    "events": {
+      "cli_version": {
+        "utc_start": "2026-10-30T19:31:05.151460+00:00",
+        "status": "PASS",
+        "utc_end": "2026-10-30T19:31:05.728967+00:00",
+        "elapsed_seconds": 0.5775309889999996
+      },
+      "source_verification": {
+        "utc_start": "2026-10-30T19:31:05.729186+00:00",
+        "status": "PASS",
+        "utc_end": "2026-10-30T19:31:05.795627+00:00",
+        "elapsed_seconds": 0.06646298199999912
+      },
+      "temp_build_cache": {
+        "utc_start": "2026-10-30T19:31:06.414260+00:00",
+        "status": "PASS",
+        "utc_end": "2026-10-30T19:31:06.443785+00:00",
+        "elapsed_seconds": 0.02954913999999853
+      },
+      "snapshot_extraction": {
+        "utc_start": "2026-10-30T19:31:06.443949+00:00",
+        "status": "PASS",
+        "utc_end": "2026-10-30T19:31:09.499518+00:00",
+        "elapsed_seconds": 3.055587450999999
+      },
+      "wheel_pip_install": null
+    },
+    "cli_verified": true,
+    "cli_version": "0.7.4",
+    "working_tree_dirty": false,
+    "temp_build_cache_writable": true,
+    "export_scope": "tracked project files excluding .sae/",
+    "exported_blobs": 165,
+    "elapsed_seconds": 4.7300423590000005
+  },
+  "driver_allows_device_mismatch": false,
+  "driver_transport_sha256": "61839da0c4c6ea5866784074539a650e737e74b6a787cb8fa5f83a1afc6a4bf9",
+  "artifact_manifest_sha256": "799deb06ec41f09717974458c2ae434f65ac23e27815dc4bd486bd1c4400225e",
+  "balance_before": 58.9,
+  "artifact_sha256": {
+    "transport-check.json": "c1d331efbf230883a6c34b2ad45b6a8058be3e5155041169a3c5aded8ba8c26a"
+  },
+  "utc_cleanup_verified": "2026-10-30T19:31:29.993133+00:00",
+  "allocation_lifecycle_seconds": 18.331393014000003,
+  "balance_after": 58.9,
+  "assignments_after": 0,
+  "balance_delta": 0.0,
+  "transport_cleanup_confirmed": true,
+  "cleanup_seconds": 4.482972351000001,
+  "total_seconds": 26.271924057,
+  "utc_end": "2026-10-30T19:31:31.393017+00:00"
+}

@@ -1,0 +1,11 @@
+{
+  "task_root": "D:/sae-compute-68-20261030",
+  "temp_files": 0,
+  "retained": [
+    "checkout",
+    "live-source",
+    "evidence",
+    "local helper scripts"
+  ],
+  "downstream_modified": false
+}
