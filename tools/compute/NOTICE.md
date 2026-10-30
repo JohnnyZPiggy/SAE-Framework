@@ -1,5 +1,11 @@
 # Source and licensing
 
+Issue66 additionally inspects the installed CLI0.7.4 GPU mapping and recognizes
+its two public allocation-refusal message literals as a strict output whitelist.
+Those API-message literals are from the Apache-2.0 CLI referenced below; no CLI
+implementation is copied, imported by the runtime, patched or reinstalled.
+Installed module hashes and discovery evidence are in reports/compute-multi-gpu.
+
 Copyright (c) 2026 JohnnyZPiggy. Promoted/adapted contributions in this directory and `examples/compute_adapter` are submitted under the framework's [MIT license](../../LICENSE) at the repository owner's explicit request in Issue 38.
 
 Source: owner-authored SAE_Test PR 3, merged commit `dff21544dc751749a43ffeb97f67f4a00ee27a02`. Adapted files: `scripts/environment_preflight.py`, `scripts/colab_control.py`, `scripts/kernel_smoke.py`, `tests/test_environment_preflight.py`, `tests/test_colab_control.py`. The source tree at that commit has **no project-root LICENSE**; `.sae/LICENSE` licenses the copied framework material and is not treated as a project-wide code license. Promotion relies on the owner's current explicit request for these contributions, not an assertion that all historical SAE_Test code was MIT. No license or other file in SAE_Test was changed.

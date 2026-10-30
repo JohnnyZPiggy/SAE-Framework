@@ -1,8 +1,11 @@
 # 本地预检与有界 Colab 传输
 
-Issue #66 当前状态：**离线验证通过／真实分型号结果待回填**。已安装 CLI0.7.4
+Issue #66 当前状态：**离线验证通过／五种请求均已真实探测**。已安装 CLI0.7.4
 的帮助与 `commands/session.py` 映射确认请求集合为 **T4、L4、G4、H100、A100**；
-这不等于账户拥有这些设备。实际结果见 [独立证据](../../reports/compute-multi-gpu/ENGINEER_HANDOFF.md)。
+这不等于账户拥有这些设备。固定测试提交 d4e4185d153976e7b966b7a4a1623c6cf80543cb
+上，T4/L4/A100 的身份与传输通过；G4 实际为 RTX PRO6000 Blackwell，按规则
+DEVICE_MISMATCH 阻止工作；H100 被服务商拒绝。五次尝试均已停止并完成认证零会话
+与最后使用量读回。实际结果见 [独立证据](../../reports/compute-multi-gpu/ENGINEER_HANDOFF.md)。
 以下旧 PR48 结果只描述旧版单 T4 请求路径。
 
 分配超时见 [CLI 0.7.4 无分配诊断](diagnostics/README.md)：HTTP 超时与外层进程时限不同，外层超时不能判定 GET/POST 阶段。分配期间不轮询 `status`；它会同步远端 assignments 并可能改写本地会话状态。控制器没有 status 观察循环。
@@ -46,8 +49,9 @@ driver还收到 SAE_DEVICE_REQUESTED 和 JSON SAE_DEVICE_OBSERVED 环境字段�
 BLOCKED_PROVIDER:型号:原因，清理确认后继续其余型号；释放/最后读回不确定则停止循环，
 其余 NOT_RUN。既有余额为正和服务商权限仍是前提，计费边界不明时必须
 BLOCKED_BILLING_UNCERTAIN；无并发会话、后台重试或新增付费。
+操作人中断后完成当前清理即停止序列，不再分配下一型号。
 研究任务可显式指定 `--task-seconds 14400 --allocation-seconds 10800
 --work-timeout 3600 --cleanup-seconds 120`；预算逐型号生效，始终有限。
 本次不改变任何已采用项目的固定协议，后续项目升级 pin 须另行提交。
 
-控制报告仅保存安全错误码、步骤时长与时间戳、源码与传输哈希，不记录原始输出、参数、私人根路径、OAuth URL 或环境转储；未观察的安装/CPU/发布/人工批准/交接为 null。下载 artifact 的内容由项目负责，传输层不自动删除其中秘密，独立发布前必须另行检查。工具不写 GitHub。本次真实 GPU、TPU、编译未运行，见[本地证据](../../reports/compute-issue38/summary.md)。完整参数、限制和依赖边界以英文页为准，GPT 独立审核验收与合并。
+控制报告仅保存安全错误码、步骤时长与时间戳、源码与传输哈希，不记录原始输出、参数、私人根路径、OAuth URL 或环境转储；未观察的安装/CPU/发布/人工批准/交接为 null。下载 artifact 的内容由项目负责，传输层不自动删除其中秘密，独立发布前必须另行检查。工具不写 GitHub。Issue66 已真实核验 GPU 身份与传输；GPU 科学计算、TPU 和编译仍未运行，见[本地证据](../../reports/compute-issue38/summary.md)。完整参数、限制和依赖边界以英文页为准，GPT 独立审核验收与合并。

@@ -1,0 +1,376 @@
+{
+  "status": "OFFLINE_PASS_LIVE_PER_TYPE_RECORDED",
+  "live_source_sha": "d4e4185d153976e7b966b7a4a1623c6cf80543cb",
+  "offline_source_sha": "5b8193b63e21f6066433273cbc1315d58fb4ed27",
+  "offline": {
+    "tests": 46,
+    "subtests": 65,
+    "status": "PASS",
+    "seconds": 23.77,
+    "metadata_dirty": true,
+    "all_three_runtime_files_equal_tested_blobs": true
+  },
+  "live_group_status": "PARTIAL",
+  "sequential_no_overlap_verified": true,
+  "all_attempts_cleanup_authenticated_zero": true,
+  "actual_allocations": 4,
+  "attempts": 5,
+  "per_type": [
+    {
+      "requested": "T4",
+      "status": "PASS",
+      "classification": "TRANSPORT_ONLY_SCIENCE_UNREVIEWED",
+      "observed": {
+        "nvidia_smi": [
+          {
+            "name": "Tesla T4",
+            "memory_total_mib": 15360,
+            "driver_version": "580.82.07"
+          }
+        ],
+        "torch": {
+          "status": "AVAILABLE",
+          "version": "2.11.0+cu130",
+          "cuda": "13.0",
+          "name": "Tesla T4",
+          "capability": [
+            7,
+            5
+          ]
+        }
+      },
+      "created": true,
+      "provider_reason": null,
+      "balance_before": 58.9,
+      "balance_after": 58.9,
+      "balance_delta": 0.0,
+      "assignments_after": 0,
+      "cleanup_confirmed": true,
+      "artifacts": [
+        {
+          "name": "transport-check.json",
+          "bytes": 202,
+          "sha256": "10538e7abbb97afffa5cad0a13a6c4cd84a10ea4a5efc3a23f911b108d05abbe"
+        }
+      ],
+      "cli_commands": [
+        {
+          "operation": "usage",
+          "exit_code": 0,
+          "status": "PASS"
+        },
+        {
+          "operation": "new",
+          "exit_code": 0,
+          "status": "PASS"
+        },
+        {
+          "operation": "exec",
+          "exit_code": 0,
+          "status": "PASS"
+        },
+        {
+          "operation": "exec",
+          "exit_code": 0,
+          "status": "PASS"
+        },
+        {
+          "operation": "download",
+          "exit_code": 0,
+          "status": "PASS"
+        },
+        {
+          "operation": "stop",
+          "exit_code": 0,
+          "status": "PASS"
+        },
+        {
+          "operation": "usage",
+          "exit_code": 0,
+          "status": "PASS"
+        },
+        {
+          "operation": "usage",
+          "exit_code": 0,
+          "status": "PASS"
+        }
+      ]
+    },
+    {
+      "requested": "L4",
+      "status": "PASS",
+      "classification": "TRANSPORT_ONLY_SCIENCE_UNREVIEWED",
+      "observed": {
+        "nvidia_smi": [
+          {
+            "name": "NVIDIA L4",
+            "memory_total_mib": 23034,
+            "driver_version": "580.82.07"
+          }
+        ],
+        "torch": {
+          "status": "AVAILABLE",
+          "version": "2.11.0+cu130",
+          "cuda": "13.0",
+          "name": "NVIDIA L4",
+          "capability": [
+            8,
+            9
+          ]
+        }
+      },
+      "created": true,
+      "provider_reason": null,
+      "balance_before": 58.9,
+      "balance_after": 58.9,
+      "balance_delta": 0.0,
+      "assignments_after": 0,
+      "cleanup_confirmed": true,
+      "artifacts": [
+        {
+          "name": "transport-check.json",
+          "bytes": 202,
+          "sha256": "10538e7abbb97afffa5cad0a13a6c4cd84a10ea4a5efc3a23f911b108d05abbe"
+        }
+      ],
+      "cli_commands": [
+        {
+          "operation": "usage",
+          "exit_code": 0,
+          "status": "PASS"
+        },
+        {
+          "operation": "new",
+          "exit_code": 0,
+          "status": "PASS"
+        },
+        {
+          "operation": "exec",
+          "exit_code": 0,
+          "status": "PASS"
+        },
+        {
+          "operation": "exec",
+          "exit_code": 0,
+          "status": "PASS"
+        },
+        {
+          "operation": "download",
+          "exit_code": 0,
+          "status": "PASS"
+        },
+        {
+          "operation": "stop",
+          "exit_code": 0,
+          "status": "PASS"
+        },
+        {
+          "operation": "usage",
+          "exit_code": 0,
+          "status": "PASS"
+        },
+        {
+          "operation": "usage",
+          "exit_code": 0,
+          "status": "PASS"
+        }
+      ]
+    },
+    {
+      "requested": "G4",
+      "status": "BLOCKED",
+      "classification": "DEVICE_MISMATCH",
+      "observed": {
+        "nvidia_smi": [
+          {
+            "name": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+            "memory_total_mib": 97887,
+            "driver_version": "580.82.07"
+          }
+        ],
+        "torch": {
+          "status": "AVAILABLE",
+          "version": "2.11.0+cu130",
+          "cuda": "13.0",
+          "name": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+          "capability": [
+            12,
+            0
+          ]
+        }
+      },
+      "created": true,
+      "provider_reason": null,
+      "balance_before": 58.9,
+      "balance_after": 58.9,
+      "balance_delta": 0.0,
+      "assignments_after": 0,
+      "cleanup_confirmed": true,
+      "artifacts": [],
+      "cli_commands": [
+        {
+          "operation": "usage",
+          "exit_code": 0,
+          "status": "PASS"
+        },
+        {
+          "operation": "new",
+          "exit_code": 0,
+          "status": "PASS"
+        },
+        {
+          "operation": "exec",
+          "exit_code": 0,
+          "status": "PASS"
+        },
+        {
+          "operation": "stop",
+          "exit_code": 0,
+          "status": "PASS"
+        },
+        {
+          "operation": "usage",
+          "exit_code": 0,
+          "status": "PASS"
+        },
+        {
+          "operation": "usage",
+          "exit_code": 0,
+          "status": "PASS"
+        }
+      ]
+    },
+    {
+      "requested": "H100",
+      "status": "BLOCKED",
+      "classification": "BLOCKED_PROVIDER:H100:[colab] Backend rejected accelerator 'H100'. You may not have quota or entitlement for this accelerator on your account. Try a different one (e.g. --gpu T4) or omit --gpu/--tpu for a CPU runtime.",
+      "observed": null,
+      "created": false,
+      "provider_reason": "[colab] Backend rejected accelerator 'H100'. You may not have quota or entitlement for this accelerator on your account. Try a different one (e.g. --gpu T4) or omit --gpu/--tpu for a CPU runtime.",
+      "balance_before": 58.9,
+      "balance_after": 58.9,
+      "balance_delta": 0.0,
+      "assignments_after": 0,
+      "cleanup_confirmed": true,
+      "artifacts": [],
+      "cli_commands": [
+        {
+          "operation": "usage",
+          "exit_code": 0,
+          "status": "PASS"
+        },
+        {
+          "operation": "new",
+          "exit_code": 1,
+          "status": "FAIL"
+        },
+        {
+          "operation": "stop",
+          "exit_code": 0,
+          "status": "PASS"
+        },
+        {
+          "operation": "usage",
+          "exit_code": 0,
+          "status": "PASS"
+        },
+        {
+          "operation": "usage",
+          "exit_code": 0,
+          "status": "PASS"
+        }
+      ]
+    },
+    {
+      "requested": "A100",
+      "status": "PASS",
+      "classification": "TRANSPORT_ONLY_SCIENCE_UNREVIEWED",
+      "observed": {
+        "nvidia_smi": [
+          {
+            "name": "NVIDIA A100-SXM4-40GB",
+            "memory_total_mib": 40960,
+            "driver_version": "580.82.07"
+          }
+        ],
+        "torch": {
+          "status": "AVAILABLE",
+          "version": "2.11.0+cu130",
+          "cuda": "13.0",
+          "name": "NVIDIA A100-SXM4-40GB",
+          "capability": [
+            8,
+            0
+          ]
+        }
+      },
+      "created": true,
+      "provider_reason": null,
+      "balance_before": 58.9,
+      "balance_after": 58.9,
+      "balance_delta": 0.0,
+      "assignments_after": 0,
+      "cleanup_confirmed": true,
+      "artifacts": [
+        {
+          "name": "transport-check.json",
+          "bytes": 202,
+          "sha256": "10538e7abbb97afffa5cad0a13a6c4cd84a10ea4a5efc3a23f911b108d05abbe"
+        }
+      ],
+      "cli_commands": [
+        {
+          "operation": "usage",
+          "exit_code": 0,
+          "status": "PASS"
+        },
+        {
+          "operation": "new",
+          "exit_code": 0,
+          "status": "PASS"
+        },
+        {
+          "operation": "exec",
+          "exit_code": 0,
+          "status": "PASS"
+        },
+        {
+          "operation": "exec",
+          "exit_code": 0,
+          "status": "PASS"
+        },
+        {
+          "operation": "download",
+          "exit_code": 0,
+          "status": "PASS"
+        },
+        {
+          "operation": "stop",
+          "exit_code": 0,
+          "status": "PASS"
+        },
+        {
+          "operation": "usage",
+          "exit_code": 0,
+          "status": "PASS"
+        },
+        {
+          "operation": "usage",
+          "exit_code": 0,
+          "status": "PASS"
+        }
+      ]
+    }
+  ],
+  "scope": "TRANSPORT_AND_DEVICE_IDENTITY_ONLY_NO_SCIENCE_OR_PERFORMANCE",
+  "not_run": [
+    "H100 kernel/workload (provider refusal)",
+    "G4 workload (default mismatch policy)",
+    "research-length3600s workload",
+    "downstream pin upgrade",
+    "Actions",
+    "paid plan changes",
+    "self-merge"
+  ],
+  "billing": "Existing positive compute-unit balance and provider-enforced access; no purchase/pay/plan change. Rounded balances are not exact monetary charges."
+}
