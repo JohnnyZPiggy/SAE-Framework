@@ -8,7 +8,6 @@ from pathlib import Path
 import subprocess
 import sys
 import tempfile
-import time
 import unittest
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
@@ -38,7 +37,7 @@ class AdapterTests(unittest.TestCase):
         self.sha = self.git('rev-parse', 'HEAD')
 
     def load(self, driver='driver.py', manifest='artifacts.json', sha=None):
-        return load_adapter(self.repo, sha or self.sha, driver, manifest, time.monotonic()+10)
+        return load_adapter(self.repo, sha or self.sha, driver, manifest)
 
     def test_pinned_files_ignore_dirty_adapter_and_manifest(self):
         (self.repo/'driver.py').write_bytes(b'changed\r\n')

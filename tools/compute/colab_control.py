@@ -12,6 +12,8 @@ import tempfile
 import time
 from environment_preflight import PreflightError, preflight, resolve_cli
 SUPPORTED_DEVICES = ('T4', 'L4', 'G4', 'H100', 'A100')
+
+
 def authenticated_usage(output):
     match = re.fullmatch(r'Current balance: (-?\d+\.\d{2}) compute units\r?\n'
                         r'Usage rate: (\d+\.\d{2})/hr\r?\n'
@@ -19,7 +21,9 @@ def authenticated_usage(output):
     if not match or not all(math.isfinite(float(match[i])) for i in (1, 2)):
         return None
     return {'balance': float(match[1]), 'assignments': int(match[3])}
-def load_adapter(repo, sha, driver, manifest, deadline):
+
+
+def load_adapter(repo, sha, driver, manifest):
     def blob(name, suffix):
         path = PurePosixPath(name)
         if not name or path.is_absolute() or '..' in path.parts or '\\' in name or ':' in name or path.suffix != suffix:
@@ -41,6 +45,8 @@ def load_adapter(repo, sha, driver, manifest, deadline):
     if any(not n.endswith('.json') or '/' in n or '\\' in n for n in names):
         raise PreflightError('UNSAFE_ARTIFACT_NAME')
     return blob(driver, '.py'), names
+
+
 def parser():
     p = argparse.ArgumentParser(description=__doc__)
     for name in ('source-sha', 'run-id'):
@@ -60,6 +66,8 @@ def parser():
     for name in ('preflight-only', 'install-local', 'allow-device-mismatch'):
         p.add_argument('--'+name, action='store_true')
     return p
+
+
 def run(args):
     start = time.monotonic()
     task_deadline = start + args.task_seconds
@@ -110,7 +118,7 @@ def run(args):
         if args.preflight_only:
             report['status'] = 'PREFLIGHT_PASS'
             return report
-        code, names = load_adapter(args.repo_path.resolve(), args.source_sha, args.driver, args.artifacts, work_deadline)
+        code, names = load_adapter(args.repo_path.resolve(), args.source_sha, args.driver, args.artifacts)
         transport = tempfile.TemporaryDirectory(prefix='sae-driver-', dir=args.temp_root)
         driver_path = Path(transport.name) / 'driver.py'
         driver_path.write_bytes(code)
@@ -188,6 +196,8 @@ def run(args):
         if owns_out:
             (args.out / 'colab-control.json').write_text(json.dumps(report, indent=2)+'\n', encoding='utf-8')
     return report
+
+
 def run_many(args):
     summary = dict(status='FAIL', source_sha=args.source_sha, runs=[], not_run=[])
     owns_out = False
@@ -223,6 +233,8 @@ def run_many(args):
         if owns_out:
             (args.out/'colab-devices.json').write_text(json.dumps(summary,indent=2)+'\n',encoding='utf-8')
     return summary
+
+
 if __name__ == '__main__':
     args = parser().parse_args()
     result = run_many(args) if args.devices is not None else run(args)
