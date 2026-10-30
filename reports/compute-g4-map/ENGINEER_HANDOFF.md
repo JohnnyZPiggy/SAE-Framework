@@ -63,8 +63,10 @@ No repeated allocation or scientific/performance experiment was performed.
 ## Status and next action
 
 PASS: explicit mapping, existing regressions, live G4 identity/transport/hash,
-post-run readback/cleanup and canonical source evidence. No unexpected FAIL or
-repair in this cycle. NOT_RUN: tensor algorithms/performance, long-duration
+post-run readback/cleanup and canonical source evidence. No unexpected numerical
+or controller FAIL/runtime repair. Report assembly initially omitted pytest.log
+because of Git's ignore rule; it was explicitly force-added and the complete
+manifest regenerated. NOT_RUN: tensor algorithms/performance, long-duration
 work, other GPU probes, Actions, releases, downstream pin adoption.
 H100's observed provider refusal from #66 remains documented, not reclassified
 or retried under #68. No other compute/role/merge authority policy changed.
