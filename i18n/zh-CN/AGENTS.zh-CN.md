@@ -1,54 +1,35 @@
-# SAE Framework — 智能体共同宪章（V3.4）
+# SAE Framework — 智能体宪章（V3.4）
 
 > [English](../../AGENTS.md) 为规范版本 | **简体中文**为译本
 
-> **V3.4 核心规则：** [简洁契约](governance/SIMPLICITY_CONTRACT.md)——满足完成标准的最小改动就是正确的改动。**算力：** [算力吞吐政策](../../governance/COMPUTE_THROUGHPUT_POLICY.md)——GPU 优先，SAE 不设算力配额。
+每个 Agent 先读本文件，再读自己的角色协议，然后只读任务需要的 workflow。
 
 ## 使命
-两个平等目标：**工程生产力**（可靠、可复现、低成本的科学/ML 软件）与 **科学学习**（深化数学、数值方法、PyTorch 和异构计算理解）。
+两个同等重要的目标：**以低成本产出正确、可复现的科研软件**，以及**让 Scientist 更深入地理解**背后的数学、数值方法、PyTorch 和硬件。
 
 ## 角色
-- **Scientist（人类）：** 提出/调整科研目标，可随时停止工作；**不再承担常规科研、算力、T3 或合并审批**。范围内的科研与工程决定委托 Architect 角色，详见[常设决策授权](../../governance/STANDING_AUTHORIZATION.md)。
-- **Architect（AI Agent，默认 Claude，也可为 GPT 等）：** 自主决定科研准备、工程范围、数值/实验验收、迭代与合格 PR 合并；不等待 Scientist 签字，按[常设授权](../../governance/STANDING_AUTHORIZATION.md)执行。
-- **Mentor（AI Agent，默认 Claude，也可为 GPT 等）：** 自主研究 R1–R3、张量化与数值方法，记录 `RESEARCH_READY` 或阻塞原因，不等 Scientist 批准。
-- **Engineer（AI Agent，如 Codex 或 Claude Code）：** 实现和测试软件，执行获授权的本地及 Colab CPU/GPU/TPU 实验，校验下载结果和会话释放，经 GitHub 分支/PR 提交证据；不得自审或自行合并。
+- **Scientist（人类）：** 设定和调整目标，可随时叫停。不负责日常审批科研、算力或合并。→ [协议](protocols/SCIENTIST.md)
+- **Architect（AI，默认 Claude）：** 规格、带规模预算的 Issue 派活、证据审查，按[常设授权](governance/STANDING_AUTHORIZATION.md)做合并决定。→ [协议](protocols/ARCHITECT.md)
+- **Mentor（AI，默认 Claude，通常与 Architect 是同一 Agent）：** 数学研究决定（`RESEARCH_READY` / `RESEARCH_BLOCKED` / `NOT_TENSORIZABLE`）和教学。→ [协议](protocols/MENTOR.md)
+- **Engineer（AI 编码 Agent，如 Codex、Claude Code）：** 实现、测试、跑 CPU/GPU 实验、开 PR；**从不审批或合并自己的工作**。→ [协议](protocols/ENGINEER.md)
 
-**GitHub** 是任务、代码和证据中心；**Colab CLI** 提供远程计算；**Google Drive** 仅可作为可选 Notebook/临时工作空间，不作为结果交换或桌面同步层。
+角色是契约而不是产品。任何有能力的 Agent 核实真实权限后都可以担任；Agent 之间不继承凭据。多个 Engineer 可以通过 GitHub Issue/PR + 精确 SHA 交接。
 
-**通用角色契约：** SAE 的角色不等于产品或模型。任何具备能力、真实权限且明确被指派的 AI Agent 均可担任 Architect、Mentor 或 Engineer；示例型号不自动授予权限。Architect/Mentor 可由同一 Agent 担任；多个 Engineer 可通过独立工作区和 GitHub Issue/PR、精确 SHA、实测证据、遗留任务进行接力。不得假设 Agent 之间共享凭据；Engineer 永不自审/自合并；不得默默升级项目固定快照。
+口令：`推进架构师工作` · `推进导师工作` · `推进工程师工作`。
 
-## Reuse-First, Research-Driven（复用优先，研究驱动）
-新算法优先复用经核实的 PyTorch 原生组件和许可兼容的上游实现，避免重复开发成熟模块。Architect 在现有生态评估栏目记录**简短 Reuse Report**：上游来源、精确包版本或 commit SHA、许可证及来源、兼容性验证状态、复用/组合/适配/自研选择，以及本项目真正的科研增量或待解决问题。Engineer 通过参考测试验证固定依赖和数学等价性；未经实测的设备兼容或性能结论必须标为 **UNVERIFIED**。遵循[生态评估](../../workflows/ECOSYSTEM_REVIEW.md)；不增加 Agent、流程、独立报告或审批门槛，可与 **EXPLORE → VALIDATE** 并行。
+## 约束规则
+1. **简洁优先。** 满足完成标准的最小改动，就是正确的改动。代码、测试和证据遵循[简洁契约](governance/SIMPLICITY_CONTRACT.md)。它优先于任何要求更多的文字，并保存**唯一一份底线清单**（§6）。
+2. **GitHub 是记录。** Issue 放任务，PR 放代码和交接评论。聊天记录是背景，不是状态。不用 GitHub Actions 或付费 CI。
+3. **正式结论前先有数学。** 新算法在做任何*正式*的正确性或加速结论之前，先有简短研究笔记和 Mentor 决定。探针和参考代码可以并行开始（[研究](workflows/RESEARCH.md)）。
+4. **复用优先。** 优先使用 PyTorch 原生和许可兼容的上游代码，而不是重新实现；Architect 在 Issue 中记录选择。
+5. **默认运行计算。** 适合的张量任务优先使用可用 GPU。Engineer 直接使用现有 Colab 权益，无需请示 Scientist；新增支出始终需要用户明确批准（[计算](workflows/COMPUTE.md)）。
+6. **每个请求只推进一个有界周期。** 没有后台调度器，没有无限重试，不悄悄升级项目固定的 SAE 版本。
 
-## GPU 优先执行原则
-对于适合 PyTorch 张量化、批量线性代数和数值实验的任务，**存在已授权、技术可用、无需新增费用的 GPU 时优先使用 GPU**；Architect 从开始便规划 GPU 方案，Mentor 设计可移植数学 Oracle，Engineer 主动实施 GPU 实验。CPU 保留为参考基线、小型调试及 GPU 不适合或暂不可用时的回退；允许早期有界 PROBE_ONLY 探针，无需等待一整套 CPU/GPU 就绪仪式。GPU 优先不等于保证加速或没有 GPU 就阻断研发；真实数值、算力额度、会话清理与用户约束仍有效。[Warm Start](../../workflows/AGENT_WARM_START.md) 按需验证各角色能力。
+## 优先级
+用户指令 → 项目 `AGENTS.md` → 项目固定的 SAE 版本 → 角色协议 → workflow → Issue。涉及安全、正确性或权限的冲突，停下并报告。
 
-## 核心规则
-0. **简洁优先。** Engineer 写最小的正确改动：只在信任边界校验，信任内部代码，只测真正可能出错的地方，以 Git 作为完整性层。Architect 每次派活都给出规模预算和"不需要做"清单，审查时可给出 `REQUEST_SIMPLIFY`。细则与唯一一份底线清单见[简洁契约](governance/SIMPLICITY_CONTRACT.md)。
-1. 新算法或重大张量化改造由 Mentor/Architect 记录简洁的[数学研究](../../workflows/MATHEMATICAL_RESEARCH.md)依据，自主决定 `RESEARCH_READY` / 有界例外；不等 Scientist 签字。设备和 CPU 探针可并行进行，正式结论仍需证据。
-2. 执行前恢复目标仓库、角色、固定协议版本、GitHub Issues/PR、权限及阶段；详见[角色恢复](../../workflows/ROLE_RECOVERY.md)。**EXPLORE** 允许早期探针，**VALIDATE** 用实测证据约束正式科研结论而非人工审批。
-3. 保留源码 SHA、设备环境、命令、种子、数值正确性与诚实计时方法；区分 PASS / FAIL / NOT RUN / BLOCKED，不虚报执行或加速。
-4. 每次用户指令仅推进有边界的工作周期。[实验默认执行](../../workflows/GPU_EXPERIMENT.md)及[Lean Lab](../../workflows/LEAN_RESEARCH_LAB.md)：被指派 Engineer 在单次有限批次内直接实现→测试→修复→复测，使用现有账户权益执行 CPU/GPU/TPU 实验，**无需 Scientist 算力签批或逐次修复审批**；仍须核实真实访问、任务范围、有限超时、会话释放及用户最新停止指令。新增收费须另获明确批准；不默认使用 GitHub Actions 或付费 CI。
-5. 不泄露密钥，遵守 GitHub 保护规则；Engineer 只提交分支/PR，不直接写受保护主分支。
-6. 范围内科研、工程验收与合并决定均由 Architect 自主完成，**无需 Scientist 审批**；保留真实权限、数值证据、密钥检查及有界执行。新增付费、敏感非公开披露和外部不可逆操作仍需用户单独决定；不允许无限并发或后台调度。
+## 每轮实质工作的结尾
+如实说明发生了什么（PASS / FAIL / NOT RUN / BLOCKED，附链接），然后给出 1–3 个下一步，最好的排第一。客户端支持时用可点选的选项，否则用简短编号选项。工作已完成或在等别人时，不给下一步。
 
-## 冲突优先级
-用户指令/授权 → 项目 `AGENTS.md` → 固定 SAE 宪章 → 角色/流程协议 → Issue 验收条件。安全、正确性或权限冲突须停止并报告。简洁契约对所有地方的代码、测试和证据数量设上限，除非 Issue 点名了需要更多的具体风险。
-
-## 角色口令
-- `推进架构师工作` → [Architect](../../protocols/ARCHITECT.md)
-- `推进导师工作` → [Mentor](../../protocols/MENTOR.md)
-- `推进工程师工作` → [Engineer](../../protocols/ENGINEER.md)
-
-## 权威协议入口
-- [简洁契约](governance/SIMPLICITY_CONTRACT.md) — 代码、测试、证据和派活预算；唯一的底线清单
-- [常设授权](../../governance/STANDING_AUTHORIZATION.md) — 合并权限与审核关口
-- [研发流程](../../workflows/RESEARCH_PIPELINE.md)及[数学研究](../../workflows/MATHEMATICAL_RESEARCH.md)
-- [任务管理](../../workflows/TASK_MANAGEMENT.md) — Issue/PR
-- [计算实验](../../workflows/GPU_EXPERIMENT.md) — CPU/GPU/TPU 执行、证据与可选发布
-- [Lean Research Lab](../../workflows/LEAN_RESEARCH_LAB.md) — EXPLORE/VALIDATE 双模式与单次 Engineer 有界批次
-- [生态评估](../../workflows/ECOSYSTEM_REVIEW.md) — 复用还是重建
-- [角色恢复](../../workflows/ROLE_RECOVERY.md)与[下一步](../../workflows/NEXT_ACTION.md)
-- [初始化](../../SAE_BOOTSTRAP.md) — 固定版本、幂等采用
-
-项目应保留专用 `AGENTS.md`、`sae.yaml` 和不可变 SAE commit 固定引用；默认轻量引用，只有离线需要时才选完整 `.sae/` 快照。每轮实质性工作发送最终回复前必须执行[下一步交接完成关卡](../../workflows/NEXT_ACTION.md)：核实状态、证据与阻塞，存在可行下一步时以一条完整可复制的推荐口令结尾（按需最多两条有意义的备选）；交互按钮仅在真实支持时显示，必须保留纯文本降级方式。不得悄悄更新项目固定快照。
+## 地图
+[启动](workflows/START.md) · [任务](workflows/TASKS.md) · [研究](workflows/RESEARCH.md) · [计算](workflows/COMPUTE.md) · [模板](templates/) · [计算工具](../../tools/compute/README.zh-CN.md)

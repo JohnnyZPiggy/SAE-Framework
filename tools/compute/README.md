@@ -1,106 +1,47 @@
-# Local preflight and bounded Colab transport
+# Colab compute tools
 
 > English | [简体中文](README.zh-CN.md)
 
-Status for Issue #66: **OFFLINE_VALIDATED + LIVE_MULTI_GPU_PROBED**. The verified CLI0.7.4 request set is **T4, L4, G4, H100, A100**; it is not a guarantee of account entitlement or hardware availability. At tested source `d4e4185d153976e7b966b7a4a1623c6cf80543cb`, T4/L4/A100 transport passed; G4 was observed as RTX PRO6000 Blackwell and correctly blocked as DEVICE_MISMATCH, and H100 was refused by the provider. All five attempts completed authenticated-zero cleanup and post-run readback. See [per-type evidence](../../reports/compute-multi-gpu/ENGINEER_HANDOFF.md). This is three standalone Python files, not a package, daemon, bootstrap installer or publisher. Algorithms and scientific acceptance belong to the project driver; [source/license/dependency provenance](NOTICE.md).
+Three standalone Python files: a local preflight and a bounded Colab GPU controller. They are not a package, daemon or publisher. Project drivers own the science. Provenance and license: [NOTICE](NOTICE.md).
 
-Historical [PR #48](https://github.com/JohnnyZPiggy/SAE-Framework/pull/48) tested source `8081b6e02eee0754903898d5afe5b112f1bb23d0` with a T4 request but no observed identity. That older evidence does not establish the new multi-device interface.
+| File | Does |
+|---|---|
+| `environment_preflight.py` | Checks the exact commit, dirty state and writable temp paths; exports the committed tree (standard library + Git) |
+| `colab_control.py` | One GPU session per device type: zero-session check → allocate → probe device → run driver → download → stop → confirm zero |
+| `kernel_smoke.py` | Remote probe: prints `KERNEL_REACHABLE` and one `DEVICE_OBSERVED` JSON line (from `nvidia-smi`, plus torch if importable) |
 
-| Component | Dependency | Scope |
-|---|---|---|
-| `environment_preflight.py` | Python standard library + installed Git | Exact commit, dirty state, blob export, writable non-synced temporary paths |
-| `colab_control.py`, `kernel_smoke.py` | Standard library + existing `colab`; remote `nvidia-smi`, optional installed torch | One bounded GPU session at a time, observed identity, transport and cleanup |
-| Explicit `--install-local` | Existing Python pip/build backend | Optional no-deps temporary project install; never default |
-| Project adapter | Project chooses dependencies | Scientific code, exact-source install, real device checks and outputs |
+**Requires** Colab CLI **0.7.4**, already authenticated, in the shell that launches the run (on Windows, inside WSL). Supported requests: `T4`, `L4`, `G4`, `H100`, `A100`. G4 is matched against the observed `RTX PRO 6000`. Verified live: T4, L4, A100, G4. H100 was refused by the provider.
 
-Earlier local evidence used Windows Python3.12.14 and WSL Python3.12.3; current versions are recorded with each run. Only audited CLI0.7.4 is accepted for authenticated readback. `--device` defaults to T4; unknown types raise `UNSUPPORTED_DEVICE` before CLI invocation (the CLI itself silently falls back to A100 on unknown names). CPU/TPU/XLA runners and native compilation are not implemented here.
-
-## Pinning and local-only use
-
-For future projects, copy/reference only the three runtime files from an **exact SAE commit/tag** with their MIT notice. Keep them adjacent. Record that tool pin separately from the algorithm's `--source-sha`; Git identifies the runtime files. No floating `main`, migration of existing project `.sae/`, all-document-snapshot copy, package publishing or bootstrap/publisher changes are required.
-
-From the same shell that will launch production (an existing WSL login shell if needed):
-
+## Use
+Local check first; this never allocates:
 ```sh
 python tools/compute/colab_control.py --preflight-only --cli colab \
-  --repo-path path/to/project --source-sha CANDIDATE_40_HEX_SHA \
-  --run-id local-check-1 --out local-evidence/new-run
+  --repo-path path/to/project --source-sha <40-hex> --run-id check-1 --out out/check-1
 ```
-
-Replace the path/SHA with an existing local project checkout and full immutable commit. Preflight only calls CLI `version` and local Git/filesystem operations; no credentials, sessions, usage, allocation, driver execution or login fallback. Exact export uses `ls-tree`/`cat-file` bytes independent of dirty CRLF checkout. `.sae/` is excluded from temporary project export; its immutable documentation is not copied into every command. Other regular tracked files are exported; symlinks/submodules/unsafe paths are rejected. Temporary build/cache paths must be writable, outside checkout and Dropbox; `--temp-root` overrides OS temp without global settings changes. `--install-local` is explicit and uses existing pip/build requirements with no dependency installation; default is no install.
-
-## Project-owned adapter contract
-
-Live execution is **not needed** to use the example or complete local validation. In a separately scoped compute task, add `--driver scripts/my_driver.py --artifacts experiments/artifacts.json` and remove `--preflight-only`. Both paths must refer to regular committed files **inside `--repo-path` at `--source-sha`**. Absolute/traversal paths and symlink adapters are rejected. Dirty local adapters are ignored; exact Git blobs are used. The self-contained driver is temporarily staged outside the checkout using its exact Git bytes. It receives `SAE_CANDIDATE_SHA` with the verified project commit, and decides how to install/run project code without GitHub writes. Generic transport does not contain repository URLs or algorithm installation logic.
-
-The project's small manifest is:
-
-```json
-{"artifacts": [{"name": "measurement.json"}]}
-```
-
-## Requested and observed device; sequential types
-
-The kernel first prints `KERNEL_REACHABLE`, then exactly one `DEVICE_OBSERVED`
-JSON line. It reads `nvidia-smi --query-gpu=name,memory.total,driver_version
---format=csv,noheader` (10s subprocess bound). If torch imports, it also records
-torch/CUDA versions, device0 name and capability. Missing/malformed identity
-blocks work; no torch installation is attempted.
-
-`device_requested` and `device_observed` are separate fields. Every observed
-name must match the requested family: G4 maps to RTX PRO 6000, and the other
-families use their requested token. Observed names remain unchanged. A mismatch sets `classification=DEVICE_MISMATCH` and skips work by
-default. The explicit `--allow-device-mismatch` CLI flag opts in. Even then the mismatch classification
-is preserved. The driver receives `SAE_DEVICE_REQUESTED` and JSON
-`SAE_DEVICE_OBSERVED` in addition to `SAE_CANDIDATE_SHA`.
-
-Use either `--device T4` or `--devices T4,L4,G4,H100,A100`. The latter creates a
-new root output directory with per-type subdirectories and `colab-devices.json`.
-The root run ID is at most35 characters (single-type40), reserving the suffix.
-Each type completes its own allocate/probe/work/download/stop/zero/consumption
-cycle before the next starts. Allocation failures record `ALLOCATION_FAILED`; other types continue only after
-a successful stop and authenticated zero readback. Unverified cleanup/readback stops the sequence and
-marks remaining types NOT_RUN. No overlapping sessions, automatic retry or
-purchase. CLI support does not establish billing entitlement: existing positive
-balance and provider-enforced access remain mandatory; uncertain external
-billing boundaries must be reported BLOCKED_BILLING_UNCERTAIN, not bypassed.
-An operator interrupt stops the remaining sequence after the active cycle's cleanup.
-
-For research-sized work explicitly select finite budgets, for example
-`--task-seconds 14400 --allocation-seconds 10800 --work-timeout 3600
---cleanup-seconds 120`. Budgets apply **per type**, not to an unbounded scheduler.
-Existing adopted projects keep their old pins; adopting this revision requires
-a separate project pin change, not a side effect of running the controller.
-
-The manifest lists `{name}` entries ending in `.json`, without path separators;
-artifacts are downloaded from `/content/<name>`. Each downloaded JSON must have
-exact `source_sha` and `status: "PASS"`. The controller records its local SHA-256;
-remote `ARTIFACT` stdout lines are not required or cross-checked.
-
-This is **not a numerical oracle**: `PASS` with `TRANSPORT_ONLY_SCIENCE_UNREVIEWED` means transport/provenance and declared status passed, not GPT scientific acceptance. The project must preserve independent mathematical/numerical evidence. Artifact payloads remain project-owned and are not secret-scrubbed by transport; separate publication must screen them.
-
-The [example driver](../../examples/compute_adapter/driver.py) and [manifest](../../examples/compute_adapter/artifacts.json) only emit a transport fixture, explicitly `live_gpu/tpu/compilation: NOT_RUN`. A regression test runs it in a local temporary directory with a real local Git SHA, requiring no provider allocation or package install:
-
+Live run with a project-committed driver and manifest:
 ```sh
-python -m unittest discover -s tools/compute/tests -v
+python tools/compute/colab_control.py --cli colab --repo-path path/to/project \
+  --source-sha <40-hex> --driver scripts/driver.py --artifacts experiments/artifacts.json \
+  --devices T4,L4,A100,G4 --run-id m2b-1 --out out/m2b-1
 ```
+For research-sized runs, set budgets explicitly, e.g. `--task-seconds 14400 --allocation-seconds 10800 --work-timeout 3600 --cleanup-seconds 120`. Budgets apply per device type.
 
-## Bounds and evidence
+## Adapter contract
+- `--driver` and `--artifacts` are committed files inside `--repo-path`, read from the exact `--source-sha` (dirty copies are ignored).
+- The manifest is `{"artifacts": [{"name": "result.json"}]}`. Names end in `.json` and contain no path separators. Each is downloaded from `/content/<name>` and must contain the exact `source_sha` and `"status": "PASS"`.
+- The driver receives `SAE_CANDIDATE_SHA`, `SAE_DEVICE_REQUESTED` and `SAE_DEVICE_OBSERVED` (JSON).
+- A device mismatch is `BLOCKED` unless you pass `--allow-device-mismatch`.
 
-For allocation failures, see the [offline CLI 0.7.4 call-chain diagnosis](diagnostics/README.md). HTTP request timeouts differ from the outer process bound; an outer timeout cannot identify GET versus POST. Do not poll `status` during allocation: it synchronizes remote assignments and may modify local session state. This controller has no status observer loop.
+Example: [examples/compute_adapter](../../examples/compute_adapter/). It emits a transport fixture only.
 
-New output directory and explicit run ID are required; existing output is never overwritten. Before allocation, unknown/unrelated active sessions or unconfirmed positive entitlement block. Every fresh `new` gets `kernel_smoke.py` with a default 30-second remote/35-second external limit, capped by remaining main budget. Missing marker, error or timeout records `KERNEL_PROBE_FAILED`, skips workload and enters cleanup. Later workloads can still hang; they have separate finite external bounds. No assertion that this fixes the original pilot hang.
+## Safety behaviour
+- Before allocating, an authenticated `usage` readback must show **0 active assignments and a positive balance**. Otherwise there is no allocation.
+- After any allocation attempt, on success, failure or Ctrl-C: `stop`, then a fresh readback confirming 0 assignments. Unconfirmed release is `CLEANUP_FAILED` and halts a multi-device sequence.
+- One session at a time; finite timeouts; no automatic retry; no purchase or billing command.
+- Reports (`colab-control.json`, `colab-devices.json`) hold status, SHA, requested/observed device, assignments and balance before/after, artifact SHA-256 and command exit codes. Raw CLI output is never written: it can contain tokens or session URLs.
+- `PASS` here means transport and provenance passed. It is **not** scientific acceptance; the project keeps its own numerical evidence.
 
-Finite defaults stay task5400s, allocation-window600s, cleanup reserve60s, kernel30s and work240s. Timeouts must be finite and positive. The allocation window bounds the **entire live session**, reserving cleanup; the `new` subprocess remains capped at120s, kernel external bound is kernel+5s and workload external bound is work+5s. At most two stop+authenticated-zero checks share the cleanup reserve. The successful stop/zero readback records balance_after and assignments_after;
-the multi-type loop stops if cleanup cannot be confirmed. Unknown release is CLEANUP_FAILED, never PASS. OS termination or provider/network failure can still prevent release; mocks do not prove live cleanup.
-
-Balances are the CLI's rounded compute-unit observations, not an invoice or a
-claim of exact monetary charges. No plan/top-up/pay-as-you-go command is used.
-
-Readback is pinned to the audited CLI **0.7.4** path: `usage` directly performs authenticated `GET /tun/m/ccu-info`, validates the response and formats balance/rate/assignment count. It does not use `sync_sessions()` or swallow authentication SystemExit. Before allocation, require exit 0, the complete three-line stdout contract, assignment count 0 and positive balance. After stop, require a fresh complete usage response with count 0 **and successful stop**; cleanup does not require positive balance. `sessions` exit 0/empty text, empty stdout, warnings, duplicates, malformed output, auth failure, unsupported CLI version and timeouts cannot establish authenticated zero. They block allocation with `READBACK_UNVERIFIED` or leave `cleanup_confirmed=false` / `CLEANUP_FAILED`; nonzero assignments also block. Raw stderr is never parsed as success evidence. A positive usage balance is existing entitlement, not proof of exact charges. This trusts the audited installed CLI/Google authenticated-response semantics, not arbitrary executables reporting that version, and does not attest concurrent account activity after the response. No new provider API, credential handling or vendor patch is introduced.
-
-Reports contain status/error, source SHA, run ID, requested/observed device,
-creation/cleanup state, pre/post balance and assignment counts, downloaded artifact
-SHA-256, total seconds, and command operation/status/exit_code. Raw CLI output/argv,
-private roots, OAuth/session URLs and environment dumps are omitted. No GitHub write
-occurs in this tool. Issue66 establishes observed GPU identity and transport only; GPU science, TPU and compilation remain NOT_RUN. [Local evidence](../../reports/compute-issue38/summary.md) records exact tested source and observed tests; GPT reviews and decides merge independently.
+## Test
+```sh
+python -m unittest discover -s tools/compute/tests
+```

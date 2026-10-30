@@ -1,205 +1,63 @@
-# SAE Framework V3.4
+# SAE Framework
 
-> **V3.4 新增——[简洁契约](i18n/zh-CN/governance/SIMPLICITY_CONTRACT.md)：** Engineer 写最小的正确改动（只在信任边界校验，只测真正可能出错的地方，以 Git 作为完整性层）；每次派活都附规模预算和"不需要做"清单；审查可给出 `REQUEST_SIMPLIFY`。Claude 为默认 Architect + Mentor。算力仍为 GPU 优先（[政策](governance/COMPUTE_THROUGHPUT_POLICY.md)）。
+> [English](README.md)（规范版本）| 简体中文
 
-> [English](README.md) 为规范版本 | 简体中文
+**Scientist–Architect–Engineer** 是一套以 GitHub 为中心、让一位人类和几个 AI Agent 协作开发数学 / PyTorch 科研软件的方法。两个同等重要的目标：**以低成本产出正确、可复现的软件**，以及**让 Scientist 更深入地理解**背后的数学、数值方法和硬件行为。
 
-**Scientist–Architect–Engineer** 是面向数学算法、PyTorch 科学计算和 ML 工程的 GitHub-first 多 Agent 协作框架。两个**同等重要**的目标：**工程生产力**（可靠、可复现、低成本）与**科学学习**（数学、数值计算、PyTorch 和异构计算能力）。
-
-## 通用 AI Agent 角色
-
-SAE 的角色由**职责、能力与权限**定义，而非绑定具体模型：**Scientist**（人类）、**Architect**（AI Agent，默认 Claude，也可为 GPT 等）、**Mentor**（AI Agent，默认 Claude，也可为 GPT 等）、**Engineer**（AI 编码 Agent，例如 Codex、Claude Code）。Architect 和 Mentor 可以由同一 Agent 担任；多个 Engineer 可以轮流接力，但必须经 GitHub Issue/PR、精确 SHA 和测试证据交接，使用独立工作区。更换 Agent 不会自动转移凭据或授权；Engineer 不得自审或自行合并。已有项目固定快照不自动升级。
-
-## 组织架构图
-
-未来项目可使用[本地预检与有界 Colab 传输工具](tools/compute/README.zh-CN.md)：基于 [SAE PR #48](https://github.com/JohnnyZPiggy/SAE-Framework/pull/48)，已获得 **SCOPED LIVE_READY（Colab CLI 0.7.4、请求 T4 的 transport-only 路径）**；该次纯传输实验未直接核实实际设备型号。driver 与 manifest 由算法项目提供；不会迁移旧项目的固定快照。
-
-![SAE V3.3 — 通用 AI Agent 卡片式科研与工程组织架构图](docs/figures/SAE_Framework_V3.3.zh-CN.svg)
-
-[查看高清 SVG 矢量原图](docs/figures/SAE_Framework_V3.3.zh-CN.svg)
-
-[可编辑 Mermaid 源码 (.mmd)](docs/figures/SAE_Framework_V3.3.zh-CN.mmd)
-
-<details>
-<summary>展开 GitHub 原生可渲染的 Mermaid 架构图</summary>
-
-```mermaid
-flowchart TB
-    subgraph OBJECTIVES["01 · 双重目标 / Two Equal Objectives"]
-      direction LR
-      O1["工程生产力<br/>正确 · 可复现 · 低成本"]
-      O2["科学学习<br/>数学 · 数值方法 · ML Systems"]
-    end
-
-    S["Scientist · 人类<br/>设定目标 · 反馈 / 随时叫停"]
-
-    subgraph PEOPLE["02 · 科研与工程角色"]
-      direction LR
-      G["Architect + Mentor · AI Agent（如 GPT）<br/>自主科研决策 · 快速派单<br/>证据验收 · 合格 PR 合并"]
-      E["Engineer · AI Agent（如 Codex / Claude Code）<br/>实现 / 测试 · 本地 CPU<br/>默认执行 Colab CPU / GPU / TPU"]
-    end
-
-    H[("GitHub · 唯一协作与证据中心<br/>Issues · Code · PRs · Source SHA · Reports")]
-
-    subgraph COMPUTE["03 · Engineer 执行 / Evidence Loop"]
-      direction LR
-      L["本地 CPU<br/>安装 · 数值正确性 · 回归测试"]
-      C["Colab CLI / WSL2<br/>CPU · GPU · TPU*<br/>运行 / 下载校验 / 会话清理"]
-    end
-
-    P["固定源码 SHA → 无 GitHub 写入的 Benchmark<br/>→ 可选的 Architect 审查安全证据 PR"]
-    D["Google Drive<br/>可选临时 Notebook 空间"]
-
-    O1 --> S
-    O2 --> S
-    S <-->|提出目标 / 反馈 / 叫停| G
-    S -.->|无常规审批队列| E
-    G <-->|Issue 规格 / 审核反馈| H
-    E <-->|工程代码 / 证据 PR| H
-    G <-->|循环协作| E
-    E --> L
-    E -->|默认执行现有算力| C
-    L --> P
-    C --> P
-    P -.->|核验证据，经 PR 回流| H
-    D -.->|仅临时文件| C
-    H -.->|新证据触发下一轮研究| G
-
-    classDef goal fill:#EFF5FC,stroke:#9EB9D8,color:#243F5B,stroke-width:1.5px
-    classDef human fill:#FFF4E2,stroke:#DDB875,color:#6E4820,stroke-width:2px
-    classDef agent fill:#EEF2FF,stroke:#9FA8E7,color:#2D3D73,stroke-width:1.5px
-    classDef engineer fill:#EAF8F5,stroke:#78B8AD,color:#164E4B,stroke-width:1.5px
-    classDef github fill:#F3EDFB,stroke:#B19ACF,color:#4E3974,stroke-width:2px
-    classDef compute fill:#F2F7FA,stroke:#B1C6D4,color:#274659,stroke-width:1.5px
-    classDef scratch fill:#F7F7F9,stroke:#C8CBD0,color:#66717D,stroke-dasharray:5 4
-    class O1,O2 goal
-    class S human
-    class G agent
-    class E engineer
-    class H github
-    class L,C,P compute
-    class D scratch
-```
-
-</details>
-
-上方中英文 SVG 卡片图展示当前**通用 AI Agent 角色架构**：双重目标 → 人类 Scientist → Architect 与 Mentor（例如 GPT）→ 可轮流接力的 Engineer（例如 Codex、Claude Code）→ GitHub 共享证据和本地/远程执行层。图中的卡片、图标、文字和箭头均为独立矢量元素，不依赖外部图片、脚本、字体文件或网络资源。上方 Mermaid 是另一种**逻辑视图**；链接的 `.mmd` 保留历史图的编辑源码，并非新版卡片 SVG 的源文件。架构图不代表相关计算实验已经验收。
-
-*TPU/PyTorch-XLA 与自动发布仍须实测。*
+**当前版本：V3.4。** 核心规则是[简洁契约](i18n/zh-CN/governance/SIMPLICITY_CONTRACT.md)：*满足完成标准的最小改动，就是正确的改动。*
 
 ## 角色
-- **Scientist（人类）：** 提出或调整科研目标、随时叫停，**不再负责日常数学、实验、资源、T3 或 PR 审批**。
-- **Architect（AI Agent，默认 Claude，也可为 GPT 等）：** 自主决定数学研究、科研准备、工程/实验验收、迭代和合格 PR 合并，依[常设授权](governance/STANDING_AUTHORIZATION.md)执行。
-- **Mentor（AI Agent，默认 Claude，也可为 GPT 等）：** 研究数学结构、张量化与数值方法，指导科研学习。
-- **Engineer（AI Agent，例如 Codex、Claude Code）：** 实现、测试并默认执行现有账户本地 CPU 和 Colab CLI CPU/GPU/TPU 实验，校验结果、释放资源，经 GitHub 分支/PR 提交证据；不自合并。
 
-**GitHub** 是任务、代码与证据中心；**Colab CLI** 提供远程计算；**Drive** 只作可选轻量 Notebook 工作空间，不同步实验结果。
+| 角色 | 默认由谁担任 | 负责 | 从不 |
+|---|---|---|---|
+| **Scientist** | 你（人类） | 设定目标、调整方向、随时叫停 | 日常审批科研、算力或合并 |
+| **Architect + Mentor** | Claude | 数学研究、规格、带预算派活、审查证据、合并 | 自己写生产代码再自己认证 |
+| **Engineer** | Codex（或 Claude Code） | 实现、测试、跑 CPU/GPU 实验、开 PR | 审批或合并自己的工作 |
 
-## 工作模式
-Mentor/Architect 自主判断简明[数学结构研究](workflows/MATHEMATICAL_RESEARCH.md)，与 Architect [生态复用评估](workflows/ECOSYSTEM_REVIEW.md)、参考实现和有界 `PROBE_ONLY` 探针并行 → Engineer 实现/数值测试/直接实验 → GitHub 证据 PR → Architect 审核、迭代或合并，**无需 Scientist 逐环节审批**。可以多轮返回数学研究，不是固定单向流水线。
+角色是契约而不是产品，任何有能力的 Agent 都可以担任。口令：`推进架构师工作` · `推进导师工作` · `推进工程师工作`。
 
-实验保留**三个独立阶段**：固定源码 SHA 安装、**不写 GitHub** 的 Benchmark、可选且经 Architect 审核的安全非敏感报告发布。详见[计算实验协议](workflows/GPU_EXPERIMENT.md)和[保留历史文件名的兼容入口](workflows/COLAB_TWO_COMMAND.md)。
+```mermaid
+flowchart LR
+    S["Scientist<br/>目标 · 叫停"] -->|目标| A["Architect + Mentor<br/>数学 · 带预算的 Issue · 审查 · 合并"]
+    A -->|Issue：完成标准、<br/>S/M/L 预算、必需测试、<br/>不需要做| E["Engineer<br/>最小的正确改动"]
+    E -->|PR + 一条交接评论| A
+    E --> C["本地 CPU / Colab GPU<br/>单会话 · 确认清理"]
+    A -.->|ACCEPTED / REQUEST_CHANGES /<br/>REQUEST_SIMPLIFY| E
+```
 
-## 可选：一键继续下一轮
-当前 ChatGPT 客户端支持原生交互时，Architect/Mentor 每轮完成后可展示 2～3 个 **SAE · 下一步行动** 可点击选项；点击即可在当前对话提交完整指令。它不控制外部 Engineer 桌面窗口，也不改变 SAE 授权和科研验收标准。详见 [Scientist One-Click Next Actions](workflows/SCIENTIST_ONE_CLICK_NEXT_ACTIONS.md)；无法提供原生控件时保留简短指令。
+## 工作流程
+1. **Architect** 写一个 Issue，写明：
+   - 目标和数学契约；
+   - 完成标准；
+   - 规模预算（S ≤ 50 / M ≤ 200 / L ≤ 500 行）；
+   - 必需测试；
+   - "不需要做"清单。
+2. **Engineer** 做最小的正确改动，运行必需测试（需要时跑 GPU），开一个 PR，附一条交接评论。
+3. **Architect** 先审规模，再审正确性，给出 `ACCEPTED`、`REQUEST_CHANGES` 或 `REQUEST_SIMPLIFY`。符合条件的 PR 按[常设授权](i18n/zh-CN/governance/STANDING_AUTHORIZATION.md)合并。
 
-## 快速开始
-阅读[共同宪章](i18n/zh-CN/AGENTS.zh-CN.md)与[初始化协议 V3.3](i18n/zh-CN/SAE_BOOTSTRAP.md)。采用[项目 AGENTS](examples/project/AGENTS.md)、[sae.yaml](examples/project/sae.yaml)，固定到**真实不可变 SAE commit SHA**；旧项目不自动升级。
+GitHub Issue 和 PR 是唯一的共享记录。不用 GitHub Actions；计算在 Engineer 本机和现有 Colab 权益上进行。
 
-| 口令 | 用途 |
-| --- | --- |
-| `推进导师工作` | 数学研究、科学学习 |
-| `推进架构师工作` | 设计、派单、审核、决定合并 |
-| `推进工程师工作` | 实现、直接实验、提交 PR 证据 |
+## 仓库地图
 
-口令是用户触发的有边界工作周期，不代表后台自主服务。不默认使用 GitHub Actions/付费 CI、不泄密、不虚报实验、不通过 Drive 同步结果。
+| 路径 | 内容 |
+|---|---|
+| [AGENTS.md](i18n/zh-CN/AGENTS.zh-CN.md) | 每个 Agent 最先读的宪章 |
+| governance/ | [简洁契约](i18n/zh-CN/governance/SIMPLICITY_CONTRACT.md) · [常设授权](i18n/zh-CN/governance/STANDING_AUTHORIZATION.md)（合并范围、安全、支出） |
+| protocols/ | 每个角色一页：[Scientist](i18n/zh-CN/protocols/SCIENTIST.md) · [Architect](i18n/zh-CN/protocols/ARCHITECT.md) · [Mentor](i18n/zh-CN/protocols/MENTOR.md) · [Engineer](i18n/zh-CN/protocols/ENGINEER.md) |
+| workflows/ | [启动](i18n/zh-CN/workflows/START.md)（新会话、项目采用）· [任务](i18n/zh-CN/workflows/TASKS.md)（Issue、PR、审查）· [研究](i18n/zh-CN/workflows/RESEARCH.md)（数学、复用、学习）· [计算](i18n/zh-CN/workflows/COMPUTE.md)（CPU/GPU 运行） |
+| templates/ | Issue、PR、研究笔记、运行摘要 |
+| [tools/compute/](tools/compute/README.zh-CN.md) | Colab 控制器：有界单 GPU 会话、实际设备观测、保证清理 |
+| [examples/](examples/) | 项目 `AGENTS.md`、`sae.yaml`、`.sae/README.md` 和计算适配器 |
 
-## 验证状态（2026-10-20）
-- **真实 Colab 传输已验收：** [SAE PR #48](https://github.com/JohnnyZPiggy/SAE-Framework/pull/48) 已合并（`c0cb3c1c59073e61bd8f12e54f9e05eaea7bf2e7`）。固定工具源码 `8081b6e02eee0754903898d5afe5b112f1bb23d0`、CLI 0.7.4，一次真实请求 T4 的分配、Kernel 探针、driver 执行、文件 SHA-256 校验及认证可信零活动会话清理通过。**LIVE_READY 仅限传输范围**；该次实验未直接观察硬件身份。
-- **首个科学 CPU/GPU 试点已验收：** [TorchYAND PR #22](https://github.com/JohnnyZPiggy/TorchYAND/pull/22) 已合并（`1ee2a100db61bc3be62ced9cc7923f261b512b35`）。独立 Autograd 梯度对照、限定的 simplex/KKT 测试，以及实际确认的 Tesla T4 上的 MVSK `value_grad` CPU/GPU 对照与性能实验通过。仅支持该次试点的结论，不代表通用求解器加速保证。
-- **仍未完成/验证：** 通用实验 Publisher、Bootstrap CLI、跨多个算法项目的复用、TPU/PyTorch-XLA 和通用异构兼容性；这两项 PR 未单独验证 Colab CPU 分配。Codex 已通过 PR 发布真实结果，但不等于通用 Publisher 已实现。
+英文为规范版本，中文译本位于 `i18n/zh-CN/`，修改规则时须在同一 PR 内同步。
 
-## 文档
-[架构师](i18n/zh-CN/protocols/ARCHITECT.md) · [工程师](i18n/zh-CN/protocols/ENGINEER.md) · [导师](i18n/zh-CN/protocols/MENTOR.md) · [科学家](i18n/zh-CN/protocols/SCIENTIST.md) · [角色恢复](i18n/zh-CN/workflows/ROLE_RECOVERY.md) · [变更记录](i18n/zh-CN/CHANGELOG.md) · [中文导航](i18n/zh-CN/README.md)
+## 开始
+- **新会话：** 见[启动](i18n/zh-CN/workflows/START.md)，里面有 Architect 和 Engineer 窗口可直接粘贴的启动口令。
+- **新项目：** 复制 [examples/project](examples/project/) 下的文件，固定一个精确的 SAE commit SHA，然后开 PR（[启动 § 在项目中采用 SAE](i18n/zh-CN/workflows/START.md#在项目中采用-sae)）。
+- **已有项目**在主动升级固定版本之前，一直使用原来的 SAE commit。
 
-**版本：** V3.4 协议（架构图文件名仍为 V3.3；角色除默认 Architect 外不变）；已固定的项目快照须经审查后主动升级。**许可：** [MIT License](LICENSE) · Copyright © 2026 JohnnyZPiggy。本许可适用于仓库内的原创内容；如含第三方素材，其原有许可条款仍然适用。
+## 状态
+- **已验证：** Colab 控制器在真实 T4、L4、A100 和 G4（RTX PRO 6000）上运行，记录了实际设备并完成认证清零（[#67](https://github.com/JohnnyZPiggy/SAE-Framework/pull/67)、[#69](https://github.com/JohnnyZPiggy/SAE-Framework/pull/69)、[#73](https://github.com/JohnnyZPiggy/SAE-Framework/pull/73)）。第一个项目：[TorchOED](https://github.com/JohnnyZPiggy/TorchOED)。
+- **未实现：** TPU / PyTorch-XLA、自动项目初始化、任何后台调度器。
 
-## GPT + Codex 本地部署快速指南
-
-> V3.4 起默认 Architect + Mentor 为 **Claude**（Claude Code 或接入 GitHub 的 claude.ai）。以下步骤不变：把"GPT"换成你指派的 Agent；Engineer 仍为 Codex。
-
-**角色分工：** ChatGPT 中的 GPT 担任 Chief Architect + Scientific Mentor（需要连接 GitHub 以读取真实 Issue/PR）；本地 Codex 担任 Software Engineer。ChatGPT 的 GitHub 连接不会自动获得 Codex 的本地文件和凭据，两者使用 GitHub Issue/PR、精确 SHA 与真实测试证据交接。
-
-### 1. 安装和指定工作区
-
-准备 Git、Python/PyTorch、Codex，以及可选的 GitHub CLI（没有才按官方方式安装）。**用户指定的 D 盘 Dropbox 同步工作区完全允许**存放源码、任务临时文件和缓存。以下路径只是示例，请替换为真实目录：
-
-~~~powershell
-$Workspace = 'D:\Dropbox\SAE-Work'
-New-Item -ItemType Directory -Force $Workspace | Out-Null
-Set-Location $Workspace
-git clone https://github.com/JohnnyZPiggy/TorchXXX.git
-Set-Location .\TorchXXX
-git status --short
-gh auth status
-python -c "import torch; print(torch.__version__)"
-~~~
-
-用已安装的 Codex 应用或 CLI 打开这个 Torch 项目目录。让 Engineer 把任务文件、缓存和结果放在**指定工作区**内，使用每任务隔离且不被 Git 意外追踪的 Scratch 目录；仅清理本任务创建的临时文件。使用 WSL2 时，应确认实际路径落在 D 盘挂载（常见 /mnt/d/...），避免默认 Linux home/tmp 消耗 C 盘虚拟磁盘。项目目录设置并不会自动重定向所有第三方缓存；工具支持时显式传入 Scratch/Cache 路径。Dropbox 同步开销只是提醒，**不能因此拒绝用户工作区**。
-
-### 2. GPT：Architect + Scientific Mentor
-
-先在 ChatGPT 连接 GitHub 并授权目标仓库。将 TorchXXX 换成目标项目名，发送：
-
-**Cold Start（只读）**
-
-~~~text
-访问 https://github.com/JohnnyZPiggy/SAE-Framework 的 Universal Agent Cold Start。
-你担任 Chief Architect + Scientific Mentor，目标项目：
-https://github.com/JohnnyZPiggy/TorchXXX
-按固定 SAE 版本恢复角色、相关 Issue/PR、实际 SHA 与数学背景。
-首次只读，报告真实状态和下一步。
-~~~
-
-**Warm Start（Full；快速验证可改为 Standard）**
-
-~~~text
-推进 SAE Full Agent Warm Start，担任 Chief Architect + Scientific Mentor，
-目标 https://github.com/JohnnyZPiggy/TorchXXX。
-复用 Cold Start，审查一项真实代码变更，独立推导并核实一个算法
-数学恒等式与数值 Oracle，形成有界 Engineer CPU/GPU 验证任务。
-如实报告证据；不要仅为热身而合并 PR。
-~~~
-
-### 3. Codex：Software Engineer
-
-在真正的 Torch Git 工作目录中打开/启动 Codex，发送：
-
-**Cold Start（只读）**
-
-~~~text
-访问 https://github.com/JohnnyZPiggy/SAE-Framework 的 Universal Agent Cold Start。
-担任 Software Engineer，目标是当前工作目录的 Torch Git 项目。
-读取项目固定 SAE 协议，核实 git/gh、分支 SHA 和相关 Issue/PR。
-先只读角色恢复，报告真实工具能力和下一步。
-~~~
-
-**Warm Start（Full；Standard 不分配 GPU）**
-
-~~~text
-推进 SAE Full Agent Warm Start，担任 Software Engineer。
-复用 Cold Start，优先在指定 D 盘 Dropbox 工作区完成小型
-PyTorch CPU 数值测试，确认临时文件和结果路径、安全清理任务自产物。
-如当前环境的现有 Colab CLI 已认证、受支持且已有权益允许，
-执行一次有界 GPU PROBE_ONLY，记录真实设备、CPU Oracle 对照、
-下载产物 SHA-256，关闭并核对零活动会话。不新增付费。
-报告 PASS/FAIL/NOT RUN/BLOCKED、实际路径和下一步。
-~~~
-
-**GPU-first：** 对适合的 PyTorch 张量工作，优先使用现有权益内实际可用的 GPU，CPU Oracle 并行。GPU 不可用不阻断数学和 CPU 研究；每次远端分配前仍须实时验证认证、权益、活动会话并确认清理。通用 Controller 当前只有有限的**请求 T4 的传输路径**证据，不能宣称任意 GPU/TPU 都得到支持。
-
-**日常流程：** GPT 在已有 Issue 给出数学和工程规格 → Codex 在指定工作区编写代码并实测 → 经 SHA 和证据提交 PR → GPT 独立审核并决定合格合并。Warm Start 按需执行，不必每项任务都热身。已有项目固定 SAE 版本不会自动升级。详见[Cold Start](i18n/zh-CN/workflows/UNIVERSAL_COLD_START.md)、[Warm Start](i18n/zh-CN/workflows/AGENT_WARM_START.md)、[常设授权](governance/STANDING_AUTHORIZATION.md)。
-
-## 通用 Agent 冷启动与热启动
-
-新建 GPT、Codex 或 Claude Code 窗口时，先执行[通用冷启动协议](i18n/zh-CN/workflows/UNIVERSAL_COLD_START.md)：GPT 担任 **Chief Architect + Scientific Mentor**，Codex/Claude Code 在目标 Torch 工作区担任 **Software Engineer**。首次只读恢复项目固定 SAE 版本、当前 GitHub 任务及精确 SHA。**随后按需执行 [Agent Warm Start 热启动](i18n/zh-CN/workflows/AGENT_WARM_START.md)**：Standard 通过一次简短角色实测验证能力；Full 增加跨角色端到端证据，并在 Engineer 已有认证和 Colab 算力权益允许时执行一次有界 GPU 冒烟。复用冷启动上下文，优先用户指定的工作区（包括 Dropbox 同步 D 盘），如实报告 PASS/FAIL/NOT RUN/BLOCKED。热启动不是日常开发的强制关卡，已有项目固定 SAE 版本**不会自动升级**。
+[变更记录](i18n/zh-CN/CHANGELOG.md) · [MIT License](LICENSE) © 2026 JohnnyZPiggy

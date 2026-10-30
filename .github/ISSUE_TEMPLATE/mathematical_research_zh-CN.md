@@ -1,27 +1,21 @@
 ---
-name: SAE 数学结构与张量化研究
-about: 工程前由 GPT 导师与科学家开展数学结构探索
-title: "[SAE 结构研究] "
+name: SAE 研究问题（中文）
+about: 正式工程前由 Mentor 主导的结构 / 张量化研究（V3.4）
+title: "[SAE Research] "
 labels: []
 assignees: []
 ---
 
-**研究负责人：** GPT 科学导师 + 人类 Scientist
+**问题与来源（论文 / 参考代码）：**
 
-**论文/参考算法及科学问题：**
+**参考公式与独立 oracle：**
 
-**原始公式与正确性基线：**
+**候选结构（批量、matrix-free、低秩……）与障碍：**
 
-**矩阵向量 / matrix-free / 张量算子的潜在结构：**
+**需证明的内容、容差与退化情形：**
 
-**顺序依赖与不可张量化因素：**
+**成本假设（未实测）：**
 
-**等价性证明、精度风险及近似边界：**
+**研究笔记：** `docs/research/<algorithm>-tensorization.md`——模板 `templates/TENSORIZATION_STUDY.md`
 
-**跨设备可移植性与计算成本假设（不是已测结果）：**
-
-**研究报告：** `docs/research/<algorithm>-tensorization.md`
-
-**科学家决策：** NOT_STARTED / RESEARCH_READY / RESEARCH_BLOCKED / NOT_TENSORIZABLE
-
-**交接总架构师的下一步（需科学家审核）：**
+**Mentor 决定：** RESEARCH_READY / RESEARCH_BLOCKED / NOT_TENSORIZABLE（无需 Scientist 签字）

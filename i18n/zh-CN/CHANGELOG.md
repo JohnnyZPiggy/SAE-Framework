@@ -3,6 +3,29 @@
 > 语言：[English](../../CHANGELOG.md) | **简体中文**
 
 
+## V3.4 — 仓库整理：一个概念一页（2026-10-30）
+
+- **README 重写**（约 205 → 约 70 行）：SAE 是什么、角色表、V3.4 流程图、仓库地图和状态。删除了过时的 GPT 部署指南和 V3.3 SVG/Mermaid 图（仍保留在 Git 历史中）。
+- **17 个 workflow 合并为 4 个：**
+  - [启动](workflows/START.md)：冷启动、角色恢复、仅在变化时热启动、计算工具发现、每轮结尾交接、项目采用和可直接粘贴的口令；
+  - [任务](workflows/TASKS.md)：Issue、EXPLORE/VALIDATE、结果存放位置、审查；
+  - [研究](workflows/RESEARCH.md)：R1–R3、复用优先、学习；
+  - [计算](workflows/COMPUTE.md)：算力吞吐政策加实验流程。
+- **治理：** 常设授权精简，并入安全规则；算力吞吐政策并入"计算"；简洁契约不变。
+- **协议：** 重写 Scientist 和 Mentor 协议；四个协议都改为指向新 workflow；全文删除"GPT 决定"的措辞。
+- **删除：**
+  - `docs/`（架构、集成、路线图、语言政策、采用冒烟测试；内容已并入 README 和"启动"）；
+  - `reports/`（V3.3 证据目录）；
+  - `SAE_BOOTSTRAP.md`（现为"启动 § 在项目中采用 SAE"）；
+  - 工程报告和 GPU 就绪模板；
+  - `examples/colab`、`examples/reports`；
+  - `tools/compute/diagnostics/`（CLI 0.7.4 一次性诊断脚本）。
+
+  这些内容都仍保留在 Git 历史和旧的固定版本中。
+- **模板：** 研究笔记和运行摘要只保留必要字段。**示例：** 项目 `AGENTS.md` 带 "Simplicity first" 一节；新增 `sae-README.md` 作为 `.sae/README.md` 模板；`sae.yaml` 精简。
+- **计算工具：** README 从 106 行缩到约 50 行，没有失效链接。代码未改动。
+- **固定在旧 SAE 版本的项目不受影响。** 升级固定版本时，按 `examples/project/sae-README.md` 把项目 `.sae/README.md` 的链接更新为新文件名。
+
 ## V3.4 — 简洁契约：减少防御性代码，Claude 成为默认 Architect（2026-10-30）
 
 - **问题：** V3.3 下 Engineer Agent（Codex）产出的代码、测试和证据远超科研需要——手写 JSON/ASCII 校验器、用 `ast` 解析驱动脚本、测试文件比被测代码还长、为 25 行验收标准提交约 1.7 万行证据。根源在框架：每份文档重复防御性要求、测试清单要求覆盖所有类别、派活没有规模预算、审查只能要求"更多"。
@@ -14,7 +37,7 @@
 ## V3.3 — Lean Research Lab 第一阶段：Explore / Validate 双模式与 Codex 单批次（2026-10-20）
 
 - 修正新项目 `sae.yaml`：科研决定属于 GPT，不再要求 Scientist 数学/GPU 额度签批，PR 需 Architect 证据审核而非逐次人工授权；新增付费仍需用户同意。保持 V3.3 配置版本，不自动升级旧项目快照。
-- 新增[双语 Lean Lab](../../workflows/LEAN_RESEARCH_LAB.md)：EXPLORE 是有界、可检验假设与简短批次记录，VALIDATE 才要求数学推导、精确 SHA、真实数值及公平性能证据；`PROBE_ONLY` 不代表加速或 TPU 通过。
+- 新增双语 Lean Lab（现并入 `workflows/TASKS.md`）：EXPLORE 是有界、可检验假设与简短批次记录，VALIDATE 才要求数学推导、精确 SHA、真实数值及公平性能证据；`PROBE_ONLY` 不代表加速或 TPU 通过。
 - 一个现有或新建 Issue 可承载 Codex 有限的实现→测试→修复→复测，默认单 Colab 会话、任务有限超时、有界修复尝试和一次汇总交付；不为每次探索生成新 PR/报告。
 - 同步中英文初始化、采用冒烟、GPU Readiness、PR/任务/三文档/研发流程模板。不修改旧算法项目、不增加 Agent、后台服务、Actions、收费资源，也不虚报真实端到端执行。
 
