@@ -453,7 +453,7 @@ class ControllerTests(unittest.TestCase):
         self.assertNotIn('balance_after',r)
 
     def test_multiple_types_refusal_continues_but_uncertain_cleanup_stops(self):
-        for failure in ('refuse-L4','cleanup'):
+        for failure in ('refuse-L4','cleanup','interrupt'):
             with self.subTest(failure=failure),tempfile.TemporaryDirectory() as temp:
                 args=control.parser().parse_args(['--source-sha',SHA,'--repo-path',temp,'--run-id','multi',
                     '--out',str(Path(temp)/'runs'),'--driver','driver.py','--artifacts','artifacts.json',
@@ -472,9 +472,14 @@ class ControllerTests(unittest.TestCase):
                     self.assertTrue(result['runs'][1]['classification'].startswith('BLOCKED_PROVIDER:L4:'))
                     self.assertTrue(all(r['cleanup_confirmed'] for r in result['runs']))
                     self.assertEqual(result['runs'][2]['status'],'PASS')
-                else:
+                elif failure=='cleanup':
                     self.assertEqual(result['status'],'CLEANUP_OR_READBACK_FAILED')
                     self.assertEqual(len(result['runs']),1)
+                    self.assertEqual(result['not_run'],['L4','A100'])
+                else:
+                    self.assertEqual(result['status'],'INTERRUPTED')
+                    self.assertEqual(len(result['runs']),1)
+                    self.assertTrue(result['runs'][0]['cleanup_confirmed'])
                     self.assertEqual(result['not_run'],['L4','A100'])
 
 

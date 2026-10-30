@@ -427,6 +427,10 @@ def run_many(args):
                 summary['status'] = 'CLEANUP_OR_READBACK_FAILED'
                 summary['not_run'] = devices[index+1:]
                 break
+            if result.get('error') == 'INTERRUPTED':
+                summary['status'] = 'INTERRUPTED'
+                summary['not_run'] = devices[index+1:]
+                break
             if not attempted and result.get('status') != 'PREFLIGHT_PASS':
                 summary['status'] = 'PREALLOCATION_BLOCKED'
                 summary['not_run'] = devices[index+1:]
