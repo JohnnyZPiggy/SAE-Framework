@@ -1,0 +1,20 @@
+{
+  "status": "PASS",
+  "exit_code": 0,
+  "source_sha": "d4e4185d153976e7b966b7a4a1623c6cf80543cb",
+  "working_tree_dirty": false,
+  "command": [
+    "<BASE_ENV>\\python.exe",
+    "-B",
+    "-m",
+    "pytest",
+    "tools/compute/tests",
+    "-q",
+    "-p",
+    "no:cacheprovider",
+    "--junitxml=<TASK_ROOT>\\evidence\\validate\\junit.xml"
+  ],
+  "python": "3.14.6 | packaged by Anaconda, Inc. | (main, Jul  9 2026, 14:29:05) [MSC v.1942 64 bit (AMD64)]",
+  "timeout_seconds": 180,
+  "elapsed_seconds": 24.462412699998822
+}
