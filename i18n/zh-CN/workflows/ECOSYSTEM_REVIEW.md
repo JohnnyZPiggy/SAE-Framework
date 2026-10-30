@@ -28,7 +28,7 @@
 
 ## 只在现有报告留一小段
 
-在 `templates/ENGINEERING_REPORT.md` 第 **2a 节 Ecosystem Review** 记录候选来源与日期、取舍、REUSE/ADAPT/BUILD 决定及未知事项。明显的原生算子复用可只写一行 `NATIVE_REUSE`。向 Codex Issue 交接接口/依赖版本、适配边界、CPU 数值/边界测试、干净安装、编译冒烟测试和回退方案。Codex 真实完成 CPU 检验，架构师审查，正式 GPU Benchmark 经技术准备关口后直接由 Codex 执行，**无需 Scientist 算力授权**；有界 `PROBE_ONLY` 设备探针可更早进行。
+在 `templates/ENGINEERING_REPORT.md` 第 **2a 节 Ecosystem Review** 记录候选来源与日期、取舍、REUSE/ADAPT/BUILD 决定及未知事项。明显的原生算子复用可只写一行 `NATIVE_REUSE`。向 Codex Issue 交接接口/依赖版本、适配边界、独立基线和必需测试，并按[简洁契约](../governance/SIMPLICITY_CONTRACT.md)给出规模预算和"不需要做"清单。Codex 真实完成 CPU 检验，架构师审查，正式 GPU Benchmark 经技术准备关口后直接由 Codex 执行，**无需 Scientist 算力授权**；有界 `PROBE_ONLY` 设备探针可更早进行。
 
 ## 边界
 

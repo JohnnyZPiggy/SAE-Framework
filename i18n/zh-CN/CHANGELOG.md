@@ -3,6 +3,14 @@
 > 语言：[English](../../CHANGELOG.md) | **简体中文**
 
 
+## V3.4 — 简洁契约：减少防御性代码，Claude 成为默认 Architect（2026-10-30）
+
+- **问题：** V3.3 下 Engineer Agent（Codex）产出的代码、测试和证据远超科研需要——手写 JSON/ASCII 校验器、用 `ast` 解析驱动脚本、测试文件比被测代码还长、为 25 行验收标准提交约 1.7 万行证据。根源在框架：每份文档重复防御性要求、测试清单要求覆盖所有类别、派活没有规模预算、审查只能要求"更多"。
+- **新增[简洁契约](governance/SIMPLICITY_CONTRACT.md)**（有约束力，覆盖要求更多的旧文字）：只在信任边界校验、信任内部代码；禁用模式表；每个改动行为一个测试，数值结论加独立 oracle；Git 作为完整性层，证据文件设上限（吸收 PR #70 提出的精简证据规则）；派活附完成标准、S/M/L 规模预算、必需测试和"不需要做"清单；Engineer 超出预算 1.5 倍即停止；新增审查结论 `REQUEST_SIMPLIFY`。底线（SHA、如实状态、oracle、实际观测设备、清理、密钥、不自合并、不新增支出）只陈述一次。
+- **重写 Engineer 协议**为六步循环；Architect 协议负责规模预算；代码审查先看规模再看正确性；Issue/PR 模板（仓库内及 `.github/`）精简为引导工作量的字段；GPU 证据缩减为 `summary.md` + 一个结果文件；常设授权 T2 证据改为 Issue 的必需测试。
+- **Claude 成为默认 Architect + Mentor**（角色仍与模型无关）。删除各文档重复的算力政策横幅，政策本身不变。
+- 示例 `sae.yaml` 升至 `3.4` 并新增 `simplicity` 配置块。已有项目固定版本**不会**自动升级。本次未改动 `tools/compute` 代码。
+
 ## V3.3 — Lean Research Lab 第一阶段：Explore / Validate 双模式与 Codex 单批次（2026-10-20）
 
 - 修正新项目 `sae.yaml`：科研决定属于 GPT，不再要求 Scientist 数学/GPU 额度签批，PR 需 Architect 证据审核而非逐次人工授权；新增付费仍需用户同意。保持 V3.3 配置版本，不自动升级旧项目快照。

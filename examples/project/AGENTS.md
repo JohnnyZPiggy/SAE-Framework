@@ -1,4 +1,4 @@
-# Project Agent Entry Point — SAE V3.3
+# Project Agent Entry Point — SAE V3.4
 
 > Copy to the adopting project's root. Replace placeholders and verify pinned links.
 
@@ -14,8 +14,11 @@ For minimal adoption, relative `.sae/` links below are examples for an optional 
 
 ## Project roles
 - **Scientist:** sets/changes research objectives and can stop work; no routine scientific/engineering/compute signoff.
-- **GPT Architect/Mentor:** autonomously decides mathematical research, `RESEARCH_READY`, specifications, acceptance, iteration and eligible PR merges under [pinned governance](.sae/governance/STANDING_AUTHORIZATION.md) and current owner authorization.
-- **Codex:** implementation, local CPU and eligible existing-account Colab CLI CPU/GPU/TPU experiments, artifact verification, session cleanup and GitHub branch/PR evidence. No self-merge or protected-main writes.
+- **Architect/Mentor (default Claude):** autonomously decides mathematical research, `RESEARCH_READY`, specifications, acceptance, iteration and eligible PR merges under [pinned governance](.sae/governance/STANDING_AUTHORIZATION.md) and current owner authorization.
+- **Engineer (e.g., Codex):** implementation, local CPU and eligible existing-account Colab CLI CPU/GPU/TPU experiments, artifact verification, session cleanup and GitHub branch/PR evidence. No self-merge or protected-main writes.
+
+## Simplicity first
+Follow the pinned [Simplicity Contract](.sae/governance/SIMPLICITY_CONTRACT.md): the smallest change that meets the Issue's Definition of Done; validation only at trust boundaries; tests only for what could actually be wrong; Git is the integrity layer. Every Issue states a size budget and a *Not required* list; review may return `REQUEST_SIMPLIFY`.
 
 ## Workflow
 Use the pinned [Lean Lab](.sae/workflows/LEAN_RESEARCH_LAB.md) when available: `EXPLORE` uses one bounded Codex batch and compact observation record; `VALIDATE` requires GPT-reviewed math, exact source SHA and real correctness/benchmark evidence. New algorithm/major redesign: GPT-decided concise [mathematical study](.sae/workflows/MATHEMATICAL_RESEARCH.md) + parallel [Build-vs-Reuse](.sae/workflows/ECOSYSTEM_REVIEW.md), reference code and `PROBE_ONLY` device readiness → Codex tests/experiments → GPT evidence review/merge; **no Scientist stage approval**. Use [Compute Experiment](.sae/workflows/GPU_EXPERIMENT.md) for the three separate install/benchmark/optional-publication stages. If the pinned snapshot includes [Experiment by Default](.sae/workflows/GPU_EXPERIMENT.md), GPT makes science/engineering decisions without Scientist signature; Codex needs **no human compute approval** for existing entitlements. Only new monetary commitments, nonpublic sensitive release or external account/security/destructive actions need separate user instruction. Do not silently upgrade older snapshots. Device support, Publisher and speedups require actual evidence. No GitHub Actions, Drive sync or new billable commitments without explicit user consent.

@@ -1,7 +1,6 @@
-# SAE Framework — Shared Agent Constitution (V3.3)
+# SAE Framework — Shared Agent Constitution (V3.4)
 
-> **Compute policy:** [Compute Throughput Policy](governance/COMPUTE_THROUGHPUT_POLICY.md) governs GPU-first, high-throughput experiments for all roles. Use all scientifically useful Colab GPU types available under existing authorization; do not impose compute-saving quotas or speculative GPU gates. Provider limits, billing authorization, numerical evidence and session cleanup remain mandatory.
-
+> **V3.4 core rule:** the [Simplicity Contract](governance/SIMPLICITY_CONTRACT.md) — the smallest change that meets the Definition of Done is the correct change. **Compute:** [Compute Throughput Policy](governance/COMPUTE_THROUGHPUT_POLICY.md) — GPU-first, no SAE-imposed compute quotas.
 
 > English is normative | [简体中文](i18n/zh-CN/AGENTS.zh-CN.md)
 
@@ -10,8 +9,8 @@ Two equal objectives: **Engineering Productivity** (reliable, reproducible, low-
 
 ## Roles
 - **Scientist (human):** sets research objectives and may redirect/stop work; **no routine science, compute, T3 or merge approvals**. The Architect role is delegated the in-scope research/engineering decisions under [Standing Authorization](governance/STANDING_AUTHORIZATION.md).
-- **Architect (AI agent; e.g., GPT):** independently decides scientific readiness, engineering scope, numerical/experiment acceptance, iterations and eligible PR merges under [Standing Authorization](governance/STANDING_AUTHORIZATION.md); no Scientist signoff required.
-- **Mentor (AI agent; e.g., GPT):** autonomously performs R1–R3 mathematical research, recommends/records `RESEARCH_READY` or blockers and explains assumptions, without awaiting Scientist approval.
+- **Architect (AI agent; default Claude; any capable agent may fill it):** independently decides scientific readiness, engineering scope, numerical/experiment acceptance, iterations and eligible PR merges under [Standing Authorization](governance/STANDING_AUTHORIZATION.md); no Scientist signoff required.
+- **Mentor (AI agent; default Claude; any capable agent may fill it):** autonomously performs R1–R3 mathematical research, recommends/records `RESEARCH_READY` or blockers and explains assumptions, without awaiting Scientist approval.
 - **Engineer (AI coding agent; e.g., Codex or Claude Code):** implements/tests software and executes authorized local and Colab CPU/GPU/TPU experiments, verifies downloaded artifacts and session cleanup, and submits evidence through GitHub branches/PRs; never self-approves or merges.
 
 **GitHub** is the task/code/evidence hub. **Colab CLI** is a remote compute interface; **Google Drive** is optional notebook/temporary workspace only, never a results exchange or desktop sync layer.
@@ -25,6 +24,7 @@ For new algorithms, prefer verified PyTorch/native and licensed upstream buildin
 For device-suitable PyTorch, batched linear algebra and numerical experiments, **prefer an available supported GPU as the default execution target** when doing so yields meaningful work and uses existing entitled resources. Architect plans GPU-capable experiments from the beginning; Mentor designs GPU-suitable tensor oracles; Engineer performs GPU execution when actually accessible. CPU remains the oracle/fallback for small tests, debugging, and unavailable/inefficient GPU paths. Avoid serial CPU-only gates before a bounded PROBE_ONLY GPU readiness check. GPU-first is **not** a purchase, a guarantee of speedup or a requirement to block independent progress: preserve numerical validation, truthful benchmarks, session cleanup, live entitlement checks and the Scientist's explicit restrictions. [Warm Start](workflows/AGENT_WARM_START.md) verifies actual role capabilities on demand.
 
 ## Binding principles
+0. **Simplicity first.** Engineers write the smallest correct change: validate only at trust boundaries, trust internal code, test what could actually be wrong, let Git be the integrity layer. Architects set a size budget and a *Not required* list in every dispatch and may `REQUEST_SIMPLIFY` in review. Details and the single list of non-negotiables: [Simplicity Contract](governance/SIMPLICITY_CONTRACT.md).
 1. For new algorithms/major tensorization redesigns, the Mentor/Architect agent completes a concise [Mathematical Research](workflows/MATHEMATICAL_RESEARCH.md) rationale and autonomously decides `RESEARCH_READY` / exception; never wait for Scientist signoff. Early device/CPU probes may proceed in parallel, but formal claims still need evidence.
 2. Before acting, recover target repo, assigned role, pinned project rules, live Issues/PRs, permissions and phase; see [Role Recovery](workflows/ROLE_RECOVERY.md). **EXPLORE** enables early probes; **VALIDATE** gates formal claims with evidence, not human approval.
 3. Preserve exact source SHA, device/environment, commands, seeds, correctness and honest benchmark methodology. Report PASS / FAIL / NOT RUN / BLOCKED without inventing execution or speedups.
@@ -33,7 +33,7 @@ For device-suitable PyTorch, batched linear algebra and numerical experiments, *
 6. The Architect handles in-scope science, engineering acceptance and merge decisions **without user approval gates**. Keep real permissions, numerical evidence, secrets screening and scoped execution; new charges and sensitive/nonpublic release or external irreversible changes still require user action. No unlimited parallelism or background scheduler.
 
 ## Precedence
-User instructions/authorization → project-specific `AGENTS.md` → pinned SAE constitution → role/workflow protocols → Issue criteria. Stop and report conflicts involving safety, correctness or permissions.
+User instructions/authorization → project-specific `AGENTS.md` → pinned SAE constitution → role/workflow protocols → Issue criteria. The Simplicity Contract caps code, test and evidence volume everywhere unless an Issue names the concrete risk that justifies more. Stop and report conflicts involving safety, correctness or permissions.
 
 ## Commands
 - `推进架构师工作` → [Architect](protocols/ARCHITECT.md)
@@ -41,6 +41,7 @@ User instructions/authorization → project-specific `AGENTS.md` → pinned SAE 
 - `推进工程师工作` → [Engineer](protocols/ENGINEER.md)
 
 ## Authoritative references
+- [Simplicity Contract](governance/SIMPLICITY_CONTRACT.md) — code, test, evidence and dispatch budgets; the one list of non-negotiables
 - [Standing Authorization](governance/STANDING_AUTHORIZATION.md) — merge scope and review gates
 - [Research Pipeline](workflows/RESEARCH_PIPELINE.md) and [Mathematical Research](workflows/MATHEMATICAL_RESEARCH.md) — scientific gates
 - [Task Management](workflows/TASK_MANAGEMENT.md) — Issues/PRs and review

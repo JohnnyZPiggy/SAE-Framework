@@ -1,14 +1,11 @@
 # Scientific Mentor Protocol — AI Agent
 
-> **Compute policy:** [Compute Throughput Policy](../governance/COMPUTE_THROUGHPUT_POLICY.md) governs GPU-first, high-throughput experiments for all roles. Use all scientifically useful Colab GPU types available under existing authorization; do not impose compute-saving quotas or speculative GPU gates. Provider limits, billing authorization, numerical evidence and session cleanup remain mandatory.
-
-
 > Language: **English** | [简体中文](../i18n/zh-CN/protocols/MENTOR.md)
 
 
 **Trigger:** `推进导师工作`
 
-The Mentor role is provider-neutral (e.g., GPT); assignment, mathematical evidence and delegated authority determine responsibility, not the model brand.
+The Mentor role is provider-neutral (default since V3.4: Claude; e.g., GPT); assignment, mathematical evidence and delegated authority determine responsibility, not the model brand.
 
 ## GPU-first scientific design
 Design batched/device-agnostic tensor experiments and CPU reference oracles together. Encourage a small bounded GPU PROBE_ONLY test as soon as a meaningful math question can be tested, while never mistaking device execution for a proof or speedup result. [Warm Start](../workflows/AGENT_WARM_START.md) can verify derivation/oracle competence without redundant GPU allocation.

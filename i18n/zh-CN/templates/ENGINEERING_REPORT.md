@@ -6,7 +6,7 @@
 **算法 / 里程碑：** <名称>  
 **关联 Issue / 代码 PR：** <链接>  
 **数学研究文档：** `docs/research/<algorithm>-tensorization.md` — 已批准 `RESEARCH_READY` / 明确有限例外 / 仓库初始化任务不适用  
-**总架构师：** GPT · **工程师：** Codex · **科学负责人：** 人类 Scientist  
+**总架构师：** <Agent，默认 Claude> · **工程师：** <Agent，如 Codex> · **科学负责人：** 人类 Scientist  
 **被测源码 commit：** `<真实 40 位 SHA 或 NOT YET AVAILABLE>`  
 **进度：** SPECIFIED / IMPLEMENTING / REVIEW / CPU_VERIFIED / BLOCKED（写清真实证据）
 
@@ -28,7 +28,7 @@
 | 算法参考实现 / 自研 | <论文、代码> | <许可证或 UNKNOWN> | <基线、风险> | REUSE / ADAPT / BUILD |
 
 **最终 Build-vs-Reuse 方案与理由：** <1–3 句，区分已核实事实和假设>。  
-**Codex 交接：** <依赖与版本约束、适配接口、回退方案、CPU 数值/边界测试、干净安装和编译冒烟测试>。  
+**Codex 交接：** <版本约束、适配接口、独立 oracle、必需测试、规模预算、不需要做清单>。  
 **未证实声明或后续核验：** <NONE / 明确任务>。  
 
 尽量精简，不创建第四份项目报告。存在工具包不等于验证了正确性、性能或设备兼容性。参见 [生态评估协议](../workflows/ECOSYSTEM_REVIEW.md)。
@@ -46,8 +46,7 @@
 | 测试或基线比较 | PASS / FAIL / NOT RUN / BLOCKED | 实际命令、环境、种子和证据 |
 | --- | --- | --- |
 | 原始算法/参考结果对照 | NOT RUN | |
-| CPU 单元与回归测试 | NOT RUN | |
-| 随机与特殊边界情况 | NOT RUN | |
+| Issue 要求的必需测试 | NOT RUN | |
 | CPU Benchmark（如适用） | NOT RUN | |
 | GPU / TPU 实验（Codex 默认执行，正式验收需证据） | NOT RUN | 链接实验报告，不能编造结果 |
 

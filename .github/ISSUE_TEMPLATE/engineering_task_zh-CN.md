@@ -1,27 +1,30 @@
 ---
 name: SAE 工程任务（中文）
-about: 适用于数学算法或 PyTorch 工程任务
+about: Architect 向 Engineer 派活（V3.4 简洁契约）
 title: "[SAE] "
 labels: []
 assignees: []
 ---
 
-<!-- 如有标签权限，可选择 agent:codex、status:ready、kind:engineering、priority:p1 -->
+**模式：** EXPLORE / VALIDATE · **优先级：** P0 / P1 / P2
 
-**研究目的：**
+**目标：**
 
-**GPT 决定的简明张量化研究及状态（RESEARCH_READY / 有界假设 / 基础设施不适用）：**
+**契约（数学/数值，如适用）：** 输入输出、dtype、独立参考、容差；链接研究笔记。
 
-**数学 / 数值契约：**
+**完成标准：**
+- [ ]
 
-**输入、输出与精度要求：**
+**规模预算：** S（净增 ≤ 50 行）/ M（≤ 200）/ L（≤ 500），源码 + 测试合计
 
-**交付成果：**
+**必需测试：**
+1.
 
-**验收测试（必须提供真实证据）：**
+**计算（仅在需要时）：** 设备、工作负载、需要报告的结果
 
-**Colab 三阶段验收（算法任务）：** 固定 SHA 安装 → Benchmark 独立运行且不写 GitHub → 可选、由 GPT 决定且需真实验证的非敏感 Publisher。Codex 在现有账户权益内直接运行 CPU/CLI、Colab CLI CPU/GPU/TPU，无需 Scientist 算力审批；有界 `PROBE_ONLY` 不能作为正式 Benchmark 通过，未测设备或发布均标 NOT RUN。
+**不需要做：**
+- CLI/用户边界以外的输入校验
+- 随机 / 对抗 / 性质测试
+- 哈希清单、一致性报告、逐次尝试的失败目录
 
-**Colab GPU 验证方案（如需要）：**
-
-**依赖与阻塞：**
+<!-- governance/SIMPLICITY_CONTRACT.md：超出预算 1.5 倍以上 → 停止，交付完成标准，把额外内容列为建议。 -->

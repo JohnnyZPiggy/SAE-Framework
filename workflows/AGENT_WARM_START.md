@@ -1,8 +1,5 @@
 # Agent Warm Start — Capability Verification (SAE V3.3)
 
-> **Compute policy:** [Compute Throughput Policy](../governance/COMPUTE_THROUGHPUT_POLICY.md) governs GPU-first, high-throughput experiments for all roles. Use all scientifically useful Colab GPU types available under existing authorization; do not impose compute-saving quotas or speculative GPU gates. Provider limits, billing authorization, numerical evidence and session cleanup remain mandatory.
-
-
 > Normative English | [简体中文](../i18n/zh-CN/workflows/AGENT_WARM_START.md)
 
 Warm Start is an **optional, user-invoked bounded capability test after Cold Start**. It is not a new agent, authorization gate, recurring certification, or requirement before routine work. Reuse verified project/role/pin/context; test the actual role in the current environment rather than rereading every protocol.

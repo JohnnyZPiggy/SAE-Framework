@@ -11,7 +11,7 @@
 | 关口 | PASS / FAIL / NOT_RUN / WAIVED | 真实证据（命令、输出、链接） |
 | --- | --- | --- |
 | GPT 已决定 `RESEARCH_READY` / 正式 VALIDATE 的有界假设 | | |
-| CPU 参考算法、随机和边界正确性 | | |
+| CPU 独立参考正确性 | | |
 | CPU eager 与 `torch.compile` 执行 | | |
 | 需要时的 fullgraph / graph-break 检查 | | |
 | CPU Benchmark 与误差容差 | | |

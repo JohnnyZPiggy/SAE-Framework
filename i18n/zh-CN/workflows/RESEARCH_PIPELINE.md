@@ -8,7 +8,7 @@ SAE 采用**证据优先、积极并行**，不是 CPU→GPU 逐级审批瀑布�
 探索数学形式、参考算法、批量/张量算子、matrix-free 结构、稳定性与复杂度，EXPLORE 先在任务中记录最小数学假设，VALIDATE 再在 `docs/research/<algorithm>-tensorization.md` 汇总推导证据。**GPT 自主决定 `RESEARCH_READY / RESEARCH_BLOCKED / NOT_TENSORIZABLE` 或有界假设，不设 Scientist 签批**；设备探针及参考实现可并行。
 
 ## II. 工程与 CPU 正确性 — Architect + Codex
-Architect 评估生态复用、制定规格并派发 Issue。Codex 实现可安装 Python 模块，真实运行 CPU 参考/边界/随机/dtype 测试、适用时的 `torch.compile`、固定 SHA 干净安装及 Benchmark CLI 冒烟。EXPLORE 每批简记真实源码身份、命令与观察，VALIDATE 再在工程报告中引用正式 SHA 和测试结果。CPU compile 不证明 GPU/TPU 兼容或加速。
+Architect 评估生态复用、制定规格并派发 Issue。Codex 实现可安装 Python 模块，运行 Issue 要求的必需测试（数值结论需独立 CPU 参考），只有 Issue 要求时才做 `torch.compile`、固定 SHA 安装或 Benchmark CLI 检查（[简洁契约](../governance/SIMPLICITY_CONTRACT.md)）。EXPLORE 每批简记真实源码身份、命令与观察，VALIDATE 再在工程报告中引用正式 SHA 和测试结果。CPU compile 不证明 GPU/TPU 兼容或加速。
 
 正式加速评估应在数学、数值及打包技术准备具备后由 Architect 标 `ACCELERATOR_READY`（兼容旧 `GPU_READY`）；提前开展 `PROBE_ONLY` 设备探针不依赖此标记，**就绪不等于真实验证**。
 

@@ -1,7 +1,6 @@
-# SAE Framework V3.3
+# SAE Framework V3.4
 
-> **Compute policy:** [Compute Throughput Policy](governance/COMPUTE_THROUGHPUT_POLICY.md) governs GPU-first, high-throughput experiments for all roles. Use all scientifically useful Colab GPU types available under existing authorization; do not impose compute-saving quotas or speculative GPU gates. Provider limits, billing authorization, numerical evidence and session cleanup remain mandatory.
-
+> **New in V3.4 — [Simplicity Contract](governance/SIMPLICITY_CONTRACT.md):** Engineers write the smallest correct change (validate at trust boundaries only, test what could actually be wrong, Git is the integrity layer); every dispatch carries a size budget and a *Not required* list; review can return `REQUEST_SIMPLIFY`. Claude is the default Architect + Mentor. Compute stays GPU-first ([policy](governance/COMPUTE_THROUGHPUT_POLICY.md)).
 
 > English normative | [简体中文](README.zh-CN.md)
 
@@ -9,7 +8,7 @@
 
 ## Provider-neutral roles
 
-SAE roles are **capability and authority contracts, not product bindings**: **Scientist** (human), **Architect** (AI agent, e.g., GPT), **Mentor** (AI agent, e.g., GPT), and **Engineer** (AI coding agent, e.g., Codex or Claude Code). One agent may fill Architect and Mentor; multiple Engineers can take turns using separate workspaces and a GitHub Issue/PR + exact-SHA + evidence handoff. Reassignment never transfers credentials, approvals or unverified capabilities. The Engineer never self-merges; the Architect retains the independent review gate. Existing project-pinned snapshots remain unchanged.
+SAE roles are **capability and authority contracts, not product bindings**: **Scientist** (human), **Architect** (AI agent; default Claude, or e.g. GPT), **Mentor** (AI agent; default Claude, or e.g. GPT), and **Engineer** (AI coding agent, e.g., Codex or Claude Code). One agent may fill Architect and Mentor; multiple Engineers can take turns using separate workspaces and a GitHub Issue/PR + exact-SHA + evidence handoff. Reassignment never transfers credentials, approvals or unverified capabilities. The Engineer never self-merges; the Architect retains the independent review gate. Existing project-pinned snapshots remain unchanged.
 
 ## Architecture
 
@@ -90,8 +89,8 @@ The bilingual SVG cards above illustrate the **current provider-neutral SAE role
 
 ## Who does what?
 - **Scientist (human):** sets/changes research goals and can stop work; **no routine mathematical, experimental, resource, T3 or PR approvals**.
-- **Architect (AI agent; e.g., GPT):** autonomously decides science, mathematical readiness, engineering/experimental acceptance, iterations and eligible PR merges under [Standing Authorization](governance/STANDING_AUTHORIZATION.md).
-- **Mentor (AI agent; e.g., GPT):** leads mathematical structure/tensorization research and explains numerical/experimental results.
+- **Architect (AI agent; default Claude, or e.g. GPT):** autonomously decides science, mathematical readiness, engineering/experimental acceptance, iterations and eligible PR merges under [Standing Authorization](governance/STANDING_AUTHORIZATION.md).
+- **Mentor (AI agent; default Claude, or e.g. GPT):** leads mathematical structure/tensorization research and explains numerical/experimental results.
 - **Engineer (AI coding agent; e.g., Codex or Claude Code):** implements, tests and runs eligible existing-account local CPU and Colab CLI CPU/GPU/TPU experiments by default; verifies outputs and resource cleanup; submits safe evidence through GitHub branches/PRs without self-merging.
 
 **GitHub** is the collaboration and evidence hub. **Colab CLI** supplies remote compute. **Drive** is an optional thin notebook workspace, not a sync/results transport.
@@ -123,9 +122,11 @@ These are user-invoked bounded cycles, not a hosted autonomous agent. No default
 ## Documentation
 [Architect](protocols/ARCHITECT.md) · [Engineer](protocols/ENGINEER.md) · [Mentor](protocols/MENTOR.md) · [Scientist](protocols/SCIENTIST.md) · [Role Recovery](workflows/ROLE_RECOVERY.md) · [Changelog](CHANGELOG.md) · [Chinese index](i18n/zh-CN/README.md)
 
-**Version:** V3.3 architecture and protocol; existing pinned V3.2 project snapshots remain unchanged until explicitly upgraded. **License:** [MIT License](LICENSE) · Copyright © 2026 JohnnyZPiggy. The MIT grant covers original content in this repository; any third-party materials retain their own license terms.
+**Version:** V3.4 protocol (architecture diagrams still carry their V3.3 filenames; roles unchanged apart from the default Architect); existing pinned project snapshots remain unchanged until explicitly upgraded. **License:** [MIT License](LICENSE) · Copyright © 2026 JohnnyZPiggy. The MIT grant covers original content in this repository; any third-party materials retain their own license terms.
 
 ## GPT + Codex deployment: quick start
+
+> Since V3.4 the default Architect + Mentor is **Claude** (Claude Code or claude.ai with GitHub access). The steps below apply unchanged: replace "GPT" with the agent you assign; Codex remains the Engineer.
 
 Use **GPT (ChatGPT + connected GitHub)** as Chief Architect + Scientific Mentor, and **Codex (local coding agent)** as Software Engineer. ChatGPT's GitHub connection does not automatically access Codex's local machine or credentials; share tasks and test evidence through GitHub Issues/PRs and exact commit SHAs.
 

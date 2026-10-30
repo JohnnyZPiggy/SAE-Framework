@@ -1,43 +1,32 @@
-# [SAE Engineering Task] <short title>
+# [SAE Task] <short title>
 
 > Language: **English** | [简体中文](../i18n/zh-CN/templates/ISSUE_TEMPLATE.md)
 
+**Mode:** EXPLORE / VALIDATE · **Priority:** P0 / P1 / P2 · **Depends on:** #<n> / none
 
-**Owner:** Codex / Architect / Scientist
-**Priority:** P0 / P1 / P2
-**Status:** ready / in-progress / review / experiment / blocked / accepted
-**Kind:** math / engineering / experiment / learning
-**Depends on:** #<issue-number> (or none)
+## Goal
+One or two sentences: what problem, and why it matters.
 
-## Scientific purpose
-What problem does this solve, and why does it matter?
+## Contract (math / numerics, if relevant)
+Inputs/outputs, shapes, dtype, the independent reference, tolerance. Link the research note instead of copying it.
 
-## Pre-engineering mathematical research gate
-**GPT-decided structure/tensorization study:** `docs/research/<algorithm>-tensorization.md` / link  
-**GPT research decision:** RESEARCH_READY / scoped hypothesis-exception / RESEARCH_BLOCKED  
-**Matrix-vector / tensor structure and limitations:** <summary>  
-*Repository scaffolding-only issues can mark this as not applicable.*
+## Definition of Done
+- [ ] <observable outcome 1>
+- [ ] <observable outcome 2>
 
-## Mathematical / numerical contract
-Definitions, assumptions, reference baseline, invariants, input/output shapes, dtype/device constraints, tolerance policy.
+## Size budget
+`S` (≤ 50 net lines) / `M` (≤ 200) / `L` (≤ 500) — source + tests.
 
-## Deliverables
-- [ ] Scoped Python modules, CLI or design artifact
-- [ ] Tests/benchmark source
-- [ ] Documentation and reproduction commands
+## Required tests
+1. <e.g. oracle vs `torch.linalg.solve` at n=8 and n=512, float64>
 
-## Compute delivery gate (algorithm implementation tasks)
-- [ ] Source SHA pinned; actual CPU packaging/CLI/numerical tests recorded PASS / FAIL / NOT RUN; safe `PROBE_ONLY` device checks may start in parallel
-- [ ] Benchmark CLI writes local reports **without GitHub writes**; optional safe/non-sensitive Publisher is a separately verifiable stage directed by GPT (do not imply implemented)
-- [ ] Codex-run Colab CPU/GPU/TPU results, independent publication and cleanup have distinct PASS / FAIL / NOT RUN / BLOCKED evidence; no Scientist compute signoff. Short `PROBE_ONLY` device checks are not formal benchmark acceptance.
-- [ ] Record tested source SHA, actual commands, outputs and failures
+## Compute (only if needed)
+Device(s), workload, what result to report. Omit for CPU-only tasks.
 
-## Acceptance criteria
-- [ ] Spec and reference baseline agree
-- [ ] Correctness/edge-case checks specified
-- [ ] Actual CPU validation recorded
-- [ ] If GPU-relevant, exact candidate SHA tested in Colab
-- [ ] No GitHub Actions and no secret leakage
+## Not required
+- Input validation beyond the CLI/user boundary
+- Randomized / adversarial / property tests
+- Hash manifests, identity reports, per-attempt failure directories
+- <task-specific exclusions>
 
-## Handoff
-Target branch, linked PR/report, open questions, known blockers.
+Rules: [Simplicity Contract](../governance/SIMPLICITY_CONTRACT.md). Over budget by > 1.5× → stop, ship the Definition of Done, list extras as suggestions.

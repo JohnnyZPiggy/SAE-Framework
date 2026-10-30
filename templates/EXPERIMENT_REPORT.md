@@ -24,7 +24,7 @@ This file is the **Experimental Report** defined by the [Three-Artifact Handoff]
 GPU/CPU model, driver/CUDA/PyTorch versions, Colab runtime, dtype, seed, package install source.
 
 ## Correctness
-Baseline and tolerance, reference comparisons, max error, relative error, failure count, adversarial cases.
+Baseline and tolerance, reference comparisons, max error, relative error, failure count.
 
 ## Benchmark
 Workload, timing methodology, synchronization, warmups, compile time, repetitions, aggregation, units and accuracy parity.

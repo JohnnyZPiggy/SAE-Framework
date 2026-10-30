@@ -1,23 +1,12 @@
-## SAE PR summary
-Linked Issue: #<number>
-Source SHA: `<sha>`
+Closes/Refs #<issue> · Final SHA: `<sha>` · Size: <net lines> vs budget <S/M/L>
 
-### Mathematical and implementation changes
+### What changed
 
-### Three-artifact traceability
-- Mathematical study: `docs/research/<algorithm>-tensorization.md` / N/A for infrastructure
-- Engineering report: `docs/engineering/<algorithm>-engineering.md` / N/A for infrastructure
-- Actual Codex-run experiment (no Scientist compute approval required): `reports/gpu/<run-id>/summary.md` / NOT RUN
-- Candidate **tested source SHA**: `<SHA>`
+### Evidence
+- Tests: `<command>` → <passed>/<failed>/<skipped> on <one-line env>
+- Device run (if any): observed <device>; <cited result>; cleanup confirmed
+- Failures: `attempt — cause — fix` (or "none")
 
-### Validation
-- CPU tests: PASS / FAIL / NOT RUN / BLOCKED (commands + logs)
-- Numerical reference: PASS / FAIL / NOT RUN / BLOCKED
-- Colab GPU: PASS / FAIL / NOT RUN / BLOCKED (report PR link)
-- GitHub Actions: NOT CONFIGURED (by design)
+### Left out on purpose
 
-### Risks and follow-up
-
-### GPT Architect evidence review and merge decision
-- [ ] Architect reviewed actual diff, tested SHA and evidence under standing merge authorization
-- [ ] GPT decided in-scope scientific/T1–T3 substance without Scientist signoff; checked real numerical evidence, secrets/privacy and external new-billing/destructive/account-permission boundaries
+<!-- Rules: governance/SIMPLICITY_CONTRACT.md. Architect outcomes: ACCEPTED / REQUEST_CHANGES / REQUEST_SIMPLIFY. -->

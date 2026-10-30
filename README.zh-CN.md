@@ -1,4 +1,6 @@
-# SAE Framework V3.3
+# SAE Framework V3.4
+
+> **V3.4 新增——[简洁契约](i18n/zh-CN/governance/SIMPLICITY_CONTRACT.md)：** Engineer 写最小的正确改动（只在信任边界校验，只测真正可能出错的地方，以 Git 作为完整性层）；每次派活都附规模预算和"不需要做"清单；审查可给出 `REQUEST_SIMPLIFY`。Claude 为默认 Architect + Mentor。算力仍为 GPU 优先（[政策](governance/COMPUTE_THROUGHPUT_POLICY.md)）。
 
 > [English](README.md) 为规范版本 | 简体中文
 
@@ -6,7 +8,7 @@
 
 ## 通用 AI Agent 角色
 
-SAE 的角色由**职责、能力与权限**定义，而非绑定具体模型：**Scientist**（人类）、**Architect**（AI Agent，例如 GPT）、**Mentor**（AI Agent，例如 GPT）、**Engineer**（AI 编码 Agent，例如 Codex、Claude Code）。Architect 和 Mentor 可以由同一 Agent 担任；多个 Engineer 可以轮流接力，但必须经 GitHub Issue/PR、精确 SHA 和测试证据交接，使用独立工作区。更换 Agent 不会自动转移凭据或授权；Engineer 不得自审或自行合并。已有项目固定快照不自动升级。
+SAE 的角色由**职责、能力与权限**定义，而非绑定具体模型：**Scientist**（人类）、**Architect**（AI Agent，默认 Claude，也可为 GPT 等）、**Mentor**（AI Agent，默认 Claude，也可为 GPT 等）、**Engineer**（AI 编码 Agent，例如 Codex、Claude Code）。Architect 和 Mentor 可以由同一 Agent 担任；多个 Engineer 可以轮流接力，但必须经 GitHub Issue/PR、精确 SHA 和测试证据交接，使用独立工作区。更换 Agent 不会自动转移凭据或授权；Engineer 不得自审或自行合并。已有项目固定快照不自动升级。
 
 ## 组织架构图
 
@@ -87,8 +89,8 @@ flowchart TB
 
 ## 角色
 - **Scientist（人类）：** 提出或调整科研目标、随时叫停，**不再负责日常数学、实验、资源、T3 或 PR 审批**。
-- **Architect（AI Agent，例如 GPT）：** 自主决定数学研究、科研准备、工程/实验验收、迭代和合格 PR 合并，依[常设授权](governance/STANDING_AUTHORIZATION.md)执行。
-- **Mentor（AI Agent，例如 GPT）：** 研究数学结构、张量化与数值方法，指导科研学习。
+- **Architect（AI Agent，默认 Claude，也可为 GPT 等）：** 自主决定数学研究、科研准备、工程/实验验收、迭代和合格 PR 合并，依[常设授权](governance/STANDING_AUTHORIZATION.md)执行。
+- **Mentor（AI Agent，默认 Claude，也可为 GPT 等）：** 研究数学结构、张量化与数值方法，指导科研学习。
 - **Engineer（AI Agent，例如 Codex、Claude Code）：** 实现、测试并默认执行现有账户本地 CPU 和 Colab CLI CPU/GPU/TPU 实验，校验结果、释放资源，经 GitHub 分支/PR 提交证据；不自合并。
 
 **GitHub** 是任务、代码与证据中心；**Colab CLI** 提供远程计算；**Drive** 只作可选轻量 Notebook 工作空间，不同步实验结果。
@@ -120,9 +122,11 @@ Mentor/Architect 自主判断简明[数学结构研究](workflows/MATHEMATICAL_R
 ## 文档
 [架构师](i18n/zh-CN/protocols/ARCHITECT.md) · [工程师](i18n/zh-CN/protocols/ENGINEER.md) · [导师](i18n/zh-CN/protocols/MENTOR.md) · [科学家](i18n/zh-CN/protocols/SCIENTIST.md) · [角色恢复](i18n/zh-CN/workflows/ROLE_RECOVERY.md) · [变更记录](i18n/zh-CN/CHANGELOG.md) · [中文导航](i18n/zh-CN/README.md)
 
-**版本：** V3.3 文档迁移中；已固定的 V3.2 项目快照须经审查后主动升级。**许可：** [MIT License](LICENSE) · Copyright © 2026 JohnnyZPiggy。本许可适用于仓库内的原创内容；如含第三方素材，其原有许可条款仍然适用。
+**版本：** V3.4 协议（架构图文件名仍为 V3.3；角色除默认 Architect 外不变）；已固定的项目快照须经审查后主动升级。**许可：** [MIT License](LICENSE) · Copyright © 2026 JohnnyZPiggy。本许可适用于仓库内的原创内容；如含第三方素材，其原有许可条款仍然适用。
 
 ## GPT + Codex 本地部署快速指南
+
+> V3.4 起默认 Architect + Mentor 为 **Claude**（Claude Code 或接入 GitHub 的 claude.ai）。以下步骤不变：把"GPT"换成你指派的 Agent；Engineer 仍为 Codex。
 
 **角色分工：** ChatGPT 中的 GPT 担任 Chief Architect + Scientific Mentor（需要连接 GitHub 以读取真实 Issue/PR）；本地 Codex 担任 Software Engineer。ChatGPT 的 GitHub 连接不会自动获得 Codex 的本地文件和凭据，两者使用 GitHub Issue/PR、精确 SHA 与真实测试证据交接。
 

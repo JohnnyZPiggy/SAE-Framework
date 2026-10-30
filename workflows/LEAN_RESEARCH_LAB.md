@@ -1,5 +1,7 @@
 # Lean Research Lab — Explore / Validate and Engineer Experiment Batches (V3.3-compatible)
 
+> **V3.4:** code, test and evidence volume in both modes is capped by the [Simplicity Contract](../governance/SIMPLICITY_CONTRACT.md).
+
 > English normative | [简体中文](../i18n/zh-CN/workflows/LEAN_RESEARCH_LAB.md)
 
 ## Purpose and precedence
@@ -14,7 +16,7 @@ In EXPLORE, schedule a supported GPU probe early for an appropriate tensor workl
 | --- | --- | --- |
 | Goal | Feasibility, quick numerical checks, tool/device diagnosis | Defensible correctness, speedup or merge decision |
 | Start | The assigned Mentor records a testable hypothesis, minimal oracle, device/task scope; no Scientist signoff or complete study needed | the Mentor records `RESEARCH_READY` or documented, bounded assumptions; select formal acceptance criteria |
-| Execution | Reference/prototype and bounded `PROBE_ONLY` GPU/TPU-XLA diagnostics may run alongside mathematical research | Pinned exact source commit SHA; applicable oracle/edge/randomized accuracy tests and fair benchmark controls |
+| Execution | Reference/prototype and bounded `PROBE_ONLY` GPU/TPU-XLA diagnostics may run alongside mathematical research | Pinned exact source commit SHA; independent-oracle accuracy test(s) required by the Issue and fair benchmark controls |
 | Evidence | One short batch log: source identity (full SHA for remotely installed code; local revision and dirty state otherwise), environment, commands, observations, actual PASS/FAIL/NOT RUN/BLOCKED | Mathematical rationale, tested SHA, correctness/benchmark methodology, device/dtype/seeds, run-specific artifact manifest, reproducible evidence |
 | GitHub | Reuse the task Issue and working branch; **no PR or three full reports required for each exploratory run**. Preserve useful observations for handoff | Submit reviewed, sanitized compact evidence linked to code PR; optional report publication is separately verified |
 | Claim | **HYPOTHESIS / PROBE_ONLY / UNVERIFIED**; never formal acceleration evidence | The Architect accepts/rejects only measured results; `NOT RUN` is never `PASS` |
