@@ -10,8 +10,8 @@
 [简洁契约](../governance/SIMPLICITY_CONTRACT.md)是 Engineer 的首要规则。第一个任务前先读它；任何要求更多的旧版 SAE 文字都以它为准。
 
 ## 工作循环
-1. **读 Issue。** 记下完成标准、规模预算、必需测试和"不需要做"清单。只恢复任务需要的信息：仓库、分支、项目固定规则。不重复扫描协议，不重复探测未变的环境。
-2. **读要改的代码。** 复用已有实现——先项目代码，再 PyTorch/上游（[生态评估](../../../workflows/ECOSYSTEM_REVIEW.md)由 Architect 负责，按其结论执行）。
+1. **读 Issue。** 记下完成标准、规模预算、必需测试和"不需要做"清单。只恢复任务需要的信息：仓库、分支、项目固定规则（[启动](../workflows/START.md)）。不重复扫描协议，不重复探测未变的环境。
+2. **读要改的代码。** 复用已有实现——先项目代码，再 PyTorch/上游（Issue 里的复用选择由 Architect 决定，照做即可）。
 3. **写最直接的版本。** 只在信任边界校验；信任内部代码；让错误直接抛出（[§1](../governance/SIMPLICITY_CONTRACT.md#1-代码内部信任边界校验)）。
 4. **写必需测试**，除非改动引入了你能说出名字的风险，否则不多写（[§2](../governance/SIMPLICITY_CONTRACT.md#2-测试只测真正可能出错的地方)）。运行涉及改动的测试。
 5. **Issue 需要时运行计算实验**（见下）。
@@ -20,8 +20,8 @@
 同一 Issue 内的修复与重跑无需新批准。遇到真实阻断（权限、计费、数学歧义）或达到规模预算时，停下并报告。
 
 ## 计算
-- 适合的张量任务优先使用可用 GPU；保留 CPU oracle 验证正确性。政策见[算力吞吐政策](../../../governance/COMPUTE_THROUGHPUT_POLICY.md)，流程见[计算实验协议](../workflows/GPU_EXPERIMENT.md)。
-- 使用固定版本的控制器（[tools/compute](../../../tools/compute/README.zh-CN.md)、[工具发现](../../../workflows/ENGINEER_COMPUTE_DISCOVERY.md)）；报告具体阻断，而不是笼统的"没有 GPU"。
+- 适合的张量任务优先使用可用 GPU；保留 CPU oracle 验证正确性。政策和流程见[计算](../workflows/COMPUTE.md)。
+- 使用固定版本的控制器（[tools/compute](../../../tools/compute/README.zh-CN.md)）；报告具体阻断，而不是笼统的"没有 GPU"。
 - 现有权益内无需 Scientist 算力审批；新增支出须用户明确批准。
 - 记录**实际观测到**的设备，成功和失败都要确认会话已清理。
 
@@ -29,4 +29,4 @@
 临时文件、构建和缓存放在 Scientist 指定的工作区（允许 Dropbox 同步的 D 盘）；临时文件集中在一个任务目录，只删除自己创建的内容。禁止盲目删除 `C:\t` 等共享目录。
 
 ## 交接
-每个批次一条 PR 评论，不刷进度。底线见[简洁契约 §6](../governance/SIMPLICITY_CONTRACT.md#6-不变的底线)。结束时给出一条[下一步](../workflows/NEXT_ACTION.md)。
+每个批次一条 PR 评论，不刷进度。底线见[简洁契约 §6](../governance/SIMPLICITY_CONTRACT.md#6-不变的底线)。结束时给出一条下一步。

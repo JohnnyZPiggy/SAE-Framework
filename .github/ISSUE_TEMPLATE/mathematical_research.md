@@ -1,27 +1,21 @@
 ---
-name: SAE mathematical structure study
-about: Mentor-led structure discovery and tensorization research before engineering
+name: SAE research question
+about: Mentor-led structure / tensorization study before formal engineering (V3.4)
 title: "[SAE Research] "
 labels: []
 assignees: []
 ---
 
-**Research owner:** GPT Scientific Mentor + human Scientist
+**Question and source (paper / reference code):**
 
-**Paper/reference and scientific question:**
+**Reference equations and independent oracle:**
 
-**Original equations and reference oracle:**
+**Candidate structure (batched, matrix-free, low rank, …) and obstacles:**
 
-**Potential matrix–vector / matrix-free / tensor operator structure:**
+**Proof obligations, tolerance and degenerate cases:**
 
-**Sequential or non-tensorizable obstacles:**
+**Cost hypotheses (not measured):**
 
-**Proof, equivalence, numerical accuracy and approximation boundaries:**
+**Note:** `docs/research/<algorithm>-tensorization.md` — template `templates/TENSORIZATION_STUDY.md`
 
-**Hardware portability and cost hypotheses (not measured):**
-
-**Study document:** `docs/research/<algorithm>-tensorization.md`
-
-**Scientist decision:** NOT_STARTED / RESEARCH_READY / RESEARCH_BLOCKED / NOT_TENSORIZABLE
-
-**Proposed handoff to Architect (only after Scientist decision):**
+**Mentor decision:** RESEARCH_READY / RESEARCH_BLOCKED / NOT_TENSORIZABLE (no Scientist signoff)

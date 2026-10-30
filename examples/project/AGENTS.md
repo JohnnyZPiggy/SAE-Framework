@@ -1,29 +1,40 @@
-# Project Agent Entry Point — SAE V3.4
+# <PROJECT> — SAE V3.4 project entrypoint
 
-> Copy to the adopting project's root. Replace placeholders and verify pinned links.
+SAE pin: `<40-CHARACTER-SAE-SHA>`. Configuration: [sae.yaml](sae.yaml). Pinned rules: [.sae/README.md](.sae/README.md).
+Read the [pinned constitution](https://github.com/JohnnyZPiggy/SAE-Framework/blob/<40-CHARACTER-SAE-SHA>/AGENTS.md) and your role protocol at that SHA. Never float to `main` or silently bump the pin.
 
-**Project:** `<OWNER>/<PROJECT>`  
-**Scientific objective:** `<ALGORITHM_OR_PAPER>`  
-**SAE pin:** `<ACTUAL_40_CHARACTER_FRAMEWORK_SHA>`; optional full `.sae/` snapshot for offline use
+## Simplicity first (Engineer: read before writing code)
 
-## Before work
-Read this file and `sae.yaml`, then load the actual pinned SAE constitution, assigned role and task-relevant workflow from the immutable SHA (or optional matching local snapshot). Inspect the current task Issue/PR only as needed. Never silently upgrade the pin or assume a link was read.
+The [Simplicity Contract](https://github.com/JohnnyZPiggy/SAE-Framework/blob/<40-CHARACTER-SAE-SHA>/governance/SIMPLICITY_CONTRACT.md) overrides any older rule or habit that asks for more. The smallest change that meets the Issue's Definition of Done is the correct change.
 
-## Pinned references
-For minimal adoption, relative `.sae/` links below are examples for an optional full snapshot; replace them with immutable GitHub URLs at the recorded SHA, or retain them only if that snapshot is present. Keep roles and acceptance conditions identical.
+1. **Validate only at trust boundaries** (CLI args, files, provider output), and only the fields you use. Trust internal code: let torch and Python raise.
+2. **Catch an exception only if you then do something different.** No catch-and-rename, no custom error-code taxonomies.
+3. **No speculative code:** no "future" abstractions, flags, fallbacks, length caps, hand-written schema validators.
+4. **Tests:** one per changed behavior, plus an independent oracle for numerical claims. Test lines ≲ source lines.
+5. **Evidence:** Git SHA is the integrity layer. The handoff is one PR comment, with ≤ 3 evidence files for code and ≤ 10 for a GPU run.
+6. **Budget:** every Issue states S ≤ 50 / M ≤ 200 / L ≤ 500 net lines and a *Not required* list. Over 1.5× → stop, ship the Definition of Done, list extras as suggestions.
 
-## Project roles
-- **Scientist:** sets/changes research objectives and can stop work; no routine scientific/engineering/compute signoff.
-- **Architect/Mentor (default Claude):** autonomously decides mathematical research, `RESEARCH_READY`, specifications, acceptance, iteration and eligible PR merges under [pinned governance](.sae/governance/STANDING_AUTHORIZATION.md) and current owner authorization.
-- **Engineer (e.g., Codex):** implementation, local CPU and eligible existing-account Colab CLI CPU/GPU/TPU experiments, artifact verification, session cleanup and GitHub branch/PR evidence. No self-merge or protected-main writes.
+```python
+# Not this
+def criterion(X):
+    if not isinstance(X, torch.Tensor): raise TypeError("X must be a tensor")
+    if X.ndim != 2: raise ValueError(f"bad shape {X.shape}")
+    try:
+        return torch.linalg.slogdet(X.T @ X).logabsdet
+    except RuntimeError as e:
+        raise CriterionError("FAILED") from e
 
-## Simplicity first
-Follow the pinned [Simplicity Contract](.sae/governance/SIMPLICITY_CONTRACT.md): the smallest change that meets the Issue's Definition of Done; validation only at trust boundaries; tests only for what could actually be wrong; Git is the integrity layer. Every Issue states a size budget and a *Not required* list; review may return `REQUEST_SIMPLIFY`.
+# This
+def criterion(X):
+    return torch.linalg.slogdet(X.T @ X).logabsdet
+```
 
-## Workflow
-Use the pinned [Lean Lab](.sae/workflows/LEAN_RESEARCH_LAB.md) when available: `EXPLORE` uses one bounded Codex batch and compact observation record; `VALIDATE` requires GPT-reviewed math, exact source SHA and real correctness/benchmark evidence. New algorithm/major redesign: GPT-decided concise [mathematical study](.sae/workflows/MATHEMATICAL_RESEARCH.md) + parallel [Build-vs-Reuse](.sae/workflows/ECOSYSTEM_REVIEW.md), reference code and `PROBE_ONLY` device readiness → Codex tests/experiments → GPT evidence review/merge; **no Scientist stage approval**. Use [Compute Experiment](.sae/workflows/GPU_EXPERIMENT.md) for the three separate install/benchmark/optional-publication stages. If the pinned snapshot includes [Experiment by Default](.sae/workflows/GPU_EXPERIMENT.md), GPT makes science/engineering decisions without Scientist signature; Codex needs **no human compute approval** for existing entitlements. Only new monetary commitments, nonpublic sensitive release or external account/security/destructive actions need separate user instruction. Do not silently upgrade older snapshots. Device support, Publisher and speedups require actual evidence. No GitHub Actions, Drive sync or new billable commitments without explicit user consent.
+## Roles
+- **Scientist:** sets goals, can stop any work; no routine approvals.
+- **Architect / Mentor (default Claude):** research decisions, Issues with budgets, review, merges.
+- **Engineer (e.g. Codex):** implements, tests, runs CPU/GPU on existing entitlements, opens PRs; never merges its own work.
 
-## Role commands
-`推进架构师工作` / `推进导师工作` / `推进工程师工作`.
-
-Apply [Role Recovery](.sae/workflows/ROLE_RECOVERY.md) before work. Before the final reply, apply the pinned [Next-Action Completion Gate](.sae/workflows/NEXT_ACTION.md): record actual source SHA and PASS/FAIL/NOT RUN/BLOCKED evidence, end with one complete copyable handoff command when feasible, and give at most two meaningful alternatives. Use genuine interactive controls only where supported; otherwise use a separate plain-text code block for each command. Report DONE/BLOCKED/WAITING_FOR_EXTERNAL_ACTION honestly when no action exists. Never silently replace this project's pinned `.sae/` snapshot.
+## Project rules
+- Production dependencies: <e.g. torch only>. Reference libraries are for tests only.
+- Workspace: <designated drive / folder>; delete only task-owned scratch.
+- Current state: <active Issue(s) and what is stopped>. Work starts only from an Issue or an Architect START comment.

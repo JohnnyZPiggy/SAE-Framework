@@ -3,6 +3,29 @@
 > Language: **English** | [简体中文](i18n/zh-CN/CHANGELOG.md)
 
 
+## V3.4 — Repository cleanup: one page per concept (2026-10-30)
+
+- **README** rewritten (~205 → ~70 lines): what SAE is, the roles table, a V3.4 flow diagram, a repository map and status. The outdated GPT deployment guide was removed. The architecture figures in `docs/figures/` stay; their agent names are examples.
+- **17 workflows → 4:**
+  - [Start](workflows/START.md): cold start, role recovery, warm start only on change, compute-tool discovery, end-of-turn handoff, project adoption and ready-to-paste prompts;
+  - [Tasks](workflows/TASKS.md): Issues, EXPLORE/VALIDATE, where results live, review;
+  - [Research](workflows/RESEARCH.md): R1–R3, reuse first, learning;
+  - [Compute](workflows/COMPUTE.md): the throughput policy plus the experiment procedure.
+- **Governance:** Standing Authorization shortened and now includes the security rules; the Compute Throughput Policy moved into Compute; the Simplicity Contract is unchanged.
+- **Protocols:** Scientist and Mentor rewritten; all four now point to the new workflows; "GPT decides" wording removed throughout.
+- **Removed:**
+  - `docs/` text pages (architecture, integrations, roadmap, language policy, adoption smoke test; their content is folded into README and Start);
+  - `reports/` (V3.3 evidence directories);
+  - `SAE_BOOTSTRAP.md` (now Start § Adopt);
+  - Engineering Report and GPU Readiness templates;
+  - `examples/colab`, `examples/reports`;
+  - `tools/compute/diagnostics/` (CLI 0.7.4 one-off scripts).
+
+  All of it remains in Git history and at older pins.
+- **Templates:** the research note and run summary were cut to their fields. **Examples:** the project `AGENTS.md` carries the "Simplicity first" section; a new `sae-README.md` provides the `.sae/README.md` template; `sae.yaml` was trimmed.
+- **Compute tools:** README reduced from 106 to ~50 lines with no dead links. Code is unchanged.
+- **Projects pinned to older SAE commits are unaffected.** When bumping a pin, update the project's `.sae/README.md` links to the new file names (see `examples/project/sae-README.md`).
+
 ## V3.4 — Simplicity Contract: less defensive code, Claude as default Architect (2026-10-30)
 
 - **Problem:** under V3.3, Engineer agents (Codex) produced far more code, tests and evidence than the science needed — hand-written JSON/ASCII validators, `ast` parsing of driver files, test files longer than the code under test, ~17k lines of evidence for a 25-line criterion. Root cause was the framework: defensive requirements repeated in every document, test checklists that demanded every category, no size budget in dispatches, and reviews that could only ask for more.
@@ -14,7 +37,7 @@
 ## V3.3 — Lean Research Lab Phase 1: Explore / Validate and one Codex batch (2026-10-20)
 
 - Fix the new-project `sae.yaml` template: GPT decides research, prior Scientist science/GPU-budget approval defaults are false, Architect evidence review replaces ambiguous per-PR authorization, and extra billing still requires explicit user consent. Preserve existing V3.3 schema version and immutable project snapshots.
-- Introduce bilingual [Lean Lab](workflows/LEAN_RESEARCH_LAB.md): EXPLORE uses a bounded testable hypothesis and compact batch log; VALIDATE requires justified math, exact source SHA, numerical correctness and reproducible performance evidence. A `PROBE_ONLY` check is not proof of speedup/TPU support.
+- Introduce bilingual Lean Lab (now part of `workflows/TASKS.md`): EXPLORE uses a bounded testable hypothesis and compact batch log; VALIDATE requires justified math, exact source SHA, numerical correctness and reproducible performance evidence. A `PROBE_ONLY` check is not proof of speedup/TPU support.
 - One existing/new GitHub Issue can hold a finite Codex implementation→test→repair→rerun batch, with default one active Colab session, a task-defined timeout, bounded repair attempts and one consolidated outcome rather than PR/report spam.
 - Align bilingual new-project bootstrap, adoption smoke test, GPU Readiness, PR and task/three-artifact/research templates. No algorithm-project migration, extra agent, background service, Actions, purchased compute or claimed end-to-end runtime validation.
 
