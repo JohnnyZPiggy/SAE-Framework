@@ -102,7 +102,9 @@ class FakeCLI:
             elif not probe and self.failure == 'interrupt':
                 raise KeyboardInterrupt()
             elif probe:
-                name = 'NVIDIA A100' if self.failure == 'mismatch' else 'NVIDIA '+self.requested
+                name = ('NVIDIA A100' if self.failure == 'mismatch' else
+                        'NVIDIA RTX PRO 6000 Blackwell Server Edition' if self.requested == 'G4'
+                        else 'NVIDIA '+self.requested)
                 output = 'KERNEL_REACHABLE\nDEVICE_OBSERVED '+json.dumps(identity(name))+'\n'
                 if self.failure == 'missing-identity':
                     output = 'KERNEL_REACHABLE\n'
@@ -378,13 +380,33 @@ class ControllerTests(unittest.TestCase):
                 r, fake = self.run_fake(extra=['--device',device])
                 self.assertEqual(r['status'],'PASS')
                 self.assertEqual(r['device_requested'],device)
-                self.assertEqual(r['device_observed']['nvidia_smi'][0]['name'],'NVIDIA '+device)
+                expected = 'NVIDIA RTX PRO 6000 Blackwell Server Edition' if device == 'G4' else 'NVIDIA '+device
+                self.assertEqual(r['device_observed']['nvidia_smi'][0]['name'],expected)
                 new = next(c for c,_ in fake.calls if c[0]=='new')
                 self.assertEqual(new[new.index('--gpu')+1],device)
 
     def test_unknown_device_never_reaches_cli_fallback(self):
         r,fake=self.run_fake(extra=['--device','UNKNOWN'])
         self.assertEqual(r['error'],'UNSUPPORTED_DEVICE')
+        self.assertEqual(fake.calls,[])
+
+    def test_explicit_observed_families_and_cross_family_rejection(self):
+        for requested,name in (('T4','Tesla T4'),('L4','NVIDIA L4'),
+                ('A100','NVIDIA A100-SXM4-40GB'),('H100','NVIDIA H100 80GB HBM3'),
+                ('G4','NVIDIA RTX PRO 6000 Blackwell Server Edition')):
+            with self.subTest(requested=requested):
+                self.assertTrue(control.family_matches(requested,[name]))
+                self.assertTrue(control.family_matches(requested,[name.lower()]))
+        for requested,name in (('L4','NVIDIA L40S'),('A100','NVIDIA A10G'),
+                               ('G4','NVIDIA RTX 6000 Ada'),('T4','NVIDIA L4')):
+            with self.subTest(requested=requested,name=name):
+                self.assertFalse(control.family_matches(requested,[name]))
+        self.assertFalse(control.family_matches('L4',['NVIDIA L4','NVIDIA L40S']))
+        with self.assertRaisesRegex(PreflightError,'DEVICE_IDENTITY_UNVERIFIED'):
+            control.family_matches('UNKNOWN',['NVIDIA UNKNOWN'])
+        with patch.dict(control.OBSERVED_FAMILIES,{'G4':None}):
+            result,fake=self.run_fake(extra=['--device','G4'])
+        self.assertEqual(result['error'],'DEVICE_IDENTITY_UNVERIFIED')
         self.assertEqual(fake.calls,[])
 
     def test_mismatch_requires_committed_literal_opt_in(self):

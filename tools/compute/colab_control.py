@@ -17,6 +17,17 @@ from environment_preflight import PreflightError, preflight, resolve_cli
 
 # Verified CLI0.7.4 commands/session.py resolve_runtime_options mapping, not guesses.
 SUPPORTED_DEVICES = ('T4', 'L4', 'G4', 'H100', 'A100')
+OBSERVED_FAMILIES = {
+    'T4': r'\bT4\b', 'L4': r'\bL4\b', 'A100': r'\bA100\b',
+    'H100': r'\bH100\b', 'G4': r'\bRTX PRO 6000\b',
+}
+
+
+def family_matches(requested, names):
+    pattern = OBSERVED_FAMILIES.get(requested)
+    if not pattern:
+        raise PreflightError('DEVICE_IDENTITY_UNVERIFIED')
+    return all(re.search(pattern, name, re.IGNORECASE) for name in names)
 
 
 def observed_device(output):
@@ -246,6 +257,7 @@ def run(args):
             raise PreflightError('INVALID_SOURCE_SHA')
         if args.device not in SUPPORTED_DEVICES:
             raise PreflightError('UNSUPPORTED_DEVICE')
+        family_matches(args.device, [])  # Reject missing mappings before allocation.
         if not (all(math.isfinite(x) for x in (args.cleanup_seconds,args.allocation_seconds,args.task_seconds,args.kernel_timeout,args.work_timeout))
                 and 0 < args.cleanup_seconds < args.allocation_seconds <= 10800
                 and args.allocation_seconds <= args.task_seconds <= 14400
@@ -308,7 +320,7 @@ def run(args):
             names = [device['name'] for device in observed['nvidia_smi']]
             if observed['torch']['status'] == 'AVAILABLE':
                 names.append(observed['torch']['name'])
-            matches = all(re.search(r'\b'+re.escape(args.device)+r'\b', name, re.IGNORECASE) for name in names)
+            matches = family_matches(args.device, names)
             if not matches:
                 report['classification'] = 'DEVICE_MISMATCH'
                 if not allows_mismatch:
