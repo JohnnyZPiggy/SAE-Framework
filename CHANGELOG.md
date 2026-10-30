@@ -5,7 +5,7 @@
 
 ## V3.4 — Repository cleanup: one page per concept (2026-10-30)
 
-- **README** rewritten (~205 → ~70 lines): what SAE is, the roles table, a V3.4 flow diagram, a repository map and status. The outdated GPT deployment guide and V3.3 SVG/Mermaid figures were removed (they remain in Git history).
+- **README** rewritten (~205 → ~70 lines): what SAE is, the roles table, a V3.4 flow diagram, a repository map and status. The outdated GPT deployment guide was removed. The architecture figures in `docs/figures/` stay; their agent names are examples.
 - **17 workflows → 4:**
   - [Start](workflows/START.md): cold start, role recovery, warm start only on change, compute-tool discovery, end-of-turn handoff, project adoption and ready-to-paste prompts;
   - [Tasks](workflows/TASKS.md): Issues, EXPLORE/VALIDATE, where results live, review;
@@ -14,7 +14,7 @@
 - **Governance:** Standing Authorization shortened and now includes the security rules; the Compute Throughput Policy moved into Compute; the Simplicity Contract is unchanged.
 - **Protocols:** Scientist and Mentor rewritten; all four now point to the new workflows; "GPT decides" wording removed throughout.
 - **Removed:**
-  - `docs/` (architecture, integrations, roadmap, language policy, adoption smoke test; their content is folded into README and Start);
+  - `docs/` text pages (architecture, integrations, roadmap, language policy, adoption smoke test; their content is folded into README and Start);
   - `reports/` (V3.3 evidence directories);
   - `SAE_BOOTSTRAP.md` (now Start § Adopt);
   - Engineering Report and GPU Readiness templates;

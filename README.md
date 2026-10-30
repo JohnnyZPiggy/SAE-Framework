@@ -25,6 +25,10 @@ flowchart LR
     A -.->|ACCEPTED / REQUEST_CHANGES /<br/>REQUEST_SIMPLIFY| E
 ```
 
+![SAE architecture (English)](docs/figures/SAE_Framework_V3.3.en.svg)
+
+The card diagram shows the role layout; its agent names (e.g. GPT) are examples only, and any capable agent can fill a role. Editable source: [.mmd](docs/figures/SAE_Framework_V3.3.en.mmd).
+
 ## How work flows
 1. **Architect** writes one Issue: goal, math contract, Definition of Done, size budget (S ≤ 50 / M ≤ 200 / L ≤ 500 lines), required tests, *Not required* list.
 2. **Engineer** makes the smallest correct change, runs the required tests (and GPU runs if asked), opens one PR with one handoff comment.
@@ -42,6 +46,7 @@ GitHub Issues and PRs are the only shared record. No GitHub Actions; compute run
 | [workflows/](workflows/) | [Start](workflows/START.md) (new session, adoption) · [Tasks](workflows/TASKS.md) (Issues, PRs, review) · [Research](workflows/RESEARCH.md) (math, reuse, learning) · [Compute](workflows/COMPUTE.md) (CPU/GPU runs) |
 | [templates/](templates/) | Issue, PR, research note and run summary |
 | [tools/compute/](tools/compute/README.md) | Colab controller: one bounded GPU session, observed device, guaranteed cleanup |
+| [docs/figures/](docs/figures/) | Architecture diagrams (SVG + Mermaid source) |
 | [examples/](examples/) | Project `AGENTS.md`, `sae.yaml`, `.sae/README.md` and a compute adapter |
 
 ## Start

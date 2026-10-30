@@ -25,6 +25,10 @@ flowchart LR
     A -.->|ACCEPTED / REQUEST_CHANGES /<br/>REQUEST_SIMPLIFY| E
 ```
 
+![SAE 架构图（中文）](docs/figures/SAE_Framework_V3.3.zh-CN.svg)
+
+卡片图展示角色布局；图中的 Agent 名称（如 GPT）只是举例，任何有能力的 Agent 都可以担任对应角色。可编辑源文件：[.mmd](docs/figures/SAE_Framework_V3.3.zh-CN.mmd)。
+
 ## 工作流程
 1. **Architect** 写一个 Issue，写明：
    - 目标和数学契约；
@@ -47,6 +51,7 @@ GitHub Issue 和 PR 是唯一的共享记录。不用 GitHub Actions；计算在
 | workflows/ | [启动](i18n/zh-CN/workflows/START.md)（新会话、项目采用）· [任务](i18n/zh-CN/workflows/TASKS.md)（Issue、PR、审查）· [研究](i18n/zh-CN/workflows/RESEARCH.md)（数学、复用、学习）· [计算](i18n/zh-CN/workflows/COMPUTE.md)（CPU/GPU 运行） |
 | templates/ | Issue、PR、研究笔记、运行摘要 |
 | [tools/compute/](tools/compute/README.zh-CN.md) | Colab 控制器：有界单 GPU 会话、实际设备观测、保证清理 |
+| [docs/figures/](docs/figures/) | 架构图（SVG + Mermaid 源文件） |
 | [examples/](examples/) | 项目 `AGENTS.md`、`sae.yaml`、`.sae/README.md` 和计算适配器 |
 
 英文为规范版本，中文译本位于 `i18n/zh-CN/`，修改规则时须在同一 PR 内同步。
