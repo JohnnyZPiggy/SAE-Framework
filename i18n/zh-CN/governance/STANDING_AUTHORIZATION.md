@@ -33,7 +33,7 @@
 | 级别 | 典型内容 | 架构师作出 MERGE 前需要检查 |
 | --- | --- | --- |
 | **T1 日常** | 普通文档、翻译、格式、不改变权限的协议说明、针对性测试 | 审查真实 Diff、链接、语法与相关检查 |
-| **T2 工程** | 算法、数值修复、PyTorch 优化、打包、Benchmark/Publisher、一般依赖 | 适用时已通过数学研究关口、Engineer 真实 CPU/oracle/边界/回归/打包证据、许可和安全审核。只有在声称 GPU 成功或 GPU 为明确验收项时要求 Engineer 真实运行的 Colab 证据；CPU-only PR 若 GPU 非验收条件可合并，但必须注明 `GPU_NOT_RUN`。 |
+| **T2 工程** | 算法、数值修复、PyTorch 优化、打包、Benchmark/Publisher、一般依赖 | 适用时已通过数学研究关口、Engineer 针对 Issue 必需测试的真实证据（数值结论需独立 oracle），按[简洁契约](SIMPLICITY_CONTRACT.md)、许可和安全审核。只有在声称 GPU 成功或 GPU 为明确验收项时要求 Engineer 真实运行的 Colab 证据；CPU-only PR 若 GPU 非验收条件可合并，但必须注明 `GPU_NOT_RUN`。 |
 | **T3 高影响证据审查** | 科研假设与结论、安全或治理协议、重要许可/IP/发版、破坏性操作或敏感资料 | Architect 依最新委托自行决定范围内的科学和治理变更，记录假设、数值证据、风险与真实 Diff，**不请求 Scientist 阶段批准**。新增付费、外部账户/安全权限改动、敏感非公开披露或外部不可逆破坏不在本次概括授权内；必要时记 `MERGE_BLOCKED / WAITING_FOR_EXTERNAL_ACTION`。 |
 
 **例如：** Mentor 完成张量推导并记录有依据的 `RESEARCH_READY` 或近似条件，Architect 自行接受或退回科研判断，Engineer 运行真实测试，Architect 按证据决定合并。**无需 Scientist 签批**；证明不足或数值失败必须记录修复，不能凭授权宣称成功。

@@ -11,7 +11,7 @@
 | Gate | Status: PASS / FAIL / NOT_RUN / WAIVED | Evidence (command, real output, link) |
 | --- | --- | --- |
 | GPT-decided `RESEARCH_READY` / explicit bounded assumptions for **formal VALIDATE** | | |
-| CPU oracle, randomized and edge correctness | | |
+| CPU independent-oracle correctness | | |
 | CPU eager + `torch.compile` execution | | |
 | CPU fullgraph/graph-break diagnostics if relevant | | |
 | CPU benchmark and numerical tolerance | | |

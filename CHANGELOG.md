@@ -3,6 +3,14 @@
 > Language: **English** | [简体中文](i18n/zh-CN/CHANGELOG.md)
 
 
+## V3.4 — Simplicity Contract: less defensive code, Claude as default Architect (2026-10-30)
+
+- **Problem:** under V3.3, Engineer agents (Codex) produced far more code, tests and evidence than the science needed — hand-written JSON/ASCII validators, `ast` parsing of driver files, test files longer than the code under test, ~17k lines of evidence for a 25-line criterion. Root cause was the framework: defensive requirements repeated in every document, test checklists that demanded every category, no size budget in dispatches, and reviews that could only ask for more.
+- **New [Simplicity Contract](governance/SIMPLICITY_CONTRACT.md)** (binding, overrides older text that asks for more): validate only at trust boundaries and trust internal code; banned-pattern table; one test per changed behavior plus an independent oracle for numerical claims; Git as the integrity layer with evidence file caps (absorbs the lean-evidence rules proposed in PR #70); dispatches carry Definition of Done, S/M/L size budget, required tests and a *Not required* list; Engineers stop at 1.5× budget; new review outcome `REQUEST_SIMPLIFY`. Non-negotiables (SHA, honest status, oracle, observed device, cleanup, secrets, no self-merge, no new spending) are now stated once.
+- **Engineer protocol rewritten** around a six-step loop; Architect protocol owns the size budget; Code Review checks size before correctness; Issue/PR templates (repo and `.github/`) slimmed to the fields that steer effort; GPU evidence reduced to `summary.md` + one results file; Standing Authorization T2 evidence points to the Issue's required tests.
+- **Claude is the default Architect + Mentor** (role remains provider-neutral). Repeated compute-policy banners removed from individual documents; the policy itself is unchanged.
+- Example `sae.yaml` bumped to `3.4` with a `simplicity` block. Existing project pins are **not** upgraded automatically. `tools/compute` code is unchanged in this release.
+
 ## V3.3 — Lean Research Lab Phase 1: Explore / Validate and one Codex batch (2026-10-20)
 
 - Fix the new-project `sae.yaml` template: GPT decides research, prior Scientist science/GPU-budget approval defaults are false, Architect evidence review replaces ambiguous per-PR authorization, and extra billing still requires explicit user consent. Preserve existing V3.3 schema version and immutable project snapshots.

@@ -1,5 +1,7 @@
 # Lean Research Lab — Explore / Validate 双模式与 Engineer 有界实验批次（兼容 V3.3）
 
+> **V3.4：** 两种模式下的代码、测试和证据数量均受[简洁契约](../governance/SIMPLICITY_CONTRACT.md)约束。
+
 > [English](../../../workflows/LEAN_RESEARCH_LAB.md) 为规范版本 | **简体中文**
 
 ## GPU 优先试验
@@ -14,7 +16,7 @@ EXPLORE 阶段遇适合 GPU 的张量任务，在现有权益与技术条件允�
 | --- | --- | --- |
 | 目标 | 可行性、快速数值检查、排查设备/工具 | 有证据的正确性、加速或合并结论 |
 | 启动 | Mentor 记录可检验假设、最小 oracle 与任务范围；无 Scientist 签字，也无需先完成完整研究报告 | Mentor 记录 `RESEARCH_READY` 或有界明确假设，并定义正式验收条件 |
-| 执行 | 参考原型、小规模正确性测试、`PROBE_ONLY` GPU/TPU-XLA 探针可与数学研究并行 | 固定精确源码 SHA，运行相关参考/边界/随机数值检查与公平性能基准 |
+| 执行 | 参考原型、小规模正确性测试、`PROBE_ONLY` GPU/TPU-XLA 探针可与数学研究并行 | 固定精确源码 SHA，运行 Issue 要求的独立参考数值检查与公平性能基准 |
 | 证据 | 每批简短记录：源码身份（远程安装必须完整 SHA；本地未提交修改需标明 dirty 状态）、环境、命令、观察及真实 PASS/FAIL/NOT RUN/BLOCKED | 数学依据、被测 SHA、正确性与性能方法、设备/dtype/种子、带来源的实验清单和可复现证据 |
 | GitHub | 复用现有 Issue/分支，**不要求每次探索都创建 PR 或三份完整报告**；留下值得保留的观察记录 | 通过审核的安全、精简证据关联代码 PR；可选 Publisher 须单独真实验证 |
 | 结论 | **HYPOTHESIS / PROBE_ONLY / UNVERIFIED**，不称正式加速 | Architect 仅凭实测接受或拒绝；`NOT RUN` 不等于 `PASS` |

@@ -1,7 +1,4 @@
-# Compute Experiment Protocol — CPU / GPU / TPU (V3.3)
-
-> **Compute policy:** [Compute Throughput Policy](../governance/COMPUTE_THROUGHPUT_POLICY.md) governs GPU-first, high-throughput experiments for all roles. Use all scientifically useful Colab GPU types available under existing authorization; do not impose compute-saving quotas or speculative GPU gates. Provider limits, billing authorization, numerical evidence and session cleanup remain mandatory.
-
+# Compute Experiment Protocol — CPU / GPU / TPU (V3.4)
 
 > Historical path retained for compatibility | [简体中文](../i18n/zh-CN/workflows/GPU_EXPERIMENT.md)
 
@@ -40,13 +37,11 @@ Reuse existing WSL2/Colab CLI OAuth where actually available. Before a run check
 On success, failure or interruption: attempt to stop every allocated session, verify final session state, and report cleanup failures. Do not silently leave resources running.
 
 ## Required evidence
-- `manifest.json`: run ID/time, exact source SHA, Issue/PR, device, software environment, seed, dtype, commands, status and methodology.
-- `correctness.json`: reference, tolerances, errors and PASS/FAIL/NOT RUN.
-- `benchmark.csv`: workloads, timing units, repetitions, warmup/synchronization, median/p95 and compilation cost where relevant.
-- `summary.md`: actual observations, limitations, failures, cleanup outcome and evidence links.
-- Download integrity verification (e.g. SHA-256), local/remote artifact identity and publication status.
+Budget: [Simplicity Contract §3](../governance/SIMPLICITY_CONTRACT.md#3-evidence-git-is-the-integrity-layer) — at most 10 committed files per run. Usually two are enough:
+- `summary.md`: source SHA, Issue/PR, **observed** device, environment one-liner, command, seed/dtype, correctness vs reference with tolerance, timing method (warmup, synchronization, repetitions, median), failures as `attempt — cause — fix`, cleanup readback.
+- One results file (`results.json` or `.csv`) holding only the numbers the summary cites.
 
-Avoid large datasets, raw secrets and unnecessary logs. Never report a speedup without equivalent baselines and numerical correctness.
+SHA-256 only for bytes downloaded from outside Git (one line each). Never report a speedup without an equivalent baseline and numerical correctness.
 
 ## GitHub publication and failure handling
 After independent publication and security checks, validate artifact schemas/size/secrets; create an immutable run-specific branch/PR, link source SHA and Issue/code PR, verify API success, and leave merging to Architect. Public draft PRs are still public. No direct protected-main writes, force pushes or self-merges. Keep credentials in secure stores, never in checked-in files or logs.

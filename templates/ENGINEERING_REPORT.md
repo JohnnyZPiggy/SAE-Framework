@@ -6,7 +6,7 @@
 **Algorithm / milestone:** <name>  
 **Related Issue(s) / implementation PR:** <links>  
 **Mathematical Research:** `docs/research/<algorithm>-tensorization.md` — approved `RESEARCH_READY` / documented narrow exception / N/A for scaffolding  
-**Architect:** GPT Chief Architect · **Engineer:** Codex · **Scientific owner:** Human Scientist  
+**Architect:** <agent, default Claude> · **Engineer:** <agent, e.g. Codex> · **Scientific owner:** Human Scientist  
 **Candidate implementation source commit:** `<40-char-SHA or NOT YET AVAILABLE>`  
 **Status:** SPECIFIED / IMPLEMENTING / REVIEW / CPU_VERIFIED / BLOCKED (describe actual evidence)
 
@@ -28,7 +28,7 @@ Specify module locations, Python public API, CLI arguments, input/output schema,
 | Algorithm reference / own implementation | <paper/code link> | <license or UNKNOWN> | <baseline and risks> | REUSE / ADAPT / BUILD |
 
 **Selected Build-vs-Reuse approach and reason:** <one to three sentences; distinguish verified facts from hypotheses>.  
-**Codex handoff:** <version constraints, minimal dependencies, adapter boundaries, fallback, CPU oracle/edge tests, clean install and compile smoke tests>.  
+**Codex handoff:** <version constraints, adapter boundary, independent oracle, required tests, size budget, Not required list>.  
 **Unverified claims / follow-up:** <NONE / specific verification task>.  
 
 Keep this review short; do not add a fourth project artifact. A library's presence is not evidence of correctness, acceleration or device portability. See [Ecosystem Review](../workflows/ECOSYSTEM_REVIEW.md).
@@ -46,8 +46,7 @@ Document deviations with an explicit GPT Architect scientific/engineering decisi
 | Test / correctness comparison | PASS / FAIL / NOT RUN / BLOCKED | Real command, environment, seed and evidence link |
 | --- | --- | --- |
 | Reference/oracle equivalence | NOT RUN | |
-| CPU unit and regression tests | NOT RUN | |
-| Randomized/adversarial edge cases | NOT RUN | |
+| Issue's required tests | NOT RUN | |
 | CPU benchmark (if applicable) | NOT RUN | |
 | GPU / TPU (Codex-run by default; formal acceptance evidence required) | NOT RUN | Link separate experimental report, **do not invent GPU runs** |
 
