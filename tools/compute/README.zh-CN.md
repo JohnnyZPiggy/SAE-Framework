@@ -20,33 +20,34 @@ DEVICE_MISMATCH 阻止工作；H100 被服务商拒绝。五次尝试均已停�
 
 在与实际执行相同的 shell（需要时使用已有 WSL 登录 shell）调用 `--preflight-only --repo-path path/to/project --source-sha 完整40位SHA --run-id 唯一名称 --out 新目录 --cli colab`。它只调用 `version`、本地 Git/文件系统，不认证、不查询会话、不分配资源。使用 Git blob 原始字节导出，忽略脏工作树与 CRLF 转换，临时导出排除 `.sae/`；拒绝符号链接、子模块和不安全路径。临时构建/缓存目录必须可写且位于项目与 Dropbox 外；`--temp-root` 可覆盖。默认不安装；显式 `--install-local` 只用已有 pip/构建依赖进行临时 no-deps 安装，无失败后自动安装或登录。
 
-单独授权的计算任务可去掉 `--preflight-only`，传入项目自己的 `--driver scripts/my_driver.py --artifacts experiments/artifacts.json`。两者从项目精确提交读取，拒绝绝对/越界路径及符号链接，不执行脏文件。driver 临时放在非同步目录，收到 `SAE_CANDIDATE_SHA`；driver 与 manifest 哈希分别记录，框架不包含算法仓库地址或安装逻辑。
+单独授权的计算任务可去掉 `--preflight-only`，传入项目自己的 `--driver scripts/my_driver.py --artifacts experiments/artifacts.json`。两者从项目精确提交读取，拒绝绝对/越界路径及符号链接，不执行脏文件。driver 临时放在非同步目录，收到 `SAE_CANDIDATE_SHA`；Git 标识 driver 与 manifest 的精确字节，框架不包含算法仓库地址或安装逻辑。
 
-manifest 为 `{"artifacts":[{"name":"measurement.json"}]}`：1–16 个 JSON 文件名，禁止目录、控制报告重名、Windows 保留名或大小写重复；manifest 最大 64 KiB，driver 最大 1 MiB，每个输出最大 1 MiB，远程路径 `/content/<name>`。driver 每个文件输出一行 `ARTIFACT 文件名 字节数 SHA256`。框架核对长度、哈希、JSON 的 `source_sha` 和 `status: PASS`，拒绝重复 JSON 键。**传输 PASS 不等于科学验收**；必要输出 FAIL 会阻止传输通过，可选 NOT_RUN 信息应放在主报告内，不能伪报通过。
+manifest 为 `{"artifacts":[{"name":"measurement.json"}]}`：文件名以 `.json` 结尾，
+禁止路径分隔符，远程路径为 `/content/<name>`。框架下载后核对 JSON 的 `source_sha`
+和 `status: PASS`，记录本地 SHA-256；不再要求或交叉核对远端 `ARTIFACT` 输出行。
+**传输 PASS 不等于科学验收**；必要输出 FAIL 会阻止传输通过，可选 NOT_RUN 信息应放在主报告内，不能伪报通过。
 
 [示例 driver](../../examples/compute_adapter/driver.py) 与 [manifest](../../examples/compute_adapter/artifacts.json) 仅写传输样例，GPU/TPU/编译明确 NOT_RUN。`python -m unittest discover -s tools/compute/tests -v` 会在本地临时目录运行示例及故障回归，无需分配 Colab。
 
 有限默认值仍为总任务5400秒、会话分配窗口600秒、清理保留60秒、Kernel30秒、工作240秒。
-新上限分别为总任务14400秒、分配窗口10800秒、Kernel60秒、工作3600秒；拒绝 NaN、
-无穷、零及不一致预算。分配窗口包含整个会话而非仅分配调用；new 子进程仍最多120秒，
-Kernel外层是参数+5秒，工作外层是参数+5秒。最多两次 stop+认证零会话检查后，另一次
-post_cleanup 认证 usage 记录 balance_after、assignments_after、balance_delta。
-最后读回失败记 POST_RUN_READBACK_FAILED，保留已完成的停止凭据，但不继续下一型号。
+各超时须有限且大于零。分配窗口包含整个会话；new 子进程仍最多120秒，
+Kernel外层是参数+5秒，工作外层是参数+5秒。最多两次 stop+认证零会话检查；
+成功的清理读回记录 balance_after 和 assignments_after。清理未确认则停止型号循环。
 CLI余额只有两位小数，是计算单位观测，不是精确收费账单。无购买、充值、订阅或按量计费设置操作。
 
-Kernel输出 KERNEL_REACHABLE 后，输出一行严格 DEVICE_OBSERVED JSON：通过
+Kernel输出 KERNEL_REACHABLE 后，输出一行 DEVICE_OBSERVED JSON：通过
 `nvidia-smi --query-gpu=name,memory.total,driver_version --format=csv,noheader`
 读名称、显存、驱动（子进程10秒）；如 torch 可导入，再记录 torch/CUDA 版本、设备0
 名称和 capability，不安装 torch。缺失/畸形身份拒绝工作。报告区分 device_requested
-与 device_observed，不重新命名实际硬件；名称缺少请求家族标记时分类 DEVICE_MISMATCH。
-默认跳过工作，仅固定提交中的项目 driver 顶层显式声明
-`SAE_ALLOW_DEVICE_MISMATCH = True` 才可继续，仍保留不匹配分类。
+与 device_observed，不重新命名实际硬件；G4 请求匹配 RTX PRO 6000，其余请求匹配名称中的家族标记。
+不匹配时分类 DEVICE_MISMATCH，默认跳过工作；显式 `--allow-device-mismatch`
+可继续，仍保留不匹配分类。
 driver还收到 SAE_DEVICE_REQUESTED 和 JSON SAE_DEVICE_OBSERVED 环境字段。
 
 可用单型号 `--device T4`，或互斥的 `--devices T4,L4,G4,H100,A100`。多型号根 run-id
 最多35字符，依次建立子目录并写 colab-devices.json；完整分配、探针、工作、下载、
-停止、零会话、使用量读回完成后才开始下一型号。已识别的真实服务商拒绝记录
-BLOCKED_PROVIDER:型号:原因，清理确认后继续其余型号；释放/最后读回不确定则停止循环，
+停止、零会话、使用量读回完成后才开始下一型号。分配失败记录
+ALLOCATION_FAILED，清理确认后继续其余型号；释放/最后读回不确定则停止循环，
 其余 NOT_RUN。既有余额为正和服务商权限仍是前提，计费边界不明时必须
 BLOCKED_BILLING_UNCERTAIN；无并发会话、后台重试或新增付费。
 操作人中断后完成当前清理即停止序列，不再分配下一型号。
@@ -54,4 +55,4 @@ BLOCKED_BILLING_UNCERTAIN；无并发会话、后台重试或新增付费。
 --work-timeout 3600 --cleanup-seconds 120`；预算逐型号生效，始终有限。
 本次不改变任何已采用项目的固定协议，后续项目升级 pin 须另行提交。
 
-控制报告仅保存安全错误码、步骤时长与时间戳、源码与传输哈希，不记录原始输出、参数、私人根路径、OAuth URL 或环境转储；未观察的安装/CPU/发布/人工批准/交接为 null。下载 artifact 的内容由项目负责，传输层不自动删除其中秘密，独立发布前必须另行检查。工具不写 GitHub。Issue66 已真实核验 GPU 身份与传输；GPU 科学计算、TPU 和编译仍未运行，见[本地证据](../../reports/compute-issue38/summary.md)。完整参数、限制和依赖边界以英文页为准，GPT 独立审核验收与合并。
+控制报告保存状态、错误码、源码 SHA、run ID、请求与实际设备、创建与清理状态、前后余额和会话数、下载文件 SHA-256、总时长，以及命令 operation/status/exit_code，不记录原始输出、参数、私人根路径、OAuth URL 或环境转储。下载 artifact 的内容由项目负责，传输层不自动删除其中秘密，独立发布前必须另行检查。工具不写 GitHub。Issue66 已真实核验 GPU 身份与传输；GPU 科学计算、TPU 和编译仍未运行，见[本地证据](../../reports/compute-issue38/summary.md)。完整参数、限制和依赖边界以英文页为准，GPT 独立审核验收与合并。
