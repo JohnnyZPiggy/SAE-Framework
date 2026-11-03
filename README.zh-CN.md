@@ -48,7 +48,7 @@ GitHub Issue 和 PR 是唯一的共享记录。不用 GitHub Actions；计算在
 | [AGENTS.md](i18n/zh-CN/AGENTS.zh-CN.md) | 每个 Agent 最先读的宪章 |
 | governance/ | [简洁契约](i18n/zh-CN/governance/SIMPLICITY_CONTRACT.md) · [常设授权](i18n/zh-CN/governance/STANDING_AUTHORIZATION.md)（合并范围、安全、支出） |
 | protocols/ | 每个角色一页：[Scientist](i18n/zh-CN/protocols/SCIENTIST.md) · [Architect](i18n/zh-CN/protocols/ARCHITECT.md) · [Mentor](i18n/zh-CN/protocols/MENTOR.md) · [Engineer](i18n/zh-CN/protocols/ENGINEER.md) |
-| workflows/ | [启动](i18n/zh-CN/workflows/START.md)（新会话、项目采用）· [任务](i18n/zh-CN/workflows/TASKS.md)（Issue、PR、审查）· [研究](i18n/zh-CN/workflows/RESEARCH.md)（数学、复用、学习）· [计算](i18n/zh-CN/workflows/COMPUTE.md)（CPU/GPU 运行） |
+| workflows/ | [启动](i18n/zh-CN/workflows/START.md)（新会话、项目采用）· [任务](i18n/zh-CN/workflows/TASKS.md)（Issue、PR、审查）· [研究](i18n/zh-CN/workflows/RESEARCH.md)（数学、复用、学习）· [计算](i18n/zh-CN/workflows/COMPUTE.md)（CPU/GPU 运行）· [性能补丁](i18n/zh-CN/workflows/PERFORMANCE.md)（`torch.compile` 之后的 Triton 补丁） |
 | templates/ | Issue、PR、研究笔记、运行摘要 |
 | [tools/compute/](tools/compute/README.zh-CN.md) | Colab 控制器：有界单 GPU 会话、实际设备观测、保证清理 |
 | [docs/figures/](docs/figures/) | 架构图（SVG + Mermaid 源文件） |

@@ -3,6 +3,12 @@
 > Language: **English** | [简体中文](i18n/zh-CN/CHANGELOG.md)
 
 
+## V3.4 — Performance Patch phase (2026-11-03)
+
+- **New workflow [Performance](workflows/PERFORMANCE.md):** an optional milestone-end phase that adds small Triton kernels (CUDA C++ only with a named reason) for hotspots that a profile shows are still slow after `torch.compile`. The PyTorch path stays as oracle and fallback; Triton is an optional dependency; one op per patch with an unchanged signature.
+- **Fixed acceptance:** oracle at small/realistic sizes plus one non-block-multiple size; one Architect-owned benchmark against the *compiled* baseline; merge only at ≥ 1.3× end-to-end with no slower size. Every attempt, including `NO_GAIN`, is one line in the project's `docs/performance.md`.
+- Linked from `AGENTS.md`, README and the Architect protocol (new step 6). No change to existing project pins.
+
 ## V3.4 — Repository cleanup: one page per concept (2026-10-30)
 
 - **README** rewritten (~205 → ~70 lines): what SAE is, the roles table, a V3.4 flow diagram, a repository map and status. The outdated GPT deployment guide was removed. The architecture figures in `docs/figures/` stay; their agent names are examples.

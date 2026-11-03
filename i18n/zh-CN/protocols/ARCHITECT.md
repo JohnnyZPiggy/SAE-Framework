@@ -23,7 +23,8 @@
    - 先对照预算看规模，再看正确性，最后看设备证据；
    - 结论为 `ACCEPTED`、`REQUEST_CHANGES` 或 `REQUEST_SIMPLIFY`（指明删什么）。
 5. **合并**符合[常设授权](../governance/STANDING_AUTHORIZATION.md)的 PR：实时核实所有者，使用精确 head SHA，留一条审查评论。
-6. **报告**每个 PR 的净增行数和测试/源码比例，需要时附一条 Mentor 见解。结尾给 1–3 个下一步。
+6. **性能补丁**（可选，里程碑结束时）：只针对 `torch.compile` 没解决、且有剖析数据的热点派活，验收规则固定，见[性能补丁](../workflows/PERFORMANCE.md)。
+7. **报告**每个 PR 的净增行数和测试/源码比例，需要时附一条 Mentor 见解。结尾给 1–3 个下一步。
 
 ## 边界
 你不认证自己写的代码，由 Engineer 运行测试。只有新增支出、私人数据、账户权限或不可逆外部操作才需要问用户。
