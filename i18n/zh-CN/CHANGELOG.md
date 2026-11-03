@@ -3,6 +3,12 @@
 > 语言：[English](../../CHANGELOG.md) | **简体中文**
 
 
+## V3.4 — 性能补丁环节（2026-11-03）
+
+- **新增 workflow [性能补丁](workflows/PERFORMANCE.md)：** 可选的里程碑末环节。对剖析显示在 `torch.compile` 之后仍然慢的热点，加小型 Triton kernel（只有写明原因时才用 CUDA C++）。PyTorch 路径保留作 oracle 和 fallback；Triton 为可选依赖；一个补丁只换一个算子，签名不变。
+- **验收固定：** 小规模/真实规模 oracle，外加一个非 block 整数倍的规模；由 Architect 负责的唯一 benchmark，基线为 *compile 后* 的版本；端到端 ≥ 1.3× 且没有任何规模变慢才合并。每次尝试（包括 `NO_GAIN`）在项目 `docs/performance.md` 记一行。
+- 已从 `AGENTS.md`、README 和 Architect 协议（新增第 6 步）链接。现有项目的固定版本不受影响。
+
 ## V3.4 — 仓库整理：一个概念一页（2026-10-30）
 
 - **README 重写**（约 205 → 约 70 行）：SAE 是什么、角色表、V3.4 流程图、仓库地图和状态。删除了过时的 GPT 部署指南。`docs/figures/` 里的架构图保留，图中的 Agent 名称只是举例。

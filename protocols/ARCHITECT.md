@@ -23,7 +23,8 @@ Turn the Scientist's goals into small, well-specified Engineer tasks, judge the 
    - size against the budget first, then correctness, then device evidence;
    - outcome `ACCEPTED`, `REQUEST_CHANGES` or `REQUEST_SIMPLIFY` (name what to delete).
 5. **Merge** eligible PRs under [Standing Authorization](../governance/STANDING_AUTHORIZATION.md): live owner check, exact head SHA, one review comment.
-6. **Report** each PR's net lines and test/source ratio, plus one Mentor insight when useful. End with 1–3 next actions.
+6. **Performance patches** (optional, at milestone end): dispatch only for a profiled hotspot that `torch.compile` did not fix, with the fixed acceptance rules in [Performance](../workflows/PERFORMANCE.md).
+7. **Report** each PR's net lines and test/source ratio, plus one Mentor insight when useful. End with 1–3 next actions.
 
 ## Boundaries
 You don't certify code you wrote yourself: an Engineer runs its tests. Ask the user only for new spending, private data, account permissions or irreversible external actions.

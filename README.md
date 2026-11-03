@@ -43,7 +43,7 @@ GitHub Issues and PRs are the only shared record. No GitHub Actions; compute run
 | [AGENTS.md](AGENTS.md) | Constitution every agent reads first |
 | [governance/](governance/) | [Simplicity Contract](governance/SIMPLICITY_CONTRACT.md) · [Standing Authorization](governance/STANDING_AUTHORIZATION.md) (merge scope, security, spending) |
 | [protocols/](protocols/) | One page per role: [Scientist](protocols/SCIENTIST.md) · [Architect](protocols/ARCHITECT.md) · [Mentor](protocols/MENTOR.md) · [Engineer](protocols/ENGINEER.md) |
-| [workflows/](workflows/) | [Start](workflows/START.md) (new session, adoption) · [Tasks](workflows/TASKS.md) (Issues, PRs, review) · [Research](workflows/RESEARCH.md) (math, reuse, learning) · [Compute](workflows/COMPUTE.md) (CPU/GPU runs) |
+| [workflows/](workflows/) | [Start](workflows/START.md) (new session, adoption) · [Tasks](workflows/TASKS.md) (Issues, PRs, review) · [Research](workflows/RESEARCH.md) (math, reuse, learning) · [Compute](workflows/COMPUTE.md) (CPU/GPU runs) · [Performance](workflows/PERFORMANCE.md) (Triton patches after `torch.compile`) |
 | [templates/](templates/) | Issue, PR, research note and run summary |
 | [tools/compute/](tools/compute/README.md) | Colab controller: one bounded GPU session, observed device, guaranteed cleanup |
 | [docs/figures/](docs/figures/) | Architecture diagrams (SVG + Mermaid source) |

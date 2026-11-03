@@ -32,4 +32,4 @@
 如实说明发生了什么（PASS / FAIL / NOT RUN / BLOCKED，附链接），然后给出 1–3 个下一步，最好的排第一。客户端支持时用可点选的选项，否则用简短编号选项。工作已完成或在等别人时，不给下一步。
 
 ## 地图
-[启动](workflows/START.md) · [任务](workflows/TASKS.md) · [研究](workflows/RESEARCH.md) · [计算](workflows/COMPUTE.md) · [模板](templates/) · [计算工具](../../tools/compute/README.zh-CN.md)
+[启动](workflows/START.md) · [任务](workflows/TASKS.md) · [研究](workflows/RESEARCH.md) · [计算](workflows/COMPUTE.md) · [性能补丁](workflows/PERFORMANCE.md) · [模板](templates/) · [计算工具](../../tools/compute/README.zh-CN.md)

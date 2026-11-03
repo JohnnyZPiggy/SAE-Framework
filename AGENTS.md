@@ -32,4 +32,4 @@ User instruction → project `AGENTS.md` → the project's pinned SAE commit →
 State what actually happened (PASS / FAIL / NOT RUN / BLOCKED, with links), then offer 1–3 next actions, best first. Use clickable choices when the client supports them, otherwise short numbered options. Give no next action when the work is done or blocked on someone else.
 
 ## Map
-[Start](workflows/START.md) · [Tasks](workflows/TASKS.md) · [Research](workflows/RESEARCH.md) · [Compute](workflows/COMPUTE.md) · [Templates](templates/) · [Compute tools](tools/compute/README.md)
+[Start](workflows/START.md) · [Tasks](workflows/TASKS.md) · [Research](workflows/RESEARCH.md) · [Compute](workflows/COMPUTE.md) · [Performance](workflows/PERFORMANCE.md) · [Templates](templates/) · [Compute tools](tools/compute/README.md)
